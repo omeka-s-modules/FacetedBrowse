@@ -165,10 +165,12 @@ class IndexController extends AbstractActionController
 
     public function propertyLiteralValuesAction()
     {
-        $values = $this->facetedBrowse()->getPropertyLiteralValues(
-            $this->params()->fromQuery('property_id'),
-            $this->params()->fromQuery('query')
-        );
+        $propertyId = $this->params()->fromQuery('property_id');
+        $query = $this->params()->fromQuery('query');
+        parse_str($query, $query);
+        $query['site_id'] = $this->currentSite()->id();
+
+        $values = $this->facetedBrowse()->getPropertyLiteralValues($propertyId, $query);
 
         $response = $this->getResponse();
         $responseHeaders = $response->getHeaders();

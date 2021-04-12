@@ -23,13 +23,12 @@ class FacetedBrowse extends AbstractPlugin
         return $this->services->get('FacetedBrowse\FacetTypeManager')->get($facetType);
     }
 
-    public function getPropertyLiteralValues($propertyId, $query)
+    public function getPropertyLiteralValues($propertyId, array $query)
     {
         $api = $this->services->get('Omeka\ApiManager');
         $em = $this->services->get('Omeka\EntityManager');
 
         // Get the IDs of all items that satisfy the category query.
-        parse_str($query, $query);
         $ids = $api->search('items', $query, ['returnScalar' => 'id'])->getContent();
 
         // Get all unique literal values of the specified property of the
