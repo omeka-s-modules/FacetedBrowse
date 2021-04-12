@@ -3,6 +3,7 @@ namespace FacetedBrowse\Api\Adapter;
 
 use DateTime;
 use Doctrine\ORM\QueryBuilder;
+use FacetedBrowse\Entity\FacetedBrowseFacet;
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Request;
 use Omeka\Entity\EntityInterface;
@@ -59,6 +60,23 @@ class FacetedBrowseCategoryAdapter extends AbstractEntityAdapter
         }
         if ($this->shouldHydrate($request, 'o:query')) {
             $entity->setQuery($request->getValue('o:query'));
+        }
+        if ($this->shouldHydrate($request, 'o-module-faceted_browse:facet')) {
+            $facets = $request->getValue('o-module-faceted_browse:facet');
+            if (is_array($facets)) {
+                $facetCollection = $entity->getFacets();
+                $facetCollection->clear();
+                $position = 1;
+                foreach ($facets as $facet) {
+                    $facetEntity = new FacetedBrowseFacet;
+                    $facetEntity->setCategory($entity);
+                    $facetEntity->setType($facet['o-module-faceted_browse:type']);
+                    $facetEntity->setName($facet['o:name']);
+                    $facetEntity->setData(json_decode($facet['o:data'], true));
+                    $facetEntity->setPosition($position++);
+                    $facetCollection->add($facetEntity);
+                }
+            }
         }
     }
 
