@@ -37,6 +37,24 @@ facets.on('click', '.facet-edit', function(e) {
         Omeka.openSidebar(facetSidebar);
     });
 });
+facets.on('click', '.facet-remove', function(e) {
+    e.preventDefault();
+    const thisButton = $(this);
+    const facet = thisButton.closest('.facet');
+    facet.find(':input').prop('disabled', true);
+    facet.addClass('delete');
+    facet.find('.facet-restore').show();
+    thisButton.hide();
+});
+facets.on('click', '.facet-restore', function(e) {
+    e.preventDefault();
+    const thisButton = $(this);
+    const facet = thisButton.closest('.facet');
+    facet.find(':input').prop('disabled', false);
+    facet.removeClass('delete');
+    facet.find('.facet-remove').show();
+    thisButton.hide();
+});
 // Handle facet set button.
 facetFormContainer.on('click', '#facet-set-button', function(e) {
     const thisButton = $(this);

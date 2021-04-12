@@ -15,8 +15,9 @@ use Laminas\Form\Element\Hidden;
             'title' => $this->translate('Remove facet'),
         ]); ?></li>
         <li><?php echo $this->hyperlink('', [], [
-            'class' => 'o-icon-restore facet-restore',
+            'class' => 'o-icon-undo facet-restore',
             'title' => $this->translate('Restore facet'),
+            'style' => 'display: none;',
         ]); ?></li>
     </ul>
     <?php
