@@ -1,0 +1,11 @@
+<?php $form->prepare(); ?>
+<div class="meta-group">
+    <h4><?php echo $this->translate('Facet type'); ?></h4>
+    <div class="value"><?php echo $facetType->getLabel(); ?></div>
+</div>
+<?php echo $this->form()->openTag($form); ?>
+<?php echo $this->formHidden($form->get('facet_type')); ?>
+<?php echo $this->formRow($form->get('facet_name')); ?>
+<?php echo $this->formCollection($form->get('facet_data')); ?>
+<?php echo $this->formElement($form->get('facet_set')); ?>
+<?php echo $this->form()->closeTag(); ?>

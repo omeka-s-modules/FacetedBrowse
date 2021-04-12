@@ -1,0 +1,66 @@
+<?php
+$this->headLink()->appendStylesheet($this->assetUrl('css/admin/category-form.css', 'FacetedBrowse'));
+$this->headScript()->appendFile($this->assetUrl('vendor/sortablejs/Sortable.min.js', 'Omeka'));
+$this->headScript()->appendFile($this->assetUrl('js/admin/category-form.js', 'FacetedBrowse'));
+$this->facetedBrowse()->prepareDataForms();
+
+if ($category) {
+    $this->htmlElement('body')->appendAttribute('class', 'faceted-browse category edit browse');
+} else {
+    $this->htmlElement('body')->appendAttribute('class', 'faceted-browse category add browse');
+}
+$form->prepare();
+?>
+<?php if ($category): ?>
+<?php echo $this->pageTitle($this->translate('Edit Category'), 1, $this->translate('Faceted Browse'), $category->name()); ?>
+<?php else: ?>
+<?php echo $this->pageTitle($this->translate('Add Category'), 1, $this->translate('Faceted Browse')); ?>
+<?php endif; ?>
+
+<?php echo $this->form()->openTag($form); ?>
+
+<div id="page-actions">
+    <?php if ($category): ?>
+    <a href="#" id="delete-button" class="delete button"><?php echo $this->translate('Delete'); ?></a>
+    <?php endif; ?>
+    <?php echo $this->hyperlink($this->translate('Cancel'), $this->url(null, ['action' => 'browse'], true), ['class' => 'button']); ?>
+    <div id="page-action-menu">
+        <a href="#" class="button expand" aria-label="<?php echo $this->translate('Expand'); ?>" title="<?php echo $this->translate('Expand'); ?>">
+            <?php echo $this->translate('Save and&hellip;'); ?></a>
+            <ul class="collapsible">
+                <li><input type="submit" name="submit_save" value="<?php echo $this->escapeHtml($this->translate('Return to categories')); ?>"></li>
+                <li><input type="submit" name="submit_save_remain" value="<?php echo $this->escapeHtml($this->translate('Stay on this category')); ?>"></li>
+            </ul>
+    </div>
+</div>
+
+<?php echo $this->formRow($form->get('o:name')); ?>
+<?php echo $this->formRow($form->get('o:query')); ?>
+
+<h3><?php echo $this->translate('Facets'); ?></h3>
+<?php echo $this->formSelect($form->get('facet_type')); ?>
+<button type="button" id="facet-add-button" disabled><?php echo $this->translate('Add'); ?></button>
+<ul id="facets"
+    data-facet-row-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'facet-row'], true)); ?>"
+    data-facet-form-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'facet-form'], true)); ?>">
+    <?php if ($category): ?>
+    <?php foreach ($category->facets() as $index => $facet): ?>
+    <?php echo $this->partial('facet-row.phtml', ['index' => $index, 'facet' => $facet->jsonSerialize()]); ?>
+    <?php endforeach; ?>
+    <?php endif; ?>
+</ul>
+
+<?php echo $this->formHidden($form->get('csrf')); ?>
+<?php echo $this->form()->closeTag(); ?>
+
+<?php if ($category): ?>
+<?php echo $this->deleteConfirm($category, 'category'); ?>
+<?php endif; ?>
+
+<div id="facet-sidebar" class="sidebar">
+    <?php echo $this->hyperlink('', '#', ['class' => 'sidebar-close o-icon-close', 'title' => $this->translate('Close')]); ?>
+    <div class="sidebar-content">
+        <h3><?php echo $this->translate('Configure facet'); ?></h3>
+        <div id="facet-form-container"></div>
+    </div>
+</div>
