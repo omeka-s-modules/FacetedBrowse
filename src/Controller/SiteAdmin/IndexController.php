@@ -154,7 +154,7 @@ class IndexController extends AbstractActionController
             'o-module-faceted_browse:type' => $this->params()->fromPost('facet_type'),
             'o:data' => [],
         ];
-        $index = $this->params()->fromQuery('index');
+        $index = $this->params()->fromPost('index');
 
         $view = new ViewModel;
         $view->setTerminal(true);
