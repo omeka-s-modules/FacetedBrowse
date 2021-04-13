@@ -65,15 +65,34 @@ class FacetedBrowseCategoryAdapter extends AbstractEntityAdapter
             $facets = $request->getValue('o-module-faceted_browse:facet');
             if (is_array($facets)) {
                 $facetCollection = $entity->getFacets();
-                $facetCollection->clear();
+                $toRetain = [];
+                $toAdd = [];
                 $position = 1;
                 foreach ($facets as $facet) {
-                    $facetEntity = new FacetedBrowseFacet;
-                    $facetEntity->setCategory($entity);
+                    $facetEntity = $facetCollection->current();
+                    if ($facetEntity) {
+                        // Reuse an existing facet entity.
+                        $facetCollection->next();
+                        $toRetain[] = $facetEntity;
+                    } else {
+                        // Create a new facet entity.
+                        $facetEntity = new FacetedBrowseFacet;
+                        $facetEntity->setCategory($entity);
+                        $toAdd[] = $facetEntity;
+                    }
                     $facetEntity->setType($facet['o-module-faceted_browse:type']);
                     $facetEntity->setName($facet['o:name']);
                     $facetEntity->setData(json_decode($facet['o:data'], true));
                     $facetEntity->setPosition($position++);
+                }
+                // Remove any existing facet entities that are unused.
+                foreach ($facetCollection as $index => $facetEntity) {
+                    if (!in_array($facetEntity, $toRetain)) {
+                        $facetCollection->remove($index);
+                    }
+                }
+                // Add any new facet entities.
+                foreach ($toAdd as $facetEntity) {
                     $facetCollection->add($facetEntity);
                 }
             }
