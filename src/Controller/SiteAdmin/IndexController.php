@@ -76,7 +76,7 @@ class IndexController extends AbstractActionController
             if ($form->isValid()) {
                 $formData = $form->getData();
                 $formData['o:site'] = ['o:id' => $this->currentSite()->id()];
-                $formData['o-module-faceted_browse:facet'] = is_array($postData['facet']) ? $postData['facet'] : [];
+                $formData['o-module-faceted_browse:facet'] = $postData['facet'] ?? [];
                 $response = $this->api($form)->update('faceted_browse_categories', $category->id(), $formData);
                 if ($response) {
                     $this->messenger()->addSuccess('Successfully edited the category.'); // @translate
