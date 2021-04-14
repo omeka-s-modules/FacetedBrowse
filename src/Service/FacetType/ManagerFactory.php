@@ -1,11 +1,11 @@
 <?php
-namespace FacetedBrowse\Service;
+namespace FacetedBrowse\Service\FacetType;
 
 use FacetedBrowse\FacetType\Manager;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 
-class FacetTypeManagerFactory implements FactoryInterface
+class ManagerFactory implements FactoryInterface
 {
     public function __invoke(ContainerInterface $services, $requestedName, array $options = null)
     {

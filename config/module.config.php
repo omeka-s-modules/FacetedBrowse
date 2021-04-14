@@ -39,7 +39,7 @@ return [
     ],
     'service_manager' => [
         'factories' => [
-            'FacetedBrowse\FacetTypeManager' => Service\FacetTypeManagerFactory::class,
+            'FacetedBrowse\FacetTypeManager' => Service\FacetType\ManagerFactory::class,
         ],
     ],
     'api_adapters' => [
