@@ -1,11 +1,7 @@
 <?php
 namespace FacetedBrowse\Entity;
 
-use DateTime;
-use Doctrine\ORM\Event\LifecycleEventArgs;
-use FacetedBrowse\Entity\FacetedBrowseCategory;
 use Omeka\Entity\AbstractEntity;
-use Omeka\Entity\User;
 
 /**
  * @Entity

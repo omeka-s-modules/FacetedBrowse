@@ -3,7 +3,6 @@ namespace FacetedBrowse;
 
 use Omeka\Module\AbstractModule;
 use Laminas\EventManager\SharedEventManagerInterface;
-use Laminas\Mvc\MvcEvent;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 
 class Module extends AbstractModule
