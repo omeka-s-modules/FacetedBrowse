@@ -10,5 +10,7 @@ $facetType = $this->facetedBrowse()->getFacetType($facetType);
 <?php echo $this->formHidden($form->get('facet_type')); ?>
 <?php echo $this->formRow($form->get('facet_name')); ?>
 <?php echo $facetType->renderDataForm($this, $facetData); ?>
+<?php if ($this->facetedBrowse()->facetTypeIsKnown($facetType)): ?>
 <?php echo $this->formElement($form->get('facet_set')); ?>
+<?php endif; ?>
 <?php echo $this->form()->closeTag(); ?>

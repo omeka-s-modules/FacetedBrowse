@@ -1,6 +1,8 @@
 <?php
 namespace FacetedBrowse\ViewHelper;
 
+use FacetedBrowse\FacetType\FacetTypeInterface;
+use FacetedBrowse\FacetType\Unknown;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Helper\AbstractHelper;
 
@@ -24,5 +26,10 @@ class FacetedBrowse extends AbstractHelper
         foreach ($facetTypes->getRegisteredNames() as $facetTypeName) {
             $this->getFacetType($facetTypeName)->prepareDataForm($this->getView());
         }
+    }
+
+    public function facetTypeIsKnown(FacetTypeInterface $facetType)
+    {
+        return !($facetType instanceof Unknown);
     }
 }
