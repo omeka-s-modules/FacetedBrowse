@@ -80,8 +80,7 @@ facetFormContainer.on('click', '#facet-set-button', function(e) {
     const type = $('#facet-type-input').val();
     const name = $.trim($('#facet-name-input').val());
     if (!name) {
-        $('#facet-name-input')[0].setCustomValidity(Omeka.jsTranslate('A facet must have a name'));
-        $('#facet-name-input')[0].reportValidity();
+        alert(Omeka.jsTranslate('A facet must have a name'));
         return;
     }
     thisButton.trigger('faceted-browse:facet-set', [type]);

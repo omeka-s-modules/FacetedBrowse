@@ -2,7 +2,6 @@
 namespace FacetedBrowse\Form;
 
 use Laminas\Form\Element as LaminasElement;
-use Laminas\Form\Fieldset;
 use Laminas\Form\Form;
 
 class FacetForm extends Form
@@ -25,10 +24,6 @@ class FacetForm extends Form
             'attributes' => [
                 'id' => 'facet-name-input',
             ],
-        ]);
-        $this->add([
-            'type' => Fieldset::class,
-            'name' => 'facet_data',
         ]);
         $this->add([
             'type' => LaminasElement\Button::class,

@@ -1,7 +1,6 @@
 <?php
 namespace FacetedBrowse\FacetType;
 
-use Laminas\Form\Fieldset;
 use Laminas\View\Renderer\PhpRenderer;
 
 interface FacetTypeInterface
@@ -24,7 +23,7 @@ interface FacetTypeInterface
      * Render the data form of this facet type.
      *
      * @param PhpRenderer $view
-     * @param Fieldset $fieldset
+     * @param array $data
      * @return string
      */
     public function renderDataForm(PhpRenderer $view, array $data) : string;

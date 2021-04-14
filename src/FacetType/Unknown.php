@@ -1,7 +1,6 @@
 <?php
 namespace FacetedBrowse\FacetType;
 
-use Laminas\Form\Fieldset;
 use Laminas\View\Renderer\PhpRenderer;
 
 class Unknown implements FacetTypeInterface

@@ -2,7 +2,6 @@
 namespace FacetedBrowse\FacetType;
 
 use Laminas\Form\Element as LaminasElement;
-use Laminas\Form\Fieldset;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Form\Element as OmekaElement;
