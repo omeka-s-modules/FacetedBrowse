@@ -38,6 +38,7 @@ class FacetForm extends Form
             ],
             'attributes' => [
                 'id' => 'facet-set-button',
+                'style' => 'width: 100%;',
             ],
         ]);
     }
