@@ -1,13 +1,21 @@
 <?php
 namespace FacetedBrowse\FacetType;
 
-use Omeka\Form\Element as OmekaElement;
 use Laminas\Form\Element as LaminasElement;
 use Laminas\Form\Fieldset;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
+use Omeka\Form\Element as OmekaElement;
 
 class PropertyLiteral implements FacetTypeInterface
 {
+    protected $formElements;
+
+    public function __construct(ServiceLocatorInterface $formElements)
+    {
+        $this->formElements = $formElements;
+    }
+
     public function getLabel() : string
     {
         return 'Property'; // @translate
@@ -20,46 +28,49 @@ class PropertyLiteral implements FacetTypeInterface
         $view->headScript()->appendScript($js);
     }
 
-    public function setDataElements(Fieldset $fieldset, array $data) : void
+    public function renderDataForm(PhpRenderer $view, array $data) : string
     {
-        $fieldset->add([
-            'type' => OmekaElement\PropertySelect::class,
-            'name' => 'property_id',
-            'options' => [
+        // Property ID
+        $elementPropertyId = $this->formElements->get(OmekaElement\PropertySelect::class);
+        $elementPropertyId->setName('property_id')
+            ->setOptions([
                 'label' => 'Property', // @translate
                 'empty_option' => 'Select one…', // @translate
-            ],
-            'attributes' => [
+            ])
+            ->setAttributes([
                 'id' => 'property-literal-property-id',
                 'value' => $data['property_id'] ?? null,
-            ],
-        ]);
-        $fieldset->add([
-            'type' => LaminasElement\Select::class,
-            'name' => 'query_type',
-            'options' => [
-                'label' => 'Query type',
+            ]);
+        // Query type
+        $elementQueryType = $this->formElements->get(LaminasElement\Select::class);
+        $elementQueryType->setName('query_type')
+            ->setOptions([
+                'label' => 'Query type', // @translate
                 'value_options' => [
                     'eq' => 'Is exactly', // @translate
                     'in' => 'Contains', // @translate
                 ],
-            ],
-            'attributes' => [
+            ])
+            ->setAttributes([
                 'id' => 'property-literal-query-type',
                 'value' => $data['query_type'] ?? 'eq',
-            ],
-        ]);
-        $fieldset->add([
-            'type' => LaminasElement\Textarea::class,
-            'name' => 'values',
-            'options' => [
+            ]);
+        // Values
+        $elementValues = $this->formElements->get(LaminasElement\Textarea::class);
+        $elementValues->setName('values')
+            ->setOptions([
                 'label' => 'Values', // @translate
-            ],
-            'attributes' => [
+            ])
+            ->setAttributes([
                 'id' => 'property-literal-values',
                 'style' => 'height: 300px;',
                 'value' => $data['values'] ?? null,
-            ],
+            ]);
+
+        return $view->partial('common/faceted-browse/facet-data-form/property-literal', [
+            'elementPropertyId' => $elementPropertyId,
+            'elementQueryType' => $elementQueryType,
+            'elementValues' => $elementValues,
         ]);
     }
 }

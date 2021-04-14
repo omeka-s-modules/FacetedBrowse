@@ -5,11 +5,11 @@ use Laminas\Router\Http;
 
 return [
     'faceted_browse_facet_types' => [
-        'invokables' => [
-            'property_literal' => FacetType\PropertyLiteral::class,
-            //~ 'resource_class' => FacetType\ResourceClass::class,
-            //~ 'resource_template' => FacetType\ResourceTemplate::class,
-            //~ 'item_set' => FacetType\ItemSet::class,
+        'factories' => [
+            'property_literal' => Service\FacetType\PropertyLiteralFactory::class,
+            //~ 'resource_class' => Service\FacetType\ResourceClass::class,
+            //~ 'resource_template' => Service\FacetType\ResourceTemplate::class,
+            //~ 'item_set' => Service\FacetType\ItemSet::class,
         ],
     ],
     'translator' => [
@@ -70,6 +70,7 @@ return [
     'js_translate_strings' => [
         'A facet must have a name', // @translate
         'A facet must have a query type', // @translate
+        'The selected property has no values', // @translate
     ],
     'navigation' => [
         'site' => [

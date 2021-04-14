@@ -21,9 +21,11 @@ interface FacetTypeInterface
     public function prepareDataForm(PhpRenderer $view) : void;
 
     /**
-     * Set the data elements to the fieldset for this facet type.
+     * Render the data form of this facet type.
      *
+     * @param PhpRenderer $view
      * @param Fieldset $fieldset
+     * @return string
      */
-    public function setDataElements(Fieldset $fieldset, array $data) : void;
+    public function renderDataForm(PhpRenderer $view, array $data) : string;
 }

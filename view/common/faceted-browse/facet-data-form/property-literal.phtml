@@ -1,0 +1,5 @@
+<?php echo $this->formRow($elementPropertyId); ?>
+<?php echo $this->formRow($elementQueryType); ?>
+<?php echo $this->formRow($elementValues); ?>
+<p><input type="checkbox" id="property-literal-show-all-values"> <?php echo $this->translate('Show all unique values of selected property'); ?></p>
+<ul id="property-literal-all-values" style="overflow: auto; max-height: 300px;"></ul>

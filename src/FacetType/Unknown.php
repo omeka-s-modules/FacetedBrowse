@@ -22,7 +22,8 @@ class Unknown implements FacetTypeInterface
     {
     }
 
-    public function setDataElements(Fieldset $fieldset, array $data = []) : void
+    public function renderDataForm(PhpRenderer $view, array $data) : string
     {
+        return '';
     }
 }

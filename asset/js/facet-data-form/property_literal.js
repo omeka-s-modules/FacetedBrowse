@@ -19,19 +19,27 @@ $(document).on('faceted_browse:parse_facet_data', '#facet-set-button', function(
     }
 });
 
-$(document).on('change', '#property-literal-property-id', function(e) {
-    let allValues = $('#property-literal-all-values');
-    if (!allValues.length) {
-        allValues = $('<ul id="property-literal-all-values"></ul>');
-        $('#facet-set-button').after(allValues);
-    }
-    $.get(facetedBrowsePropertyLiteralValuesUrl, {
-        property_id: $(this).val(),
-        query: $('#category-query').val()
-    }, function(data) {
-        allValues.empty();
-        data.forEach(value => {
-            allValues.append(`<li>${value}</li>`);
+$(document).on('click', '#property-literal-show-all-values', function(e) {
+    const allValues = $('#property-literal-all-values');
+    if (this.checked) {
+        $.get(facetedBrowsePropertyLiteralValuesUrl, {
+            property_id: $('#property-literal-property-id').val(),
+            query: $('#category-query').val()
+        }, function(data) {
+            if (data.length) {
+                data.forEach(value => {
+                    allValues.append(`<li>${value}</li>`);
+                });
+            } else {
+                allValues.append(`<li>${Omeka.jsTranslate('The selected property has no values')}</li>`);
+            }
         });
-    });
+    } else {
+        allValues.empty();
+    }
+});
+
+$(document).on('change', '#property-literal-property-id', function(e) {
+    $('#property-literal-show-all-values').prop('checked', false);
+    $('#property-literal-all-values').empty();
 });

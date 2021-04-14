@@ -123,24 +123,25 @@ class IndexController extends AbstractActionController
         if (!$this->getRequest()->isPost()) {
             return $this->redirect()->toRoute(null, ['action' => 'browse'], true);
         }
-        $facet = [
-            'facet_name' => $this->params()->fromPost('facet_name'),
-            'facet_type' => $this->params()->fromPost('facet_type'),
-        ];
-        $form = $this->getForm(Form\FacetForm::class);
-        $form->setData($facet);
 
+        $facetType = $this->params()->fromPost('facet_type');
+        $facetName = $this->params()->fromPost('facet_name');
         $facetData = json_decode($this->params()->fromPost('facet_data'), true);
         if (!is_array($facetData)) {
             $facetData = [];
         }
-        $facetType = $this->facetedBrowse()->getFacetType($facet['facet_type']);
-        $facetType->setDataElements($form->get('facet_data'), $facetData);
+
+        $form = $this->getForm(Form\FacetForm::class);
+        $form->setData([
+            'facet_type' => $facetType,
+            'facet_name' => $facetName,
+        ]);
 
         $view = new ViewModel;
         $view->setTerminal(true);
         $view->setVariable('form', $form);
         $view->setVariable('facetType', $facetType);
+        $view->setVariable('facetData', $facetData);
         return $view;
     }
 
