@@ -68,9 +68,9 @@ return [
         ],
     ],
     'js_translate_strings' => [
-        'A facet must have a name', // @translate
-        'A facet must have a query type', // @translate
-        'The selected property has no values', // @translate
+        'A facet must have a name.', // @translate
+        'A facet must have a query type.', // @translate
+        'The selected property has no values.', // @translate
     ],
     'navigation' => [
         'site' => [

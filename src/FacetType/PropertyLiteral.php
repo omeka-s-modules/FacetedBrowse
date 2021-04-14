@@ -33,11 +33,12 @@ class PropertyLiteral implements FacetTypeInterface
         $propertyId->setName('property_id');
         $propertyId->setOptions([
             'label' => 'Property', // @translate
-            'empty_option' => 'Select one…', // @translate
+            'empty_option' => '',
         ]);
         $propertyId->setAttributes([
             'id' => 'property-literal-property-id',
             'value' => $data['property_id'] ?? null,
+            'data-placeholder' => 'Select one…', // @translate
         ]);
         // Query type
         $queryType = $this->formElements->get(LaminasElement\Select::class);

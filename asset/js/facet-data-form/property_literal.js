@@ -1,4 +1,16 @@
-// Handle facet set button.
+// Handle facet add/edit.
+$(document).on('faceted-browse:facet-add-edit', '#facet-add-button, .facet-edit', function(e, type) {
+    if ('property_literal' !== type) {
+        return;
+    }
+    $('#property-literal-property-id').chosen({
+        allow_single_deselect: true,
+    });
+    $('#property-literal-query-type').chosen({
+        disable_search: true,
+    });
+});
+// Handle facet set.
 $(document).on('faceted-browse:facet-set', '#facet-set-button', function(e, type) {
     if ('property_literal' !== type) {
         return;
@@ -6,11 +18,9 @@ $(document).on('faceted-browse:facet-set', '#facet-set-button', function(e, type
     const propertyId = $('#property-literal-property-id');
     const queryType = $('#property-literal-query-type');
     if (!propertyId.val()) {
-        propertyId[0].setCustomValidity(Omeka.jsTranslate('A facet must have a property'));
-        propertyId[0].reportValidity();
+        alert(Omeka.jsTranslate('A facet must have a property.'));
     } else if (!queryType.val()) {
-        queryType[0].setCustomValidity(Omeka.jsTranslate('A facet must have a query type'));
-        queryType[0].reportValidity();
+        alert(Omeka.jsTranslate('A facet must have a query type.'));
     } else {
         $(this).data('facet-data', {
             property_id: propertyId.val(),
@@ -19,7 +29,7 @@ $(document).on('faceted-browse:facet-set', '#facet-set-button', function(e, type
         });
     }
 });
-// Handle show all values checkbox.
+// Handle show all values.
 $(document).on('click', '#property-literal-show-all-values', function(e) {
     const allValues = $('#property-literal-all-values');
     if (this.checked) {
@@ -32,7 +42,7 @@ $(document).on('click', '#property-literal-show-all-values', function(e) {
                     allValues.append(`<li>${value}</li>`);
                 });
             } else {
-                allValues.append(`<li>${Omeka.jsTranslate('The selected property has no values')}</li>`);
+                allValues.append(`<li>${Omeka.jsTranslate('The selected property has no values.')}</li>`);
             }
         });
     } else {

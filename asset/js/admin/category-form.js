@@ -7,7 +7,7 @@
  * - faceted-browse:facet-set : Trigered after the user clicks facet set. Attach
  *       handlers to #facet-set-button to validate facet data and set the valid
  *       facet data object to the set button using data('facet-data', {...}).
- *       If the data is invalid, report the validation error.
+ *       Alert the user if the data is invalid.
  */
 $(document).ready(function() {
 
