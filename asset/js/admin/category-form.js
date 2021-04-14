@@ -1,4 +1,15 @@
-$( document ).ready(function() {
+/**
+ * Available events:
+ *
+ * - faceted-browse:facet-add-edit : Triggered after the user clicks facet
+ *       add/edit. Attach handlers to #facet-add-button or .facet-edit to
+ *       prepare the facet form, if needed.
+ * - faceted-browse:facet-set : Trigered after the user clicks facet set. Attach
+ *       handlers to #facet-set-button to validate facet data and set the valid
+ *       facet data object to the set button using data('facet-data', {...}).
+ *       If the data is invalid, report the validation error.
+ */
+$(document).ready(function() {
 
 const facets = $('#facets');
 const facetSidebar = $('#facet-sidebar');
@@ -17,24 +28,32 @@ facetTypeSelect.on('change', function(e) {
 // Handle facet add button.
 facetAddButton.on('click', function(e) {
     facetSelected = undefined;
+    const thisButton = $(this);
+    const type = facetTypeSelect.val();
     $.post(facets.data('facetFormUrl'), {
-        facet_type: facetTypeSelect.val()
+        facet_type: type
     }, function(html) {
         facetFormContainer.html(html);
         Omeka.openSidebar(facetSidebar);
+        thisButton.trigger('faceted-browse:facet-add-edit', [type]);
     });
 });
 // Handle facet edit button.
 facets.on('click', '.facet-edit', function(e) {
     e.preventDefault();
     facetSelected = $(this).closest('.facet');
+    const thisButton = $(this);
+    const type = facetSelected.find('.facet-type').val();
+    const name = facetSelected.find('.facet-name').val();
+    const data = facetSelected.find('.facet-data').val();
     $.post(facets.data('facetFormUrl'), {
-        facet_type: facetSelected.find('.facet-type').val(),
-        facet_name: facetSelected.find('.facet-name').val(),
-        facet_data: facetSelected.find('.facet-data').val()
+        facet_type: type,
+        facet_name: name,
+        facet_data: data
     }, function(html) {
         facetFormContainer.html(html);
         Omeka.openSidebar(facetSidebar);
+        thisButton.trigger('faceted-browse:facet-add-edit', [type]);
     });
 });
 facets.on('click', '.facet-remove', function(e) {
@@ -65,11 +84,7 @@ facetFormContainer.on('click', '#facet-set-button', function(e) {
         $('#facet-name-input')[0].reportValidity();
         return;
     }
-    // Handlers triggered by this event should validate the facet data against
-    // the type, and, if valid, set the facet data object to #facet-set-button
-    // using data('facet-data', {...}). If the data is invalid, it should alert
-    // the user to make corrections.
-    thisButton.trigger('faceted_browse:parse_facet_data', [type]);
+    thisButton.trigger('faceted-browse:facet-set', [type]);
     const data = thisButton.data('facetData');
     if (!data) {
         // The data is invalid. The handler should have alerted the user. Do

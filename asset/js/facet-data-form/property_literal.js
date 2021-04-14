@@ -1,5 +1,5 @@
 // Handle facet set button.
-$(document).on('faceted_browse:parse_facet_data', '#facet-set-button', function(e, type) {
+$(document).on('faceted-browse:facet-set', '#facet-set-button', function(e, type) {
     if ('property_literal' !== type) {
         return;
     }
