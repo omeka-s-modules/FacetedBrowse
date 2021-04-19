@@ -45,11 +45,13 @@ return [
     'api_adapters' => [
         'invokables' => [
             'faceted_browse_categories' => Api\Adapter\FacetedBrowseCategoryAdapter::class,
+            'faceted_browse_pages' => Api\Adapter\FacetedBrowsePageAdapter::class,
         ],
     ],
     'controllers' => [
         'invokables' => [
             'FacetedBrowse\Controller\SiteAdmin\Category' => Controller\SiteAdmin\CategoryController::class,
+            'FacetedBrowse\Controller\SiteAdmin\Page' => Controller\SiteAdmin\PageController::class,
         ],
     ],
     'controller_plugins' => [
@@ -100,6 +102,12 @@ return [
                         'controller' => 'page',
                         'action' => 'browse',
                         'useRouteMatch' => true,
+                        'pages' => [
+                            [
+                                'route' => 'admin/site/slug/faceted-browse/id',
+                                'visible' => false,
+                            ]
+                        ],
                     ],
                 ],
             ],
