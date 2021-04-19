@@ -23,7 +23,7 @@ $form->prepare();
     <?php if ($category): ?>
     <a href="#" id="delete-button" class="delete button"><?php echo $this->translate('Delete'); ?></a>
     <?php endif; ?>
-    <?php echo $this->hyperlink($this->translate('Cancel'), $this->url(null, ['action' => 'browse'], true), ['class' => 'button']); ?>
+    <?php echo $this->hyperlink($this->translate('Cancel'), $this->url('admin/site/slug/faceted-browse', ['action' => 'browse'], true), ['class' => 'button']); ?>
     <div id="page-action-menu">
         <a href="#" class="button expand" aria-label="<?php echo $this->translate('Expand'); ?>" title="<?php echo $this->translate('Expand'); ?>">
             <?php echo $this->translate('Save and&hellip;'); ?></a>
@@ -41,8 +41,8 @@ $form->prepare();
 <?php echo $this->formSelect($form->get('facet_type')); ?>
 <button type="button" id="facet-add-button" disabled><?php echo $this->translate('Add'); ?></button>
 <ul id="facets"
-    data-facet-row-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'facet-row'], true)); ?>"
-    data-facet-form-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'facet-form'], true)); ?>">
+    data-facet-row-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse', ['action' => 'facet-row'], true)); ?>"
+    data-facet-form-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse', ['action' => 'facet-form'], true)); ?>">
     <?php if ($category): ?>
     <?php foreach ($category->facets() as $index => $facet): ?>
     <?php echo $this->partial('facet-row.phtml', ['index' => $index, 'facet' => $facet->jsonSerialize()]); ?>

@@ -49,7 +49,7 @@ return [
     ],
     'controllers' => [
         'invokables' => [
-            'FacetedBrowse\Controller\SiteAdmin\Index' => Controller\SiteAdmin\IndexController::class,
+            'FacetedBrowse\Controller\SiteAdmin\Category' => Controller\SiteAdmin\CategoryController::class,
         ],
     ],
     'controller_plugins' => [
@@ -77,12 +77,29 @@ return [
             [
                 'label' => 'Faceted Browse', // @translate
                 'route' => 'admin/site/slug/faceted-browse',
-                'action' => 'index',
+                'controller' => 'category',
+                'action' => 'browse',
                 'useRouteMatch' => true,
                 'pages' => [
                     [
+                        'label' => 'Categories', // @translate
                         'route' => 'admin/site/slug/faceted-browse',
-                        'visible' => false,
+                        'controller' => 'category',
+                        'action' => 'browse',
+                        'useRouteMatch' => true,
+                        'pages' => [
+                            [
+                                'route' => 'admin/site/slug/faceted-browse/id',
+                                'visible' => false,
+                            ]
+                        ],
+                    ],
+                    [
+                        'label' => 'Pages', // @translate
+                        'route' => 'admin/site/slug/faceted-browse',
+                        'controller' => 'page',
+                        'action' => 'browse',
+                        'useRouteMatch' => true,
                     ],
                 ],
             ],
@@ -99,15 +116,25 @@ return [
                                     'faceted-browse' => [
                                         'type' => Http\Segment::class,
                                         'options' => [
-                                            'route' => '/faceted-browse[/:action[/:id]]',
+                                            'route' => '/faceted-browse/:controller/:action',
                                             'constraints' => [
+                                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                                 'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                                 'id' => '\d+',
                                             ],
                                             'defaults' => [
                                                 '__NAMESPACE__' => 'FacetedBrowse\Controller\SiteAdmin',
-                                                'controller' => 'index',
+                                                'controller' => 'category',
                                                 'action' => 'browse',
+                                            ],
+                                        ],
+                                        'may_terminate' => true,
+                                        'child_routes' => [
+                                            'id' => [
+                                                'type' => Http\Segment::class,
+                                                'options' => [
+                                                    'route' => '/:id',
+                                                ],
                                             ],
                                         ],
                                     ],

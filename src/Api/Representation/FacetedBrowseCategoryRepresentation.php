@@ -28,11 +28,11 @@ class FacetedBrowseCategoryRepresentation extends AbstractEntityRepresentation
     {
         $url = $this->getViewHelper('Url');
         return $url(
-            'admin/site/slug/faceted-browse',
+            'admin/site/slug/faceted-browse/id',
             [
                 'site-slug' => $this->site()->slug(),
-                'id' => $this->id(),
                 'action' => $action,
+                'id' => $this->id(),
             ],
             ['force_canonical' => $canonical]
         );

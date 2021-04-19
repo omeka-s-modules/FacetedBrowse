@@ -6,11 +6,11 @@ use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 use Omeka\Form\ConfirmForm;
 
-class IndexController extends AbstractActionController
+class CategoryController extends AbstractActionController
 {
     public function indexAction()
     {
-        return $this->redirect()->toRoute(null, ['action' => 'browse'], true);
+        return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'browse'], true);
     }
 
     public function browseAction()
@@ -44,9 +44,9 @@ class IndexController extends AbstractActionController
                     $category = $response->getContent();
                     $this->messenger()->addSuccess('Successfully added the category.'); // @translate
                     if (isset($postData['submit_save_remain'])) {
-                        return $this->redirect()->toRoute(null, ['action' => 'edit', 'id' => $category->id()], true);
+                        return $this->redirect()->toRoute('admin/site/slug/faceted-browse/id', ['action' => 'edit', 'id' => $category->id()], true);
                     } else {
-                        return $this->redirect()->toRoute(null, ['action' => 'browse'], true);
+                        return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'browse'], true);
                     }
                 }
             } else {
@@ -81,9 +81,9 @@ class IndexController extends AbstractActionController
                 if ($response) {
                     $this->messenger()->addSuccess('Successfully edited the category.'); // @translate
                     if (isset($postData['submit_save_remain'])) {
-                        return $this->redirect()->toRoute(null, ['action' => 'edit'], true);
+                        return $this->redirect()->toRoute('admin/site/slug/faceted-browse/id', ['action' => 'edit'], true);
                     } else {
-                        return $this->redirect()->toRoute(null, ['action' => 'browse'], true);
+                        return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'browse'], true);
                     }
                 }
             } else {
@@ -115,13 +115,13 @@ class IndexController extends AbstractActionController
                 $this->messenger()->addFormErrors($form);
             }
         }
-        return $this->redirect()->toRoute(null, ['action' => 'browse'], true);
+        return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'browse'], true);
     }
 
     public function facetFormAction()
     {
         if (!$this->getRequest()->isPost()) {
-            return $this->redirect()->toRoute(null, ['action' => 'browse'], true);
+            return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'browse'], true);
         }
 
         $facetType = $this->params()->fromPost('facet_type');
@@ -148,7 +148,7 @@ class IndexController extends AbstractActionController
     public function facetRowAction()
     {
         if (!$this->getRequest()->isPost()) {
-            return $this->redirect()->toRoute(null, ['action' => 'browse'], true);
+            return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'browse'], true);
         }
         $facet = [
             'o:name' => $this->params()->fromPost('facet_name'),
