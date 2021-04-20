@@ -7,6 +7,13 @@ use Omeka\Entity\AbstractEntity;
 
 /**
  * @Entity
+ * @Table(
+ *     uniqueConstraints={
+ *         @UniqueConstraint(
+ *             columns={"page_id", "category_id"}
+ *         )
+ *     }
+ * )
  */
 class FacetedBrowsePageCategory extends AbstractEntity
 {
