@@ -66,10 +66,10 @@ class FacetedBrowseCategory extends \FacetedBrowse\Entity\FacetedBrowseCategory 
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'facets'];
+            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'pages', 'facets'];
         }
 
-        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'facets'];
+        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'pages', 'facets'];
     }
 
     /**
@@ -321,6 +321,17 @@ class FacetedBrowseCategory extends \FacetedBrowse\Entity\FacetedBrowseCategory 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuery', []);
 
         return parent::getQuery();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPages(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPages', []);
+
+        return parent::getPages();
     }
 
     /**

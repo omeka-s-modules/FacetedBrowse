@@ -1,10 +1,8 @@
 <?php
 namespace FacetedBrowse\Controller\SiteAdmin;
 
-use FacetedBrowse\Form;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
-use Omeka\Form\ConfirmForm;
 
 class PageController extends AbstractActionController
 {

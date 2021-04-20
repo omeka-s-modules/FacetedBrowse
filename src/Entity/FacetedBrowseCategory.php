@@ -83,6 +83,14 @@ class FacetedBrowseCategory extends AbstractEntity
     protected $query;
 
     /**
+     * @ManyToMany(
+     *     targetEntity="FacetedBrowse\Entity\FacetedBrowsePage",
+     *     mappedBy="categories"
+     * )
+     */
+    protected $pages;
+
+    /**
      * @OneToMany(
      *     targetEntity="FacetedBrowseFacet",
      *     mappedBy="category",
@@ -95,6 +103,7 @@ class FacetedBrowseCategory extends AbstractEntity
 
     public function __construct()
     {
+        $this->pages = new ArrayCollection;
         $this->facets = new ArrayCollection;
     }
 
@@ -161,6 +170,11 @@ class FacetedBrowseCategory extends AbstractEntity
     public function getQuery() : string
     {
         return $this->query;
+    }
+
+    public function getPages() : Collection
+    {
+        return $this->pages;
     }
 
     public function getFacets() : Collection

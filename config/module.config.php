@@ -93,7 +93,7 @@ return [
                             [
                                 'route' => 'admin/site/slug/faceted-browse/id',
                                 'visible' => false,
-                            ]
+                            ],
                         ],
                     ],
                     [
@@ -106,7 +106,7 @@ return [
                             [
                                 'route' => 'admin/site/slug/faceted-browse/id',
                                 'visible' => false,
-                            ]
+                            ],
                         ],
                     ],
                 ],

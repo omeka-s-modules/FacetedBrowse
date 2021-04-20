@@ -304,6 +304,17 @@ class FacetedBrowsePage extends \FacetedBrowse\Entity\FacetedBrowsePage implemen
     /**
      * {@inheritDoc}
      */
+    public function getCategories(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategories', []);
+
+        return parent::getCategories();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function prePersist(\Doctrine\ORM\Event\LifecycleEventArgs $eventArgs): void
     {
 
