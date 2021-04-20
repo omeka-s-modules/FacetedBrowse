@@ -75,19 +75,18 @@ class FacetedBrowsePage extends AbstractEntity
     protected $title;
 
     /**
-     * @ManyToMany(
-     *     targetEntity="FacetedBrowse\Entity\FacetedBrowseCategory",
-     *     inversedBy="pages"
-     * )
-     * @JoinTable(
-     *     name="faceted_browse_page_category"
+     * @OneToMany(
+     *     targetEntity="FacetedBrowse\Entity\FacetedBrowsePageCategory",
+     *     mappedBy="page",
+     *     orphanRemoval=true,
+     *     cascade={"persist", "remove", "detach"}
      * )
      */
-    protected $categories;
+    protected $pageCategories;
 
     public function __construct()
     {
-        $this->categories = new ArrayCollection;
+        $this->pageCategories = new ArrayCollection;
     }
 
     public function getId()
@@ -145,9 +144,9 @@ class FacetedBrowsePage extends AbstractEntity
         return $this->title;
     }
 
-    public function getCategories() : Collection
+    public function getPageCategories() : Collection
     {
-        return $this->categories;
+        return $this->pageCategories;
     }
 
     /**

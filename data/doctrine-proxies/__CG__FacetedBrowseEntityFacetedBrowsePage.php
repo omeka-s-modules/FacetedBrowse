@@ -66,10 +66,10 @@ class FacetedBrowsePage extends \FacetedBrowse\Entity\FacetedBrowsePage implemen
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'title', 'categories'];
+            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'title', 'pageCategories'];
         }
 
-        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'title', 'categories'];
+        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'title', 'pageCategories'];
     }
 
     /**
@@ -304,12 +304,12 @@ class FacetedBrowsePage extends \FacetedBrowse\Entity\FacetedBrowsePage implemen
     /**
      * {@inheritDoc}
      */
-    public function getCategories(): \Doctrine\Common\Collections\Collection
+    public function getPageCategories(): \Doctrine\Common\Collections\Collection
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategories', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageCategories', []);
 
-        return parent::getCategories();
+        return parent::getPageCategories();
     }
 
     /**

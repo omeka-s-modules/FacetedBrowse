@@ -67,8 +67,9 @@ class FacetedBrowsePageRepresentation extends AbstractEntityRepresentation
     {
         $categories = [];
         $adapter = $this->getAdapter('faceted_browse_categories');
-        foreach ($this->resource->getCategories() as $entity) {
-            $categories[$entity->getId()] = $adapter->getRepresentation($entity);
+        foreach ($this->resource->getPageCategories() as $entity) {
+            $categoryEntity = $entity->getCategory();
+            $categories[$categoryEntity->getId()] = $adapter->getRepresentation($categoryEntity);
         }
         return $categories;
     }
