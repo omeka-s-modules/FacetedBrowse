@@ -1,0 +1,65 @@
+<?php
+$this->headLink()->appendStylesheet($this->assetUrl('css/site-admin/page-form.css', 'FacetedBrowse'));
+$this->headScript()->appendFile($this->assetUrl('vendor/sortablejs/Sortable.min.js', 'Omeka'));
+$this->headScript()->appendFile($this->assetUrl('js/site-admin/page-form.js', 'FacetedBrowse'));
+
+if ($page) {
+    $this->htmlElement('body')->appendAttribute('class', 'faceted-browse page edit browse');
+} else {
+    $this->htmlElement('body')->appendAttribute('class', 'faceted-browse page add browse');
+}
+$form->prepare();
+?>
+<?php if ($page): ?>
+<?php echo $this->pageTitle($this->translate('Edit Page'), 1, $this->translate('Faceted Browse'), $page->title()); ?>
+<?php else: ?>
+<?php echo $this->pageTitle($this->translate('Add Page'), 1, $this->translate('Faceted Browse')); ?>
+<?php endif; ?>
+
+<?php echo $this->form()->openTag($form); ?>
+
+<div id="page-actions">
+    <?php if ($page): ?>
+    <a href="#" id="delete-button" class="delete button"><?php echo $this->translate('Delete'); ?></a>
+    <?php endif; ?>
+    <?php echo $this->hyperlink($this->translate('Cancel'), $this->url('admin/site/slug/faceted-browse', ['action' => 'browse'], true), ['class' => 'button']); ?>
+    <div id="page-action-menu">
+        <a href="#" class="button expand" aria-label="<?php echo $this->translate('Expand'); ?>" title="<?php echo $this->translate('Expand'); ?>">
+            <?php echo $this->translate('Save and&hellip;'); ?></a>
+            <ul class="collapsible">
+                <li><input type="submit" name="submit_save" value="<?php echo $this->escapeHtml($this->translate('Return to pages')); ?>"></li>
+                <li><input type="submit" name="submit_save_remain" value="<?php echo $this->escapeHtml($this->translate('Stay on this page')); ?>"></li>
+            </ul>
+    </div>
+</div>
+
+<?php echo $this->formRow($form->get('o:title')); ?>
+
+<h3><?php echo $this->translate('Categories'); ?></h3>
+<ul id="categories"
+    data-category-row-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse', ['action' => 'category-row'], true)); ?>">
+    <?php if ($page): ?>
+    <?php foreach ($page->categories() as $index => $category): ?>
+    <?php echo $this->partial('category-row.phtml', ['index' => $index, 'category' => $category->jsonSerialize()]); ?>
+    <?php endforeach; ?>
+    <?php endif; ?>
+</ul>
+
+<?php echo $this->formHidden($form->get('csrf')); ?>
+<?php echo $this->form()->closeTag(); ?>
+
+<?php if ($page): ?>
+<?php echo $this->deleteConfirm($page, 'page'); ?>
+<?php endif; ?>
+
+<div id="category-sidebar" class="sidebar active">
+    <?php echo $this->hyperlink('', '#', ['class' => 'sidebar-close o-icon-close', 'title' => $this->translate('Close')]); ?>
+    <div class="sidebar-content">
+        <h3><?php echo $this->translate('Add category'); ?></h3>
+        <ul>
+            <?php foreach ($categories as $category): ?>
+            <li><?php echo $category->name(); ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>

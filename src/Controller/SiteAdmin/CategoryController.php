@@ -38,7 +38,7 @@ class CategoryController extends AbstractActionController
             if ($form->isValid()) {
                 $formData = $form->getData();
                 $formData['o:site'] = ['o:id' => $this->currentSite()->id()];
-                $formData['o-module-faceted_browse:facet'] = is_array($postData['facet']) ? $postData['facet'] : [];
+                $formData['o-module-faceted_browse:facet'] = $postData['facet'] ?? [];
                 $response = $this->api($form)->create('faceted_browse_categories', $formData);
                 if ($response) {
                     $category = $response->getContent();

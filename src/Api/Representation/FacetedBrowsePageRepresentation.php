@@ -3,11 +3,11 @@ namespace FacetedBrowse\Api\Representation;
 
 use Omeka\Api\Representation\AbstractEntityRepresentation;
 
-class FacetedBrowseCategoryRepresentation extends AbstractEntityRepresentation
+class FacetedBrowsePageRepresentation extends AbstractEntityRepresentation
 {
     public function getJsonLdType()
     {
-        return 'o-module-faceted_browse:Category';
+        return 'o-module-faceted_browse:Page';
     }
 
     public function getJsonLd()
@@ -19,8 +19,7 @@ class FacetedBrowseCategoryRepresentation extends AbstractEntityRepresentation
             'o:owner' => $owner ? $owner->getReference() : null,
             'o:created' => $this->getDateTime($this->created()),
             'o:modified' => $modified ? $this->getDateTime($modified) : null,
-            'o:name' => $this->name(),
-            'o:query' => $this->query(),
+            'o:title' => $this->title(),
         ];
     }
 
@@ -31,7 +30,7 @@ class FacetedBrowseCategoryRepresentation extends AbstractEntityRepresentation
             'admin/site/slug/faceted-browse/id',
             [
                 'site-slug' => $this->site()->slug(),
-                'controller' => 'category',
+                'controller' => 'page',
                 'action' => $action,
                 'id' => $this->id(),
             ],
@@ -59,22 +58,18 @@ class FacetedBrowseCategoryRepresentation extends AbstractEntityRepresentation
         return $this->resource->getModified();
     }
 
-    public function name()
+    public function title()
     {
-        return $this->resource->getName();
+        return $this->resource->getTitle();
     }
 
-    public function query()
+    public function categories()
     {
-        return $this->resource->getQuery();
-    }
-
-    public function facets()
-    {
-        $facets = [];
-        foreach ($this->resource->getFacets() as $facet) {
-            $facets[] = new FacetedBrowseFacetRepresentation($facet, $this->getServiceLocator());
+        $categories = [];
+        $adapter = $this->getAdapter('faceted_browse_categories');
+        foreach ($this->resource->getCategories() as $entity) {
+            $categories[$entity->getId()] = $adapter->getRepresentation($entity);
         }
-        return $facets;
+        return $categories;
     }
 }

@@ -1,0 +1,24 @@
+<?php
+use Laminas\Form\Element\Hidden;
+?>
+<li class="category">
+    <span class="sortable-handle"></span>
+    <span class="category-name-display"><?php echo $category['o:name']; ?></span>
+    <ul class="actions">
+        <li><?php echo $this->hyperlink('', [], [
+            'class' => 'o-icon-delete category-remove',
+            'title' => $this->translate('Remove category'),
+        ]); ?></li>
+        <li><?php echo $this->hyperlink('', [], [
+            'class' => 'o-icon-undo category-restore',
+            'title' => $this->translate('Restore category'),
+            'style' => 'display: none;',
+        ]); ?></li>
+    </ul>
+    <?php
+    $categoryInput = (new Hidden(sprintf('category[%s][o:id]', $index)))
+        ->setValue($category['o:id'])
+        ->setAttribute('class', 'category-id');
+    echo $this->formHidden($categoryInput);
+    ?>
+</li>

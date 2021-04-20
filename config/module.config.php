@@ -66,6 +66,7 @@ return [
     ],
     'form_elements' => [
         'factories' => [
+            'FacetedBrowse\Form\PageForm' => Service\Form\PageFormFactory::class,
             'FacetedBrowse\Form\CategoryForm' => Service\Form\CategoryFormFactory::class,
         ],
     ],
@@ -91,7 +92,13 @@ return [
                         'useRouteMatch' => true,
                         'pages' => [
                             [
+                                'route' => 'admin/site/slug/faceted-browse',
+                                'controller' => 'category',
+                                'visible' => false,
+                            ],
+                            [
                                 'route' => 'admin/site/slug/faceted-browse/id',
+                                'controller' => 'category',
                                 'visible' => false,
                             ],
                         ],
@@ -104,7 +111,13 @@ return [
                         'useRouteMatch' => true,
                         'pages' => [
                             [
+                                'route' => 'admin/site/slug/faceted-browse',
+                                'controller' => 'page',
+                                'visible' => false,
+                            ],
+                            [
                                 'route' => 'admin/site/slug/faceted-browse/id',
+                                'controller' => 'page',
                                 'visible' => false,
                             ],
                         ],
