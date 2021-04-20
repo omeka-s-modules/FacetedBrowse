@@ -81,6 +81,7 @@ class FacetedBrowsePage extends AbstractEntity
      *     orphanRemoval=true,
      *     cascade={"persist", "remove", "detach"}
      * )
+     * @OrderBy({"position" = "ASC"})
      */
     protected $pageCategories;
 
