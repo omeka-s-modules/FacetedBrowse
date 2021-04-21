@@ -70,6 +70,11 @@ return [
             'FacetedBrowse\Form\CategoryForm' => Service\Form\CategoryFormFactory::class,
         ],
     ],
+    'navigation_links' => [
+        'factories' => [
+            'facetedBrowse' => Service\Site\NavigationLink\FacetedBrowseFactory::class,
+        ],
+    ],
     'js_translate_strings' => [
         'A facet must have a name.', // @translate
         'A facet must have a query type.', // @translate
@@ -128,6 +133,24 @@ return [
     ],
     'router' => [
         'routes' => [
+            'site' => [
+                'child_routes' => [
+                    'faceted-browse' => [
+                        'type' => Http\Segment::class,
+                        'options' => [
+                            'route' => '/faceted-browse/:page-id',
+                            'constraints' => [
+                                'page-id' => '\d+',
+                            ],
+                            'defaults' => [
+                                '__NAMESPACE__' => 'FacetedBrowse\Controller\Site',
+                                'controller' => 'index',
+                                'action' => 'index',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
             'admin' => [
                 'child_routes' => [
                     'site' => [

@@ -1,0 +1,14 @@
+<?php
+$valueOptions = [];
+$pages = $this->api()->search('faceted_browse_pages', ['site_id' => $site->id()])->getContent();
+foreach ($pages as $page) {
+    $valueOptions[$page->id()] = $page->title();
+}
+$element = new \Laminas\Form\Element\Select('page_id');
+$element->setValueOptions($valueOptions)
+    ->setEmptyOption($this->translate('Select a page'))
+    ->setValue($data['page_id'] ?? null)
+    ->setAttribute('data-name', 'page_id');
+?>
+<label><?php echo $this->translate('Type'); ?> <input type="text" value="<?php echo $this->escapeHtml($this->translate($link->getName())); ?>" disabled></label>
+<label><?php echo $this->translate('Page'); ?> <?php echo $this->formElement($element); ?></label>
