@@ -54,4 +54,9 @@ class Unknown implements FacetTypeInterface
             $view->formRow($dataElement),
         );
     }
+
+    public function renderFacet(PhpRenderer $view, $facet) : string
+    {
+        return '';
+    }
 }

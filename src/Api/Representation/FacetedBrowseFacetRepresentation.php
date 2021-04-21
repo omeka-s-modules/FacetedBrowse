@@ -46,9 +46,13 @@ class FacetedBrowseFacetRepresentation extends AbstractRepresentation
         return $this->resource->getType();
     }
 
-    public function data()
+    public function data($key = null, $default = null)
     {
-        return $this->resource->getData();
+        $data = $this->resource->getData();
+        if ($key) {
+            $data = $data[$key] ?? $default;
+        }
+        return $data;
     }
 
     public function position()

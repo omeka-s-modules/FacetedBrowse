@@ -71,4 +71,17 @@ class PropertyLiteral implements FacetTypeInterface
             'elementValues' => $values,
         ]);
     }
+
+    public function renderFacet(PhpRenderer $view, $facet) : string
+    {
+        $values = $facet->data('values');
+        $values = explode("\n", $values);
+        $values = array_map('trim', $values);
+        $values = array_unique($values);
+
+        return $view->partial('common/faceted-browse/facet/property-literal', [
+            'facet' => $facet,
+            'values' => $values,
+        ]);
+    }
 }

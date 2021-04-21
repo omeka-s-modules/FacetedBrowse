@@ -44,4 +44,9 @@ class ResourceClass implements FacetTypeInterface
             'elementClassIds' => $classIds,
         ]);
     }
+
+    public function renderFacet(PhpRenderer $view, $facet) : string
+    {
+        return '';
+    }
 }

@@ -27,4 +27,6 @@ interface FacetTypeInterface
      * @return string
      */
     public function renderDataForm(PhpRenderer $view, array $data) : string;
+
+    public function renderFacet(PhpRenderer $view, $facet) : string;
 }

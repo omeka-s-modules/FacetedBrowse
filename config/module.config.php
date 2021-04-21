@@ -52,6 +52,7 @@ return [
         'invokables' => [
             'FacetedBrowse\Controller\SiteAdmin\Category' => Controller\SiteAdmin\CategoryController::class,
             'FacetedBrowse\Controller\SiteAdmin\Page' => Controller\SiteAdmin\PageController::class,
+            'FacetedBrowse\Controller\Site\Page' => Controller\Site\PageController::class,
         ],
     ],
     'controller_plugins' => [
@@ -144,7 +145,7 @@ return [
                             ],
                             'defaults' => [
                                 '__NAMESPACE__' => 'FacetedBrowse\Controller\Site',
-                                'controller' => 'index',
+                                'controller' => 'page',
                                 'action' => 'index',
                             ],
                         ],

@@ -32,4 +32,10 @@ class FacetedBrowse extends AbstractHelper
     {
         return !($facetType instanceof Unknown);
     }
+
+    public function renderFacet($facet)
+    {
+        $facetType = $this->getFacetType($facet->type());
+        return $facetType->renderFacet($this->getView(), $facet);
+    }
 }
