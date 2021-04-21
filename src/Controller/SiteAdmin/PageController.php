@@ -101,4 +101,24 @@ class PageController extends AbstractActionController
         $view->setVariable('form', $form);
         return $view;
     }
+
+    public function categoryRowAction()
+    {
+        if (!$this->getRequest()->isPost()) {
+            return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'browse'], true);
+        }
+        $categoryId = $this->params()->fromPost('category_id');
+        $category = $this->api()->read('faceted_browse_categories', $categoryId)->getContent();
+        $category = [
+            'o:id' => $category->id(),
+            'o:name' => $category->name(),
+        ];
+        $index = $this->params()->fromPost('index');
+
+        $view = new ViewModel;
+        $view->setTerminal(true);
+        $view->setVariable('category', $category);
+        $view->setVariable('index', $index);
+        return $view;
+    }
 }

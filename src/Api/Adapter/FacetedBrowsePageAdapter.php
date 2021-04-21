@@ -4,6 +4,7 @@ namespace FacetedBrowse\Api\Adapter;
 use DateTime;
 use Doctrine\ORM\QueryBuilder;
 use FacetedBrowse\Entity\FacetedBrowseFacet;
+use FacetedBrowse\Entity\FacetedBrowsePageCategory;
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Request;
 use Omeka\Entity\EntityInterface;

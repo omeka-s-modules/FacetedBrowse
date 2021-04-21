@@ -53,12 +53,11 @@ $form->prepare();
 <?php endif; ?>
 
 <div id="category-sidebar" class="sidebar active">
-    <?php echo $this->hyperlink('', '#', ['class' => 'sidebar-close o-icon-close', 'title' => $this->translate('Close')]); ?>
     <div class="sidebar-content">
-        <h3><?php echo $this->translate('Add category'); ?></h3>
+        <h3><?php echo $this->translate('Add categories'); ?></h3>
         <ul>
             <?php foreach ($categories as $category): ?>
-            <li><?php echo $category->name(); ?></li>
+            <li class="category-add" data-category-id="<?php echo $this->escapeHtml($category->id()); ?>"><?php echo $category->name(); ?></li>
             <?php endforeach; ?>
         </ul>
     </div>
