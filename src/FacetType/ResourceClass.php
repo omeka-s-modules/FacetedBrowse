@@ -27,6 +27,21 @@ class ResourceClass implements FacetTypeInterface
 
     public function renderDataForm(PhpRenderer $view, array $data) : string
     {
-        return $view->partial('common/faceted-browse/facet-data-form/resource-class', []);
+        // Class IDs
+        $classIds = $this->formElements->get(OmekaElement\ResourceClassSelect::class);
+        $classIds->setName('class_ids');
+        $classIds->setValue($data['class_ids'] ?? []);
+        $classIds->setOptions([
+            'label' => 'Classes', // @translate
+            'empty_option' => '',
+        ]);
+        $classIds->setAttributes([
+            'id' => 'resource-class-class-ids',
+            'data-placeholder' => 'Select classes…', // @translate
+            'multiple' => true,
+        ]);
+        return $view->partial('common/faceted-browse/facet-data-form/resource-class', [
+            'elementClassIds' => $classIds,
+        ]);
     }
 }
