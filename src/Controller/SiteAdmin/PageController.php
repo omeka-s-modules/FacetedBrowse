@@ -4,6 +4,7 @@ namespace FacetedBrowse\Controller\SiteAdmin;
 use FacetedBrowse\Form;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
+use Omeka\Form\ConfirmForm;
 
 class PageController extends AbstractActionController
 {
@@ -104,6 +105,24 @@ class PageController extends AbstractActionController
         $view->setVariable('categories', $categories);
         $view->setVariable('form', $form);
         return $view;
+    }
+
+    public function deleteAction()
+    {
+        if ($this->getRequest()->isPost()) {
+            $category = $this->api()->read('faceted_browse_pages', $this->params('id'))->getContent();
+            $form = $this->getForm(ConfirmForm::class);
+            $form->setData($this->getRequest()->getPost());
+            if ($form->isValid()) {
+                $response = $this->api($form)->delete('faceted_browse_pages', $category->id());
+                if ($response) {
+                    $this->messenger()->addSuccess('Successfully deleted the page.'); // @translate
+                }
+            } else {
+                $this->messenger()->addFormErrors($form);
+            }
+        }
+        return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'browse'], true);
     }
 
     public function categoryRowAction()

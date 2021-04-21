@@ -25,11 +25,11 @@ $form->prepare();
     <?php echo $this->hyperlink($this->translate('Cancel'), $this->url('admin/site/slug/faceted-browse', ['action' => 'browse'], true), ['class' => 'button']); ?>
     <div id="page-action-menu">
         <a href="#" class="button expand" aria-label="<?php echo $this->translate('Expand'); ?>" title="<?php echo $this->translate('Expand'); ?>">
-            <?php echo $this->translate('Save and&hellip;'); ?></a>
-            <ul class="collapsible">
-                <li><input type="submit" name="submit_save" value="<?php echo $this->escapeHtml($this->translate('Return to pages')); ?>"></li>
-                <li><input type="submit" name="submit_save_remain" value="<?php echo $this->escapeHtml($this->translate('Stay on this page')); ?>"></li>
-            </ul>
+        <?php echo $this->translate('Save and&hellip;'); ?></a>
+        <ul class="collapsible">
+            <li><input type="submit" name="submit_save" value="<?php echo $this->escapeHtml($this->translate('Return to pages')); ?>"></li>
+            <li><input type="submit" name="submit_save_remain" value="<?php echo $this->escapeHtml($this->translate('Stay on this page')); ?>"></li>
+        </ul>
     </div>
 </div>
 
@@ -48,10 +48,6 @@ $form->prepare();
 <?php echo $this->formHidden($form->get('csrf')); ?>
 <?php echo $this->form()->closeTag(); ?>
 
-<?php if ($page): ?>
-<?php echo $this->deleteConfirm($page, 'page'); ?>
-<?php endif; ?>
-
 <div id="category-sidebar" class="sidebar active">
     <div class="sidebar-content">
         <h3><?php echo $this->translate('Add categories'); ?></h3>
@@ -62,3 +58,7 @@ $form->prepare();
         </ul>
     </div>
 </div>
+
+<?php if ($page): ?>
+<?php echo $this->deleteConfirm($page, 'page'); ?>
+<?php endif; ?>
