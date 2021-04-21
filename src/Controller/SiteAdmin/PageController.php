@@ -15,7 +15,11 @@ class PageController extends AbstractActionController
     public function browseAction()
     {
         $this->setBrowseDefaults('created');
-        $response = $this->api()->search('faceted_browse_pages', $this->params()->fromQuery());
+        $query = array_merge(
+            $this->params()->fromQuery(),
+            ['site_id' => $this->currentSite()->id()]
+        );
+        $response = $this->api()->search('faceted_browse_pages', $query);
         $this->paginator($response->getTotalResults(), $this->params()->fromQuery('page'));
         $pages = $response->getContent();
 
