@@ -71,8 +71,8 @@ return [
         ],
     ],
     'navigation_links' => [
-        'factories' => [
-            'facetedBrowse' => Service\Site\NavigationLink\FacetedBrowseFactory::class,
+        'invokables' => [
+            'facetedBrowse' => Site\NavigationLink\FacetedBrowse::class,
         ],
     ],
     'js_translate_strings' => [
