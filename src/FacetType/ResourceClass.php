@@ -47,6 +47,15 @@ class ResourceClass implements FacetTypeInterface
 
     public function renderFacet(PhpRenderer $view, $facet) : string
     {
-        return '';
+        $classes = [];
+        $classIds = $facet->data('class_ids', []);
+        foreach ($classIds as $classId) {
+            $class = $view->api()->read('resource_classes', $classId)->getContent();
+            $classes[] = $class;
+        }
+        return $view->partial('common/faceted-browse/facet/resource-class', [
+            'facet' => $facet,
+            'classes' => $classes,
+        ]);
     }
 }

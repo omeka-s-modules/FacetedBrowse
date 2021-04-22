@@ -1,0 +1,8 @@
+<ul>
+    <?php foreach ($classes as $class): ?>
+    <li><?php echo $this->hyperlink($class->label(), [], [
+        'class' => 'resource-class',
+        'data-class-id' => $class->id(),
+    ]); ?></li>
+    <?php endforeach; ?>
+</ul>
