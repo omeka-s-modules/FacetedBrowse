@@ -1,6 +1,7 @@
 <?php
 namespace FacetedBrowse\FacetType;
 
+use FacetedBrowse\Api\Representation\FacetedBrowseFacetRepresentation;
 use Laminas\Form\Element as LaminasElement;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
@@ -72,7 +73,7 @@ class PropertyLiteral implements FacetTypeInterface
         ]);
     }
 
-    public function renderFacet(PhpRenderer $view, $facet) : string
+    public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet) : string
     {
         $values = $facet->data('values');
         $values = explode("\n", $values);

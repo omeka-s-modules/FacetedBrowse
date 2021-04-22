@@ -1,6 +1,7 @@
 <?php
 namespace FacetedBrowse\FacetType;
 
+use FacetedBrowse\Api\Representation\FacetedBrowseFacetRepresentation;
 use Laminas\View\Renderer\PhpRenderer;
 
 interface FacetTypeInterface
@@ -28,5 +29,12 @@ interface FacetTypeInterface
      */
     public function renderDataForm(PhpRenderer $view, array $data) : string;
 
-    public function renderFacet(PhpRenderer $view, $facet) : string;
+    /**
+     * Render the markup for this facet.
+     *
+     * @param PhpRenderer $view
+     * @param FacetedBrowseFacetRepresentation $facet
+     * @return string
+     */
+    public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet) : string;
 }
