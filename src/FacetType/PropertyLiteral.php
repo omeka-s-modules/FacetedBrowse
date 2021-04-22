@@ -79,7 +79,7 @@ class PropertyLiteral implements FacetTypeInterface
         $values = array_map('trim', $values);
         $values = array_unique($values);
 
-        return $view->partial('common/faceted-browse/facet/property-literal', [
+        return $view->partial('common/faceted-browse/facet-render/property-literal', [
             'facet' => $facet,
             'values' => $values,
         ]);

@@ -53,7 +53,7 @@ class ResourceClass implements FacetTypeInterface
             $class = $view->api()->read('resource_classes', $classId)->getContent();
             $classes[] = $class;
         }
-        return $view->partial('common/faceted-browse/facet/resource-class', [
+        return $view->partial('common/faceted-browse/facet-render/resource-class', [
             'facet' => $facet,
             'classes' => $classes,
         ]);
