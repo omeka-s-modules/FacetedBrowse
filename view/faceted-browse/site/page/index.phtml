@@ -6,27 +6,10 @@ $this->htmlElement('body')->appendAttribute('class', 'faceted-browse-page');
 $this->pageTitle($page->title(), 2);
 ?>
 
-<ul>
-    <?php foreach ($page->categories() as $category):  ?>
-    <li>
-        <?php echo $this->hyperlink($category->name(), null, [
-            'class' => 'category',
-            'data-category-id' => $category->id(),
-        ]); ?>
-    </li>
-    <?php endforeach; ?>
-</ul>
-
-<?php foreach ($page->categories() as $category): ?>
-<div>
-    <h4><?php echo $category->name(); ?></h4>
-    <?php foreach ($category->facets() as $facet): ?>
-    <div>
-        <h5><?php echo $facet->name(); ?></h5>
-        <?php echo $this->facetedBrowse()->renderFacet($facet); ?>
-    </div>
-    <?php endforeach; ?>
+<div id="section-sidebar"
+    data-categories-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'categories'], true)); ?>">
 </div>
-<?php endforeach; ?>
 
-<div></div>
+<div id="section-content"
+    data-browse-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'browse'], true)); ?>">
+</div>

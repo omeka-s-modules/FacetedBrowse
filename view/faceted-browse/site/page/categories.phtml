@@ -1,0 +1,10 @@
+<ul id="categories">
+    <?php foreach ($page->categories() as $category):  ?>
+    <li>
+        <?php echo $this->hyperlink($category->name(), null, [
+            'class' => 'category',
+            'data-category-id' => $category->id(),
+        ]); ?>
+    </li>
+    <?php endforeach; ?>
+</ul>

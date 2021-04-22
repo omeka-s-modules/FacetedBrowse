@@ -1,0 +1,7 @@
+<?php echo $this->pagination(); ?>
+<ul>
+    <?php foreach ($items as $item): ?>
+    <li><?php echo $item->linkPretty(); ?></li>
+    <?php endforeach; ?>
+</ul>
+<?php echo $this->pagination(); ?>
