@@ -39,10 +39,10 @@ $(document).on('click', '#property-literal-show-all-values', function(e) {
         }, function(data) {
             if (data.length) {
                 data.forEach(value => {
-                    allValues.append(`<li>${value}</li>`);
+                    allValues.append(`<tr><td style="width: 90%; padding: 0; border-bottom: 1px solid #dfdfdf;">${value.value}</td><td style="width: 10%; padding: 0; border-bottom: 1px solid #dfdfdf;">${value.value_count}</td></tr>`);
                 });
             } else {
-                allValues.append(`<li>${Omeka.jsTranslate('The selected property has no values.')}</li>`);
+                allValues.append(`<tr><td>${Omeka.jsTranslate('The selected property has no values.')}</td></tr>`);
             }
         });
     } else {

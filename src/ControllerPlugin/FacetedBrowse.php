@@ -34,16 +34,17 @@ class FacetedBrowse extends AbstractPlugin
         // Get all unique literal values of the specified property of the
         // specified items.
         $dql = '
-        SELECT DISTINCT(v.value) value
+        SELECT v.value value, COUNT(v.value) value_count
         FROM Omeka\Entity\Value v
         WHERE v.type = :type
         AND v.property = :propertyId
         AND v.resource IN (:ids)
-        ORDER BY v.value';
+        GROUP BY value
+        ORDER BY value_count DESC, value ASC';
         $query = $em->createQuery($dql)
             ->setParameter('type', 'literal')
             ->setParameter('propertyId', $propertyId)
             ->setParameter('ids', $ids);
-        return array_column($query->getResult(), 'value');
+        return $query->getResult();
     }
 }
