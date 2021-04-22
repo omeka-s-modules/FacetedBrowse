@@ -139,9 +139,10 @@ return [
                     'faceted-browse' => [
                         'type' => Http\Segment::class,
                         'options' => [
-                            'route' => '/faceted-browse/:page-id',
+                            'route' => '/faceted-browse/:page-id[/:action]',
                             'constraints' => [
                                 'page-id' => '\d+',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ],
                             'defaults' => [
                                 '__NAMESPACE__' => 'FacetedBrowse\Controller\Site',
