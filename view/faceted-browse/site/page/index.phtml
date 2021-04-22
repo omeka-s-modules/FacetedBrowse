@@ -6,10 +6,11 @@ $this->htmlElement('body')->appendAttribute('class', 'faceted-browse-page');
 $this->pageTitle($page->title(), 2);
 ?>
 
-<div id="section-sidebar"
-    data-categories-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'categories'], true)); ?>">
-</div>
-
-<div id="section-content"
-    data-browse-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'browse'], true)); ?>">
+<div id="container" style="display: flex"
+    data-url-categories="<?php echo $this->escapeHtml($this->url(null, ['action' => 'categories'], true)); ?>"
+    data-url-facets="<?php echo $this->escapeHtml($this->url(null, ['action' => 'facets'], true)); ?>"
+    data-url-browse="<?php echo $this->escapeHtml($this->url(null, ['action' => 'browse'], true)); ?>"
+>
+    <div id="section-sidebar" style="width: 30%;"></div>
+    <div id="section-content" style="width: 70%;"></div>
 </div>

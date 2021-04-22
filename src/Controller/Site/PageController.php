@@ -27,6 +27,17 @@ class PageController extends AbstractActionController
         return $view;
     }
 
+    public function facetsAction()
+    {
+        $categoryId = $this->params()->fromQuery('category_id');
+        $category = $this->api()->read('faceted_browse_categories', $categoryId)->getContent();
+
+        $view = new ViewModel;
+        $view->setTerminal(true);
+        $view->setVariable('category', $category);
+        return $view;
+    }
+
     public function browseAction()
     {
         $this->setBrowseDefaults('created');

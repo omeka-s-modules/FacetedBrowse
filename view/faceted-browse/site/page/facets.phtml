@@ -1,0 +1,7 @@
+<h4><?php echo $category->name(); ?></h4>
+<div id="facets">
+    <?php foreach ($category->facets() as $facet): ?>
+    <h5><?php echo $facet->name(); ?></h5>
+    <div class="facet"><?php echo $this->facetedBrowse()->renderFacet($facet); ?></div>
+    <?php endforeach; ?>
+</div>
