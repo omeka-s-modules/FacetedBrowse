@@ -35,16 +35,22 @@ container.on('click', '.resource-link', function(e) {
 // Handle pagination next button.
 container.on('click', '.next', function(e) {
     e.preventDefault();
-    $.get($(this).prop('href'), {}, function(html) {
-        sectionContent.html(html);
-    });
+    const thisButton = $(this);
+    if (!thisButton.hasClass('inactive')) {
+        $.get($(this).prop('href'), {}, function(html) {
+            sectionContent.html(html);
+        });
+    }
 });
 // Handle pagination previous button.
 container.on('click', '.previous', function(e) {
     e.preventDefault();
-    $.get($(this).prop('href'), {}, function(html) {
-        sectionContent.html(html);
-    });
+    const thisButton = $(this);
+    if (!thisButton.hasClass('inactive')) {
+        $.get(thisButton.prop('href'), {}, function(html) {
+            sectionContent.html(html);
+        });
+    }
 });
 // Handle pagination page form.
 container.on('submit', 'form', function(e) {
