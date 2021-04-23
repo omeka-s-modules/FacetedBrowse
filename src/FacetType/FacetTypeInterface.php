@@ -30,7 +30,14 @@ interface FacetTypeInterface
     public function renderDataForm(PhpRenderer $view, array $data) : string;
 
     /**
-     * Render the markup for this facet.
+     * Prepare the render of this facet type.
+     *
+     * @param PhpRenderer $view
+     */
+    public function prepareFacet(PhpRenderer $view) : void;
+
+    /**
+     * Render the markup for this facet type.
      *
      * @param PhpRenderer $view
      * @param FacetedBrowseFacetRepresentation $facet

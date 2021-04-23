@@ -46,6 +46,10 @@ class ResourceClass implements FacetTypeInterface
         ]);
     }
 
+    public function prepareFacet(PhpRenderer $view) : void
+    {
+    }
+
     public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet) : string
     {
         $classes = [];
