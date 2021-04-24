@@ -147,7 +147,7 @@ return [
                             'defaults' => [
                                 '__NAMESPACE__' => 'FacetedBrowse\Controller\Site',
                                 'controller' => 'page',
-                                'action' => 'index',
+                                'action' => 'page',
                             ],
                         ],
                     ],

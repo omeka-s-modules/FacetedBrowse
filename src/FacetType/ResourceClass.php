@@ -48,6 +48,7 @@ class ResourceClass implements FacetTypeInterface
 
     public function prepareFacet(PhpRenderer $view) : void
     {
+        $view->headScript()->appendFile($view->assetUrl('js/facet-render/resource_class.js', 'FacetedBrowse'));
     }
 
     public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet) : string

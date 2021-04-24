@@ -1,8 +1,10 @@
 <ul>
     <?php foreach ($values as $value): ?>
-    <li><?php echo $this->hyperlink($value, [], [
-        'class' => 'property-literal',
-        'data-value' => $value,
-    ]); ?></li>
+    <li>
+        <?php echo $this->hyperlink($value, null, [
+            'class' => 'property-literal',
+            'data-value' => $value,
+        ]); ?>
+    </li>
     <?php endforeach; ?>
 </ul>

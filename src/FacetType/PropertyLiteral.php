@@ -75,6 +75,7 @@ class PropertyLiteral implements FacetTypeInterface
 
     public function prepareFacet(PhpRenderer $view) : void
     {
+        $view->headScript()->appendFile($view->assetUrl('js/facet-render/property_literal.js', 'FacetedBrowse'));
     }
 
     public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet) : string

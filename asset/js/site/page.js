@@ -28,6 +28,18 @@ container.on('click', '.category', function(e) {
         });
     });
 });
+// Handle a query state change.
+container.on('faceted-browse:query-state-change', function(e) {
+    const category = $('#category');
+    const queries = [];
+    // Iterate every facet, collecting queries.
+    $('.facet').each(function() {
+        queries.push($(this).data('query'));
+    });
+    $.get(`${urlBrowse}?${category.data('categoryQuery')}&${queries.join('&')}`, {}, function(html) {
+        sectionContent.html(html);
+    });
+});
 // Handle item click.
 container.on('click', '.resource-link', function(e) {
     e.preventDefault();

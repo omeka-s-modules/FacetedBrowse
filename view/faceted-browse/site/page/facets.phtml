@@ -1,8 +1,10 @@
 <h4><?php echo $category->name(); ?></h4>
-<div id="facets">
+<div id="category" data-category-query="<?php echo $this->escapeHtml($category->query()); ?>">
     <?php foreach ($category->facets() as $facet): ?>
     <h5><?php echo $facet->name(); ?></h5>
-    <div class="facet" data-facet-data="<?php echo $this->escapeHtml(json_encode($facet->data())); ?>">
+    <div class="facet"
+        data-facet-type="<?php echo $this->escapeHtml($facet->type()); ?>"
+        data-facet-data="<?php echo $this->escapeHtml(json_encode($facet->data())); ?>">
         <?php echo $this->facetedBrowse()->renderFacet($facet); ?>
     </div>
     <?php endforeach; ?>

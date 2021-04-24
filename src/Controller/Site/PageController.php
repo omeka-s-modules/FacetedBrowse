@@ -6,7 +6,7 @@ use Laminas\View\Model\ViewModel;
 
 class PageController extends AbstractActionController
 {
-    public function indexAction()
+    public function pageAction()
     {
         $pageId = $this->params('page-id');
         $page = $this->api()->read('faceted_browse_pages', $pageId)->getContent();
