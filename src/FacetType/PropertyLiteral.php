@@ -54,6 +54,20 @@ class PropertyLiteral implements FacetTypeInterface
             'id' => 'property-literal-query-type',
             'value' => $data['query_type'] ?? 'eq',
         ]);
+        // Select type
+        $selectType = $this->formElements->get(LaminasElement\Select::class);
+        $selectType->setName('select_type');
+        $selectType->setOptions([
+            'label' => 'Select type',
+            'value_options' => [
+                'single' => 'Single select',
+                'multiple' => 'Multiple select',
+            ],
+        ]);
+        $selectType->setAttributes([
+            'id' => 'property-literal-select-type',
+            'value' => $data['select_type'] ?? 'single',
+        ]);
         // Values
         $values = $this->formElements->get(LaminasElement\Textarea::class);
         $values->setName('values');
@@ -69,12 +83,14 @@ class PropertyLiteral implements FacetTypeInterface
         return $view->partial('common/faceted-browse/facet-data-form/property-literal', [
             'elementPropertyId' => $propertyId,
             'elementQueryType' => $queryType,
+            'elementSelectType' => $selectType,
             'elementValues' => $values,
         ]);
     }
 
     public function prepareFacet(PhpRenderer $view) : void
     {
+        $view->headLink()->appendStylesheet($view->assetUrl('css/facet-render/property_literal.css', 'FacetedBrowse'));
         $view->headScript()->appendFile($view->assetUrl('js/facet-render/property_literal.js', 'FacetedBrowse'));
     }
 

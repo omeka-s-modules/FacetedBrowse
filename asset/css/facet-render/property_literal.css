@@ -1,0 +1,7 @@
+.facet[data-facet-type="property_literal"] a.disabled {
+    color: gray;
+    pointer-events: none;
+}
+.facet[data-facet-type="property_literal"] a.selected {
+    font-weight: bold;
+}

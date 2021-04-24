@@ -1,5 +1,6 @@
 <?php echo $this->formRow($elementPropertyId); ?>
 <?php echo $this->formRow($elementQueryType); ?>
+<?php echo $this->formRow($elementSelectType); ?>
 <?php echo $this->formRow($elementValues); ?>
 <p><input type="checkbox" id="property-literal-show-all-values"> <?php echo $this->translate('Show all unique values of selected property'); ?></p>
 <table id="property-literal-all-values" data-values-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'property-literal-values'], true)) ?>"></table>

@@ -9,9 +9,19 @@ container.on('click', '.property-literal', function(e) {
     const facets = container.find('.facet[data-facet-type="property_literal"]');
     const queries = [];
     let index = 0;
-    thisValue.toggleClass('selected').css('font-weight', function() {
-        return $(this).hasClass('selected') ? 'bold' : 'normal';
-    });
+    if ('multiple' === facet.data('facetData').select_type) {
+        thisValue.toggleClass('selected');
+    } else {
+        // Default select type is "single"
+        const notThisValue = facet.find('.property-literal').not(thisValue);
+        if (thisValue.hasClass('selected')) {
+            thisValue.removeClass('selected');
+            notThisValue.removeClass('disabled');
+        } else {
+            thisValue.addClass('selected');
+            notThisValue.addClass('disabled');
+        }
+    }
     facets.each(function() {
         const thisFacet= $(this);
         const facetData = thisFacet.data('facetData');
