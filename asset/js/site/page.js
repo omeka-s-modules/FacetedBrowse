@@ -1,3 +1,14 @@
+/**
+ * A facet type should:
+ *
+ * - Detect a user interaction;
+ * - Calculate the query needed to reflect the current state of the facet;
+ * - Set the query to the parent .facet element using .data('query', query);
+ * - Trigger the "faceted-browse:query-state-change" event.
+ *
+ * This will detect the state change, iterate every facet, build a new,
+ * consolidated query, and update the item browse section.
+ */
 $(document).ready(function() {
 
 const container = $('#container');
@@ -15,6 +26,18 @@ $.get(urlBrowse, {}, function(html) {
     sectionContent.html(html);
 });
 
+// Handle a query state change.
+container.on('faceted-browse:query-state-change', function(e) {
+    const category = $('#category');
+    const queries = [];
+    // Iterate every facet, collecting queries.
+    $('.facet').each(function() {
+        queries.push($(this).data('query'));
+    });
+    $.get(`${urlBrowse}?${category.data('categoryQuery')}&${queries.join('&')}`, {}, function(html) {
+        sectionContent.html(html);
+    });
+});
 // Handle category click.
 container.on('click', '.category', function(e) {
     e.preventDefault();
@@ -26,18 +49,6 @@ container.on('click', '.category', function(e) {
         $.get(`${urlBrowse}?${thisCategory.data('categoryQuery')}`, {}, function(html) {
             sectionContent.html(html);
         });
-    });
-});
-// Handle a query state change.
-container.on('faceted-browse:query-state-change', function(e) {
-    const category = $('#category');
-    const queries = [];
-    // Iterate every facet, collecting queries.
-    $('.facet').each(function() {
-        queries.push($(this).data('query'));
-    });
-    $.get(`${urlBrowse}?${category.data('categoryQuery')}&${queries.join('&')}`, {}, function(html) {
-        sectionContent.html(html);
     });
 });
 // Handle item click.

@@ -13,16 +13,23 @@ class FacetedBrowse extends AbstractPlugin
         $this->services = $services;
     }
 
+    /**
+     * Get the facet type manager.
+     *
+     * @return FacetedBrowse\FacetType\Manager
+     */
     public function getFacetTypes()
     {
         return $this->services->get('FacetedBrowse\FacetTypeManager');
     }
 
-    public function getFacetType($facetType)
-    {
-        return $this->services->get('FacetedBrowse\FacetTypeManager')->get($facetType);
-    }
-
+    /**
+     * Get all available values and their counts of a property.
+     *
+     * @param int $propertyId
+     * @param arry $query
+     * @return array
+     */
     public function getPropertyLiteralValues($propertyId, array $query)
     {
         $api = $this->services->get('Omeka\ApiManager');
@@ -48,6 +55,12 @@ class FacetedBrowse extends AbstractPlugin
         return $query->getResult();
     }
 
+    /**
+     * Get all available classes and their counts.
+     *
+     * @param arry $query
+     * @return array
+     */
     public function getResourceClassClasses(array $query)
     {
         $api = $this->services->get('Omeka\ApiManager');
