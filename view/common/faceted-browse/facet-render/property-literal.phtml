@@ -1,10 +1,14 @@
 <ul>
     <?php foreach ($values as $value): ?>
     <li>
-        <?php echo $this->hyperlink($value, null, [
-            'class' => 'property-literal',
-            'data-value' => $value,
-        ]); ?>
+        <label>
+            <input
+                class="property-literal"
+                type="<?php echo ('multiple' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
+                name="<?php echo sprintf('property_literal_%s', $facet->id()); ?>"
+                data-value="<?php echo $this->escapeHtml($value); ?>">
+                <?php echo $value; ?>
+        </label>
     </li>
     <?php endforeach; ?>
 </ul>
