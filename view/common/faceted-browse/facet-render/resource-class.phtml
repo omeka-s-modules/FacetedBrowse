@@ -1,8 +1,14 @@
 <ul>
     <?php foreach ($classes as $class): ?>
-    <li><?php echo $this->hyperlink($class->label(), [], [
-        'class' => 'resource-class',
-        'data-class-id' => $class->id(),
-    ]); ?></li>
+    <li>
+        <label>
+            <input
+                class="resource-class"
+                type="radio"
+                name="<?php echo sprintf('resource_class_%s', $facet->id()); ?>"
+                data-class-id="<?php echo $this->escapeHtml($class->id()); ?>">
+                <?php echo $class->label(); ?>
+        </label>
+    </li>
     <?php endforeach; ?>
 </ul>
