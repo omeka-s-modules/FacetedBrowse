@@ -183,4 +183,19 @@ class CategoryController extends AbstractActionController
         $response->setContent(json_encode($values));
         return $response;
     }
+
+    public function resourceClassClassesAction()
+    {
+        $query = $this->params()->fromQuery('query');
+        parse_str($query, $query);
+        $query['site_id'] = $this->currentSite()->id();
+
+        $classes = $this->facetedBrowse()->getResourceClassClasses($query);
+
+        $response = $this->getResponse();
+        $responseHeaders = $response->getHeaders();
+        $responseHeaders->addHeaderLine('Content-Type: application/json');
+        $response->setContent(json_encode($classes));
+        return $response;
+    }
 }

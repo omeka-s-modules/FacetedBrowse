@@ -47,4 +47,25 @@ class FacetedBrowse extends AbstractPlugin
             ->setParameter('ids', $ids);
         return $query->getResult();
     }
+
+    public function getResourceClassClasses(array $query)
+    {
+        $api = $this->services->get('Omeka\ApiManager');
+        $em = $this->services->get('Omeka\EntityManager');
+
+        // Get the IDs of all items that satisfy the category query.
+        $itemIds = $api->search('items', $query, ['returnScalar' => 'id'])->getContent();
+
+        $dql = '
+        SELECT CONCAT(v.label, \': \', rc.label) label, COUNT(i.id) item_count
+        FROM Omeka\Entity\Item i
+        JOIN i.resourceClass rc
+        JOIN rc.vocabulary v
+        WHERE i.id IN (:itemIds)
+        GROUP BY rc.id
+        ORDER BY item_count DESC';
+        $query = $em->createQuery($dql)
+            ->setParameter('itemIds', $itemIds);
+        return $query->getResult();
+    }
 }

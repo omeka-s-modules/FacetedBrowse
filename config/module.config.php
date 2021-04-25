@@ -80,7 +80,8 @@ return [
         'A facet must have a name.', // @translate
         'A facet must have a query type.', // @translate
         'A facet must have a select type.', // @translate
-        'The selected property has no values.', // @translate
+        'There are no available values.', // @translate
+        'There are no available classes.', // @translate
     ],
     'navigation' => [
         'site' => [

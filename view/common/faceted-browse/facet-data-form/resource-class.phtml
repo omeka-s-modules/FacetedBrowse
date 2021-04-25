@@ -1,2 +1,3 @@
 <?php echo $this->formRow($elementClassIds); ?>
-
+<p><input type="checkbox" id="resource-class-show-all-classes"> <?php echo $this->translate('Show all available classes.'); ?></p>
+<table id="resource-class-all-classes" data-classes-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'resource-class-classes'], true)) ?>"></table>

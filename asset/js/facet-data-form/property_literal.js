@@ -40,7 +40,7 @@ $(document).on('faceted-browse:facet-set', '#facet-set-button', function(e, type
 $(document).on('click', '#property-literal-show-all-values', function(e) {
     const allValues = $('#property-literal-all-values');
     if (this.checked) {
-        $.get(allValues.data('values-url'), {
+        $.get(allValues.data('valuesUrl'), {
             property_id: $('#property-literal-property-id').val(),
             query: $('#category-query').val()
         }, function(data) {
@@ -49,7 +49,7 @@ $(document).on('click', '#property-literal-show-all-values', function(e) {
                     allValues.append(`<tr><td style="width: 90%; padding: 0; border-bottom: 1px solid #dfdfdf;">${value.value}</td><td style="width: 10%; padding: 0; border-bottom: 1px solid #dfdfdf;">${value.value_count}</td></tr>`);
                 });
             } else {
-                allValues.append(`<tr><td>${Omeka.jsTranslate('The selected property has no values.')}</td></tr>`);
+                allValues.append(`<tr><td>${Omeka.jsTranslate('There are no available values.')}</td></tr>`);
             }
         });
     } else {
