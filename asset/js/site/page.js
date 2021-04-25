@@ -51,6 +51,16 @@ container.on('click', '.category', function(e) {
         });
     });
 });
+// Handle a categories return click.
+container.on('click', '#categories-return', function(e) {
+    e.preventDefault();
+    $.get(urlCategories, {}, function(html) {
+        sectionSidebar.html(html);
+    });
+    $.get(urlBrowse, {}, function(html) {
+        sectionContent.html(html);
+    });
+});
 // Handle item click.
 container.on('click', '.resource-link', function(e) {
     e.preventDefault();
