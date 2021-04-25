@@ -60,8 +60,8 @@ class PropertyLiteral implements FacetTypeInterface
         $selectType->setOptions([
             'label' => 'Select type',
             'value_options' => [
-                'single' => 'Single select',
-                'multiple' => 'Multiple select',
+                'single' => 'Single',
+                'multiple' => 'Multiple',
             ],
         ]);
         $selectType->setAttributes([
