@@ -72,34 +72,28 @@ class FacetedBrowseCategoryAdapter extends AbstractEntityAdapter
             if (is_array($facets)) {
                 $facetCollection = $entity->getFacets();
                 $toRetain = [];
-                $toAdd = [];
                 $position = 1;
                 foreach ($facets as $facet) {
-                    $facetEntity = $facetCollection->current();
-                    if ($facetEntity) {
-                        // Reuse an existing facet entity.
-                        $facetCollection->next();
-                        $toRetain[] = $facetEntity;
+                    if (isset($facet['o:id']) && $facetCollection->containsKey($facet['o:id'])) {
+                        // This is an existing facet.
+                        $facetEntity = $facetCollection->get($facet['o:id']);
                     } else {
-                        // Create a new facet entity.
+                        // This is a new facet.
                         $facetEntity = new FacetedBrowseFacet;
                         $facetEntity->setCategory($entity);
-                        $toAdd[] = $facetEntity;
+                        $facetCollection->add($facetEntity);
                     }
                     $facetEntity->setType($facet['o-module-faceted_browse:type']);
                     $facetEntity->setName($facet['o:name']);
                     $facetEntity->setData(json_decode($facet['o:data'], true));
                     $facetEntity->setPosition($position++);
+                    $toRetain[] = $facetEntity;
                 }
-                // Remove any existing facet entities that are unused.
+                // Remove any facet entities that are unused.
                 foreach ($facetCollection as $index => $facetEntity) {
                     if (!in_array($facetEntity, $toRetain)) {
                         $facetCollection->remove($index);
                     }
-                }
-                // Add any new facet entities.
-                foreach ($toAdd as $facetEntity) {
-                    $facetCollection->add($facetEntity);
                 }
             }
         }

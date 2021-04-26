@@ -18,6 +18,7 @@ class FacetedBrowseFacetRepresentation extends AbstractRepresentation
     public function jsonSerialize()
     {
         return [
+            'o:id' => $this->id(),
             'o-module-faceted_browse:category' => $this->category()->getReference(),
             'o:name' => $this->name(),
             'o-module-faceted_browse:type' => $this->type(),

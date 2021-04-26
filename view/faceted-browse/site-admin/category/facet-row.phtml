@@ -21,6 +21,9 @@ use Laminas\Form\Element\Hidden;
         ]); ?></li>
     </ul>
     <?php
+    $idInput = (new Hidden(sprintf('facet[%s][o:id]', $index)))
+        ->setValue($facet['o:id'])
+        ->setAttribute('class', 'facet-id');
     $nameInput = (new Hidden(sprintf('facet[%s][o:name]', $index)))
         ->setValue($facet['o:name'])
         ->setAttribute('class', 'facet-name');
@@ -30,6 +33,7 @@ use Laminas\Form\Element\Hidden;
     $dataInput = (new Hidden(sprintf('facet[%s][o:data]', $index)))
         ->setValue(json_encode($facet['o:data']))
         ->setAttribute('class', 'facet-data');
+    echo $this->formHidden($idInput);
     echo $this->formHidden($typeInput);
     echo $this->formHidden($nameInput);
     echo $this->formHidden($dataInput);

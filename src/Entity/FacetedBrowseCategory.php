@@ -98,7 +98,8 @@ class FacetedBrowseCategory extends AbstractEntity
      *     targetEntity="FacetedBrowseFacet",
      *     mappedBy="category",
      *     orphanRemoval=true,
-     *     cascade={"persist", "remove", "detach"}
+     *     cascade={"persist", "remove", "detach"},
+     *     indexBy="id"
      * )
      * @OrderBy({"position" = "ASC"})
      */

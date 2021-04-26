@@ -155,6 +155,7 @@ class CategoryController extends AbstractActionController
             return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'browse'], true);
         }
         $facet = [
+            'o:id' => null,
             'o:name' => $this->params()->fromPost('facet_name'),
             'o-module-faceted_browse:type' => $this->params()->fromPost('facet_type'),
             'o:data' => [],
