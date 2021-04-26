@@ -92,5 +92,9 @@ container.on('submit', '.pagination form, form.sorting', function(e) {
         sectionContent.html(html);
     });
 });
+// Handle permalink.
+container.on('focus', '.permalink', function(e) {
+    this.select();
+});
 
 });

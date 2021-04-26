@@ -1,7 +1,7 @@
 <?php echo $this->searchFilters(); ?>
 <div class="browse-controls">
     <?php echo $this->pagination(); ?>
-    <input type="text" value="<?php echo $this->escapeHtml($this->url('site/resource', ['controller' => 'item', 'action' => 'browse'], ['query' => $query, 'force_canonical' => true], true)); ?>">
+    <input type="text" class="permalink" value="<?php echo $this->escapeHtml($this->url('site/resource', ['controller' => 'item', 'action' => 'browse'], ['query' => $query, 'force_canonical' => true], true)); ?>">
     <?php echo $this->sortSelector([
         [
             'label' => $this->translate('Title'),
