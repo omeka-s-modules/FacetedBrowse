@@ -85,8 +85,8 @@ container.on('click', '.previous', function(e) {
         });
     }
 });
-// Handle pagination page form.
-container.on('submit', 'form', function(e) {
+// Handle pagination form and sort form.
+container.on('submit', '.pagination form, form.sorting', function(e) {
     e.preventDefault();
     $.get(`${urlBrowse}?${$(this).serialize()}`, {}, function(html) {
         sectionContent.html(html);

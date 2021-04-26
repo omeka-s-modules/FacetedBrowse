@@ -52,6 +52,7 @@ class PageController extends AbstractActionController
         $view = new ViewModel;
         $view->setTerminal(true);
         $view->setVariable('items', $items);
+        $view->setVariable('query', $query);
         return $view;
     }
 }
