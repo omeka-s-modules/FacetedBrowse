@@ -45,6 +45,7 @@ class PropertyLiteral implements FacetTypeInterface
         $queryType->setName('query_type');
         $queryType->setOptions([
             'label' => 'Query type', // @translate
+            'info' => 'Select the query type. For "is exactly" facets, the value must be an exact match to the property value. For "contains" facets, the value may match any part of the property value.', // @translate
             'value_options' => [
                 'eq' => 'Is exactly', // @translate
                 'in' => 'Contains', // @translate
@@ -59,6 +60,7 @@ class PropertyLiteral implements FacetTypeInterface
         $selectType->setName('select_type');
         $selectType->setOptions([
             'label' => 'Select type',
+            'info' => 'Select the select type. For "single" facets, users may choose only one value at a time. For "multiple" facets, users may choose any number of values at a time.', // @translate
             'value_options' => [
                 'single' => 'Single',
                 'multiple' => 'Multiple',
@@ -73,6 +75,7 @@ class PropertyLiteral implements FacetTypeInterface
         $values->setName('values');
         $values->setOptions([
             'label' => 'Values', // @translate
+            'info' => 'Enter the values, separated by new lines.', // @translate
         ]);
         $values->setAttributes([
             'id' => 'property-literal-values',
