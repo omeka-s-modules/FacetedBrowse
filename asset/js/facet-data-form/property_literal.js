@@ -1,4 +1,6 @@
-FacetedBrowse.registerFacetAddEdit('property_literal', function() {
+$(document).ready(function() {
+
+FacetedBrowse.registerFacetAddEditHandler('property_literal', function() {
     $('#property-literal-property-id').chosen({
         allow_single_deselect: true,
     });
@@ -9,7 +11,7 @@ FacetedBrowse.registerFacetAddEdit('property_literal', function() {
         disable_search: true,
     });
 });
-FacetedBrowse.registerFacetSet('property_literal', function() {
+FacetedBrowse.registerFacetSetHandler('property_literal', function() {
     const propertyId = $('#property-literal-property-id');
     const queryType = $('#property-literal-query-type');
     const selectType = $('#property-literal-select-type');
@@ -52,4 +54,6 @@ $(document).on('click', '#property-literal-show-all-values', function(e) {
 $(document).on('change', '#property-literal-property-id', function(e) {
     $('#property-literal-show-all-values').prop('checked', false);
     $('#property-literal-all-values').empty();
+});
+
 });

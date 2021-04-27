@@ -24,7 +24,7 @@ facetAddButton.on('click', function(e) {
     }, function(html) {
         facetFormContainer.html(html);
         Omeka.openSidebar(facetSidebar);
-        FacetedBrowse.facetAddEdit(type);
+        FacetedBrowse.handleFacetAddEdit(type);
     });
 });
 // Handle facet edit button.
@@ -42,7 +42,7 @@ facets.on('click', '.facet-edit', function(e) {
     }, function(html) {
         facetFormContainer.html(html);
         Omeka.openSidebar(facetSidebar);
-        FacetedBrowse.facetAddEdit(type);
+        FacetedBrowse.handleFacetAddEdit(type);
     });
 });
 facets.on('click', '.facet-remove', function(e) {
@@ -72,7 +72,7 @@ facetFormContainer.on('click', '#facet-set-button', function(e) {
         alert(Omeka.jsTranslate('A facet must have a name'));
         return;
     }
-    const data = FacetedBrowse.facetSet(type);
+    const data = FacetedBrowse.handleFacetSet(type);
     if (!data) {
         // The data is invalid. The handler should have alerted the user. Do
         // nothing and let the user make corrections.

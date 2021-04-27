@@ -1,9 +1,11 @@
-FacetedBrowse.registerFacetAddEdit('resource_class', function() {
+$(document).ready(function() {
+
+FacetedBrowse.registerFacetAddEditHandler('resource_class', function() {
     $('#resource-class-class-ids').chosen({
         include_group_label_in_selected: true
     });
 });
-FacetedBrowse.registerFacetSet('resource_class', function() {
+FacetedBrowse.registerFacetSetHandler('resource_class', function() {
     return {
         class_ids: $('#resource-class-class-ids').val()
     };
@@ -26,4 +28,6 @@ $(document).on('click', '#resource-class-show-all-classes', function(e) {
     } else {
         allClasses.empty();
     }
+});
+
 });

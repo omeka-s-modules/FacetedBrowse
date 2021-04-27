@@ -1,13 +1,3 @@
-/**
- * A facet type should:
- *
- * - Detect a user interaction;
- * - Calculate the query needed to reflect the current state of the facet;
- * - Set the query using `FacetedBrowse.setFacetQuery(facitId, query)`
- *
- * This will detect the state change, iterate every facet, build a new,
- * consolidated query, and update the item browse section.
- */
 $(document).ready(function() {
 
 const container = $('#container');
@@ -24,7 +14,16 @@ $.get(urlCategories, {}, function(html) {
 $.get(urlBrowse, {}, function(html) {
     sectionContent.html(html);
 });
-
+// Set the facet state change handler.
+FacetedBrowse.setFacetStateChangeHandler(function() {
+    const queries = [];
+    for (const facetId in FacetedBrowse.facetQueries) {
+        queries.push(FacetedBrowse.facetQueries[facetId]);
+    }
+    $.get(`${urlBrowse}?${$('#category').data('categoryQuery')}&${queries.join('&')}`, {}, function(html) {
+        $('#section-content').html(html);
+    });
+});
 // Handle category click.
 container.on('click', '.category', function(e) {
     e.preventDefault();
