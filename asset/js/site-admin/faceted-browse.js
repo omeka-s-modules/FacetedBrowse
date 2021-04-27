@@ -2,6 +2,7 @@ const FacetedBrowse = {
 
     facetAddEdit: {},
     facetSet: {},
+    facetQueries: {},
 
     /**
      * Register a callback that handles facet add/edit.
@@ -35,11 +36,33 @@ const FacetedBrowse = {
      * Call a facet set handler.
      *
      * @param string facetType The facet type
-     * @return object data
+     * @return object The facet data
      */
     facetSet: facetType => {
         if (facetType in FacetedBrowse.facetSet) {
             return FacetedBrowse.facetSet[facetType]();
         }
-    }
+    },
+    /**
+     * Set a query by facet ID and trigger a state change.
+     *
+     * @param int facetId The facet ID
+     * @param string facetQuery The facet query
+     * @param bool triggerStateChange Trigger a state change?
+     */
+    setFacetQuery: (facetId, facetQuery, triggerStateChange = true) => {
+        FacetedBrowse.facetQueries[facetId] = facetQuery;
+        if (triggerStateChange) {
+            // Consolidate the queries and fetch the browse content.
+            const browseUrl = $('#container').data('urlBrowse');
+            const categoryQuery = $('#category').data('categoryQuery');
+            const queries = [];
+            for (const facetId in FacetedBrowse.facetQueries) {
+                queries.push(FacetedBrowse.facetQueries[facetId]);
+            }
+            $.get(`${browseUrl}?${categoryQuery}&${queries.join('&')}`, {}, function(html) {
+                $('#section-content').html(html);
+            });
+        }
+    },
 };

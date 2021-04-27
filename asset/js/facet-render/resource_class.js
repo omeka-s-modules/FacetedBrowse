@@ -13,8 +13,7 @@ container.on('click', '.resource-class', function(e) {
         const id = $(this).data('classId');
         queries.push(`resource_class_id=${id}`);
     });
-    facet.data('query', queries.join('&'));
-    container.trigger('faceted-browse:query-state-change');
+    FacetedBrowse.setFacetQuery(facet.data('facetId'), queries.join('&'));
 });
 
 });

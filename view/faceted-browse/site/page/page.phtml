@@ -1,5 +1,6 @@
 <?php
 $this->headLink()->appendStylesheet($this->assetUrl('css/site/page.css', 'FacetedBrowse'));
+$this->headScript()->appendFile($this->assetUrl('js/site-admin/faceted-browse.js', 'FacetedBrowse'));
 $this->headScript()->appendFile($this->assetUrl('js/site/page.js', 'FacetedBrowse'));
 $this->facetedBrowse()->prepareFacets();
 

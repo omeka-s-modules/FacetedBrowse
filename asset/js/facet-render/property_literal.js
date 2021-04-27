@@ -16,15 +16,14 @@ container.on('click', '.property-literal', function(e) {
     facets.each(function() {
         const thisFacet= $(this);
         const facetData = thisFacet.data('facetData');
+        FacetedBrowse.setFacetQuery(thisFacet.data('facetId'), '', false);
         thisFacet.find('.property-literal.selected').each(function() {
             const text = $(this).data('value');
             queries.push(`property[${index}][joiner]=and&property[${index}][property]=${facetData.property_id}&property[${index}][type]=${facetData.query_type}&property[${index}][text]=${encodeURIComponent(text)}`);
             index++;
         });
     });
-    facets.data('query', '');
-    facet.data('query', queries.join('&'));
-    container.trigger('faceted-browse:query-state-change');
+    FacetedBrowse.setFacetQuery(facet.data('facetId'), queries.join('&'));
 });
 
 });
