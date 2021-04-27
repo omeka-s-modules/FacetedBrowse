@@ -1,20 +1,12 @@
-// Handle facet add/edit.
-$(document).on('faceted-browse:facet-add-edit', '#facet-add-button, .facet-edit', function(e, type) {
-    if ('resource_class' !== type) {
-        return;
-    }
+FacetedBrowse.registerFacetAddEdit('resource_class', function() {
     $('#resource-class-class-ids').chosen({
         include_group_label_in_selected: true
     });
 });
-// Handle facet set.
-$(document).on('faceted-browse:facet-set', '#facet-set-button', function(e, type) {
-    if ('resource_class' !== type) {
-        return;
-    }
-    $(this).data('facet-data', {
+FacetedBrowse.registerFacetSet('resource_class', function() {
+    return {
         class_ids: $('#resource-class-class-ids').val()
-    });
+    };
 });
 // Handle show all values.
 $(document).on('click', '#resource-class-show-all-classes', function(e) {

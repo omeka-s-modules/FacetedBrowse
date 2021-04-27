@@ -1,8 +1,4 @@
-// Handle facet add/edit.
-$(document).on('faceted-browse:facet-add-edit', '#facet-add-button, .facet-edit', function(e, type) {
-    if ('property_literal' !== type) {
-        return;
-    }
+FacetedBrowse.registerFacetAddEdit('property_literal', function() {
     $('#property-literal-property-id').chosen({
         allow_single_deselect: true,
     });
@@ -13,11 +9,7 @@ $(document).on('faceted-browse:facet-add-edit', '#facet-add-button, .facet-edit'
         disable_search: true,
     });
 });
-// Handle facet set.
-$(document).on('faceted-browse:facet-set', '#facet-set-button', function(e, type) {
-    if ('property_literal' !== type) {
-        return;
-    }
+FacetedBrowse.registerFacetSet('property_literal', function() {
     const propertyId = $('#property-literal-property-id');
     const queryType = $('#property-literal-query-type');
     const selectType = $('#property-literal-select-type');
@@ -28,12 +20,12 @@ $(document).on('faceted-browse:facet-set', '#facet-set-button', function(e, type
     } else if (!selectType.val()) {
         alert(Omeka.jsTranslate('A facet must have a select type.'));
     } else {
-        $(this).data('facet-data', {
+        return {
             property_id: propertyId.val(),
             query_type: queryType.val(),
             select_type: selectType.val(),
             values: $('#property-literal-values').val()
-        });
+        };
     }
 });
 // Handle show all values.

@@ -1,14 +1,3 @@
-/**
- * Available events:
- *
- * - faceted-browse:facet-add-edit : Triggered after the user clicks facet
- *       add/edit. Attach handlers to #facet-add-button or .facet-edit to
- *       prepare the facet form, if needed.
- * - faceted-browse:facet-set : Trigered after the user clicks facet set. Attach
- *       handlers to #facet-set-button to validate facet data and set the valid
- *       facet data object to the set button using data('facet-data', {...}).
- *       Alert the user if the data is invalid.
- */
 $(document).ready(function() {
 
 const facets = $('#facets');
@@ -35,7 +24,7 @@ facetAddButton.on('click', function(e) {
     }, function(html) {
         facetFormContainer.html(html);
         Omeka.openSidebar(facetSidebar);
-        thisButton.trigger('faceted-browse:facet-add-edit', [type]);
+        FacetedBrowse.facetAddEdit(type);
     });
 });
 // Handle facet edit button.
@@ -53,7 +42,7 @@ facets.on('click', '.facet-edit', function(e) {
     }, function(html) {
         facetFormContainer.html(html);
         Omeka.openSidebar(facetSidebar);
-        thisButton.trigger('faceted-browse:facet-add-edit', [type]);
+        FacetedBrowse.facetAddEdit(type);
     });
 });
 facets.on('click', '.facet-remove', function(e) {
@@ -83,8 +72,7 @@ facetFormContainer.on('click', '#facet-set-button', function(e) {
         alert(Omeka.jsTranslate('A facet must have a name'));
         return;
     }
-    thisButton.trigger('faceted-browse:facet-set', [type]);
-    const data = thisButton.data('facetData');
+    const data = FacetedBrowse.facetSet(type);
     if (!data) {
         // The data is invalid. The handler should have alerted the user. Do
         // nothing and let the user make corrections.
