@@ -2,6 +2,7 @@
 namespace FacetedBrowse;
 
 use Omeka\Module\AbstractModule;
+use Laminas\Mvc\MvcEvent;
 use Laminas\EventManager\SharedEventManagerInterface;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 
@@ -10,6 +11,18 @@ class Module extends AbstractModule
     public function getConfig()
     {
         return include sprintf('%s/config/module.config.php', __DIR__);
+    }
+
+    public function onBootstrap(MvcEvent $event)
+    {
+        parent::onBootstrap($event);
+
+        $acl = $this->getServiceLocator()->get('Omeka\Acl');
+        $acl->allow(null, 'FacetedBrowse\Controller\Site\Page');
+        $acl->allow(null, 'FacetedBrowse\Api\Adapter\FacetedBrowsePageAdapter', ['read']);
+        $acl->allow(null, 'FacetedBrowse\Api\Adapter\FacetedBrowseCategoryAdapter', ['read']);
+        $acl->allow(null, 'FacetedBrowse\Entity\FacetedBrowsePage', ['read']);
+        $acl->allow(null, 'FacetedBrowse\Entity\FacetedBrowseCategory', ['read']);
     }
 
     public function install(ServiceLocatorInterface $services)
