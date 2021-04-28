@@ -1,13 +1,8 @@
 <?php $categories = $page->categories(); ?>
-<?php if (0 === count($categories)): ?>
 <h4><?php echo $this->translate('Browse'); ?></h4>
-<div><?php echo $this->translate('There are no categories to browse.'); ?></div>
-<?php elseif (1 === count($categories)): ?>
-<?php echo $this->partial('facets', ['category' => current($categories), 'hideBack' => true]); ?>
-<?php else: ?>
-<h4><?php echo $this->translate('Browse'); ?></h4>
+<?php if ($categories): ?>
 <ul id="categories">
-    <?php foreach ($page->categories() as $category): ?>
+    <?php foreach ($categories as $category): ?>
     <li>
         <?php echo $this->hyperlink($category->name(), null, [
             'class' => 'category',
@@ -17,4 +12,6 @@
     </li>
     <?php endforeach; ?>
 </ul>
+<?php else: ?>
+<div><?php echo $this->translate('There are no categories to browse.'); ?></div>
 <?php endif; ?>

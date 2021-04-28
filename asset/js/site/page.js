@@ -8,12 +8,26 @@ const urlCategories = container.data('urlCategories');
 const urlFacets = container.data('urlFacets');
 const urlBrowse = container.data('urlBrowse');
 
-$.get(urlCategories, {}, function(html) {
-    sectionSidebar.html(html);
-});
-$.get(urlBrowse, {}, function(html) {
-    sectionContent.html(html);
-});
+if (container.data('categoryId')) {
+    // There is one category. Skip categories list and show facets list.
+    $.get(urlFacets, {
+        category_id: container.data('categoryId')
+    }, function(html) {
+        sectionSidebar.html(html);
+        $('#categories-return').hide();
+        $.get(`${urlBrowse}?${container.data('categoryQuery')}`, {}, function(html) {
+            sectionContent.html(html);
+        });
+    });
+} else {
+    // There is more than one category. Show category list.
+    $.get(urlCategories, {}, function(html) {
+        sectionSidebar.html(html);
+        $.get(urlBrowse, {}, function(html) {
+            sectionContent.html(html);
+        });
+    });
+}
 // Set the facet state change handler.
 FacetedBrowse.setFacetStateChangeHandler(function() {
     const queries = [];

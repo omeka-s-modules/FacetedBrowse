@@ -1,6 +1,4 @@
-<?php if (!isset($hideBack)): ?>
 <?php echo $this->hyperlink($this->translate('Back'), [], ['id' => 'categories-return']); ?>
-<?php endif; ?>
 <h4><?php echo $category->name(); ?></h4>
 <div id="category"
     data-category-id="<?php echo $this->escapeHtml($category->id()); ?>"
