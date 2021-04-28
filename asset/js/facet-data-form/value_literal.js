@@ -1,20 +1,20 @@
 $(document).ready(function() {
 
-FacetedBrowse.registerFacetAddEditHandler('property_literal', function() {
-    $('#property-literal-property-id').chosen({
+FacetedBrowse.registerFacetAddEditHandler('value_literal', function() {
+    $('#value-literal-property-id').chosen({
         allow_single_deselect: true,
     });
-    $('#property-literal-query-type').chosen({
+    $('#value-literal-query-type').chosen({
         disable_search: true,
     });
-    $('#property-literal-select-type').chosen({
+    $('#value-literal-select-type').chosen({
         disable_search: true,
     });
 });
-FacetedBrowse.registerFacetSetHandler('property_literal', function() {
-    const propertyId = $('#property-literal-property-id');
-    const queryType = $('#property-literal-query-type');
-    const selectType = $('#property-literal-select-type');
+FacetedBrowse.registerFacetSetHandler('value_literal', function() {
+    const propertyId = $('#value-literal-property-id');
+    const queryType = $('#value-literal-query-type');
+    const selectType = $('#value-literal-select-type');
     if (!propertyId.val()) {
         alert(Omeka.jsTranslate('A facet must have a property.'));
     } else if (!queryType.val()) {
@@ -26,16 +26,16 @@ FacetedBrowse.registerFacetSetHandler('property_literal', function() {
             property_id: propertyId.val(),
             query_type: queryType.val(),
             select_type: selectType.val(),
-            values: $('#property-literal-values').val()
+            values: $('#value-literal-values').val()
         };
     }
 });
 // Handle show all values.
-$(document).on('click', '#property-literal-show-all-values', function(e) {
-    const allValues = $('#property-literal-all-values');
+$(document).on('click', '#value-literal-show-all-values', function(e) {
+    const allValues = $('#value-literal-all-values');
     if (this.checked) {
         $.get(allValues.data('valuesUrl'), {
-            property_id: $('#property-literal-property-id').val(),
+            property_id: $('#value-literal-property-id').val(),
             query: $('#category-query').val()
         }, function(data) {
             if (data.length) {
@@ -51,9 +51,9 @@ $(document).on('click', '#property-literal-show-all-values', function(e) {
     }
 });
 // Handle property ID select.
-$(document).on('change', '#property-literal-property-id', function(e) {
-    $('#property-literal-show-all-values').prop('checked', false);
-    $('#property-literal-all-values').empty();
+$(document).on('change', '#value-literal-property-id', function(e) {
+    $('#value-literal-show-all-values').prop('checked', false);
+    $('#value-literal-all-values').empty();
 });
 
 });

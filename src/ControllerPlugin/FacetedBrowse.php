@@ -30,7 +30,7 @@ class FacetedBrowse extends AbstractPlugin
      * @param arry $query
      * @return array
      */
-    public function getPropertyLiteralValues($propertyId, array $query)
+    public function getValueLiteralValues($propertyId, array $query)
     {
         $api = $this->services->get('Omeka\ApiManager');
         $em = $this->services->get('Omeka\EntityManager');

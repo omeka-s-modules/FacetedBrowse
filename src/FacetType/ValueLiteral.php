@@ -7,7 +7,7 @@ use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Form\Element as OmekaElement;
 
-class PropertyLiteral implements FacetTypeInterface
+class ValueLiteral implements FacetTypeInterface
 {
     protected $formElements;
 
@@ -18,12 +18,12 @@ class PropertyLiteral implements FacetTypeInterface
 
     public function getLabel() : string
     {
-        return 'Property'; // @translate
+        return 'Value'; // @translate
     }
 
     public function prepareDataForm(PhpRenderer $view) : void
     {
-        $view->headScript()->appendFile($view->assetUrl('js/facet-data-form/property_literal.js', 'FacetedBrowse'));
+        $view->headScript()->appendFile($view->assetUrl('js/facet-data-form/value_literal.js', 'FacetedBrowse'));
     }
 
     public function renderDataForm(PhpRenderer $view, array $data) : string
@@ -36,7 +36,7 @@ class PropertyLiteral implements FacetTypeInterface
             'empty_option' => '',
         ]);
         $propertyId->setAttributes([
-            'id' => 'property-literal-property-id',
+            'id' => 'value-literal-property-id',
             'value' => $data['property_id'] ?? null,
             'data-placeholder' => 'Select one…', // @translate
         ]);
@@ -52,7 +52,7 @@ class PropertyLiteral implements FacetTypeInterface
             ],
         ]);
         $queryType->setAttributes([
-            'id' => 'property-literal-query-type',
+            'id' => 'value-literal-query-type',
             'value' => $data['query_type'] ?? 'eq',
         ]);
         // Select type
@@ -67,7 +67,7 @@ class PropertyLiteral implements FacetTypeInterface
             ],
         ]);
         $selectType->setAttributes([
-            'id' => 'property-literal-select-type',
+            'id' => 'value-literal-select-type',
             'value' => $data['select_type'] ?? 'single',
         ]);
         // Values
@@ -78,12 +78,12 @@ class PropertyLiteral implements FacetTypeInterface
             'info' => 'Enter the values, separated by new lines.', // @translate
         ]);
         $values->setAttributes([
-            'id' => 'property-literal-values',
+            'id' => 'value-literal-values',
             'style' => 'height: 300px;',
             'value' => $data['values'] ?? null,
         ]);
 
-        return $view->partial('common/faceted-browse/facet-data-form/property-literal', [
+        return $view->partial('common/faceted-browse/facet-data-form/value-literal', [
             'elementPropertyId' => $propertyId,
             'elementQueryType' => $queryType,
             'elementSelectType' => $selectType,
@@ -93,8 +93,8 @@ class PropertyLiteral implements FacetTypeInterface
 
     public function prepareFacet(PhpRenderer $view) : void
     {
-        $view->headLink()->appendStylesheet($view->assetUrl('css/facet-render/property_literal.css', 'FacetedBrowse'));
-        $view->headScript()->appendFile($view->assetUrl('js/facet-render/property_literal.js', 'FacetedBrowse'));
+        $view->headLink()->appendStylesheet($view->assetUrl('css/facet-render/value_literal.css', 'FacetedBrowse'));
+        $view->headScript()->appendFile($view->assetUrl('js/facet-render/value_literal.js', 'FacetedBrowse'));
     }
 
     public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet) : string
@@ -104,7 +104,7 @@ class PropertyLiteral implements FacetTypeInterface
         $values = array_map('trim', $values);
         $values = array_unique($values);
 
-        return $view->partial('common/faceted-browse/facet-render/property-literal', [
+        return $view->partial('common/faceted-browse/facet-render/value-literal', [
             'facet' => $facet,
             'values' => $values,
         ]);

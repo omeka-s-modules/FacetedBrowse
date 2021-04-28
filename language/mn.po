@@ -2,20 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Khaidav T. <khaidaw@yahoo.com>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-28 17:00-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2021-04-26 01:55+0000\n"
+"Last-Translator: Khaidav T. <khaidaw@yahoo.com>, 2021\n"
+"Language-Team: Mongolian (https://www.transifex.com/omeka/teams/14184/mn/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: mn\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: view/common/faceted-browse/facet-data-form/resource-class.phtml:2
 msgid "Show all available classes."
@@ -27,7 +31,7 @@ msgstr ""
 
 #: view/common/faceted-browse/navigation-link-form/faceted-browse.phtml:9
 msgid "Select a page"
-msgstr ""
+msgstr "Хуудас сонгох"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:5
 #: view/faceted-browse/site-admin/page/form.phtml:38
@@ -121,7 +125,7 @@ msgstr ""
 
 #: view/faceted-browse/site-admin/page/browse.phtml:75
 msgid "Add a new page."
-msgstr ""
+msgstr "Шинэ хуудас нэмэх"
 
 #: view/faceted-browse/site-admin/page/browse.phtml:78
 msgid "No pages found."
@@ -137,15 +141,15 @@ msgstr ""
 
 #: view/faceted-browse/site-admin/page/form.phtml:14
 msgid "Edit Page"
-msgstr ""
+msgstr "Хуудас засварлах"
 
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Add Page"
-msgstr ""
+msgstr "Хуудас нэмэх"
 
 #: view/faceted-browse/site-admin/page/form.phtml:30
 msgid "Return to pages"
-msgstr ""
+msgstr "Хуудсанд буцах"
 
 #: view/faceted-browse/site-admin/page/form.phtml:31
 msgid "Stay on this page"
@@ -161,7 +165,7 @@ msgstr ""
 
 #: view/faceted-browse/site/page/facets.phtml:1
 msgid "Back"
-msgstr ""
+msgstr "Буцах"
 
 #: src/Form/FacetForm.php:22
 msgid "Facet name"
@@ -183,8 +187,8 @@ msgstr ""
 
 #: src/Form/CategoryForm.php:33
 msgid ""
-"Configure the logical grouping of items that make up this category. No query "
-"means all site resources."
+"Configure the logical grouping of items that make up this category. No query"
+" means all site resources."
 msgstr ""
 
 #: src/Form/CategoryForm.php:47
@@ -250,12 +254,12 @@ msgstr ""
 
 #: src/FacetType/ValueLiteral.php:41
 msgid "Select one…"
-msgstr ""
+msgstr "Нэгийг сонго..."
 
 #: src/FacetType/ValueLiteral.php:48
 msgid ""
-"Select the query type. For \"is exactly\" facets, the value must be an exact "
-"match to the property value. For \"contains\" facets, the value may match "
+"Select the query type. For \"is exactly\" facets, the value must be an exact"
+" match to the property value. For \"contains\" facets, the value may match "
 "any part of the property value."
 msgstr ""
 
@@ -265,7 +269,7 @@ msgstr ""
 
 #: src/FacetType/ValueLiteral.php:51
 msgid "Contains"
-msgstr ""
+msgstr "Агуулсан"
 
 #: src/FacetType/ValueLiteral.php:63
 msgid ""

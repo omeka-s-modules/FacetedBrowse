@@ -6,7 +6,7 @@ use Laminas\Router\Http;
 return [
     'faceted_browse_facet_types' => [
         'factories' => [
-            'property_literal' => Service\FacetType\PropertyLiteralFactory::class,
+            'value_literal' => Service\FacetType\ValueLiteralFactory::class,
             'resource_class' => Service\FacetType\ResourceClassFactory::class,
             //~ 'resource_template' => Service\FacetType\ResourceTemplate::class,
             //~ 'item_set' => Service\FacetType\ItemSet::class,

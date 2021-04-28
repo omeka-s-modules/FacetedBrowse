@@ -2,37 +2,41 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Hong Zhang <zhangh@unlv.nevada.edu>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-28 17:00-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2021-04-26 01:55+0000\n"
+"Last-Translator: Hong Zhang <zhangh@unlv.nevada.edu>, 2021\n"
+"Language-Team: Chinese (China) (https://www.transifex.com/omeka/teams/14184/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: view/common/faceted-browse/facet-data-form/resource-class.phtml:2
 msgid "Show all available classes."
-msgstr ""
+msgstr "显示所有可用类。"
 
 #: view/common/faceted-browse/facet-data-form/value-literal.phtml:5
 msgid "Show all available values of the selected property."
-msgstr ""
+msgstr "显示已选择属性的所有可用值。"
 
 #: view/common/faceted-browse/navigation-link-form/faceted-browse.phtml:9
 msgid "Select a page"
-msgstr ""
+msgstr "选择一个页面"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:5
 #: view/faceted-browse/site-admin/page/form.phtml:38
 msgid "Categories"
-msgstr ""
+msgstr "类别"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:5
 #: view/faceted-browse/site-admin/category/form.phtml:16
@@ -41,119 +45,119 @@ msgstr ""
 #: view/faceted-browse/site-admin/page/form.phtml:14
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Faceted Browse"
-msgstr ""
+msgstr "分面浏览"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:10
 msgid "Add new category"
-msgstr ""
+msgstr "添加新类别"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:19
 #: view/faceted-browse/site-admin/page/browse.phtml:19
 msgid "Date created"
-msgstr ""
+msgstr "创建日期"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:34
 msgid "Category"
-msgstr ""
+msgstr "类别"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:74
 #, php-format
 msgid "No categories found. %s"
-msgstr ""
+msgstr "没有找到任何类别。%s"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:75
 msgid "Add a new category."
-msgstr ""
+msgstr "添加一个新类别。"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:78
 msgid "No categories found."
-msgstr ""
+msgstr "没有找到任何类别。"
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:6
 msgid "Facet type"
-msgstr ""
+msgstr "分面类型"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:11
 msgid "Edit facet"
-msgstr ""
+msgstr "编辑分面"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:15
 msgid "Remove facet"
-msgstr ""
+msgstr "取消分面"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:19
 msgid "Restore facet"
-msgstr ""
+msgstr "恢复分面"
 
 #: view/faceted-browse/site-admin/category/form.phtml:16
 msgid "Edit Category"
-msgstr ""
+msgstr "编辑类别"
 
 #: view/faceted-browse/site-admin/category/form.phtml:18
 msgid "Add Category"
-msgstr ""
+msgstr "添加类别"
 
 #: view/faceted-browse/site-admin/category/form.phtml:30
 #: view/faceted-browse/site-admin/page/form.phtml:28
 msgid "Save and&hellip;"
-msgstr ""
+msgstr "保存并且&hellip;"
 
 #: view/faceted-browse/site-admin/category/form.phtml:32
 msgid "Return to categories"
-msgstr ""
+msgstr "返回到类别"
 
 #: view/faceted-browse/site-admin/category/form.phtml:33
 msgid "Stay on this category"
-msgstr ""
+msgstr "停留在此类别上"
 
 #: view/faceted-browse/site-admin/category/form.phtml:41
 msgid "Facets"
-msgstr ""
+msgstr "分面"
 
 #: view/faceted-browse/site-admin/category/form.phtml:60
 msgid "Configure facet"
-msgstr ""
+msgstr "配置分面"
 
 #: view/faceted-browse/site-admin/page/browse.phtml:74
 #, php-format
 msgid "No pages found. %s"
-msgstr ""
+msgstr "没有找到任何页面。%s"
 
 #: view/faceted-browse/site-admin/page/browse.phtml:75
 msgid "Add a new page."
-msgstr ""
+msgstr "添加一个新页面。"
 
 #: view/faceted-browse/site-admin/page/browse.phtml:78
 msgid "No pages found."
-msgstr ""
+msgstr "没有找到任何页面。"
 
 #: view/faceted-browse/site-admin/page/category-row.phtml:10
 msgid "Remove category"
-msgstr ""
+msgstr "取消类别"
 
 #: view/faceted-browse/site-admin/page/category-row.phtml:14
 msgid "Restore category"
-msgstr ""
+msgstr "恢复类别"
 
 #: view/faceted-browse/site-admin/page/form.phtml:14
 msgid "Edit Page"
-msgstr ""
+msgstr "编辑页面"
 
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Add Page"
-msgstr ""
+msgstr "添加页面"
 
 #: view/faceted-browse/site-admin/page/form.phtml:30
 msgid "Return to pages"
-msgstr ""
+msgstr "返回到页面"
 
 #: view/faceted-browse/site-admin/page/form.phtml:31
 msgid "Stay on this page"
-msgstr ""
+msgstr "停留在此页面上"
 
 #: view/faceted-browse/site-admin/page/form.phtml:53
 msgid "Add categories"
-msgstr ""
+msgstr "添加类别"
 
 #: view/faceted-browse/site/page/categories.phtml:16
 msgid "There are no categories to browse."
@@ -161,15 +165,15 @@ msgstr ""
 
 #: view/faceted-browse/site/page/facets.phtml:1
 msgid "Back"
-msgstr ""
+msgstr "回退"
 
 #: src/Form/FacetForm.php:22
 msgid "Facet name"
-msgstr ""
+msgstr "分面名称"
 
 #: src/Form/PageForm.php:17
 msgid "Enter the title of this page."
-msgstr ""
+msgstr "输入该页面的标题。"
 
 #: src/Form/CategoryForm.php:21
 msgid ""
@@ -179,70 +183,70 @@ msgstr ""
 
 #: src/Form/CategoryForm.php:32
 msgid "Search query"
-msgstr ""
+msgstr "搜索查询"
 
 #: src/Form/CategoryForm.php:33
 msgid ""
-"Configure the logical grouping of items that make up this category. No query "
-"means all site resources."
+"Configure the logical grouping of items that make up this category. No query"
+" means all site resources."
 msgstr ""
 
 #: src/Form/CategoryForm.php:47
 msgid "Add a facet"
-msgstr ""
+msgstr "添加一个分面"
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:48
 msgid "A site must have an ID"
-msgstr ""
+msgstr "网站必须有一个ID"
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:114
 msgid "A page must have a site"
-msgstr ""
+msgstr "页面必须有一个网站"
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:117
 msgid "A page must have a title"
-msgstr ""
+msgstr "页面必须有一个标题"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:105
 msgid "A category must have a site"
-msgstr ""
+msgstr "类别必须有一个网站"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:108
 msgid "A category must have a name"
-msgstr ""
+msgstr "类别必须有一个名字"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:111
 msgid "A category must have a query"
-msgstr ""
+msgstr "类别必须有一个查询"
 
 #: src/Controller/SiteAdmin/CategoryController.php:49
 msgid "Successfully added the category."
-msgstr ""
+msgstr "已成功添加类别。"
 
 #: src/Controller/SiteAdmin/CategoryController.php:86
 msgid "Successfully edited the category."
-msgstr ""
+msgstr "已成功编辑类别。"
 
 #: src/Controller/SiteAdmin/CategoryController.php:116
 msgid "Successfully deleted the category."
-msgstr ""
+msgstr "已成功删除类别。"
 
 #: src/Controller/SiteAdmin/PageController.php:46
 msgid "Successfully added the page."
-msgstr ""
+msgstr "已成功添加页面。"
 
 #: src/Controller/SiteAdmin/PageController.php:84
 msgid "Successfully edited the page."
-msgstr ""
+msgstr "已成功编辑页面。"
 
 #: src/Controller/SiteAdmin/PageController.php:119
 msgid "Successfully deleted the page."
-msgstr ""
+msgstr "已成功删除页面。"
 
 #: src/FacetType/ResourceClass.php:41
 msgid "Select classes…"
-msgstr ""
+msgstr "选择类 ......"
 
 #: src/FacetType/ValueLiteral.php:21
 msgid "Value"
@@ -250,22 +254,22 @@ msgstr ""
 
 #: src/FacetType/ValueLiteral.php:41
 msgid "Select one…"
-msgstr ""
+msgstr "选择一个 ......"
 
 #: src/FacetType/ValueLiteral.php:48
 msgid ""
-"Select the query type. For \"is exactly\" facets, the value must be an exact "
-"match to the property value. For \"contains\" facets, the value may match "
+"Select the query type. For \"is exactly\" facets, the value must be an exact"
+" match to the property value. For \"contains\" facets, the value may match "
 "any part of the property value."
 msgstr ""
 
 #: src/FacetType/ValueLiteral.php:50
 msgid "Is exactly"
-msgstr ""
+msgstr "完全一样"
 
 #: src/FacetType/ValueLiteral.php:51
 msgid "Contains"
-msgstr ""
+msgstr "包含"
 
 #: src/FacetType/ValueLiteral.php:63
 msgid ""
@@ -276,40 +280,40 @@ msgstr ""
 
 #: src/FacetType/ValueLiteral.php:78
 msgid "Enter the values, separated by new lines."
-msgstr ""
+msgstr "输入以换行分隔的值。"
 
 #: src/FacetType/Unknown.php:22
 msgid "[Unknown]"
-msgstr ""
+msgstr "【未知】"
 
 #: src/FacetType/Unknown.php:34
 msgid "Unknown facet type"
-msgstr ""
+msgstr "未知分面类型"
 
 #: src/FacetType/Unknown.php:44
 msgid "Unknown facet data"
-msgstr ""
+msgstr "未知分面数据"
 
 #: src/Site/NavigationLink/FacetedBrowse.php:14
 msgid "Faceted browse"
-msgstr ""
+msgstr "分面浏览"
 
 #: config/module.config.php:80
 msgid "A facet must have a name."
-msgstr ""
+msgstr "分面必须有一个名字。"
 
 #: config/module.config.php:81
 msgid "A facet must have a query type."
-msgstr ""
+msgstr "分面必须有一个查询类型。"
 
 #: config/module.config.php:82
 msgid "A facet must have a select type."
-msgstr ""
+msgstr "分面必须有一个选择类型。"
 
 #: config/module.config.php:83
 msgid "There are no available values."
-msgstr ""
+msgstr "没有可用值。"
 
 #: config/module.config.php:84
 msgid "There are no available classes."
-msgstr ""
+msgstr "没有可用类。"
