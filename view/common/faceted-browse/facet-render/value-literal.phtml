@@ -1,12 +1,21 @@
 <ul>
     <?php foreach ($values as $key => $value): ?>
+    <?php
+    $dataPropertyId = $facet->data('property_id');
+    $dataValue = $key;
+    if ('ex' === $facet->data('query_type')) {
+        $dataPropertyId = $key;
+        $dataValue = null;
+    }
+    ?>
     <li>
         <label>
             <input
                 class="value-literal"
                 type="<?php echo ('multiple' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
                 name="<?php echo sprintf('value_literal_%s', $facet->id()); ?>"
-                data-value="<?php echo $this->escapeHtml($key); ?>">
+                data-property-id="<?php echo $this->escapeHtml($dataPropertyId); ?>"
+                data-value="<?php echo $this->escapeHtml($dataValue); ?>">
                 <?php echo $value; ?>
         </label>
     </li>

@@ -49,6 +49,7 @@ class ValueLiteral implements FacetTypeInterface
                 'eq' => 'Is exactly', // @translate
                 'in' => 'Contains', // @translate
                 'res' => 'Is resource with ID', // @translate
+                'ex' => 'Has any value', // @translate
             ],
         ]);
         $queryType->setAttributes([
@@ -75,7 +76,15 @@ class ValueLiteral implements FacetTypeInterface
         $values->setName('values');
         $values->setOptions([
             'label' => 'Values', // @translate
-            'info' => 'Enter one value per line. For the "Is exactly" query type, enter a value that is an exact match to the property value. For the "Contains" query type, enter a value that matches any part of the property value. For the "Is resource with ID" query type, enter the resource ID followed by any value (usually the resource title) separated by a single space.', // @translate
+            'info' => $view->translate('
+            <p>Enter the values, separated by new lines. The format of each value depends on the query type:</p>
+            <ul>
+                <li>"Is exactly": enter a value that is an exact match to the property value.</li>
+                <li>"Contains": enter a value that matches any part of the property value.</li>
+                <li>"Is resource with ID": enter the resource ID followed by any value (usually the resource title), separated by a single space.</li>
+                <li>"Has any value": enter the property ID followed by any value (usually the property label), separated by a single space.</li>
+            </ul>'),
+            'escape_info' => false,
         ]);
         $values->setAttributes([
             'id' => 'value-literal-values',
@@ -102,16 +111,23 @@ class ValueLiteral implements FacetTypeInterface
         $values = explode("\n", $values);
         $values = array_map('trim', $values);
         $values = array_unique($values);
-        if ('res' == $facet->data('query_type')) {
-            $resValues = [];
-            foreach ($values as $value) {
-                if (preg_match('/^(\d+) (.+)/', $value, $matches)) {
-                    $resValues[$matches[1]] = $matches[2];
+        switch ($facet->data('query_type')) {
+            case 'res':
+            case 'ex':
+                $idKeyValues = [];
+                foreach ($values as $value) {
+                    if (preg_match('/^(\d+) (.+)/', $value, $matches)) {
+                        $idKeyValues[$matches[1]] = $matches[2];
+                    } elseif (preg_match('/^(\d+)/', $value, $matches)) {
+                        $idKeyValues[$matches[1]] = null;
+                    }
                 }
-            }
-            $values = $resValues;
-        } else {
-            $values = array_combine($values, $values);
+                $values = $idKeyValues;
+                break;
+            case 'eq':
+            case 'in':
+            default:
+                $values = array_combine($values, $values);
         }
 
         return $view->partial('common/faceted-browse/facet-render/value-literal', [

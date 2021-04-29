@@ -41,18 +41,28 @@ class FacetedBrowse extends AbstractPlugin
 
         $qb = $em->createQueryBuilder();
         $qb->from('Omeka\Entity\Value', 'v')
-            ->andWhere('v.type = :type')
             ->andWhere($qb->expr()->in('v.resource', $ids))
             ->groupBy('value')
             ->orderBy('value_count', 'DESC')
             ->addOrderBy('value', 'ASC');
-        if ('res' === $queryType) {
-            $qb->select("CONCAT(vr.id, ' ', vr.title) value", 'COUNT(v) value_count')
-                ->join('v.valueResource', 'vr')
-                ->setParameter('type', 'resource');
-        } else {
-            $qb->select('v.value value', 'COUNT(v.value) value_count')
-                ->setParameter('type', 'literal');
+        switch ($queryType) {
+            case 'res':
+                $qb->select("CONCAT(vr.id, ' ', vr.title) value", 'COUNT(v) value_count')
+                    ->join('v.valueResource', 'vr')
+                    ->andWhere('v.type = :type')
+                    ->setParameter('type', 'resource');
+                break;
+            case 'ex':
+                $qb->select("CONCAT(p.id, ' ', vo.label, ': ', p.label) value", 'COUNT(v) value_count')
+                    ->join('v.property', 'p')
+                    ->join('p.vocabulary', 'vo');
+                break;
+            case 'eq':
+            case 'in':
+            default:
+                $qb->select('v.value value', 'COUNT(v.value) value_count')
+                    ->andWhere('v.type = :type')
+                    ->setParameter('type', 'literal');
         }
         if ($propertyId) {
             $qb->andWhere('v.property = :propertyId')

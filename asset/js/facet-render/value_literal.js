@@ -18,8 +18,10 @@ container.on('click', '.value-literal', function(e) {
         const facetData = thisFacet.data('facetData');
         FacetedBrowse.setFacetQuery(thisFacet.data('facetId'), '', false);
         thisFacet.find('.value-literal.selected').each(function() {
+            const property = $(this).data('propertyId');
+            const type = facetData.query_type;
             const text = $(this).data('value');
-            queries.push(`property[${index}][joiner]=and&property[${index}][property]=${facetData.property_id}&property[${index}][type]=${facetData.query_type}&property[${index}][text]=${encodeURIComponent(text)}`);
+            queries.push(`property[${index}][joiner]=and&property[${index}][property]=${property}&property[${index}][type]=${type}&property[${index}][text]=${encodeURIComponent(text)}`);
             index++;
         });
     });

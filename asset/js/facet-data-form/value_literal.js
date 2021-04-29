@@ -10,23 +10,20 @@ FacetedBrowse.registerFacetAddEditHandler('value_literal', function() {
     $('#value-literal-select-type').chosen({
         disable_search: true,
     });
+    if ('ex' === $('#value-literal-query-type').val()) {
+        $('#value-literal-property-id').closest('.field').hide();
+    }
 });
 FacetedBrowse.registerFacetSetHandler('value_literal', function() {
     const propertyId = $('#value-literal-property-id');
     const queryType = $('#value-literal-query-type');
     const selectType = $('#value-literal-select-type');
-    if (!queryType.val()) {
-        alert(Omeka.jsTranslate('A facet must have a query type.'));
-    } else if (!selectType.val()) {
-        alert(Omeka.jsTranslate('A facet must have a select type.'));
-    } else {
-        return {
-            property_id: propertyId.val(),
-            query_type: queryType.val(),
-            select_type: selectType.val(),
-            values: $('#value-literal-values').val()
-        };
-    }
+    return {
+        property_id: propertyId.val(),
+        query_type: queryType.val(),
+        select_type: selectType.val(),
+        values: $('#value-literal-values').val()
+    };
 });
 // Handle show all values.
 $(document).on('click', '#value-literal-show-all-values', function(e) {
@@ -53,6 +50,11 @@ $(document).on('click', '#value-literal-show-all-values', function(e) {
 $(document).on('change', '#value-literal-property-id, #value-literal-query-type', function(e) {
     $('#value-literal-show-all-values').prop('checked', false);
     $('#value-literal-all-values').empty();
+    if ('ex' === $('#value-literal-query-type').val()) {
+        $('#value-literal-property-id').closest('.field').hide();
+    } else {
+        $('#value-literal-property-id').closest('.field').show();
+    }
 });
 
 });
