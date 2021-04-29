@@ -172,11 +172,12 @@ class CategoryController extends AbstractActionController
     public function valueLiteralValuesAction()
     {
         $propertyId = $this->params()->fromQuery('property_id');
-        $query = $this->params()->fromQuery('query');
-        parse_str($query, $query);
-        $query['site_id'] = $this->currentSite()->id();
+        $queryType = $this->params()->fromQuery('query_type');
+        $categoryQuery = $this->params()->fromQuery('category_query');
+        parse_str($categoryQuery, $categoryQuery);
+        $categoryQuery['site_id'] = $this->currentSite()->id();
 
-        $values = $this->facetedBrowse()->getValueLiteralValues($propertyId, $query);
+        $values = $this->facetedBrowse()->getValueLiteralValues($propertyId, $queryType, $categoryQuery);
 
         $response = $this->getResponse();
         $responseHeaders = $response->getHeaders();

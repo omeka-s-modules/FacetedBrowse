@@ -38,17 +38,17 @@ class ValueLiteral implements FacetTypeInterface
         $propertyId->setAttributes([
             'id' => 'value-literal-property-id',
             'value' => $data['property_id'] ?? null,
-            'data-placeholder' => 'Select one…', // @translate
+            'data-placeholder' => '[Any property]', // @translate
         ]);
         // Query type
         $queryType = $this->formElements->get(LaminasElement\Select::class);
         $queryType->setName('query_type');
         $queryType->setOptions([
             'label' => 'Query type', // @translate
-            'info' => 'Select the query type. For "is exactly" facets, the value must be an exact match to the property value. For "contains" facets, the value may match any part of the property value.', // @translate
             'value_options' => [
                 'eq' => 'Is exactly', // @translate
                 'in' => 'Contains', // @translate
+                'res' => 'Is resource with ID', // @translate
             ],
         ]);
         $queryType->setAttributes([
@@ -60,7 +60,7 @@ class ValueLiteral implements FacetTypeInterface
         $selectType->setName('select_type');
         $selectType->setOptions([
             'label' => 'Select type',
-            'info' => 'Select the select type. For "single" facets, users may choose only one value at a time. For "multiple" facets, users may choose any number of values at a time.', // @translate
+            'info' => 'Select the select type. For the "single" select type, users may choose only one value at a time. For the "multiple" select type, users may choose any number of values at a time.', // @translate
             'value_options' => [
                 'single' => 'Single',
                 'multiple' => 'Multiple',
@@ -75,7 +75,7 @@ class ValueLiteral implements FacetTypeInterface
         $values->setName('values');
         $values->setOptions([
             'label' => 'Values', // @translate
-            'info' => 'Enter the values, separated by new lines.', // @translate
+            'info' => 'Enter one value per line. For the "Is exactly" query type, enter a value that is an exact match to the property value. For the "Contains" query type, enter a value that matches any part of the property value. For the "Is resource with ID" query type, enter the resource ID followed by any value (usually the resource title) separated by a single space.', // @translate
         ]);
         $values->setAttributes([
             'id' => 'value-literal-values',
@@ -93,7 +93,6 @@ class ValueLiteral implements FacetTypeInterface
 
     public function prepareFacet(PhpRenderer $view) : void
     {
-        $view->headLink()->appendStylesheet($view->assetUrl('css/facet-render/value_literal.css', 'FacetedBrowse'));
         $view->headScript()->appendFile($view->assetUrl('js/facet-render/value_literal.js', 'FacetedBrowse'));
     }
 
@@ -103,6 +102,17 @@ class ValueLiteral implements FacetTypeInterface
         $values = explode("\n", $values);
         $values = array_map('trim', $values);
         $values = array_unique($values);
+        if ('res' == $facet->data('query_type')) {
+            $resValues = [];
+            foreach ($values as $value) {
+                if (preg_match('/^(\d+) (.+)/', $value, $matches)) {
+                    $resValues[$matches[1]] = $matches[2];
+                }
+            }
+            $values = $resValues;
+        } else {
+            $values = array_combine($values, $values);
+        }
 
         return $view->partial('common/faceted-browse/facet-render/value-literal', [
             'facet' => $facet,

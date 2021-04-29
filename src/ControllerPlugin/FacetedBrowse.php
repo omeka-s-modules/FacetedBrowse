@@ -27,32 +27,38 @@ class FacetedBrowse extends AbstractPlugin
      * Get all available values and their counts of a property.
      *
      * @param int $propertyId
-     * @param arry $query
+     * @param string $queryType
+     * @param array $categoryQuery
      * @return array
      */
-    public function getValueLiteralValues($propertyId, array $query)
+    public function getValueLiteralValues($propertyId, $queryType, array $categoryQuery)
     {
         $api = $this->services->get('Omeka\ApiManager');
         $em = $this->services->get('Omeka\EntityManager');
 
         // Get the IDs of all items that satisfy the category query.
-        $ids = $api->search('items', $query, ['returnScalar' => 'id'])->getContent();
+        $ids = $api->search('items', $categoryQuery, ['returnScalar' => 'id'])->getContent();
 
-        // Get all unique literal values of the specified property of the
-        // specified items.
-        $dql = '
-        SELECT v.value value, COUNT(v.value) value_count
-        FROM Omeka\Entity\Value v
-        WHERE v.type = :type
-        AND v.property = :propertyId
-        AND v.resource IN (:ids)
-        GROUP BY value
-        ORDER BY value_count DESC, value ASC';
-        $query = $em->createQuery($dql)
-            ->setParameter('type', 'literal')
-            ->setParameter('propertyId', $propertyId)
-            ->setParameter('ids', $ids);
-        return $query->getResult();
+        $qb = $em->createQueryBuilder();
+        $qb->from('Omeka\Entity\Value', 'v')
+            ->andWhere('v.type = :type')
+            ->andWhere($qb->expr()->in('v.resource', $ids))
+            ->groupBy('value')
+            ->orderBy('value_count', 'DESC')
+            ->addOrderBy('value', 'ASC');
+        if ('res' === $queryType) {
+            $qb->select("CONCAT(vr.id, ' ', vr.title) value", 'COUNT(v) value_count')
+                ->join('v.valueResource', 'vr')
+                ->setParameter('type', 'resource');
+        } else {
+            $qb->select('v.value value', 'COUNT(v.value) value_count')
+                ->setParameter('type', 'literal');
+        }
+        if ($propertyId) {
+            $qb->andWhere('v.property = :propertyId')
+                ->setParameter('propertyId', $propertyId);
+        }
+        return $qb->getQuery()->getResult();
     }
 
     /**

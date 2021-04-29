@@ -1,12 +1,12 @@
 <ul>
-    <?php foreach ($values as $value): ?>
+    <?php foreach ($values as $key => $value): ?>
     <li>
         <label>
             <input
                 class="value-literal"
                 type="<?php echo ('multiple' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
                 name="<?php echo sprintf('value_literal_%s', $facet->id()); ?>"
-                data-value="<?php echo $this->escapeHtml($value); ?>">
+                data-value="<?php echo $this->escapeHtml($key); ?>">
                 <?php echo $value; ?>
         </label>
     </li>

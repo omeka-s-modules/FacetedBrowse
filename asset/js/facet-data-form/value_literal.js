@@ -15,9 +15,7 @@ FacetedBrowse.registerFacetSetHandler('value_literal', function() {
     const propertyId = $('#value-literal-property-id');
     const queryType = $('#value-literal-query-type');
     const selectType = $('#value-literal-select-type');
-    if (!propertyId.val()) {
-        alert(Omeka.jsTranslate('A facet must have a property.'));
-    } else if (!queryType.val()) {
+    if (!queryType.val()) {
         alert(Omeka.jsTranslate('A facet must have a query type.'));
     } else if (!selectType.val()) {
         alert(Omeka.jsTranslate('A facet must have a select type.'));
@@ -36,7 +34,8 @@ $(document).on('click', '#value-literal-show-all-values', function(e) {
     if (this.checked) {
         $.get(allValues.data('valuesUrl'), {
             property_id: $('#value-literal-property-id').val(),
-            query: $('#category-query').val()
+            query_type: $('#value-literal-query-type').val(),
+            category_query: $('#category-query').val()
         }, function(data) {
             if (data.length) {
                 data.forEach(value => {
@@ -50,8 +49,8 @@ $(document).on('click', '#value-literal-show-all-values', function(e) {
         allValues.empty();
     }
 });
-// Handle property ID select.
-$(document).on('change', '#value-literal-property-id', function(e) {
+// Clear all values during certain interactions.
+$(document).on('change', '#value-literal-property-id, #value-literal-query-type', function(e) {
     $('#value-literal-show-all-values').prop('checked', false);
     $('#value-literal-all-values').empty();
 });

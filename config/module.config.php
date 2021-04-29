@@ -10,6 +10,7 @@ return [
             'resource_class' => Service\FacetType\ResourceClassFactory::class,
             //~ 'resource_template' => Service\FacetType\ResourceTemplate::class,
             //~ 'item_set' => Service\FacetType\ItemSet::class,
+            //~ 'property' => Service\FacetType\Property::class,
         ],
     ],
     'translator' => [
