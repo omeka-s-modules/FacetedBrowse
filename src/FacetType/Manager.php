@@ -29,7 +29,14 @@ class Manager extends AbstractPluginManager
     {
         $valueOptions = [];
         foreach ($this->getRegisteredNames() as $facetTypeName) {
-            $valueOptions[$facetTypeName] = $this->get($facetTypeName)->getLabel();
+            $facetType = $this->get($facetTypeName);
+            $valueOptions[] = [
+                'value' => $facetTypeName,
+                'label' => $facetType->getLabel(),
+                'attributes' => [
+                    'data-max-facets' => $facetType->getMaxFacets(),
+                ],
+            ];
         }
         return $valueOptions;
     }

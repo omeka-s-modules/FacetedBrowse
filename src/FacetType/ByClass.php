@@ -21,6 +21,11 @@ class ByClass implements FacetTypeInterface
         return 'By class'; // @translate
     }
 
+    public function getMaxFacets() : ?int
+    {
+        return null;
+    }
+
     public function prepareDataForm(PhpRenderer $view) : void
     {
         $view->headScript()->appendFile($view->assetUrl('js/facet-data-form/by-class.js', 'FacetedBrowse'));

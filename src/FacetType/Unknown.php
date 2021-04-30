@@ -22,6 +22,11 @@ class Unknown implements FacetTypeInterface
         return '[Unknown]'; // @translate
     }
 
+    public function getMaxFacets() : ?int
+    {
+        return null;
+    }
+
     public function prepareDataForm(PhpRenderer $view) : void
     {
     }

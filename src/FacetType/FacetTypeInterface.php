@@ -14,6 +14,13 @@ interface FacetTypeInterface
     public function getLabel() : string;
 
     /**
+     * Get the maximum amount of this facet type for one category.
+     *
+     * @return ?int
+     */
+    public function getMaxFacets() : ?int;
+
+    /**
      * Prepare the data form of this facet type.
      *
      * @param PhpRenderer $view

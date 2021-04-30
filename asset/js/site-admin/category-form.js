@@ -7,6 +7,30 @@ const facetAddButton = $('#facet-add-button');
 const facetFormContainer = $('#facet-form-container');
 let facetSelected = null;
 
+/**
+ * Update facet type select.
+ *
+ * This ensures that there are no more facets of a type set to this category
+ * than is allowed. It does this by disabling facet types that are equal to or
+ * exceed the maximum that is set by the facet type.
+ */
+const updateFacetTypeSelect = function() {
+    facetTypeSelect.find('option').each(function() {
+        const thisOption = $(this);
+        const facetType = thisOption.val();
+        const maxFacets = thisOption.data('maxFacets');
+        if (maxFacets) {
+            const numFacets = $('.facet').find(`input.facet-type[value="${facetType}"]`).length;
+            if (numFacets >= maxFacets) {
+                thisOption.prop('disabled', true);
+            }
+        }
+        facetTypeSelect.val('');
+    });
+};
+
+updateFacetTypeSelect();
+
 // Enable facet sorting.
 new Sortable(facets[0], {draggable: '.facet', handle: '.sortable-handle'});
 
@@ -86,6 +110,7 @@ facetFormContainer.on('click', '#facet-set-button', function(e) {
         facetSelected = undefined;
         Omeka.closeSidebar(facetSidebar);
         facetFormContainer.empty();
+        updateFacetTypeSelect();
     } else {
         // Handle an add.
         $.post(facets.data('facetRowUrl'), {
@@ -98,6 +123,7 @@ facetFormContainer.on('click', '#facet-set-button', function(e) {
             facets.append(facet);
             Omeka.closeSidebar(facetSidebar);
             facetFormContainer.empty();
+            updateFacetTypeSelect();
         });
     }
 });
