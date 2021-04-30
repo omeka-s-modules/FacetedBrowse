@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Koray Löker <loker@radiobrecht.org>, 2021
+# Adriana Hernández, 2021
 # 
 #, fuzzy
 msgid ""
@@ -13,13 +13,13 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-29 21:15-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
-"Last-Translator: Koray Löker <loker@radiobrecht.org>, 2021\n"
-"Language-Team: Turkish (Turkey) (https://www.transifex.com/omeka/teams/14184/tr_TR/)\n"
+"Last-Translator: Adriana Hernández, 2021\n"
+"Language-Team: Spanish (https://www.transifex.com/omeka/teams/14184/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/FacetType/ByValue.php:79
 msgid ""
@@ -39,16 +39,16 @@ msgstr ""
 
 #: view/common/faceted-browse/facet-data-form/resource-class.phtml:2
 msgid "Show all available classes."
-msgstr ""
+msgstr "Mostrar todas las clases disponibles."
 
 #: view/common/faceted-browse/navigation-link-form/faceted-browse.phtml:9
 msgid "Select a page"
-msgstr "Sayfa seç"
+msgstr "Selecciona una página"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:5
 #: view/faceted-browse/site-admin/page/form.phtml:38
 msgid "Categories"
-msgstr "Kategoriler"
+msgstr "Categorías"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:5
 #: view/faceted-browse/site-admin/category/form.phtml:16
@@ -57,204 +57,208 @@ msgstr "Kategoriler"
 #: view/faceted-browse/site-admin/page/form.phtml:14
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Faceted Browse"
-msgstr ""
+msgstr "Exploración facetada"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:10
 msgid "Add new category"
-msgstr "Yeni kategori ekle"
+msgstr "Añadir una nueva categoría"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:19
 #: view/faceted-browse/site-admin/page/browse.phtml:19
 msgid "Date created"
-msgstr ""
+msgstr "Fecha de creación"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:34
 msgid "Category"
-msgstr "Kategori"
+msgstr "Categoría"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:74
 #, php-format
 msgid "No categories found. %s"
-msgstr "Kategori bulunamadı. 1 %s"
+msgstr "No se han encontrado categorías. %s"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:75
 msgid "Add a new category."
-msgstr "Yeni kategori ekle."
+msgstr "Añadir una nueva categoría."
 
 #: view/faceted-browse/site-admin/category/browse.phtml:78
 msgid "No categories found."
-msgstr "Kategori bulunamadı."
+msgstr "No se han encontrado categorías."
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:6
 msgid "Facet type"
-msgstr ""
+msgstr "Tipo de faceta"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:11
 msgid "Edit facet"
-msgstr ""
+msgstr "Editar faceta"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:15
 msgid "Remove facet"
-msgstr ""
+msgstr "Eliminar faceta"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:19
 msgid "Restore facet"
-msgstr ""
+msgstr "Restaurar faceta"
 
 #: view/faceted-browse/site-admin/category/form.phtml:16
 msgid "Edit Category"
-msgstr "Kategoriyi Düzenle"
+msgstr "Editar Categoría"
 
 #: view/faceted-browse/site-admin/category/form.phtml:18
 msgid "Add Category"
-msgstr "Kategori Ekle"
+msgstr "Añadir Categoría"
 
 #: view/faceted-browse/site-admin/category/form.phtml:30
 #: view/faceted-browse/site-admin/page/form.phtml:28
 msgid "Save and&hellip;"
-msgstr ""
+msgstr "Guardar y&hellip;"
 
 #: view/faceted-browse/site-admin/category/form.phtml:32
 msgid "Return to categories"
-msgstr ""
+msgstr "Regresar a categorías"
 
 #: view/faceted-browse/site-admin/category/form.phtml:33
 msgid "Stay on this category"
-msgstr ""
+msgstr "Permanecer en esta categoría"
 
 #: view/faceted-browse/site-admin/category/form.phtml:41
 msgid "Facets"
-msgstr ""
+msgstr "Facetas"
 
 #: view/faceted-browse/site-admin/category/form.phtml:60
 msgid "Configure facet"
-msgstr ""
+msgstr "Configurar faceta"
 
 #: view/faceted-browse/site-admin/page/browse.phtml:74
 #, php-format
 msgid "No pages found. %s"
-msgstr ""
+msgstr "No se han encontrado páginas. %s"
 
 #: view/faceted-browse/site-admin/page/browse.phtml:75
 msgid "Add a new page."
-msgstr ""
+msgstr "Añadir una nueva página."
 
 #: view/faceted-browse/site-admin/page/browse.phtml:78
 msgid "No pages found."
-msgstr ""
+msgstr "No se han encontrado páginas."
 
 #: view/faceted-browse/site-admin/page/category-row.phtml:10
 msgid "Remove category"
-msgstr ""
+msgstr "Eliminar categoría"
 
 #: view/faceted-browse/site-admin/page/category-row.phtml:14
 msgid "Restore category"
-msgstr ""
+msgstr "Restaurar categoría"
 
 #: view/faceted-browse/site-admin/page/form.phtml:14
 msgid "Edit Page"
-msgstr "Sayfayı Düzenle"
+msgstr "Editar Página"
 
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Add Page"
-msgstr "Sayfa Ekle"
+msgstr "Añadir Página"
 
 #: view/faceted-browse/site-admin/page/form.phtml:30
 msgid "Return to pages"
-msgstr ""
+msgstr "Regresar a páginas"
 
 #: view/faceted-browse/site-admin/page/form.phtml:31
 msgid "Stay on this page"
-msgstr ""
+msgstr "Permanecer en esta página"
 
 #: view/faceted-browse/site-admin/page/form.phtml:53
 msgid "Add categories"
-msgstr ""
+msgstr "Añadir categorías"
 
 #: view/faceted-browse/site/page/categories.phtml:16
 msgid "There are no categories to browse."
-msgstr ""
+msgstr "No hay categorías para mostrar."
 
 #: view/faceted-browse/site/page/facets.phtml:1
 msgid "Back"
-msgstr ""
+msgstr "Regresar"
 
 #: src/Form/FacetForm.php:22
 msgid "Facet name"
-msgstr ""
+msgstr "Nombre de faceta"
 
 #: src/Form/PageForm.php:17
 msgid "Enter the title of this page."
-msgstr ""
+msgstr "Ingrese el título de esta página."
 
 #: src/Form/CategoryForm.php:21
 msgid ""
 "Enter the name of this category. A category is a logical grouping of items "
 "that can be described using faceted classification."
 msgstr ""
+"Ingrese el nombre de esta categoría. Una categoría es una agrupación lógica "
+"de items que pueden ser descritos usando clasificación por facetas."
 
 #: src/Form/CategoryForm.php:32
 msgid "Search query"
-msgstr ""
+msgstr "Buscar consulta"
 
 #: src/Form/CategoryForm.php:33
 msgid ""
 "Configure the logical grouping of items that make up this category. No query"
 " means all site resources."
 msgstr ""
+"Configurar la agrupación lógica de items que constituyen esta categoría. La "
+"consulta vacía devuelve todos los recursos del sitio."
 
 #: src/Form/CategoryForm.php:47
 msgid "Add a facet"
-msgstr ""
+msgstr "Añadir una faceta"
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:48
 msgid "A site must have an ID"
-msgstr ""
+msgstr "Un sitio debe tener un ID"
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:114
 msgid "A page must have a site"
-msgstr ""
+msgstr "Una página debe tener un sitio"
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:117
 msgid "A page must have a title"
-msgstr ""
+msgstr "Una página debe tener un título"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:105
 msgid "A category must have a site"
-msgstr ""
+msgstr "Una categoría debe tener un sitio"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:108
 msgid "A category must have a name"
-msgstr ""
+msgstr "Una categoría debe tener un nombre"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:111
 msgid "A category must have a query"
-msgstr ""
+msgstr "Una categoría debe tener una consulta"
 
 #: src/Controller/SiteAdmin/CategoryController.php:49
 msgid "Successfully added the category."
-msgstr ""
+msgstr "La categoría ha sido añadida correctamente."
 
 #: src/Controller/SiteAdmin/CategoryController.php:86
 msgid "Successfully edited the category."
-msgstr ""
+msgstr "La categoría ha sido editada correctamente."
 
 #: src/Controller/SiteAdmin/CategoryController.php:116
 msgid "Successfully deleted the category."
-msgstr ""
+msgstr "La categoría ha sido eliminada correctamente."
 
 #: src/Controller/SiteAdmin/PageController.php:46
 msgid "Successfully added the page."
-msgstr ""
+msgstr "La página ha sido añadida correctamente."
 
 #: src/Controller/SiteAdmin/PageController.php:84
 msgid "Successfully edited the page."
-msgstr ""
+msgstr "La página ha sido editada correctamente."
 
 #: src/Controller/SiteAdmin/PageController.php:119
 msgid "Successfully deleted the page."
-msgstr ""
+msgstr "La página ha sido eliminada correctamente."
 
 #: src/FacetType/ByValue.php:21
 msgid "By value"
@@ -262,11 +266,11 @@ msgstr ""
 
 #: src/FacetType/ByValue.php:49
 msgid "Is exactly"
-msgstr ""
+msgstr "Es exactamente"
 
 #: src/FacetType/ByValue.php:50
 msgid "Contains"
-msgstr ""
+msgstr "Contiene"
 
 #: src/FacetType/ByValue.php:51
 msgid "Is resource with ID"
@@ -285,40 +289,40 @@ msgstr ""
 
 #: src/FacetType/ResourceClass.php:41
 msgid "Select classes…"
-msgstr ""
+msgstr "Seleccionar las clases…"
 
 #: src/FacetType/Unknown.php:22
 msgid "[Unknown]"
-msgstr ""
+msgstr "[Desconocido]"
 
 #: src/FacetType/Unknown.php:34
 msgid "Unknown facet type"
-msgstr ""
+msgstr "Tipo de faceta desconocida"
 
 #: src/FacetType/Unknown.php:44
 msgid "Unknown facet data"
-msgstr ""
+msgstr "Datos de faceta desconocida"
 
 #: src/Site/NavigationLink/FacetedBrowse.php:14
 msgid "Faceted browse"
-msgstr ""
+msgstr "Exploración facetada"
 
 #: config/module.config.php:81
 msgid "A facet must have a name."
-msgstr ""
+msgstr "Una faceta debe tener un nombre."
 
 #: config/module.config.php:82
 msgid "A facet must have a query type."
-msgstr ""
+msgstr "Una faceta debe tener un tipo de consulta."
 
 #: config/module.config.php:83
 msgid "A facet must have a select type."
-msgstr ""
+msgstr "Una faceta debe tener un tipo de selección."
 
 #: config/module.config.php:84
 msgid "There are no available values."
-msgstr ""
+msgstr "No hay valores disponibles."
 
 #: config/module.config.php:85
 msgid "There are no available classes."
-msgstr ""
+msgstr "No hay clases disponibles."

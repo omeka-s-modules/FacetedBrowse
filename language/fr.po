@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-28 17:00-0400\n"
+"POT-Creation-Date: 2021-04-29 21:15-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Pols12 <poltron54@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/omeka/teams/14184/fr/)\n"
@@ -21,13 +21,25 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: src/FacetType/ByValue.php:79
+msgid ""
+"\n"
+"            <p>Enter the values, separated by new lines. The format of each value depends on the query type:</p>\n"
+"            <ul>\n"
+"                <li>\"Is exactly\": enter a value that is an exact match to the property value.</li>\n"
+"                <li>\"Contains\": enter a value that matches any part of the property value.</li>\n"
+"                <li>\"Is resource with ID\": enter the resource ID followed by any value (usually the resource title), separated by a single space.</li>\n"
+"                <li>\"Has any value\": enter the property ID followed by any value (usually the property label), separated by a single space.</li>\n"
+"            </ul>"
+msgstr ""
+
+#: view/common/faceted-browse/facet-data-form/by-value.phtml:5
+msgid "Show all available values."
+msgstr ""
+
 #: view/common/faceted-browse/facet-data-form/resource-class.phtml:2
 msgid "Show all available classes."
 msgstr "Voir toutes les classes disponibles."
-
-#: view/common/faceted-browse/facet-data-form/value-literal.phtml:5
-msgid "Show all available values of the selected property."
-msgstr "Voir toutes les valeurs disponibles de la propriété sélectionnée."
 
 #: view/common/faceted-browse/navigation-link-form/faceted-browse.phtml:9
 msgid "Select a page"
@@ -250,51 +262,36 @@ msgstr "La page a bien été modifiée."
 msgid "Successfully deleted the page."
 msgstr "La page a bien été supprimée."
 
-#: src/FacetType/ResourceClass.php:41
-msgid "Select classes…"
-msgstr "Choisir une classe…"
-
-#: src/FacetType/ValueLiteral.php:21
-msgid "Value"
+#: src/FacetType/ByValue.php:21
+msgid "By value"
 msgstr ""
 
-#: src/FacetType/ValueLiteral.php:41
-msgid "Select one…"
-msgstr "En choisir une…"
-
-#: src/FacetType/ValueLiteral.php:48
-msgid ""
-"Select the query type. For \"is exactly\" facets, the value must be an exact"
-" match to the property value. For \"contains\" facets, the value may match "
-"any part of the property value."
-msgstr ""
-"Choisissez un type de requête. Pour les facettes « est exactement », la "
-"valeur doit correspondre exactement à la valeur de la propriété. Pour les "
-"facettes « contient », la valeur peut correspondre à n’importe quelle partie"
-" de la valeur de la propriété."
-
-#: src/FacetType/ValueLiteral.php:50
+#: src/FacetType/ByValue.php:49
 msgid "Is exactly"
 msgstr "Est exactement"
 
-#: src/FacetType/ValueLiteral.php:51
+#: src/FacetType/ByValue.php:50
 msgid "Contains"
 msgstr "Contient"
 
-#: src/FacetType/ValueLiteral.php:63
-msgid ""
-"Select the select type. For \"single\" facets, users may choose only one "
-"value at a time. For \"multiple\" facets, users may choose any number of "
-"values at a time."
+#: src/FacetType/ByValue.php:51
+msgid "Is resource with ID"
 msgstr ""
-"Choisissez le type de choix. Pour les facettes « uniques », les utilisateurs"
-" ne peuvent choisir qu’une valeur à la fois. Pour les facettes « multiples "
-"», les utilisateurs peuvent choisir un nombre indéfini de valeurs en même "
-"temps."
 
-#: src/FacetType/ValueLiteral.php:78
-msgid "Enter the values, separated by new lines."
-msgstr "Entrez les valeurs, séparées par des retours à la ligne."
+#: src/FacetType/ByValue.php:52
+msgid "Has any value"
+msgstr ""
+
+#: src/FacetType/ByValue.php:64
+msgid ""
+"Select the select type. For the \"single\" select type, users may choose "
+"only one value at a time. For the \"multiple\" select type, users may choose"
+" any number of values at a time."
+msgstr ""
+
+#: src/FacetType/ResourceClass.php:41
+msgid "Select classes…"
+msgstr "Choisir une classe…"
 
 #: src/FacetType/Unknown.php:22
 msgid "[Unknown]"
@@ -312,22 +309,22 @@ msgstr "Données de la facette inconnues"
 msgid "Faceted browse"
 msgstr "Navigation par facettes"
 
-#: config/module.config.php:80
+#: config/module.config.php:81
 msgid "A facet must have a name."
 msgstr "Une facette doit avoir un nom."
 
-#: config/module.config.php:81
+#: config/module.config.php:82
 msgid "A facet must have a query type."
 msgstr "Une facette doit avoir un type de requête."
 
-#: config/module.config.php:82
+#: config/module.config.php:83
 msgid "A facet must have a select type."
 msgstr "Une facette doit avoir un type de choix."
 
-#: config/module.config.php:83
+#: config/module.config.php:84
 msgid "There are no available values."
 msgstr "Aucune valeur n’est disponible."
 
-#: config/module.config.php:84
+#: config/module.config.php:85
 msgid "There are no available classes."
 msgstr "Aucune classe n’est disponible."
