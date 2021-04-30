@@ -1,5 +1,3 @@
-$(document).ready(function() {
-
 FacetedBrowse.registerFacetAddEditHandler('by_value', function() {
     $('#by-value-property-id').chosen({
         allow_single_deselect: true,
@@ -25,6 +23,9 @@ FacetedBrowse.registerFacetSetHandler('by_value', function() {
         values: $('#by-value-values').val()
     };
 });
+
+$(document).ready(function() {
+
 // Handle show all values.
 $(document).on('click', '#by-value-show-all-values', function(e) {
     const allValues = $('#by-value-all-values');

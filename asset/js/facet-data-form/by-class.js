@@ -1,5 +1,3 @@
-$(document).ready(function() {
-
 FacetedBrowse.registerFacetAddEditHandler('by_class', function() {
     $('#by-class-class-ids').chosen({
         include_group_label_in_selected: true
@@ -10,6 +8,9 @@ FacetedBrowse.registerFacetSetHandler('by_class', function() {
         class_ids: $('#by-class-class-ids').val()
     };
 });
+
+$(document).ready(function() {
+
 // Handle show all values.
 $(document).on('click', '#by-class-show-all-classes', function(e) {
     const allClasses = $('#by-class-all-classes');
