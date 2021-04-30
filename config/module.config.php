@@ -7,10 +7,9 @@ return [
     'faceted_browse_facet_types' => [
         'factories' => [
             'by_value' => Service\FacetType\ByValueFactory::class,
-            'resource_class' => Service\FacetType\ResourceClassFactory::class,
-            //~ 'resource_template' => Service\FacetType\ResourceTemplate::class,
-            //~ 'item_set' => Service\FacetType\ItemSet::class,
-            //~ 'property' => Service\FacetType\Property::class,
+            'by_class' => Service\FacetType\ByClassFactory::class,
+            //~ 'by_template' => Service\FacetType\ByTemplate::class,
+            //~ 'by_item_set' => Service\FacetType\ByItemSet::class,
         ],
     ],
     'translator' => [

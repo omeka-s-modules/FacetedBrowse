@@ -1,18 +1,18 @@
 $(document).ready(function() {
 
-FacetedBrowse.registerFacetAddEditHandler('resource_class', function() {
-    $('#resource-class-class-ids').chosen({
+FacetedBrowse.registerFacetAddEditHandler('by_class', function() {
+    $('#by-class-class-ids').chosen({
         include_group_label_in_selected: true
     });
 });
-FacetedBrowse.registerFacetSetHandler('resource_class', function() {
+FacetedBrowse.registerFacetSetHandler('by_class', function() {
     return {
-        class_ids: $('#resource-class-class-ids').val()
+        class_ids: $('#by-class-class-ids').val()
     };
 });
 // Handle show all values.
-$(document).on('click', '#resource-class-show-all-classes', function(e) {
-    const allClasses = $('#resource-class-all-classes');
+$(document).on('click', '#by-class-show-all-classes', function(e) {
+    const allClasses = $('#by-class-all-classes');
     if (this.checked) {
         $.get(allClasses.data('classesUrl'), {
             query: $('#category-query').val()

@@ -186,13 +186,13 @@ class CategoryController extends AbstractActionController
         return $response;
     }
 
-    public function resourceClassClassesAction()
+    public function byClassClassesAction()
     {
         $query = $this->params()->fromQuery('query');
         parse_str($query, $query);
         $query['site_id'] = $this->currentSite()->id();
 
-        $classes = $this->facetedBrowse()->getResourceClassClasses($query);
+        $classes = $this->facetedBrowse()->getByClassClasses($query);
 
         $response = $this->getResponse();
         $responseHeaders = $response->getHeaders();

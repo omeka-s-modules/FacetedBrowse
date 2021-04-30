@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-29 21:15-0400\n"
+"POT-Creation-Date: 2021-04-29 21:38-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Giorgio Comai <g@giorgiocomai.eu>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/omeka/teams/14184/it/)\n"
@@ -33,13 +33,13 @@ msgid ""
 "            </ul>"
 msgstr ""
 
+#: view/common/faceted-browse/facet-data-form/by-class.phtml:2
+msgid "Show all available classes."
+msgstr "Mostra tutte le classi disponibili."
+
 #: view/common/faceted-browse/facet-data-form/by-value.phtml:5
 msgid "Show all available values."
 msgstr ""
-
-#: view/common/faceted-browse/facet-data-form/resource-class.phtml:2
-msgid "Show all available classes."
-msgstr "Mostra tutte le classi disponibili."
 
 #: view/common/faceted-browse/navigation-link-form/faceted-browse.phtml:9
 msgid "Select a page"
@@ -288,7 +288,11 @@ msgid ""
 " any number of values at a time."
 msgstr ""
 
-#: src/FacetType/ResourceClass.php:41
+#: src/FacetType/ByClass.php:21
+msgid "By class"
+msgstr ""
+
+#: src/FacetType/ByClass.php:41
 msgid "Select classes…"
 msgstr "Seleziona classi..."
 
@@ -308,22 +312,22 @@ msgstr "Dati di faccetta sconosciuti"
 msgid "Faceted browse"
 msgstr "Navigazione a faccette"
 
-#: config/module.config.php:81
+#: config/module.config.php:80
 msgid "A facet must have a name."
 msgstr "Una faccetta deve avere un nome."
 
-#: config/module.config.php:82
+#: config/module.config.php:81
 msgid "A facet must have a query type."
 msgstr "Una faccetta deve avere un tipo di query."
 
-#: config/module.config.php:83
+#: config/module.config.php:82
 msgid "A facet must have a select type."
 msgstr "Una faccetta deve aver selezionato un tipo."
 
-#: config/module.config.php:84
+#: config/module.config.php:83
 msgid "There are no available values."
 msgstr "Non ci sono valori disponibili."
 
-#: config/module.config.php:85
+#: config/module.config.php:84
 msgid "There are no available classes."
 msgstr "Non ci sono classi disponibili."

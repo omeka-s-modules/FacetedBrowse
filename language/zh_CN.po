@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-29 21:15-0400\n"
+"POT-Creation-Date: 2021-04-29 21:38-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Hong Zhang <zhangh@unlv.nevada.edu>, 2021\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/omeka/teams/14184/zh_CN/)\n"
@@ -33,13 +33,13 @@ msgid ""
 "            </ul>"
 msgstr ""
 
+#: view/common/faceted-browse/facet-data-form/by-class.phtml:2
+msgid "Show all available classes."
+msgstr "显示所有可用类。"
+
 #: view/common/faceted-browse/facet-data-form/by-value.phtml:5
 msgid "Show all available values."
 msgstr ""
-
-#: view/common/faceted-browse/facet-data-form/resource-class.phtml:2
-msgid "Show all available classes."
-msgstr "显示所有可用类。"
 
 #: view/common/faceted-browse/navigation-link-form/faceted-browse.phtml:9
 msgid "Select a page"
@@ -283,7 +283,11 @@ msgid ""
 " any number of values at a time."
 msgstr ""
 
-#: src/FacetType/ResourceClass.php:41
+#: src/FacetType/ByClass.php:21
+msgid "By class"
+msgstr ""
+
+#: src/FacetType/ByClass.php:41
 msgid "Select classes…"
 msgstr "选择类 ......"
 
@@ -303,22 +307,22 @@ msgstr "未知分面数据"
 msgid "Faceted browse"
 msgstr "分面浏览"
 
-#: config/module.config.php:81
+#: config/module.config.php:80
 msgid "A facet must have a name."
 msgstr "分面必须有一个名字。"
 
-#: config/module.config.php:82
+#: config/module.config.php:81
 msgid "A facet must have a query type."
 msgstr "分面必须有一个查询类型。"
 
-#: config/module.config.php:83
+#: config/module.config.php:82
 msgid "A facet must have a select type."
 msgstr "分面必须有一个选择类型。"
 
-#: config/module.config.php:84
+#: config/module.config.php:83
 msgid "There are no available values."
 msgstr "没有可用值。"
 
-#: config/module.config.php:85
+#: config/module.config.php:84
 msgid "There are no available classes."
 msgstr "没有可用类。"

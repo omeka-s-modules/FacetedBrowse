@@ -77,7 +77,7 @@ class FacetedBrowse extends AbstractPlugin
      * @param arry $query
      * @return array
      */
-    public function getResourceClassClasses(array $query)
+    public function getByClassClasses(array $query)
     {
         $api = $this->services->get('Omeka\ApiManager');
         $em = $this->services->get('Omeka\EntityManager');
