@@ -1,0 +1,3 @@
+<?php echo $this->formRow($elementItemSetIds); ?>
+<p><input type="checkbox" id="by-item-set-show-all-item-sets"> <?php echo $this->translate('Show all available item sets.'); ?></p>
+<table id="by-item-set-all-item-sets" data-item-sets-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'by-item-set-item-sets'], true)) ?>"></table>

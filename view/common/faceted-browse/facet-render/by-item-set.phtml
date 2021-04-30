@@ -1,0 +1,14 @@
+<ul>
+    <?php foreach ($itemSets as $itemSet): ?>
+    <li>
+        <label>
+            <input
+                class="by-item-set"
+                type="radio"
+                name="<?php echo sprintf('by_item_set_%s', $facet->id()); ?>"
+                data-item-set-id="<?php echo $this->escapeHtml($itemSet->id()); ?>">
+                <?php echo $itemSet->title(); ?>
+        </label>
+    </li>
+    <?php endforeach; ?>
+</ul>

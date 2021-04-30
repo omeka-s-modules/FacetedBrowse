@@ -215,4 +215,19 @@ class CategoryController extends AbstractActionController
         $response->setContent(json_encode($templates));
         return $response;
     }
+
+    public function byItemSetItemSetsAction()
+    {
+        $query = $this->params()->fromQuery('query');
+        parse_str($query, $query);
+        $query['site_id'] = $this->currentSite()->id();
+
+        $itemSets = $this->facetedBrowse()->getByItemSetItemSets($query);
+
+        $response = $this->getResponse();
+        $responseHeaders = $response->getHeaders();
+        $responseHeaders->addHeaderLine('Content-Type: application/json');
+        $response->setContent(json_encode($itemSets));
+        return $response;
+    }
 }

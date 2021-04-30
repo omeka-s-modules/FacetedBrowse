@@ -123,4 +123,24 @@ class FacetedBrowse extends AbstractPlugin
             ->setParameter('itemIds', $itemIds);
         return $query->getResult();
     }
+
+    public function getByItemSetItemSets(array $query)
+    {
+        $api = $this->services->get('Omeka\ApiManager');
+        $em = $this->services->get('Omeka\EntityManager');
+
+        // Get the IDs of all items that satisfy the category query.
+        $itemIds = $api->search('items', $query, ['returnScalar' => 'id'])->getContent();
+
+        $dql = '
+        SELECT iset.title label, COUNT(i.id) item_count
+        FROM Omeka\Entity\Item i
+        JOIN i.itemSets iset
+        WHERE i.id IN (:itemIds)
+        GROUP BY iset.id
+        ORDER BY item_count DESC';
+        $query = $em->createQuery($dql)
+            ->setParameter('itemIds', $itemIds);
+        return $query->getResult();
+    }
 }
