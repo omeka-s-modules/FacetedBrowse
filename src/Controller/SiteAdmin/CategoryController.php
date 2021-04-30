@@ -171,63 +171,52 @@ class CategoryController extends AbstractActionController
 
     public function byValueValuesAction()
     {
-        $propertyId = $this->params()->fromQuery('property_id');
-        $queryType = $this->params()->fromQuery('query_type');
-        $categoryQuery = $this->params()->fromQuery('category_query');
-        parse_str($categoryQuery, $categoryQuery);
-        $categoryQuery['site_id'] = $this->currentSite()->id();
-
-        $values = $this->facetedBrowse()->getByValueValues($propertyId, $queryType, $categoryQuery);
-
-        $response = $this->getResponse();
-        $responseHeaders = $response->getHeaders();
-        $responseHeaders->addHeaderLine('Content-Type: application/json');
-        $response->setContent(json_encode($values));
-        return $response;
+        $values = $this->facetedBrowse()->getByValueValues(
+            $this->params()->fromQuery('property_id'),
+            $this->params()->fromQuery('query_type'),
+            $this->getCategoryQuery()
+        );
+        return $this->getJsonResponse($values);
     }
 
     public function byClassClassesAction()
     {
-        $query = $this->params()->fromQuery('query');
-        parse_str($query, $query);
-        $query['site_id'] = $this->currentSite()->id();
-
-        $classes = $this->facetedBrowse()->getByClassClasses($query);
-
-        $response = $this->getResponse();
-        $responseHeaders = $response->getHeaders();
-        $responseHeaders->addHeaderLine('Content-Type: application/json');
-        $response->setContent(json_encode($classes));
-        return $response;
+        $classes = $this->facetedBrowse()->getByClassClasses(
+            $this->getCategoryQuery()
+        );
+        return $this->getJsonResponse($classes);
     }
 
     public function byTemplateTemplatesAction()
     {
-        $query = $this->params()->fromQuery('query');
-        parse_str($query, $query);
-        $query['site_id'] = $this->currentSite()->id();
-
-        $templates = $this->facetedBrowse()->getByTemplateTemplates($query);
-
-        $response = $this->getResponse();
-        $responseHeaders = $response->getHeaders();
-        $responseHeaders->addHeaderLine('Content-Type: application/json');
-        $response->setContent(json_encode($templates));
-        return $response;
+        $templates = $this->facetedBrowse()->getByTemplateTemplates(
+            $this->getCategoryQuery()
+        );
+        return $this->getJsonResponse($templates);
     }
 
     public function byItemSetItemSetsAction()
     {
-        $query = $this->params()->fromQuery('query');
-        parse_str($query, $query);
-        $query['site_id'] = $this->currentSite()->id();
+        $itemSets = $this->facetedBrowse()->getByItemSetItemSets(
+            $this->getCategoryQuery()
+        );
+        return $this->getJsonResponse($itemSets);
+    }
 
-        $itemSets = $this->facetedBrowse()->getByItemSetItemSets($query);
+    protected function getCategoryQuery()
+    {
+        $categoryQuery = $this->params()->fromQuery('category_query');
+        parse_str($categoryQuery, $categoryQuery);
+        $categoryQuery['site_id'] = $this->currentSite()->id();
+        return $categoryQuery;
+    }
 
+    protected function getJsonResponse($content)
+    {
         $response = $this->getResponse();
         $responseHeaders = $response->getHeaders();
         $responseHeaders->addHeaderLine('Content-Type: application/json');
-        $response->setContent(json_encode($itemSets));
+        $response->setContent(json_encode($content));
         return $response;
     }
 }

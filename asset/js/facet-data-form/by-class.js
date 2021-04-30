@@ -11,12 +11,11 @@ FacetedBrowse.registerFacetSetHandler('by_class', function() {
 
 $(document).ready(function() {
 
-// Handle show all values.
 $(document).on('click', '#by-class-show-all-classes', function(e) {
     const allClasses = $('#by-class-all-classes');
     if (this.checked) {
         $.get(allClasses.data('classesUrl'), {
-            query: $('#category-query').val()
+            category_query: $('#category-query').val()
         }, function(data) {
             if (data.length) {
                 data.forEach(resourceClass => {

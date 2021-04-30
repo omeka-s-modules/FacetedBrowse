@@ -15,7 +15,7 @@ $(document).on('click', '#by-item-set-show-all-item-sets', function(e) {
     const allItemSets = $('#by-item-set-all-item-sets');
     if (this.checked) {
         $.get(allItemSets.data('itemSetsUrl'), {
-            query: $('#category-query').val()
+            category_query: $('#category-query').val()
         }, function(data) {
             if (data.length) {
                 data.forEach(itemSet => {

@@ -11,12 +11,11 @@ FacetedBrowse.registerFacetSetHandler('by_template', function() {
 
 $(document).ready(function() {
 
-// Handle show all values.
 $(document).on('click', '#by-template-show-all-templates', function(e) {
     const allTemplates = $('#by-template-all-templates');
     if (this.checked) {
         $.get(allTemplates.data('templatesUrl'), {
-            query: $('#category-query').val()
+            category_query: $('#category-query').val()
         }, function(data) {
             if (data.length) {
                 data.forEach(resourceTemplate => {

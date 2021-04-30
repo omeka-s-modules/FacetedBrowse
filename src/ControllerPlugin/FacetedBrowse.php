@@ -33,15 +33,10 @@ class FacetedBrowse extends AbstractPlugin
      */
     public function getByValueValues($propertyId, $queryType, array $categoryQuery)
     {
-        $api = $this->services->get('Omeka\ApiManager');
         $em = $this->services->get('Omeka\EntityManager');
-
-        // Get the IDs of all items that satisfy the category query.
-        $ids = $api->search('items', $categoryQuery, ['returnScalar' => 'id'])->getContent();
-
         $qb = $em->createQueryBuilder();
         $qb->from('Omeka\Entity\Value', 'v')
-            ->andWhere($qb->expr()->in('v.resource', $ids))
+            ->andWhere($qb->expr()->in('v.resource', $this->getCategoryItemIds($categoryQuery)))
             ->groupBy('value')
             ->orderBy('value_count', 'DESC')
             ->addOrderBy('value', 'ASC');
@@ -77,14 +72,9 @@ class FacetedBrowse extends AbstractPlugin
      * @param arry $query
      * @return array
      */
-    public function getByClassClasses(array $query)
+    public function getByClassClasses(array $categoryQuery)
     {
-        $api = $this->services->get('Omeka\ApiManager');
         $em = $this->services->get('Omeka\EntityManager');
-
-        // Get the IDs of all items that satisfy the category query.
-        $itemIds = $api->search('items', $query, ['returnScalar' => 'id'])->getContent();
-
         $dql = '
         SELECT CONCAT(v.label, \': \', rc.label) label, COUNT(i.id) item_count
         FROM Omeka\Entity\Item i
@@ -94,24 +84,19 @@ class FacetedBrowse extends AbstractPlugin
         GROUP BY rc.id
         ORDER BY item_count DESC';
         $query = $em->createQuery($dql)
-            ->setParameter('itemIds', $itemIds);
+            ->setParameter('itemIds', $this->getCategoryItemIds($categoryQuery));
         return $query->getResult();
     }
 
     /**
      * Get all available templates and their counts.
      *
-     * @param arry $query
+     * @param arry $categoryQuery
      * @return array
      */
-    public function getByTemplateTemplates(array $query)
+    public function getByTemplateTemplates(array $categoryQuery)
     {
-        $api = $this->services->get('Omeka\ApiManager');
         $em = $this->services->get('Omeka\EntityManager');
-
-        // Get the IDs of all items that satisfy the category query.
-        $itemIds = $api->search('items', $query, ['returnScalar' => 'id'])->getContent();
-
         $dql = '
         SELECT rt.label label, COUNT(i.id) item_count
         FROM Omeka\Entity\Item i
@@ -120,18 +105,19 @@ class FacetedBrowse extends AbstractPlugin
         GROUP BY rt.id
         ORDER BY item_count DESC';
         $query = $em->createQuery($dql)
-            ->setParameter('itemIds', $itemIds);
+            ->setParameter('itemIds', $this->getCategoryItemIds($categoryQuery));
         return $query->getResult();
     }
 
-    public function getByItemSetItemSets(array $query)
+    /**
+     * Get all available item sets and their counts.
+     *
+     * @param arry $query
+     * @return array
+     */
+    public function getByItemSetItemSets(array $categoryQuery)
     {
-        $api = $this->services->get('Omeka\ApiManager');
         $em = $this->services->get('Omeka\EntityManager');
-
-        // Get the IDs of all items that satisfy the category query.
-        $itemIds = $api->search('items', $query, ['returnScalar' => 'id'])->getContent();
-
         $dql = '
         SELECT iset.title label, COUNT(i.id) item_count
         FROM Omeka\Entity\Item i
@@ -140,7 +126,19 @@ class FacetedBrowse extends AbstractPlugin
         GROUP BY iset.id
         ORDER BY item_count DESC';
         $query = $em->createQuery($dql)
-            ->setParameter('itemIds', $itemIds);
+            ->setParameter('itemIds', $this->getCategoryItemIds($categoryQuery));
         return $query->getResult();
+    }
+
+    /**
+     * Get the IDs of all items that satisfy the query.
+     *
+     * @param array $categoryQuery
+     * @return array
+     */
+    protected function getCategoryItemIds(array $categoryQuery)
+    {
+        $api = $this->services->get('Omeka\ApiManager');
+        return $api->search('items', $categoryQuery, ['returnScalar' => 'id'])->getContent();
     }
 }
