@@ -1,0 +1,14 @@
+<ul>
+    <?php foreach ($templates as $template): ?>
+    <li>
+        <label>
+            <input
+                class="by-template"
+                type="radio"
+                name="<?php echo sprintf('by_template_%s', $facet->id()); ?>"
+                data-template-id="<?php echo $this->escapeHtml($template->id()); ?>">
+                <?php echo $template->label(); ?>
+        </label>
+    </li>
+    <?php endforeach; ?>
+</ul>

@@ -8,8 +8,8 @@ return [
         'factories' => [
             'by_value' => Service\FacetType\ByValueFactory::class,
             'by_class' => Service\FacetType\ByClassFactory::class,
-            //~ 'by_template' => Service\FacetType\ByTemplate::class,
-            //~ 'by_item_set' => Service\FacetType\ByItemSet::class,
+            'by_template' => Service\FacetType\ByTemplateFactory::class,
+            //~ 'by_item_set' => Service\FacetType\ByItemSetFactory::class,
         ],
     ],
     'translator' => [

@@ -1,0 +1,3 @@
+<?php echo $this->formRow($elementTemplateIds); ?>
+<p><input type="checkbox" id="by-template-show-all-templates"> <?php echo $this->translate('Show all available templates.'); ?></p>
+<table id="by-template-all-templates" data-templates-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'by-template-templates'], true)) ?>"></table>

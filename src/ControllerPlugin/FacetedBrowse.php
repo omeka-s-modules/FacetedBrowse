@@ -97,4 +97,30 @@ class FacetedBrowse extends AbstractPlugin
             ->setParameter('itemIds', $itemIds);
         return $query->getResult();
     }
+
+    /**
+     * Get all available templates and their counts.
+     *
+     * @param arry $query
+     * @return array
+     */
+    public function getByTemplateTemplates(array $query)
+    {
+        $api = $this->services->get('Omeka\ApiManager');
+        $em = $this->services->get('Omeka\EntityManager');
+
+        // Get the IDs of all items that satisfy the category query.
+        $itemIds = $api->search('items', $query, ['returnScalar' => 'id'])->getContent();
+
+        $dql = '
+        SELECT rt.label label, COUNT(i.id) item_count
+        FROM Omeka\Entity\Item i
+        JOIN i.resourceTemplate rt
+        WHERE i.id IN (:itemIds)
+        GROUP BY rt.id
+        ORDER BY item_count DESC';
+        $query = $em->createQuery($dql)
+            ->setParameter('itemIds', $itemIds);
+        return $query->getResult();
+    }
 }
