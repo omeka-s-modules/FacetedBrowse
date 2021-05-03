@@ -12,7 +12,9 @@ use Omeka\Stdlib\ErrorStore;
 
 class FacetedBrowseCategoryAdapter extends AbstractEntityAdapter
 {
-    protected $sortFields = [];
+    protected $sortFields = [
+        'name' => 'name',
+    ];
 
     public function getResourceName()
     {

@@ -13,7 +13,9 @@ use Omeka\Stdlib\ErrorStore;
 
 class FacetedBrowsePageAdapter extends AbstractEntityAdapter
 {
-    protected $sortFields = [];
+    protected $sortFields = [
+        'title' => 'title',
+    ];
 
     public function getResourceName()
     {
