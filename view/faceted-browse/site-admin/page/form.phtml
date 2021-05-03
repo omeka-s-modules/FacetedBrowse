@@ -36,6 +36,8 @@ $form->prepare();
 <?php echo $this->formRow($form->get('o:title')); ?>
 
 <h3><?php echo $this->translate('Categories'); ?></h3>
+<?php echo $this->formSelect($form->get('category')); ?>
+<button type="button" id="category-add-button" disabled><?php echo $this->translate('Add'); ?></button>
 <ul id="categories"
     data-category-row-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse', ['action' => 'category-row'], true)); ?>">
     <?php if ($page): ?>
@@ -47,17 +49,6 @@ $form->prepare();
 
 <?php echo $this->formHidden($form->get('csrf')); ?>
 <?php echo $this->form()->closeTag(); ?>
-
-<div id="category-sidebar" class="sidebar active">
-    <div class="sidebar-content">
-        <h3><?php echo $this->translate('Add categories'); ?></h3>
-        <ul>
-            <?php foreach ($categories as $category): ?>
-            <li class="category-add" data-category-id="<?php echo $this->escapeHtml($category->id()); ?>"><?php echo $category->name(); ?></li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
-</div>
 
 <?php if ($page): ?>
 <?php echo $this->deleteConfirm($page, 'page'); ?>

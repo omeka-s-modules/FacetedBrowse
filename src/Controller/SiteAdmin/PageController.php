@@ -31,7 +31,12 @@ class PageController extends AbstractActionController
 
     public function addAction()
     {
-        $form = $this->getForm(Form\PageForm::class);
+        $categories = $this->api()->search('faceted_browse_categories', [
+            'site_id' => $this->currentSite()->id(),
+        ])->getContent();
+        $form = $this->getForm(Form\PageForm::class, [
+            'categories' => $categories,
+        ]);
 
         if ($this->getRequest()->isPost()) {
             $postData = $this->params()->fromPost();
@@ -39,7 +44,7 @@ class PageController extends AbstractActionController
             if ($form->isValid()) {
                 $formData = $form->getData();
                 $formData['o:site'] = ['o:id' => $this->currentSite()->id()];
-                $formData['o-module-faceted_browse:category'] = $postData['category'] ?? [];
+                $formData['o-module-faceted_browse:category'] = $postData['o-module-faceted_browse:category'] ?? [];
                 $response = $this->api($form)->create('faceted_browse_pages', $formData);
                 if ($response) {
                     $category = $response->getContent();
@@ -55,13 +60,8 @@ class PageController extends AbstractActionController
             }
         }
 
-        $categories = $this->api()->search('faceted_browse_categories', [
-            'site_id' => $this->currentSite()->id(),
-        ])->getContent();
-
         $view = new ViewModel;
         $view->setVariable('page', null);
-        $view->setVariable('categories', $categories);
         $view->setVariable('form', $form);
         return $view;
     }
@@ -69,8 +69,13 @@ class PageController extends AbstractActionController
     public function editAction()
     {
         $page = $this->api()->read('faceted_browse_pages', $this->params('id'))->getContent();
+        $categories = $this->api()->search('faceted_browse_categories', [
+            'site_id' => $this->currentSite()->id(),
+        ])->getContent();
 
-        $form = $this->getForm(Form\PageForm::class);
+        $form = $this->getForm(Form\PageForm::class, [
+            'categories' => $categories,
+        ]);
 
         if ($this->getRequest()->isPost()) {
             $postData = $this->params()->fromPost();
@@ -78,7 +83,7 @@ class PageController extends AbstractActionController
             if ($form->isValid()) {
                 $formData = $form->getData();
                 $formData['o:site'] = ['o:id' => $this->currentSite()->id()];
-                $formData['o-module-faceted_browse:category'] = $postData['category'] ?? [];
+                $formData['o-module-faceted_browse:category'] = $postData['o-module-faceted_browse:category'] ?? [];
                 $response = $this->api($form)->update('faceted_browse_pages', $page->id(), $formData);
                 if ($response) {
                     $this->messenger()->addSuccess('Successfully edited the page.'); // @translate
@@ -102,7 +107,6 @@ class PageController extends AbstractActionController
 
         $view = new ViewModel;
         $view->setVariable('page', $page);
-        $view->setVariable('categories', $categories);
         $view->setVariable('form', $form);
         return $view;
     }

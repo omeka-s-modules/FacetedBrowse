@@ -16,7 +16,7 @@ use Laminas\Form\Element\Hidden;
         ]); ?></li>
     </ul>
     <?php
-    $categoryInput = (new Hidden(sprintf('category[%s][o:id]', $index)))
+    $categoryInput = (new Hidden(sprintf('o-module-faceted_browse:category[%s][o:id]', $index)))
         ->setValue($category['o:id'])
         ->setAttribute('class', 'category-id');
     echo $this->formHidden($categoryInput);
