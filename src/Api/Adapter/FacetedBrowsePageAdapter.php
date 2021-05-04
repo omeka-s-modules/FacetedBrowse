@@ -3,7 +3,6 @@ namespace FacetedBrowse\Api\Adapter;
 
 use DateTime;
 use Doctrine\ORM\QueryBuilder;
-use FacetedBrowse\Entity\FacetedBrowseFacet;
 use FacetedBrowse\Entity\FacetedBrowsePageCategory;
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Request;
@@ -107,7 +106,6 @@ class FacetedBrowsePageAdapter extends AbstractEntityAdapter
                 }
             }
         }
-
     }
 
     public function validateEntity(EntityInterface $entity, ErrorStore $errorStore)

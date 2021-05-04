@@ -1,8 +1,6 @@
 <?php
 namespace FacetedBrowse\Site\NavigationLink;
 
-use Omeka\Api\Exception\NotFoundException;
-use Omeka\Api\Manager;
 use Omeka\Api\Representation\SiteRepresentation;
 use Omeka\Site\Navigation\Link\LinkInterface;
 use Omeka\Stdlib\ErrorStore;
