@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-29 21:38-0400\n"
+"POT-Creation-Date: 2021-05-04 19:16-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Giorgio Comai <g@giorgiocomai.eu>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/omeka/teams/14184/it/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/FacetType/ByValue.php:79
+#: src/FacetType/ByValue.php:84
 msgid ""
 "\n"
 "            <p>Enter the values, separated by new lines. The format of each value depends on the query type:</p>\n"
@@ -32,14 +32,30 @@ msgid ""
 "                <li>\"Has any value\": enter the property ID followed by any value (usually the property label), separated by a single space.</li>\n"
 "            </ul>"
 msgstr ""
+"\n"
+"            <p>Inserisci i valori, separati da un a capo. Il formato di ogni valore dipende dal tipo di query:</p>\n"
+"            <ul>\n"
+"                <li>\"è esattamente\": inserisci un valore che corrisponda esattamente al valore della proprietà.</li>\n"
+"                <li>\"contiene\": inserisci un valore che corrisponda a qualsiasi parte del valore della proprietà.</li>\n"
+"                <li>\"è risorsa con ID\": inserisci un ID di risorsa seguito da un qualsiasi valore (tipicamente, il titolo della risorsa), separati da un singolo spazio.</li>\n"
+"                <li>\"ha un qualsiasi valore\": inserisci l'ID della proprietà seguito da un qualsiasi valore (tipicamente, l'etichetta), separati da un singolo spazio.</li>\n"
+"            </ul>"
 
 #: view/common/faceted-browse/facet-data-form/by-class.phtml:2
 msgid "Show all available classes."
 msgstr "Mostra tutte le classi disponibili."
 
+#: view/common/faceted-browse/facet-data-form/by-item-set.phtml:2
+msgid "Show all available item sets."
+msgstr ""
+
+#: view/common/faceted-browse/facet-data-form/by-template.phtml:2
+msgid "Show all available templates."
+msgstr ""
+
 #: view/common/faceted-browse/facet-data-form/by-value.phtml:5
 msgid "Show all available values."
-msgstr ""
+msgstr "Mostra tutti i valori disponibili."
 
 #: view/common/faceted-browse/navigation-link-form/faceted-browse.phtml:9
 msgid "Select a page"
@@ -167,10 +183,6 @@ msgstr "Ritorna alle pagine"
 msgid "Stay on this page"
 msgstr "Rimani su questa pagina"
 
-#: view/faceted-browse/site-admin/page/form.phtml:53
-msgid "Add categories"
-msgstr "Aggiungi categorie"
-
 #: view/faceted-browse/site/page/categories.phtml:16
 msgid "There are no categories to browse."
 msgstr "Non ci sono categorie da sfogliare."
@@ -183,9 +195,13 @@ msgstr "Indietro"
 msgid "Facet name"
 msgstr "Nome della faccetta"
 
-#: src/Form/PageForm.php:17
+#: src/Form/PageForm.php:22
 msgid "Enter the title of this page."
 msgstr "Inserisci il titolo di questa pagina"
+
+#: src/Form/PageForm.php:33
+msgid "Add a category"
+msgstr ""
 
 #: src/Form/CategoryForm.php:21
 msgid ""
@@ -212,8 +228,8 @@ msgstr ""
 msgid "Add a facet"
 msgstr "Aggiungi una faccetta"
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:48
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:50
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:50
 msgid "A site must have an ID"
 msgstr "Un sito deve avere un ID"
 
@@ -225,15 +241,15 @@ msgstr "Una pagina deve avere un sito"
 msgid "A page must have a title"
 msgstr "Una pagina deve avere un titolo"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:105
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:107
 msgid "A category must have a site"
 msgstr "Una categoria deve avere un sito"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:108
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:110
 msgid "A category must have a name"
 msgstr "Una categoria deve avere un nome"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:111
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:113
 msgid "A category must have a query"
 msgstr "Una categoria deve avere una query"
 
@@ -249,50 +265,73 @@ msgstr "Categoria modificata con successo."
 msgid "Successfully deleted the category."
 msgstr "Categoria eliminata con successo."
 
-#: src/Controller/SiteAdmin/PageController.php:46
+#: src/Controller/SiteAdmin/PageController.php:51
 msgid "Successfully added the page."
 msgstr "Pagina aggiunta con successo."
 
-#: src/Controller/SiteAdmin/PageController.php:84
+#: src/Controller/SiteAdmin/PageController.php:89
 msgid "Successfully edited the page."
 msgstr "Pagina modificata con successo."
 
-#: src/Controller/SiteAdmin/PageController.php:119
+#: src/Controller/SiteAdmin/PageController.php:123
 msgid "Successfully deleted the page."
 msgstr "Pagina eliminata con successo."
 
-#: src/FacetType/ByValue.php:21
-msgid "By value"
+#: src/FacetType/FullText.php:20
+msgid "Full-text"
 msgstr ""
 
-#: src/FacetType/ByValue.php:49
+#: src/FacetType/ByItemSet.php:20
+msgid "By item set"
+msgstr ""
+
+#: src/FacetType/ByItemSet.php:45
+msgid "Select item sets…"
+msgstr ""
+
+#: src/FacetType/ByValue.php:21
+msgid "By value"
+msgstr "Per valore"
+
+#: src/FacetType/ByValue.php:54
 msgid "Is exactly"
 msgstr "È esattamente"
 
-#: src/FacetType/ByValue.php:50
+#: src/FacetType/ByValue.php:55
 msgid "Contains"
 msgstr "Contiene"
 
-#: src/FacetType/ByValue.php:51
+#: src/FacetType/ByValue.php:56
 msgid "Is resource with ID"
-msgstr ""
+msgstr "È risorsa con ID"
 
-#: src/FacetType/ByValue.php:52
+#: src/FacetType/ByValue.php:57
 msgid "Has any value"
-msgstr ""
+msgstr "Ha un qualsiasi valore"
 
-#: src/FacetType/ByValue.php:64
+#: src/FacetType/ByValue.php:69
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one value at a time. For the \"multiple\" select type, users may choose"
 " any number of values at a time."
 msgstr ""
+"Seleziona il tipo di selezione. Per la selezione \"singola\", gli utenti "
+"possono scegliere un solo valore per volta. Per la selezione \"multipla\", "
+"gli utenti possono scegliere più valori contemporaneamente."
 
-#: src/FacetType/ByClass.php:21
-msgid "By class"
+#: src/FacetType/ByTemplate.php:20
+msgid "By template"
 msgstr ""
 
-#: src/FacetType/ByClass.php:41
+#: src/FacetType/ByTemplate.php:45
+msgid "Select templates…"
+msgstr ""
+
+#: src/FacetType/ByClass.php:20
+msgid "By class"
+msgstr "Per classe"
+
+#: src/FacetType/ByClass.php:45
 msgid "Select classes…"
 msgstr "Seleziona classi..."
 
@@ -300,34 +339,34 @@ msgstr "Seleziona classi..."
 msgid "[Unknown]"
 msgstr "[Sconosciuto]"
 
-#: src/FacetType/Unknown.php:34
+#: src/FacetType/Unknown.php:39
 msgid "Unknown facet type"
 msgstr "Tipo di faccetta sconosciuto"
 
-#: src/FacetType/Unknown.php:44
+#: src/FacetType/Unknown.php:49
 msgid "Unknown facet data"
 msgstr "Dati di faccetta sconosciuti"
 
-#: src/Site/NavigationLink/FacetedBrowse.php:14
+#: src/Site/NavigationLink/FacetedBrowse.php:12
 msgid "Faceted browse"
 msgstr "Navigazione a faccette"
 
-#: config/module.config.php:80
+#: config/module.config.php:81
 msgid "A facet must have a name."
 msgstr "Una faccetta deve avere un nome."
 
-#: config/module.config.php:81
+#: config/module.config.php:82
 msgid "A facet must have a query type."
 msgstr "Una faccetta deve avere un tipo di query."
 
-#: config/module.config.php:82
+#: config/module.config.php:83
 msgid "A facet must have a select type."
 msgstr "Una faccetta deve aver selezionato un tipo."
 
-#: config/module.config.php:83
+#: config/module.config.php:84
 msgid "There are no available values."
 msgstr "Non ci sono valori disponibili."
 
-#: config/module.config.php:84
+#: config/module.config.php:85
 msgid "There are no available classes."
 msgstr "Non ci sono classi disponibili."

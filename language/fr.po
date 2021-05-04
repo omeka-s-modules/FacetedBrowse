@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-29 21:38-0400\n"
+"POT-Creation-Date: 2021-05-04 19:16-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Pols12 <poltron54@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/omeka/teams/14184/fr/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/FacetType/ByValue.php:79
+#: src/FacetType/ByValue.php:84
 msgid ""
 "\n"
 "            <p>Enter the values, separated by new lines. The format of each value depends on the query type:</p>\n"
@@ -36,6 +36,14 @@ msgstr ""
 #: view/common/faceted-browse/facet-data-form/by-class.phtml:2
 msgid "Show all available classes."
 msgstr "Voir toutes les classes disponibles."
+
+#: view/common/faceted-browse/facet-data-form/by-item-set.phtml:2
+msgid "Show all available item sets."
+msgstr ""
+
+#: view/common/faceted-browse/facet-data-form/by-template.phtml:2
+msgid "Show all available templates."
+msgstr ""
 
 #: view/common/faceted-browse/facet-data-form/by-value.phtml:5
 msgid "Show all available values."
@@ -167,10 +175,6 @@ msgstr "Retourner aux pages"
 msgid "Stay on this page"
 msgstr "Rester sur cette page"
 
-#: view/faceted-browse/site-admin/page/form.phtml:53
-msgid "Add categories"
-msgstr "Ajouter des catégories"
-
 #: view/faceted-browse/site/page/categories.phtml:16
 msgid "There are no categories to browse."
 msgstr ""
@@ -183,9 +187,13 @@ msgstr "Retour"
 msgid "Facet name"
 msgstr "Nom de la facette"
 
-#: src/Form/PageForm.php:17
+#: src/Form/PageForm.php:22
 msgid "Enter the title of this page."
 msgstr "Entrez le titre de la page."
+
+#: src/Form/PageForm.php:33
+msgid "Add a category"
+msgstr ""
 
 #: src/Form/CategoryForm.php:21
 msgid ""
@@ -213,8 +221,8 @@ msgstr ""
 msgid "Add a facet"
 msgstr "Ajouter une facette"
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:48
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:50
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:50
 msgid "A site must have an ID"
 msgstr "Un site doit avoir un ID."
 
@@ -226,15 +234,15 @@ msgstr "Une page doit avoir un site."
 msgid "A page must have a title"
 msgstr "Une page doit avoir un titre."
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:105
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:107
 msgid "A category must have a site"
 msgstr "Une catégorie doit avoir un site."
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:108
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:110
 msgid "A category must have a name"
 msgstr "Une catégorie doit avoir un nom."
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:111
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:113
 msgid "A category must have a query"
 msgstr "Une catégorie doit avoir une requête."
 
@@ -250,50 +258,70 @@ msgstr "La catégorie a bien été modifiée."
 msgid "Successfully deleted the category."
 msgstr "La catégorie a bien été supprimée."
 
-#: src/Controller/SiteAdmin/PageController.php:46
+#: src/Controller/SiteAdmin/PageController.php:51
 msgid "Successfully added the page."
 msgstr "La page a bien été ajoutée."
 
-#: src/Controller/SiteAdmin/PageController.php:84
+#: src/Controller/SiteAdmin/PageController.php:89
 msgid "Successfully edited the page."
 msgstr "La page a bien été modifiée."
 
-#: src/Controller/SiteAdmin/PageController.php:119
+#: src/Controller/SiteAdmin/PageController.php:123
 msgid "Successfully deleted the page."
 msgstr "La page a bien été supprimée."
+
+#: src/FacetType/FullText.php:20
+msgid "Full-text"
+msgstr ""
+
+#: src/FacetType/ByItemSet.php:20
+msgid "By item set"
+msgstr ""
+
+#: src/FacetType/ByItemSet.php:45
+msgid "Select item sets…"
+msgstr ""
 
 #: src/FacetType/ByValue.php:21
 msgid "By value"
 msgstr ""
 
-#: src/FacetType/ByValue.php:49
+#: src/FacetType/ByValue.php:54
 msgid "Is exactly"
 msgstr "Est exactement"
 
-#: src/FacetType/ByValue.php:50
+#: src/FacetType/ByValue.php:55
 msgid "Contains"
 msgstr "Contient"
 
-#: src/FacetType/ByValue.php:51
+#: src/FacetType/ByValue.php:56
 msgid "Is resource with ID"
 msgstr ""
 
-#: src/FacetType/ByValue.php:52
+#: src/FacetType/ByValue.php:57
 msgid "Has any value"
 msgstr ""
 
-#: src/FacetType/ByValue.php:64
+#: src/FacetType/ByValue.php:69
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one value at a time. For the \"multiple\" select type, users may choose"
 " any number of values at a time."
 msgstr ""
 
-#: src/FacetType/ByClass.php:21
+#: src/FacetType/ByTemplate.php:20
+msgid "By template"
+msgstr ""
+
+#: src/FacetType/ByTemplate.php:45
+msgid "Select templates…"
+msgstr ""
+
+#: src/FacetType/ByClass.php:20
 msgid "By class"
 msgstr ""
 
-#: src/FacetType/ByClass.php:41
+#: src/FacetType/ByClass.php:45
 msgid "Select classes…"
 msgstr "Choisir une classe…"
 
@@ -301,34 +329,34 @@ msgstr "Choisir une classe…"
 msgid "[Unknown]"
 msgstr "[Inconnu]"
 
-#: src/FacetType/Unknown.php:34
+#: src/FacetType/Unknown.php:39
 msgid "Unknown facet type"
 msgstr "Type de facette inconnu"
 
-#: src/FacetType/Unknown.php:44
+#: src/FacetType/Unknown.php:49
 msgid "Unknown facet data"
 msgstr "Données de la facette inconnues"
 
-#: src/Site/NavigationLink/FacetedBrowse.php:14
+#: src/Site/NavigationLink/FacetedBrowse.php:12
 msgid "Faceted browse"
 msgstr "Navigation par facettes"
 
-#: config/module.config.php:80
+#: config/module.config.php:81
 msgid "A facet must have a name."
 msgstr "Une facette doit avoir un nom."
 
-#: config/module.config.php:81
+#: config/module.config.php:82
 msgid "A facet must have a query type."
 msgstr "Une facette doit avoir un type de requête."
 
-#: config/module.config.php:82
+#: config/module.config.php:83
 msgid "A facet must have a select type."
 msgstr "Une facette doit avoir un type de choix."
 
-#: config/module.config.php:83
+#: config/module.config.php:84
 msgid "There are no available values."
 msgstr "Aucune valeur n’est disponible."
 
-#: config/module.config.php:84
+#: config/module.config.php:85
 msgid "There are no available classes."
 msgstr "Aucune classe n’est disponible."
