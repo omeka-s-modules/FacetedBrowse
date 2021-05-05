@@ -98,12 +98,12 @@
     display: block;
 }
 
-#facets {
+.sortable-list {
     list-style: none;
     padding: 0;
 }
 
-.facet.row .actions {
+.sortable-list .row .actions {
     float: right;
 }
 
@@ -112,7 +112,7 @@
     overflow: hidden;
 }
 
-.row.delete .facet-edit {
+.row.delete .o-icon-edit {
     display: none;
 }
 

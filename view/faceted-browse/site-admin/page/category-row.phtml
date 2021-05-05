@@ -1,8 +1,9 @@
 <?php
 use Laminas\Form\Element\Hidden;
 ?>
-<li class="category">
+<li class="category value row">
     <span class="sortable-handle"></span>
+    <span class="restore-value"><?php echo sprintf('%s to be removed', 'Category'); ?></span>
     <span class="category-name-display"><?php echo $category['o:name']; ?></span>
     <ul class="actions">
         <li><?php echo $this->hyperlink('', [], [

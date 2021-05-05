@@ -43,6 +43,7 @@ $form->prepare();
 <?php echo $this->formSelect($form->get('facet_type')); ?>
 <button type="button" id="facet-add-button" disabled><?php echo $this->translate('Add'); ?></button>
 <ul id="facets"
+    class="sortable-list"
     data-facet-row-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse', ['action' => 'facet-row'], true)); ?>"
     data-facet-form-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse', ['action' => 'facet-form'], true)); ?>">
     <?php if ($category): ?>
