@@ -125,6 +125,7 @@
     margin-left: .5rem;
 }
 
-#facet-type-select {
+#facet-type-select,
+#category-select {
     margin-right: .25rem;
 }

@@ -4,7 +4,7 @@ $this->headScript()->appendFile($this->assetUrl('js/faceted-browse.js', 'Faceted
 $this->headScript()->appendFile($this->assetUrl('js/site/page.js', 'FacetedBrowse'));
 $this->facetedBrowse()->prepareFacets();
 
-$this->htmlElement('body')->appendAttribute('class', 'faceted-browse-page');
+$this->htmlElement('body')->appendAttribute('class', 'faceted-browse-page resource browse');
 $this->pageTitle($page->title(), 2);
 
 $categories = $page->categories();

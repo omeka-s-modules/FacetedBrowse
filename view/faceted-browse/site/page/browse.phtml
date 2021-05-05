@@ -1,3 +1,4 @@
+<?php $escape = $this->plugin('escapeHtml'); ?>
 <?php echo $this->searchFilters(); ?>
 <div class="browse-controls">
     <?php echo $this->pagination(); ?>
@@ -17,9 +18,20 @@
         ],
     ]); ?>
 </div>
-<ul>
-    <?php foreach ($items as $item): ?>
-    <li><?php echo $item->linkPretty(); ?></li>
+<ul class="resource-list">
+    <?php
+    $headingTerm = $this->siteSetting('browse_heading_property_term');
+    $bodyTerm = $this->siteSetting('browse_body_property_term');
+    foreach ($items as $item):
+        $heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]')]) : $item->displayTitle();
+        $body = $bodyTerm ? $item->value($bodyTerm) : $item->displayDescription();
+    ?>
+    <li class="item resource">
+        <?php echo $item->linkPretty('square', $heading); ?>
+        <?php if ($body): ?>
+        <div class="description"><?php echo $escape($body); ?></div>
+        <?php endif; ?>
+    </li>
     <?php endforeach; ?>
 </ul>
 <?php echo $this->pagination(); ?>

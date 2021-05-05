@@ -35,7 +35,8 @@ $form->prepare();
 
 <?php echo $this->formRow($form->get('o:title')); ?>
 
-<h3><?php echo $this->translate('Categories'); ?></h3>
+<fieldset>
+<legend><?php echo $this->translate('Categories'); ?></legend>
 <?php echo $this->formSelect($form->get('category')); ?>
 <button type="button" id="category-add-button" disabled><?php echo $this->translate('Add'); ?></button>
 <ul id="categories"
@@ -47,6 +48,7 @@ $form->prepare();
     <?php endforeach; ?>
     <?php endif; ?>
 </ul>
+</fieldset>
 
 <?php echo $this->formHidden($form->get('csrf')); ?>
 <?php echo $this->form()->closeTag(); ?>
