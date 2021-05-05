@@ -35,27 +35,30 @@ class FacetedBrowse extends AbstractPlugin
     {
         $em = $this->services->get('Omeka\EntityManager');
         $qb = $em->createQueryBuilder();
+        // Cannot use an empty array to calculate IN(). It results in a Doctrine
+        // QueryException. Instead, use an array containing one nonexistent ID.
+        $itemIds = $this->getCategoryItemIds($categoryQuery) ?: [0];
         $qb->from('Omeka\Entity\Value', 'v')
-            ->andWhere($qb->expr()->in('v.resource', $this->getCategoryItemIds($categoryQuery)))
-            ->groupBy('value')
-            ->orderBy('value_count', 'DESC')
-            ->addOrderBy('value', 'ASC');
+            ->andWhere($qb->expr()->in('v.resource', $itemIds))
+            ->groupBy('label')
+            ->orderBy('has_count', 'DESC')
+            ->addOrderBy('label', 'ASC');
         switch ($queryType) {
             case 'res':
-                $qb->select("CONCAT(vr.id, ' ', vr.title) value", 'COUNT(v) value_count')
+                $qb->select("CONCAT(vr.id, ' ', vr.title) label", 'COUNT(v) has_count')
                     ->join('v.valueResource', 'vr')
                     ->andWhere('v.type = :type')
                     ->setParameter('type', 'resource');
                 break;
             case 'ex':
-                $qb->select("CONCAT(p.id, ' ', vo.label, ': ', p.label) value", 'COUNT(v) value_count')
+                $qb->select("CONCAT(p.id, ' ', vo.label, ': ', p.label) label", 'COUNT(v) has_count')
                     ->join('v.property', 'p')
                     ->join('p.vocabulary', 'vo');
                 break;
             case 'eq':
             case 'in':
             default:
-                $qb->select('v.value value', 'COUNT(v.value) value_count')
+                $qb->select('v.value label', 'COUNT(v.value) has_count')
                     ->andWhere('v.type = :type')
                     ->setParameter('type', 'literal');
         }
@@ -76,13 +79,13 @@ class FacetedBrowse extends AbstractPlugin
     {
         $em = $this->services->get('Omeka\EntityManager');
         $dql = '
-        SELECT CONCAT(v.label, \': \', rc.label) label, COUNT(i.id) item_count
+        SELECT CONCAT(v.label, \': \', rc.label) label, COUNT(i.id) has_count
         FROM Omeka\Entity\Item i
         JOIN i.resourceClass rc
         JOIN rc.vocabulary v
         WHERE i.id IN (:itemIds)
         GROUP BY rc.id
-        ORDER BY item_count DESC';
+        ORDER BY has_count DESC';
         $query = $em->createQuery($dql)
             ->setParameter('itemIds', $this->getCategoryItemIds($categoryQuery));
         return $query->getResult();
@@ -98,12 +101,12 @@ class FacetedBrowse extends AbstractPlugin
     {
         $em = $this->services->get('Omeka\EntityManager');
         $dql = '
-        SELECT rt.label label, COUNT(i.id) item_count
+        SELECT rt.label label, COUNT(i.id) has_count
         FROM Omeka\Entity\Item i
         JOIN i.resourceTemplate rt
         WHERE i.id IN (:itemIds)
         GROUP BY rt.id
-        ORDER BY item_count DESC';
+        ORDER BY has_count DESC';
         $query = $em->createQuery($dql)
             ->setParameter('itemIds', $this->getCategoryItemIds($categoryQuery));
         return $query->getResult();
@@ -119,12 +122,12 @@ class FacetedBrowse extends AbstractPlugin
     {
         $em = $this->services->get('Omeka\EntityManager');
         $dql = '
-        SELECT iset.title label, COUNT(i.id) item_count
+        SELECT iset.title label, COUNT(i.id) has_count
         FROM Omeka\Entity\Item i
         JOIN i.itemSets iset
         WHERE i.id IN (:itemIds)
         GROUP BY iset.id
-        ORDER BY item_count DESC';
+        ORDER BY has_count DESC';
         $query = $em->createQuery($dql)
             ->setParameter('itemIds', $this->getCategoryItemIds($categoryQuery));
         return $query->getResult();

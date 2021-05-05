@@ -26,31 +26,10 @@ FacetedBrowse.registerFacetSetHandler('by_value', function() {
 
 $(document).ready(function() {
 
-// Handle show all values.
-$(document).on('click', '#by-value-show-all-values', function(e) {
-    const allValues = $('#by-value-all-values');
-    if (this.checked) {
-        $.get(allValues.data('valuesUrl'), {
-            property_id: $('#by-value-property-id').val(),
-            query_type: $('#by-value-query-type').val(),
-            category_query: $('#category-query').val()
-        }, function(data) {
-            if (data.length) {
-                data.forEach(value => {
-                    allValues.append(`<tr><td style="width: 90%; padding: 0; border-bottom: 1px solid #dfdfdf;">${value.value}</td><td style="width: 10%; padding: 0; border-bottom: 1px solid #dfdfdf;">${value.value_count}</td></tr>`);
-                });
-            } else {
-                allValues.append(`<tr><td>${Omeka.jsTranslate('There are no available values.')}</td></tr>`);
-            }
-        });
-    } else {
-        allValues.empty();
-    }
-});
-// Clear all values during certain interactions.
+// Clear show all during certain interactions.
 $(document).on('change', '#by-value-property-id, #by-value-query-type', function(e) {
-    $('#by-value-show-all-values').prop('checked', false);
-    $('#by-value-all-values').empty();
+    $('#show-all').prop('checked', false);
+    $('#show-all-table-container').empty();
     if ('ex' === $('#by-value-query-type').val()) {
         $('#by-value-property-id').closest('.field').hide();
     } else {

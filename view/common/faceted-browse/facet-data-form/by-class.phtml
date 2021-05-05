@@ -1,3 +1,5 @@
 <?php echo $this->formRow($elementClassIds); ?>
-<p><input type="checkbox" id="by-class-show-all-classes"> <?php echo $this->translate('Show all available classes.'); ?></p>
-<table id="by-class-all-classes" data-classes-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'by-class-classes'], true)) ?>"></table>
+<?php echo $this->partial('show-all', [
+    'label' => $this->translate('Show all available classes.'),
+    'url' => $this->url(null, ['action' => 'by-class-classes'], true),
+]); ?>

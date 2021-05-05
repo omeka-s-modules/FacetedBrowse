@@ -2,5 +2,11 @@
 <?php echo $this->formRow($elementQueryType); ?>
 <?php echo $this->formRow($elementSelectType); ?>
 <?php echo $this->formRow($elementValues); ?>
-<p><input type="checkbox" id="by-value-show-all-values"> <?php echo $this->translate('Show all available values.'); ?></p>
-<table id="by-value-all-values" data-values-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'by-value-values'], true)) ?>"></table>
+<?php echo $this->partial('show-all', [
+    'label' => $this->translate('Show all available values.'),
+    'url' => $this->url(null, ['action' => 'by-value-values'], true),
+    'queryParams' => [
+        'property_id' => '#by-value-property-id',
+        'query_type' => '#by-value-query-type',
+    ],
+]); ?>

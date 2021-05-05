@@ -127,5 +127,27 @@ facetFormContainer.on('click', '#facet-set-button', function(e) {
         });
     }
 });
+// Handle show all checkbox.
+$(document).on('click', '#show-all', function(e) {
+    const thisCheckbox = $(this);
+    const tableContainer = $('#show-all-table-container');
+    if (this.checked) {
+        const query = {};
+        const queryParams = thisCheckbox.data('queryParams');
+        if (queryParams) {
+            // Set additional query parameters if set.
+            $.each(queryParams, function(key, value) {
+                query[key] = $(value).val();
+            });
+        }
+        // Always include the category query.
+        query.category_query = $('#category-query').val();
+        $.get(thisCheckbox.data('url'), query, function(html) {
+            tableContainer.html(html);
+        });
+    } else {
+        tableContainer.empty();
+    }
+});
 
 });

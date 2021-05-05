@@ -176,7 +176,7 @@ class CategoryController extends AbstractActionController
             $this->params()->fromQuery('query_type'),
             $this->getCategoryQuery()
         );
-        return $this->getJsonResponse($values);
+        return $this->getViewModel($values);
     }
 
     public function byClassClassesAction()
@@ -184,7 +184,7 @@ class CategoryController extends AbstractActionController
         $classes = $this->facetedBrowse()->getByClassClasses(
             $this->getCategoryQuery()
         );
-        return $this->getJsonResponse($classes);
+        return $this->getViewModel($classes);
     }
 
     public function byTemplateTemplatesAction()
@@ -192,7 +192,7 @@ class CategoryController extends AbstractActionController
         $templates = $this->facetedBrowse()->getByTemplateTemplates(
             $this->getCategoryQuery()
         );
-        return $this->getJsonResponse($templates);
+        return $this->getViewModel($templates);
     }
 
     public function byItemSetItemSetsAction()
@@ -200,7 +200,7 @@ class CategoryController extends AbstractActionController
         $itemSets = $this->facetedBrowse()->getByItemSetItemSets(
             $this->getCategoryQuery()
         );
-        return $this->getJsonResponse($itemSets);
+        return $this->getViewModel($itemSets);
     }
 
     protected function getCategoryQuery()
@@ -211,12 +211,12 @@ class CategoryController extends AbstractActionController
         return $categoryQuery;
     }
 
-    protected function getJsonResponse($content)
+    protected function getViewModel($rows)
     {
-        $response = $this->getResponse();
-        $responseHeaders = $response->getHeaders();
-        $responseHeaders->addHeaderLine('Content-Type: application/json');
-        $response->setContent(json_encode($content));
-        return $response;
+        $view = new ViewModel;
+        $view->setTerminal(true);
+        $view->setTemplate('faceted-browse/site-admin/category/show-all-table');
+        $view->setVariable('rows', $rows);
+        return $view;
     }
 }
