@@ -1,37 +1,40 @@
-<?php $escape = $this->plugin('escapeHtml'); ?>
-<?php echo $this->searchFilters(); ?>
+<?php
+$headingTerm = $this->siteSetting('browse_heading_property_term');
+$bodyTerm = $this->siteSetting('browse_body_property_term');
+$sortings = [
+    [
+        'label' => $this->translate('Title'),
+        'value' => 'title'
+    ],
+    [
+        'label' => $this->translate('Identifier'),
+        'value' => 'dcterms:identifier'
+    ],
+    [
+        'label' => $this->translate('Created'),
+        'value' => 'created'
+    ],
+];
+?>
 <div class="browse-controls">
     <?php echo $this->pagination(); ?>
     <input type="text" class="permalink" value="<?php echo $this->escapeHtml($this->url('site/resource', ['controller' => 'item', 'action' => 'browse'], ['query' => $query, 'force_canonical' => true], true)); ?>">
-    <?php echo $this->sortSelector([
-        [
-            'label' => $this->translate('Title'),
-            'value' => 'title'
-        ],
-        [
-            'label' => $this->translate('Identifier'),
-            'value' => 'dcterms:identifier'
-        ],
-        [
-            'label' => $this->translate('Created'),
-            'value' => 'created'
-        ],
-    ]); ?>
+    <?php echo $this->sortSelector($sortings); ?>
 </div>
 <ul class="resource-list">
+    <?php foreach ($items as $item): ?>
     <?php
-    $headingTerm = $this->siteSetting('browse_heading_property_term');
-    $bodyTerm = $this->siteSetting('browse_body_property_term');
-    foreach ($items as $item):
-        $heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]')]) : $item->displayTitle();
-        $body = $bodyTerm ? $item->value($bodyTerm) : $item->displayDescription();
+    $heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]')]) : $item->displayTitle();
+    $body = $bodyTerm ? $item->value($bodyTerm) : $item->displayDescription();
     ?>
     <li class="item resource">
         <?php echo $item->linkPretty('square', $heading); ?>
         <?php if ($body): ?>
-        <div class="description"><?php echo $escape($body); ?></div>
+        <div class="description"><?php echo $this->escapeHtml($body); ?></div>
         <?php endif; ?>
     </li>
     <?php endforeach; ?>
 </ul>
-<?php echo $this->pagination(); ?>
+<div class="browse-controls">
+    <?php echo $this->pagination(); ?>
+</div>
