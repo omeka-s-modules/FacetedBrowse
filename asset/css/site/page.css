@@ -1,7 +1,26 @@
+#categories,
 .facet ul {
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+#categories {
+    margin-top: 1rem;
+}
+
+#categories-return {
+    margin-bottom: 1rem;
+}
+
+#categories li {
+    border-bottom: 1px solid rgba(0,0,0,.08);
+    margin-bottom: .5rem;
+    padding-bottom: .5rem;
+}
+
+#categories li:last-child {
+    border-bottom-color: transparent;
 }
 
 .facet label {
@@ -17,6 +36,7 @@
     font-weight: bold;
 }
 
+.categories-container,
 .facets-container,
 .facet {
     border: 0;
@@ -27,11 +47,13 @@
     padding: 1rem 0;
 }
 
+.categories-container legend,
 .facets-container legend {
     font-weight: bold;
     font-size: 1.5rem;
 }
 
+.category,
 .facet {
     margin-bottom: 1rem;
 }
