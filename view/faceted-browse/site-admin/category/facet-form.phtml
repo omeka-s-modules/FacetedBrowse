@@ -2,6 +2,9 @@
 $form->prepare();
 $facetType = $this->facetedBrowse()->getFacetType($facetType);
 ?>
+<div class="confirm-main">
+<h3><?php echo $this->translate('Configure facet'); ?></h3>
+<?php echo $this->hyperlink('', '#', ['class' => 'sidebar-close o-icon-close', 'title' => $this->translate('Close')]); ?>
 <div class="meta-group">
     <h4><?php echo $this->translate('Facet type'); ?></h4>
     <div class="value"><?php echo $facetType->getLabel(); ?></div>
@@ -10,7 +13,10 @@ $facetType = $this->facetedBrowse()->getFacetType($facetType);
 <?php echo $this->formHidden($form->get('facet_type')); ?>
 <?php echo $this->formRow($form->get('facet_name')); ?>
 <?php echo $facetType->renderDataForm($this, $facetData); ?>
+</div>
 <?php if ($this->facetedBrowse()->facetTypeIsKnown($facetType)): ?>
+<div class="confirm-panel">
 <?php echo $this->formElement($form->get('facet_set')); ?>
+</div>
 <?php endif; ?>
 <?php echo $this->form()->closeTag(); ?>
