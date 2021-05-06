@@ -1,10 +1,11 @@
 <?php echo $this->hyperlink($this->translate('Back'), [], ['id' => 'categories-return']); ?>
-<h4><?php echo $category->name(); ?></h4>
-<div id="category"
+<fieldset class="facets-container">
+<legend><?php echo $category->name(); ?></legend>
+<fieldset class="facets"
     data-category-id="<?php echo $this->escapeHtml($category->id()); ?>"
     data-category-query="<?php echo $this->escapeHtml($category->query()); ?>">
     <?php foreach ($category->facets() as $facet): ?>
-    <h5><?php echo $facet->name(); ?></h5>
+    <legend><?php echo $facet->name(); ?></legend>
     <div class="facet"
         data-facet-id="<?php echo $this->escapeHtml($facet->id()); ?>"
         data-facet-type="<?php echo $this->escapeHtml($facet->type()); ?>"
@@ -12,4 +13,5 @@
         <?php echo $this->facetedBrowse()->renderFacet($facet); ?>
     </div>
     <?php endforeach; ?>
-</div>
+</fieldset>
+</fieldset>

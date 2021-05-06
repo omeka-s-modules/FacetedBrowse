@@ -4,6 +4,34 @@
     margin: 0;
 }
 
+.facet label {
+    display: flex;
+    align-items: center;
+}
+
+.facet label input {
+    margin-right: .25rem;
+}
+
 .resource-name {
     font-weight: bold;
+}
+
+.facets-container,
+.facets {
+    border: 0;
+    padding: 0;
+}
+
+.facets-container {
+    padding: 1rem 0;
+}
+
+.facets-container legend {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.facets legend {
+    font-size: 1.25rem;
 }
