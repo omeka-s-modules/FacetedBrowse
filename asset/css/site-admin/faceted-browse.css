@@ -132,11 +132,14 @@
 
 #show-all-table-container th,
 #show-all-table-container td {
-    width: 80%; 
     padding: 0; 
     border-bottom: 1px solid #dfdfdf;
     vertical-align: top;
     padding: .25rem .5rem;
+}
+
+#show-all-table-container th:first-child {
+    width: 75%;
 }
 
 #show-all-table-container table {
