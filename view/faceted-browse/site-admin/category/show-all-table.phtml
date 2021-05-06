@@ -1,16 +1,16 @@
 <?php if ($rows): ?>
-<table>
+<table class="available-classes">
     <thead>
         <tr>
-            <th style="width: 80%; padding: 0; border-bottom: 1px solid #dfdfdf;"><?php echo $this->translate('Available'); ?></th>
-            <th style="width: 20%; padding: 0; border-bottom: 1px solid #dfdfdf;"><?php echo $this->translate('Count'); ?></th>
+            <th><?php echo $this->translate('Available'); ?></th>
+            <th><?php echo $this->translate('Count'); ?></th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($rows as $row): ?>
         <tr>
-            <td style="width: 80%; padding: 0; border-bottom: 1px solid #dfdfdf;"><?php echo $row['label']; ?></td>
-            <td style="width: 20%; padding: 0; border-bottom: 1px solid #dfdfdf;"><?php echo $row['has_count']; ?></td>
+            <td><?php echo $row['label']; ?></td>
+            <td><?php echo $row['has_count']; ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>
