@@ -18,7 +18,7 @@
 }
 
 .facets-container,
-.facets {
+.facet {
     border: 0;
     padding: 0;
 }
@@ -32,6 +32,10 @@
     font-size: 1.5rem;
 }
 
-.facets legend {
+.facet {
+    margin-bottom: 1rem;
+}
+
+.facet legend {
     font-size: 1.25rem;
 }

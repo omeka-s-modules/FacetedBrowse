@@ -1,17 +1,17 @@
 <?php echo $this->hyperlink($this->translate('Back'), [], ['id' => 'categories-return']); ?>
 <fieldset class="facets-container">
 <legend><?php echo $category->name(); ?></legend>
-<fieldset class="facets"
+<div class="facets"
     data-category-id="<?php echo $this->escapeHtml($category->id()); ?>"
     data-category-query="<?php echo $this->escapeHtml($category->query()); ?>">
     <?php foreach ($category->facets() as $facet): ?>
-    <legend><?php echo $facet->name(); ?></legend>
-    <div class="facet"
+    <fieldset class="facet"
         data-facet-id="<?php echo $this->escapeHtml($facet->id()); ?>"
         data-facet-type="<?php echo $this->escapeHtml($facet->type()); ?>"
         data-facet-data="<?php echo $this->escapeHtml(json_encode($facet->data())); ?>">
+        <legend><?php echo $facet->name(); ?></legend>
         <?php echo $this->facetedBrowse()->renderFacet($facet); ?>
-    </div>
+    </fieldset>
     <?php endforeach; ?>
 </fieldset>
 </fieldset>
