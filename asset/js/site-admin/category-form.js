@@ -144,6 +144,10 @@ $(document).on('click', '#show-all', function(e) {
         query.category_query = $('#category-query').val();
         $.get(thisCheckbox.data('url'), query, function(html) {
             tableContainer.html(html);
+            const container = $('.confirm-main');
+            container.animate({
+                scrollTop: tableContainer.offset().top - container.offset().top + container.scrollTop()
+            });
         });
     } else {
         tableContainer.empty();
