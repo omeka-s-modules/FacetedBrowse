@@ -83,6 +83,9 @@ return [
         'A facet must have a select type.', // @translate
         'There are no available values.', // @translate
         'There are no available classes.', // @translate
+        'Error fetching browse markup.', // @translate
+        'Error fetching facet markup.', // @translate
+        'Error fetching category markup.', // @translate
     ],
     'navigation' => [
         'site' => [

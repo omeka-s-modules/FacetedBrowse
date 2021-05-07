@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 19:16-0400\n"
+"POT-Creation-Date: 2021-05-07 13:59-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Adriana Hernández, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/omeka/teams/14184/es/)\n"
@@ -33,19 +33,19 @@ msgid ""
 "            </ul>"
 msgstr ""
 
-#: view/common/faceted-browse/facet-data-form/by-class.phtml:2
+#: view/common/faceted-browse/facet-data-form/by-class.phtml:3
 msgid "Show all available classes."
 msgstr "Mostrar todas las clases disponibles."
 
-#: view/common/faceted-browse/facet-data-form/by-item-set.phtml:2
+#: view/common/faceted-browse/facet-data-form/by-item-set.phtml:3
 msgid "Show all available item sets."
 msgstr ""
 
-#: view/common/faceted-browse/facet-data-form/by-template.phtml:2
+#: view/common/faceted-browse/facet-data-form/by-template.phtml:3
 msgid "Show all available templates."
 msgstr ""
 
-#: view/common/faceted-browse/facet-data-form/by-value.phtml:5
+#: view/common/faceted-browse/facet-data-form/by-value.phtml:6
 msgid "Show all available values."
 msgstr ""
 
@@ -54,7 +54,7 @@ msgid "Select a page"
 msgstr "Selecciona una página"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:5
-#: view/faceted-browse/site-admin/page/form.phtml:38
+#: view/faceted-browse/site-admin/page/form.phtml:39
 msgid "Categories"
 msgstr "Categorías"
 
@@ -94,18 +94,22 @@ msgid "No categories found."
 msgstr "No se han encontrado categorías."
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:6
+msgid "Configure facet"
+msgstr "Configurar faceta"
+
+#: view/faceted-browse/site-admin/category/facet-form.phtml:9
 msgid "Facet type"
 msgstr "Tipo de faceta"
 
-#: view/faceted-browse/site-admin/category/facet-row.phtml:11
+#: view/faceted-browse/site-admin/category/facet-row.phtml:12
 msgid "Edit facet"
 msgstr "Editar faceta"
 
-#: view/faceted-browse/site-admin/category/facet-row.phtml:15
+#: view/faceted-browse/site-admin/category/facet-row.phtml:16
 msgid "Remove facet"
 msgstr "Eliminar faceta"
 
-#: view/faceted-browse/site-admin/category/facet-row.phtml:19
+#: view/faceted-browse/site-admin/category/facet-row.phtml:20
 msgid "Restore facet"
 msgstr "Restaurar faceta"
 
@@ -130,13 +134,21 @@ msgstr "Regresar a categorías"
 msgid "Stay on this category"
 msgstr "Permanecer en esta categoría"
 
-#: view/faceted-browse/site-admin/category/form.phtml:41
+#: view/faceted-browse/site-admin/category/form.phtml:42
 msgid "Facets"
 msgstr "Facetas"
 
-#: view/faceted-browse/site-admin/category/form.phtml:60
-msgid "Configure facet"
-msgstr "Configurar faceta"
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:5
+msgid "Available"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:6
+msgid "Count"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:19
+msgid "There are no results."
+msgstr ""
 
 #: view/faceted-browse/site-admin/page/browse.phtml:74
 #, php-format
@@ -151,11 +163,11 @@ msgstr "Añadir una nueva página."
 msgid "No pages found."
 msgstr "No se han encontrado páginas."
 
-#: view/faceted-browse/site-admin/page/category-row.phtml:10
+#: view/faceted-browse/site-admin/page/category-row.phtml:11
 msgid "Remove category"
 msgstr "Eliminar categoría"
 
-#: view/faceted-browse/site-admin/page/category-row.phtml:14
+#: view/faceted-browse/site-admin/page/category-row.phtml:15
 msgid "Restore category"
 msgstr "Restaurar categoría"
 
@@ -175,7 +187,7 @@ msgstr "Regresar a páginas"
 msgid "Stay on this page"
 msgstr "Permanecer en esta página"
 
-#: view/faceted-browse/site/page/categories.phtml:16
+#: view/faceted-browse/site/page/categories.phtml:17
 msgid "There are no categories to browse."
 msgstr "No hay categorías para mostrar."
 
@@ -358,3 +370,15 @@ msgstr "No hay valores disponibles."
 #: config/module.config.php:85
 msgid "There are no available classes."
 msgstr "No hay clases disponibles."
+
+#: config/module.config.php:86
+msgid "Error fetching browse markup."
+msgstr ""
+
+#: config/module.config.php:87
+msgid "Error fetching facet markup."
+msgstr ""
+
+#: config/module.config.php:88
+msgid "Error fetching category markup."
+msgstr ""

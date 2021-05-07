@@ -8,25 +8,35 @@ const urlCategories = container.data('urlCategories');
 const urlFacets = container.data('urlFacets');
 const urlBrowse = container.data('urlBrowse');
 
+const failBrowse = function(data) {
+    sectionContent.html(`${Omeka.jsTranslate('Error fetching browse markup.')} ${data.status} (${data.statusText})`);
+};
+const failFacet = function(data) {
+    sectionContent.html(`${Omeka.jsTranslate('Error fetching facet markup.')} ${data.status} (${data.statusText})`);
+};
+const failCategory = function(data) {
+    sectionContent.html(`${Omeka.jsTranslate('Error fetching category markup.')} ${data.status} (${data.statusText})`);
+};
+
 if (container.data('categoryId')) {
     // There is one category. Skip categories list and show facets list.
     $.get(urlFacets, {
         category_id: container.data('categoryId')
-    }, function(html) {
+    }).done(function(html) {
         sectionSidebar.html(html);
         $('#categories-return').hide();
-        $.get(`${urlBrowse}?${container.data('categoryQuery')}`, {}, function(html) {
+        $.get(`${urlBrowse}?${container.data('categoryQuery')}`).done(function(html) {
             sectionContent.html(html);
-        });
-    });
+        }).fail(failBrowse);
+    }).fail(failFacet);
 } else {
     // There is more than one category. Show category list.
-    $.get(urlCategories, {}, function(html) {
+    $.get(urlCategories).done(function(html) {
         sectionSidebar.html(html);
-        $.get(urlBrowse, {}, function(html) {
+        $.get(urlBrowse).done(function(html) {
             sectionContent.html(html);
-        });
-    });
+        }).fail(failBrowse);
+    }).fail(failCategory);
 }
 // Set the facet state change handler.
 FacetedBrowse.setFacetStateChangeHandler(function() {
@@ -34,32 +44,30 @@ FacetedBrowse.setFacetStateChangeHandler(function() {
     for (const facetId in FacetedBrowse.facetQueries) {
         queries.push(FacetedBrowse.facetQueries[facetId]);
     }
-    $.get(`${urlBrowse}?${$('#category').data('categoryQuery')}&${queries.join('&')}`, {}, function(html) {
-        $('#section-content').html(html);
-    });
+    $.get(`${urlBrowse}?${$('#category').data('categoryQuery')}&${queries.join('&')}`).done(function(html) {
+        sectionContent.html(html)
+    }).fail(failBrowse);
 });
 // Handle category click.
 container.on('click', '.category', function(e) {
     e.preventDefault();
     const thisCategory = $(this);
-    $.get(urlFacets, {
-        category_id: thisCategory.data('categoryId')
-    }, function(html) {
+    $.get(urlFacets, {category_id: thisCategory.data('categoryId')}).done(function(html) {
         sectionSidebar.html(html);
-        $.get(`${urlBrowse}?${thisCategory.data('categoryQuery')}`, {}, function(html) {
+        $.get(`${urlBrowse}?${thisCategory.data('categoryQuery')}`).done(function(html) {
             sectionContent.html(html);
-        });
-    });
+        }).fail(failBrowse);
+    }).fail(failFacet);
 });
 // Handle a categories return click.
 container.on('click', '#categories-return', function(e) {
     e.preventDefault();
-    $.get(urlCategories, {}, function(html) {
+    $.get(urlCategories).done(function(html) {
         sectionSidebar.html(html);
-    });
-    $.get(urlBrowse, {}, function(html) {
-        sectionContent.html(html);
-    });
+        $.get(urlBrowse).done(function(html) {
+            sectionContent.html(html);
+        }).fail(failBrowse);
+    }).fail(failCategory);
 });
 // Handle item click.
 container.on('click', '.resource-link', function(e) {
