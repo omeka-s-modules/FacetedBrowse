@@ -25,11 +25,10 @@
 
 .facet label {
     display: flex;
-    align-items: center;
 }
 
 .facet label input {
-    margin-right: .25rem;
+    margin: 0 .25rem 0 0;
 }
 
 .resource-name {
@@ -60,4 +59,31 @@
 
 .facet legend {
     font-size: 1.25rem;
+}
+
+.permalink-label {
+    display: inline-flex;
+    align-items: center;
+}
+
+input[type="text"].permalink {
+    margin: 0 0 0 .5rem;
+}
+
+#section-sidebar {
+    width: 30%;
+    padding-right: .5rem;
+}
+
+#section-content {
+    width: 70%;
+    padding-left: .5rem;
+}
+
+#container {
+    display: flex;
+}
+
+.faceted-browse-page .browse-controls > * {
+    margin-bottom: 1rem;
 }

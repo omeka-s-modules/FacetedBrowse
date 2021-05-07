@@ -16,12 +16,12 @@ if (1 === count($categories)) {
     $categoryQuery = $category->query();
 }
 ?>
-<div id="container" style="display: flex"
+<div id="container" 
     data-url-categories="<?php echo $this->escapeHtml($this->url(null, ['action' => 'categories'], true)); ?>"
     data-url-facets="<?php echo $this->escapeHtml($this->url(null, ['action' => 'facets'], true)); ?>"
     data-url-browse="<?php echo $this->escapeHtml($this->url(null, ['action' => 'browse'], true)); ?>"
     data-category-id="<?php echo $this->escapeHtml($categoryId); ?>"
     data-category-query="<?php echo $this->escapeHtml($categoryQuery); ?>">
-    <div id="section-sidebar" style="width: 30%;"></div>
-    <div id="section-content" style="width: 70%;"></div>
+    <div id="section-sidebar"></div>
+    <div id="section-content"></div>
 </div>
