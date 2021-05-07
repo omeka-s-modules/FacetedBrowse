@@ -44,7 +44,7 @@ FacetedBrowse.setFacetStateChangeHandler(function() {
     for (const facetId in FacetedBrowse.facetQueries) {
         queries.push(FacetedBrowse.facetQueries[facetId]);
     }
-    $.get(`${urlBrowse}?${$('#category').data('categoryQuery')}&${queries.join('&')}`).done(function(html) {
+    $.get(`${urlBrowse}?${$('#facets').data('categoryQuery')}&${queries.join('&')}`).done(function(html) {
         sectionContent.html(html)
     }).fail(failBrowse);
 });

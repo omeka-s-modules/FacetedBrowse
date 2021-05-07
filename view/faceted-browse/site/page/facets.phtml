@@ -1,7 +1,7 @@
 <?php echo $this->hyperlink($this->translate('Back'), [], ['id' => 'categories-return', 'class' => 'button']); ?>
 <fieldset class="facets-container">
     <legend><?php echo $category->name(); ?></legend>
-    <div class="facets"
+    <div id="facets"
         data-category-id="<?php echo $this->escapeHtml($category->id()); ?>"
         data-category-query="<?php echo $this->escapeHtml($category->query()); ?>">
         <?php foreach ($category->facets() as $facet): ?>
