@@ -32,6 +32,7 @@ $(document).on('change', '#by-value-property-id, #by-value-query-type', function
     $('#show-all-table-container').empty();
     if ('ex' === $('#by-value-query-type').val()) {
         $('#by-value-property-id').closest('.field').hide();
+        $('#by-value-property-id').val('');
     } else {
         $('#by-value-property-id').closest('.field').show();
     }
