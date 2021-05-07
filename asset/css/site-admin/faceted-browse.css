@@ -123,6 +123,7 @@
     text-transform: uppercase;
     font-size: 12px;
     margin-left: .5rem;
+    color: #5c5c5c;
 }
 
 #facet-type-select,

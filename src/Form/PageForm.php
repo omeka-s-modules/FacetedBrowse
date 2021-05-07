@@ -35,6 +35,7 @@ class PageForm extends Form
             ],
             'attributes' => [
                 'id' => 'category-select',
+                'aria-labelledby' => 'category-add-button',
             ],
         ]);
 

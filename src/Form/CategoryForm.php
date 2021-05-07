@@ -49,6 +49,7 @@ class CategoryForm extends Form
             ],
             'attributes' => [
                 'id' => 'facet-type-select',
+                'aria-labelledby' => 'facet-add-button',
             ],
         ]);
 
