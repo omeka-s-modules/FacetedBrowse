@@ -52,6 +52,8 @@ FacetedBrowse.setFacetStateChangeHandler(function() {
 container.on('click', '.category', function(e) {
     e.preventDefault();
     const thisCategory = $(this);
+    // Reset category queries so queries from other categories aren't applied.
+    FacetedBrowse.facetQueries = {};
     $.get(urlFacets, {category_id: thisCategory.data('categoryId')}).done(function(html) {
         sectionSidebar.html(html);
         $.get(`${urlBrowse}?${thisCategory.data('categoryQuery')}`).done(function(html) {
