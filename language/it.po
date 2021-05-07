@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 13:59-0400\n"
+"POT-Creation-Date: 2021-05-07 15:02-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Giorgio Comai <g@giorgiocomai.eu>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/omeka/teams/14184/it/)\n"
@@ -194,6 +194,10 @@ msgstr "Ritorna alle pagine"
 #: view/faceted-browse/site-admin/page/form.phtml:31
 msgid "Stay on this page"
 msgstr "Rimani su questa pagina"
+
+#: view/faceted-browse/site/page/browse.phtml:21
+msgid "Permalink for current results."
+msgstr ""
 
 #: view/faceted-browse/site/page/categories.phtml:17
 msgid "There are no categories to browse."
