@@ -13,28 +13,33 @@ FacetedBrowse.registerFacetAddEditHandler('by_value', function() {
     }
 });
 FacetedBrowse.registerFacetSetHandler('by_value', function() {
-    const propertyId = $('#by-value-property-id');
-    const queryType = $('#by-value-query-type');
-    const selectType = $('#by-value-select-type');
     return {
-        property_id: propertyId.val(),
-        query_type: queryType.val(),
-        select_type: selectType.val(),
+        property_id: $('#by-value-property-id').val(),
+        query_type: $('#by-value-query-type').val(),
+        select_type: $('#by-value-select-type').val(),
         values: $('#by-value-values').val()
     };
 });
 
 $(document).ready(function() {
 
-// Clear show all during certain interactions.
-$(document).on('change', '#by-value-property-id, #by-value-query-type', function(e) {
+// Handle behavior during selecting a property.
+$(document).on('change', '#by-value-property-id', function(e) {
     $('#show-all').prop('checked', false);
     $('#show-all-table-container').empty();
-    if ('ex' === $('#by-value-query-type').val()) {
-        $('#by-value-property-id').closest('.field').hide();
-        $('#by-value-property-id').val('');
+});
+// Handle behavior during selecting a query type.
+$(document).on('change', '#by-value-query-type', function(e) {
+    const thisSelect = $(this);
+    const propertySelect = $('#by-value-property-id');
+    $('#show-all').prop('checked', false);
+    $('#show-all-table-container').empty();
+    if ('ex' === thisSelect.val()) {
+        propertySelect.closest('.field').hide();
+        propertySelect.val('');
+        propertySelect.trigger('chosen:updated')
     } else {
-        $('#by-value-property-id').closest('.field').show();
+        propertySelect.closest('.field').show();
     }
 });
 
