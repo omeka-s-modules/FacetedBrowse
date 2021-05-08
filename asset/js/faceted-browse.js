@@ -34,30 +34,30 @@ const FacetedBrowse = {
         FacetedBrowse.facetSetHandlers[facetType] = handler;
     },
     /**
-     * Set a query by facet ID and trigger a state change.
+     * Set the facet state.
      *
-     * All facet types should:
-     *
-     * - Detect a user interaction;
-     * - Calculate the query needed to reflect the current state of the facet;
-     * - Set the query using this function;
-     * - All via a script added in FacetTypeInterface::prepareFacet().
-     *
-     * This will detect the state change, iterate every facet, build a new,
-     * consolidated query, and update the item browse section.
-     *
-     * Set triggerStateChange to false if for any reason the state change should
-     * not be triggered.
+     * Via a script added in FacetTypeInterface::prepareFacet(), all facet types
+     * should detect a user interaction, calculate the query needed to reflect
+     * the current state of the facet, then set the query using this function.
      *
      * @param int facetId The facet ID
      * @param string facetQuery The facet query
-     * @param bool triggerStateChange Trigger a state change?
      */
-    setFacetQuery: (facetId, facetQuery, triggerStateChange = true) => {
+    setFacetState: (facetId, facetQuery) => {
         FacetedBrowse.facetQueries[facetId] = facetQuery;
-        if (triggerStateChange) {
-            FacetedBrowse.facetStateChangeHandler();
+    },
+    /**
+     * Trigger a facet state change.
+     *
+     * Via a script added in FacetTypeInterface::prepareFacet(), all facet types
+     * should call this function once all relevant states have been set.
+     */
+    triggerFacetStateChange: () => {
+        const queries = [];
+        for (const facetId in FacetedBrowse.facetQueries) {
+            queries.push(FacetedBrowse.facetQueries[facetId]);
         }
+        FacetedBrowse.facetStateChangeHandler(queries.join('&'));
     },
     /**
      * Call a facet add/edit handler.

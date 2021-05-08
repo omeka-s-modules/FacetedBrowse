@@ -13,7 +13,8 @@ container.on('click', '.by-template', function(e) {
         const id = $(this).data('templateId');
         queries.push(`resource_template_id=${id}`);
     });
-    FacetedBrowse.setFacetQuery(facet.data('facetId'), queries.join('&'));
+    FacetedBrowse.setFacetState(facet.data('facetId'), queries.join('&'));
+    FacetedBrowse.triggerFacetStateChange();
 });
 
 });

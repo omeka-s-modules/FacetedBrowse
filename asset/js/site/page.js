@@ -39,12 +39,9 @@ if (container.data('categoryId')) {
     }).fail(failCategory);
 }
 // Set the facet state change handler.
-FacetedBrowse.setFacetStateChangeHandler(function() {
-    const queries = [];
-    for (const facetId in FacetedBrowse.facetQueries) {
-        queries.push(FacetedBrowse.facetQueries[facetId]);
-    }
-    $.get(`${urlBrowse}?${$('#facets').data('categoryQuery')}&${queries.join('&')}`).done(function(html) {
+FacetedBrowse.setFacetStateChangeHandler(function(facetsQuery) {
+    const categoryQuery = $('#facets').data('categoryQuery');
+    $.get(`${urlBrowse}?${categoryQuery}&${facetsQuery}`).done(function(html) {
         sectionContent.html(html)
     }).fail(failBrowse);
 });

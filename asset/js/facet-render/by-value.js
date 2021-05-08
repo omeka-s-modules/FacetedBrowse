@@ -16,7 +16,6 @@ container.on('click', '.by-value', function(e) {
     facets.each(function() {
         const thisFacet= $(this);
         const facetData = thisFacet.data('facetData');
-        FacetedBrowse.setFacetQuery(thisFacet.data('facetId'), '', false);
         thisFacet.find('.by-value.selected').each(function() {
             const property = $(this).data('propertyId');
             const type = facetData.query_type;
@@ -24,8 +23,9 @@ container.on('click', '.by-value', function(e) {
             queries.push(`property[${index}][joiner]=and&property[${index}][property]=${property}&property[${index}][type]=${type}&property[${index}][text]=${encodeURIComponent(text)}`);
             index++;
         });
+        FacetedBrowse.setFacetState(thisFacet.data('facetId'), queries.join('&'));
     });
-    FacetedBrowse.setFacetQuery(facet.data('facetId'), queries.join('&'));
+    FacetedBrowse.triggerFacetStateChange();
 });
 
 });

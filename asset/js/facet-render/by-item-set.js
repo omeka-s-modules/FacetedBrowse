@@ -13,7 +13,8 @@ container.on('click', '.by-item-set', function(e) {
         const id = $(this).data('itemSetId');
         queries.push(`item_set_id=${id}`);
     });
-    FacetedBrowse.setFacetQuery(facet.data('facetId'), queries.join('&'));
+    FacetedBrowse.setFacetState(facet.data('facetId'), queries.join('&'));
+    FacetedBrowse.triggerFacetStateChange();
 });
 
 });
