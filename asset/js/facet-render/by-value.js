@@ -6,7 +6,6 @@ container.on('click', '.by-value', function(e) {
     const thisValue = $(this);
     const facet = thisValue.closest('.facet');
     const facets = container.find('.facet[data-facet-type="by_value"]');
-    const queries = [];
     let index = 0;
     if ('single' === facet.data('facetData').select_type) {
         facet.find('.by-value').not(thisValue).removeClass('selected');
@@ -16,6 +15,7 @@ container.on('click', '.by-value', function(e) {
     facets.each(function() {
         const thisFacet= $(this);
         const facetData = thisFacet.data('facetData');
+        const queries = [];
         thisFacet.find('.by-value.selected').each(function() {
             const property = $(this).data('propertyId');
             const type = facetData.query_type;
