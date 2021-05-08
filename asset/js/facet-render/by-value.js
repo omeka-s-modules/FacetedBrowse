@@ -16,14 +16,20 @@ container.on('click', '.by-value', function(e) {
         const thisFacet= $(this);
         const facetData = thisFacet.data('facetData');
         const queries = [];
+        const state = [];
         thisFacet.find('.by-value.selected').each(function() {
             const property = $(this).data('propertyId');
             const type = facetData.query_type;
             const text = $(this).data('value');
-            queries.push(`property[${index}][joiner]=and&property[${index}][property]=${property}&property[${index}][type]=${type}&property[${index}][text]=${encodeURIComponent(text)}`);
+            if ('ex' === type) {
+                queries.push(`property[${index}][joiner]=and&property[${index}][property]=${property}&property[${index}][type]=${type}`);
+            } else {
+                queries.push(`property[${index}][joiner]=and&property[${index}][property]=${property}&property[${index}][type]=${type}&property[${index}][text]=${encodeURIComponent(text)}`);
+            }
+            state.push(text);
             index++;
         });
-        FacetedBrowse.setFacetState(thisFacet.data('facetId'), queries.join('&'));
+        FacetedBrowse.setFacetState(thisFacet.data('facetId'), state, queries.join('&'));
     });
     FacetedBrowse.triggerFacetStateChange();
 });

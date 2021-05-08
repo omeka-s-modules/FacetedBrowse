@@ -18,6 +18,8 @@ const failCategory = function(data) {
     sectionContent.html(`${Omeka.jsTranslate('Error fetching category markup.')} ${data.status} (${data.statusText})`);
 };
 
+FacetedBrowse.initState();
+
 if (container.data('categoryId')) {
     // There is one category. Skip categories list and show facets list.
     $.get(urlFacets, {
@@ -49,8 +51,7 @@ FacetedBrowse.setFacetStateChangeHandler(function(facetsQuery) {
 container.on('click', '.category', function(e) {
     e.preventDefault();
     const thisCategory = $(this);
-    // Reset category queries so queries from other categories aren't applied.
-    FacetedBrowse.facetQueries = {};
+    FacetedBrowse.resetState(thisCategory.data('categoryId'), thisCategory.data('categoryQuery'));
     $.get(urlFacets, {category_id: thisCategory.data('categoryId')}).done(function(html) {
         sectionSidebar.html(html);
         $.get(`${urlBrowse}?${thisCategory.data('categoryQuery')}`).done(function(html) {
@@ -61,6 +62,7 @@ container.on('click', '.category', function(e) {
 // Handle a categories return click.
 container.on('click', '#categories-return', function(e) {
     e.preventDefault();
+    FacetedBrowse.resetState();
     $.get(urlCategories).done(function(html) {
         sectionSidebar.html(html);
         $.get(urlBrowse).done(function(html) {

@@ -3,7 +3,12 @@ const FacetedBrowse = {
     facetAddEditHandlers: {},
     facetSetHandlers: {},
     facetStateChangeHandler: () => {},
-    facetQueries: {},
+    state: {
+        categoryId: null,
+        categoryQuery: null,
+        facetStates: {},
+        facetQueries: {}
+    },
 
     /**
      * Register a callback that handles facet add/edit.
@@ -43,8 +48,10 @@ const FacetedBrowse = {
      * @param int facetId The facet ID
      * @param string facetQuery The facet query
      */
-    setFacetState: (facetId, facetQuery) => {
-        FacetedBrowse.facetQueries[facetId] = facetQuery;
+    setFacetState: (facetId, facetState, facetQuery) => {
+        FacetedBrowse.state.facetQueries[facetId] = facetQuery;
+        FacetedBrowse.state.facetStates[facetId] = facetState;
+        history.replaceState(FacetedBrowse.state, null);
     },
     /**
      * Trigger a facet state change.
@@ -54,8 +61,8 @@ const FacetedBrowse = {
      */
     triggerFacetStateChange: () => {
         const queries = [];
-        for (const facetId in FacetedBrowse.facetQueries) {
-            queries.push(FacetedBrowse.facetQueries[facetId]);
+        for (const facetId in FacetedBrowse.state.facetQueries) {
+            queries.push(FacetedBrowse.state.facetQueries[facetId]);
         }
         FacetedBrowse.facetStateChangeHandler(queries.join('&'));
     },
@@ -87,5 +94,28 @@ const FacetedBrowse = {
      */
     setFacetStateChangeHandler: (handler) => {
         FacetedBrowse.facetStateChangeHandler = handler;
+    },
+    /**
+     * Initialize the state.
+     */
+    initState: () => {
+        if (history.state) {
+            FacetedBrowse.state = history.state;
+        } else {
+            history.replaceState(FacetedBrowse.state, null);
+        }
+    },
+    /**
+     * Reset the state.
+     *
+     * @param ?int categoryId The current category ID
+     * @param ?int categoryQuery The current category query
+     */
+    resetState: (categoryId = null, categoryQuery = null) => {
+        FacetedBrowse.state.categoryId = categoryId;
+        FacetedBrowse.state.categoryQuery = categoryQuery;
+        FacetedBrowse.state.facetStates = {};
+        FacetedBrowse.state.facetQueries = {};
+        history.replaceState(FacetedBrowse.state, null);
     },
 };
