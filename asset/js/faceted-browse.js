@@ -42,8 +42,9 @@ const FacetedBrowse = {
      * Set the facet state.
      *
      * Via a script added in FacetTypeInterface::prepareFacet(), all facet types
-     * should detect a user interaction, calculate the query needed to reflect
-     * the current state of the facet, then set the query using this function.
+     * should detect a user interaction, calculate the data needed to preserve
+     * the current state of the facet, calculate the query needed to fetch the
+     * items, then set them using this function.
      *
      * @param int facetId The facet ID
      * @param string facetQuery The facet query
@@ -51,7 +52,7 @@ const FacetedBrowse = {
     setFacetState: (facetId, facetState, facetQuery) => {
         FacetedBrowse.state.facetQueries[facetId] = facetQuery;
         FacetedBrowse.state.facetStates[facetId] = facetState;
-        history.replaceState(FacetedBrowse.state, null);
+        FacetedBrowse.replaceHistoryState();
     },
     /**
      * Trigger a facet state change.
@@ -102,7 +103,7 @@ const FacetedBrowse = {
         if (history.state) {
             FacetedBrowse.state = history.state;
         } else {
-            history.replaceState(FacetedBrowse.state, null);
+            FacetedBrowse.replaceHistoryState();
         }
     },
     /**
@@ -116,6 +117,12 @@ const FacetedBrowse = {
         FacetedBrowse.state.categoryQuery = categoryQuery;
         FacetedBrowse.state.facetStates = {};
         FacetedBrowse.state.facetQueries = {};
+        FacetedBrowse.replaceHistoryState();
+    },
+    /**
+     * Replace the current history entry of this page.
+     */
+    replaceHistoryState: () => {
         history.replaceState(FacetedBrowse.state, null);
     },
 };
