@@ -81,10 +81,6 @@ container.on('click', '#categories-return', function(e) {
         }).fail(failBrowse);
     }).fail(failCategory);
 });
-// Handle item click.
-container.on('click', '.resource-link', function(e) {
-    e.preventDefault();
-});
 // Handle pagination next button.
 container.on('click', '.next', function(e) {
     e.preventDefault();

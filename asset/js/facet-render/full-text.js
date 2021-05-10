@@ -6,12 +6,16 @@ FacetedBrowse.registerFacetApplyStateHandler('full_text', function(facet, facetS
 $(document).ready(function() {
 
 const container = $('#container');
+let timerId;
 
-container.on('input', '.full-text', function(e) {
+container.on('keyup', '.full-text', function(e) {
     const thisFullText = $(this);
     const facet = thisFullText.closest('.facet');
-    FacetedBrowse.setFacetState(facet.data('facetId'), thisFullText.val(), `fulltext_search=${encodeURIComponent(thisFullText.val())}`);
-    FacetedBrowse.triggerFacetStateChange();
+    clearTimeout(timerId);
+    timerId = setTimeout(function() {
+        FacetedBrowse.setFacetState(facet.data('facetId'), thisFullText.val(), `fulltext_search=${encodeURIComponent(thisFullText.val())}`);
+        FacetedBrowse.triggerFacetStateChange();
+    }, 350);
 });
 
 });
