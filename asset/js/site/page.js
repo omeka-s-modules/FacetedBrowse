@@ -18,7 +18,19 @@ const failCategory = function(data) {
     sectionContent.html(`${Omeka.jsTranslate('Error fetching category markup.')} ${data.status} (${data.statusText})`);
 };
 
-if (container.data('categoryId')) {
+FacetedBrowse.initState();
+
+if (FacetedBrowse.state.categoryId) {
+    // This page has a previously saved category state.
+    $.get(urlFacets, {category_id: FacetedBrowse.state.categoryId}).done(function(html) {
+        sectionSidebar.html(html);
+        $('.facet').each(function() {
+            const thisFacet = $(this);
+            FacetedBrowse.handleFacetApplyState(thisFacet.data('facetType'), thisFacet.data('facetId'), this);
+        });
+        FacetedBrowse.triggerFacetStateChange();
+    }).fail(failFacet);
+} else if (container.data('categoryId')) {
     // There is one category. Skip categories list and show facets list.
     $.get(urlFacets, {
         category_id: container.data('categoryId')
@@ -38,6 +50,7 @@ if (container.data('categoryId')) {
         }).fail(failBrowse);
     }).fail(failCategory);
 }
+
 // Set the facet state change handler.
 FacetedBrowse.setFacetStateChangeHandler(function(facetsQuery) {
     const categoryQuery = $('#facets').data('categoryQuery');
@@ -49,8 +62,7 @@ FacetedBrowse.setFacetStateChangeHandler(function(facetsQuery) {
 container.on('click', '.category', function(e) {
     e.preventDefault();
     const thisCategory = $(this);
-    // Reset category queries so queries from other categories aren't applied.
-    FacetedBrowse.facetQueries = {};
+    FacetedBrowse.resetState(thisCategory.data('categoryId'), thisCategory.data('categoryQuery'));
     $.get(urlFacets, {category_id: thisCategory.data('categoryId')}).done(function(html) {
         sectionSidebar.html(html);
         $.get(`${urlBrowse}?${thisCategory.data('categoryQuery')}`).done(function(html) {
@@ -61,16 +73,13 @@ container.on('click', '.category', function(e) {
 // Handle a categories return click.
 container.on('click', '#categories-return', function(e) {
     e.preventDefault();
+    FacetedBrowse.resetState();
     $.get(urlCategories).done(function(html) {
         sectionSidebar.html(html);
         $.get(urlBrowse).done(function(html) {
             sectionContent.html(html);
         }).fail(failBrowse);
     }).fail(failCategory);
-});
-// Handle item click.
-container.on('click', '.resource-link', function(e) {
-    e.preventDefault();
 });
 // Handle pagination next button.
 container.on('click', '.next', function(e) {
