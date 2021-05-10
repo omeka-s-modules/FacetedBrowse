@@ -20,7 +20,17 @@ const failCategory = function(data) {
 
 FacetedBrowse.initState();
 
-if (container.data('categoryId')) {
+if (FacetedBrowse.state.categoryId) {
+    // This page has a previously saved category state.
+    $.get(urlFacets, {category_id: FacetedBrowse.state.categoryId}).done(function(html) {
+        sectionSidebar.html(html);
+        $('.facet').each(function() {
+            const thisFacet = $(this);
+            FacetedBrowse.handleFacetApplyState(thisFacet.data('facetType'), thisFacet.data('facetId'), this);
+        });
+        FacetedBrowse.triggerFacetStateChange();
+    }).fail(failFacet);
+} else if (container.data('categoryId')) {
     // There is one category. Skip categories list and show facets list.
     $.get(urlFacets, {
         category_id: container.data('categoryId')
@@ -40,6 +50,7 @@ if (container.data('categoryId')) {
         }).fail(failBrowse);
     }).fail(failCategory);
 }
+
 // Set the facet state change handler.
 FacetedBrowse.setFacetStateChangeHandler(function(facetsQuery) {
     const categoryQuery = $('#facets').data('categoryQuery');

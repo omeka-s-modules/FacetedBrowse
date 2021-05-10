@@ -1,3 +1,8 @@
+FacetedBrowse.registerFacetApplyStateHandler('full_text', function(facet, facetState) {
+    const thisFacet = $(facet);
+    thisFacet.find(`input.full-text`).val(facetState);
+});
+
 $(document).ready(function() {
 
 const container = $('#container');

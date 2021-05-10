@@ -2,13 +2,9 @@ const FacetedBrowse = {
 
     facetAddEditHandlers: {},
     facetSetHandlers: {},
+    facetApplyStateHandlers: {},
     facetStateChangeHandler: () => {},
-    state: {
-        categoryId: null,
-        categoryQuery: null,
-        facetStates: {},
-        facetQueries: {}
-    },
+    state: {},
 
     /**
      * Register a callback that handles facet add/edit.
@@ -37,6 +33,19 @@ const FacetedBrowse = {
      */
     registerFacetSetHandler: (facetType, handler) => {
         FacetedBrowse.facetSetHandlers[facetType] = handler;
+    },
+    /**
+     * Register a callback that handles facet apply state.
+     *
+     * "Facet apply state" happens when the user returns to a page that has
+     * been interacted with. Use this handler to apply a previously saved state
+     * to a facet.
+     *
+     * @param string facetType The facet type
+     * @param function handler The callback that handles facet apply state
+     */
+    registerFacetApplyStateHandler: (facetType, handler) => {
+        FacetedBrowse.facetApplyStateHandlers[facetType] = handler;
     },
     /**
      * Set the facet state.
@@ -89,6 +98,24 @@ const FacetedBrowse = {
         }
     },
     /**
+     * Call a facet apply state handler.
+     *
+     * @param string facetType The facet type
+     * @param int facetId The unique facet ID
+     * @param object facet The facet element
+     */
+    handleFacetApplyState: (facetType, facetId, facet) => {
+        if (!(facetType in FacetedBrowse.facetApplyStateHandlers)) {
+            return;
+        }
+        if (!(facetId in FacetedBrowse.state.facetStates)) {
+            return;
+        }
+        const facetApplyStateHandler = FacetedBrowse.facetApplyStateHandlers[facetType];
+        const facetState = FacetedBrowse.state.facetStates[facetId];
+        facetApplyStateHandler(facet, facetState);
+    },
+    /**
      * Set the callback that handles a facet state change.
      *
      * @param function handler The callback that handles facet state change
@@ -100,10 +127,15 @@ const FacetedBrowse = {
      * Initialize the state.
      */
     initState: () => {
-        if (history.state) {
+        try {
+            history.state.categoryId;
+            history.state.categoryQuery;
+            history.state.facetStates;
+            history.state.facetQueries;
             FacetedBrowse.state = history.state;
-        } else {
-            FacetedBrowse.replaceHistoryState();
+        } catch (error) {
+            // The state is not set or is malformed. Reset it.
+            FacetedBrowse.resetState();
         }
     },
     /**

@@ -1,3 +1,12 @@
+FacetedBrowse.registerFacetApplyStateHandler('by_item_set', function(facet, facetState) {
+    const thisFacet = $(facet);
+    facetState.forEach(function(itemSetId) {
+        thisFacet.find(`input.by-item-set[data-item-set-id="${itemSetId}"]`)
+            .prop('checked', true)
+            .addClass('selected');
+    });
+});
+
 $(document).ready(function() {
 
 const container = $('#container');
