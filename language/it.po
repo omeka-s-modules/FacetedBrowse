@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 15:02-0400\n"
+"POT-Creation-Date: 2021-05-09 22:49-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Giorgio Comai <g@giorgiocomai.eu>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/omeka/teams/14184/it/)\n"
@@ -47,11 +47,11 @@ msgstr "Mostra tutte le classi disponibili."
 
 #: view/common/faceted-browse/facet-data-form/by-item-set.phtml:3
 msgid "Show all available item sets."
-msgstr ""
+msgstr "Mostra tutte le collezioni disponibili."
 
 #: view/common/faceted-browse/facet-data-form/by-template.phtml:3
 msgid "Show all available templates."
-msgstr ""
+msgstr "Mostra tutti i modelli disponibili."
 
 #: view/common/faceted-browse/facet-data-form/by-value.phtml:6
 msgid "Show all available values."
@@ -148,15 +148,15 @@ msgstr "Faccette"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:5
 msgid "Available"
-msgstr ""
+msgstr "Disponibile"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:6
 msgid "Count"
-msgstr ""
+msgstr "Numero"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:19
 msgid "There are no results."
-msgstr ""
+msgstr "Nessun risultato."
 
 #: view/faceted-browse/site-admin/page/browse.phtml:74
 #, php-format
@@ -197,7 +197,7 @@ msgstr "Rimani su questa pagina"
 
 #: view/faceted-browse/site/page/browse.phtml:21
 msgid "Permalink for current results."
-msgstr ""
+msgstr "Link permanente per questi risultati."
 
 #: view/faceted-browse/site/page/categories.phtml:17
 msgid "There are no categories to browse."
@@ -217,7 +217,7 @@ msgstr "Inserisci il titolo di questa pagina"
 
 #: src/Form/PageForm.php:33
 msgid "Add a category"
-msgstr ""
+msgstr "Aggiungi una categoria"
 
 #: src/Form/CategoryForm.php:21
 msgid ""
@@ -295,15 +295,15 @@ msgstr "Pagina eliminata con successo."
 
 #: src/FacetType/FullText.php:20
 msgid "Full-text"
-msgstr ""
+msgstr "Testo completo"
 
 #: src/FacetType/ByItemSet.php:20
 msgid "By item set"
-msgstr ""
+msgstr "Per collezione"
 
 #: src/FacetType/ByItemSet.php:45
 msgid "Select item sets…"
-msgstr ""
+msgstr "Seleziona collezioni..."
 
 #: src/FacetType/ByValue.php:21
 msgid "By value"
@@ -337,11 +337,11 @@ msgstr ""
 
 #: src/FacetType/ByTemplate.php:20
 msgid "By template"
-msgstr ""
+msgstr "Per modello"
 
 #: src/FacetType/ByTemplate.php:45
 msgid "Select templates…"
-msgstr ""
+msgstr "Seleziona modelli..."
 
 #: src/FacetType/ByClass.php:20
 msgid "By class"
@@ -389,12 +389,12 @@ msgstr "Non ci sono classi disponibili."
 
 #: config/module.config.php:86
 msgid "Error fetching browse markup."
-msgstr ""
+msgstr "Errore nel recuperare il markup per sfoglia"
 
 #: config/module.config.php:87
 msgid "Error fetching facet markup."
-msgstr ""
+msgstr "Errore nel recuperare il markup per la faccetta"
 
 #: config/module.config.php:88
 msgid "Error fetching category markup."
-msgstr ""
+msgstr "Errore nel recuperare il markup per la categoria"
