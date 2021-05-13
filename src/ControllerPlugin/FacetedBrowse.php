@@ -45,18 +45,22 @@ class FacetedBrowse extends AbstractPlugin
             ->addOrderBy('label', 'ASC');
         switch ($queryType) {
             case 'res':
+            case 'nres':
                 $qb->select("CONCAT(vr.id, ' ', vr.title) label", 'COUNT(v) has_count')
                     ->join('v.valueResource', 'vr')
                     ->andWhere('v.type = :type')
                     ->setParameter('type', 'resource');
                 break;
             case 'ex':
+            case 'nex':
                 $qb->select("CONCAT(p.id, ' ', vo.label, ': ', p.label) label", 'COUNT(v) has_count')
                     ->join('v.property', 'p')
                     ->join('p.vocabulary', 'vo');
                 break;
             case 'eq':
+            case 'neq':
             case 'in':
+            case 'nin':
             default:
                 $qb->select('v.value label', 'COUNT(v.value) has_count')
                     ->andWhere('v.type = :type')

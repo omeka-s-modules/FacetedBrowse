@@ -3,7 +3,7 @@
     <?php
     $dataPropertyId = $facet->data('property_id');
     $dataValue = $key;
-    if ('ex' === $facet->data('query_type')) {
+    if (in_array($facet->data('query_type'), ['ex', 'nex'])) {
         $dataPropertyId = $key;
     }
     ?>

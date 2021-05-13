@@ -8,7 +8,7 @@ FacetedBrowse.registerFacetAddEditHandler('by_value', function() {
     $('#by-value-select-type').chosen({
         disable_search: true,
     });
-    if ('ex' === $('#by-value-query-type').val()) {
+    if (['ex', 'nex'].includes($('#by-value-query-type').val())) {
         $('#by-value-property-id').closest('.field').hide();
     }
 });
@@ -34,7 +34,7 @@ $(document).on('change', '#by-value-query-type', function(e) {
     const propertySelect = $('#by-value-property-id');
     $('#show-all').prop('checked', false);
     $('#show-all-table-container').empty();
-    if ('ex' === thisSelect.val()) {
+    if (['ex', 'nex'].includes(thisSelect.val())) {
         propertySelect.closest('.field').hide();
         propertySelect.val('');
         propertySelect.trigger('chosen:updated')

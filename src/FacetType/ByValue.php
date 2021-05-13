@@ -52,9 +52,13 @@ class ByValue implements FacetTypeInterface
             'label' => 'Query type', // @translate
             'value_options' => [
                 'eq' => 'Is exactly', // @translate
+                'neq' => 'Is not exactly', // @translate
                 'in' => 'Contains', // @translate
+                'nin' => 'Does not contain', // @translate
                 'res' => 'Is resource with ID', // @translate
+                'nres' => 'Is not resource with ID', // @translate
                 'ex' => 'Has any value', // @translate
+                'nex' => 'Has no values', // @translate
             ],
         ]);
         $queryType->setAttributes([
@@ -118,7 +122,9 @@ class ByValue implements FacetTypeInterface
         $values = array_unique($values);
         switch ($facet->data('query_type')) {
             case 'res':
+            case 'nres':
             case 'ex':
+            case 'nex':
                 $idKeyValues = [];
                 foreach ($values as $value) {
                     if (preg_match('/^(\d+) (.+)/', $value, $matches)) {
@@ -130,7 +136,9 @@ class ByValue implements FacetTypeInterface
                 $values = $idKeyValues;
                 break;
             case 'eq':
+            case 'neq':
             case 'in':
+            case 'nin':
             default:
                 $values = array_combine($values, $values);
         }
