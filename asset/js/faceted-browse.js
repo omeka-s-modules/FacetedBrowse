@@ -10,8 +10,9 @@ const FacetedBrowse = {
      * Register a callback that handles facet add/edit.
      *
      * "Facet add/edit" happens when a user adds or edits a facet. Use this
-     * handler to prepare the facet form for use. If needed, facet types should
-     * register a handler in a script added in FacetTypeInterface::prepareDataForm().
+     * handler to prepare the facet form for use. The handler will receive no
+     * arguments. If needed, facet types should register a handler in a script
+     * added in prepareDataForm().
      *
      * @param string facetType The facet type
      * @param function handler The callback that handles facet add/edit
@@ -25,8 +26,8 @@ const FacetedBrowse = {
      * "Facet set" happens when a user finishes configuring the facet and sets
      * it. Use this handler to validate the facet form and, if it validates,
      * return the facet data object. If it does not validate, alert the user and
-     * return nothing. All facet types should register a handler in a script
-     * added in FacetTypeInterface::prepareDataForm().
+     * return nothing. The handler will receive no arguments. All facet types
+     * should register a handler in a script added in prepareDataForm().
      *
      * @param string facetType The facet type
      * @param function handler The callback that handles facet set
@@ -39,7 +40,9 @@ const FacetedBrowse = {
      *
      * "Facet apply state" happens when the user returns to a page that has
      * been interacted with. Use this handler to apply a previously saved state
-     * to a facet.
+     * to a facet. The handler will receive a facet container element as the
+     * first argument and the facet's state as the second argument. All facet
+     * types should register a handler in a script added in prepareFacet().
      *
      * @param string facetType The facet type
      * @param function handler The callback that handles facet apply state
