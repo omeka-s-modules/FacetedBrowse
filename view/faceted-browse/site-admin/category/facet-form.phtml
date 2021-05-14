@@ -7,7 +7,7 @@ $facetType = $this->facetedBrowse()->getFacetType($facetType);
 <?php echo $this->hyperlink('', '#', ['class' => 'sidebar-close o-icon-close', 'title' => $this->translate('Close')]); ?>
 <div class="meta-group">
     <h4><?php echo $this->translate('Facet type'); ?></h4>
-    <div class="value"><?php echo $facetType->getLabel(); ?></div>
+    <div class="value"><?php echo $this->translate($facetType->getLabel()); ?></div>
 </div>
 <?php echo $this->form()->openTag($form); ?>
 <?php echo $this->formHidden($form->get('facet_type')); ?>

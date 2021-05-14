@@ -5,7 +5,7 @@ use Laminas\Form\Element\Hidden;
     <span class="sortable-handle"></span>
     <span class="restore-value"><?php echo sprintf('%s to be removed', 'Facet'); ?></span>
     <span class="facet-name-display"><?php echo $facet['o:name']; ?></span>
-    <span class="facet-type-display"><?php echo $this->facetedBrowse()->getFacetType($facet['o-module-faceted_browse:type'])->getLabel(); ?></span>
+    <span class="facet-type-display"><?php echo $this->translate($this->facetedBrowse()->getFacetType($facet['o-module-faceted_browse:type'])->getLabel()); ?></span>
     <ul class="actions">
         <li><?php echo $this->hyperlink('', [], [
             'class' => 'o-icon-edit facet-edit',

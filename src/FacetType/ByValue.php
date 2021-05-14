@@ -69,7 +69,7 @@ class ByValue implements FacetTypeInterface
         $selectType = $this->formElements->get(LaminasElement\Select::class);
         $selectType->setName('select_type');
         $selectType->setOptions([
-            'label' => 'Select type',
+            'label' => 'Select type', // @translate
             'info' => 'Select the select type. For the "single" select type, users may choose only one value at a time. For the "multiple" select type, users may choose any number of values at a time.', // @translate
             'value_options' => [
                 'single' => 'Single',

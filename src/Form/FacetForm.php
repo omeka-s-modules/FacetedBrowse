@@ -29,7 +29,7 @@ class FacetForm extends Form
             'type' => LaminasElement\Button::class,
             'name' => 'facet_set',
             'options' => [
-                'label' => 'Set facet',
+                'label' => 'Set facet', // @translate
             ],
             'attributes' => [
                 'id' => 'facet-set-button',

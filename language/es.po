@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 14:37-0400\n"
+"POT-Creation-Date: 2021-05-14 15:04-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Adriana Hernández, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/omeka/teams/14184/es/)\n"
@@ -203,6 +203,10 @@ msgstr "Regresar"
 msgid "Facet name"
 msgstr "Nombre de faceta"
 
+#: src/Form/FacetForm.php:32
+msgid "Set facet"
+msgstr ""
+
 #: src/Form/PageForm.php:22
 msgid "Enter the title of this page."
 msgstr "Ingrese el título de esta página."
@@ -330,6 +334,10 @@ msgstr ""
 
 #: src/FacetType/ByValue.php:61
 msgid "Has no values"
+msgstr ""
+
+#: src/FacetType/ByValue.php:72
+msgid "Select type"
 msgstr ""
 
 #: src/FacetType/ByValue.php:73
