@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Hong Zhang <zhangh@unlv.nevada.edu>, 2021
+# Emil Stoyanov <emostoyanov@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
@@ -13,13 +13,13 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-14 14:37-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
-"Last-Translator: Hong Zhang <zhangh@unlv.nevada.edu>, 2021\n"
-"Language-Team: Chinese (China) (https://www.transifex.com/omeka/teams/14184/zh_CN/)\n"
+"Last-Translator: Emil Stoyanov <emostoyanov@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (Bulgaria) (https://www.transifex.com/omeka/teams/14184/bg_BG/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: bg_BG\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/FacetType/ByValue.php:88
 msgid ""
@@ -32,31 +32,39 @@ msgid ""
 "                <li>\"Has any value\": enter the property ID followed by any value (usually the property label), separated by a single space.</li>\n"
 "            </ul>"
 msgstr ""
+"\n"
+"            <p>Въведете стойностите, разделени с нови редове. Форматът на всяка стойност зависи от типа на заявката:</p>\n"
+"            <ul>\n"
+"                <li>\"Е точно\": въведете стойност, която е точно съвпадение със стойността на свойството.</li>\n"
+"                <li>„Съдържа“: въведете стойност, която съответства на която и да е част от стойността на свойството.</li>\n"
+"                <li>„Е ресурс с ID“: въведете идентификатора на ресурса, последван от всяка стойност (обикновено заглавието на ресурса), разделена с едно интервал.</li>\n"
+"                <li>„Има произволна стойност“: въведете идентификатора на свойството, последван от произволна стойност (обикновено етикетът на свойството), разделен с един интервал.</li>\n"
+"            </ul>"
 
 #: view/common/faceted-browse/facet-data-form/by-class.phtml:3
 msgid "Show all available classes."
-msgstr "显示所有可用类。"
+msgstr "Показване на достъпните класове"
 
 #: view/common/faceted-browse/facet-data-form/by-item-set.phtml:3
 msgid "Show all available item sets."
-msgstr ""
+msgstr "Показване на достъпните набори от елементи"
 
 #: view/common/faceted-browse/facet-data-form/by-template.phtml:3
 msgid "Show all available templates."
-msgstr ""
+msgstr "Показване на достъпните шаблони"
 
 #: view/common/faceted-browse/facet-data-form/by-value.phtml:6
 msgid "Show all available values."
-msgstr ""
+msgstr "Показване на достъпните стойности"
 
 #: view/common/faceted-browse/navigation-link-form/faceted-browse.phtml:9
 msgid "Select a page"
-msgstr "选择一个页面"
+msgstr "Избор на страница"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:5
 #: view/faceted-browse/site-admin/page/form.phtml:39
 msgid "Categories"
-msgstr "类别"
+msgstr "Категории"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:5
 #: view/faceted-browse/site-admin/category/form.phtml:16
@@ -65,240 +73,245 @@ msgstr "类别"
 #: view/faceted-browse/site-admin/page/form.phtml:14
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Faceted Browse"
-msgstr "分面浏览"
+msgstr "Фасетиран преглед"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:10
 msgid "Add new category"
-msgstr "添加新类别"
+msgstr "Добавяне на нова категория"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:19
 #: view/faceted-browse/site-admin/page/browse.phtml:19
 msgid "Date created"
-msgstr "创建日期"
+msgstr "Дата на създаване"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:34
 msgid "Category"
-msgstr "类别"
+msgstr "Категория"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:74
 #, php-format
 msgid "No categories found. %s"
-msgstr "没有找到任何类别。%s"
+msgstr "Не са намерени категории. %s"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:75
 msgid "Add a new category."
-msgstr "添加一个新类别。"
+msgstr "Добавяне на нова категория."
 
 #: view/faceted-browse/site-admin/category/browse.phtml:78
 msgid "No categories found."
-msgstr "没有找到任何类别。"
+msgstr "Не са намерени категории."
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:6
 msgid "Configure facet"
-msgstr "配置分面"
+msgstr "Конфигуриране на фасета"
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:9
 msgid "Facet type"
-msgstr "分面类型"
+msgstr "Тип на фасета"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:12
 msgid "Edit facet"
-msgstr "编辑分面"
+msgstr "Редактиране на фасета"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:16
 msgid "Remove facet"
-msgstr "取消分面"
+msgstr "Премахване на фасета"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:20
 msgid "Restore facet"
-msgstr "恢复分面"
+msgstr "Възстановяване на фасета"
 
 #: view/faceted-browse/site-admin/category/form.phtml:16
 msgid "Edit Category"
-msgstr "编辑类别"
+msgstr "Редактиране на категория"
 
 #: view/faceted-browse/site-admin/category/form.phtml:18
 msgid "Add Category"
-msgstr "添加类别"
+msgstr "Добавяне на категория"
 
 #: view/faceted-browse/site-admin/category/form.phtml:30
 #: view/faceted-browse/site-admin/page/form.phtml:28
 msgid "Save and&hellip;"
-msgstr "保存并且&hellip;"
+msgstr "Запазване"
 
 #: view/faceted-browse/site-admin/category/form.phtml:32
 msgid "Return to categories"
-msgstr "返回到类别"
+msgstr "Обратно към категориите"
 
 #: view/faceted-browse/site-admin/category/form.phtml:33
 msgid "Stay on this category"
-msgstr "停留在此类别上"
+msgstr "Оставане на тази категория"
 
 #: view/faceted-browse/site-admin/category/form.phtml:42
 msgid "Facets"
-msgstr "分面"
+msgstr "Фасети"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:5
 msgid "Available"
-msgstr ""
+msgstr "Достъпни"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:6
 msgid "Count"
-msgstr ""
+msgstr "Брой"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:19
 msgid "There are no results."
-msgstr ""
+msgstr "Няма резултати."
 
 #: view/faceted-browse/site-admin/page/browse.phtml:74
 #, php-format
 msgid "No pages found. %s"
-msgstr "没有找到任何页面。%s"
+msgstr "Не са намерени страници. %s"
 
 #: view/faceted-browse/site-admin/page/browse.phtml:75
 msgid "Add a new page."
-msgstr "添加一个新页面。"
+msgstr "Добавяне на нова страница."
 
 #: view/faceted-browse/site-admin/page/browse.phtml:78
 msgid "No pages found."
-msgstr "没有找到任何页面。"
+msgstr "Не са намерени страници."
 
 #: view/faceted-browse/site-admin/page/category-row.phtml:11
 msgid "Remove category"
-msgstr "取消类别"
+msgstr "Премахване на категория"
 
 #: view/faceted-browse/site-admin/page/category-row.phtml:15
 msgid "Restore category"
-msgstr "恢复类别"
+msgstr "Възстановяване на категория"
 
 #: view/faceted-browse/site-admin/page/form.phtml:14
 msgid "Edit Page"
-msgstr "编辑页面"
+msgstr "Редакция на страница"
 
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Add Page"
-msgstr "添加页面"
+msgstr "Добавяне на страница"
 
 #: view/faceted-browse/site-admin/page/form.phtml:30
 msgid "Return to pages"
-msgstr "返回到页面"
+msgstr "Обратно към страниците"
 
 #: view/faceted-browse/site-admin/page/form.phtml:31
 msgid "Stay on this page"
-msgstr "停留在此页面上"
+msgstr "Оставане на тази страница"
 
 #: view/faceted-browse/site/page/browse.phtml:21
 msgid "Permalink for current results."
-msgstr ""
+msgstr "Постоянно връзка за текущите резултати."
 
 #: view/faceted-browse/site/page/categories.phtml:17
 msgid "There are no categories to browse."
-msgstr ""
+msgstr "Няма категории за преглед."
 
 #: view/faceted-browse/site/page/facets.phtml:1
 msgid "Back"
-msgstr "回退"
+msgstr "Обратно"
 
 #: src/Form/FacetForm.php:22
 msgid "Facet name"
-msgstr "分面名称"
+msgstr "Име на фасета"
 
 #: src/Form/PageForm.php:22
 msgid "Enter the title of this page."
-msgstr "输入该页面的标题。"
+msgstr "Въвеждане на заглавие на тази страница."
 
 #: src/Form/PageForm.php:33
 msgid "Add a category"
-msgstr ""
+msgstr "Добавяне на категория"
 
 #: src/Form/CategoryForm.php:21
 msgid ""
 "Enter the name of this category. A category is a logical grouping of items "
 "that can be described using faceted classification."
 msgstr ""
+"Въведете името на тази категория. Категорията е логическо групиране на "
+"елементи, които могат да бъдате описани, като се използва фасетирана "
+"класификация."
 
 #: src/Form/CategoryForm.php:32
 msgid "Search query"
-msgstr "搜索查询"
+msgstr "Заявка за търсене"
 
 #: src/Form/CategoryForm.php:33
 msgid ""
 "Configure the logical grouping of items that make up this category. No query"
 " means all site resources."
 msgstr ""
+"Конфигуриране на логическото групиране на елементи, които съставляват тази "
+"категория. Липсата на заявка означава всички ресурси на сайта."
 
 #: src/Form/CategoryForm.php:47
 msgid "Add a facet"
-msgstr "添加一个分面"
+msgstr "Добавяне на фасета"
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:50
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:50
 msgid "A site must have an ID"
-msgstr "网站必须有一个ID"
+msgstr "Сайтът трябва да има ID"
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:114
 msgid "A page must have a site"
-msgstr "页面必须有一个网站"
+msgstr "Страницата трябва да има сайт"
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:117
 msgid "A page must have a title"
-msgstr "页面必须有一个标题"
+msgstr "Страницата трябва да има заглавие"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:107
 msgid "A category must have a site"
-msgstr "类别必须有一个网站"
+msgstr "Категорията трябва да има сайт"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:110
 msgid "A category must have a name"
-msgstr "类别必须有一个名字"
+msgstr "Категорията трябва да има име"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:113
 msgid "A category must have a query"
-msgstr "类别必须有一个查询"
+msgstr "Категорията трябва да има заявка"
 
 #: src/Controller/SiteAdmin/CategoryController.php:49
 msgid "Successfully added the category."
-msgstr "已成功添加类别。"
+msgstr "Категорията е добавена успешно."
 
 #: src/Controller/SiteAdmin/CategoryController.php:86
 msgid "Successfully edited the category."
-msgstr "已成功编辑类别。"
+msgstr "Категорията е редактирана успешно."
 
 #: src/Controller/SiteAdmin/CategoryController.php:116
 msgid "Successfully deleted the category."
-msgstr "已成功删除类别。"
+msgstr "Категорията е изтрита успешно."
 
 #: src/Controller/SiteAdmin/PageController.php:51
 msgid "Successfully added the page."
-msgstr "已成功添加页面。"
+msgstr "Страницата е добавена успешно."
 
 #: src/Controller/SiteAdmin/PageController.php:89
 msgid "Successfully edited the page."
-msgstr "已成功编辑页面。"
+msgstr "Страницата е редактирана успешно."
 
 #: src/Controller/SiteAdmin/PageController.php:123
 msgid "Successfully deleted the page."
-msgstr "已成功删除页面。"
+msgstr "Страницата е изтрита успешно."
 
 #: src/FacetType/FullText.php:20
 msgid "Full-text"
-msgstr ""
+msgstr "Пълнотекстово"
 
 #: src/FacetType/ByItemSet.php:20
 msgid "By item set"
-msgstr ""
+msgstr "По набори елементи..."
 
 #: src/FacetType/ByItemSet.php:45
 msgid "Select item sets…"
-msgstr ""
+msgstr "Избор на набори елементи..."
 
 #: src/FacetType/ByValue.php:21
 msgid "By value"
-msgstr ""
+msgstr "По стойност"
 
 #: src/FacetType/ByValue.php:54
 msgid "Is exactly"
-msgstr "完全一样"
+msgstr "Е точно"
 
 #: src/FacetType/ByValue.php:55
 msgid "Is not exactly"
@@ -306,7 +319,7 @@ msgstr ""
 
 #: src/FacetType/ByValue.php:56
 msgid "Contains"
-msgstr "包含"
+msgstr "Съдържа"
 
 #: src/FacetType/ByValue.php:57
 msgid "Does not contain"
@@ -314,7 +327,7 @@ msgstr ""
 
 #: src/FacetType/ByValue.php:58
 msgid "Is resource with ID"
-msgstr ""
+msgstr "Е ресурс с ID"
 
 #: src/FacetType/ByValue.php:59
 msgid "Is not resource with ID"
@@ -322,7 +335,7 @@ msgstr ""
 
 #: src/FacetType/ByValue.php:60
 msgid "Has any value"
-msgstr ""
+msgstr "Има произволна стойност"
 
 #: src/FacetType/ByValue.php:61
 msgid "Has no values"
@@ -334,67 +347,70 @@ msgid ""
 "only one value at a time. For the \"multiple\" select type, users may choose"
 " any number of values at a time."
 msgstr ""
+"Избиране на типа за избор. За типа „единичен“ избор потребителите могат да "
+"избират само една стойност наведнъж. За типа \"множествен\" избор "
+"потребителите могат да избират произволен брой стойности наведнъж."
 
 #: src/FacetType/ByTemplate.php:20
 msgid "By template"
-msgstr ""
+msgstr "По шаблон"
 
 #: src/FacetType/ByTemplate.php:45
 msgid "Select templates…"
-msgstr ""
+msgstr "Избор на шаблони..."
 
 #: src/FacetType/ByClass.php:20
 msgid "By class"
-msgstr ""
+msgstr "По клас"
 
 #: src/FacetType/ByClass.php:45
 msgid "Select classes…"
-msgstr "选择类 ......"
+msgstr "Избор на класове..."
 
 #: src/FacetType/Unknown.php:22
 msgid "[Unknown]"
-msgstr "【未知】"
+msgstr "[Неизвестен]"
 
 #: src/FacetType/Unknown.php:39
 msgid "Unknown facet type"
-msgstr "未知分面类型"
+msgstr "Неизвестен тип фасета"
 
 #: src/FacetType/Unknown.php:49
 msgid "Unknown facet data"
-msgstr "未知分面数据"
+msgstr "Неизвестни данни на фасета"
 
 #: src/Site/NavigationLink/FacetedBrowse.php:12
 msgid "Faceted browse"
-msgstr "分面浏览"
+msgstr "Фасетен преглед"
 
 #: config/module.config.php:81
 msgid "A facet must have a name."
-msgstr "分面必须有一个名字。"
+msgstr "Фасетата трябва да има име."
 
 #: config/module.config.php:82
 msgid "A facet must have a query type."
-msgstr "分面必须有一个查询类型。"
+msgstr "Фасетата трябва да има тип заявка."
 
 #: config/module.config.php:83
 msgid "A facet must have a select type."
-msgstr "分面必须有一个选择类型。"
+msgstr "Фасетата трябва да има тип за избор."
 
 #: config/module.config.php:84
 msgid "There are no available values."
-msgstr "没有可用值。"
+msgstr "Няма достъпни стойности."
 
 #: config/module.config.php:85
 msgid "There are no available classes."
-msgstr "没有可用类。"
+msgstr "Няма достъпни класове."
 
 #: config/module.config.php:86
 msgid "Error fetching browse markup."
-msgstr ""
+msgstr "Грешка при извличането на маркъпа на прегледа."
 
 #: config/module.config.php:87
 msgid "Error fetching facet markup."
-msgstr ""
+msgstr "Грешка при извличането на маркъпа на фасетата."
 
 #: config/module.config.php:88
 msgid "Error fetching category markup."
-msgstr ""
+msgstr "Грешка при извличането на маркъпа на категорията."

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-09 22:49-0400\n"
+"POT-Creation-Date: 2021-05-14 14:37-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Koray Löker <loker@radiobrecht.org>, 2021\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/omeka/teams/14184/tr_TR/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/FacetType/ByValue.php:84
+#: src/FacetType/ByValue.php:88
 msgid ""
 "\n"
 "            <p>Enter the values, separated by new lines. The format of each value depends on the query type:</p>\n"
@@ -301,18 +301,34 @@ msgid "Is exactly"
 msgstr ""
 
 #: src/FacetType/ByValue.php:55
-msgid "Contains"
+msgid "Is not exactly"
 msgstr ""
 
 #: src/FacetType/ByValue.php:56
-msgid "Is resource with ID"
+msgid "Contains"
 msgstr ""
 
 #: src/FacetType/ByValue.php:57
+msgid "Does not contain"
+msgstr ""
+
+#: src/FacetType/ByValue.php:58
+msgid "Is resource with ID"
+msgstr ""
+
+#: src/FacetType/ByValue.php:59
+msgid "Is not resource with ID"
+msgstr ""
+
+#: src/FacetType/ByValue.php:60
 msgid "Has any value"
 msgstr ""
 
-#: src/FacetType/ByValue.php:69
+#: src/FacetType/ByValue.php:61
+msgid "Has no values"
+msgstr ""
+
+#: src/FacetType/ByValue.php:73
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one value at a time. For the \"multiple\" select type, users may choose"
