@@ -50,6 +50,18 @@ class FacetedBrowse extends AbstractHelper
     }
 
     /**
+     * Is this facet of a type that is known?
+     *
+     * @param FacetedBrowseFacetRepresentation $facet
+     * @return bool
+     */
+    public function facetIsKnown(FacetedBrowseFacetRepresentation $facet)
+    {
+        $facetType = $this->getFacetType($facet->type());
+        return $this->facetTypeIsKnown($facetType);
+    }
+
+    /**
      * Prepare the facets for all facet types.
      */
     public function prepareFacets()
