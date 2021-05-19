@@ -32,14 +32,14 @@ if (FacetedBrowse.state.categoryId) {
     }).fail(failFacet);
 } else if (container.data('categoryId')) {
     // There is one category. Skip categories list and show facets list.
-    $.get(urlFacets, {
-        category_id: container.data('categoryId')
-    }).done(function(html) {
-        sectionSidebar.html(html);
+    $.get(urlFacets, {category_id: container.data('categoryId')}).done(function(html) {
         $('#categories-return').hide();
-        $.get(`${urlBrowse}?${container.data('categoryQuery')}`).done(function(html) {
-            sectionContent.html(html);
-        }).fail(failBrowse);
+        sectionSidebar.html(html);
+        $('.facet').each(function() {
+            const thisFacet = $(this);
+            FacetedBrowse.handleFacetApplyState(thisFacet.data('facetType'), thisFacet.data('facetId'), this);
+        });
+        FacetedBrowse.triggerFacetStateChange();
     }).fail(failFacet);
 } else {
     // There is more than one category. Show category list.
