@@ -33,8 +33,8 @@ if (FacetedBrowse.state.categoryId) {
 } else if (container.data('categoryId')) {
     // There is one category. Skip categories list and show facets list.
     $.get(urlFacets, {category_id: container.data('categoryId')}).done(function(html) {
-        $('#categories-return').hide();
         sectionSidebar.html(html);
+        $('#categories-return').hide();
         $('.facet').each(function() {
             const thisFacet = $(this);
             FacetedBrowse.handleFacetApplyState(thisFacet.data('facetType'), thisFacet.data('facetId'), this);
