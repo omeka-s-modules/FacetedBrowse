@@ -11,9 +11,12 @@ let timerId;
 container.on('keyup', '.full-text', function(e) {
     const thisFullText = $(this);
     const facet = thisFullText.closest('.facet');
+    const query = thisFullText.val()
+        ? `fulltext_search=${encodeURIComponent(thisFullText.val())}`
+        : '';
     clearTimeout(timerId);
     timerId = setTimeout(function() {
-        FacetedBrowse.setFacetState(facet.data('facetId'), thisFullText.val(), `fulltext_search=${encodeURIComponent(thisFullText.val())}`);
+        FacetedBrowse.setFacetState(facet.data('facetId'), thisFullText.val(), query);
         FacetedBrowse.triggerFacetStateChange();
     }, 350);
 });
