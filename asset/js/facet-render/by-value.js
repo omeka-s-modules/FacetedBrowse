@@ -30,7 +30,6 @@ container.on('click', '.by-value', function(e) {
             const property = $(this).data('propertyId');
             const type = facetData.query_type;
             const text = $(this).data('value');
-            console.log(property);
             if (['ex', 'nex'].includes(type)) {
                 queries.push(`property[${index}][joiner]=and&property[${index}][property]=${property}&property[${index}][type]=${type}`);
             } else {
