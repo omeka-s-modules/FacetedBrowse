@@ -32,7 +32,10 @@ class CategoryForm extends Form
                 'label' => 'Search query', // @translate
                 'info' => 'Configure the logical grouping of items that make up this category. No query means all site resources.', // @translate
                 'query_resource_type' => 'items',
-                'query_partial_excludelist' => ['common/advanced-search/site'],
+                'query_partial_excludelist' => [
+                    'common/advanced-search/site',
+                    'common/advanced-search/sort',
+                ],
                 'query_preview_append_query' => ['site_id' => $site->id()],
             ],
             'attributes' => [
