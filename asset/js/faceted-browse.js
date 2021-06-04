@@ -3,7 +3,7 @@ const FacetedBrowse = {
     facetAddEditHandlers: {},
     facetSetHandlers: {},
     facetApplyStateHandlers: {},
-    facetStateChangeHandler: () => {},
+    stateChangeHandler: () => {},
     state: {},
 
     /**
@@ -64,6 +64,9 @@ const FacetedBrowse = {
     setFacetState: (facetId, facetState, facetQuery) => {
         FacetedBrowse.state.facetQueries[facetId] = facetQuery;
         FacetedBrowse.state.facetStates[facetId] = facetState;
+        // Must reset the pagination state after every user interaction because
+        // the total results have likely changed.
+        FacetedBrowse.state.page = null;
         FacetedBrowse.replaceHistoryState();
     },
     /**
@@ -78,17 +81,31 @@ const FacetedBrowse = {
         FacetedBrowse.replaceHistoryState();
     },
     /**
-     * Trigger a facet state change.
+     * Set the pagination state.
+     *
+     * @param int page
+     */
+    setPaginationState: (page) => {
+        FacetedBrowse.state.page = page;
+        FacetedBrowse.replaceHistoryState();
+    },
+    /**
+     * Trigger a state change.
      *
      * Via a script added in FacetTypeInterface::prepareFacet(), all facet types
      * should call this function once all relevant states have been set.
      */
-    triggerFacetStateChange: () => {
+    triggerStateChange: () => {
         const queries = [];
         for (const facetId in FacetedBrowse.state.facetQueries) {
             queries.push(FacetedBrowse.state.facetQueries[facetId]);
         }
-        FacetedBrowse.facetStateChangeHandler(queries.join('&'));
+        FacetedBrowse.stateChangeHandler(
+            queries.join('&'),
+            FacetedBrowse.state.sortBy,
+            FacetedBrowse.state.sortOrder,
+            FacetedBrowse.state.page,
+        );
     },
     /**
      * Call a facet add/edit handler.
@@ -130,12 +147,12 @@ const FacetedBrowse = {
         facetApplyStateHandler(facet, facetState);
     },
     /**
-     * Set the callback that handles a facet state change.
+     * Set the callback that handles a state change.
      *
-     * @param function handler The callback that handles facet state change
+     * @param function handler The callback that handles state change
      */
-    setFacetStateChangeHandler: (handler) => {
-        FacetedBrowse.facetStateChangeHandler = handler;
+    setStateChangeHandler: (handler) => {
+        FacetedBrowse.stateChangeHandler = handler;
     },
     /**
      * Initialize the state.
@@ -148,6 +165,7 @@ const FacetedBrowse = {
             && history.state.hasOwnProperty('categoryQuery')
             && history.state.hasOwnProperty('sortBy')
             && history.state.hasOwnProperty('sortOrder')
+            && history.state.hasOwnProperty('page')
             && history.state.hasOwnProperty('facetStates')
             && history.state.hasOwnProperty('facetQueries')
         ) {
@@ -168,6 +186,7 @@ const FacetedBrowse = {
         FacetedBrowse.state.categoryQuery = categoryQuery;
         FacetedBrowse.state.sortBy = null;
         FacetedBrowse.state.sortOrder = null;
+        FacetedBrowse.state.page = null;
         FacetedBrowse.state.facetStates = {};
         FacetedBrowse.state.facetQueries = {};
         FacetedBrowse.replaceHistoryState();

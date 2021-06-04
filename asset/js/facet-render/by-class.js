@@ -25,7 +25,7 @@ container.on('click', '.by-class', function(e) {
         state.push(id);
     });
     FacetedBrowse.setFacetState(facet.data('facetId'), state, queries.join('&'));
-    FacetedBrowse.triggerFacetStateChange();
+    FacetedBrowse.triggerStateChange();
 });
 
 });

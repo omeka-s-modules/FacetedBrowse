@@ -243,7 +243,7 @@ container.on('click', '.by-class', function(e) {
         state.push(id);
     });
     FacetedBrowse.setFacetState(facet.data('facetId'), state, queries.join('&'));
-    FacetedBrowse.triggerFacetStateChange();
+    FacetedBrowse.triggerStateChange();
 });
 
 });
@@ -251,7 +251,7 @@ container.on('click', '.by-class', function(e) {
 
 The idea here is that all facet types need a facet control that looks and behaves in a certain way for the end user. You'll build the control in `renderFacet()` and control its behavior via a script added in `prepareFacet()`. Use `FacetedBrowse.registerFacetApplyStateHandler()` to apply a previously saved state to a facet. This should make the facet "sticky" when a user navigates away from the page and returns via the back button. You must implemnt this handler or the user will lose the previous visual state of the facet.
 
-In addition this this, and most importantly, your script should detect a user interaction, calculate the data needed to preserve the current state of the facet, calculate the API query needed to fetch the items, then set them using `FacetedBrowse.setFacetState(facetId, state, query)`. Afterwards, you must call `FacetedBrowse.triggerFacetStateChange()` to trigger the state change. This will gather all queries from all facets, consolodate them, and update the items on the browse section of the page according to the new state.
+In addition this this, and most importantly, your script should detect a user interaction, calculate the data needed to preserve the current state of the facet, calculate the API query needed to fetch the items, then set them using `FacetedBrowse.setFacetState(facetId, state, query)`. Afterwards, you must call `FacetedBrowse.triggerStateChange()` to trigger the state change. This will gather all queries from all facets, consolodate them, and update the items on the browse section of the page according to the new state.
 
 As mentioned above, in `renderFacet()` you'll build and return the form markup needed to render the facet. The markup should work in conjunction with with the code you added in `prepareFacet()`. Make sure to use `id` or `class` attributes in your form markup so your script can identify the key components. When possible, we recommend building your form elements using the form element manager, and using a partial template to render the markup.
 

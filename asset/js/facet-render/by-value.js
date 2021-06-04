@@ -40,7 +40,7 @@ container.on('click', '.by-value', function(e) {
         });
         FacetedBrowse.setFacetState(thisFacet.data('facetId'), state, queries.join('&'));
     });
-    FacetedBrowse.triggerFacetStateChange();
+    FacetedBrowse.triggerStateChange();
 });
 
 });

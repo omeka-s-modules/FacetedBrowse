@@ -43,7 +43,7 @@ const applyPreviousState = function() {
         const thisFacet = $(this);
         FacetedBrowse.handleFacetApplyState(thisFacet.data('facetType'), thisFacet.data('facetId'), this);
     });
-    FacetedBrowse.triggerFacetStateChange();
+    FacetedBrowse.triggerStateChange();
 };
 
 /**
@@ -61,18 +61,23 @@ const renderCategories = function() {
 // First, initialize the state.
 FacetedBrowse.initState();
 
-// Then, set the facet state change handler.
-FacetedBrowse.setFacetStateChangeHandler(function(facetsQuery) {
+// Then, set the state change handler.
+FacetedBrowse.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, page) {
     const categoryQuery = $('#facets').data('categoryQuery');
     const sortingQueries = [];
+    const paginationQueries = [];
     // Apply sorting state.
-    if (null !== FacetedBrowse.state.sortBy) {
-        sortingQueries.push(`sort_by=${FacetedBrowse.state.sortBy}`);
+    if (null !== sortBy) {
+        sortingQueries.push(`sort_by=${sortBy}`);
     }
-    if (null !== FacetedBrowse.state.sortOrder) {
-        sortingQueries.push(`sort_order=${FacetedBrowse.state.sortOrder}`);
+    if (null !== sortOrder) {
+        sortingQueries.push(`sort_order=${sortOrder}`);
     }
-    $.get(`${urlBrowse}?${categoryQuery}&${facetsQuery}&${sortingQueries.join('&')}`).done(function(html) {
+    // Apply pagination state.
+    if (null !== page) {
+        paginationQueries.push(`page=${page}`);
+    }
+    $.get(`${urlBrowse}?${categoryQuery}&${facetsQuery}&${sortingQueries.join('&')}&${paginationQueries.join('&')}`).done(function(html) {
         sectionContent.html(html)
     }).fail(failBrowse);
 });
@@ -120,7 +125,9 @@ container.on('click', '#categories-return', function(e) {
 container.on('click', '.next', function(e) {
     e.preventDefault();
     const thisButton = $(this);
+    const form = thisButton.prevAll('form');
     if (!thisButton.hasClass('inactive')) {
+        FacetedBrowse.setPaginationState(parseInt(form.find('input[name="page"]').val()) + 1);
         $.get(thisButton.prop('href'), function(html) {
             sectionContent.html(html);
         });
@@ -131,7 +138,9 @@ container.on('click', '.next', function(e) {
 container.on('click', '.previous', function(e) {
     e.preventDefault();
     const thisButton = $(this);
+    const form = thisButton.prevAll('form');
     if (!thisButton.hasClass('inactive')) {
+        FacetedBrowse.setPaginationState(parseInt(form.find('input[name="page"]').val()) - 1);
         $.get(thisButton.prop('href'), function(html) {
             sectionContent.html(html);
         });
@@ -140,6 +149,8 @@ container.on('click', '.previous', function(e) {
 // Handle pagination form.
 container.on('submit', '.pagination form', function(e) {
     e.preventDefault();
+    const thisForm = $(this);
+    FacetedBrowse.setPaginationState(thisForm.find('input[name="page"]').val());
     $.get(`${urlBrowse}?${$(this).serialize()}`, {}, function(html) {
         sectionContent.html(html);
     });

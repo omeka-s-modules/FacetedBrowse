@@ -17,7 +17,7 @@ container.on('keyup', '.full-text', function(e) {
     clearTimeout(timerId);
     timerId = setTimeout(function() {
         FacetedBrowse.setFacetState(facet.data('facetId'), thisFullText.val(), query);
-        FacetedBrowse.triggerFacetStateChange();
+        FacetedBrowse.triggerStateChange();
     }, 350);
 });
 
