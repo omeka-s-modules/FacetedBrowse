@@ -61,10 +61,19 @@ const renderCategories = function() {
 // First, initialize the state.
 FacetedBrowse.initState();
 
+console.log(FacetedBrowse.state);
+
 // Then, set the facet state change handler.
 FacetedBrowse.setFacetStateChangeHandler(function(facetsQuery) {
     const categoryQuery = $('#facets').data('categoryQuery');
-    $.get(`${urlBrowse}?${categoryQuery}&${facetsQuery}`).done(function(html) {
+    const sortingQueries = [];
+    if (null !== FacetedBrowse.state.sortBy) {
+        sortingQueries.push(`sort_by=${FacetedBrowse.state.sortBy}`);
+    }
+    if (null !== FacetedBrowse.state.sortOrder) {
+        sortingQueries.push(`sort_order=${FacetedBrowse.state.sortOrder}`);
+    }
+    $.get(`${urlBrowse}?${categoryQuery}&${facetsQuery}&${sortingQueries.join('&')}`).done(function(html) {
         sectionContent.html(html)
     }).fail(failBrowse);
 });
@@ -129,9 +138,21 @@ container.on('click', '.previous', function(e) {
         });
     }
 });
-// Handle pagination form and sort form.
-container.on('submit', '.pagination form, form.sorting', function(e) {
+// Handle pagination form.
+container.on('submit', '.pagination form', function(e) {
     e.preventDefault();
+    $.get(`${urlBrowse}?${$(this).serialize()}`, {}, function(html) {
+        sectionContent.html(html);
+    });
+});
+// Handle sort form.
+container.on('submit', 'form.sorting', function(e) {
+    e.preventDefault();
+    const thisForm = $(this);
+    FacetedBrowse.setSortingState(
+        thisForm.find('select[name="sort_by"]').val(),
+        thisForm.find('select[name="sort_order"]').val()
+    );
     $.get(`${urlBrowse}?${$(this).serialize()}`, {}, function(html) {
         sectionContent.html(html);
     });

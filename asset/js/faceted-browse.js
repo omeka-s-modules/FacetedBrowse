@@ -67,6 +67,17 @@ const FacetedBrowse = {
         FacetedBrowse.replaceHistoryState();
     },
     /**
+     * Set the sorting state.
+     *
+     * @param string sortBy
+     * @param string sortOrder
+     */
+    setSortingState: (sortBy, sortOrder) => {
+        FacetedBrowse.state.sortBy = sortBy;
+        FacetedBrowse.state.sortOrder = sortOrder;
+        FacetedBrowse.replaceHistoryState();
+    },
+    /**
      * Trigger a facet state change.
      *
      * Via a script added in FacetTypeInterface::prepareFacet(), all facet types
@@ -135,6 +146,8 @@ const FacetedBrowse = {
             && null !== history.state
             && history.state.hasOwnProperty('categoryId')
             && history.state.hasOwnProperty('categoryQuery')
+            && history.state.hasOwnProperty('sortBy')
+            && history.state.hasOwnProperty('sortOrder')
             && history.state.hasOwnProperty('facetStates')
             && history.state.hasOwnProperty('facetQueries')
         ) {
@@ -153,6 +166,8 @@ const FacetedBrowse = {
     resetState: (categoryId = null, categoryQuery = null) => {
         FacetedBrowse.state.categoryId = categoryId;
         FacetedBrowse.state.categoryQuery = categoryQuery;
+        FacetedBrowse.state.sortBy = null;
+        FacetedBrowse.state.sortOrder = null;
         FacetedBrowse.state.facetStates = {};
         FacetedBrowse.state.facetQueries = {};
         FacetedBrowse.replaceHistoryState();
