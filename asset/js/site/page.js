@@ -61,12 +61,11 @@ const renderCategories = function() {
 // First, initialize the state.
 FacetedBrowse.initState();
 
-console.log(FacetedBrowse.state);
-
 // Then, set the facet state change handler.
 FacetedBrowse.setFacetStateChangeHandler(function(facetsQuery) {
     const categoryQuery = $('#facets').data('categoryQuery');
     const sortingQueries = [];
+    // Apply sorting state.
     if (null !== FacetedBrowse.state.sortBy) {
         sortingQueries.push(`sort_by=${FacetedBrowse.state.sortBy}`);
     }
@@ -122,7 +121,7 @@ container.on('click', '.next', function(e) {
     e.preventDefault();
     const thisButton = $(this);
     if (!thisButton.hasClass('inactive')) {
-        $.get($(this).prop('href'), {}, function(html) {
+        $.get(thisButton.prop('href'), function(html) {
             sectionContent.html(html);
         });
     }
@@ -133,7 +132,7 @@ container.on('click', '.previous', function(e) {
     e.preventDefault();
     const thisButton = $(this);
     if (!thisButton.hasClass('inactive')) {
-        $.get(thisButton.prop('href'), {}, function(html) {
+        $.get(thisButton.prop('href'), function(html) {
             sectionContent.html(html);
         });
     }
