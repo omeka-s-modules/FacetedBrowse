@@ -130,13 +130,16 @@ const FacetedBrowse = {
      * Initialize the state.
      */
     initState: () => {
-        try {
-            history.state.categoryId;
-            history.state.categoryQuery;
-            history.state.facetStates;
-            history.state.facetQueries;
+        // Check for valid history state.
+        if ('object' === typeof history.state
+            && null !== history.state
+            && history.state.hasOwnProperty('categoryId')
+            && history.state.hasOwnProperty('categoryQuery')
+            && history.state.hasOwnProperty('facetStates')
+            && history.state.hasOwnProperty('facetQueries')
+        ) {
             FacetedBrowse.state = history.state;
-        } catch (error) {
+        } else {
             // The state is not set or is malformed. Reset it.
             FacetedBrowse.resetState();
         }
