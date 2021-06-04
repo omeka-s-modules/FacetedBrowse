@@ -8,32 +8,10 @@ const urlCategories = container.data('urlCategories');
 const urlFacets = container.data('urlFacets');
 const urlBrowse = container.data('urlBrowse');
 
-/**
- * Callback that handles a browse request error.
- *
- * @param object data
- */
-const failBrowse = function(data) {
-    sectionContent.html(`${Omeka.jsTranslate('Error fetching browse markup.')} ${data.status} (${data.statusText})`);
-};
-
-/**
- * Callback that handles a facet request error.
- *
- * @param object data
- */
-const failFacet = function(data) {
-    sectionContent.html(`${Omeka.jsTranslate('Error fetching facet markup.')} ${data.status} (${data.statusText})`);
-};
-
-/**
- * Callback that handles a category request error.
- *
- * @param object data
- */
-const failCategory = function(data) {
-    sectionContent.html(`${Omeka.jsTranslate('Error fetching category markup.')} ${data.status} (${data.statusText})`);
-};
+// Callbacks that handle  request errors.
+const failBrowse = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching browse markup.')} ${data.status} (${data.statusText})`);
+const failFacet = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching facet markup.')} ${data.status} (${data.statusText})`);
+const failCategory = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching category markup.')} ${data.status} (${data.statusText})`);
 
 /**
  * Apply a previous state to the page.
@@ -63,29 +41,23 @@ FacetedBrowse.initState();
 
 // Then, set the state change handler.
 FacetedBrowse.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, page) {
-    const categoryQuery = $('#facets').data('categoryQuery');
-    const sortingQueries = [];
-    const paginationQueries = [];
-    // Apply sorting state.
-    if (null !== sortBy) {
-        sortingQueries.push(`sort_by=${sortBy}`);
-    }
-    if (null !== sortOrder) {
-        sortingQueries.push(`sort_order=${sortOrder}`);
-    }
-    // Apply pagination state.
-    if (null !== page) {
-        paginationQueries.push(`page=${page}`);
-    }
-    $.get(`${urlBrowse}?${categoryQuery}&${facetsQuery}&${sortingQueries.join('&')}&${paginationQueries.join('&')}`).done(function(html) {
+    const queries = [];
+    // Add category and facets queries.
+    queries.push($('#facets').data('categoryQuery'));
+    queries.push(facetsQuery);
+    // Add sorting and pagination queries.
+    if (null !== sortBy) queries.push(`sort_by=${sortBy}`);
+    if (null !== sortOrder) queries.push(`sort_order=${sortOrder}`);
+    if (null !== page) queries.push(`page=${page}`);
+    $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
         sectionContent.html(html)
     }).fail(failBrowse);
 });
 
 // Then, set up the page for first load.
-if (FacetedBrowse.state.categoryId) {
+if (FacetedBrowse.getState('categoryId')) {
     // This page has a previously saved category state.
-    $.get(urlFacets, {category_id: FacetedBrowse.state.categoryId}).done(function(html) {
+    $.get(urlFacets, {category_id: FacetedBrowse.getState('categoryId')}).done(function(html) {
         sectionSidebar.html(html);
         applyPreviousState();
     }).fail(failFacet);
@@ -146,6 +118,7 @@ container.on('click', '.previous', function(e) {
         });
     }
 });
+
 // Handle pagination form.
 container.on('submit', '.pagination form', function(e) {
     e.preventDefault();
@@ -155,6 +128,7 @@ container.on('submit', '.pagination form', function(e) {
         sectionContent.html(html);
     });
 });
+
 // Handle sort form.
 container.on('submit', 'form.sorting', function(e) {
     e.preventDefault();

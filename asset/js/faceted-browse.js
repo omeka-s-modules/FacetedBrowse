@@ -85,7 +85,7 @@ const FacetedBrowse = {
      *
      * @param int page
      */
-    setPaginationState: (page) => {
+    setPaginationState: page => {
         FacetedBrowse.state.page = page;
         FacetedBrowse.replaceHistoryState();
     },
@@ -151,7 +151,7 @@ const FacetedBrowse = {
      *
      * @param function handler The callback that handles state change
      */
-    setStateChangeHandler: (handler) => {
+    setStateChangeHandler: handler => {
         FacetedBrowse.stateChangeHandler = handler;
     },
     /**
@@ -196,5 +196,13 @@ const FacetedBrowse = {
      */
     replaceHistoryState: () => {
         history.replaceState(FacetedBrowse.state, null);
+    },
+    /**
+     * Get a specific state by name.
+     *
+     * @param string stateName
+     */
+    getState: stateName => {
+        return history.state.hasOwnProperty(stateName) ? history.state[stateName] : undefined;
     },
 };
