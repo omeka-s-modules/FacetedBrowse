@@ -40,6 +40,9 @@ class PageController extends AbstractActionController
 
     public function browseAction()
     {
+        $categoryId = $this->params()->fromQuery('faceted_browse_category_id');
+        $category = $categoryId ? $this->api()->read('faceted_browse_categories', $categoryId)->getContent() : null;
+
         $this->setBrowseDefaults('created');
         $query = array_merge(
             $this->params()->fromQuery(),
@@ -53,6 +56,7 @@ class PageController extends AbstractActionController
         $view->setTerminal(true);
         $view->setVariable('items', $items);
         $view->setVariable('query', $query);
+        $view->setVariable('columns', $category ? $category->columns() : null);
         return $view;
     }
 }

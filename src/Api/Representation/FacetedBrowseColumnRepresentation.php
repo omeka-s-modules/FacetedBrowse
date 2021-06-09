@@ -60,4 +60,10 @@ class FacetedBrowseColumnRepresentation extends AbstractRepresentation
     {
         return $this->resource->getPosition();
     }
+
+    public function content($item)
+    {
+        $columnTypes = $this->getServiceLocator()->get('FacetedBrowse\ColumnTypeManager');
+        return $columnTypes->get($this->type())->renderContent($item, $this);
+    }
 }

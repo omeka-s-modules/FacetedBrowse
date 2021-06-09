@@ -41,14 +41,16 @@ FacetedBrowse.initState();
 
 // Then, set the state change handler.
 FacetedBrowse.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, page) {
+    const facets = $('#facets');
     const queries = [];
     // Add category and facets queries.
-    queries.push($('#facets').data('categoryQuery'));
+    queries.push(facets.data('categoryQuery'));
     queries.push(facetsQuery);
     // Add sorting and pagination queries.
     if (null !== sortBy) queries.push(`sort_by=${sortBy}`);
     if (null !== sortOrder) queries.push(`sort_order=${sortOrder}`);
     if (null !== page) queries.push(`page=${page}`);
+    queries.push(`faceted_browse_category_id=${facets.data('categoryId')}`);
     $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
         sectionContent.html(html)
     }).fail(failBrowse);
@@ -80,7 +82,10 @@ container.on('click', '.category', function(e) {
     FacetedBrowse.resetState(thisCategory.data('categoryId'), thisCategory.data('categoryQuery'));
     $.get(urlFacets, {category_id: thisCategory.data('categoryId')}).done(function(html) {
         sectionSidebar.html(html);
-        $.get(`${urlBrowse}?${thisCategory.data('categoryQuery')}`).done(function(html) {
+        const queries = [];
+        queries.push(thisCategory.data('categoryQuery'));
+        queries.push(`faceted_browse_category_id=${thisCategory.data('categoryId')}`);
+        $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
             sectionContent.html(html);
         }).fail(failBrowse);
     }).fail(failFacet);

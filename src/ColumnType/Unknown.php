@@ -1,9 +1,11 @@
 <?php
 namespace FacetedBrowse\ColumnType;
 
+use FacetedBrowse\Api\Representation\FacetedBrowseColumnRepresentation;
 use Laminas\Form\Element as LaminasElement;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
+use Omeka\Api\Representation\ItemRepresentation;
 
 class Unknown implements ColumnTypeInterface
 {
@@ -58,5 +60,10 @@ class Unknown implements ColumnTypeInterface
             $view->formRow($typeElement),
             $view->formRow($dataElement),
         );
+    }
+
+    public function renderContent(ItemRepresentation $item, FacetedBrowseColumnRepresentation $column) : string
+    {
+        return '';
     }
 }

@@ -1,8 +1,10 @@
 <?php
 namespace FacetedBrowse\ColumnType;
 
+use FacetedBrowse\Api\Representation\FacetedBrowseColumnRepresentation;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
+use Omeka\Api\Representation\ItemRepresentation;
 
 class Title implements ColumnTypeInterface
 {
@@ -31,5 +33,10 @@ class Title implements ColumnTypeInterface
     public function renderDataForm(PhpRenderer $view, array $data) : string
     {
         return $view->partial('common/faceted-browse/column-data-form/title', []);
+    }
+
+    public function renderContent(ItemRepresentation $item, FacetedBrowseColumnRepresentation $column) : string
+    {
+        return $item->linkPretty('square');
     }
 }
