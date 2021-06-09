@@ -51,6 +51,10 @@ facetAddButton.on('click', function(e) {
     facetSelected = undefined;
     const thisButton = $(this);
     const type = facetTypeSelect.val();
+    // Reset the column type select.
+    columnTypeSelect.val('');
+    columnAddButton.prop('disabled', true);
+    Omeka.closeSidebar(columnSidebar);
     $.post(facets.data('facetFormUrl'), {
         facet_type: type
     }, function(html) {
@@ -145,6 +149,10 @@ columnAddButton.on('click', function(e) {
     columnSelected = undefined;
     const thisButton = $(this);
     const type = columnTypeSelect.val();
+    // Reset the facet type select.
+    facetTypeSelect.val('');
+    facetAddButton.prop('disabled', true);
+    Omeka.closeSidebar(facetSidebar);
     $.post(columns.data('columnFormUrl'), {
         column_type: type
     }, function(html) {
