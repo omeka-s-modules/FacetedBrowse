@@ -26,7 +26,7 @@ class FacetedBrowseCategory extends \FacetedBrowse\Entity\FacetedBrowseCategory 
     /**
      * @var boolean flag indicating if this object was already initialized
      *
-     * @see \Doctrine\Common\Persistence\Proxy::__isInitialized
+     * @see \Doctrine\Persistence\Proxy::__isInitialized
      */
     public $__isInitialized__ = false;
 
@@ -66,10 +66,10 @@ class FacetedBrowseCategory extends \FacetedBrowse\Entity\FacetedBrowseCategory 
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'pageCategories', 'facets'];
+            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'pageCategories', 'facets', 'columns'];
         }
 
-        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'pageCategories', 'facets'];
+        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'pageCategories', 'facets', 'columns'];
     }
 
     /**
@@ -343,6 +343,17 @@ class FacetedBrowseCategory extends \FacetedBrowse\Entity\FacetedBrowseCategory 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFacets', []);
 
         return parent::getFacets();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getColumns(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getColumns', []);
+
+        return parent::getColumns();
     }
 
     /**

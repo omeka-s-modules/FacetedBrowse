@@ -24,6 +24,16 @@ class FacetedBrowse extends AbstractPlugin
     }
 
     /**
+     * Get the column type manager.
+     *
+     * @return FacetedBrowse\ColumnType\Manager
+     */
+    public function getColumnTypes()
+    {
+        return $this->services->get('FacetedBrowse\ColumnTypeManager');
+    }
+
+    /**
      * Get all available values and their counts of a property.
      *
      * @param int $propertyId

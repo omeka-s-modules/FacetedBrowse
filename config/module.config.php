@@ -13,6 +13,16 @@ return [
             'full_text' => Service\FacetType\FullTextFactory::class,
         ],
     ],
+    'faceted_browse_column_types' => [
+        'factories' => [
+            'title' => Service\ColumnType\TitleFactory::class,
+            //~ 'value' => Service\ColumnType\FullTextFactory::class,
+            //~ 'class' => Service\ColumnType\ClassFactory::class,
+            //~ 'owner' => Service\ColumnType\OwnerFactory::class,
+            //~ 'created' => Service\ColumnType\CreatedFactory::class,
+            //~ 'id' => Service\ColumnType\IdFactory::class,
+        ],
+    ],
     'translator' => [
         'translation_file_patterns' => [
             [
@@ -41,6 +51,7 @@ return [
     'service_manager' => [
         'factories' => [
             'FacetedBrowse\FacetTypeManager' => Service\FacetType\ManagerFactory::class,
+            'FacetedBrowse\ColumnTypeManager' => Service\ColumnType\ManagerFactory::class,
         ],
     ],
     'api_adapters' => [
@@ -79,6 +90,7 @@ return [
     ],
     'js_translate_strings' => [
         'A facet must have a name.', // @translate
+        'A column must have a name.', // @translate
         'A facet must have a query type.', // @translate
         'A facet must have a select type.', // @translate
         'There are no available values.', // @translate

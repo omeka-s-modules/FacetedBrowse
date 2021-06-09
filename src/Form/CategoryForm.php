@@ -11,6 +11,7 @@ class CategoryForm extends Form
     {
         $site = $this->getOption('site');
         $facetTypes = $this->getOption('facet_types');
+        $columnTypes = $this->getOption('column_types');
         $category = $this->getOption('category');
 
         $this->add([
@@ -47,12 +48,25 @@ class CategoryForm extends Form
             'name' => 'facet_type',
             'options' => [
                 'label' => 'Facet type', // @translate
-                'empty_option' => 'Add a facet', // @translate
+                'empty_option' => 'Add a facet…', // @translate
                 'value_options' => $facetTypes->getValueOptions(),
             ],
             'attributes' => [
                 'id' => 'facet-type-select',
                 'aria-labelledby' => 'facet-add-button',
+            ],
+        ]);
+        $this->add([
+            'type' => LaminasElement\Select::class,
+            'name' => 'column_type',
+            'options' => [
+                'label' => 'Column type', // @translate
+                'empty_option' => 'Add a column…', // @translate
+                'value_options' => $columnTypes->getValueOptions(),
+            ],
+            'attributes' => [
+                'id' => 'column-type-select',
+                'aria-labelledby' => 'column-add-button',
             ],
         ]);
 
@@ -63,6 +77,10 @@ class CategoryForm extends Form
         ]);
         $inputFilter->add([
             'name' => 'facet_type',
+            'allow_empty' => true,
+        ]);
+        $inputFilter->add([
+            'name' => 'column_type',
             'allow_empty' => true,
         ]);
     }

@@ -1,0 +1,42 @@
+<?php
+use Laminas\Form\Element\Hidden;
+?>
+<li class="column value row">
+    <span class="sortable-handle"></span>
+    <span class="restore-value"><?php echo sprintf('%s to be removed', 'Column'); ?></span>
+    <span class="column-name-display"><?php echo $column['o:name']; ?></span>
+    <span class="column-type-display"><?php echo $this->translate($this->facetedBrowse()->getColumnType($column['o-module-faceted_browse:type'])->getLabel()); ?></span>
+    <ul class="actions">
+        <li><?php echo $this->hyperlink('', [], [
+            'class' => 'o-icon-edit column-edit',
+            'title' => $this->translate('Edit column'),
+        ]); ?></li>
+        <li><?php echo $this->hyperlink('', [], [
+            'class' => 'o-icon-delete column-remove',
+            'title' => $this->translate('Remove column'),
+        ]); ?></li>
+        <li><?php echo $this->hyperlink('', [], [
+            'class' => 'o-icon-undo column-restore',
+            'title' => $this->translate('Restore column'),
+            'style' => 'display: none;',
+        ]); ?></li>
+    </ul>
+    <?php
+    $idInput = (new Hidden(sprintf('o-module-faceted_browse:column[%s][o:id]', $index)))
+        ->setValue($column['o:id'])
+        ->setAttribute('class', 'column-id');
+    $nameInput = (new Hidden(sprintf('o-module-faceted_browse:column[%s][o:name]', $index)))
+        ->setValue($column['o:name'])
+        ->setAttribute('class', 'column-name');
+    $typeInput = (new Hidden(sprintf('o-module-faceted_browse:column[%s][o-module-faceted_browse:type]', $index)))
+        ->setValue($column['o-module-faceted_browse:type'])
+        ->setAttribute('class', 'column-type');
+    $dataInput = (new Hidden(sprintf('o-module-faceted_browse:column[%s][o:data]', $index)))
+        ->setValue(json_encode($column['o:data']))
+        ->setAttribute('class', 'column-data');
+    echo $this->formHidden($idInput);
+    echo $this->formHidden($typeInput);
+    echo $this->formHidden($nameInput);
+    echo $this->formHidden($dataInput);
+    ?>
+</li>

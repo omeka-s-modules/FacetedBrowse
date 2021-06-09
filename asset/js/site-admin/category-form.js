@@ -7,6 +7,13 @@ const facetAddButton = $('#facet-add-button');
 const facetFormContainer = $('#facet-form-container');
 let facetSelected = null;
 
+const columns = $('#columns');
+const columnSidebar = $('#column-sidebar');
+const columnTypeSelect = $('#column-type-select');
+const columnAddButton = $('#column-add-button');
+const columnFormContainer = $('#column-form-container');
+let columnSelected = null;
+
 /**
  * Update facet type select.
  *
@@ -31,8 +38,9 @@ const updateFacetTypeSelect = function() {
 
 updateFacetTypeSelect();
 
-// Enable facet sorting.
+// Enable facet and column sorting.
 new Sortable(facets[0], {draggable: '.facet', handle: '.sortable-handle'});
+new Sortable(columns[0], {draggable: '.column', handle: '.sortable-handle'});
 
 // Handle facet type select.
 facetTypeSelect.on('change', function(e) {
@@ -127,6 +135,99 @@ facetFormContainer.on('click', '#facet-set-button', function(e) {
         });
     }
 });
+
+// Handle column type select.
+columnTypeSelect.on('change', function(e) {
+    columnAddButton.prop('disabled', ('' === $(this).val()) ? true : false);
+});
+// Handle column add button.
+columnAddButton.on('click', function(e) {
+    columnSelected = undefined;
+    const thisButton = $(this);
+    const type = columnTypeSelect.val();
+    $.post(columns.data('columnFormUrl'), {
+        column_type: type
+    }, function(html) {
+        columnFormContainer.html(html);
+        Omeka.openSidebar(columnSidebar);
+        FacetedBrowse.handleColumnAddEdit(type);
+    });
+});
+// Handle column edit button.
+columns.on('click', '.column-edit', function(e) {
+    e.preventDefault();
+    columnSelected = $(this).closest('.column');
+    const thisButton = $(this);
+    const type = columnSelected.find('.column-type').val();
+    const name = columnSelected.find('.column-name').val();
+    const data = columnSelected.find('.column-data').val();
+    $.post(columns.data('columnFormUrl'), {
+        column_type: type,
+        column_name: name,
+        column_data: data
+    }, function(html) {
+        columnFormContainer.html(html);
+        Omeka.openSidebar(columnSidebar);
+        FacetedBrowse.handleColumnAddEdit(type);
+    });
+});
+columns.on('click', '.column-remove', function(e) {
+    e.preventDefault();
+    const thisButton = $(this);
+    const column = thisButton.closest('.column');
+    column.find(':input').prop('disabled', true);
+    column.addClass('delete');
+    column.find('.column-restore').show();
+    thisButton.hide();
+});
+columns.on('click', '.column-restore', function(e) {
+    e.preventDefault();
+    const thisButton = $(this);
+    const column = thisButton.closest('.column');
+    column.find(':input').prop('disabled', false);
+    column.removeClass('delete');
+    column.find('.column-remove').show();
+    thisButton.hide();
+});
+// Handle column set button.
+columnFormContainer.on('click', '#column-set-button', function(e) {
+    const thisButton = $(this);
+    const type = $('#column-type-input').val();
+    const name = $.trim($('#column-name-input').val());
+    if (!name) {
+        alert(Omeka.jsTranslate('A column must have a name'));
+        return;
+    }
+    const data = FacetedBrowse.handleColumnSet(type);
+    if (!data) {
+        // The data is invalid. The handler should have alerted the user. Do
+        // nothing and let the user make corrections.
+        return;
+    }
+    if (columnSelected) {
+        // Handle an edit.
+        columnSelected.find('.column-name-display').text(name);
+        columnSelected.find('.column-name').val(name);
+        columnSelected.find('.column-data').val(JSON.stringify(data));
+        columnSelected = undefined;
+        Omeka.closeSidebar(columnSidebar);
+        columnFormContainer.empty();
+    } else {
+        // Handle an add.
+        $.post(columns.data('columnRowUrl'), {
+            column_type: $('#column-type-input').val(),
+            column_name: $('#column-name-input').val(),
+            index: $('.column').length
+        }, function(html) {
+            const column = $($.parseHTML(html));
+            column.find('.column-data').val(JSON.stringify(data));
+            columns.append(column);
+            Omeka.closeSidebar(columnSidebar);
+            columnFormContainer.empty();
+        });
+    }
+});
+
 // Handle show all checkbox.
 $(document).on('click', '#show-all', function(e) {
     const thisCheckbox = $(this);

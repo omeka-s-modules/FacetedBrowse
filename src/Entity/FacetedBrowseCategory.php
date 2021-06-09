@@ -105,10 +105,23 @@ class FacetedBrowseCategory extends AbstractEntity
      */
     protected $facets;
 
+    /**
+     * @OneToMany(
+     *     targetEntity="FacetedBrowseColumn",
+     *     mappedBy="category",
+     *     orphanRemoval=true,
+     *     cascade={"persist", "remove", "detach"},
+     *     indexBy="id"
+     * )
+     * @OrderBy({"position" = "ASC"})
+     */
+    protected $columns;
+
     public function __construct()
     {
         $this->pageCategories = new ArrayCollection;
         $this->facets = new ArrayCollection;
+        $this->columns = new ArrayCollection;
     }
 
     public function getId()
@@ -184,6 +197,11 @@ class FacetedBrowseCategory extends AbstractEntity
     public function getFacets() : Collection
     {
         return $this->facets;
+    }
+
+    public function getColumns() : Collection
+    {
+        return $this->columns;
     }
 
     /**

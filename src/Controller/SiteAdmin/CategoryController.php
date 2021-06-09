@@ -34,6 +34,7 @@ class CategoryController extends AbstractActionController
         $form = $this->getForm(Form\CategoryForm::class, [
             'site' => $this->currentSite(),
             'facet_types' => $this->facetedBrowse()->getFacetTypes(),
+            'column_types' => $this->facetedBrowse()->getColumnTypes(),
         ]);
 
         if ($this->getRequest()->isPost()) {
@@ -43,6 +44,7 @@ class CategoryController extends AbstractActionController
                 $formData = $form->getData();
                 $formData['o:site'] = ['o:id' => $this->currentSite()->id()];
                 $formData['o-module-faceted_browse:facet'] = $postData['o-module-faceted_browse:facet'] ?? [];
+                $formData['o-module-faceted_browse:column'] = $postData['o-module-faceted_browse:column'] ?? [];
                 $response = $this->api($form)->create('faceted_browse_categories', $formData);
                 if ($response) {
                     $category = $response->getContent();
@@ -71,6 +73,7 @@ class CategoryController extends AbstractActionController
         $form = $this->getForm(Form\CategoryForm::class, [
             'site' => $this->currentSite(),
             'facet_types' => $this->facetedBrowse()->getFacetTypes(),
+            'column_types' => $this->facetedBrowse()->getColumnTypes(),
             'category' => $category,
         ]);
 
@@ -81,6 +84,7 @@ class CategoryController extends AbstractActionController
                 $formData = $form->getData();
                 $formData['o:site'] = ['o:id' => $this->currentSite()->id()];
                 $formData['o-module-faceted_browse:facet'] = $postData['o-module-faceted_browse:facet'] ?? [];
+                $formData['o-module-faceted_browse:column'] = $postData['o-module-faceted_browse:column'] ?? [];
                 $response = $this->api($form)->update('faceted_browse_categories', $category->id(), $formData);
                 if ($response) {
                     $this->messenger()->addSuccess('Successfully edited the category.'); // @translate
@@ -165,6 +169,53 @@ class CategoryController extends AbstractActionController
         $view = new ViewModel;
         $view->setTerminal(true);
         $view->setVariable('facet', $facet);
+        $view->setVariable('index', $index);
+        return $view;
+    }
+
+    public function columnFormAction()
+    {
+        if (!$this->getRequest()->isPost()) {
+            return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'browse'], true);
+        }
+
+        $columnType = $this->params()->fromPost('column_type');
+        $columnName = $this->params()->fromPost('column_name');
+        $columnData = json_decode($this->params()->fromPost('column_data'), true);
+        if (!is_array($columnData)) {
+            $columnData = [];
+        }
+
+        $form = $this->getForm(Form\ColumnForm::class);
+        $form->setData([
+            'column_type' => $columnType,
+            'column_name' => $columnName,
+        ]);
+
+        $view = new ViewModel;
+        $view->setTerminal(true);
+        $view->setVariable('form', $form);
+        $view->setVariable('columnType', $columnType);
+        $view->setVariable('columnData', $columnData);
+        return $view;
+    }
+
+    public function columnRowAction()
+    {
+        if (!$this->getRequest()->isPost()) {
+            return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'browse'], true);
+        }
+        $column = [
+            'o:id' => null,
+            'o:name' => $this->params()->fromPost('column_name'),
+            'o-module-faceted_browse:type' => $this->params()->fromPost('column_type'),
+            'o:data' => [],
+        ];
+        $index = $this->params()->fromPost('index');
+
+        $view = new ViewModel;
+        $view->setTerminal(true);
+        $view->setVariable('column', $column);
         $view->setVariable('index', $index);
         return $view;
     }

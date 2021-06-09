@@ -3,6 +3,7 @@ namespace FacetedBrowse\Api\Adapter;
 
 use DateTime;
 use Doctrine\ORM\QueryBuilder;
+use FacetedBrowse\Entity\FacetedBrowseColumn;
 use FacetedBrowse\Entity\FacetedBrowseFacet;
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Request;
@@ -95,6 +96,36 @@ class FacetedBrowseCategoryAdapter extends AbstractEntityAdapter
                 foreach ($facetCollection as $index => $facetEntity) {
                     if (!in_array($facetEntity, $toRetain)) {
                         $facetCollection->remove($index);
+                    }
+                }
+            }
+        }
+        if ($this->shouldHydrate($request, 'o-module-faceted_browse:column')) {
+            $columns = $request->getValue('o-module-faceted_browse:column');
+            if (is_array($columns)) {
+                $columnCollection = $entity->getColumns();
+                $toRetain = [];
+                $position = 1;
+                foreach ($columns as $column) {
+                    if (isset($column['o:id']) && $columnCollection->containsKey($column['o:id'])) {
+                        // This is an existing column.
+                        $columnEntity = $columnCollection->get($column['o:id']);
+                    } else {
+                        // This is a new column.
+                        $columnEntity = new FacetedBrowseColumn;
+                        $columnEntity->setCategory($entity);
+                        $columnCollection->add($columnEntity);
+                    }
+                    $columnEntity->setType($column['o-module-faceted_browse:type']);
+                    $columnEntity->setName($column['o:name']);
+                    $columnEntity->setData(json_decode($column['o:data'], true));
+                    $columnEntity->setPosition($position++);
+                    $toRetain[] = $columnEntity;
+                }
+                // Remove any column entities that are unused.
+                foreach ($columnCollection as $index => $columnEntity) {
+                    if (!in_array($columnEntity, $toRetain)) {
+                        $columnCollection->remove($index);
                     }
                 }
             }

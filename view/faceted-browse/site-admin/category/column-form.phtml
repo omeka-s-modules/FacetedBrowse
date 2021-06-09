@@ -1,0 +1,22 @@
+<?php
+$form->prepare();
+$columnType = $this->facetedBrowse()->getColumnType($columnType);
+?>
+<div class="confirm-main">
+<h3><?php echo $this->translate('Configure column'); ?></h3>
+<?php echo $this->hyperlink('', '#', ['class' => 'sidebar-close o-icon-close', 'title' => $this->translate('Close')]); ?>
+<div class="meta-group">
+    <h4><?php echo $this->translate('Column type'); ?></h4>
+    <div class="value"><?php echo $this->translate($columnType->getLabel()); ?></div>
+</div>
+<?php echo $this->form()->openTag($form); ?>
+<?php echo $this->formHidden($form->get('column_type')); ?>
+<?php echo $this->formRow($form->get('column_name')); ?>
+<?php echo $columnType->renderDataForm($this, $columnData); ?>
+</div>
+<?php if ($this->facetedBrowse()->columnTypeIsKnown($columnType)): ?>
+<div class="confirm-panel">
+<?php echo $this->formElement($form->get('column_set')); ?>
+</div>
+<?php endif; ?>
+<?php echo $this->form()->closeTag(); ?>

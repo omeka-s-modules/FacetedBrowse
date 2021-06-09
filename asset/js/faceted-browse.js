@@ -2,6 +2,8 @@ const FacetedBrowse = {
 
     facetAddEditHandlers: {},
     facetSetHandlers: {},
+    columnAddEditHandlers: {},
+    columnSetHandlers: {},
     facetApplyStateHandlers: {},
     stateChangeHandler: () => {},
     state: {},
@@ -34,6 +36,35 @@ const FacetedBrowse = {
      */
     registerFacetSetHandler: (facetType, handler) => {
         FacetedBrowse.facetSetHandlers[facetType] = handler;
+    },
+    /**
+     * Register a callback that handles column add/edit.
+     *
+     * "Column add/edit" happens when a user adds or edits a column. Use this
+     * handler to prepare the column form for use. The handler will receive no
+     * arguments. If needed, column types should register a handler in a script
+     * added in prepareDataForm().
+     *
+     * @param string columnType The Column type
+     * @param function handler The callback that handles column add/edit
+     */
+    registerColumnAddEditHandler: (columnType, handler) => {
+        FacetedBrowse.columnAddEditHandlers[columnType] = handler;
+    },
+    /**
+     * Register a callback that handles column set.
+     *
+     * "Column set" happens when a user finishes configuring the column and sets
+     * it. Use this handler to validate the column form and, if it validates,
+     * return the column data object. If it does not validate, alert the user and
+     * return nothing. The handler will receive no arguments. All column types
+     * should register a handler in a script added in prepareDataForm().
+     *
+     * @param string columnType The column type
+     * @param function handler The callback that handles column set
+     */
+    registerColumnSetHandler: (columnType, handler) => {
+        FacetedBrowse.columnSetHandlers[columnType] = handler;
     },
     /**
      * Register a callback that handles facet apply state.
@@ -126,6 +157,27 @@ const FacetedBrowse = {
     handleFacetSet: facetType => {
         if (facetType in FacetedBrowse.facetSetHandlers) {
             return FacetedBrowse.facetSetHandlers[facetType]();
+        }
+    },
+    /**
+     * Call a column add/edit handler.
+     *
+     * @param string columnType The column type
+     */
+    handleColumnAddEdit: columnType => {
+        if (columnType in FacetedBrowse.columnAddEditHandlers) {
+            FacetedBrowse.columnAddEditHandlers[columnType]();
+        }
+    },
+    /**
+     * Call a column set handler.
+     *
+     * @param string columnType The column type
+     * @return object The column data
+     */
+    handleColumnSet: columnType => {
+        if (columnType in FacetedBrowse.columnSetHandlers) {
+            return FacetedBrowse.columnSetHandlers[columnType]();
         }
     },
     /**

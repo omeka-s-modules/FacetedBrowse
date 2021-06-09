@@ -77,4 +77,13 @@ class FacetedBrowseCategoryRepresentation extends AbstractEntityRepresentation
         }
         return $facets;
     }
+
+    public function columns()
+    {
+        $columns = [];
+        foreach ($this->resource->getColumns() as $column) {
+            $columns[] = new FacetedBrowseColumnRepresentation($column, $this->getServiceLocator());
+        }
+        return $columns;
+    }
 }
