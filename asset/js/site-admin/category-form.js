@@ -43,15 +43,19 @@ const resetFacetTypeSelect = function() {
  * Update column type select.
  *
  * This ensures that there are no more columns of a type set to this category
- * than is allowed. It does this by disabling column types that are already used.
+ * than is allowed. It does this by disabling columns types that are equal to or
+ * exceed the maximum that is set by the column type.
  */
 const resetColumnTypeSelect = function() {
     columnTypeSelect.find('option').each(function() {
         const thisOption = $(this);
         const columnType = thisOption.val();
-        const numFacets = $('.column').find(`input.column-type[value="${columnType}"]`).length;
-        if (numFacets >= 1) {
-            thisOption.prop('disabled', true);
+        const maxColumns = thisOption.data('maxColumns');
+        if (maxColumns) {
+            const numColumns = $('.column').find(`input.column-type[value="${columnType}"]`).length;
+            if (numColumns >= maxColumns) {
+                thisOption.prop('disabled', true);
+            }
         }
         columnTypeSelect.val('');
         columnAddButton.prop('disabled', true);

@@ -21,6 +21,11 @@ class Unknown implements ColumnTypeInterface
         return '[Unknown]'; // @translate
     }
 
+    public function getMaxColumns() : ?int
+    {
+        return null;
+    }
+
     public function prepareDataForm(PhpRenderer $view) : void
     {
     }

@@ -13,6 +13,13 @@ interface ColumnTypeInterface
     public function getLabel() : string;
 
     /**
+     * Get the maximum amount of this column type for one category.
+     *
+     * @return ?int
+     */
+    public function getMaxColumns() : ?int;
+
+    /**
      * Prepare the data form of this column type.
      *
      * @param PhpRenderer $view

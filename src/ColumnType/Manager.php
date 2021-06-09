@@ -33,6 +33,9 @@ class Manager extends AbstractPluginManager
             $valueOptions[] = [
                 'value' => $columnTypeName,
                 'label' => $columnType->getLabel(),
+                'attributes' => [
+                    'data-max-columns' => $columnType->getMaxColumns(),
+                ],
             ];
         }
         return $valueOptions;

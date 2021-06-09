@@ -18,6 +18,11 @@ class Title implements ColumnTypeInterface
         return 'Title'; // @translate
     }
 
+    public function getMaxColumns() : ?int
+    {
+        return 1;
+    }
+
     public function prepareDataForm(PhpRenderer $view) : void
     {
         $view->headScript()->appendFile($view->assetUrl('js/column-data-form/title.js', 'FacetedBrowse'));
