@@ -21,7 +21,7 @@ let columnSelected = null;
  * than is allowed. It does this by disabling facet types that are equal to or
  * exceed the maximum that is set by the facet type.
  */
-const updateFacetTypeSelect = function() {
+const resetFacetTypeSelect = function() {
     facetTypeSelect.find('option').each(function() {
         const thisOption = $(this);
         const facetType = thisOption.val();
@@ -33,10 +33,35 @@ const updateFacetTypeSelect = function() {
             }
         }
         facetTypeSelect.val('');
+        facetAddButton.prop('disabled', true);
+        Omeka.closeSidebar(facetSidebar);
+        facetFormContainer.empty();
     });
 };
 
-updateFacetTypeSelect();
+/**
+ * Update column type select.
+ *
+ * This ensures that there are no more columns of a type set to this category
+ * than is allowed. It does this by disabling column types that are already used.
+ */
+const resetColumnTypeSelect = function() {
+    columnTypeSelect.find('option').each(function() {
+        const thisOption = $(this);
+        const columnType = thisOption.val();
+        const numFacets = $('.column').find(`input.column-type[value="${columnType}"]`).length;
+        if (numFacets >= 1) {
+            thisOption.prop('disabled', true);
+        }
+        columnTypeSelect.val('');
+        columnAddButton.prop('disabled', true);
+        Omeka.closeSidebar(columnSidebar);
+        columnFormContainer.empty();
+    });
+}
+
+resetFacetTypeSelect();
+resetColumnTypeSelect();
 
 // Enable facet and column sorting.
 new Sortable(facets[0], {draggable: '.facet', handle: '.sortable-handle'});
@@ -51,15 +76,12 @@ facetAddButton.on('click', function(e) {
     facetSelected = undefined;
     const thisButton = $(this);
     const type = facetTypeSelect.val();
-    // Reset the column type select.
-    columnTypeSelect.val('');
-    columnAddButton.prop('disabled', true);
-    Omeka.closeSidebar(columnSidebar);
     $.post(facets.data('facetFormUrl'), {
         facet_type: type
     }, function(html) {
         facetFormContainer.html(html);
         Omeka.openSidebar(facetSidebar);
+        resetColumnTypeSelect();
         FacetedBrowse.handleFacetAddEdit(type);
     });
 });
@@ -120,9 +142,7 @@ facetFormContainer.on('click', '#facet-set-button', function(e) {
         facetSelected.find('.facet-name').val(name);
         facetSelected.find('.facet-data').val(JSON.stringify(data));
         facetSelected = undefined;
-        Omeka.closeSidebar(facetSidebar);
-        facetFormContainer.empty();
-        updateFacetTypeSelect();
+        resetFacetTypeSelect();
     } else {
         // Handle an add.
         $.post(facets.data('facetRowUrl'), {
@@ -133,9 +153,7 @@ facetFormContainer.on('click', '#facet-set-button', function(e) {
             const facet = $($.parseHTML(html));
             facet.find('.facet-data').val(JSON.stringify(data));
             facets.append(facet);
-            Omeka.closeSidebar(facetSidebar);
-            facetFormContainer.empty();
-            updateFacetTypeSelect();
+            resetFacetTypeSelect();
         });
     }
 });
@@ -149,15 +167,12 @@ columnAddButton.on('click', function(e) {
     columnSelected = undefined;
     const thisButton = $(this);
     const type = columnTypeSelect.val();
-    // Reset the facet type select.
-    facetTypeSelect.val('');
-    facetAddButton.prop('disabled', true);
-    Omeka.closeSidebar(facetSidebar);
     $.post(columns.data('columnFormUrl'), {
         column_type: type
     }, function(html) {
         columnFormContainer.html(html);
         Omeka.openSidebar(columnSidebar);
+        resetFacetTypeSelect();
         FacetedBrowse.handleColumnAddEdit(type);
     });
 });
@@ -218,8 +233,7 @@ columnFormContainer.on('click', '#column-set-button', function(e) {
         columnSelected.find('.column-name').val(name);
         columnSelected.find('.column-data').val(JSON.stringify(data));
         columnSelected = undefined;
-        Omeka.closeSidebar(columnSidebar);
-        columnFormContainer.empty();
+        resetColumnTypeSelect();
     } else {
         // Handle an add.
         $.post(columns.data('columnRowUrl'), {
@@ -230,8 +244,7 @@ columnFormContainer.on('click', '#column-set-button', function(e) {
             const column = $($.parseHTML(html));
             column.find('.column-data').val(JSON.stringify(data));
             columns.append(column);
-            Omeka.closeSidebar(columnSidebar);
-            columnFormContainer.empty();
+            resetColumnTypeSelect();
         });
     }
 });
