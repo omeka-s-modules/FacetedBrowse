@@ -6,45 +6,7 @@
     <?php echo $this->sortSelector($sortings); ?>
 </div>
 <?php if ($items): ?>
-<?php if ($columns): ?>
-<table>
-    <thead>
-        <tr>
-            <?php foreach ($columns as $column): ?>
-            <th><?php echo $column->name(); ?></th>
-            <?php endforeach; ?>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($items as $item): ?>
-        <tr>
-            <?php foreach ($columns as $column): ?>
-            <th><?php echo $column->content($item); ?></th>
-            <?php endforeach; ?>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
-<?php else: ?>
-<?php
-$headingTerm = $this->siteSetting('browse_heading_property_term');
-$bodyTerm = $this->siteSetting('browse_body_property_term');
-?>
-<ul class="resource-list">
-    <?php foreach ($items as $item): ?>
-    <?php
-    $heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]')]) : $item->displayTitle();
-    $body = $bodyTerm ? $item->value($bodyTerm) : $item->displayDescription();
-    ?>
-    <li class="item resource">
-        <?php echo $item->linkPretty('square', $heading); ?>
-        <?php if ($body): ?>
-        <div class="description"><?php echo $this->escapeHtml($body); ?></div>
-        <?php endif; ?>
-    </li>
-    <?php endforeach; ?>
-</ul>
-<?php endif; ?>
+<?php echo $this->partial($columns ? 'browse-items-columns' : 'browse-items-default'); ?>
 <?php else: ?>
 <p><?php echo $this->translate('There are no results.'); ?></p>
 <?php endif; ?>

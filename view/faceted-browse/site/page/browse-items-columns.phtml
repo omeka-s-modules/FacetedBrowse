@@ -1,0 +1,18 @@
+<table>
+    <thead>
+        <tr>
+            <?php foreach ($columns as $column): ?>
+            <th><?php echo $column->name(); ?></th>
+            <?php endforeach; ?>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($items as $item): ?>
+        <tr>
+            <?php foreach ($columns as $column): ?>
+            <th><?php echo $column->content($item); ?></th>
+            <?php endforeach; ?>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
