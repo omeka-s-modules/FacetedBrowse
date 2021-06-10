@@ -22,6 +22,13 @@ interface ColumnTypeInterface
     public function getMaxColumns() : ?int;
 
     /**
+     * Get the corresponding sort_by value of this column type.
+     *
+     * @return ?string
+     */
+    public function getSortBy() : ?string;
+
+    /**
      * Prepare the data form of this column type.
      *
      * @param PhpRenderer $view
@@ -29,7 +36,7 @@ interface ColumnTypeInterface
     public function prepareDataForm(PhpRenderer $view) : void;
 
     /**
-     * Render the data form of this coilumn type.
+     * Render the data form of this column type.
      *
      * @param PhpRenderer $view
      * @param array $data

@@ -25,6 +25,11 @@ class Title implements ColumnTypeInterface
         return 1;
     }
 
+    public function getSortBy() : ?string
+    {
+        return 'title';
+    }
+
     public function prepareDataForm(PhpRenderer $view) : void
     {
         $view->headScript()->appendFile($view->assetUrl('js/column-data-form/title.js', 'FacetedBrowse'));

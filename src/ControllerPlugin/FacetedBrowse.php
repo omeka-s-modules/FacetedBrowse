@@ -1,6 +1,7 @@
 <?php
 namespace FacetedBrowse\ControllerPlugin;
 
+use FacetedBrowse\Api\Representation\FacetedBrowseCategoryRepresentation;
 use Zend\Mvc\Controller\Plugin\AbstractPlugin;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -31,6 +32,42 @@ class FacetedBrowse extends AbstractPlugin
     public function getColumnTypes()
     {
         return $this->services->get('FacetedBrowse\ColumnTypeManager');
+    }
+
+    /**
+     * Get the sortings for a browse page.
+     *
+     * @param ?FacetedBrowseCategoryRepresentation $category
+     * @return array
+     */
+    public function getSortings(?FacetedBrowseCategoryRepresentation $category)
+    {
+        $controller = $this->getController();
+        $sortings = [];
+        if ($category) {
+            foreach ($category->columns() as $column) {
+                $sortBy = $column->sortBy();
+                if ($sortBy) {
+                    $sortings[] = [
+                        'label' => $controller->translate($column->name()),
+                        'value' => $column->sortBy(),
+                    ];
+                }
+            }
+        }
+        if (!$sortings) {
+            $sortings =[
+                [
+                    'label' => $controller->translate('Created'),
+                    'value' => 'created',
+                ],
+                [
+                    'label' => $controller->translate('Title'),
+                    'value' => 'title',
+                ]
+            ];
+        }
+        return $sortings;
     }
 
     /**

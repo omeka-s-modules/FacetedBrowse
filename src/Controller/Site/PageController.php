@@ -41,9 +41,11 @@ class PageController extends AbstractActionController
     public function browseAction()
     {
         $categoryId = $this->params()->fromQuery('faceted_browse_category_id');
-        $category = $categoryId ? $this->api()->read('faceted_browse_categories', $categoryId)->getContent() : null;
+        $category =  $categoryId ? $this->api()->read('faceted_browse_categories', $categoryId)->getContent() : null;
+        $columns = $category ? $category->columns() : null;
+        $sortings = $this->facetedBrowse()->getSortings($category);
 
-        $this->setBrowseDefaults('created');
+        $this->setBrowseDefaults($sortings[0]['value'], 'asc');
         $query = array_merge(
             $this->params()->fromQuery(),
             ['site_id' => $this->currentSite()->id()]
@@ -56,7 +58,8 @@ class PageController extends AbstractActionController
         $view->setTerminal(true);
         $view->setVariable('items', $items);
         $view->setVariable('query', $query);
-        $view->setVariable('columns', $category ? $category->columns() : null);
+        $view->setVariable('columns', $columns);
+        $view->setVariable('sortings', $sortings);
         return $view;
     }
 }

@@ -1,22 +1,9 @@
-<?php
-$sortings = [
-    [
-        'label' => $this->translate('Title'),
-        'value' => 'title'
-    ],
-    [
-        'label' => $this->translate('Created'),
-        'value' => 'created'
-    ],
-];
-?>
 <div class="browse-controls">
     <?php echo $this->pagination(); ?>
     <label class="o-icon-uri permalink-label" aria-label="<?php echo $this->translate('Permalink for current results.'); ?>" title="<?php echo $this->translate('Permalink for current results.'); ?>">
-    <input type="text" class="permalink" value="<?php echo $this->escapeHtml($this->url('site/resource', ['controller' => 'item', 'action' => 'browse'], ['query' => $query, 'force_canonical' => true], true)); ?>">
+        <input type="text" class="permalink" value="<?php echo $this->escapeHtml($this->url('site/resource', ['controller' => 'item', 'action' => 'browse'], ['query' => $query, 'force_canonical' => true], true)); ?>">
     </label>
     <?php echo $this->sortSelector($sortings); ?>
-
 </div>
 <?php if ($items): ?>
 <?php if ($columns): ?>

@@ -28,6 +28,11 @@ class Unknown implements ColumnTypeInterface
         return null;
     }
 
+    public function getSortBy() : ?string
+    {
+        return null;
+    }
+
     public function prepareDataForm(PhpRenderer $view) : void
     {
     }
