@@ -17,7 +17,7 @@ return [
         'factories' => [
             'title' => Service\ColumnType\TitleFactory::class,
             'resource_class' => Service\ColumnType\ResourceClassFactory::class,
-            //~ 'value' => Service\ColumnType\FullTextFactory::class,
+            'value' => Service\ColumnType\ValueFactory::class,
             //~ 'owner' => Service\ColumnType\OwnerFactory::class,
             //~ 'created' => Service\ColumnType\CreatedFactory::class,
             //~ 'id' => Service\ColumnType\IdFactory::class,
@@ -91,10 +91,7 @@ return [
     'js_translate_strings' => [
         'A facet must have a name.', // @translate
         'A column must have a name.', // @translate
-        'A facet must have a query type.', // @translate
-        'A facet must have a select type.', // @translate
-        'There are no available values.', // @translate
-        'There are no available classes.', // @translate
+        'A column must have a property.', // @translate
         'Error fetching browse markup.', // @translate
         'Error fetching facet markup.', // @translate
         'Error fetching category markup.', // @translate

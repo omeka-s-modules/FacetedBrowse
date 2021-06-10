@@ -28,11 +28,6 @@ class Unknown implements ColumnTypeInterface
         return null;
     }
 
-    public function getSortBy() : ?string
-    {
-        return null;
-    }
-
     public function prepareDataForm(PhpRenderer $view) : void
     {
     }
@@ -67,7 +62,12 @@ class Unknown implements ColumnTypeInterface
         );
     }
 
-    public function renderContent(ItemRepresentation $item, FacetedBrowseColumnRepresentation $column) : string
+    public function getSortBy(FacetedBrowseColumnRepresentation $column) : ?string
+    {
+        return null;
+    }
+
+    public function renderContent(FacetedBrowseColumnRepresentation $column, ItemRepresentation $item) : string
     {
         return '';
     }

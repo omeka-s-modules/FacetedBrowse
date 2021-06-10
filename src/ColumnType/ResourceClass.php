@@ -25,11 +25,6 @@ class ResourceClass implements ColumnTypeInterface
         return 1;
     }
 
-    public function getSortBy() : ?string
-    {
-        return 'resource_class_label';
-    }
-
     public function prepareDataForm(PhpRenderer $view) : void
     {
         $view->headScript()->appendFile($view->assetUrl('js/column-data-form/resource-class.js', 'FacetedBrowse'));
@@ -37,10 +32,15 @@ class ResourceClass implements ColumnTypeInterface
 
     public function renderDataForm(PhpRenderer $view, array $data) : string
     {
-        return $view->partial('common/faceted-browse/column-data-form/resource-class', []);
+        return '';
     }
 
-    public function renderContent(ItemRepresentation $item, FacetedBrowseColumnRepresentation $column) : string
+    public function getSortBy(FacetedBrowseColumnRepresentation $column) : ?string
+    {
+        return 'resource_class_label';
+    }
+
+    public function renderContent(FacetedBrowseColumnRepresentation $column, ItemRepresentation $item) : string
     {
         return $item->resourceClass()->label();
     }

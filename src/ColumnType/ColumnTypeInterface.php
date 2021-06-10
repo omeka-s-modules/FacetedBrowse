@@ -22,13 +22,6 @@ interface ColumnTypeInterface
     public function getMaxColumns() : ?int;
 
     /**
-     * Get the corresponding sort_by value of this column type.
-     *
-     * @return ?string
-     */
-    public function getSortBy() : ?string;
-
-    /**
      * Prepare the data form of this column type.
      *
      * @param PhpRenderer $view
@@ -45,11 +38,19 @@ interface ColumnTypeInterface
     public function renderDataForm(PhpRenderer $view, array $data) : string;
 
     /**
+     * Get the corresponding sort_by value of this column type.
+     *
+     * @param FacetedBrowseColumnRepresentation $column
+     * @return ?string
+     */
+    public function getSortBy(FacetedBrowseColumnRepresentation $column) : ?string;
+
+    /**
      * Render the content of a column of this type.
      *
-     * @param ItemRepresentation $item
      * @param FacetedBrowseColumnRepresentation $column
+     * @param ItemRepresentation $item
      * @return string
      */
-    public function renderContent(ItemRepresentation $item, FacetedBrowseColumnRepresentation $column) : string;
+    public function renderContent(FacetedBrowseColumnRepresentation $column, ItemRepresentation $item) : string;
 }

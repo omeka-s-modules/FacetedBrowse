@@ -25,11 +25,6 @@ class Title implements ColumnTypeInterface
         return 1;
     }
 
-    public function getSortBy() : ?string
-    {
-        return 'title';
-    }
-
     public function prepareDataForm(PhpRenderer $view) : void
     {
         $view->headScript()->appendFile($view->assetUrl('js/column-data-form/title.js', 'FacetedBrowse'));
@@ -37,10 +32,15 @@ class Title implements ColumnTypeInterface
 
     public function renderDataForm(PhpRenderer $view, array $data) : string
     {
-        return $view->partial('common/faceted-browse/column-data-form/title', []);
+        return '';
     }
 
-    public function renderContent(ItemRepresentation $item, FacetedBrowseColumnRepresentation $column) : string
+    public function getSortBy(FacetedBrowseColumnRepresentation $column) : ?string
+    {
+        return 'title';
+    }
+
+    public function renderContent(FacetedBrowseColumnRepresentation $column, ItemRepresentation $item) : string
     {
         return $item->linkPretty('square');
     }
