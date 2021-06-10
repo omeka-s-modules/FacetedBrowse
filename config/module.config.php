@@ -16,8 +16,8 @@ return [
     'faceted_browse_column_types' => [
         'factories' => [
             'title' => Service\ColumnType\TitleFactory::class,
+            'resource_class' => Service\ColumnType\ResourceClassFactory::class,
             //~ 'value' => Service\ColumnType\FullTextFactory::class,
-            //~ 'class' => Service\ColumnType\ClassFactory::class,
             //~ 'owner' => Service\ColumnType\OwnerFactory::class,
             //~ 'created' => Service\ColumnType\CreatedFactory::class,
             //~ 'id' => Service\ColumnType\IdFactory::class,
