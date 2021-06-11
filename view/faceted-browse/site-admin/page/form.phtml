@@ -33,21 +33,28 @@ $form->prepare();
     </div>
 </div>
 
-<?php echo $this->formRow($form->get('o:title')); ?>
+<?php echo $this->sectionNav([
+    'page-fieldset' => 'Page',
+    'categories-fieldset' => 'Categories',
+]); ?>
 
-<fieldset>
-<legend><?php echo $this->translate('Categories'); ?></legend>
-<?php echo $this->formSelect($form->get('category')); ?>
-<button type="button" id="category-add-button" disabled><?php echo $this->translate('Add'); ?></button>
-<ul id="categories"
-    class="sortable-list" 
-    data-category-row-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse', ['action' => 'category-row'], true)); ?>">
-    <?php if ($page): ?>
-    <?php foreach ($page->categories() as $index => $category): ?>
-    <?php echo $this->partial('category-row.phtml', ['index' => $index, 'category' => $category->jsonSerialize()]); ?>
-    <?php endforeach; ?>
-    <?php endif; ?>
-</ul>
+<fieldset id="page-fieldset" class="section active">
+    <?php echo $this->formRow($form->get('o:title')); ?>
+</fieldset>
+
+<fieldset id="categories-fieldset" class="section">
+    <legend><?php echo $this->translate('Categories'); ?></legend>
+    <?php echo $this->formSelect($form->get('category')); ?>
+    <button type="button" id="category-add-button" disabled><?php echo $this->translate('Add'); ?></button>
+    <ul id="categories"
+        class="sortable-list"
+        data-category-row-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse', ['action' => 'category-row'], true)); ?>">
+        <?php if ($page): ?>
+        <?php foreach ($page->categories() as $index => $category): ?>
+        <?php echo $this->partial('category-row.phtml', ['index' => $index, 'category' => $category->jsonSerialize()]); ?>
+        <?php endforeach; ?>
+        <?php endif; ?>
+    </ul>
 </fieldset>
 
 <?php echo $this->formHidden($form->get('csrf')); ?>
