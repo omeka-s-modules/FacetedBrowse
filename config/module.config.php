@@ -6,21 +6,21 @@ use Laminas\Router\Http;
 return [
     'faceted_browse_facet_types' => [
         'factories' => [
-            'by_value' => Service\FacetType\ByValueFactory::class,
-            'by_class' => Service\FacetType\ByClassFactory::class,
-            'by_template' => Service\FacetType\ByTemplateFactory::class,
-            'by_item_set' => Service\FacetType\ByItemSetFactory::class,
-            'full_text' => Service\FacetType\FullTextFactory::class,
+            'by_value' => Service\FacetType\FacetTypeFactory::class,
+            'by_class' => Service\FacetType\FacetTypeFactory::class,
+            'by_template' => Service\FacetType\FacetTypeFactory::class,
+            'by_item_set' => Service\FacetType\FacetTypeFactory::class,
+            'full_text' => Service\FacetType\FacetTypeFactory::class,
         ],
     ],
     'faceted_browse_column_types' => [
         'factories' => [
-            'title' => Service\ColumnType\TitleFactory::class,
-            'resource_class' => Service\ColumnType\ResourceClassFactory::class,
-            'value' => Service\ColumnType\ValueFactory::class,
-            //~ 'owner' => Service\ColumnType\OwnerFactory::class,
-            //~ 'created' => Service\ColumnType\CreatedFactory::class,
-            //~ 'id' => Service\ColumnType\IdFactory::class,
+            'title' => Service\ColumnType\ColumnTypeFactory::class,
+            'resource_class' => Service\ColumnType\ColumnTypeFactory::class,
+            'value' => Service\ColumnType\ColumnTypeFactory::class,
+            //~ 'owner' => Service\ColumnType\ColumnTypeFactory::class,
+            //~ 'created' => Service\ColumnType\ColumnTypeFactory::class,
+            //~ 'id' => Service\ColumnType\ColumnTypeFactory::class,
         ],
     ],
     'translator' => [
