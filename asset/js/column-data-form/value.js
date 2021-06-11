@@ -10,6 +10,7 @@ FacetedBrowse.registerColumnSetHandler('value', function() {
         return;
     }
     return {
-        'property_term': propertyTerm.val()
+        'property_term': propertyTerm.val(),
+        'max_values': $('#value-max-values').val()
     };
 });
