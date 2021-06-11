@@ -16,11 +16,10 @@ return [
     'faceted_browse_column_types' => [
         'factories' => [
             'title' => Service\ColumnType\ColumnTypeFactory::class,
-            'resource_class' => Service\ColumnType\ColumnTypeFactory::class,
             'value' => Service\ColumnType\ColumnTypeFactory::class,
-            //~ 'owner' => Service\ColumnType\ColumnTypeFactory::class,
-            //~ 'created' => Service\ColumnType\ColumnTypeFactory::class,
-            //~ 'id' => Service\ColumnType\ColumnTypeFactory::class,
+            'resource_class' => Service\ColumnType\ColumnTypeFactory::class,
+            'resource_template' => Service\ColumnType\ColumnTypeFactory::class,
+            'id' => Service\ColumnType\ColumnTypeFactory::class,
         ],
     ],
     'translator' => [

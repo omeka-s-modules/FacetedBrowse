@@ -6,7 +6,7 @@ use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Api\Representation\ItemRepresentation;
 
-class ResourceClass implements ColumnTypeInterface
+class Id implements ColumnTypeInterface
 {
     protected $formElements;
 
@@ -17,7 +17,7 @@ class ResourceClass implements ColumnTypeInterface
 
     public function getLabel() : string
     {
-        return 'Class'; // @translate
+        return 'ID'; // @translate
     }
 
     public function getMaxColumns() : ?int
@@ -27,7 +27,7 @@ class ResourceClass implements ColumnTypeInterface
 
     public function prepareDataForm(PhpRenderer $view) : void
     {
-        $view->headScript()->appendFile($view->assetUrl('js/column-data-form/resource-class.js', 'FacetedBrowse'));
+        $view->headScript()->appendFile($view->assetUrl('js/column-data-form/id.js', 'FacetedBrowse'));
     }
 
     public function renderDataForm(PhpRenderer $view, array $data) : string
@@ -37,12 +37,11 @@ class ResourceClass implements ColumnTypeInterface
 
     public function getSortBy(FacetedBrowseColumnRepresentation $column) : ?string
     {
-        return 'resource_class_label';
+        return 'id';
     }
 
     public function renderContent(FacetedBrowseColumnRepresentation $column, ItemRepresentation $item) : string
     {
-        $class = $item->resourceClass();
-        return $class ? $class->label() : '';
+        return $item->id();
     }
 }
