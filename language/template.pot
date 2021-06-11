@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 15:04-0400\n"
+"POT-Creation-Date: 2021-06-11 08:12-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,7 +56,7 @@ msgid "Select a page"
 msgstr ""
 
 #: view/faceted-browse/site-admin/category/browse.phtml:5
-#: view/faceted-browse/site-admin/page/form.phtml:39
+#: view/faceted-browse/site-admin/page/form.phtml:46
 msgid "Categories"
 msgstr ""
 
@@ -93,6 +93,26 @@ msgstr ""
 
 #: view/faceted-browse/site-admin/category/browse.phtml:78
 msgid "No categories found."
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/column-form.phtml:6
+msgid "Configure column"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/column-form.phtml:9
+msgid "Column type"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/column-row.phtml:12
+msgid "Edit column"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/column-row.phtml:16
+msgid "Remove column"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/column-row.phtml:20
+msgid "Restore column"
 msgstr ""
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:6
@@ -136,8 +156,12 @@ msgstr ""
 msgid "Stay on this category"
 msgstr ""
 
-#: view/faceted-browse/site-admin/category/form.phtml:42
+#: view/faceted-browse/site-admin/category/form.phtml:50
 msgid "Facets"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/form.phtml:66
+msgid "Columns"
 msgstr ""
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:5
@@ -149,6 +173,7 @@ msgid "Count"
 msgstr ""
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:19
+#: view/faceted-browse/site/page/browse.phtml:11
 msgid "There are no results."
 msgstr ""
 
@@ -189,7 +214,7 @@ msgstr ""
 msgid "Stay on this page"
 msgstr ""
 
-#: view/faceted-browse/site/page/browse.phtml:21
+#: view/faceted-browse/site/page/browse.phtml:3
 msgid "Permalink for current results."
 msgstr ""
 
@@ -201,93 +226,66 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: src/Form/FacetForm.php:22
-msgid "Facet name"
+#: config/module.config.php:92
+msgid "A facet must have a name."
 msgstr ""
 
-#: src/Form/FacetForm.php:32
-msgid "Set facet"
+#: config/module.config.php:93
+msgid "A column must have a name."
 msgstr ""
 
-#: src/Form/PageForm.php:22
-msgid "Enter the title of this page."
+#: config/module.config.php:94
+msgid "A column must have a property."
 msgstr ""
 
-#: src/Form/PageForm.php:33
-msgid "Add a category"
+#: config/module.config.php:95
+msgid "Error fetching browse markup."
 msgstr ""
 
-#: src/Form/CategoryForm.php:21
+#: config/module.config.php:96
+msgid "Error fetching facet markup."
+msgstr ""
+
+#: config/module.config.php:97
+msgid "Error fetching category markup."
+msgstr ""
+
+#: src/Site/NavigationLink/FacetedBrowse.php:12
+msgid "Faceted browse"
+msgstr ""
+
+#: src/ColumnType/Title.php:20
+msgid "Title (Item Link)"
+msgstr ""
+
+#: src/ColumnType/Value.php:22
+msgid "Value"
+msgstr ""
+
+#: src/ColumnType/Value.php:47
+msgid "Select a property…"
+msgstr ""
+
+#: src/ColumnType/Value.php:54
+msgid "Max values"
+msgstr ""
+
+#: src/ColumnType/Value.php:55
 msgid ""
-"Enter the name of this category. A category is a logical grouping of items "
-"that can be described using faceted classification."
+"Enter the maximum number of values to display. Set to blank to display all "
+"values."
 msgstr ""
 
-#: src/Form/CategoryForm.php:32
-msgid "Search query"
+#: src/ColumnType/Unknown.php:23 src/FacetType/Unknown.php:22
+msgid "[Unknown]"
 msgstr ""
 
-#: src/Form/CategoryForm.php:33
-msgid ""
-"Configure the logical grouping of items that make up this category. No query "
-"means all site resources."
+#: src/ColumnType/Unknown.php:40
+msgid "Unknown column type"
 msgstr ""
 
-#: src/Form/CategoryForm.php:47
-msgid "Add a facet"
-msgstr ""
-
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:50
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:50
-msgid "A site must have an ID"
-msgstr ""
-
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:114
-msgid "A page must have a site"
-msgstr ""
-
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:117
-msgid "A page must have a title"
-msgstr ""
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:107
-msgid "A category must have a site"
-msgstr ""
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:110
-msgid "A category must have a name"
-msgstr ""
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:113
-msgid "A category must have a query"
-msgstr ""
-
-#: src/Controller/SiteAdmin/CategoryController.php:49
-msgid "Successfully added the category."
-msgstr ""
-
-#: src/Controller/SiteAdmin/CategoryController.php:86
-msgid "Successfully edited the category."
-msgstr ""
-
-#: src/Controller/SiteAdmin/CategoryController.php:116
-msgid "Successfully deleted the category."
-msgstr ""
-
-#: src/Controller/SiteAdmin/PageController.php:51
-msgid "Successfully added the page."
-msgstr ""
-
-#: src/Controller/SiteAdmin/PageController.php:89
-msgid "Successfully edited the page."
-msgstr ""
-
-#: src/Controller/SiteAdmin/PageController.php:123
-msgid "Successfully deleted the page."
-msgstr ""
-
-#: src/FacetType/FullText.php:20
-msgid "Full-text"
+#: src/ColumnType/Unknown.php:50
+msgid "Unknown column data"
 msgstr ""
 
 #: src/FacetType/ByItemSet.php:20
@@ -296,6 +294,14 @@ msgstr ""
 
 #: src/FacetType/ByItemSet.php:45
 msgid "Select item sets…"
+msgstr ""
+
+#: src/FacetType/ByTemplate.php:20
+msgid "By template"
+msgstr ""
+
+#: src/FacetType/ByTemplate.php:45
+msgid "Select templates…"
 msgstr ""
 
 #: src/FacetType/ByValue.php:21
@@ -345,12 +351,8 @@ msgid ""
 "any number of values at a time."
 msgstr ""
 
-#: src/FacetType/ByTemplate.php:20
-msgid "By template"
-msgstr ""
-
-#: src/FacetType/ByTemplate.php:45
-msgid "Select templates…"
+#: src/FacetType/FullText.php:20
+msgid "Full-text"
 msgstr ""
 
 #: src/FacetType/ByClass.php:20
@@ -361,10 +363,6 @@ msgstr ""
 msgid "Select classes…"
 msgstr ""
 
-#: src/FacetType/Unknown.php:22
-msgid "[Unknown]"
-msgstr ""
-
 #: src/FacetType/Unknown.php:39
 msgid "Unknown facet type"
 msgstr ""
@@ -373,38 +371,99 @@ msgstr ""
 msgid "Unknown facet data"
 msgstr ""
 
-#: src/Site/NavigationLink/FacetedBrowse.php:12
-msgid "Faceted browse"
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:51
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:50
+msgid "A site must have an ID"
 msgstr ""
 
-#: config/module.config.php:81
-msgid "A facet must have a name."
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:138
+msgid "A category must have a site"
 msgstr ""
 
-#: config/module.config.php:82
-msgid "A facet must have a query type."
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:141
+msgid "A category must have a name"
 msgstr ""
 
-#: config/module.config.php:83
-msgid "A facet must have a select type."
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:144
+msgid "A category must have a query"
 msgstr ""
 
-#: config/module.config.php:84
-msgid "There are no available values."
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:114
+msgid "A page must have a site"
 msgstr ""
 
-#: config/module.config.php:85
-msgid "There are no available classes."
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:117
+msgid "A page must have a title"
 msgstr ""
 
-#: config/module.config.php:86
-msgid "Error fetching browse markup."
+#: src/Form/ColumnForm.php:22
+msgid "Column name"
 msgstr ""
 
-#: config/module.config.php:87
-msgid "Error fetching facet markup."
+#: src/Form/ColumnForm.php:32
+msgid "Set column"
 msgstr ""
 
-#: config/module.config.php:88
-msgid "Error fetching category markup."
+#: src/Form/PageForm.php:22
+msgid "Enter the title of this page."
+msgstr ""
+
+#: src/Form/PageForm.php:33
+msgid "Add a category"
+msgstr ""
+
+#: src/Form/CategoryForm.php:22
+msgid ""
+"Enter the name of this category. A category is a logical grouping of items "
+"that can be described using faceted classification."
+msgstr ""
+
+#: src/Form/CategoryForm.php:33
+msgid "Search query"
+msgstr ""
+
+#: src/Form/CategoryForm.php:34
+msgid ""
+"Configure the logical grouping of items that make up this category. No query "
+"means all site resources."
+msgstr ""
+
+#: src/Form/CategoryForm.php:51
+msgid "Add a facet…"
+msgstr ""
+
+#: src/Form/CategoryForm.php:64
+msgid "Add a column…"
+msgstr ""
+
+#: src/Form/FacetForm.php:22
+msgid "Facet name"
+msgstr ""
+
+#: src/Form/FacetForm.php:32
+msgid "Set facet"
+msgstr ""
+
+#: src/Controller/SiteAdmin/PageController.php:51
+msgid "Successfully added the page."
+msgstr ""
+
+#: src/Controller/SiteAdmin/PageController.php:89
+msgid "Successfully edited the page."
+msgstr ""
+
+#: src/Controller/SiteAdmin/PageController.php:123
+msgid "Successfully deleted the page."
+msgstr ""
+
+#: src/Controller/SiteAdmin/CategoryController.php:51
+msgid "Successfully added the category."
+msgstr ""
+
+#: src/Controller/SiteAdmin/CategoryController.php:90
+msgid "Successfully edited the category."
+msgstr ""
+
+#: src/Controller/SiteAdmin/CategoryController.php:120
+msgid "Successfully deleted the category."
 msgstr ""

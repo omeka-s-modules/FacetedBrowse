@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 15:04-0400\n"
+"POT-Creation-Date: 2021-06-11 08:12-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Giorgio Comai <g@giorgiocomai.eu>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/omeka/teams/14184/it/)\n"
@@ -62,7 +62,7 @@ msgid "Select a page"
 msgstr "Seleziona una pagina"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:5
-#: view/faceted-browse/site-admin/page/form.phtml:39
+#: view/faceted-browse/site-admin/page/form.phtml:46
 msgid "Categories"
 msgstr "Categorie"
 
@@ -101,6 +101,26 @@ msgstr "Aggiungi una nuova categoria."
 msgid "No categories found."
 msgstr "Nessuna categoria trovata."
 
+#: view/faceted-browse/site-admin/category/column-form.phtml:6
+msgid "Configure column"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/column-form.phtml:9
+msgid "Column type"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/column-row.phtml:12
+msgid "Edit column"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/column-row.phtml:16
+msgid "Remove column"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/column-row.phtml:20
+msgid "Restore column"
+msgstr ""
+
 #: view/faceted-browse/site-admin/category/facet-form.phtml:6
 msgid "Configure facet"
 msgstr "Configura faccetta"
@@ -132,7 +152,7 @@ msgstr "Aggiungi categoria"
 #: view/faceted-browse/site-admin/category/form.phtml:30
 #: view/faceted-browse/site-admin/page/form.phtml:28
 msgid "Save and&hellip;"
-msgstr ""
+msgstr "Salva e..."
 
 #: view/faceted-browse/site-admin/category/form.phtml:32
 msgid "Return to categories"
@@ -142,9 +162,13 @@ msgstr "Ritorna alle categorie"
 msgid "Stay on this category"
 msgstr "Rimani su questa categoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:42
+#: view/faceted-browse/site-admin/category/form.phtml:50
 msgid "Facets"
 msgstr "Faccette"
+
+#: view/faceted-browse/site-admin/category/form.phtml:66
+msgid "Columns"
+msgstr ""
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:5
 msgid "Available"
@@ -155,6 +179,7 @@ msgid "Count"
 msgstr "Numero"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:19
+#: view/faceted-browse/site/page/browse.phtml:11
 msgid "There are no results."
 msgstr "Nessun risultato."
 
@@ -195,7 +220,7 @@ msgstr "Ritorna alle pagine"
 msgid "Stay on this page"
 msgstr "Rimani su questa pagina"
 
-#: view/faceted-browse/site/page/browse.phtml:21
+#: view/faceted-browse/site/page/browse.phtml:3
 msgid "Permalink for current results."
 msgstr "Link permanente per questi risultati."
 
@@ -207,12 +232,185 @@ msgstr "Non ci sono categorie da sfogliare."
 msgid "Back"
 msgstr "Indietro"
 
-#: src/Form/FacetForm.php:22
-msgid "Facet name"
-msgstr "Nome della faccetta"
+#: config/module.config.php:92
+msgid "A facet must have a name."
+msgstr "Una faccetta deve avere un nome."
 
-#: src/Form/FacetForm.php:32
-msgid "Set facet"
+#: config/module.config.php:93
+msgid "A column must have a name."
+msgstr ""
+
+#: config/module.config.php:94
+msgid "A column must have a property."
+msgstr ""
+
+#: config/module.config.php:95
+msgid "Error fetching browse markup."
+msgstr "Errore nel recuperare il markup per sfoglia"
+
+#: config/module.config.php:96
+msgid "Error fetching facet markup."
+msgstr "Errore nel recuperare il markup per la faccetta"
+
+#: config/module.config.php:97
+msgid "Error fetching category markup."
+msgstr "Errore nel recuperare il markup per la categoria"
+
+#: src/Site/NavigationLink/FacetedBrowse.php:12
+msgid "Faceted browse"
+msgstr "Navigazione a faccette"
+
+#: src/ColumnType/Title.php:20
+msgid "Title (Item Link)"
+msgstr ""
+
+#: src/ColumnType/Value.php:22
+msgid "Value"
+msgstr ""
+
+#: src/ColumnType/Value.php:47
+msgid "Select a property…"
+msgstr ""
+
+#: src/ColumnType/Value.php:54
+msgid "Max values"
+msgstr ""
+
+#: src/ColumnType/Value.php:55
+msgid ""
+"Enter the maximum number of values to display. Set to blank to display all "
+"values."
+msgstr ""
+
+#: src/ColumnType/Unknown.php:23 src/FacetType/Unknown.php:22
+msgid "[Unknown]"
+msgstr "[Sconosciuto]"
+
+#: src/ColumnType/Unknown.php:40
+msgid "Unknown column type"
+msgstr ""
+
+#: src/ColumnType/Unknown.php:50
+msgid "Unknown column data"
+msgstr ""
+
+#: src/FacetType/ByItemSet.php:20
+msgid "By item set"
+msgstr "Per collezione"
+
+#: src/FacetType/ByItemSet.php:45
+msgid "Select item sets…"
+msgstr "Seleziona collezioni..."
+
+#: src/FacetType/ByTemplate.php:20
+msgid "By template"
+msgstr "Per modello"
+
+#: src/FacetType/ByTemplate.php:45
+msgid "Select templates…"
+msgstr "Seleziona modelli..."
+
+#: src/FacetType/ByValue.php:21
+msgid "By value"
+msgstr "Per valore"
+
+#: src/FacetType/ByValue.php:54
+msgid "Is exactly"
+msgstr "È esattamente"
+
+#: src/FacetType/ByValue.php:55
+msgid "Is not exactly"
+msgstr "Non corrisponde esattamente"
+
+#: src/FacetType/ByValue.php:56
+msgid "Contains"
+msgstr "Contiene"
+
+#: src/FacetType/ByValue.php:57
+msgid "Does not contain"
+msgstr "Non include"
+
+#: src/FacetType/ByValue.php:58
+msgid "Is resource with ID"
+msgstr "È risorsa con ID"
+
+#: src/FacetType/ByValue.php:59
+msgid "Is not resource with ID"
+msgstr "Non è una risorsa con ID"
+
+#: src/FacetType/ByValue.php:60
+msgid "Has any value"
+msgstr "Ha un qualsiasi valore"
+
+#: src/FacetType/ByValue.php:61
+msgid "Has no values"
+msgstr "Non ha valori"
+
+#: src/FacetType/ByValue.php:72
+msgid "Select type"
+msgstr "Seleziona tipo"
+
+#: src/FacetType/ByValue.php:73
+msgid ""
+"Select the select type. For the \"single\" select type, users may choose "
+"only one value at a time. For the \"multiple\" select type, users may choose"
+" any number of values at a time."
+msgstr ""
+"Seleziona il tipo di selezione. Per la selezione \"singola\", gli utenti "
+"possono scegliere un solo valore per volta. Per la selezione \"multipla\", "
+"gli utenti possono scegliere più valori contemporaneamente."
+
+#: src/FacetType/FullText.php:20
+msgid "Full-text"
+msgstr "Testo completo"
+
+#: src/FacetType/ByClass.php:20
+msgid "By class"
+msgstr "Per classe"
+
+#: src/FacetType/ByClass.php:45
+msgid "Select classes…"
+msgstr "Seleziona classi..."
+
+#: src/FacetType/Unknown.php:39
+msgid "Unknown facet type"
+msgstr "Tipo di faccetta sconosciuto"
+
+#: src/FacetType/Unknown.php:49
+msgid "Unknown facet data"
+msgstr "Dati di faccetta sconosciuti"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:51
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:50
+msgid "A site must have an ID"
+msgstr "Un sito deve avere un ID"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:138
+msgid "A category must have a site"
+msgstr "Una categoria deve avere un sito"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:141
+msgid "A category must have a name"
+msgstr "Una categoria deve avere un nome"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:144
+msgid "A category must have a query"
+msgstr "Una categoria deve avere una query"
+
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:114
+msgid "A page must have a site"
+msgstr "Una pagina deve avere un sito"
+
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:117
+msgid "A page must have a title"
+msgstr "Una pagina deve avere un titolo"
+
+#: src/Form/ColumnForm.php:22
+msgid "Column name"
+msgstr ""
+
+#: src/Form/ColumnForm.php:32
+msgid "Set column"
 msgstr ""
 
 #: src/Form/PageForm.php:22
@@ -223,7 +421,7 @@ msgstr "Inserisci il titolo di questa pagina"
 msgid "Add a category"
 msgstr "Aggiungi una categoria"
 
-#: src/Form/CategoryForm.php:21
+#: src/Form/CategoryForm.php:22
 msgid ""
 "Enter the name of this category. A category is a logical grouping of items "
 "that can be described using faceted classification."
@@ -232,11 +430,11 @@ msgstr ""
 "logico di contenuti che può essere descritto utilizzando una classificazione"
 " a faccete."
 
-#: src/Form/CategoryForm.php:32
+#: src/Form/CategoryForm.php:33
 msgid "Search query"
 msgstr "Query di ricerca"
 
-#: src/Form/CategoryForm.php:33
+#: src/Form/CategoryForm.php:34
 msgid ""
 "Configure the logical grouping of items that make up this category. No query"
 " means all site resources."
@@ -244,46 +442,21 @@ msgstr ""
 "Configura il raggruppamento logico dei contenuiti che costituiscono questa "
 "categoria. Se non vi è query, sono incluse tutte le risorse del sito"
 
-#: src/Form/CategoryForm.php:47
-msgid "Add a facet"
-msgstr "Aggiungi una faccetta"
+#: src/Form/CategoryForm.php:51
+msgid "Add a facet…"
+msgstr ""
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:50
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:50
-msgid "A site must have an ID"
-msgstr "Un sito deve avere un ID"
+#: src/Form/CategoryForm.php:64
+msgid "Add a column…"
+msgstr ""
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:114
-msgid "A page must have a site"
-msgstr "Una pagina deve avere un sito"
+#: src/Form/FacetForm.php:22
+msgid "Facet name"
+msgstr "Nome della faccetta"
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:117
-msgid "A page must have a title"
-msgstr "Una pagina deve avere un titolo"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:107
-msgid "A category must have a site"
-msgstr "Una categoria deve avere un sito"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:110
-msgid "A category must have a name"
-msgstr "Una categoria deve avere un nome"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:113
-msgid "A category must have a query"
-msgstr "Una categoria deve avere una query"
-
-#: src/Controller/SiteAdmin/CategoryController.php:49
-msgid "Successfully added the category."
-msgstr "Aggiunto con successo alla categoria."
-
-#: src/Controller/SiteAdmin/CategoryController.php:86
-msgid "Successfully edited the category."
-msgstr "Categoria modificata con successo."
-
-#: src/Controller/SiteAdmin/CategoryController.php:116
-msgid "Successfully deleted the category."
-msgstr "Categoria eliminata con successo."
+#: src/Form/FacetForm.php:32
+msgid "Set facet"
+msgstr "Imposta faccetta"
 
 #: src/Controller/SiteAdmin/PageController.php:51
 msgid "Successfully added the page."
@@ -297,128 +470,14 @@ msgstr "Pagina modificata con successo."
 msgid "Successfully deleted the page."
 msgstr "Pagina eliminata con successo."
 
-#: src/FacetType/FullText.php:20
-msgid "Full-text"
-msgstr "Testo completo"
+#: src/Controller/SiteAdmin/CategoryController.php:51
+msgid "Successfully added the category."
+msgstr "Aggiunto con successo alla categoria."
 
-#: src/FacetType/ByItemSet.php:20
-msgid "By item set"
-msgstr "Per collezione"
+#: src/Controller/SiteAdmin/CategoryController.php:90
+msgid "Successfully edited the category."
+msgstr "Categoria modificata con successo."
 
-#: src/FacetType/ByItemSet.php:45
-msgid "Select item sets…"
-msgstr "Seleziona collezioni..."
-
-#: src/FacetType/ByValue.php:21
-msgid "By value"
-msgstr "Per valore"
-
-#: src/FacetType/ByValue.php:54
-msgid "Is exactly"
-msgstr "È esattamente"
-
-#: src/FacetType/ByValue.php:55
-msgid "Is not exactly"
-msgstr ""
-
-#: src/FacetType/ByValue.php:56
-msgid "Contains"
-msgstr "Contiene"
-
-#: src/FacetType/ByValue.php:57
-msgid "Does not contain"
-msgstr ""
-
-#: src/FacetType/ByValue.php:58
-msgid "Is resource with ID"
-msgstr "È risorsa con ID"
-
-#: src/FacetType/ByValue.php:59
-msgid "Is not resource with ID"
-msgstr ""
-
-#: src/FacetType/ByValue.php:60
-msgid "Has any value"
-msgstr "Ha un qualsiasi valore"
-
-#: src/FacetType/ByValue.php:61
-msgid "Has no values"
-msgstr ""
-
-#: src/FacetType/ByValue.php:72
-msgid "Select type"
-msgstr ""
-
-#: src/FacetType/ByValue.php:73
-msgid ""
-"Select the select type. For the \"single\" select type, users may choose "
-"only one value at a time. For the \"multiple\" select type, users may choose"
-" any number of values at a time."
-msgstr ""
-"Seleziona il tipo di selezione. Per la selezione \"singola\", gli utenti "
-"possono scegliere un solo valore per volta. Per la selezione \"multipla\", "
-"gli utenti possono scegliere più valori contemporaneamente."
-
-#: src/FacetType/ByTemplate.php:20
-msgid "By template"
-msgstr "Per modello"
-
-#: src/FacetType/ByTemplate.php:45
-msgid "Select templates…"
-msgstr "Seleziona modelli..."
-
-#: src/FacetType/ByClass.php:20
-msgid "By class"
-msgstr "Per classe"
-
-#: src/FacetType/ByClass.php:45
-msgid "Select classes…"
-msgstr "Seleziona classi..."
-
-#: src/FacetType/Unknown.php:22
-msgid "[Unknown]"
-msgstr "[Sconosciuto]"
-
-#: src/FacetType/Unknown.php:39
-msgid "Unknown facet type"
-msgstr "Tipo di faccetta sconosciuto"
-
-#: src/FacetType/Unknown.php:49
-msgid "Unknown facet data"
-msgstr "Dati di faccetta sconosciuti"
-
-#: src/Site/NavigationLink/FacetedBrowse.php:12
-msgid "Faceted browse"
-msgstr "Navigazione a faccette"
-
-#: config/module.config.php:81
-msgid "A facet must have a name."
-msgstr "Una faccetta deve avere un nome."
-
-#: config/module.config.php:82
-msgid "A facet must have a query type."
-msgstr "Una faccetta deve avere un tipo di query."
-
-#: config/module.config.php:83
-msgid "A facet must have a select type."
-msgstr "Una faccetta deve aver selezionato un tipo."
-
-#: config/module.config.php:84
-msgid "There are no available values."
-msgstr "Non ci sono valori disponibili."
-
-#: config/module.config.php:85
-msgid "There are no available classes."
-msgstr "Non ci sono classi disponibili."
-
-#: config/module.config.php:86
-msgid "Error fetching browse markup."
-msgstr "Errore nel recuperare il markup per sfoglia"
-
-#: config/module.config.php:87
-msgid "Error fetching facet markup."
-msgstr "Errore nel recuperare il markup per la faccetta"
-
-#: config/module.config.php:88
-msgid "Error fetching category markup."
-msgstr "Errore nel recuperare il markup per la categoria"
+#: src/Controller/SiteAdmin/CategoryController.php:120
+msgid "Successfully deleted the category."
+msgstr "Categoria eliminata con successo."

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 15:04-0400\n"
+"POT-Creation-Date: 2021-06-11 08:12-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Rivo Zängov <eraser@eraser.ee>, 2021\n"
 "Language-Team: Estonian (https://www.transifex.com/omeka/teams/14184/et/)\n"
@@ -54,7 +54,7 @@ msgid "Select a page"
 msgstr "Vali lehekülg"
 
 #: view/faceted-browse/site-admin/category/browse.phtml:5
-#: view/faceted-browse/site-admin/page/form.phtml:39
+#: view/faceted-browse/site-admin/page/form.phtml:46
 msgid "Categories"
 msgstr "Kategooriad"
 
@@ -92,6 +92,26 @@ msgstr "Lisa uus kategooria."
 #: view/faceted-browse/site-admin/category/browse.phtml:78
 msgid "No categories found."
 msgstr "Kategooriaid ei leitud."
+
+#: view/faceted-browse/site-admin/category/column-form.phtml:6
+msgid "Configure column"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/column-form.phtml:9
+msgid "Column type"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/column-row.phtml:12
+msgid "Edit column"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/column-row.phtml:16
+msgid "Remove column"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/column-row.phtml:20
+msgid "Restore column"
+msgstr ""
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:6
 msgid "Configure facet"
@@ -134,8 +154,12 @@ msgstr "Tagasi kategooriatesse"
 msgid "Stay on this category"
 msgstr "Jää sellesse kategooriasse"
 
-#: view/faceted-browse/site-admin/category/form.phtml:42
+#: view/faceted-browse/site-admin/category/form.phtml:50
 msgid "Facets"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/form.phtml:66
+msgid "Columns"
 msgstr ""
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:5
@@ -147,6 +171,7 @@ msgid "Count"
 msgstr "Arv"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:19
+#: view/faceted-browse/site/page/browse.phtml:11
 msgid "There are no results."
 msgstr "Tulemusi pole."
 
@@ -187,7 +212,7 @@ msgstr "Tagasi lehekülgede juurde"
 msgid "Stay on this page"
 msgstr "Jää sellele leheküljele"
 
-#: view/faceted-browse/site/page/browse.phtml:21
+#: view/faceted-browse/site/page/browse.phtml:3
 msgid "Permalink for current results."
 msgstr "üsilink praeguste tulemuste juurde."
 
@@ -199,94 +224,67 @@ msgstr "Pole ühtegi kategooriat, mida sirvida."
 msgid "Back"
 msgstr "Tagasi"
 
-#: src/Form/FacetForm.php:22
-msgid "Facet name"
+#: config/module.config.php:92
+msgid "A facet must have a name."
 msgstr ""
 
-#: src/Form/FacetForm.php:32
-msgid "Set facet"
+#: config/module.config.php:93
+msgid "A column must have a name."
 msgstr ""
 
-#: src/Form/PageForm.php:22
-msgid "Enter the title of this page."
-msgstr "Sisesta selle lehekülje pealkiri."
+#: config/module.config.php:94
+msgid "A column must have a property."
+msgstr ""
 
-#: src/Form/PageForm.php:33
-msgid "Add a category"
-msgstr "Lisa kategooria"
+#: config/module.config.php:95
+msgid "Error fetching browse markup."
+msgstr ""
 
-#: src/Form/CategoryForm.php:21
+#: config/module.config.php:96
+msgid "Error fetching facet markup."
+msgstr ""
+
+#: config/module.config.php:97
+msgid "Error fetching category markup."
+msgstr "Tõrge kategooria märgenduse tõmbamisel."
+
+#: src/Site/NavigationLink/FacetedBrowse.php:12
+msgid "Faceted browse"
+msgstr ""
+
+#: src/ColumnType/Title.php:20
+msgid "Title (Item Link)"
+msgstr ""
+
+#: src/ColumnType/Value.php:22
+msgid "Value"
+msgstr ""
+
+#: src/ColumnType/Value.php:47
+msgid "Select a property…"
+msgstr ""
+
+#: src/ColumnType/Value.php:54
+msgid "Max values"
+msgstr ""
+
+#: src/ColumnType/Value.php:55
 msgid ""
-"Enter the name of this category. A category is a logical grouping of items "
-"that can be described using faceted classification."
+"Enter the maximum number of values to display. Set to blank to display all "
+"values."
 msgstr ""
 
-#: src/Form/CategoryForm.php:32
-msgid "Search query"
-msgstr "Otsingupäring"
+#: src/ColumnType/Unknown.php:23 src/FacetType/Unknown.php:22
+msgid "[Unknown]"
+msgstr "[tundmatu]"
 
-#: src/Form/CategoryForm.php:33
-msgid ""
-"Configure the logical grouping of items that make up this category. No query"
-" means all site resources."
+#: src/ColumnType/Unknown.php:40
+msgid "Unknown column type"
 msgstr ""
 
-#: src/Form/CategoryForm.php:47
-msgid "Add a facet"
+#: src/ColumnType/Unknown.php:50
+msgid "Unknown column data"
 msgstr ""
-
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:50
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:50
-msgid "A site must have an ID"
-msgstr "Saidil peab olema ID"
-
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:114
-msgid "A page must have a site"
-msgstr "Leheküljel peab olema sait"
-
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:117
-msgid "A page must have a title"
-msgstr "Leheküljel peab olema pealkiri"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:107
-msgid "A category must have a site"
-msgstr "Kategoorial peab olema sait"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:110
-msgid "A category must have a name"
-msgstr "Kategoorial peab olema nimi"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:113
-msgid "A category must have a query"
-msgstr "Kategoorial peab olema päring"
-
-#: src/Controller/SiteAdmin/CategoryController.php:49
-msgid "Successfully added the category."
-msgstr "Edukalt kategooriasse lisatud."
-
-#: src/Controller/SiteAdmin/CategoryController.php:86
-msgid "Successfully edited the category."
-msgstr "Kategooriat on muudetud."
-
-#: src/Controller/SiteAdmin/CategoryController.php:116
-msgid "Successfully deleted the category."
-msgstr "Kategooriat on kustutatud."
-
-#: src/Controller/SiteAdmin/PageController.php:51
-msgid "Successfully added the page."
-msgstr "Lehekülg on lisatud."
-
-#: src/Controller/SiteAdmin/PageController.php:89
-msgid "Successfully edited the page."
-msgstr "Lehekülge on muudetud."
-
-#: src/Controller/SiteAdmin/PageController.php:123
-msgid "Successfully deleted the page."
-msgstr "Lehekülg on kustutatud."
-
-#: src/FacetType/FullText.php:20
-msgid "Full-text"
-msgstr "Täispikk tekst"
 
 #: src/FacetType/ByItemSet.php:20
 msgid "By item set"
@@ -295,6 +293,14 @@ msgstr "Ühikute kogumi järgi"
 #: src/FacetType/ByItemSet.php:45
 msgid "Select item sets…"
 msgstr "Vali ühikute kogum"
+
+#: src/FacetType/ByTemplate.php:20
+msgid "By template"
+msgstr "Kujunduse järgi"
+
+#: src/FacetType/ByTemplate.php:45
+msgid "Select templates…"
+msgstr "Vali kujundused..."
 
 #: src/FacetType/ByValue.php:21
 msgid "By value"
@@ -343,13 +349,9 @@ msgid ""
 " any number of values at a time."
 msgstr ""
 
-#: src/FacetType/ByTemplate.php:20
-msgid "By template"
-msgstr "Kujunduse järgi"
-
-#: src/FacetType/ByTemplate.php:45
-msgid "Select templates…"
-msgstr "Vali kujundused..."
+#: src/FacetType/FullText.php:20
+msgid "Full-text"
+msgstr "Täispikk tekst"
 
 #: src/FacetType/ByClass.php:20
 msgid "By class"
@@ -359,10 +361,6 @@ msgstr "Klassi järgi"
 msgid "Select classes…"
 msgstr "Vali klassid..."
 
-#: src/FacetType/Unknown.php:22
-msgid "[Unknown]"
-msgstr "[tundmatu]"
-
 #: src/FacetType/Unknown.php:39
 msgid "Unknown facet type"
 msgstr ""
@@ -371,38 +369,99 @@ msgstr ""
 msgid "Unknown facet data"
 msgstr ""
 
-#: src/Site/NavigationLink/FacetedBrowse.php:12
-msgid "Faceted browse"
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:51
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:50
+msgid "A site must have an ID"
+msgstr "Saidil peab olema ID"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:138
+msgid "A category must have a site"
+msgstr "Kategoorial peab olema sait"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:141
+msgid "A category must have a name"
+msgstr "Kategoorial peab olema nimi"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:144
+msgid "A category must have a query"
+msgstr "Kategoorial peab olema päring"
+
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:114
+msgid "A page must have a site"
+msgstr "Leheküljel peab olema sait"
+
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:117
+msgid "A page must have a title"
+msgstr "Leheküljel peab olema pealkiri"
+
+#: src/Form/ColumnForm.php:22
+msgid "Column name"
 msgstr ""
 
-#: config/module.config.php:81
-msgid "A facet must have a name."
+#: src/Form/ColumnForm.php:32
+msgid "Set column"
 msgstr ""
 
-#: config/module.config.php:82
-msgid "A facet must have a query type."
+#: src/Form/PageForm.php:22
+msgid "Enter the title of this page."
+msgstr "Sisesta selle lehekülje pealkiri."
+
+#: src/Form/PageForm.php:33
+msgid "Add a category"
+msgstr "Lisa kategooria"
+
+#: src/Form/CategoryForm.php:22
+msgid ""
+"Enter the name of this category. A category is a logical grouping of items "
+"that can be described using faceted classification."
 msgstr ""
 
-#: config/module.config.php:83
-msgid "A facet must have a select type."
+#: src/Form/CategoryForm.php:33
+msgid "Search query"
+msgstr "Otsingupäring"
+
+#: src/Form/CategoryForm.php:34
+msgid ""
+"Configure the logical grouping of items that make up this category. No query"
+" means all site resources."
 msgstr ""
 
-#: config/module.config.php:84
-msgid "There are no available values."
+#: src/Form/CategoryForm.php:51
+msgid "Add a facet…"
 msgstr ""
 
-#: config/module.config.php:85
-msgid "There are no available classes."
+#: src/Form/CategoryForm.php:64
+msgid "Add a column…"
 msgstr ""
 
-#: config/module.config.php:86
-msgid "Error fetching browse markup."
+#: src/Form/FacetForm.php:22
+msgid "Facet name"
 msgstr ""
 
-#: config/module.config.php:87
-msgid "Error fetching facet markup."
+#: src/Form/FacetForm.php:32
+msgid "Set facet"
 msgstr ""
 
-#: config/module.config.php:88
-msgid "Error fetching category markup."
-msgstr "Tõrge kategooria märgenduse tõmbamisel."
+#: src/Controller/SiteAdmin/PageController.php:51
+msgid "Successfully added the page."
+msgstr "Lehekülg on lisatud."
+
+#: src/Controller/SiteAdmin/PageController.php:89
+msgid "Successfully edited the page."
+msgstr "Lehekülge on muudetud."
+
+#: src/Controller/SiteAdmin/PageController.php:123
+msgid "Successfully deleted the page."
+msgstr "Lehekülg on kustutatud."
+
+#: src/Controller/SiteAdmin/CategoryController.php:51
+msgid "Successfully added the category."
+msgstr "Edukalt kategooriasse lisatud."
+
+#: src/Controller/SiteAdmin/CategoryController.php:90
+msgid "Successfully edited the category."
+msgstr "Kategooriat on muudetud."
+
+#: src/Controller/SiteAdmin/CategoryController.php:120
+msgid "Successfully deleted the category."
+msgstr "Kategooriat on kustutatud."
