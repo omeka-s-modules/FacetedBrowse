@@ -45,7 +45,7 @@ msgstr ""
 msgid "Show all available classes."
 msgstr "Mostra tutte le classi disponibili."
 
-#: view/common/faceted-browse/facet-data-form/by-item-set.phtml:3
+#: view/common/faceted-browse/facet-data-form/item-set.phtml:3
 msgid "Show all available item sets."
 msgstr "Mostra tutte le collezioni disponibili."
 
@@ -294,11 +294,11 @@ msgstr ""
 msgid "Unknown column data"
 msgstr ""
 
-#: src/FacetType/ByItemSet.php:20
+#: src/FacetType/ItemSet.php:20
 msgid "By item set"
 msgstr "Per collezione"
 
-#: src/FacetType/ByItemSet.php:45
+#: src/FacetType/ItemSet.php:45
 msgid "Select item sets…"
 msgstr "Seleziona collezioni..."
 

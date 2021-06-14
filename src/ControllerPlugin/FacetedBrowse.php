@@ -169,7 +169,7 @@ class FacetedBrowse extends AbstractPlugin
      * @param arry $query
      * @return array
      */
-    public function getByItemSetItemSets(array $categoryQuery)
+    public function getItemSetItemSets(array $categoryQuery)
     {
         $em = $this->services->get('Omeka\EntityManager');
         $dql = '

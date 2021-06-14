@@ -37,7 +37,7 @@ msgstr ""
 msgid "Show all available classes."
 msgstr "Näita kõiki saadaolevaid klasse."
 
-#: view/common/faceted-browse/facet-data-form/by-item-set.phtml:3
+#: view/common/faceted-browse/facet-data-form/item-set.phtml:3
 msgid "Show all available item sets."
 msgstr "Näita kõiki saadaolevaid ühikute kogumeid."
 
@@ -286,11 +286,11 @@ msgstr ""
 msgid "Unknown column data"
 msgstr ""
 
-#: src/FacetType/ByItemSet.php:20
+#: src/FacetType/ItemSet.php:20
 msgid "By item set"
 msgstr "Ühikute kogumi järgi"
 
-#: src/FacetType/ByItemSet.php:45
+#: src/FacetType/ItemSet.php:45
 msgid "Select item sets…"
 msgstr "Vali ühikute kogum"
 

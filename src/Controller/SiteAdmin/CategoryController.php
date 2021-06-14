@@ -246,9 +246,9 @@ class CategoryController extends AbstractActionController
         return $this->getViewModel($templates);
     }
 
-    public function byItemSetItemSetsAction()
+    public function itemSetItemSetsAction()
     {
-        $itemSets = $this->facetedBrowse()->getByItemSetItemSets(
+        $itemSets = $this->facetedBrowse()->getItemSetItemSets(
             $this->getCategoryQuery()
         );
         return $this->getViewModel($itemSets);

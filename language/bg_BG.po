@@ -45,7 +45,7 @@ msgstr ""
 msgid "Show all available classes."
 msgstr "Показване на достъпните класове"
 
-#: view/common/faceted-browse/facet-data-form/by-item-set.phtml:3
+#: view/common/faceted-browse/facet-data-form/item-set.phtml:3
 msgid "Show all available item sets."
 msgstr "Показване на достъпните набори от елементи"
 
@@ -294,11 +294,11 @@ msgstr ""
 msgid "Unknown column data"
 msgstr ""
 
-#: src/FacetType/ByItemSet.php:20
+#: src/FacetType/ItemSet.php:20
 msgid "By item set"
 msgstr "По набори елементи..."
 
-#: src/FacetType/ByItemSet.php:45
+#: src/FacetType/ItemSet.php:45
 msgid "Select item sets…"
 msgstr "Избор на набори елементи..."
 

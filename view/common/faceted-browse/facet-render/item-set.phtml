@@ -3,9 +3,9 @@
     <li>
         <label>
             <input
-                class="by-item-set"
+                class="item-set"
                 type="radio"
-                name="<?php echo sprintf('by_item_set_%s', $facet->id()); ?>"
+                name="<?php echo sprintf('item_set_%s', $facet->id()); ?>"
                 data-item-set-id="<?php echo $this->escapeHtml($itemSet->id()); ?>">
                 <?php echo $itemSet->title(); ?>
         </label>
