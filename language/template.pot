@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:12-0400\n"
+"POT-Creation-Date: 2021-06-14 13:46-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,12 +35,12 @@ msgid ""
 "            </ul>"
 msgstr ""
 
-#: view/common/faceted-browse/facet-data-form/resource-class.phtml:3
-msgid "Show all available classes."
-msgstr ""
-
 #: view/common/faceted-browse/facet-data-form/item-set.phtml:3
 msgid "Show all available item sets."
+msgstr ""
+
+#: view/common/faceted-browse/facet-data-form/resource-class.phtml:3
+msgid "Show all available classes."
 msgstr ""
 
 #: view/common/faceted-browse/facet-data-form/resource-template.phtml:3
@@ -226,27 +226,27 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: config/module.config.php:92
+#: config/module.config.php:91
 msgid "A facet must have a name."
 msgstr ""
 
-#: config/module.config.php:93
+#: config/module.config.php:92
 msgid "A column must have a name."
 msgstr ""
 
-#: config/module.config.php:94
+#: config/module.config.php:93
 msgid "A column must have a property."
 msgstr ""
 
-#: config/module.config.php:95
+#: config/module.config.php:94
 msgid "Error fetching browse markup."
 msgstr ""
 
-#: config/module.config.php:96
+#: config/module.config.php:95
 msgid "Error fetching facet markup."
 msgstr ""
 
-#: config/module.config.php:97
+#: config/module.config.php:96
 msgid "Error fetching category markup."
 msgstr ""
 
@@ -258,7 +258,7 @@ msgstr ""
 msgid "Title (Item Link)"
 msgstr ""
 
-#: src/ColumnType/Value.php:22
+#: src/ColumnType/Value.php:22 src/FacetType/Value.php:21
 msgid "Value"
 msgstr ""
 
@@ -288,24 +288,24 @@ msgstr ""
 msgid "Unknown column data"
 msgstr ""
 
-#: src/FacetType/ItemSet.php:20
-msgid "By item set"
-msgstr ""
-
 #: src/FacetType/ItemSet.php:45
 msgid "Select item sets…"
-msgstr ""
-
-#: src/FacetType/ResourceTemplate.php:20
-msgid "By template"
 msgstr ""
 
 #: src/FacetType/ResourceTemplate.php:45
 msgid "Select templates…"
 msgstr ""
 
-#: src/FacetType/Value.php:21
-msgid "By value"
+#: src/FacetType/ResourceClass.php:20
+msgid "Resource class"
+msgstr ""
+
+#: src/FacetType/ResourceClass.php:45
+msgid "Select classes…"
+msgstr ""
+
+#: src/FacetType/FullText.php:20
+msgid "Full-text"
 msgstr ""
 
 #: src/FacetType/Value.php:54
@@ -349,18 +349,6 @@ msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one value at a time. For the \"multiple\" select type, users may choose "
 "any number of values at a time."
-msgstr ""
-
-#: src/FacetType/FullText.php:20
-msgid "Full-text"
-msgstr ""
-
-#: src/FacetType/ResourceClass.php:20
-msgid "By class"
-msgstr ""
-
-#: src/FacetType/ResourceClass.php:45
-msgid "Select classes…"
 msgstr ""
 
 #: src/FacetType/Unknown.php:39
