@@ -4,9 +4,9 @@
 <?php echo $this->formRow($elementValues); ?>
 <?php echo $this->partial('show-all', [
     'label' => $this->translate('Show all available values.'),
-    'url' => $this->url(null, ['action' => 'by-value-values'], true),
+    'url' => $this->url(null, ['action' => 'value-values'], true),
     'queryParams' => [
-        'property_id' => '#by-value-property-id',
-        'query_type' => '#by-value-query-type',
+        'property_id' => '#value-property-id',
+        'query_type' => '#value-query-type',
     ],
 ]); ?>

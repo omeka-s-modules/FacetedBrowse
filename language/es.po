@@ -21,7 +21,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/FacetType/ByValue.php:88
+#: src/FacetType/Value.php:88
 msgid ""
 "\n"
 "            <p>Enter the values, separated by new lines. The format of each value depends on the query type:</p>\n"
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Show all available templates."
 msgstr ""
 
-#: view/common/faceted-browse/facet-data-form/by-value.phtml:6
+#: view/common/faceted-browse/facet-data-form/value.phtml:6
 msgid "Show all available values."
 msgstr ""
 
@@ -302,47 +302,47 @@ msgstr ""
 msgid "Select templates…"
 msgstr ""
 
-#: src/FacetType/ByValue.php:21
+#: src/FacetType/Value.php:21
 msgid "By value"
 msgstr ""
 
-#: src/FacetType/ByValue.php:54
+#: src/FacetType/Value.php:54
 msgid "Is exactly"
 msgstr "Es exactamente"
 
-#: src/FacetType/ByValue.php:55
+#: src/FacetType/Value.php:55
 msgid "Is not exactly"
 msgstr ""
 
-#: src/FacetType/ByValue.php:56
+#: src/FacetType/Value.php:56
 msgid "Contains"
 msgstr "Contiene"
 
-#: src/FacetType/ByValue.php:57
+#: src/FacetType/Value.php:57
 msgid "Does not contain"
 msgstr ""
 
-#: src/FacetType/ByValue.php:58
+#: src/FacetType/Value.php:58
 msgid "Is resource with ID"
 msgstr ""
 
-#: src/FacetType/ByValue.php:59
+#: src/FacetType/Value.php:59
 msgid "Is not resource with ID"
 msgstr ""
 
-#: src/FacetType/ByValue.php:60
+#: src/FacetType/Value.php:60
 msgid "Has any value"
 msgstr ""
 
-#: src/FacetType/ByValue.php:61
+#: src/FacetType/Value.php:61
 msgid "Has no values"
 msgstr ""
 
-#: src/FacetType/ByValue.php:72
+#: src/FacetType/Value.php:72
 msgid "Select type"
 msgstr ""
 
-#: src/FacetType/ByValue.php:73
+#: src/FacetType/Value.php:73
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one value at a time. For the \"multiple\" select type, users may choose"

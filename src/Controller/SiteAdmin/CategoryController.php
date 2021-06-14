@@ -222,7 +222,7 @@ class CategoryController extends AbstractActionController
 
     public function byValueValuesAction()
     {
-        $values = $this->facetedBrowse()->getByValueValues(
+        $values = $this->facetedBrowse()->getValueValues(
             $this->params()->fromQuery('property_id'),
             $this->params()->fromQuery('query_type'),
             $this->getCategoryQuery()

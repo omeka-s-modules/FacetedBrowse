@@ -1,7 +1,7 @@
-FacetedBrowse.registerFacetApplyStateHandler('by_value', function(facet, facetState) {
+FacetedBrowse.registerFacetApplyStateHandler('value', function(facet, facetState) {
     const thisFacet = $(facet);
     facetState.forEach(function(value) {
-        thisFacet.find(`input.by-value[data-value="${value}"]`)
+        thisFacet.find(`input.value[data-value="${value}"]`)
             .prop('checked', true)
             .addClass('selected');
     });
@@ -11,13 +11,13 @@ $(document).ready(function() {
 
 const container = $('#container');
 
-container.on('click', '.by-value', function(e) {
+container.on('click', '.value', function(e) {
     const thisValue = $(this);
     const facet = thisValue.closest('.facet');
-    const facets = container.find('.facet[data-facet-type="by_value"]');
+    const facets = container.find('.facet[data-facet-type="value"]');
     let index = 0;
     if ('single' === facet.data('facetData').select_type) {
-        facet.find('.by-value').not(thisValue).removeClass('selected');
+        facet.find('.value').not(thisValue).removeClass('selected');
         thisValue.prop('checked', !thisValue.hasClass('selected'));
     }
     thisValue.toggleClass('selected');
@@ -26,7 +26,7 @@ container.on('click', '.by-value', function(e) {
         const facetData = thisFacet.data('facetData');
         const queries = [];
         const state = [];
-        thisFacet.find('.by-value.selected').each(function() {
+        thisFacet.find('.value.selected').each(function() {
             const property = $(this).data('propertyId');
             const type = facetData.query_type;
             const text = $(this).data('value');

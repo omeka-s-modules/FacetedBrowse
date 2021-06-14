@@ -7,7 +7,7 @@ use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Form\Element as OmekaElement;
 
-class ByValue implements FacetTypeInterface
+class Value implements FacetTypeInterface
 {
     protected $formElements;
 
@@ -18,7 +18,7 @@ class ByValue implements FacetTypeInterface
 
     public function getLabel() : string
     {
-        return 'By value'; // @translate
+        return 'Value'; // @translate
     }
 
     public function getMaxFacets() : ?int
@@ -28,7 +28,7 @@ class ByValue implements FacetTypeInterface
 
     public function prepareDataForm(PhpRenderer $view) : void
     {
-        $view->headScript()->appendFile($view->assetUrl('js/facet-data-form/by-value.js', 'FacetedBrowse'));
+        $view->headScript()->appendFile($view->assetUrl('js/facet-data-form/value.js', 'FacetedBrowse'));
     }
 
     public function renderDataForm(PhpRenderer $view, array $data) : string
@@ -41,7 +41,7 @@ class ByValue implements FacetTypeInterface
             'empty_option' => '',
         ]);
         $propertyId->setAttributes([
-            'id' => 'by-value-property-id',
+            'id' => 'value-property-id',
             'value' => $data['property_id'] ?? null,
             'data-placeholder' => '[Any property]', // @translate
         ]);
@@ -62,7 +62,7 @@ class ByValue implements FacetTypeInterface
             ],
         ]);
         $queryType->setAttributes([
-            'id' => 'by-value-query-type',
+            'id' => 'value-query-type',
             'value' => $data['query_type'] ?? 'eq',
         ]);
         // Select type
@@ -77,7 +77,7 @@ class ByValue implements FacetTypeInterface
             ],
         ]);
         $selectType->setAttributes([
-            'id' => 'by-value-select-type',
+            'id' => 'value-select-type',
             'value' => $data['select_type'] ?? 'single',
         ]);
         // Values
@@ -96,12 +96,12 @@ class ByValue implements FacetTypeInterface
             'escape_info' => false,
         ]);
         $values->setAttributes([
-            'id' => 'by-value-values',
+            'id' => 'value-values',
             'style' => 'height: 300px;',
             'value' => $data['values'] ?? null,
         ]);
 
-        return $view->partial('common/faceted-browse/facet-data-form/by-value', [
+        return $view->partial('common/faceted-browse/facet-data-form/value', [
             'elementPropertyId' => $propertyId,
             'elementQueryType' => $queryType,
             'elementSelectType' => $selectType,
@@ -111,7 +111,7 @@ class ByValue implements FacetTypeInterface
 
     public function prepareFacet(PhpRenderer $view) : void
     {
-        $view->headScript()->appendFile($view->assetUrl('js/facet-render/by-value.js', 'FacetedBrowse'));
+        $view->headScript()->appendFile($view->assetUrl('js/facet-render/value.js', 'FacetedBrowse'));
     }
 
     public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet) : string
@@ -143,7 +143,7 @@ class ByValue implements FacetTypeInterface
                 $values = array_combine($values, $values);
         }
 
-        return $view->partial('common/faceted-browse/facet-render/by-value', [
+        return $view->partial('common/faceted-browse/facet-render/value', [
             'facet' => $facet,
             'values' => $values,
         ]);
