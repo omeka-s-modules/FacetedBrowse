@@ -148,7 +148,7 @@ class FacetedBrowse extends AbstractPlugin
      * @param arry $categoryQuery
      * @return array
      */
-    public function getByTemplateTemplates(array $categoryQuery)
+    public function getResourceTemplateTemplates(array $categoryQuery)
     {
         $em = $this->services->get('Omeka\EntityManager');
         $dql = '

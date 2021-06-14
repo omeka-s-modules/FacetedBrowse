@@ -17,7 +17,7 @@ class ResourceClass implements FacetTypeInterface
 
     public function getLabel() : string
     {
-        return 'Class'; // @translate
+        return 'Resource class'; // @translate
     }
 
     public function getMaxFacets() : ?int

@@ -220,7 +220,7 @@ class CategoryController extends AbstractActionController
         return $view;
     }
 
-    public function byValueValuesAction()
+    public function valueValuesAction()
     {
         $values = $this->facetedBrowse()->getValueValues(
             $this->params()->fromQuery('property_id'),
@@ -230,7 +230,7 @@ class CategoryController extends AbstractActionController
         return $this->getViewModel($values);
     }
 
-    public function byClassClassesAction()
+    public function resourceClassClassesAction()
     {
         $classes = $this->facetedBrowse()->getResourceClassClasses(
             $this->getCategoryQuery()
@@ -238,9 +238,9 @@ class CategoryController extends AbstractActionController
         return $this->getViewModel($classes);
     }
 
-    public function byTemplateTemplatesAction()
+    public function resourceTemplateTemplatesAction()
     {
-        $templates = $this->facetedBrowse()->getByTemplateTemplates(
+        $templates = $this->facetedBrowse()->getResourceTemplateTemplates(
             $this->getCategoryQuery()
         );
         return $this->getViewModel($templates);

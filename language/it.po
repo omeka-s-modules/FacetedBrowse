@@ -49,7 +49,7 @@ msgstr "Mostra tutte le classi disponibili."
 msgid "Show all available item sets."
 msgstr "Mostra tutte le collezioni disponibili."
 
-#: view/common/faceted-browse/facet-data-form/by-template.phtml:3
+#: view/common/faceted-browse/facet-data-form/resource-template.phtml:3
 msgid "Show all available templates."
 msgstr "Mostra tutti i modelli disponibili."
 
@@ -302,11 +302,11 @@ msgstr "Per collezione"
 msgid "Select item sets…"
 msgstr "Seleziona collezioni..."
 
-#: src/FacetType/ByTemplate.php:20
+#: src/FacetType/ResourceTemplate.php:20
 msgid "By template"
 msgstr "Per modello"
 
-#: src/FacetType/ByTemplate.php:45
+#: src/FacetType/ResourceTemplate.php:45
 msgid "Select templates…"
 msgstr "Seleziona modelli..."
 

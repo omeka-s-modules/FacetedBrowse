@@ -41,7 +41,7 @@ msgstr "Näita kõiki saadaolevaid klasse."
 msgid "Show all available item sets."
 msgstr "Näita kõiki saadaolevaid ühikute kogumeid."
 
-#: view/common/faceted-browse/facet-data-form/by-template.phtml:3
+#: view/common/faceted-browse/facet-data-form/resource-template.phtml:3
 msgid "Show all available templates."
 msgstr "Näita kõiki saadaolevaid malle."
 
@@ -294,11 +294,11 @@ msgstr "Ühikute kogumi järgi"
 msgid "Select item sets…"
 msgstr "Vali ühikute kogum"
 
-#: src/FacetType/ByTemplate.php:20
+#: src/FacetType/ResourceTemplate.php:20
 msgid "By template"
 msgstr "Kujunduse järgi"
 
-#: src/FacetType/ByTemplate.php:45
+#: src/FacetType/ResourceTemplate.php:45
 msgid "Select templates…"
 msgstr "Vali kujundused..."
 

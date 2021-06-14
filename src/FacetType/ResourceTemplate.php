@@ -6,7 +6,7 @@ use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Form\Element as OmekaElement;
 
-class ByTemplate implements FacetTypeInterface
+class ResourceTemplate implements FacetTypeInterface
 {
     protected $formElements;
 
@@ -17,7 +17,7 @@ class ByTemplate implements FacetTypeInterface
 
     public function getLabel() : string
     {
-        return 'By template'; // @translate
+        return 'Resource template'; // @translate
     }
 
     public function getMaxFacets() : ?int
@@ -27,7 +27,7 @@ class ByTemplate implements FacetTypeInterface
 
     public function prepareDataForm(PhpRenderer $view) : void
     {
-        $view->headScript()->appendFile($view->assetUrl('js/facet-data-form/by-template.js', 'FacetedBrowse'));
+        $view->headScript()->appendFile($view->assetUrl('js/facet-data-form/resource-template.js', 'FacetedBrowse'));
     }
 
     public function renderDataForm(PhpRenderer $view, array $data) : string
@@ -41,18 +41,18 @@ class ByTemplate implements FacetTypeInterface
             'empty_option' => '',
         ]);
         $templateIds->setAttributes([
-            'id' => 'by-template-template-ids',
+            'id' => 'resource-template-template-ids',
             'data-placeholder' => 'Select templates…', // @translate
             'multiple' => true,
         ]);
-        return $view->partial('common/faceted-browse/facet-data-form/by-template', [
+        return $view->partial('common/faceted-browse/facet-data-form/resource-template', [
             'elementTemplateIds' => $templateIds,
         ]);
     }
 
     public function prepareFacet(PhpRenderer $view) : void
     {
-        $view->headScript()->appendFile($view->assetUrl('js/facet-render/by-template.js', 'FacetedBrowse'));
+        $view->headScript()->appendFile($view->assetUrl('js/facet-render/resource-template.js', 'FacetedBrowse'));
     }
 
     public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet) : string
@@ -63,7 +63,7 @@ class ByTemplate implements FacetTypeInterface
             $template = $view->api()->read('resource_templates', $templateId)->getContent();
             $templates[] = $template;
         }
-        return $view->partial('common/faceted-browse/facet-render/by-template', [
+        return $view->partial('common/faceted-browse/facet-render/resource-template', [
             'facet' => $facet,
             'templates' => $templates,
         ]);
