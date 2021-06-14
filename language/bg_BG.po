@@ -41,7 +41,7 @@ msgstr ""
 "                <li>„Има произволна стойност“: въведете идентификатора на свойството, последван от произволна стойност (обикновено етикетът на свойството), разделен с един интервал.</li>\n"
 "            </ul>"
 
-#: view/common/faceted-browse/facet-data-form/by-class.phtml:3
+#: view/common/faceted-browse/facet-data-form/resource-class.phtml:3
 msgid "Show all available classes."
 msgstr "Показване на достъпните класове"
 
@@ -364,11 +364,11 @@ msgstr ""
 msgid "Full-text"
 msgstr "Пълнотекстово"
 
-#: src/FacetType/ByClass.php:20
+#: src/FacetType/ResourceClass.php:20
 msgid "By class"
 msgstr "По клас"
 
-#: src/FacetType/ByClass.php:45
+#: src/FacetType/ResourceClass.php:45
 msgid "Select classes…"
 msgstr "Избор на класове..."
 

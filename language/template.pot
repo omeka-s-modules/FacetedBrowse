@@ -35,7 +35,7 @@ msgid ""
 "            </ul>"
 msgstr ""
 
-#: view/common/faceted-browse/facet-data-form/by-class.phtml:3
+#: view/common/faceted-browse/facet-data-form/resource-class.phtml:3
 msgid "Show all available classes."
 msgstr ""
 
@@ -355,11 +355,11 @@ msgstr ""
 msgid "Full-text"
 msgstr ""
 
-#: src/FacetType/ByClass.php:20
+#: src/FacetType/ResourceClass.php:20
 msgid "By class"
 msgstr ""
 
-#: src/FacetType/ByClass.php:45
+#: src/FacetType/ResourceClass.php:45
 msgid "Select classes…"
 msgstr ""
 

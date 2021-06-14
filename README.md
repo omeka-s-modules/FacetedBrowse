@@ -229,7 +229,7 @@ $(document).ready(function() {
 
 const container = $('#container');
 
-container.on('click', '.by-class', function(e) {
+container.on('click', '.resource-class', function(e) {
     const thisClass = $(this);
     const facet = thisClass.closest('.facet');
     const queries = [];

@@ -7,7 +7,7 @@ return [
     'faceted_browse_facet_types' => [
         'factories' => [
             'value' => Service\FacetType\FacetTypeFactory::class,
-            'by_class' => Service\FacetType\FacetTypeFactory::class,
+            'resource_class' => Service\FacetType\FacetTypeFactory::class,
             'by_template' => Service\FacetType\FacetTypeFactory::class,
             'by_item_set' => Service\FacetType\FacetTypeFactory::class,
             'full_text' => Service\FacetType\FacetTypeFactory::class,

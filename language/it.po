@@ -41,7 +41,7 @@ msgstr ""
 "                <li>\"ha un qualsiasi valore\": inserisci l'ID della proprietà seguito da un qualsiasi valore (tipicamente, l'etichetta), separati da un singolo spazio.</li>\n"
 "            </ul>"
 
-#: view/common/faceted-browse/facet-data-form/by-class.phtml:3
+#: view/common/faceted-browse/facet-data-form/resource-class.phtml:3
 msgid "Show all available classes."
 msgstr "Mostra tutte le classi disponibili."
 
@@ -364,11 +364,11 @@ msgstr ""
 msgid "Full-text"
 msgstr "Testo completo"
 
-#: src/FacetType/ByClass.php:20
+#: src/FacetType/ResourceClass.php:20
 msgid "By class"
 msgstr "Per classe"
 
-#: src/FacetType/ByClass.php:45
+#: src/FacetType/ResourceClass.php:45
 msgid "Select classes…"
 msgstr "Seleziona classi..."
 

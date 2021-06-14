@@ -232,7 +232,7 @@ class CategoryController extends AbstractActionController
 
     public function byClassClassesAction()
     {
-        $classes = $this->facetedBrowse()->getByClassClasses(
+        $classes = $this->facetedBrowse()->getResourceClassClasses(
             $this->getCategoryQuery()
         );
         return $this->getViewModel($classes);

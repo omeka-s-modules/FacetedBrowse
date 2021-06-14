@@ -6,7 +6,7 @@ use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Form\Element as OmekaElement;
 
-class ByClass implements FacetTypeInterface
+class ResourceClass implements FacetTypeInterface
 {
     protected $formElements;
 
@@ -17,7 +17,7 @@ class ByClass implements FacetTypeInterface
 
     public function getLabel() : string
     {
-        return 'By class'; // @translate
+        return 'Class'; // @translate
     }
 
     public function getMaxFacets() : ?int
@@ -27,7 +27,7 @@ class ByClass implements FacetTypeInterface
 
     public function prepareDataForm(PhpRenderer $view) : void
     {
-        $view->headScript()->appendFile($view->assetUrl('js/facet-data-form/by-class.js', 'FacetedBrowse'));
+        $view->headScript()->appendFile($view->assetUrl('js/facet-data-form/resource-class.js', 'FacetedBrowse'));
     }
 
     public function renderDataForm(PhpRenderer $view, array $data) : string
@@ -41,18 +41,18 @@ class ByClass implements FacetTypeInterface
             'empty_option' => '',
         ]);
         $classIds->setAttributes([
-            'id' => 'by-class-class-ids',
+            'id' => 'resource-class-class-ids',
             'data-placeholder' => 'Select classes…', // @translate
             'multiple' => true,
         ]);
-        return $view->partial('common/faceted-browse/facet-data-form/by-class', [
+        return $view->partial('common/faceted-browse/facet-data-form/resource-class', [
             'elementClassIds' => $classIds,
         ]);
     }
 
     public function prepareFacet(PhpRenderer $view) : void
     {
-        $view->headScript()->appendFile($view->assetUrl('js/facet-render/by-class.js', 'FacetedBrowse'));
+        $view->headScript()->appendFile($view->assetUrl('js/facet-render/resource-class.js', 'FacetedBrowse'));
     }
 
     public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet) : string
@@ -63,7 +63,7 @@ class ByClass implements FacetTypeInterface
             $class = $view->api()->read('resource_classes', $classId)->getContent();
             $classes[] = $class;
         }
-        return $view->partial('common/faceted-browse/facet-render/by-class', [
+        return $view->partial('common/faceted-browse/facet-render/resource-class', [
             'facet' => $facet,
             'classes' => $classes,
         ]);
