@@ -211,10 +211,11 @@ const FacetedBrowse = {
      */
     initState: () => {
         try {
-            // The state may be passed via the URI fragment. If so, set it as
-            // the history state.
+            // The client may pass the state via the URI fragment. If so, set it
+            // as the history state. This will remove the fragment from the URL
+            // for tidiness.
             const fragmentState = JSON.parse(decodeURIComponent(window.location.hash.substr(1)));
-            history.replaceState(fragmentState, null);
+            history.replaceState(fragmentState, null, window.location.pathname);
         } catch (error) {
             // There was likely a "SyntaxError: Unexpected end of JSON input"
             // error. Do nothing.
