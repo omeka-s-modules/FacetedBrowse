@@ -5,6 +5,7 @@ use FacetedBrowse\Form;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 use Omeka\Form\ConfirmForm;
+use Omeka\Stdlib\Message;
 
 class CategoryController extends AbstractActionController
 {
@@ -48,7 +49,16 @@ class CategoryController extends AbstractActionController
                 $response = $this->api($form)->create('faceted_browse_categories', $formData);
                 if ($response) {
                     $category = $response->getContent();
-                    $this->messenger()->addSuccess('Successfully added the category.'); // @translate
+                    $message = new Message(
+                        'Category successfully added. %s', // @translate
+                        sprintf(
+                            '<a href="%s">%s</a>',
+                            htmlspecialchars($this->url()->fromRoute('admin/site/slug/faceted-browse', ['controller' => 'page', 'action' => 'browse'], true)),
+                            $this->translate('Assign it to a page?')
+                        )
+                    );
+                    $message->setEscapeHtml(false);
+                    $this->messenger()->addSuccess($message);
                     if (isset($postData['submit_save_remain'])) {
                         return $this->redirect()->toRoute('admin/site/slug/faceted-browse/id', ['action' => 'edit', 'id' => $category->id()], true);
                     } else {
@@ -87,7 +97,16 @@ class CategoryController extends AbstractActionController
                 $formData['o-module-faceted_browse:column'] = $postData['o-module-faceted_browse:column'] ?? [];
                 $response = $this->api($form)->update('faceted_browse_categories', $category->id(), $formData);
                 if ($response) {
-                    $this->messenger()->addSuccess('Successfully edited the category.'); // @translate
+                    $message = new Message(
+                        'Category successfully edited. %s', // @translate
+                        sprintf(
+                            '<a href="%s">%s</a>',
+                            htmlspecialchars($this->url()->fromRoute('admin/site/slug/faceted-browse', ['controller' => 'page', 'action' => 'browse'], true)),
+                            $this->translate('Assign it to a page?')
+                        )
+                    );
+                    $message->setEscapeHtml(false);
+                    $this->messenger()->addSuccess($message);
                     if (isset($postData['submit_save_remain'])) {
                         return $this->redirect()->toRoute('admin/site/slug/faceted-browse/id', ['action' => 'edit'], true);
                     } else {

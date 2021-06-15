@@ -48,7 +48,7 @@ class PageController extends AbstractActionController
                 $response = $this->api($form)->create('faceted_browse_pages', $formData);
                 if ($response) {
                     $category = $response->getContent();
-                    $this->messenger()->addSuccess('Successfully added the page.'); // @translate
+                    $this->messenger()->addSuccess('Page successfully added.'); // @translate
                     if (isset($postData['submit_save_remain'])) {
                         return $this->redirect()->toRoute('admin/site/slug/faceted-browse/id', ['action' => 'edit', 'id' => $category->id()], true);
                     } else {
@@ -86,7 +86,7 @@ class PageController extends AbstractActionController
                 $formData['o-module-faceted_browse:category'] = $postData['o-module-faceted_browse:category'] ?? [];
                 $response = $this->api($form)->update('faceted_browse_pages', $page->id(), $formData);
                 if ($response) {
-                    $this->messenger()->addSuccess('Successfully edited the page.'); // @translate
+                    $this->messenger()->addSuccess('Page successfully edited.'); // @translate
                     if (isset($postData['submit_save_remain'])) {
                         return $this->redirect()->toRoute('admin/site/slug/faceted-browse/id', ['action' => 'edit'], true);
                     } else {
