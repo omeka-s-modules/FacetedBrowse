@@ -1,6 +1,6 @@
 <div class="browse-controls">
     <?php echo $this->pagination(); ?>
-    <button class="permalink" data-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'page'], ['force_canonical' => true], true)); ?>"><?php echo $this->translate('Copy permalink to clipboard'); ?></button>
+    <a href="#" class="permalink button" data-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'page'], ['force_canonical' => true], true)); ?>"><span class="default"><?php echo $this->translate('Copy permalink'); ?></span><span class="success"><?php echo $this->translate('Copied!'); ?></span></a>
     <?php echo $this->sortSelector($sortings); ?>
 </div>
 <?php if ($items): ?>

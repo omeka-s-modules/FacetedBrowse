@@ -162,10 +162,20 @@ container.on('submit', 'form.sorting', function(e) {
 
 // Handle permalink button.
 container.on('click', '.permalink', function(e) {
+    e.preventDefault();
     const thisButton = $(this);
     const permalink = `${thisButton.data('url')}#${thisButton.data('fragment')}`;
     navigator.clipboard.writeText(permalink).then(function() {
         // Indicate successful copy here
+        $('.permalink .success').addClass('active');
+        $('.permalink .default').addClass('inactive');
+
+        setTimeout(function() {
+            $('.permalink .success').fadeOut(1500, function() {
+                $(this).removeClass('active');
+                $('.permalink .default').removeClass('inactive');
+            });
+        }, 2000);
     });
 });
 

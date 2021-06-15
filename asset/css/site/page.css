@@ -87,3 +87,32 @@ input[type="text"].permalink {
 .faceted-browse-page .browse-controls > * {
     margin-bottom: 1rem;
 }
+
+.button.permalink .default:after {
+    content: "\f328";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 500;
+    margin-left: .25rem;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.button.permalink {
+    position: relative;
+}
+
+.button.permalink .success {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.button.permalink .success.active {
+    display: block;
+}
+
+.button.permalink .default.inactive {
+    opacity: 0;
+}
