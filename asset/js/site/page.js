@@ -167,7 +167,7 @@ container.on('click', '.permalink', function(e) {
     const permalink = `${thisButton.data('url')}#${thisButton.data('fragment')}`;
     navigator.clipboard.writeText(permalink).then(function() {
         // Indicate successful copy here
-        $('.permalink .success').addClass('active');
+        $('.permalink .success').addClass('active').show();
         $('.permalink .default').addClass('inactive');
 
         setTimeout(function() {
