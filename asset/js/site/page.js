@@ -25,6 +25,16 @@ const applyPreviousState = function() {
 };
 
 /**
+ * Set the permalink.
+ */
+const setPermalink = function() {
+    const permalink = $('.permalink');
+    const url = permalink.data('url');
+    const fragment = encodeURIComponent(JSON.stringify(FacetedBrowse.state))
+    permalink.val(`${url}#${fragment}`);
+};
+
+/**
  * Render the categories of this page.
  */
 const renderCategories = function() {
@@ -32,6 +42,7 @@ const renderCategories = function() {
         sectionSidebar.html(html);
         $.get(urlBrowse).done(function(html) {
             sectionContent.html(html);
+            setPermalink();
         }).fail(failBrowse);
     }).fail(failCategory);
 };
@@ -52,7 +63,8 @@ FacetedBrowse.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, pag
     if (null !== page) queries.push(`page=${page}`);
     queries.push(`faceted_browse_category_id=${facets.data('categoryId')}`);
     $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
-        sectionContent.html(html)
+        sectionContent.html(html);
+        setPermalink();
     }).fail(failBrowse);
 });
 
@@ -87,6 +99,7 @@ container.on('click', '.category', function(e) {
         queries.push(`faceted_browse_category_id=${thisCategory.data('categoryId')}`);
         $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
             sectionContent.html(html);
+            setPermalink();
         }).fail(failBrowse);
     }).fail(failFacet);
 });
@@ -131,6 +144,7 @@ container.on('submit', '.pagination form', function(e) {
     FacetedBrowse.setPaginationState(thisForm.find('input[name="page"]').val());
     $.get(`${urlBrowse}?${$(this).serialize()}`, {}, function(html) {
         sectionContent.html(html);
+        setPermalink();
     });
 });
 
@@ -144,6 +158,7 @@ container.on('submit', 'form.sorting', function(e) {
     );
     $.get(`${urlBrowse}?${$(this).serialize()}`, {}, function(html) {
         sectionContent.html(html);
+        setPermalink();
     });
 });
 
