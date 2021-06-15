@@ -104,6 +104,7 @@ facets.on('click', '.facet-edit', function(e) {
     }, function(html) {
         facetFormContainer.html(html);
         Omeka.openSidebar(facetSidebar);
+        resetColumnTypeSelect();
         FacetedBrowse.handleFacetAddEdit(type);
     });
 });
@@ -195,6 +196,7 @@ columns.on('click', '.column-edit', function(e) {
     }, function(html) {
         columnFormContainer.html(html);
         Omeka.openSidebar(columnSidebar);
+        resetFacetTypeSelect();
         FacetedBrowse.handleColumnAddEdit(type);
     });
 });

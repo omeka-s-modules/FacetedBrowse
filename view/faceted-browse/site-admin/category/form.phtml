@@ -35,18 +35,12 @@ $form->prepare();
     </div>
 </div>
 
-<?php echo $this->sectionNav([
-    'category-fieldset' => 'Category',
-    'facets-fieldset' => 'Facets',
-    'columns-fieldset' => 'Columns',
-]); ?>
-
-<fieldset id="category-fieldset" class="section active">
+<fieldset>
     <?php echo $this->formRow($form->get('o:name')); ?>
     <?php echo $this->formRow($form->get('o:query')); ?>
 </fieldset>
 
-<fieldset id="facets-fieldset" class="section">
+<fieldset>
     <legend><?php echo $this->translate('Facets'); ?></legend>
     <?php echo $this->formSelect($form->get('facet_type')); ?>
     <button type="button" id="facet-add-button" disabled><?php echo $this->translate('Add'); ?></button>
@@ -62,7 +56,7 @@ $form->prepare();
     </ul>
 </fieldset>
 
-<fieldset id="columns-fieldset" class="section">
+<fieldset>
     <legend><?php echo $this->translate('Columns'); ?></legend>
     <?php echo $this->formSelect($form->get('column_type')); ?>
     <button type="button" id="column-add-button" disabled><?php echo $this->translate('Add'); ?></button>

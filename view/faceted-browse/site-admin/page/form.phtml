@@ -33,16 +33,11 @@ $form->prepare();
     </div>
 </div>
 
-<?php echo $this->sectionNav([
-    'page-fieldset' => 'Page',
-    'categories-fieldset' => 'Categories',
-]); ?>
-
-<fieldset id="page-fieldset" class="section active">
+<fieldset>
     <?php echo $this->formRow($form->get('o:title')); ?>
 </fieldset>
 
-<fieldset id="categories-fieldset" class="section">
+<fieldset>
     <legend><?php echo $this->translate('Categories'); ?></legend>
     <?php echo $this->formSelect($form->get('category')); ?>
     <button type="button" id="category-add-button" disabled><?php echo $this->translate('Add'); ?></button>
