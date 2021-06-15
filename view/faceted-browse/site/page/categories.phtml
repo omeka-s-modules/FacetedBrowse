@@ -1,19 +1,19 @@
 <?php $categories = $page->categories(); ?>
 <fieldset class="categories-container">
-<legend><?php echo $this->translate('Browse'); ?></legend>
-<?php if ($categories): ?>
-<ul id="categories">
-    <?php foreach ($categories as $category): ?>
-    <li>
-        <?php echo $this->hyperlink($category->name(), null, [
-            'class' => 'category',
-            'data-category-id' => $category->id(),
-            'data-category-query' => $category->query(),
-        ]); ?>
-    </li>
-    <?php endforeach; ?>
-</ul>
-<?php else: ?>
-<div><?php echo $this->translate('There are no categories to browse.'); ?></div>
-<?php endif; ?>
+    <legend><?php echo $this->translate('Browse'); ?></legend>
+    <?php if ($categories): ?>
+    <ul id="categories">
+        <?php foreach ($categories as $category): ?>
+        <li>
+            <?php echo $this->hyperlink($category->name(), null, [
+                'class' => 'category',
+                'data-category-id' => $category->id(),
+                'data-category-query' => $category->query(),
+            ]); ?>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+    <?php else: ?>
+    <div><?php echo $this->translate('There are no categories to browse.'); ?></div>
+    <?php endif; ?>
 </fieldset>
