@@ -25,13 +25,11 @@ const applyPreviousState = function() {
 };
 
 /**
- * Set the permalink.
+ * Set the permalink fragment.
  */
-const setPermalink = function() {
-    const permalink = $('.permalink');
-    const url = permalink.data('url');
+const setPermalinkFragment = function() {
     const fragment = encodeURIComponent(JSON.stringify(FacetedBrowse.state))
-    permalink.val(`${url}#${fragment}`);
+    $('.permalink').data('fragment', fragment);
 };
 
 /**
@@ -42,7 +40,7 @@ const renderCategories = function() {
         sectionSidebar.html(html);
         $.get(urlBrowse).done(function(html) {
             sectionContent.html(html);
-            setPermalink();
+            setPermalinkFragment();
         }).fail(failBrowse);
     }).fail(failCategory);
 };
@@ -64,7 +62,7 @@ FacetedBrowse.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, pag
     queries.push(`faceted_browse_category_id=${facets.data('categoryId')}`);
     $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
         sectionContent.html(html);
-        setPermalink();
+        setPermalinkFragment();
     }).fail(failBrowse);
 });
 
@@ -99,7 +97,7 @@ container.on('click', '.category', function(e) {
         queries.push(`faceted_browse_category_id=${thisCategory.data('categoryId')}`);
         $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
             sectionContent.html(html);
-            setPermalink();
+            setPermalinkFragment();
         }).fail(failBrowse);
     }).fail(failFacet);
 });
@@ -144,7 +142,7 @@ container.on('submit', '.pagination form', function(e) {
     FacetedBrowse.setPaginationState(thisForm.find('input[name="page"]').val());
     $.get(`${urlBrowse}?${$(this).serialize()}`, {}, function(html) {
         sectionContent.html(html);
-        setPermalink();
+        setPermalinkFragment();
     });
 });
 
@@ -158,13 +156,17 @@ container.on('submit', 'form.sorting', function(e) {
     );
     $.get(`${urlBrowse}?${$(this).serialize()}`, {}, function(html) {
         sectionContent.html(html);
-        setPermalink();
+        setPermalinkFragment();
     });
 });
 
-// Handle permalink.
-container.on('focus', '.permalink', function(e) {
-    this.select();
+// Handle permalink button.
+container.on('click', '.permalink', function(e) {
+    const thisButton = $(this);
+    const permalink = `${thisButton.data('url')}#${thisButton.data('fragment')}`;
+    navigator.clipboard.writeText(permalink).then(function() {
+        // Indicate successful copy here
+    });
 });
 
 });
