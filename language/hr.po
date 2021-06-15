@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-14 13:46-0400\n"
+"POT-Creation-Date: 2021-06-15 17:44-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Josip Ilic <josip.ilic@ericsson.com>, 2021\n"
 "Language-Team: Croatian (https://www.transifex.com/omeka/teams/14184/hr/)\n"
@@ -20,6 +20,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: hr\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#: src/Controller/SiteAdmin/CategoryController.php:57
+#: src/Controller/SiteAdmin/CategoryController.php:105
+msgid "Assign it to a page?"
+msgstr ""
 
 #: src/FacetType/Value.php:88
 msgid ""
@@ -54,7 +59,7 @@ msgid "Select a page"
 msgstr ""
 
 #: view/faceted-browse/site-admin/category/browse.phtml:5
-#: view/faceted-browse/site-admin/page/form.phtml:46
+#: view/faceted-browse/site-admin/page/form.phtml:41
 msgid "Categories"
 msgstr ""
 
@@ -154,11 +159,11 @@ msgstr ""
 msgid "Stay on this category"
 msgstr ""
 
-#: view/faceted-browse/site-admin/category/form.phtml:50
+#: view/faceted-browse/site-admin/category/form.phtml:44
 msgid "Facets"
 msgstr "Fasete "
 
-#: view/faceted-browse/site-admin/category/form.phtml:66
+#: view/faceted-browse/site-admin/category/form.phtml:60
 msgid "Columns"
 msgstr ""
 
@@ -171,7 +176,7 @@ msgid "Count"
 msgstr ""
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:19
-#: view/faceted-browse/site/page/browse.phtml:11
+#: view/faceted-browse/site/page/browse.phtml:9
 msgid "There are no results."
 msgstr ""
 
@@ -213,7 +218,11 @@ msgid "Stay on this page"
 msgstr ""
 
 #: view/faceted-browse/site/page/browse.phtml:3
-msgid "Permalink for current results."
+msgid "Copy permalink"
+msgstr ""
+
+#: view/faceted-browse/site/page/browse.phtml:3
+msgid "Copied!"
 msgstr ""
 
 #: view/faceted-browse/site/page/categories.phtml:17
@@ -224,33 +233,43 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: config/module.config.php:91
+#: config/module.config.php:92
 msgid "A facet must have a name."
 msgstr "Faseta mora imati ime."
 
-#: config/module.config.php:92
+#: config/module.config.php:93
 msgid "A column must have a name."
 msgstr ""
 
-#: config/module.config.php:93
+#: config/module.config.php:94
 msgid "A column must have a property."
 msgstr ""
 
-#: config/module.config.php:94
+#: config/module.config.php:95
 msgid "Error fetching browse markup."
 msgstr ""
 
-#: config/module.config.php:95
+#: config/module.config.php:96
 msgid "Error fetching facet markup."
 msgstr "Greška prilikom dohvata markup-a fesete"
 
-#: config/module.config.php:96
+#: config/module.config.php:97
 msgid "Error fetching category markup."
 msgstr ""
 
 #: src/Site/NavigationLink/FacetedBrowse.php:12
 msgid "Faceted browse"
 msgstr "Fasetirano pretraživanje"
+
+#: src/ColumnType/ItemSet.php:39
+msgid "Max item sets"
+msgstr ""
+
+#: src/ColumnType/ItemSet.php:40
+msgid ""
+"Enter the maximum number of item sets to display. Set to blank to display "
+"all item sets."
+msgstr ""
 
 #: src/ColumnType/Title.php:20
 msgid "Title (Item Link)"
@@ -433,25 +452,27 @@ msgid "Set facet"
 msgstr "Postavite fasetu"
 
 #: src/Controller/SiteAdmin/PageController.php:51
-msgid "Successfully added the page."
+msgid "Page successfully added."
 msgstr ""
 
 #: src/Controller/SiteAdmin/PageController.php:89
-msgid "Successfully edited the page."
+msgid "Page successfully edited."
 msgstr ""
 
 #: src/Controller/SiteAdmin/PageController.php:123
 msgid "Successfully deleted the page."
 msgstr ""
 
-#: src/Controller/SiteAdmin/CategoryController.php:51
-msgid "Successfully added the category."
+#: src/Controller/SiteAdmin/CategoryController.php:53
+#, php-format
+msgid "Category successfully added. %s"
 msgstr ""
 
-#: src/Controller/SiteAdmin/CategoryController.php:90
-msgid "Successfully edited the category."
+#: src/Controller/SiteAdmin/CategoryController.php:101
+#, php-format
+msgid "Category successfully edited. %s"
 msgstr ""
 
-#: src/Controller/SiteAdmin/CategoryController.php:120
+#: src/Controller/SiteAdmin/CategoryController.php:139
 msgid "Successfully deleted the category."
 msgstr ""
