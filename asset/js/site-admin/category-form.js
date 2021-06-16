@@ -282,4 +282,18 @@ $(document).on('click', '#show-all', function(e) {
     }
 });
 
+var closeOtherSidebars = function(button, sidebar) {
+    $(document).on('click', button, function() {
+        var openSidebar = $('.sidebar.active').not(sidebar);
+        Omeka.closeSidebar(openSidebar);
+        openSidebar.removeClass('active');
+    });
+}
+
+closeOtherSidebars('.delete.button', '#delete');
+closeOtherSidebars('.query-edit', '#query-sidebar-edit');
+closeOtherSidebars('.facet-edit', '#facet-sidebar');
+closeOtherSidebars('.column-edit', '#column-sidebar');
+
+
 });
