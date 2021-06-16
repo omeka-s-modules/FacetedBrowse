@@ -56,7 +56,7 @@ class FacetedBrowse extends AbstractPlugin
             }
         }
         if (!$sortings) {
-            $sortings =[
+            $sortings = [
                 [
                     'label' => $controller->translate('Created'),
                     'value' => 'created',
@@ -64,7 +64,7 @@ class FacetedBrowse extends AbstractPlugin
                 [
                     'label' => $controller->translate('Title'),
                     'value' => 'title',
-                ]
+                ],
             ];
         }
         return $sortings;

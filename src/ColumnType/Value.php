@@ -75,7 +75,7 @@ class Value implements ColumnTypeInterface
     public function renderContent(FacetedBrowseColumnRepresentation $column, ItemRepresentation $item) : string
     {
         $propertyTerm = $column->data('property_term');
-        $maxValues= $column->data('max_values');
+        $maxValues = $column->data('max_values');
 
         // Get the values.
         $values = $item->value($propertyTerm, ['all' => true]);
