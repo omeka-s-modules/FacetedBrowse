@@ -157,3 +157,7 @@
 #show-all-table-container table {
     border-bottom: 0;
 }
+
+fieldset ul.sortable-list {
+    margin: 0;
+}
