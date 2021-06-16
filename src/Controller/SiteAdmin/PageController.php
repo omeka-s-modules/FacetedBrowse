@@ -5,6 +5,7 @@ use FacetedBrowse\Form;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 use Omeka\Form\ConfirmForm;
+use Omeka\Stdlib\Message;
 
 class PageController extends AbstractActionController
 {
@@ -48,7 +49,16 @@ class PageController extends AbstractActionController
                 $response = $this->api($form)->create('faceted_browse_pages', $formData);
                 if ($response) {
                     $category = $response->getContent();
-                    $this->messenger()->addSuccess('Page successfully added.'); // @translate
+                    $message = new Message(
+                        'Page successfully added. %s', // @translate
+                        sprintf(
+                            '<a href="%s">%s</a>',
+                            htmlspecialchars($this->url()->fromRoute('admin/site/slug/action', ['controller' => 'index', 'action' => 'navigation'], true)),
+                            $this->translate('Add it to site navigation?')
+                        )
+                    );
+                    $message->setEscapeHtml(false);
+                    $this->messenger()->addSuccess($message);
                     if (isset($postData['submit_save_remain'])) {
                         return $this->redirect()->toRoute('admin/site/slug/faceted-browse/id', ['action' => 'edit', 'id' => $category->id()], true);
                     } else {
@@ -86,7 +96,16 @@ class PageController extends AbstractActionController
                 $formData['o-module-faceted_browse:category'] = $postData['o-module-faceted_browse:category'] ?? [];
                 $response = $this->api($form)->update('faceted_browse_pages', $page->id(), $formData);
                 if ($response) {
-                    $this->messenger()->addSuccess('Page successfully edited.'); // @translate
+                    $message = new Message(
+                        'Page successfully edited. %s', // @translate
+                        sprintf(
+                            '<a href="%s">%s</a>',
+                            htmlspecialchars($this->url()->fromRoute('admin/site/slug/action', ['controller' => 'index', 'action' => 'navigation'], true)),
+                            $this->translate('Add it to site navigation?')
+                        )
+                    );
+                    $message->setEscapeHtml(false);
+                    $this->messenger()->addSuccess($message);
                     if (isset($postData['submit_save_remain'])) {
                         return $this->redirect()->toRoute('admin/site/slug/faceted-browse/id', ['action' => 'edit'], true);
                     } else {
@@ -120,7 +139,7 @@ class PageController extends AbstractActionController
             if ($form->isValid()) {
                 $response = $this->api($form)->delete('faceted_browse_pages', $category->id());
                 if ($response) {
-                    $this->messenger()->addSuccess('Successfully deleted the page.'); // @translate
+                    $this->messenger()->addSuccess('Page successfully deleted.'); // @translate
                 }
             } else {
                 $this->messenger()->addFormErrors($form);

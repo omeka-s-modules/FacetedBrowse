@@ -136,7 +136,7 @@ class CategoryController extends AbstractActionController
             if ($form->isValid()) {
                 $response = $this->api($form)->delete('faceted_browse_categories', $category->id());
                 if ($response) {
-                    $this->messenger()->addSuccess('Successfully deleted the category.'); // @translate
+                    $this->messenger()->addSuccess('Category successfully deleted.'); // @translate
                 }
             } else {
                 $this->messenger()->addFormErrors($form);
