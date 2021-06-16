@@ -15,13 +15,15 @@ const columnFormContainer = $('#column-form-container');
 let columnSelected = null;
 
 /**
- * Update facet type select.
+ * Reset facet type select.
  *
  * This ensures that there are no more facets of a type set to this category
  * than is allowed. It does this by disabling facet types that are equal to or
  * exceed the maximum that is set by the facet type.
  */
 const resetFacetTypeSelect = function() {
+    facetTypeSelect.val('');
+    facetAddButton.prop('disabled', true);
     facetTypeSelect.find('option').each(function() {
         const thisOption = $(this);
         const facetType = thisOption.val();
@@ -32,21 +34,19 @@ const resetFacetTypeSelect = function() {
                 thisOption.prop('disabled', true);
             }
         }
-        facetTypeSelect.val('');
-        facetAddButton.prop('disabled', true);
-        Omeka.closeSidebar(facetSidebar);
-        facetFormContainer.empty();
     });
 };
 
 /**
- * Update column type select.
+ * Reset column type select.
  *
  * This ensures that there are no more columns of a type set to this category
  * than is allowed. It does this by disabling columns types that are equal to or
  * exceed the maximum that is set by the column type.
  */
 const resetColumnTypeSelect = function() {
+    columnTypeSelect.val('');
+    columnAddButton.prop('disabled', true);
     columnTypeSelect.find('option').each(function() {
         const thisOption = $(this);
         const columnType = thisOption.val();
@@ -57,12 +57,26 @@ const resetColumnTypeSelect = function() {
                 thisOption.prop('disabled', true);
             }
         }
-        columnTypeSelect.val('');
-        columnAddButton.prop('disabled', true);
-        Omeka.closeSidebar(columnSidebar);
-        columnFormContainer.empty();
     });
 }
+
+/**
+ * Close all other sidebars when one becomes active.
+ */
+const closeOtherSidebars = function(button, sidebar) {
+    $(document).on('click', button, function() {
+        var openSidebar = $('.sidebar.active').not(sidebar);
+        Omeka.closeSidebar(openSidebar);
+        openSidebar.removeClass('active');
+    });
+}
+
+closeOtherSidebars('.delete.button', '#delete');
+closeOtherSidebars('.query-form-edit', '#query-sidebar-edit');
+closeOtherSidebars('.facet-edit', '#facet-sidebar');
+closeOtherSidebars('.column-edit', '#column-sidebar');
+closeOtherSidebars('#facet-add-button', '#facet-sidebar');
+closeOtherSidebars('#column-add-button', '#column-sidebar');
 
 resetFacetTypeSelect();
 resetColumnTypeSelect();
@@ -281,19 +295,5 @@ $(document).on('click', '#show-all', function(e) {
         tableContainer.empty();
     }
 });
-
-var closeOtherSidebars = function(button, sidebar) {
-    $(document).on('click', button, function() {
-        var openSidebar = $('.sidebar.active').not(sidebar);
-        Omeka.closeSidebar(openSidebar);
-        openSidebar.removeClass('active');
-    });
-}
-
-closeOtherSidebars('.delete.button', '#delete');
-closeOtherSidebars('.query-edit', '#query-sidebar-edit');
-closeOtherSidebars('.facet-edit', '#facet-sidebar');
-closeOtherSidebars('.column-edit', '#column-sidebar');
-
 
 });
