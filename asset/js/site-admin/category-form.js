@@ -77,6 +77,7 @@ closeOtherSidebars('.facet-edit', '#facet-sidebar');
 closeOtherSidebars('.column-edit', '#column-sidebar');
 closeOtherSidebars('#facet-add-button', '#facet-sidebar');
 closeOtherSidebars('#column-add-button', '#column-sidebar');
+closeOtherSidebars('#facet-set-button', '');
 
 resetFacetTypeSelect();
 resetColumnTypeSelect();
