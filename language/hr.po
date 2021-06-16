@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-15 17:44-0400\n"
+"POT-Creation-Date: 2021-06-16 08:08-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Josip Ilic <josip.ilic@ericsson.com>, 2021\n"
 "Language-Team: Croatian (https://www.transifex.com/omeka/teams/14184/hr/)\n"
@@ -24,6 +24,11 @@ msgstr ""
 #: src/Controller/SiteAdmin/CategoryController.php:57
 #: src/Controller/SiteAdmin/CategoryController.php:105
 msgid "Assign it to a page?"
+msgstr ""
+
+#: src/Controller/SiteAdmin/PageController.php:57
+#: src/Controller/SiteAdmin/PageController.php:104
+msgid "Add it to site navigation?"
 msgstr ""
 
 #: src/FacetType/Value.php:88
@@ -451,16 +456,18 @@ msgstr "Ime fasete"
 msgid "Set facet"
 msgstr "Postavite fasetu"
 
-#: src/Controller/SiteAdmin/PageController.php:51
-msgid "Page successfully added."
+#: src/Controller/SiteAdmin/PageController.php:53
+#, php-format
+msgid "Page successfully added. %s"
 msgstr ""
 
-#: src/Controller/SiteAdmin/PageController.php:89
-msgid "Page successfully edited."
+#: src/Controller/SiteAdmin/PageController.php:100
+#, php-format
+msgid "Page successfully edited. %s"
 msgstr ""
 
-#: src/Controller/SiteAdmin/PageController.php:123
-msgid "Successfully deleted the page."
+#: src/Controller/SiteAdmin/PageController.php:142
+msgid "Page successfully deleted."
 msgstr ""
 
 #: src/Controller/SiteAdmin/CategoryController.php:53
@@ -474,5 +481,5 @@ msgid "Category successfully edited. %s"
 msgstr ""
 
 #: src/Controller/SiteAdmin/CategoryController.php:139
-msgid "Successfully deleted the category."
+msgid "Category successfully deleted."
 msgstr ""
