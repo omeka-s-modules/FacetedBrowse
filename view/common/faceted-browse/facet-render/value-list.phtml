@@ -11,7 +11,7 @@
         <label>
             <input
                 class="value"
-                type="<?php echo ('multiple' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
+                type="<?php echo ('multiple_list' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
                 name="<?php echo sprintf('value_%s', $facet->id()); ?>"
                 data-property-id="<?php echo $this->escapeHtml($dataPropertyId); ?>"
                 data-value="<?php echo $this->escapeHtml($dataValue); ?>">
