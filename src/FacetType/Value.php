@@ -176,6 +176,5 @@ class Value implements FacetTypeInterface
             'values' => $values,
             'singleSelect' => $singleSelect,
         ]);
-
     }
 }
