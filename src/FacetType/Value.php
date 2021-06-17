@@ -168,6 +168,7 @@ class Value implements FacetTypeInterface
             $singleSelect->setValueOptions($valueOptions);
             $singleSelect->setEmptyOption('Select one…');
             $singleSelect->setAttribute('class', 'value');
+            $singleSelect->setAttribute('style', 'width: 90%;');
         }
 
         return $view->partial('common/faceted-browse/facet-render/value', [
