@@ -79,7 +79,7 @@ class Value implements FacetTypeInterface
         ]);
         $selectType->setAttributes([
             'id' => 'value-select-type',
-            'value' => $data['select_type'] ?? 'single',
+            'value' => $data['select_type'] ?? 'single_list',
         ]);
         // Values
         $values = $this->formElements->get(LaminasElement\Textarea::class);
