@@ -23,7 +23,7 @@ class ResourceTemplate implements FacetTypeInterface
 
     public function getMaxFacets() : ?int
     {
-        return 1;
+        return null;
     }
 
     public function prepareDataForm(PhpRenderer $view) : void
