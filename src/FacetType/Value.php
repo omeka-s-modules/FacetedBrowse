@@ -72,9 +72,9 @@ class Value implements FacetTypeInterface
             'label' => 'Select type', // @translate
             'info' => 'Select the select type. For the "single" select type, users may choose only one value at a time via a list or dropdown menu. For the "multiple" select type, users may choose any number of values at a time via a list.', // @translate
             'value_options' => [
-                'single_list' => 'Single (list)',
-                'multiple_list' => 'Multiple (list)',
-                'single_select' => 'Single (dropdown menu)',
+                'single_list' => 'Single (list)', // @translate
+                'multiple_list' => 'Multiple (list)', // @translate
+                'single_select' => 'Single (dropdown menu)', // @translate
             ],
         ]);
         $selectType->setAttributes([

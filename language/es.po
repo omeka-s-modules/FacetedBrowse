@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-16 08:08-0400\n"
+"POT-Creation-Date: 2021-06-17 15:16-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Adriana Hernández, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/omeka/teams/14184/es/)\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Add it to site navigation?"
 msgstr ""
 
-#: src/FacetType/Value.php:88
+#: src/FacetType/Value.php:89
 msgid ""
 "\n"
 "            <p>Enter the values, separated by new lines. The format of each value depends on the query type:</p>\n"
@@ -43,15 +43,15 @@ msgid ""
 "            </ul>"
 msgstr ""
 
-#: view/common/faceted-browse/facet-data-form/item-set.phtml:3
+#: view/common/faceted-browse/facet-data-form/item-set.phtml:4
 msgid "Show all available item sets."
 msgstr ""
 
-#: view/common/faceted-browse/facet-data-form/resource-class.phtml:3
+#: view/common/faceted-browse/facet-data-form/resource-class.phtml:4
 msgid "Show all available classes."
 msgstr "Mostrar todas las clases disponibles."
 
-#: view/common/faceted-browse/facet-data-form/resource-template.phtml:3
+#: view/common/faceted-browse/facet-data-form/resource-template.phtml:4
 msgid "Show all available templates."
 msgstr ""
 
@@ -310,19 +310,62 @@ msgstr ""
 msgid "Unknown column data"
 msgstr ""
 
-#: src/FacetType/ItemSet.php:45
+#: src/FacetType/ItemSet.php:40 src/FacetType/ResourceTemplate.php:40
+#: src/FacetType/ResourceClass.php:40 src/FacetType/Value.php:72
+msgid "Select type"
+msgstr ""
+
+#: src/FacetType/ItemSet.php:41
+msgid ""
+"Select the select type. For the \"single\" select type, users may choose "
+"only one item set at a time via a list or dropdown menu. For the "
+"\"multiple\" select type, users may choose any number of item sets at a time"
+" via a list."
+msgstr ""
+
+#: src/FacetType/ItemSet.php:43 src/FacetType/ResourceTemplate.php:43
+#: src/FacetType/ResourceClass.php:43 src/FacetType/Value.php:75
+msgid "Single (list)"
+msgstr ""
+
+#: src/FacetType/ItemSet.php:44 src/FacetType/ResourceTemplate.php:44
+#: src/FacetType/ResourceClass.php:44 src/FacetType/Value.php:76
+msgid "Multiple (list)"
+msgstr ""
+
+#: src/FacetType/ItemSet.php:45 src/FacetType/ResourceTemplate.php:45
+#: src/FacetType/ResourceClass.php:45 src/FacetType/Value.php:77
+msgid "Single (dropdown menu)"
+msgstr ""
+
+#: src/FacetType/ItemSet.php:62
 msgid "Select item sets…"
 msgstr ""
 
-#: src/FacetType/ResourceTemplate.php:45
+#: src/FacetType/ResourceTemplate.php:41
+msgid ""
+"Select the select type. For the \"single\" select type, users may choose "
+"only one template at a time via a list or dropdown menu. For the "
+"\"multiple\" select type, users may choose any number of templates at a time"
+" via a list."
+msgstr ""
+
+#: src/FacetType/ResourceTemplate.php:62
 msgid "Select templates…"
 msgstr ""
 
-#: src/FacetType/ResourceClass.php:20
+#: src/FacetType/ResourceClass.php:21
 msgid "Resource class"
 msgstr ""
 
-#: src/FacetType/ResourceClass.php:45
+#: src/FacetType/ResourceClass.php:41
+msgid ""
+"Select the select type. For the \"single\" select type, users may choose "
+"only one class at a time via a list or dropdown menu. For the \"multiple\" "
+"select type, users may choose any number of classes at a time via a list."
+msgstr ""
+
+#: src/FacetType/ResourceClass.php:62
 msgid "Select classes…"
 msgstr "Seleccionar las clases…"
 
@@ -362,15 +405,11 @@ msgstr ""
 msgid "Has no values"
 msgstr ""
 
-#: src/FacetType/Value.php:72
-msgid "Select type"
-msgstr ""
-
 #: src/FacetType/Value.php:73
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
-"only one value at a time. For the \"multiple\" select type, users may choose"
-" any number of values at a time."
+"only one value at a time via a list or dropdown menu. For the \"multiple\" "
+"select type, users may choose any number of values at a time via a list."
 msgstr ""
 
 #: src/FacetType/Unknown.php:39
