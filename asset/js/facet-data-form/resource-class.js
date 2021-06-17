@@ -5,6 +5,7 @@ FacetedBrowse.registerFacetAddEditHandler('resource_class', function() {
 });
 FacetedBrowse.registerFacetSetHandler('resource_class', function() {
     return {
+        select_type: $('#resource-class-select-type').val(),
         class_ids: $('#resource-class-class-ids').val()
     };
 });

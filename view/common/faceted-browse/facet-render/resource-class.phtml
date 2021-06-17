@@ -1,10 +1,13 @@
+<?php if ($singleSelect): ?>
+<?php echo $this->formElement($singleSelect); ?>
+<?php else: ?>
 <ul>
     <?php foreach ($classes as $class): ?>
     <li>
         <label>
             <input
                 class="resource-class"
-                type="radio"
+                type="<?php echo ('multiple_list' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
                 name="<?php echo sprintf('resource_class_%s', $facet->id()); ?>"
                 data-class-id="<?php echo $this->escapeHtml($class->id()); ?>">
                 <?php echo $class->label(); ?>
@@ -12,3 +15,4 @@
     </li>
     <?php endforeach; ?>
 </ul>
+<?php endif; ?>

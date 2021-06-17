@@ -11,21 +11,40 @@ $(document).ready(function() {
 
 const container = $('#container');
 
-container.on('click', '.resource-class', function(e) {
-    const thisClass = $(this);
+const handleUserInteraction = function(thisClass) {
     const facet = thisClass.closest('.facet');
+    const facetData = facet.data('facetData');
     const queries = [];
     const state = [];
-    facet.find('.resource-class').not(thisClass).removeClass('selected');
-    thisClass.prop('checked', !thisClass.hasClass('selected'));
-    thisClass.toggleClass('selected');
-    facet.find('.resource-class.selected').each(function() {
-        const id = $(this).data('classId');
-        queries.push(`resource_class_id=${id}`);
+    switch (facetData.select_type) {
+        case 'single_list':
+            facet.find('.resource-class').not(thisClass).removeClass('selected');
+            thisClass.prop('checked', !thisClass.hasClass('selected'));
+        case 'multiple_list':
+            thisClass.toggleClass('selected');
+            break;
+    }
+    if ('single_select' === facetData.select_type) {
+        const id = thisClass.val();
+        queries.push(`resource_class_id[]=${id}`);
         state.push(id);
-    });
+    } else {
+        facet.find('.resource-class.selected').each(function() {
+            const id = $(this).data('classId');
+            queries.push(`resource_class_id[]=${id}`);
+            state.push(id);
+        });
+    }
     FacetedBrowse.setFacetState(facet.data('facetId'), state, queries.join('&'));
     FacetedBrowse.triggerStateChange();
+};
+
+container.on('change', 'select.resource-class', function(e) {
+    handleUserInteraction($(this));
+});
+
+container.on('click', 'input.resource-class', function(e) {
+    handleUserInteraction($(this));
 });
 
 });
