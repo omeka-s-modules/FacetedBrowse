@@ -70,11 +70,11 @@ class Value implements FacetTypeInterface
         $selectType->setName('select_type');
         $selectType->setOptions([
             'label' => 'Select type', // @translate
-            'info' => 'Select the select type. For the "single" select type, users may choose only one value at a time. For the "multiple" select type, users may choose any number of values at a time.', // @translate
+            'info' => 'Select the select type. For the "single" select type, users may choose only one value at a time via a list or dropdown menu. For the "multiple" select type, users may choose any number of values at a time via a list.', // @translate
             'value_options' => [
                 'single_list' => 'Single (list)',
                 'multiple_list' => 'Multiple (list)',
-                'single_select' => 'Single (select)',
+                'single_select' => 'Single (dropdown menu)',
             ],
         ]);
         $selectType->setAttributes([
@@ -144,6 +144,7 @@ class Value implements FacetTypeInterface
                 $values = array_combine($values, $values);
         }
 
+        $singleSelect = null;
         if ('single_select' === $facet->data('select_type')) {
             // Prepare "Single select" select type.
             $valueOptions = [];
@@ -162,21 +163,18 @@ class Value implements FacetTypeInterface
                     ],
                 ];
             }
-            $select = $this->formElements->get(LaminasElement\Select::class);
-            $select->setName(sprintf('value_%s', $facet->id()));
-            $select->setValueOptions($valueOptions);
-            $select->setEmptyOption('Select one…');
-            $select->setAttribute('class', 'value');
-
-            return $view->partial('common/faceted-browse/facet-render/value-select', [
-                'facet' => $facet,
-                'select' => $select,
-            ]);
+            $singleSelect = $this->formElements->get(LaminasElement\Select::class);
+            $singleSelect->setName(sprintf('value_%s', $facet->id()));
+            $singleSelect->setValueOptions($valueOptions);
+            $singleSelect->setEmptyOption('Select one…');
+            $singleSelect->setAttribute('class', 'value');
         }
 
-        return $view->partial('common/faceted-browse/facet-render/value-list', [
+        return $view->partial('common/faceted-browse/facet-render/value', [
             'facet' => $facet,
             'values' => $values,
+            'singleSelect' => $singleSelect,
         ]);
+
     }
 }
