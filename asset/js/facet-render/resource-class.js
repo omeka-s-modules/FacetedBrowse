@@ -1,9 +1,15 @@
 FacetedBrowse.registerFacetApplyStateHandler('resource_class', function(facet, facetState) {
     const thisFacet = $(facet);
+    const facetData = thisFacet.data('facetData');
     facetState.forEach(function(classId) {
-        thisFacet.find(`input.resource-class[data-class-id="${classId}"]`)
-            .prop('checked', true)
-            .addClass('selected');
+        if ('single_select' === facetData.select_type) {
+            thisFacet.find(`select.resource-class option[value="${classId}"]`)
+                .prop('selected', true);
+        } else {
+            thisFacet.find(`input.resource-class[data-class-id="${classId}"]`)
+                .prop('checked', true)
+                .addClass('selected');
+        }
     });
 });
 

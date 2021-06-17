@@ -2,6 +2,7 @@
 namespace FacetedBrowse\FacetType;
 
 use FacetedBrowse\Api\Representation\FacetedBrowseFacetRepresentation;
+use Laminas\Form\Element as LaminasElement;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Form\Element as OmekaElement;
@@ -22,7 +23,7 @@ class ResourceTemplate implements FacetTypeInterface
 
     public function getMaxFacets() : ?int
     {
-        return null;
+        return 1;
     }
 
     public function prepareDataForm(PhpRenderer $view) : void
@@ -32,6 +33,22 @@ class ResourceTemplate implements FacetTypeInterface
 
     public function renderDataForm(PhpRenderer $view, array $data) : string
     {
+        // Select type
+        $selectType = $this->formElements->get(LaminasElement\Select::class);
+        $selectType->setName('select_type');
+        $selectType->setOptions([
+            'label' => 'Select type', // @translate
+            'info' => 'Select the select type. For the "single" select type, users may choose only one template at a time via a list or dropdown menu. For the "multiple" select type, users may choose any number of templates at a time via a list.', // @translate
+            'value_options' => [
+                'single_list' => 'Single (list)',
+                'multiple_list' => 'Multiple (list)',
+                'single_select' => 'Single (dropdown menu)',
+            ],
+        ]);
+        $selectType->setAttributes([
+            'id' => 'resource-template-select-type',
+            'value' => $data['select_type'] ?? 'single_list',
+        ]);
         // Template IDs
         $templateIds = $this->formElements->get(OmekaElement\ResourceTemplateSelect::class);
         $templateIds->setName('template_ids');
@@ -46,6 +63,7 @@ class ResourceTemplate implements FacetTypeInterface
             'multiple' => true,
         ]);
         return $view->partial('common/faceted-browse/facet-data-form/resource-template', [
+            'elementSelectType' => $selectType,
             'elementTemplateIds' => $templateIds,
         ]);
     }
@@ -63,9 +81,30 @@ class ResourceTemplate implements FacetTypeInterface
             $template = $view->api()->read('resource_templates', $templateId)->getContent();
             $templates[] = $template;
         }
+
+        $singleSelect = null;
+        if ('single_select' === $facet->data('select_type')) {
+            // Prepare "Single select" select type.
+            $valueOptions = [];
+            foreach ($templates as $template) {
+                $valueOptions[] = [
+                    'value' => $template->id(),
+                    'label' => $template->label(),
+                    'attributes' => [],
+                ];
+            }
+            $singleSelect = $this->formElements->get(LaminasElement\Select::class);
+            $singleSelect->setName(sprintf('resource_template_%s', $facet->id()));
+            $singleSelect->setValueOptions($valueOptions);
+            $singleSelect->setEmptyOption('Select one…');
+            $singleSelect->setAttribute('class', 'resource-template');
+            $singleSelect->setAttribute('style', 'width: 90%;');
+        }
+
         return $view->partial('common/faceted-browse/facet-render/resource-template', [
             'facet' => $facet,
             'templates' => $templates,
+            'singleSelect' => $singleSelect,
         ]);
     }
 }

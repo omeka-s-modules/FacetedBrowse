@@ -1,10 +1,13 @@
+<?php if ($singleSelect): ?>
+<?php echo $this->formElement($singleSelect); ?>
+<?php else: ?>
 <ul>
     <?php foreach ($templates as $template): ?>
     <li>
         <label>
             <input
                 class="resource-template"
-                type="radio"
+                type="<?php echo ('multiple_list' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
                 name="<?php echo sprintf('resource_template_%s', $facet->id()); ?>"
                 data-template-id="<?php echo $this->escapeHtml($template->id()); ?>">
                 <?php echo $template->label(); ?>
@@ -12,3 +15,4 @@
     </li>
     <?php endforeach; ?>
 </ul>
+<?php endif; ?>
