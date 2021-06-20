@@ -42,6 +42,7 @@ class PageController extends AbstractActionController
     {
         $categoryId = $this->params()->fromQuery('faceted_browse_category_id');
         $category = $categoryId ? $this->api()->read('faceted_browse_categories', $categoryId)->getContent() : null;
+        $page = $category->page();
         $columns = $category ? $category->columns() : null;
         $sortings = $this->facetedBrowse()->getSortings($category);
 
@@ -50,7 +51,7 @@ class PageController extends AbstractActionController
             $this->params()->fromQuery(),
             ['site_id' => $this->currentSite()->id()]
         );
-        $response = $this->api()->search('items', $query);
+        $response = $this->api()->search($page->resourceType(), $query);
         $this->paginator($response->getTotalResults(), $this->params()->fromQuery('page'));
         $items = $response->getContent();
 
