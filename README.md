@@ -66,6 +66,16 @@ class MyFacet implements FacetTypeInterface
     }
 
     /**
+     * Get the resource types that can use this facet type.
+     *
+     * @return array
+     */
+    public function getResourceTypes() : array
+    {
+        return ['items', 'item_sets', 'media'];
+    }
+
+    /**
      * Get the maximum amount of this facet type for one category.
      *
      * @return ?int
@@ -145,11 +155,13 @@ class MyFacet implements FacetTypeInterface
 }
 ```
 
-As you see, a facet type sets your facet's label, sets the maximum number of facets allowed on one page, prepares and renders your facet type's administrative data form, and prepares and renders your facet type's public interface.
+As you see, a facet type sets your facet's label, sets the types of resources that can use this facet type, sets the maximum number of facets allowed on one page, prepares and renders your facet type's administrative data form, and prepares and renders your facet type's public interface.
 
-Note that facet types must correspond to an existing search query that the API recognizes. For example, the "Full-text" facet type corresponds to the `fulltext_search=foo` query, and the "By class" facet type corresponds to the `resource_class[]=123` query. If you want to create a facet type that does not have a corresponding query, you'll first have to implement that query using the `api.search.query` event (`Omeka\Api\Adapter\ItemAdapter` identifier).
+Note that facet types must correspond to an existing search query that the API recognizes. For example, the "Full-text" facet type corresponds to the `fulltext_search=foo` query, and the "By class" facet type corresponds to the `resource_class_id[]=123` query. If you want to create a facet type that does not have a corresponding query, you'll first have to implement that query using the `api.search.query` event (`Omeka\Api\Adapter\ItemAdapter` identifier).
 
-With `getMaxFacets()` the maximum number of facets per page will depend on your facet's corresponding query. If the query allows for only one search of the same kind, then return 1. If the query allows for one or more search of the same kind, then return null to signify there is no maximum. For example, `fulltext_search=foo` allows only one search; whereas `resource_class[]=123` allows any number of searches.
+The `getResourceTypes()` method defines the types of resources that can use the facet type. Omeks S has three resource types: Items, Item Sets, and Media. Some queries are specific to a particular resource type, so it wouldn't make sense to add their corresponding facet types to some pages. For example, the `item_set_id[]=123` query wouldn't make sense for a categoy belonging to an Item Set page, so excluding the `item_sets` resource type will exclude the ItemSet facet type for Item Set pages.
+
+With `getMaxFacets()` the maximum number of facets per page will depend on your facet's corresponding query. If the query allows for only one search of the same kind, then return 1. If the query allows for one or more search of the same kind, then return null to signify there is no maximum. For example, `fulltext_search=foo` allows only one search; whereas `resource_class_id[]=123` allows any number of searches.
 
 In `prepareDataForm()` you'll prepare the administrative data form of the facet type. All facet types will need to append a JavaScript file that does two things: 1) register a facet add/edit handler and 2) register a facet set handler.
 
