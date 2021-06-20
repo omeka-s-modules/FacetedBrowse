@@ -20,6 +20,11 @@ class ResourceClass implements ColumnTypeInterface
         return 'Class'; // @translate
     }
 
+    public function getResourceTypes() : array
+    {
+        return ['items', 'item_sets', 'media'];
+    }
+
     public function getMaxColumns() : ?int
     {
         return 1;

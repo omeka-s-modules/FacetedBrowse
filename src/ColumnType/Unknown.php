@@ -23,6 +23,11 @@ class Unknown implements ColumnTypeInterface
         return '[Unknown]'; // @translate
     }
 
+    public function getResourceTypes() : array
+    {
+        return [];
+    }
+
     public function getMaxColumns() : ?int
     {
         return null;

@@ -14,6 +14,13 @@ interface FacetTypeInterface
     public function getLabel() : string;
 
     /**
+     * Get the resource types that can use this facet type.
+     *
+     * @return array
+     */
+    public function getResourceTypes() : array;
+
+    /**
      * Get the maximum amount of this facet type for one category.
      *
      * @return ?int

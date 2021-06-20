@@ -66,10 +66,10 @@ class FacetedBrowseCategory extends \FacetedBrowse\Entity\FacetedBrowseCategory 
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'pageCategories', 'facets', 'columns'];
+            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'page', 'position', 'facets', 'columns'];
         }
 
-        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'pageCategories', 'facets', 'columns'];
+        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'page', 'position', 'facets', 'columns'];
     }
 
     /**
@@ -326,12 +326,45 @@ class FacetedBrowseCategory extends \FacetedBrowse\Entity\FacetedBrowseCategory 
     /**
      * {@inheritDoc}
      */
-    public function getPageCategories(): \Doctrine\Common\Collections\Collection
+    public function setPage(\FacetedBrowse\Entity\FacetedBrowsePage $page): void
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageCategories', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', [$page]);
 
-        return parent::getPageCategories();
+        parent::setPage($page);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPage(): \FacetedBrowse\Entity\FacetedBrowsePage
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', []);
+
+        return parent::getPage();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPosition(int $position): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPosition', [$position]);
+
+        parent::setPosition($position);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPosition(): int
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPosition', []);
+
+        return parent::getPosition();
     }
 
     /**

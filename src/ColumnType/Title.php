@@ -17,7 +17,12 @@ class Title implements ColumnTypeInterface
 
     public function getLabel() : string
     {
-        return 'Title (Item Link)'; // @translate
+        return 'Title (Resource Link)'; // @translate
+    }
+
+    public function getResourceTypes() : array
+    {
+        return ['items', 'item_sets', 'media'];
     }
 
     public function getMaxColumns() : ?int

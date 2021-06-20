@@ -21,6 +21,11 @@ class ResourceClass implements FacetTypeInterface
         return 'Resource class'; // @translate
     }
 
+    public function getResourceTypes() : array
+    {
+        return ['items', 'item_sets', 'media'];
+    }
+
     public function getMaxFacets() : ?int
     {
         return null;

@@ -17,6 +17,7 @@ class FacetedBrowseCategoryRepresentation extends AbstractEntityRepresentation
         return [
             'o:site' => $this->site()->getReference(),
             'o:owner' => $owner ? $owner->getReference() : null,
+            'o-module-faceted_browse:page' => $this->page()->getReference(),
             'o:created' => $this->getDateTime($this->created()),
             'o:modified' => $modified ? $this->getDateTime($modified) : null,
             'o:name' => $this->name(),
@@ -28,12 +29,13 @@ class FacetedBrowseCategoryRepresentation extends AbstractEntityRepresentation
     {
         $url = $this->getViewHelper('Url');
         return $url(
-            'admin/site/slug/faceted-browse/id',
+            'admin/site/slug/faceted-browse-category-id',
             [
                 'site-slug' => $this->site()->slug(),
                 'controller' => 'category',
                 'action' => $action,
-                'id' => $this->id(),
+                'page-id' => $this->page()->id(),
+                'category-id' => $this->id(),
             ],
             ['force_canonical' => $canonical]
         );
@@ -67,6 +69,16 @@ class FacetedBrowseCategoryRepresentation extends AbstractEntityRepresentation
     public function query()
     {
         return $this->resource->getQuery();
+    }
+
+    public function page()
+    {
+        return $this->getAdapter('faceted_browse_pages')->getRepresentation($this->resource->getPage());
+    }
+
+    public function position()
+    {
+        return $this->resource->getPosition();
     }
 
     public function facets()

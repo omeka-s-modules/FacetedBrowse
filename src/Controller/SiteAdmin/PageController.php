@@ -9,11 +9,6 @@ use Omeka\Stdlib\Message;
 
 class PageController extends AbstractActionController
 {
-    public function indexAction()
-    {
-        return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['controller' => 'page', 'action' => 'browse'], true);
-    }
-
     public function browseAction()
     {
         $this->setBrowseDefaults('created');
@@ -32,11 +27,8 @@ class PageController extends AbstractActionController
 
     public function addAction()
     {
-        $categories = $this->api()->search('faceted_browse_categories', [
-            'site_id' => $this->currentSite()->id(),
-        ])->getContent();
         $form = $this->getForm(Form\PageForm::class, [
-            'categories' => $categories,
+            'page' => null,
         ]);
 
         if ($this->getRequest()->isPost()) {
@@ -49,20 +41,11 @@ class PageController extends AbstractActionController
                 $response = $this->api($form)->create('faceted_browse_pages', $formData);
                 if ($response) {
                     $category = $response->getContent();
-                    $message = new Message(
-                        'Page successfully added. %s', // @translate
-                        sprintf(
-                            '<a href="%s">%s</a>',
-                            htmlspecialchars($this->url()->fromRoute('admin/site/slug/action', ['controller' => 'index', 'action' => 'navigation'], true)),
-                            $this->translate('Add it to site navigation?')
-                        )
-                    );
-                    $message->setEscapeHtml(false);
-                    $this->messenger()->addSuccess($message);
+                    $this->messenger()->addSuccess('Page successfully added. Add categories below.'); // @translate
                     if (isset($postData['submit_save_remain'])) {
-                        return $this->redirect()->toRoute('admin/site/slug/faceted-browse/id', ['action' => 'edit', 'id' => $category->id()], true);
+                        return $this->redirect()->toRoute('admin/site/slug/faceted-browse-page-id', ['action' => 'edit', 'page-id' => $category->id()], true);
                     } else {
-                        return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'browse'], true);
+                        return $this->redirect()->toRoute('admin/site/slug/faceted-browse-page', ['action' => 'browse'], true);
                     }
                 }
             } else {
@@ -78,13 +61,13 @@ class PageController extends AbstractActionController
 
     public function editAction()
     {
-        $page = $this->api()->read('faceted_browse_pages', $this->params('id'))->getContent();
-        $categories = $this->api()->search('faceted_browse_categories', [
-            'site_id' => $this->currentSite()->id(),
-        ])->getContent();
+        $page = $this->facetedBrowse()->getRepresentation($this->params('page-id'));
+        if (!$page) {
+            return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'index'], true);
+        }
 
         $form = $this->getForm(Form\PageForm::class, [
-            'categories' => $categories,
+            'page' => $page,
         ]);
 
         if ($this->getRequest()->isPost()) {
@@ -107,9 +90,9 @@ class PageController extends AbstractActionController
                     $message->setEscapeHtml(false);
                     $this->messenger()->addSuccess($message);
                     if (isset($postData['submit_save_remain'])) {
-                        return $this->redirect()->toRoute('admin/site/slug/faceted-browse/id', ['action' => 'edit'], true);
+                        return $this->redirect()->toRoute('admin/site/slug/faceted-browse-page-id', ['action' => 'edit'], true);
                     } else {
-                        return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'browse'], true);
+                        return $this->redirect()->toRoute('admin/site/slug/faceted-browse-page', ['action' => 'browse'], true);
                     }
                 }
             } else {
@@ -120,10 +103,6 @@ class PageController extends AbstractActionController
             $form->setData($data);
         }
 
-        $categories = $this->api()->search('faceted_browse_categories', [
-            'site_id' => $this->currentSite()->id(),
-        ])->getContent();
-
         $view = new ViewModel;
         $view->setVariable('page', $page);
         $view->setVariable('form', $form);
@@ -133,11 +112,14 @@ class PageController extends AbstractActionController
     public function deleteAction()
     {
         if ($this->getRequest()->isPost()) {
-            $category = $this->api()->read('faceted_browse_pages', $this->params('id'))->getContent();
+            $page = $this->facetedBrowse()->getRepresentation($this->params('page-id'));
+            if (!$page) {
+                return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'index'], true);
+            }
             $form = $this->getForm(ConfirmForm::class);
             $form->setData($this->getRequest()->getPost());
             if ($form->isValid()) {
-                $response = $this->api($form)->delete('faceted_browse_pages', $category->id());
+                $response = $this->api($form)->delete('faceted_browse_pages', $page->id());
                 if ($response) {
                     $this->messenger()->addSuccess('Page successfully deleted.'); // @translate
                 }
@@ -145,26 +127,6 @@ class PageController extends AbstractActionController
                 $this->messenger()->addFormErrors($form);
             }
         }
-        return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'browse'], true);
-    }
-
-    public function categoryRowAction()
-    {
-        if (!$this->getRequest()->isPost()) {
-            return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'browse'], true);
-        }
-        $categoryId = $this->params()->fromPost('category_id');
-        $category = $this->api()->read('faceted_browse_categories', $categoryId)->getContent();
-        $category = [
-            'o:id' => $category->id(),
-            'o:name' => $category->name(),
-        ];
-        $index = $this->params()->fromPost('index');
-
-        $view = new ViewModel;
-        $view->setTerminal(true);
-        $view->setVariable('category', $category);
-        $view->setVariable('index', $index);
-        return $view;
+        return $this->redirect()->toRoute('admin/site/slug/faceted-browse-page', ['action' => 'browse'], true);
     }
 }

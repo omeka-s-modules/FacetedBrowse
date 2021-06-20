@@ -22,6 +22,11 @@ class Unknown implements FacetTypeInterface
         return '[Unknown]'; // @translate
     }
 
+    public function getResourceTypes() : array
+    {
+        return [];
+    }
+
     public function getMaxFacets() : ?int
     {
         return null;

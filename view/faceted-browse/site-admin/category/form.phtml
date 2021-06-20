@@ -24,15 +24,23 @@ $form->prepare();
     <?php if ($category): ?>
     <a href="#" id="delete-button" class="delete button"><?php echo $this->translate('Delete'); ?></a>
     <?php endif; ?>
-    <?php echo $this->hyperlink($this->translate('Cancel'), $this->url('admin/site/slug/faceted-browse', ['action' => 'browse'], true), ['class' => 'button']); ?>
+    <?php echo $this->hyperlink($this->translate('Cancel'), $this->url('admin/site/slug/faceted-browse-page-id', ['action' => 'edit'], true), ['class' => 'button']); ?>
     <div id="page-action-menu">
         <a href="#" class="button expand" aria-label="<?php echo $this->translate('Expand'); ?>" title="<?php echo $this->translate('Expand'); ?>">
         <?php echo $this->translate('Save and&hellip;'); ?></a>
         <ul class="collapsible">
-            <li><input type="submit" name="submit_save" value="<?php echo $this->escapeHtml($this->translate('Return to categories')); ?>"></li>
+            <li><input type="submit" name="submit_save" value="<?php echo $this->escapeHtml($this->translate('Return to page')); ?>"></li>
             <li><input type="submit" name="submit_save_remain" value="<?php echo $this->escapeHtml($this->translate('Stay on this category')); ?>"></li>
         </ul>
     </div>
+</div>
+
+<div class="breadcrumbs">
+    <?php echo $this->hyperlink($this->translate('Pages'), $this->url('admin/site/slug/faceted-browse-page', ['action' => 'browse'], true)); ?>
+    <div class="separator"></div>
+    <?php echo $this->hyperlink($this->translate('Page edit'), $this->url('admin/site/slug/faceted-browse-page-id', ['action' => 'edit'], true)); ?>
+    <div class="separator"></div>
+    <?php echo $category ? $this->translate('Category edit') : $this->translate('Category add'); ?>
 </div>
 
 <fieldset>
@@ -46,8 +54,8 @@ $form->prepare();
     <button type="button" id="facet-add-button" disabled><?php echo $this->translate('Add'); ?></button>
     <ul id="facets"
         class="sortable-list"
-        data-facet-row-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse', ['action' => 'facet-row'], true)); ?>"
-        data-facet-form-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse', ['action' => 'facet-form'], true)); ?>">
+        data-facet-row-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse-category', ['action' => 'facet-row'], true)); ?>"
+        data-facet-form-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse-category', ['action' => 'facet-form'], true)); ?>">
         <?php if ($category): ?>
         <?php foreach ($category->facets() as $index => $facet): ?>
         <?php echo $this->partial('facet-row.phtml', ['index' => $index, 'facet' => $facet->jsonSerialize()]); ?>
@@ -62,8 +70,8 @@ $form->prepare();
     <button type="button" id="column-add-button" disabled><?php echo $this->translate('Add'); ?></button>
     <ul id="columns"
         class="sortable-list"
-        data-column-row-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse', ['action' => 'column-row'], true)); ?>"
-        data-column-form-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse', ['action' => 'column-form'], true)); ?>">
+        data-column-row-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse-category', ['action' => 'column-row'], true)); ?>"
+        data-column-form-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse-category', ['action' => 'column-form'], true)); ?>">
         <?php if ($category): ?>
         <?php foreach ($category->columns() as $index => $column): ?>
         <?php echo $this->partial('column-row.phtml', ['index' => $index, 'column' => $column->jsonSerialize()]); ?>

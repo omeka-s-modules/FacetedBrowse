@@ -1,4 +1,6 @@
 <?php
+use FacetedBrowse\Form\PageForm;
+
 $this->htmlElement('body')->appendAttribute('class', 'faceted-browse page browse');
 ?>
 
@@ -7,10 +9,14 @@ $this->htmlElement('body')->appendAttribute('class', 'faceted-browse page browse
 <?php if ($this->userIsAllowed('FacetedBrowse\Api\Adapter\FacetedBrowsePageAdapter', 'create')): ?>
 <div id="page-actions">
     <div id="page-action-menu">
-        <?php echo $this->hyperlink($this->translate('Add new page'), $this->url('admin/site/slug/faceted-browse', ['action' => 'add'], true), ['class' => 'button']); ?>
+        <?php echo $this->hyperlink($this->translate('Add new page'), $this->url('admin/site/slug/faceted-browse-page', ['action' => 'add'], true), ['class' => 'button']); ?>
     </div>
 </div>
 <?php endif; ?>
+
+<div class="breadcrumbs">
+    <?php echo $this->translate('Pages'); ?>
+</div>
 
 <div class="browse-controls">
     <?php echo $this->pagination(); ?>
@@ -32,6 +38,7 @@ $this->htmlElement('body')->appendAttribute('class', 'faceted-browse page browse
     <thead>
         <tr>
             <th><?php echo $this->translate('Page'); ?></th>
+            <th><?php echo $this->translate('Resource type'); ?></th>
             <th><?php echo $this->translate('Owner'); ?></th>
             <th><?php echo $this->translate('Created'); ?></th>
         </tr>
@@ -48,6 +55,7 @@ $this->htmlElement('body')->appendAttribute('class', 'faceted-browse page browse
                     <?php endif; ?>
                 </ul>
             </td>
+            <td><?php echo $this->translate(PageForm::RESOURCE_TYPES[$page->resourceType()]); ?></td>
             <td><?php echo $owner ? $owner->link($owner->name()) : ''; ?></td>
             <td><?php echo $this->i18n()->dateFormat($page->created()); ?></td>
         </tr>
@@ -72,7 +80,7 @@ $this->htmlElement('body')->appendAttribute('class', 'faceted-browse page browse
     <?php if ($this->userIsAllowed('FacetedBrowse\Api\Adapter\FacetedBrowsePageAdapter', 'create')): ?>
     <p><?php echo sprintf(
         $this->translate('No pages found. %s'),
-        $this->hyperlink($this->translate('Add a new page.'), $this->url('admin/site/slug/faceted-browse', ['action' => 'add'], true))
+        $this->hyperlink($this->translate('Add a new page.'), $this->url('admin/site/slug/faceted-browse-page', ['action' => 'add'], true))
     ); ?></p>
     <?php else: ?>
     <p><?php echo $this->translate('No pages found.'); ?></p>

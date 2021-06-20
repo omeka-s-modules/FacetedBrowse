@@ -3,17 +3,11 @@ use Laminas\Form\Element\Hidden;
 ?>
 <li class="category value row">
     <span class="sortable-handle"></span>
-    <span class="restore-value"><?php echo sprintf('%s to be removed', 'Category'); ?></span>
     <span class="category-name-display"><?php echo $category['o:name']; ?></span>
     <ul class="actions">
-        <li><?php echo $this->hyperlink('', [], [
-            'class' => 'o-icon-delete category-remove',
-            'title' => $this->translate('Remove category'),
-        ]); ?></li>
-        <li><?php echo $this->hyperlink('', [], [
-            'class' => 'o-icon-undo category-restore',
-            'title' => $this->translate('Restore category'),
-            'style' => 'display: none;',
+        <li><?php echo $this->hyperlink('', $this->url('admin/site/slug/faceted-browse-category-id', ['action' => 'edit', 'category-id' => $category['o:id']], true), [
+            'class' => 'o-icon-edit category-edit',
+            'title' => $this->translate('Edit category'),
         ]); ?></li>
     </ul>
     <?php

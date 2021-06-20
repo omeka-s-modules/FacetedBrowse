@@ -21,6 +21,11 @@ class ItemSet implements ColumnTypeInterface
         return 'Item set'; // @translate
     }
 
+    public function getResourceTypes() : array
+    {
+        return ['items'];
+    }
+
     public function getMaxColumns() : ?int
     {
         return 1;

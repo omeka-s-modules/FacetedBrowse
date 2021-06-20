@@ -20,6 +20,7 @@ class FacetedBrowsePageRepresentation extends AbstractEntityRepresentation
             'o:created' => $this->getDateTime($this->created()),
             'o:modified' => $modified ? $this->getDateTime($modified) : null,
             'o:title' => $this->title(),
+            'o-module-faceted_browse:resource_type' => $this->resourceType(),
         ];
     }
 
@@ -27,12 +28,12 @@ class FacetedBrowsePageRepresentation extends AbstractEntityRepresentation
     {
         $url = $this->getViewHelper('Url');
         return $url(
-            'admin/site/slug/faceted-browse/id',
+            'admin/site/slug/faceted-browse-page-id',
             [
                 'site-slug' => $this->site()->slug(),
                 'controller' => 'page',
                 'action' => $action,
-                'id' => $this->id(),
+                'page-id' => $this->id(),
             ],
             ['force_canonical' => $canonical]
         );
@@ -63,12 +64,16 @@ class FacetedBrowsePageRepresentation extends AbstractEntityRepresentation
         return $this->resource->getTitle();
     }
 
+    public function resourceType()
+    {
+        return $this->resource->getResourceType();
+    }
+
     public function categories()
     {
         $categories = [];
         $adapter = $this->getAdapter('faceted_browse_categories');
-        foreach ($this->resource->getPageCategories() as $entity) {
-            $categoryEntity = $entity->getCategory();
+        foreach ($this->resource->getCategories() as $categoryEntity) {
             $categories[] = $adapter->getRepresentation($categoryEntity);
         }
         return $categories;

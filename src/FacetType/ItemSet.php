@@ -21,6 +21,11 @@ class ItemSet implements FacetTypeInterface
         return 'Item set'; // @translate
     }
 
+    public function getResourceTypes() : array
+    {
+        return ['items'];
+    }
+
     public function getMaxFacets() : ?int
     {
         return null;

@@ -75,19 +75,28 @@ class FacetedBrowsePage extends AbstractEntity
     protected $title;
 
     /**
+     * @Column(
+     *     type="string",
+     *     length=255,
+     *     nullable=false
+     * )
+     */
+    protected $resourceType;
+
+    /**
      * @OneToMany(
-     *     targetEntity="FacetedBrowse\Entity\FacetedBrowsePageCategory",
+     *     targetEntity="FacetedBrowse\Entity\FacetedBrowseCategory",
      *     mappedBy="page",
      *     orphanRemoval=true,
      *     cascade={"persist", "remove", "detach"}
      * )
      * @OrderBy({"position" = "ASC"})
      */
-    protected $pageCategories;
+    protected $categories;
 
     public function __construct()
     {
-        $this->pageCategories = new ArrayCollection;
+        $this->categories = new ArrayCollection;
     }
 
     public function getId()
@@ -145,9 +154,19 @@ class FacetedBrowsePage extends AbstractEntity
         return $this->title;
     }
 
-    public function getPageCategories() : Collection
+    public function setResourceType(string $resourceType) : void
     {
-        return $this->pageCategories;
+        $this->resourceType = $resourceType;
+    }
+
+    public function getResourceType() : string
+    {
+        return $this->resourceType;
+    }
+
+    public function getCategories() : Collection
+    {
+        return $this->categories;
     }
 
     /**

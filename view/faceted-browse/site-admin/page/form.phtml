@@ -22,7 +22,7 @@ $form->prepare();
     <?php if ($page): ?>
     <a href="#" id="delete-button" class="delete button"><?php echo $this->translate('Delete'); ?></a>
     <?php endif; ?>
-    <?php echo $this->hyperlink($this->translate('Cancel'), $this->url('admin/site/slug/faceted-browse', ['action' => 'browse'], true), ['class' => 'button']); ?>
+    <?php echo $this->hyperlink($this->translate('Cancel'), $this->url('admin/site/slug/faceted-browse-page', ['action' => 'browse'], true), ['class' => 'button']); ?>
     <div id="page-action-menu">
         <a href="#" class="button expand" aria-label="<?php echo $this->translate('Expand'); ?>" title="<?php echo $this->translate('Expand'); ?>">
         <?php echo $this->translate('Save and&hellip;'); ?></a>
@@ -33,24 +33,28 @@ $form->prepare();
     </div>
 </div>
 
-<fieldset>
-    <?php echo $this->formRow($form->get('o:title')); ?>
-</fieldset>
+<div class="breadcrumbs">
+    <?php echo $this->hyperlink($this->translate('Pages'), $this->url('admin/site/slug/faceted-browse-page', ['action' => 'browse'], true)); ?>
+    <div class="separator"></div>
+    <?php echo $page ? $this->translate('Page edit') : $this->translate('Page add'); ?>
+</div>
 
 <fieldset>
+    <?php echo $this->formRow($form->get('o:title')); ?>
+    <?php echo $this->formRow($form->get($page ? 'resource_type' : 'o-module-faceted_browse:resource_type')); ?>
+</fieldset>
+
+<?php if ($page): ?>
+<fieldset>
     <legend><?php echo $this->translate('Categories'); ?></legend>
-    <?php echo $this->formSelect($form->get('category')); ?>
-    <button type="button" id="category-add-button" disabled><?php echo $this->translate('Add'); ?></button>
-    <ul id="categories"
-        class="sortable-list"
-        data-category-row-url="<?php echo $this->escapeHtml($this->url('admin/site/slug/faceted-browse', ['action' => 'category-row'], true)); ?>">
-        <?php if ($page): ?>
+    <?php echo $this->hyperlink($this->translate('Add category'), $this->url('admin/site/slug/faceted-browse-category', ['action' => 'add'], true), ['class' => 'button']); ?>
+    <ul id="categories" class="sortable-list">
         <?php foreach ($page->categories() as $index => $category): ?>
         <?php echo $this->partial('category-row.phtml', ['index' => $index, 'category' => $category->jsonSerialize()]); ?>
         <?php endforeach; ?>
-        <?php endif; ?>
     </ul>
 </fieldset>
+<?php endif; ?>
 
 <?php echo $this->formHidden($form->get('csrf')); ?>
 <?php echo $this->form()->closeTag(); ?>

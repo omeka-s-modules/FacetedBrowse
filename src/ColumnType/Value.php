@@ -22,6 +22,11 @@ class Value implements ColumnTypeInterface
         return 'Value'; // @translate
     }
 
+    public function getResourceTypes() : array
+    {
+        return ['items', 'item_sets', 'media'];
+    }
+
     public function getMaxColumns() : ?int
     {
         return null;

@@ -83,15 +83,24 @@ class FacetedBrowseCategory extends AbstractEntity
     protected $query;
 
     /**
-     * @OneToMany(
-     *     targetEntity="FacetedBrowse\Entity\FacetedBrowsePageCategory",
-     *     mappedBy="category",
-     *     orphanRemoval=true,
-     *     cascade={"persist", "remove", "detach"}
+     * @ManyToOne(
+     *     targetEntity="FacetedBrowse\Entity\FacetedBrowsePage",
+     *     inversedBy="categories"
      * )
-     * @OrderBy({"position" = "ASC"})
+     * @JoinColumn(
+     *     nullable=false,
+     *     onDelete="CASCADE"
+     * )
      */
-    protected $pageCategories;
+    protected $page;
+
+    /**
+     * @Column(
+     *     type="integer",
+     *     nullable=false
+     * )
+     */
+    protected $position;
 
     /**
      * @OneToMany(
@@ -189,9 +198,24 @@ class FacetedBrowseCategory extends AbstractEntity
         return $this->query;
     }
 
-    public function getPageCategories() : Collection
+    public function setPage(FacetedBrowsePage $page) : void
     {
-        return $this->pageCategories;
+        $this->page = $page;
+    }
+
+    public function getPage() : FacetedBrowsePage
+    {
+        return $this->page;
+    }
+
+    public function setPosition(int $position) : void
+    {
+        $this->position = $position;
+    }
+
+    public function getPosition() : int
+    {
+        return $this->position;
     }
 
     public function getFacets() : Collection

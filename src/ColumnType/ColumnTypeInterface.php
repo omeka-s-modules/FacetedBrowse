@@ -15,6 +15,13 @@ interface ColumnTypeInterface
     public function getLabel() : string;
 
     /**
+     * Get the resource types that can use this column type.
+     *
+     * @return array
+     */
+    public function getResourceTypes() : array;
+
+    /**
      * Get the maximum amount of this column type for one category.
      *
      * @return ?int

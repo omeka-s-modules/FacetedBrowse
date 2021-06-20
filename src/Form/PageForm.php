@@ -6,13 +6,15 @@ use Laminas\Form\Form;
 
 class PageForm extends Form
 {
+    const RESOURCE_TYPES = [
+        'items' => 'Items', // @translate
+        'item_sets' => 'Item sets', // @translate
+        'media' => 'Media', // @translate
+    ];
+
     public function init()
     {
-        $categories = $this->getOption('categories');
-        $valueOptions = [];
-        foreach ($categories as $category) {
-            $valueOptions[$category->id()] = $category->name();
-        }
+        $page = $this->getOption('page');
 
         $this->add([
             'type' => LaminasElement\Text::class,
@@ -25,24 +27,28 @@ class PageForm extends Form
                 'required' => true,
             ],
         ]);
-        $this->add([
-            'type' => LaminasElement\Select::class,
-            'name' => 'category',
-            'options' => [
-                'label' => 'Category', // @translate
-                'empty_option' => 'Add a category', // @translate
-                'value_options' => $valueOptions,
-            ],
-            'attributes' => [
-                'id' => 'category-select',
-                'aria-labelledby' => 'category-add-button',
-            ],
-        ]);
-
-        $inputFilter = $this->getInputFilter();
-        $inputFilter->add([
-            'name' => 'category',
-            'allow_empty' => true,
-        ]);
+        if ($page) {
+            $this->add([
+                'type' => LaminasElement\Text::class,
+                'name' => 'resource_type',
+                'options' => [
+                    'label' => 'Resource type', // @translate
+                ],
+                'attributes' => [
+                    'disabled' => true,
+                    'value' => self::RESOURCE_TYPES[$page->resourceType()],
+                ],
+            ]);
+        } else {
+            $this->add([
+                'type' => LaminasElement\Select::class,
+                'name' => 'o-module-faceted_browse:resource_type',
+                'options' => [
+                    'label' => 'Resource type', // @translate
+                    'info' => 'Select the type of resources to browse.', // @translate
+                    'value_options' => self::RESOURCE_TYPES,
+                ],
+            ]);
+        }
     }
 }

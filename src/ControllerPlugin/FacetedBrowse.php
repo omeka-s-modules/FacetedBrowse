@@ -2,6 +2,7 @@
 namespace FacetedBrowse\ControllerPlugin;
 
 use FacetedBrowse\Api\Representation\FacetedBrowseCategoryRepresentation;
+use Omeka\Api\Exception\NotFoundException;
 use Zend\Mvc\Controller\Plugin\AbstractPlugin;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -12,6 +13,36 @@ class FacetedBrowse extends AbstractPlugin
     public function __construct(ServiceLocatorInterface $services)
     {
         $this->services = $services;
+    }
+
+    /**
+     * Get a FacetedBrowse representation.
+     *
+     * Provides a single method to get a FacetedBrowse page or category record
+     * representation. Used primarily to ensure that the route is valid.
+     *
+     * @param int $pageId
+     * @param int|null $categoryId
+     * @return FacetedBrowsePageRepresentation|FacetedBrowseCategoryRepresentation
+     */
+    public function getRepresentation($pageId, $categoryId = null)
+    {
+        $controller = $this->getController();
+        if ($categoryId) {
+            try {
+                $category = $controller->api()->read('faceted_browse_categories', $categoryId)->getContent();
+            } catch (NotFoundException $e) {
+                return false;
+            }
+            $page = $category->page();
+            return ($pageId == $page->id()) ? $category : false;
+        }
+        try {
+            $page = $controller->api()->read('faceted_browse_pages', $pageId)->getContent();
+        } catch (NotFoundException $e) {
+            return false;
+        }
+        return $page;
     }
 
     /**
@@ -73,18 +104,19 @@ class FacetedBrowse extends AbstractPlugin
     /**
      * Get all available values and their counts of a property.
      *
+     * @param string $resourceType
      * @param int $propertyId
      * @param string $queryType
      * @param array $categoryQuery
      * @return array
      */
-    public function getValueValues($propertyId, $queryType, array $categoryQuery)
+    public function getValueValues($resourceType, $propertyId, $queryType, array $categoryQuery)
     {
         $em = $this->services->get('Omeka\EntityManager');
         $qb = $em->createQueryBuilder();
         // Cannot use an empty array to calculate IN(). It results in a Doctrine
         // QueryException. Instead, use an array containing one nonexistent ID.
-        $itemIds = $this->getCategoryItemIds($categoryQuery) ?: [0];
+        $itemIds = $this->getCategoryResourceIds($resourceType, $categoryQuery) ?: [0];
         $qb->from('Omeka\Entity\Value', 'v')
             ->andWhere($qb->expr()->in('v.resource', $itemIds))
             ->groupBy('label')
@@ -123,76 +155,99 @@ class FacetedBrowse extends AbstractPlugin
     /**
      * Get all available classes and their counts.
      *
+     * @param string $resourceType
      * @param arry $query
      * @return array
      */
-    public function getResourceClassClasses(array $categoryQuery)
+    public function getResourceClassClasses($resourceType, array $categoryQuery)
     {
         $em = $this->services->get('Omeka\EntityManager');
-        $dql = '
-        SELECT CONCAT(v.label, \': \', rc.label) label, COUNT(i.id) has_count
-        FROM Omeka\Entity\Item i
-        JOIN i.resourceClass rc
+        $dql = sprintf('
+        SELECT CONCAT(v.label, \': \', rc.label) label, COUNT(r.id) has_count
+        FROM %s r
+        JOIN r.resourceClass rc
         JOIN rc.vocabulary v
-        WHERE i.id IN (:itemIds)
+        WHERE r.id IN (:resourceIds)
         GROUP BY rc.id
-        ORDER BY has_count DESC';
+        ORDER BY has_count DESC', $this->getResourceEntityClass($resourceType));
         $query = $em->createQuery($dql)
-            ->setParameter('itemIds', $this->getCategoryItemIds($categoryQuery));
+            ->setParameter('resourceIds', $this->getCategoryResourceIds($resourceType, $categoryQuery));
         return $query->getResult();
     }
 
     /**
      * Get all available templates and their counts.
      *
+     * @param string $resourceType
      * @param arry $categoryQuery
      * @return array
      */
-    public function getResourceTemplateTemplates(array $categoryQuery)
+    public function getResourceTemplateTemplates($resourceType, array $categoryQuery)
     {
         $em = $this->services->get('Omeka\EntityManager');
-        $dql = '
-        SELECT rt.label label, COUNT(i.id) has_count
-        FROM Omeka\Entity\Item i
-        JOIN i.resourceTemplate rt
-        WHERE i.id IN (:itemIds)
+        $dql = sprintf('
+        SELECT rt.label label, COUNT(r.id) has_count
+        FROM %s r
+        JOIN r.resourceTemplate rt
+        WHERE r.id IN (:resourceIds)
         GROUP BY rt.id
-        ORDER BY has_count DESC';
+        ORDER BY has_count DESC', $this->getResourceEntityClass($resourceType));
         $query = $em->createQuery($dql)
-            ->setParameter('itemIds', $this->getCategoryItemIds($categoryQuery));
+            ->setParameter('resourceIds', $this->getCategoryResourceIds($resourceType, $categoryQuery));
         return $query->getResult();
     }
 
     /**
      * Get all available item sets and their counts.
      *
+     * @param string $resourceType
      * @param arry $query
      * @return array
      */
-    public function getItemSetItemSets(array $categoryQuery)
+    public function getItemSetItemSets($resourceType, array $categoryQuery)
     {
         $em = $this->services->get('Omeka\EntityManager');
-        $dql = '
-        SELECT iset.title label, COUNT(i.id) has_count
-        FROM Omeka\Entity\Item i
-        JOIN i.itemSets iset
-        WHERE i.id IN (:itemIds)
+        $dql = sprintf('
+        SELECT iset.title label, COUNT(r.id) has_count
+        FROM %s r
+        JOIN r.itemSets iset
+        WHERE r.id IN (:resourceIds)
         GROUP BY iset.id
-        ORDER BY has_count DESC';
+        ORDER BY has_count DESC', $this->getResourceEntityClass($resourceType));
         $query = $em->createQuery($dql)
-            ->setParameter('itemIds', $this->getCategoryItemIds($categoryQuery));
+            ->setParameter('resourceIds', $this->getCategoryResourceIds($resourceType, $categoryQuery));
         return $query->getResult();
     }
 
     /**
-     * Get the IDs of all items that satisfy the query.
+     * Get the IDs of all resources that satisfy the query.
      *
+     * @param string $resourceType
      * @param array $categoryQuery
      * @return array
      */
-    protected function getCategoryItemIds(array $categoryQuery)
+    protected function getCategoryResourceIds($resourceType, array $categoryQuery)
     {
         $api = $this->services->get('Omeka\ApiManager');
-        return $api->search('items', $categoryQuery, ['returnScalar' => 'id'])->getContent();
+        return $api->search($resourceType, $categoryQuery, ['returnScalar' => 'id'])->getContent();
+    }
+
+    /**
+     * Get the corresponding entity class of a resource.
+     *
+     * @param string $resourceType
+     * @return string
+     */
+    protected function getResourceEntityClass($resourceType)
+    {
+        switch ($resourceType) {
+            case 'media':
+                return 'Omeka\Entity\Media';
+            case 'item_sets':
+                return 'Omeka\Entity\ItemSet';
+            case 'items':
+            default:
+                return 'Omeka\Entity\Item';
+        }
     }
 }

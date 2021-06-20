@@ -59,6 +59,13 @@ class FacetedBrowseCategoryAdapter extends AbstractEntityAdapter
             $siteData = $request->getValue('o:site');
             $site = $this->getAdapter('sites')->findEntity($siteData['o:id']);
             $entity->setSite($site);
+
+            $pageData = $request->getValue('o-module-faceted_browse:page');
+            $page = $this->getAdapter('faceted_browse_pages')->findEntity($pageData['o:id']);
+            $entity->setPage($page);
+
+            $lastCategory = $page->getCategories()->last();
+            $entity->setPosition($lastCategory ? $lastCategory->getPosition() + 1 : 1);
         }
         if (Request::UPDATE === $request->getOperation()) {
             $entity->setModified(new DateTime('now'));

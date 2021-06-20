@@ -21,6 +21,11 @@ class ResourceTemplate implements FacetTypeInterface
         return 'Resource template'; // @translate
     }
 
+    public function getResourceTypes() : array
+    {
+        return ['items', 'item_sets', 'media'];
+    }
+
     public function getMaxFacets() : ?int
     {
         return null;

@@ -21,6 +21,11 @@ class Value implements FacetTypeInterface
         return 'Value'; // @translate
     }
 
+    public function getResourceTypes() : array
+    {
+        return ['items', 'item_sets', 'media'];
+    }
+
     public function getMaxFacets() : ?int
     {
         return null;

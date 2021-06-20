@@ -59,6 +59,10 @@ class FacetedBrowsePageAdapter extends AbstractEntityAdapter
             $siteData = $request->getValue('o:site');
             $site = $this->getAdapter('sites')->findEntity($siteData['o:id']);
             $entity->setSite($site);
+
+            $resourceType = $request->getValue('o-module-faceted_browse:resource_type');
+            $resourceType = in_array($resourceType, ['items', 'item_sets', 'media']) ? $resourceType : 'items';
+            $entity->setResourceType($resourceType);
         }
         if (Request::UPDATE === $request->getOperation()) {
             $entity->setModified(new DateTime('now'));
@@ -70,39 +74,12 @@ class FacetedBrowsePageAdapter extends AbstractEntityAdapter
         if ($this->shouldHydrate($request, 'o-module-faceted_browse:category')) {
             $categories = $request->getValue('o-module-faceted_browse:category');
             if (is_array($categories)) {
-                $collection = $entity->getPageCategories();
-                $toRetain = [];
-                $toAdd = [];
                 $position = 1;
                 foreach ($categories as $category) {
-                    // Get category entity.
                     $cEntity = $em->find('FacetedBrowse\Entity\FacetedBrowseCategory', $category['o:id']);
                     if ($cEntity) {
-                        $pcEntity = $collection->current();
-                        if ($pcEntity) {
-                            // Reuse an existing page/category entity.
-                            $collection->next();
-                            $toRetain[] = $pcEntity;
-                        } else {
-                            // Create a new page/category entity.
-                            $pcEntity = new FacetedBrowsePageCategory;
-                            $pcEntity->setPage($entity);
-                            $toAdd[] = $pcEntity;
-                        }
-                        // @todo: get category entity and set it here.
-                        $pcEntity->setCategory($cEntity);
-                        $pcEntity->setPosition($position++);
+                        $cEntity->setPosition($position++);
                     }
-                }
-                // Remove any existing page/category entities that are unused.
-                foreach ($collection as $index => $pcEntity) {
-                    if (!in_array($pcEntity, $toRetain)) {
-                        $collection->remove($index);
-                    }
-                }
-                // Add any new page/category entities.
-                foreach ($toAdd as $pcEntity) {
-                    $collection->add($pcEntity);
                 }
             }
         }

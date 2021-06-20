@@ -13,6 +13,7 @@ class CategoryForm extends Form
         $facetTypes = $this->getOption('facet_types');
         $columnTypes = $this->getOption('column_types');
         $category = $this->getOption('category');
+        $page = $this->getOption('page');
 
         $this->add([
             'type' => LaminasElement\Text::class,
@@ -32,7 +33,7 @@ class CategoryForm extends Form
             'options' => [
                 'label' => 'Search query', // @translate
                 'info' => 'Configure the logical grouping of items that make up this category. No query means all site resources.', // @translate
-                'query_resource_type' => 'items',
+                'query_resource_type' => $page->resourceType(),
                 'query_partial_excludelist' => [
                     'common/advanced-search/site',
                     'common/advanced-search/sort',
@@ -49,7 +50,7 @@ class CategoryForm extends Form
             'options' => [
                 'label' => 'Facet type', // @translate
                 'empty_option' => 'Add a facet…', // @translate
-                'value_options' => $facetTypes->getValueOptions(),
+                'value_options' => $facetTypes->getValueOptions($page),
             ],
             'attributes' => [
                 'id' => 'facet-type-select',
@@ -62,7 +63,7 @@ class CategoryForm extends Form
             'options' => [
                 'label' => 'Column type', // @translate
                 'empty_option' => 'Add a column…', // @translate
-                'value_options' => $columnTypes->getValueOptions(),
+                'value_options' => $columnTypes->getValueOptions($page),
             ],
             'attributes' => [
                 'id' => 'column-type-select',

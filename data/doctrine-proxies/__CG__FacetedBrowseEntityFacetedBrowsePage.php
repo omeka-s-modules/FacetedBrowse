@@ -66,10 +66,10 @@ class FacetedBrowsePage extends \FacetedBrowse\Entity\FacetedBrowsePage implemen
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'title', 'pageCategories'];
+            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'title', 'resourceType', 'categories'];
         }
 
-        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'title', 'pageCategories'];
+        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'title', 'resourceType', 'categories'];
     }
 
     /**
@@ -304,12 +304,34 @@ class FacetedBrowsePage extends \FacetedBrowse\Entity\FacetedBrowsePage implemen
     /**
      * {@inheritDoc}
      */
-    public function getPageCategories(): \Doctrine\Common\Collections\Collection
+    public function setResourceType(string $resourceType): void
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageCategories', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setResourceType', [$resourceType]);
 
-        return parent::getPageCategories();
+        parent::setResourceType($resourceType);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getResourceType(): string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResourceType', []);
+
+        return parent::getResourceType();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCategories(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategories', []);
+
+        return parent::getCategories();
     }
 
     /**
