@@ -17,7 +17,7 @@ class ResourceClass implements ColumnTypeInterface
 
     public function getLabel() : string
     {
-        return 'Class'; // @translate
+        return 'Resource class'; // @translate
     }
 
     public function getResourceTypes() : array

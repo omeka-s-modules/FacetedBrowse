@@ -17,7 +17,7 @@ class ResourceTemplate implements ColumnTypeInterface
 
     public function getLabel() : string
     {
-        return 'Template'; // @translate
+        return 'Resource template'; // @translate
     }
 
     public function getResourceTypes() : array

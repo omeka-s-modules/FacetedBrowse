@@ -17,7 +17,7 @@ class Title implements ColumnTypeInterface
 
     public function getLabel() : string
     {
-        return 'Title (Resource Link)'; // @translate
+        return 'Title (link to resource)'; // @translate
     }
 
     public function getResourceTypes() : array
