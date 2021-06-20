@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-17 15:16-0400\n"
+"POT-Creation-Date: 2021-06-20 07:49-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Josip Ilic <josip.ilic@ericsson.com>, 2021\n"
 "Language-Team: Croatian (https://www.transifex.com/omeka/teams/14184/hr/)\n"
@@ -21,17 +21,11 @@ msgstr ""
 "Language: hr\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: src/Controller/SiteAdmin/CategoryController.php:57
-#: src/Controller/SiteAdmin/CategoryController.php:105
-msgid "Assign it to a page?"
-msgstr ""
-
-#: src/Controller/SiteAdmin/PageController.php:57
-#: src/Controller/SiteAdmin/PageController.php:104
+#: src/Controller/SiteAdmin/PageController.php:87
 msgid "Add it to site navigation?"
 msgstr ""
 
-#: src/FacetType/Value.php:89
+#: src/FacetType/Value.php:94
 msgid ""
 "\n"
 "            <p>Enter the values, separated by new lines. The format of each value depends on the query type:</p>\n"
@@ -61,46 +55,6 @@ msgstr ""
 
 #: view/common/faceted-browse/navigation-link-form/faceted-browse.phtml:9
 msgid "Select a page"
-msgstr ""
-
-#: view/faceted-browse/site-admin/category/browse.phtml:5
-#: view/faceted-browse/site-admin/page/form.phtml:41
-msgid "Categories"
-msgstr ""
-
-#: view/faceted-browse/site-admin/category/browse.phtml:5
-#: view/faceted-browse/site-admin/category/form.phtml:16
-#: view/faceted-browse/site-admin/category/form.phtml:18
-#: view/faceted-browse/site-admin/page/browse.phtml:5
-#: view/faceted-browse/site-admin/page/form.phtml:14
-#: view/faceted-browse/site-admin/page/form.phtml:16
-msgid "Faceted Browse"
-msgstr "Fasetirano Pretraživanje"
-
-#: view/faceted-browse/site-admin/category/browse.phtml:10
-msgid "Add new category"
-msgstr ""
-
-#: view/faceted-browse/site-admin/category/browse.phtml:19
-#: view/faceted-browse/site-admin/page/browse.phtml:19
-msgid "Date created"
-msgstr ""
-
-#: view/faceted-browse/site-admin/category/browse.phtml:34
-msgid "Category"
-msgstr ""
-
-#: view/faceted-browse/site-admin/category/browse.phtml:74
-#, php-format
-msgid "No categories found. %s"
-msgstr ""
-
-#: view/faceted-browse/site-admin/category/browse.phtml:75
-msgid "Add a new category."
-msgstr ""
-
-#: view/faceted-browse/site-admin/category/browse.phtml:78
-msgid "No categories found."
 msgstr ""
 
 #: view/faceted-browse/site-admin/category/column-form.phtml:6
@@ -147,6 +101,14 @@ msgstr "Vratite fasetu"
 msgid "Edit Category"
 msgstr ""
 
+#: view/faceted-browse/site-admin/category/form.phtml:16
+#: view/faceted-browse/site-admin/category/form.phtml:18
+#: view/faceted-browse/site-admin/page/browse.phtml:7
+#: view/faceted-browse/site-admin/page/form.phtml:14
+#: view/faceted-browse/site-admin/page/form.phtml:16
+msgid "Faceted Browse"
+msgstr "Fasetirano Pretraživanje"
+
 #: view/faceted-browse/site-admin/category/form.phtml:18
 msgid "Add Category"
 msgstr ""
@@ -157,18 +119,31 @@ msgid "Save and&hellip;"
 msgstr ""
 
 #: view/faceted-browse/site-admin/category/form.phtml:32
-msgid "Return to categories"
+msgid "Return to page"
 msgstr ""
 
 #: view/faceted-browse/site-admin/category/form.phtml:33
 msgid "Stay on this category"
 msgstr ""
 
-#: view/faceted-browse/site-admin/category/form.phtml:44
+#: view/faceted-browse/site-admin/category/form.phtml:41
+#: view/faceted-browse/site-admin/page/form.phtml:39
+msgid "Page edit"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/form.phtml:43
+msgid "Category edit"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/form.phtml:43
+msgid "Category add"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/form.phtml:52
 msgid "Facets"
 msgstr "Fasete "
 
-#: view/faceted-browse/site-admin/category/form.phtml:60
+#: view/faceted-browse/site-admin/category/form.phtml:68
 msgid "Columns"
 msgstr ""
 
@@ -185,25 +160,25 @@ msgstr ""
 msgid "There are no results."
 msgstr ""
 
-#: view/faceted-browse/site-admin/page/browse.phtml:74
+#: view/faceted-browse/site-admin/page/browse.phtml:25
+msgid "Date created"
+msgstr ""
+
+#: view/faceted-browse/site-admin/page/browse.phtml:82
 #, php-format
 msgid "No pages found. %s"
 msgstr ""
 
-#: view/faceted-browse/site-admin/page/browse.phtml:75
+#: view/faceted-browse/site-admin/page/browse.phtml:83
 msgid "Add a new page."
 msgstr ""
 
-#: view/faceted-browse/site-admin/page/browse.phtml:78
+#: view/faceted-browse/site-admin/page/browse.phtml:86
 msgid "No pages found."
 msgstr ""
 
-#: view/faceted-browse/site-admin/page/category-row.phtml:11
-msgid "Remove category"
-msgstr ""
-
-#: view/faceted-browse/site-admin/page/category-row.phtml:15
-msgid "Restore category"
+#: view/faceted-browse/site-admin/page/category-row.phtml:10
+msgid "Edit category"
 msgstr ""
 
 #: view/faceted-browse/site-admin/page/form.phtml:14
@@ -222,6 +197,18 @@ msgstr ""
 msgid "Stay on this page"
 msgstr ""
 
+#: view/faceted-browse/site-admin/page/form.phtml:39
+msgid "Page add"
+msgstr ""
+
+#: view/faceted-browse/site-admin/page/form.phtml:49
+msgid "Categories"
+msgstr ""
+
+#: view/faceted-browse/site-admin/page/form.phtml:50
+msgid "Add category"
+msgstr ""
+
 #: view/faceted-browse/site/page/browse.phtml:3
 msgid "Copy permalink"
 msgstr ""
@@ -238,27 +225,27 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: config/module.config.php:92
+#: config/module.config.php:93
 msgid "A facet must have a name."
 msgstr "Faseta mora imati ime."
 
-#: config/module.config.php:93
+#: config/module.config.php:94
 msgid "A column must have a name."
 msgstr ""
 
-#: config/module.config.php:94
+#: config/module.config.php:95
 msgid "A column must have a property."
 msgstr ""
 
-#: config/module.config.php:95
+#: config/module.config.php:96
 msgid "Error fetching browse markup."
 msgstr ""
 
-#: config/module.config.php:96
+#: config/module.config.php:97
 msgid "Error fetching facet markup."
 msgstr "Greška prilikom dohvata markup-a fesete"
 
-#: config/module.config.php:97
+#: config/module.config.php:98
 msgid "Error fetching category markup."
 msgstr ""
 
@@ -266,33 +253,37 @@ msgstr ""
 msgid "Faceted browse"
 msgstr "Fasetirano pretraživanje"
 
-#: src/ColumnType/ItemSet.php:39
+#: src/ColumnType/ItemSet.php:44
 msgid "Max item sets"
 msgstr ""
 
-#: src/ColumnType/ItemSet.php:40
+#: src/ColumnType/ItemSet.php:45
 msgid ""
 "Enter the maximum number of item sets to display. Set to blank to display "
 "all item sets."
 msgstr ""
 
+#: src/ColumnType/ResourceClass.php:20 src/FacetType/ResourceClass.php:21
+msgid "Resource class"
+msgstr ""
+
 #: src/ColumnType/Title.php:20
-msgid "Title (Item Link)"
+msgid "Title (link to resource)"
 msgstr ""
 
 #: src/ColumnType/Value.php:22 src/FacetType/Value.php:21
 msgid "Value"
 msgstr ""
 
-#: src/ColumnType/Value.php:47
+#: src/ColumnType/Value.php:52
 msgid "Select a property…"
 msgstr ""
 
-#: src/ColumnType/Value.php:54
+#: src/ColumnType/Value.php:59
 msgid "Max values"
 msgstr ""
 
-#: src/ColumnType/Value.php:55
+#: src/ColumnType/Value.php:60
 msgid ""
 "Enter the maximum number of values to display. Set to blank to display all "
 "values."
@@ -302,20 +293,20 @@ msgstr ""
 msgid "[Unknown]"
 msgstr ""
 
-#: src/ColumnType/Unknown.php:40
+#: src/ColumnType/Unknown.php:45
 msgid "Unknown column type"
 msgstr ""
 
-#: src/ColumnType/Unknown.php:50
+#: src/ColumnType/Unknown.php:55
 msgid "Unknown column data"
 msgstr ""
 
-#: src/FacetType/ItemSet.php:40 src/FacetType/ResourceTemplate.php:40
-#: src/FacetType/ResourceClass.php:40 src/FacetType/Value.php:72
+#: src/FacetType/ItemSet.php:45 src/FacetType/ResourceTemplate.php:45
+#: src/FacetType/ResourceClass.php:45 src/FacetType/Value.php:77
 msgid "Select type"
 msgstr ""
 
-#: src/FacetType/ItemSet.php:41
+#: src/FacetType/ItemSet.php:46
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one item set at a time via a list or dropdown menu. For the "
@@ -323,26 +314,26 @@ msgid ""
 " via a list."
 msgstr ""
 
-#: src/FacetType/ItemSet.php:43 src/FacetType/ResourceTemplate.php:43
-#: src/FacetType/ResourceClass.php:43 src/FacetType/Value.php:75
+#: src/FacetType/ItemSet.php:48 src/FacetType/ResourceTemplate.php:48
+#: src/FacetType/ResourceClass.php:48 src/FacetType/Value.php:80
 msgid "Single (list)"
 msgstr ""
 
-#: src/FacetType/ItemSet.php:44 src/FacetType/ResourceTemplate.php:44
-#: src/FacetType/ResourceClass.php:44 src/FacetType/Value.php:76
+#: src/FacetType/ItemSet.php:49 src/FacetType/ResourceTemplate.php:49
+#: src/FacetType/ResourceClass.php:49 src/FacetType/Value.php:81
 msgid "Multiple (list)"
 msgstr ""
 
-#: src/FacetType/ItemSet.php:45 src/FacetType/ResourceTemplate.php:45
-#: src/FacetType/ResourceClass.php:45 src/FacetType/Value.php:77
+#: src/FacetType/ItemSet.php:50 src/FacetType/ResourceTemplate.php:50
+#: src/FacetType/ResourceClass.php:50 src/FacetType/Value.php:82
 msgid "Single (dropdown menu)"
 msgstr ""
 
-#: src/FacetType/ItemSet.php:62
+#: src/FacetType/ItemSet.php:67
 msgid "Select item sets…"
 msgstr ""
 
-#: src/FacetType/ResourceTemplate.php:41
+#: src/FacetType/ResourceTemplate.php:46
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one template at a time via a list or dropdown menu. For the "
@@ -350,22 +341,18 @@ msgid ""
 " via a list."
 msgstr ""
 
-#: src/FacetType/ResourceTemplate.php:62
+#: src/FacetType/ResourceTemplate.php:67
 msgid "Select templates…"
 msgstr ""
 
-#: src/FacetType/ResourceClass.php:21
-msgid "Resource class"
-msgstr ""
-
-#: src/FacetType/ResourceClass.php:41
+#: src/FacetType/ResourceClass.php:46
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one class at a time via a list or dropdown menu. For the \"multiple\" "
 "select type, users may choose any number of classes at a time via a list."
 msgstr ""
 
-#: src/FacetType/ResourceClass.php:62
+#: src/FacetType/ResourceClass.php:67
 msgid "Select classes…"
 msgstr ""
 
@@ -373,50 +360,50 @@ msgstr ""
 msgid "Full-text"
 msgstr ""
 
-#: src/FacetType/Value.php:54
+#: src/FacetType/Value.php:59
 msgid "Is exactly"
 msgstr ""
 
-#: src/FacetType/Value.php:55
+#: src/FacetType/Value.php:60
 msgid "Is not exactly"
 msgstr ""
 
-#: src/FacetType/Value.php:56
+#: src/FacetType/Value.php:61
 msgid "Contains"
 msgstr ""
 
-#: src/FacetType/Value.php:57
+#: src/FacetType/Value.php:62
 msgid "Does not contain"
 msgstr ""
 
-#: src/FacetType/Value.php:58
+#: src/FacetType/Value.php:63
 msgid "Is resource with ID"
 msgstr ""
 
-#: src/FacetType/Value.php:59
+#: src/FacetType/Value.php:64
 msgid "Is not resource with ID"
 msgstr ""
 
-#: src/FacetType/Value.php:60
+#: src/FacetType/Value.php:65
 msgid "Has any value"
 msgstr ""
 
-#: src/FacetType/Value.php:61
+#: src/FacetType/Value.php:66
 msgid "Has no values"
 msgstr ""
 
-#: src/FacetType/Value.php:73
+#: src/FacetType/Value.php:78
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one value at a time via a list or dropdown menu. For the \"multiple\" "
 "select type, users may choose any number of values at a time via a list."
 msgstr ""
 
-#: src/FacetType/Unknown.php:39
+#: src/FacetType/Unknown.php:44
 msgid "Unknown facet type"
 msgstr "Nepoznata vrsta fasete"
 
-#: src/FacetType/Unknown.php:49
+#: src/FacetType/Unknown.php:54
 msgid "Unknown facet data"
 msgstr "Nepoznati podaci fasete"
 
@@ -425,23 +412,23 @@ msgstr "Nepoznati podaci fasete"
 msgid "A site must have an ID"
 msgstr ""
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:138
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:145
 msgid "A category must have a site"
 msgstr ""
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:141
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:148
 msgid "A category must have a name"
 msgstr ""
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:144
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:151
 msgid "A category must have a query"
 msgstr ""
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:114
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:91
 msgid "A page must have a site"
 msgstr ""
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:117
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:94
 msgid "A page must have a title"
 msgstr ""
 
@@ -453,15 +440,15 @@ msgstr ""
 msgid "Set column"
 msgstr ""
 
-#: src/Form/PageForm.php:22
+#: src/Form/PageForm.php:24
 msgid "Enter the title of this page."
 msgstr ""
 
-#: src/Form/PageForm.php:33
-msgid "Add a category"
+#: src/Form/PageForm.php:48
+msgid "Select the type of resources to browse."
 msgstr ""
 
-#: src/Form/CategoryForm.php:22
+#: src/Form/CategoryForm.php:23
 msgid ""
 "Enter the name of this category. A category is a logical grouping of items "
 "that can be described using faceted classification."
@@ -469,21 +456,21 @@ msgstr ""
 "Unesite ime ove kategorije. Kategorija je logično grupiranje predmeta koji "
 "se mogu opisati koristeći fasetiranu klasifikaciju."
 
-#: src/Form/CategoryForm.php:33
+#: src/Form/CategoryForm.php:34
 msgid "Search query"
 msgstr ""
 
-#: src/Form/CategoryForm.php:34
+#: src/Form/CategoryForm.php:35
 msgid ""
 "Configure the logical grouping of items that make up this category. No query"
 " means all site resources."
 msgstr ""
 
-#: src/Form/CategoryForm.php:51
+#: src/Form/CategoryForm.php:52
 msgid "Add a facet…"
 msgstr ""
 
-#: src/Form/CategoryForm.php:64
+#: src/Form/CategoryForm.php:65
 msgid "Add a column…"
 msgstr ""
 
@@ -495,30 +482,27 @@ msgstr "Ime fasete"
 msgid "Set facet"
 msgstr "Postavite fasetu"
 
-#: src/Controller/SiteAdmin/PageController.php:53
-#, php-format
-msgid "Page successfully added. %s"
+#: src/Controller/SiteAdmin/PageController.php:44
+msgid "Page successfully added. Add categories below."
 msgstr ""
 
-#: src/Controller/SiteAdmin/PageController.php:100
+#: src/Controller/SiteAdmin/PageController.php:83
 #, php-format
 msgid "Page successfully edited. %s"
 msgstr ""
 
-#: src/Controller/SiteAdmin/PageController.php:142
+#: src/Controller/SiteAdmin/PageController.php:124
 msgid "Page successfully deleted."
 msgstr ""
 
-#: src/Controller/SiteAdmin/CategoryController.php:53
-#, php-format
-msgid "Category successfully added. %s"
+#: src/Controller/SiteAdmin/CategoryController.php:37
+msgid "Category successfully added."
 msgstr ""
 
-#: src/Controller/SiteAdmin/CategoryController.php:101
-#, php-format
-msgid "Category successfully edited. %s"
+#: src/Controller/SiteAdmin/CategoryController.php:83
+msgid "Category successfully edited."
 msgstr ""
 
-#: src/Controller/SiteAdmin/CategoryController.php:139
+#: src/Controller/SiteAdmin/CategoryController.php:119
 msgid "Category successfully deleted."
 msgstr ""
