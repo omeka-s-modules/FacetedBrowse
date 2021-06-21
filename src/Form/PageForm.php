@@ -1,17 +1,12 @@
 <?php
 namespace FacetedBrowse\Form;
 
+use FacetedBrowse\Entity\FacetedBrowsePage;
 use Laminas\Form\Element as LaminasElement;
 use Laminas\Form\Form;
 
 class PageForm extends Form
 {
-    const RESOURCE_TYPES = [
-        'items' => 'Items', // @translate
-        'item_sets' => 'Item sets', // @translate
-        'media' => 'Media', // @translate
-    ];
-
     public function init()
     {
         $page = $this->getOption('page');
@@ -36,7 +31,7 @@ class PageForm extends Form
                 ],
                 'attributes' => [
                     'disabled' => true,
-                    'value' => self::RESOURCE_TYPES[$page->resourceType()],
+                    'value' => FacetedBrowsePage::RESOURCE_TYPES[$page->resourceType()],
                 ],
             ]);
         } else {
@@ -46,7 +41,7 @@ class PageForm extends Form
                 'options' => [
                     'label' => 'Resource type', // @translate
                     'info' => 'Select the type of resources to browse.', // @translate
-                    'value_options' => self::RESOURCE_TYPES,
+                    'value_options' => FacetedBrowsePage::RESOURCE_TYPES,
                 ],
             ]);
         }

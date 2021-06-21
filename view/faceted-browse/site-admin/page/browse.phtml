@@ -1,5 +1,5 @@
 <?php
-use FacetedBrowse\Form\PageForm;
+use FacetedBrowse\Entity\FacetedBrowsePage;
 
 $this->htmlElement('body')->appendAttribute('class', 'faceted-browse page browse');
 ?>
@@ -55,7 +55,7 @@ $this->htmlElement('body')->appendAttribute('class', 'faceted-browse page browse
                     <?php endif; ?>
                 </ul>
             </td>
-            <td><?php echo $this->translate(PageForm::RESOURCE_TYPES[$page->resourceType()]); ?></td>
+            <td><?php echo $this->translate(FacetedBrowsePage::RESOURCE_TYPES[$page->resourceType()]); ?></td>
             <td><?php echo $owner ? $owner->link($owner->name()) : ''; ?></td>
             <td><?php echo $this->i18n()->dateFormat($page->created()); ?></td>
         </tr>

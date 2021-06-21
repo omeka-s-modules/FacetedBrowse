@@ -15,6 +15,12 @@ use Omeka\Entity\User;
  */
 class FacetedBrowsePage extends AbstractEntity
 {
+    const RESOURCE_TYPES = [
+        'items' => 'Items', // @translate
+        'item_sets' => 'Item sets', // @translate
+        'media' => 'Media', // @translate
+    ];
+
     /**
      * @Id
      * @Column(
