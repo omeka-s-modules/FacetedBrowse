@@ -40,9 +40,12 @@ class PageController extends AbstractActionController
 
     public function browseAction()
     {
+        $pageId = $this->params('page-id');
+        $page = $this->api()->read('faceted_browse_pages', $pageId)->getContent();
+
         $categoryId = $this->params()->fromQuery('faceted_browse_category_id');
         $category = $categoryId ? $this->api()->read('faceted_browse_categories', $categoryId)->getContent() : null;
-        $page = $category->page();
+
         $columns = $category ? $category->columns() : null;
         $sortings = $this->facetedBrowse()->getSortings($category);
 
