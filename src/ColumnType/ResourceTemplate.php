@@ -42,8 +42,7 @@ class ResourceTemplate implements ColumnTypeInterface
 
     public function getSortBy(FacetedBrowseColumnRepresentation $column) : ?string
     {
-        // Omeka does not provide a way to sort by resource template label.
-        return null;
+        return 'resource_template_label';
     }
 
     public function renderContent(FacetedBrowseColumnRepresentation $column, ItemRepresentation $item) : string
