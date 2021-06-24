@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-20 07:49-0400\n"
+"POT-Creation-Date: 2021-06-24 13:48-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Giorgio Comai <g@giorgiocomai.eu>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/omeka/teams/14184/it/)\n"
@@ -448,11 +448,11 @@ msgstr ""
 msgid "Set column"
 msgstr ""
 
-#: src/Form/PageForm.php:24
+#: src/Form/PageForm.php:19
 msgid "Enter the title of this page."
 msgstr "Inserisci il titolo di questa pagina"
 
-#: src/Form/PageForm.php:48
+#: src/Form/PageForm.php:43
 msgid "Select the type of resources to browse."
 msgstr ""
 
