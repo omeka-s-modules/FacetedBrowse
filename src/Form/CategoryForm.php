@@ -20,7 +20,7 @@ class CategoryForm extends Form
             'name' => 'o:name',
             'options' => [
                 'label' => 'Name', // @translate
-                'info' => 'Enter the name of this category. A category is a logical grouping of items that can be described using faceted classification.', // @translate
+                'info' => 'Enter the name of this category. A category is a logical grouping of resources that can be described using faceted classification.', // @translate
             ],
             'attributes' => [
                 'id' => 'category-name',
@@ -32,7 +32,7 @@ class CategoryForm extends Form
             'name' => 'o:query',
             'options' => [
                 'label' => 'Search query', // @translate
-                'info' => 'Configure the logical grouping of items that make up this category. No query means all site resources.', // @translate
+                'info' => 'Configure the logical grouping of resources that make up this category. No query means all site resources.', // @translate
                 'query_resource_type' => $page->resourceType(),
                 'query_partial_excludelist' => [
                     'common/advanced-search/site',

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-24 13:48-0400\n"
+"POT-Creation-Date: 2021-06-24 15:20-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Pols12 <poltron54@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/omeka/teams/14184/fr/)\n"
@@ -450,12 +450,9 @@ msgstr ""
 
 #: src/Form/CategoryForm.php:23
 msgid ""
-"Enter the name of this category. A category is a logical grouping of items "
-"that can be described using faceted classification."
+"Enter the name of this category. A category is a logical grouping of "
+"resources that can be described using faceted classification."
 msgstr ""
-"Entrez le nom de cette catégorie. Une catégorie est un groupement logique de"
-" contenus qui peuvent être décrits en utilisant une classification à "
-"facettes."
 
 #: src/Form/CategoryForm.php:34
 msgid "Search query"
@@ -463,12 +460,9 @@ msgstr "Requête à chercher"
 
 #: src/Form/CategoryForm.php:35
 msgid ""
-"Configure the logical grouping of items that make up this category. No query"
-" means all site resources."
+"Configure the logical grouping of resources that make up this category. No "
+"query means all site resources."
 msgstr ""
-"Configure le groupement logique des contenus qui constituent cette "
-"catégorie. S’il n’y a pas de requêtes, toutes les ressources du site seront "
-"incluses."
 
 #: src/Form/CategoryForm.php:52
 msgid "Add a facet…"
