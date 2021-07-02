@@ -77,8 +77,6 @@ closeOtherSidebars('.facet-edit', '#facet-sidebar');
 closeOtherSidebars('.column-edit', '#column-sidebar');
 closeOtherSidebars('#facet-add-button', '#facet-sidebar');
 closeOtherSidebars('#column-add-button', '#column-sidebar');
-closeOtherSidebars('#facet-set-button', '');
-closeOtherSidebars('#column-set-button', '');
 
 resetFacetTypeSelect();
 resetColumnTypeSelect();
@@ -157,6 +155,7 @@ facetFormContainer.on('click', '#facet-set-button', function(e) {
         // nothing and let the user make corrections.
         return;
     }
+    Omeka.closeSidebar(facetSidebar);
     if (facetSelected) {
         // Handle an edit.
         facetSelected.find('.facet-name-display').text(name);
@@ -249,6 +248,7 @@ columnFormContainer.on('click', '#column-set-button', function(e) {
         // nothing and let the user make corrections.
         return;
     }
+    Omeka.closeSidebar(columnSidebar);
     if (columnSelected) {
         // Handle an edit.
         columnSelected.find('.column-name-display').text(name);
