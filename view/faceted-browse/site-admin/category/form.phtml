@@ -25,7 +25,7 @@ $form->prepare();
     <a href="#" id="delete-button" class="delete button"><?php echo $this->translate('Delete'); ?></a>
     <?php endif; ?>
     <?php echo $this->hyperlink($this->translate('Cancel'), $this->url('admin/site/slug/faceted-browse-page-id', ['action' => 'edit'], true), ['class' => 'button']); ?>
-    <div id="page-action-menu">
+    <div class="page-action-menu">
         <a href="#" class="button expand" aria-label="<?php echo $this->translate('Expand'); ?>" title="<?php echo $this->translate('Expand'); ?>">
         <?php echo $this->translate('Save and&hellip;'); ?></a>
         <ul class="collapsible">
