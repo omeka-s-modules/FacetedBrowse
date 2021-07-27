@@ -23,6 +23,7 @@ class FacetForm extends Form
             ],
             'attributes' => [
                 'id' => 'facet-name-input',
+                'required' => true,
             ],
         ]);
         $this->add([

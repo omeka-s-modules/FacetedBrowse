@@ -23,6 +23,7 @@ class ColumnForm extends Form
             ],
             'attributes' => [
                 'id' => 'column-name-input',
+                'required' => true,
             ],
         ]);
         $this->add([
