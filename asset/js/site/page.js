@@ -13,6 +13,19 @@ const failBrowse = data => sectionContent.html(`${Omeka.jsTranslate('Error fetch
 const failFacet = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching facet markup.')} ${data.status} (${data.statusText})`);
 const failCategory = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching category markup.')} ${data.status} (${data.statusText})`);
 
+// Show that a copy to clipboard was successful.
+const showClipboardCopySuccessful = () => {
+    // Indicate successful copy here
+    $('.permalink .success').addClass('active').show();
+    $('.permalink .default').addClass('inactive');
+    setTimeout(function() {
+        $('.permalink .success').fadeOut(1000, function() {
+            $(this).removeClass('active');
+            $('.permalink .default').removeClass('inactive');
+        });
+    }, 1500);
+};
+
 /**
  * Apply a previous state to the page.
  */
@@ -160,23 +173,26 @@ container.on('submit', 'form.sorting', function(e) {
     });
 });
 
-// Handle permalink button.
+// Handle permalink button (copy to clipboard button).
 container.on('click', '.permalink', function(e) {
     e.preventDefault();
     const thisButton = $(this);
     const permalink = `${thisButton.data('url')}#${thisButton.data('fragment')}`;
-    navigator.clipboard.writeText(permalink).then(function() {
-        // Indicate successful copy here
-        $('.permalink .success').addClass('active').show();
-        $('.permalink .default').addClass('inactive');
 
-        setTimeout(function() {
-            $('.permalink .success').fadeOut(1500, function() {
-                $(this).removeClass('active');
-                $('.permalink .default').removeClass('inactive');
-            });
-        }, 2000);
-    });
+    if (navigator.clipboard && window.isSecureContext) {
+        // Use the browser's clipboard API if possible.
+        navigator.clipboard.writeText(permalink).then(function() {
+            showClipboardCopySuccessful();
+        });
+    } else {
+        // Fall back on the temporary input / execCommand('copy') hack.
+        const tempInput = $('<input>');
+        $('body').append(tempInput);
+        tempInput.val(permalink).select();
+        document.execCommand('copy');
+        tempInput.remove();
+        showClipboardCopySuccessful();
+    }
 });
 
 });
