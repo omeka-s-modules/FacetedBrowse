@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Adriana Hernández, 2021
+# Alfonso Montejo <almontejor@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-24 15:20-0400\n"
+"POT-Creation-Date: 2021-08-27 11:13-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
-"Last-Translator: Adriana Hernández, 2021\n"
+"Last-Translator: Alfonso Montejo <almontejor@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/omeka/teams/14184/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgstr ""
 
 #: src/Controller/SiteAdmin/PageController.php:87
 msgid "Add it to site navigation?"
-msgstr ""
+msgstr "¿Añadir a la navegación del sitio?"
 
 #: src/FacetType/Value.php:94
 msgid ""
@@ -36,10 +37,18 @@ msgid ""
 "                <li>\"Has any value\": enter the property ID followed by any value (usually the property label), separated by a single space.</li>\n"
 "            </ul>"
 msgstr ""
+"\n"
+"            <p>Introducir los valores, separados en líneas independientes. El formato de cada valor dependerá del tipo de consulta:</p>\n"
+"            <ul>\n"
+"                <li>\"Es exactamente\": introducir un valor que coincide exactamente con el valor de la propiedad.</li>\n"
+"                <li>\"Contiene\": introducir un valor que coincide con una parte cualquiera del valor de la propiedad.</li>\n"
+"                <li>\"Es un recurso con ID\": introducir la ID del recurso y, separado por un solo espacio, cualquier valor (por lo general el título del recurso).</li>\n"
+"                <li>\"Tiene cualquier valor\": introducir la ID de la propiedad y, separado por un solo espacio, cualquier valor (por lo general la etiqueta de la propiedad).</li>\n"
+"            </ul>"
 
 #: view/common/faceted-browse/facet-data-form/item-set.phtml:4
 msgid "Show all available item sets."
-msgstr ""
+msgstr "Mostrar todos los conjuntos de fichas disponibles."
 
 #: view/common/faceted-browse/facet-data-form/resource-class.phtml:4
 msgid "Show all available classes."
@@ -47,35 +56,35 @@ msgstr "Mostrar todas las clases disponibles."
 
 #: view/common/faceted-browse/facet-data-form/resource-template.phtml:4
 msgid "Show all available templates."
-msgstr ""
+msgstr "Mostrar todas las plantillas disponibles."
 
 #: view/common/faceted-browse/facet-data-form/value.phtml:6
 msgid "Show all available values."
-msgstr ""
+msgstr "Mostrar todos los valores disponibles."
 
 #: view/common/faceted-browse/navigation-link-form/faceted-browse.phtml:9
 msgid "Select a page"
-msgstr "Selecciona una página"
+msgstr "Seleccionar una página"
 
 #: view/faceted-browse/site-admin/category/column-form.phtml:6
 msgid "Configure column"
-msgstr ""
+msgstr "Configurar columna"
 
 #: view/faceted-browse/site-admin/category/column-form.phtml:9
 msgid "Column type"
-msgstr ""
+msgstr "Tipo de columna"
 
 #: view/faceted-browse/site-admin/category/column-row.phtml:12
 msgid "Edit column"
-msgstr ""
+msgstr "Editar columna"
 
 #: view/faceted-browse/site-admin/category/column-row.phtml:16
 msgid "Remove column"
-msgstr ""
+msgstr "Eliminar columna"
 
 #: view/faceted-browse/site-admin/category/column-row.phtml:20
 msgid "Restore column"
-msgstr ""
+msgstr "Restaurar columna"
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:6
 msgid "Configure facet"
@@ -91,7 +100,7 @@ msgstr "Editar faceta"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:16
 msgid "Remove facet"
-msgstr "Eliminar faceta"
+msgstr "Borrar faceta"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:20
 msgid "Restore facet"
@@ -99,7 +108,7 @@ msgstr "Restaurar faceta"
 
 #: view/faceted-browse/site-admin/category/form.phtml:16
 msgid "Edit Category"
-msgstr "Editar Categoría"
+msgstr "Editar categoría"
 
 #: view/faceted-browse/site-admin/category/form.phtml:16
 #: view/faceted-browse/site-admin/category/form.phtml:18
@@ -107,20 +116,20 @@ msgstr "Editar Categoría"
 #: view/faceted-browse/site-admin/page/form.phtml:14
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Faceted Browse"
-msgstr "Exploración facetada"
+msgstr "Navegación facetada"
 
 #: view/faceted-browse/site-admin/category/form.phtml:18
 msgid "Add Category"
-msgstr "Añadir Categoría"
+msgstr "Añadir categoría"
 
 #: view/faceted-browse/site-admin/category/form.phtml:30
 #: view/faceted-browse/site-admin/page/form.phtml:28
 msgid "Save and&hellip;"
-msgstr "Guardar y&hellip;"
+msgstr "Guardar y…"
 
 #: view/faceted-browse/site-admin/category/form.phtml:32
 msgid "Return to page"
-msgstr ""
+msgstr "Volver a la página"
 
 #: view/faceted-browse/site-admin/category/form.phtml:33
 msgid "Stay on this category"
@@ -129,15 +138,15 @@ msgstr "Permanecer en esta categoría"
 #: view/faceted-browse/site-admin/category/form.phtml:41
 #: view/faceted-browse/site-admin/page/form.phtml:39
 msgid "Page edit"
-msgstr ""
+msgstr "Editar página"
 
 #: view/faceted-browse/site-admin/category/form.phtml:43
 msgid "Category edit"
-msgstr ""
+msgstr "Editar categoría"
 
 #: view/faceted-browse/site-admin/category/form.phtml:43
 msgid "Category add"
-msgstr ""
+msgstr "Añadir categoría"
 
 #: view/faceted-browse/site-admin/category/form.phtml:52
 msgid "Facets"
@@ -145,53 +154,53 @@ msgstr "Facetas"
 
 #: view/faceted-browse/site-admin/category/form.phtml:68
 msgid "Columns"
-msgstr ""
+msgstr "Columnas"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:5
 msgid "Available"
-msgstr ""
+msgstr "Disponible"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:6
 msgid "Count"
-msgstr ""
+msgstr "Recuento"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:19
 #: view/faceted-browse/site/page/browse.phtml:9
 msgid "There are no results."
-msgstr ""
+msgstr "Ningún resultado."
 
-#: view/faceted-browse/site-admin/page/browse.phtml:25
+#: view/faceted-browse/site-admin/page/browse.phtml:23
 msgid "Date created"
 msgstr "Fecha de creación"
 
-#: view/faceted-browse/site-admin/page/browse.phtml:82
+#: view/faceted-browse/site-admin/page/browse.phtml:80
 #, php-format
 msgid "No pages found. %s"
 msgstr "No se han encontrado páginas. %s"
 
-#: view/faceted-browse/site-admin/page/browse.phtml:83
+#: view/faceted-browse/site-admin/page/browse.phtml:81
 msgid "Add a new page."
 msgstr "Añadir una nueva página."
 
-#: view/faceted-browse/site-admin/page/browse.phtml:86
+#: view/faceted-browse/site-admin/page/browse.phtml:84
 msgid "No pages found."
 msgstr "No se han encontrado páginas."
 
 #: view/faceted-browse/site-admin/page/category-row.phtml:10
 msgid "Edit category"
-msgstr ""
+msgstr "Editar categoría"
 
 #: view/faceted-browse/site-admin/page/form.phtml:14
 msgid "Edit Page"
-msgstr "Editar Página"
+msgstr "Editar página"
 
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Add Page"
-msgstr "Añadir Página"
+msgstr "Añadir página"
 
 #: view/faceted-browse/site-admin/page/form.phtml:30
 msgid "Return to pages"
-msgstr "Regresar a páginas"
+msgstr "Volver a las páginas"
 
 #: view/faceted-browse/site-admin/page/form.phtml:31
 msgid "Stay on this page"
@@ -199,7 +208,7 @@ msgstr "Permanecer en esta página"
 
 #: view/faceted-browse/site-admin/page/form.phtml:39
 msgid "Page add"
-msgstr ""
+msgstr "Añadir página"
 
 #: view/faceted-browse/site-admin/page/form.phtml:49
 msgid "Categories"
@@ -207,23 +216,23 @@ msgstr "Categorías"
 
 #: view/faceted-browse/site-admin/page/form.phtml:50
 msgid "Add category"
-msgstr ""
+msgstr "Añadir categoría"
 
 #: view/faceted-browse/site/page/browse.phtml:3
 msgid "Copy permalink"
-msgstr ""
+msgstr "Copiar enlace permanente"
 
 #: view/faceted-browse/site/page/browse.phtml:3
 msgid "Copied!"
-msgstr ""
+msgstr "Copiado con éxito"
 
 #: view/faceted-browse/site/page/categories.phtml:17
 msgid "There are no categories to browse."
-msgstr "No hay categorías para mostrar."
+msgstr "No hay categorías entre las que navegar."
 
 #: view/faceted-browse/site/page/facets.phtml:1
 msgid "Back"
-msgstr "Regresar"
+msgstr "Volver"
 
 #: config/module.config.php:93
 msgid "A facet must have a name."
@@ -231,63 +240,67 @@ msgstr "Una faceta debe tener un nombre."
 
 #: config/module.config.php:94
 msgid "A column must have a name."
-msgstr ""
+msgstr "Una columna debe tener un nombre."
 
 #: config/module.config.php:95
 msgid "A column must have a property."
-msgstr ""
+msgstr "Una columna debe tener una propiedad."
 
 #: config/module.config.php:96
 msgid "Error fetching browse markup."
-msgstr ""
+msgstr "Error al obtener el marcado de navegación. "
 
 #: config/module.config.php:97
 msgid "Error fetching facet markup."
-msgstr ""
+msgstr "Error al obtener el marcado de faceta. "
 
 #: config/module.config.php:98
 msgid "Error fetching category markup."
-msgstr ""
+msgstr "Error al obtener el marcado de categoría. "
 
 #: src/Site/NavigationLink/FacetedBrowse.php:12
 msgid "Faceted browse"
-msgstr "Exploración facetada"
+msgstr "Navegación facetada"
 
 #: src/ColumnType/ItemSet.php:44
 msgid "Max item sets"
-msgstr ""
+msgstr "Conjuntos de fichas máximos"
 
 #: src/ColumnType/ItemSet.php:45
 msgid ""
 "Enter the maximum number of item sets to display. Set to blank to display "
 "all item sets."
 msgstr ""
+"Introducir el número máximo de conjuntos de fichas a mostrar. Si se deja en "
+"blanco se mostrarán todos."
 
 #: src/ColumnType/ResourceClass.php:20 src/FacetType/ResourceClass.php:21
 msgid "Resource class"
-msgstr ""
+msgstr "Clase de recurso"
 
 #: src/ColumnType/Title.php:20
 msgid "Title (link to resource)"
-msgstr ""
+msgstr "Título (enlace al recurso)"
 
 #: src/ColumnType/Value.php:22 src/FacetType/Value.php:21
 msgid "Value"
-msgstr ""
+msgstr "Valor"
 
 #: src/ColumnType/Value.php:52
 msgid "Select a property…"
-msgstr ""
+msgstr "Seleccionar una propiedad..."
 
 #: src/ColumnType/Value.php:59
 msgid "Max values"
-msgstr ""
+msgstr "Valores máximos"
 
 #: src/ColumnType/Value.php:60
 msgid ""
 "Enter the maximum number of values to display. Set to blank to display all "
 "values."
 msgstr ""
+"Introducir el número máximo de valores a mostrar. Si se deja en blanco se "
+"mostrarán todos."
 
 #: src/ColumnType/Unknown.php:23 src/FacetType/Unknown.php:22
 msgid "[Unknown]"
@@ -295,16 +308,16 @@ msgstr "[Desconocido]"
 
 #: src/ColumnType/Unknown.php:45
 msgid "Unknown column type"
-msgstr ""
+msgstr "Tipo de columna desconocido"
 
 #: src/ColumnType/Unknown.php:55
 msgid "Unknown column data"
-msgstr ""
+msgstr "Datos de columna desconocidos"
 
 #: src/FacetType/ItemSet.php:45 src/FacetType/ResourceTemplate.php:45
 #: src/FacetType/ResourceClass.php:45 src/FacetType/Value.php:77
 msgid "Select type"
-msgstr ""
+msgstr "Tipo de selección"
 
 #: src/FacetType/ItemSet.php:46
 msgid ""
@@ -313,25 +326,30 @@ msgid ""
 "\"multiple\" select type, users may choose any number of item sets at a time"
 " via a list."
 msgstr ""
+"Indicar el tipo de selección. Para el tipo de selección \"único\", los "
+"usuarios y usuarias pueden elegir sólo un conjunto de fichas a la vez a "
+"través de una lista o menú desplegable. Para el tipo de selección "
+"\"múltiple\", se pueden elegir varios conjuntos de fichas a la vez a través "
+"de una lista."
 
 #: src/FacetType/ItemSet.php:48 src/FacetType/ResourceTemplate.php:48
 #: src/FacetType/ResourceClass.php:48 src/FacetType/Value.php:80
 msgid "Single (list)"
-msgstr ""
+msgstr "Único (lista)"
 
 #: src/FacetType/ItemSet.php:49 src/FacetType/ResourceTemplate.php:49
 #: src/FacetType/ResourceClass.php:49 src/FacetType/Value.php:81
 msgid "Multiple (list)"
-msgstr ""
+msgstr "Múltiple (lista)"
 
 #: src/FacetType/ItemSet.php:50 src/FacetType/ResourceTemplate.php:50
 #: src/FacetType/ResourceClass.php:50 src/FacetType/Value.php:82
 msgid "Single (dropdown menu)"
-msgstr ""
+msgstr "Único (menú desplegable)"
 
 #: src/FacetType/ItemSet.php:67
 msgid "Select item sets…"
-msgstr ""
+msgstr "Seleccionar conjuntos de fichas..."
 
 #: src/FacetType/ResourceTemplate.php:46
 msgid ""
@@ -340,10 +358,14 @@ msgid ""
 "\"multiple\" select type, users may choose any number of templates at a time"
 " via a list."
 msgstr ""
+"Indicar el tipo de selección. Para el tipo de selección \"único\", los "
+"usuarios y usuarias pueden elegir sólo un plantilla a la vez a través de una"
+" lista o menú desplegable. Para el tipo de selección \"múltiple\", se pueden"
+" elegir varias plantillas a la vez a través de una lista."
 
 #: src/FacetType/ResourceTemplate.php:67
 msgid "Select templates…"
-msgstr ""
+msgstr "Seleccionar plantillas..."
 
 #: src/FacetType/ResourceClass.php:46
 msgid ""
@@ -351,14 +373,18 @@ msgid ""
 "only one class at a time via a list or dropdown menu. For the \"multiple\" "
 "select type, users may choose any number of classes at a time via a list."
 msgstr ""
+"Indicar el tipo de selección. Para el tipo de selección \"único\", los "
+"usuarios y usuarias pueden elegir sólo una clase a la vez a través de una "
+"lista o menú desplegable. Para el tipo de selección \"múltiple\", se pueden "
+"elegir varias clases a la vez a través de una lista."
 
 #: src/FacetType/ResourceClass.php:67
 msgid "Select classes…"
-msgstr "Seleccionar las clases…"
+msgstr "Seleccionar clases…"
 
 #: src/FacetType/FullText.php:20
 msgid "Full-text"
-msgstr ""
+msgstr "Texto completo"
 
 #: src/FacetType/Value.php:59
 msgid "Is exactly"
@@ -366,7 +392,7 @@ msgstr "Es exactamente"
 
 #: src/FacetType/Value.php:60
 msgid "Is not exactly"
-msgstr ""
+msgstr "No es exactamente"
 
 #: src/FacetType/Value.php:61
 msgid "Contains"
@@ -374,23 +400,23 @@ msgstr "Contiene"
 
 #: src/FacetType/Value.php:62
 msgid "Does not contain"
-msgstr ""
+msgstr "No contiene"
 
 #: src/FacetType/Value.php:63
 msgid "Is resource with ID"
-msgstr ""
+msgstr "Es un recurso con ID"
 
 #: src/FacetType/Value.php:64
 msgid "Is not resource with ID"
-msgstr ""
+msgstr "No es un recurso con ID"
 
 #: src/FacetType/Value.php:65
 msgid "Has any value"
-msgstr ""
+msgstr "Contiene información"
 
 #: src/FacetType/Value.php:66
 msgid "Has no values"
-msgstr ""
+msgstr "Está vacío"
 
 #: src/FacetType/Value.php:78
 msgid ""
@@ -398,19 +424,23 @@ msgid ""
 "only one value at a time via a list or dropdown menu. For the \"multiple\" "
 "select type, users may choose any number of values at a time via a list."
 msgstr ""
+"Indicar el tipo de selección. Para el tipo de selección \"único\", los "
+"usuarios y usuarias pueden elegir sólo un valor a la vez a través de una "
+"lista o menú desplegable. Para el tipo de selección \"múltiple\", se pueden "
+"elegir varios valores a la vez a través de una lista."
 
 #: src/FacetType/Unknown.php:44
 msgid "Unknown facet type"
-msgstr "Tipo de faceta desconocida"
+msgstr "Tipo de faceta desconocido"
 
 #: src/FacetType/Unknown.php:54
 msgid "Unknown facet data"
-msgstr "Datos de faceta desconocida"
+msgstr "Datos de faceta desconocidos"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:51
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:50
 msgid "A site must have an ID"
-msgstr "Un sitio debe tener un ID"
+msgstr "Un sitio debe tener una ID"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:145
 msgid "A category must have a site"
@@ -434,73 +464,76 @@ msgstr "Una página debe tener un título"
 
 #: src/Form/ColumnForm.php:22
 msgid "Column name"
-msgstr ""
+msgstr "Nombre de la columna"
 
-#: src/Form/ColumnForm.php:32
+#: src/Form/ColumnForm.php:33
 msgid "Set column"
-msgstr ""
+msgstr "Establecer columna"
 
 #: src/Form/PageForm.php:19
 msgid "Enter the title of this page."
-msgstr "Ingrese el título de esta página."
+msgstr "Introducir el título de esta página."
 
 #: src/Form/PageForm.php:43
 msgid "Select the type of resources to browse."
-msgstr ""
+msgstr "Seleccionar el tipo de recursos por los que navegar."
 
 #: src/Form/CategoryForm.php:23
 msgid ""
 "Enter the name of this category. A category is a logical grouping of "
 "resources that can be described using faceted classification."
 msgstr ""
-
-#: src/Form/CategoryForm.php:34
-msgid "Search query"
-msgstr "Buscar consulta"
+"Introducir el nombre de esta categoría. Una categoría es una agrupación "
+"lógica de recursos que puede ser descrita mediante una clasificación "
+"facetada."
 
 #: src/Form/CategoryForm.php:35
 msgid ""
 "Configure the logical grouping of resources that make up this category. No "
 "query means all site resources."
 msgstr ""
+"Configurar la agrupación lógica de recursos que constituyen esta categoría. "
+"Si no se especifica ninguna consulta se devolverán todos los recursos del "
+"sitio."
 
 #: src/Form/CategoryForm.php:52
 msgid "Add a facet…"
-msgstr ""
+msgstr "Añadir una faceta..."
 
 #: src/Form/CategoryForm.php:65
 msgid "Add a column…"
-msgstr ""
+msgstr "Añadir una columna..."
 
 #: src/Form/FacetForm.php:22
 msgid "Facet name"
-msgstr "Nombre de faceta"
+msgstr "Nombre de la faceta"
 
-#: src/Form/FacetForm.php:32
+#: src/Form/FacetForm.php:33
 msgid "Set facet"
-msgstr ""
+msgstr "Establecer faceta"
 
 #: src/Controller/SiteAdmin/PageController.php:44
 msgid "Page successfully added. Add categories below."
 msgstr ""
+"Página añadida con éxito. Pueden añadirse las categorías a continuación."
 
 #: src/Controller/SiteAdmin/PageController.php:83
 #, php-format
 msgid "Page successfully edited. %s"
-msgstr ""
+msgstr "Página editada con éxito. %s"
 
 #: src/Controller/SiteAdmin/PageController.php:124
 msgid "Page successfully deleted."
-msgstr ""
+msgstr "Página borrada con éxito."
 
 #: src/Controller/SiteAdmin/CategoryController.php:37
 msgid "Category successfully added."
-msgstr ""
+msgstr "Categoría añadida con éxito."
 
 #: src/Controller/SiteAdmin/CategoryController.php:83
 msgid "Category successfully edited."
-msgstr ""
+msgstr "Categoría editada con éxito."
 
 #: src/Controller/SiteAdmin/CategoryController.php:119
 msgid "Category successfully deleted."
-msgstr ""
+msgstr "Categoría borrada con éxito."

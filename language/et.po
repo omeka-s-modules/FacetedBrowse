@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-24 15:20-0400\n"
+"POT-Creation-Date: 2021-08-27 11:13-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Rivo Zängov <eraser@eraser.ee>, 2021\n"
 "Language-Team: Estonian (https://www.transifex.com/omeka/teams/14184/et/)\n"
@@ -160,20 +160,20 @@ msgstr "Arv"
 msgid "There are no results."
 msgstr "Tulemusi pole."
 
-#: view/faceted-browse/site-admin/page/browse.phtml:25
+#: view/faceted-browse/site-admin/page/browse.phtml:23
 msgid "Date created"
 msgstr "Loomise kuupäev"
 
-#: view/faceted-browse/site-admin/page/browse.phtml:82
+#: view/faceted-browse/site-admin/page/browse.phtml:80
 #, php-format
 msgid "No pages found. %s"
 msgstr "Ühtegi lehekülge ei leitud. %s"
 
-#: view/faceted-browse/site-admin/page/browse.phtml:83
+#: view/faceted-browse/site-admin/page/browse.phtml:81
 msgid "Add a new page."
 msgstr "Lisa uus lehekülg."
 
-#: view/faceted-browse/site-admin/page/browse.phtml:86
+#: view/faceted-browse/site-admin/page/browse.phtml:84
 msgid "No pages found."
 msgstr "Ühtegi lehekülge ei leitud."
 
@@ -436,7 +436,7 @@ msgstr "Leheküljel peab olema pealkiri"
 msgid "Column name"
 msgstr ""
 
-#: src/Form/ColumnForm.php:32
+#: src/Form/ColumnForm.php:33
 msgid "Set column"
 msgstr ""
 
@@ -453,10 +453,6 @@ msgid ""
 "Enter the name of this category. A category is a logical grouping of "
 "resources that can be described using faceted classification."
 msgstr ""
-
-#: src/Form/CategoryForm.php:34
-msgid "Search query"
-msgstr "Otsingupäring"
 
 #: src/Form/CategoryForm.php:35
 msgid ""
@@ -476,7 +472,7 @@ msgstr ""
 msgid "Facet name"
 msgstr ""
 
-#: src/Form/FacetForm.php:32
+#: src/Form/FacetForm.php:33
 msgid "Set facet"
 msgstr ""
 

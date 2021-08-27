@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-24 15:20-0400\n"
+"POT-Creation-Date: 2021-08-27 11:13-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -162,20 +162,20 @@ msgstr ""
 msgid "There are no results."
 msgstr ""
 
-#: view/faceted-browse/site-admin/page/browse.phtml:25
+#: view/faceted-browse/site-admin/page/browse.phtml:23
 msgid "Date created"
 msgstr ""
 
-#: view/faceted-browse/site-admin/page/browse.phtml:82
+#: view/faceted-browse/site-admin/page/browse.phtml:80
 #, php-format
 msgid "No pages found. %s"
 msgstr ""
 
-#: view/faceted-browse/site-admin/page/browse.phtml:83
+#: view/faceted-browse/site-admin/page/browse.phtml:81
 msgid "Add a new page."
 msgstr ""
 
-#: view/faceted-browse/site-admin/page/browse.phtml:86
+#: view/faceted-browse/site-admin/page/browse.phtml:84
 msgid "No pages found."
 msgstr ""
 
@@ -438,7 +438,7 @@ msgstr ""
 msgid "Column name"
 msgstr ""
 
-#: src/Form/ColumnForm.php:32
+#: src/Form/ColumnForm.php:33
 msgid "Set column"
 msgstr ""
 
@@ -454,10 +454,6 @@ msgstr ""
 msgid ""
 "Enter the name of this category. A category is a logical grouping of "
 "resources that can be described using faceted classification."
-msgstr ""
-
-#: src/Form/CategoryForm.php:34
-msgid "Search query"
 msgstr ""
 
 #: src/Form/CategoryForm.php:35
@@ -478,7 +474,7 @@ msgstr ""
 msgid "Facet name"
 msgstr ""
 
-#: src/Form/FacetForm.php:32
+#: src/Form/FacetForm.php:33
 msgid "Set facet"
 msgstr ""
 

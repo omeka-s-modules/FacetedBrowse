@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-24 15:20-0400\n"
+"POT-Creation-Date: 2021-08-27 11:13-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Emil Stoyanov <emostoyanov@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (Bulgaria) (https://www.transifex.com/omeka/teams/14184/bg_BG/)\n"
@@ -168,20 +168,20 @@ msgstr "Брой"
 msgid "There are no results."
 msgstr "Няма резултати."
 
-#: view/faceted-browse/site-admin/page/browse.phtml:25
+#: view/faceted-browse/site-admin/page/browse.phtml:23
 msgid "Date created"
 msgstr "Дата на създаване"
 
-#: view/faceted-browse/site-admin/page/browse.phtml:82
+#: view/faceted-browse/site-admin/page/browse.phtml:80
 #, php-format
 msgid "No pages found. %s"
 msgstr "Не са намерени страници. %s"
 
-#: view/faceted-browse/site-admin/page/browse.phtml:83
+#: view/faceted-browse/site-admin/page/browse.phtml:81
 msgid "Add a new page."
 msgstr "Добавяне на нова страница."
 
-#: view/faceted-browse/site-admin/page/browse.phtml:86
+#: view/faceted-browse/site-admin/page/browse.phtml:84
 msgid "No pages found."
 msgstr "Не са намерени страници."
 
@@ -444,7 +444,7 @@ msgstr "Страницата трябва да има заглавие"
 msgid "Column name"
 msgstr ""
 
-#: src/Form/ColumnForm.php:32
+#: src/Form/ColumnForm.php:33
 msgid "Set column"
 msgstr ""
 
@@ -461,10 +461,6 @@ msgid ""
 "Enter the name of this category. A category is a logical grouping of "
 "resources that can be described using faceted classification."
 msgstr ""
-
-#: src/Form/CategoryForm.php:34
-msgid "Search query"
-msgstr "Заявка за търсене"
 
 #: src/Form/CategoryForm.php:35
 msgid ""
@@ -484,7 +480,7 @@ msgstr ""
 msgid "Facet name"
 msgstr "Име на фасета"
 
-#: src/Form/FacetForm.php:32
+#: src/Form/FacetForm.php:33
 msgid "Set facet"
 msgstr ""
 
