@@ -125,14 +125,14 @@ class FacetedBrowse extends AbstractPlugin
         switch ($queryType) {
             case 'res':
             case 'nres':
-                $qb->select("CONCAT(vr.id, ' ', vr.title) label", 'COUNT(v) has_count')
+                $qb->select("0 id, CONCAT(vr.id, ' ', vr.title) label", 'COUNT(v) has_count')
                     ->join('v.valueResource', 'vr')
                     ->andWhere('v.type = :type')
                     ->setParameter('type', 'resource');
                 break;
             case 'ex':
             case 'nex':
-                $qb->select("CONCAT(p.id, ' ', vo.label, ': ', p.label) label", 'COUNT(v) has_count')
+                $qb->select("0 id, CONCAT(p.id, ' ', vo.label, ': ', p.label) label", 'COUNT(v) has_count')
                     ->join('v.property', 'p')
                     ->join('p.vocabulary', 'vo');
                 break;
@@ -141,7 +141,7 @@ class FacetedBrowse extends AbstractPlugin
             case 'in':
             case 'nin':
             default:
-                $qb->select('v.value label', 'COUNT(v.value) has_count')
+                $qb->select('0 id, v.value label', 'COUNT(v.value) has_count')
                     ->andWhere('v.type = :type')
                     ->setParameter('type', 'literal');
         }
@@ -163,7 +163,7 @@ class FacetedBrowse extends AbstractPlugin
     {
         $em = $this->services->get('Omeka\EntityManager');
         $dql = sprintf('
-        SELECT CONCAT(v.label, \': \', rc.label) label, COUNT(r.id) has_count
+        SELECT rc.id id, CONCAT(v.label, \': \', rc.label) label, COUNT(r.id) has_count
         FROM %s r
         JOIN r.resourceClass rc
         JOIN rc.vocabulary v
@@ -186,7 +186,7 @@ class FacetedBrowse extends AbstractPlugin
     {
         $em = $this->services->get('Omeka\EntityManager');
         $dql = sprintf('
-        SELECT rt.label label, COUNT(r.id) has_count
+        SELECT rt.id id, rt.label label, COUNT(r.id) has_count
         FROM %s r
         JOIN r.resourceTemplate rt
         WHERE r.id IN (:resourceIds)
@@ -208,7 +208,7 @@ class FacetedBrowse extends AbstractPlugin
     {
         $em = $this->services->get('Omeka\EntityManager');
         $dql = sprintf('
-        SELECT iset.title label, COUNT(r.id) has_count
+        SELECT iset.id id, iset.title label, COUNT(r.id) has_count
         FROM %s r
         JOIN r.itemSets iset
         WHERE r.id IN (:resourceIds)

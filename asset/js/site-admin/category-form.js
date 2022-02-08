@@ -71,6 +71,16 @@ const closeOtherSidebars = function(button, sidebar) {
     });
 }
 
+/**
+ * Scroll to an element in the sidebar.
+ */
+const sidebarScrollTo = function(scrollTo) {
+    const container = $('.confirm-main');
+    container.animate({
+        scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+    });
+};
+
 closeOtherSidebars('.delete.button', '#delete');
 closeOtherSidebars('.query-form-edit', '#query-sidebar-edit');
 closeOtherSidebars('.facet-edit', '#facet-sidebar');
@@ -288,13 +298,47 @@ $(document).on('click', '#show-all', function(e) {
         query.category_query = $('#category-query').val();
         $.get(thisCheckbox.data('url'), query, function(html) {
             tableContainer.html(html);
-            const container = $('.confirm-main');
-            container.animate({
-                scrollTop: tableContainer.offset().top - container.offset().top + container.scrollTop()
-            });
+            sidebarScrollTo($('#show-all-container'));
         });
     } else {
         tableContainer.empty();
+    }
+});
+
+// Handle add all button.
+$(document).on('click', '#add-all', function(e) {
+    const rows = $('#show-all-table').data('rows');
+    const valuesTextarea = $('#value-values');
+    const classIdsSelect = $('#resource-class-class-ids');
+    const templateIdsSelect = $('#resource-template-template-ids');
+    const itemSetIdsSelect = $('#item-set-item-set-ids');
+    const container = $('.confirm-main');
+    const populateMultiSelect = function(rows, multiSelect) {
+        $.each(rows, function(index, row) {
+            multiSelect.find(`option[value="${row.id}"]`).prop('selected', true);
+        });
+        multiSelect.trigger('chosen:updated');
+    };
+    if (valuesTextarea.length) {
+        // Value facet type
+        const labels = [];
+        $.each(rows, function(index, row) {
+            labels.push(row.label);
+        });
+        valuesTextarea.text(labels.join("\n"));
+        sidebarScrollTo(valuesTextarea.closest('.field'));
+    } else if (classIdsSelect.length) {
+        // Resource class facet type
+        populateMultiSelect(rows, classIdsSelect);
+        sidebarScrollTo(classIdsSelect.closest('.field'));
+    } else if (templateIdsSelect.length) {
+        // Resource template facet type
+        populateMultiSelect(rows, templateIdsSelect);
+        sidebarScrollTo(templateIdsSelect.closest('.field'));
+    } else if (itemSetIdsSelect.length) {
+        // Item set facet type
+        populateMultiSelect(rows, itemSetIdsSelect);
+        sidebarScrollTo(itemSetIdsSelect.closest('.field'));
     }
 });
 
