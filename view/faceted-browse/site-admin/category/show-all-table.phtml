@@ -1,7 +1,5 @@
 <?php if ($rows): ?>
-<button id="add-all" type="button">
-    <?php echo $this->translate('Add all'); ?>
-</button>
+<button id="add-all" type="button"><?php echo $this->translate('Add all'); ?></button>
 <table id="show-all-table" data-rows="<?php echo $this->escapeHtml(json_encode($rows)); ?>">
     <thead>
         <tr>

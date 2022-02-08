@@ -308,37 +308,34 @@ $(document).on('click', '#show-all', function(e) {
 // Handle add all button.
 $(document).on('click', '#add-all', function(e) {
     const rows = $('#show-all-table').data('rows');
-    const valuesTextarea = $('#value-values');
-    const classIdsSelect = $('#resource-class-class-ids');
-    const templateIdsSelect = $('#resource-template-template-ids');
-    const itemSetIdsSelect = $('#item-set-item-set-ids');
-    const container = $('.confirm-main');
-    const populateMultiSelect = function(rows, multiSelect) {
+    const populateMultiSelect = function(multiSelect, rows) {
         $.each(rows, function(index, row) {
             multiSelect.find(`option[value="${row.id}"]`).prop('selected', true);
         });
         multiSelect.trigger('chosen:updated');
     };
-    if (valuesTextarea.length) {
-        // Value facet type
-        const labels = [];
-        $.each(rows, function(index, row) {
-            labels.push(row.label);
-        });
-        valuesTextarea.text(labels.join("\n"));
-        sidebarScrollTo(valuesTextarea.closest('.field'));
-    } else if (classIdsSelect.length) {
-        // Resource class facet type
-        populateMultiSelect(rows, classIdsSelect);
-        sidebarScrollTo(classIdsSelect.closest('.field'));
-    } else if (templateIdsSelect.length) {
-        // Resource template facet type
-        populateMultiSelect(rows, templateIdsSelect);
-        sidebarScrollTo(templateIdsSelect.closest('.field'));
-    } else if (itemSetIdsSelect.length) {
-        // Item set facet type
-        populateMultiSelect(rows, itemSetIdsSelect);
-        sidebarScrollTo(itemSetIdsSelect.closest('.field'));
+    // Add all according to facet type.
+    switch ($('#facet-type-input').val()) {
+        case 'value':
+            const labels = [];
+            $.each(rows, (index, row) => {
+                labels.push(row.label);
+            });
+            $('#value-values').text(labels.join("\n"));
+            sidebarScrollTo($('#value-values').closest('.field'));
+            break;
+        case 'resource_class':
+            populateMultiSelect($('#resource-class-class-ids'), rows);
+            sidebarScrollTo($('#resource-class-class-ids').closest('.field'));
+            break;
+        case 'resource_template':
+            populateMultiSelect($('#resource-template-template-ids'), rows);
+            sidebarScrollTo($('#resource-template-template-ids').closest('.field'));
+            break;
+        case 'item_set':
+            populateMultiSelect($('#item-set-item-set-ids'), rows);
+            sidebarScrollTo($('#item-set-item-set-ids').closest('.field'));
+            break;
     }
 });
 
