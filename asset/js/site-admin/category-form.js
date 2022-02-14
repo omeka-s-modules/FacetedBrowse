@@ -299,6 +299,8 @@ $(document).on('click', '#show-all', function(e) {
         $.get(thisCheckbox.data('url'), query, function(html) {
             tableContainer.html(html);
             sidebarScrollTo($('#show-all-container'));
+        }).fail(function() {
+            tableContainer.html('<p class="error">' + Omeka.jsTranslate('Cannot show all. The result set is likely too large.') + '<p>');
         });
     } else {
         tableContainer.empty();
