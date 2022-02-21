@@ -96,6 +96,7 @@ return [
         'Error fetching browse markup.', // @translate
         'Error fetching facet markup.', // @translate
         'Error fetching category markup.', // @translate
+        'Cannot show all. The result set is likely too large.', // @translate
     ],
     'navigation' => [
         'site' => [
