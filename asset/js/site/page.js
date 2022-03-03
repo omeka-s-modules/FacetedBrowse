@@ -73,6 +73,7 @@ FacetedBrowse.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, pag
     if (null !== sortOrder) queries.push(`sort_order=${sortOrder}`);
     if (null !== page) queries.push(`page=${page}`);
     queries.push(`faceted_browse_category_id=${facets.data('categoryId')}`);
+    sectionContent.text(Omeka.jsTranslate('Loading results…'));
     $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
         sectionContent.html(html);
         setPermalinkFragment();

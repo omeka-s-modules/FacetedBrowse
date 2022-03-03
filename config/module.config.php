@@ -97,6 +97,7 @@ return [
         'Error fetching facet markup.', // @translate
         'Error fetching category markup.', // @translate
         'Cannot show all. The result set is likely too large.', // @translate
+        'Loading results…', // @translate
     ],
     'navigation' => [
         'site' => [
