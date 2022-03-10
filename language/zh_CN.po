@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-27 11:13-0400\n"
+"POT-Creation-Date: 2022-03-10 12:29-0500\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Hong Zhang <zhangh@unlv.nevada.edu>, 2021\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/omeka/teams/14184/zh_CN/)\n"
@@ -77,11 +77,11 @@ msgstr ""
 msgid "Restore column"
 msgstr ""
 
-#: view/faceted-browse/site-admin/category/facet-form.phtml:6
+#: view/faceted-browse/site-admin/category/facet-form.phtml:7
 msgid "Configure facet"
 msgstr "配置分面"
 
-#: view/faceted-browse/site-admin/category/facet-form.phtml:9
+#: view/faceted-browse/site-admin/category/facet-form.phtml:10
 msgid "Facet type"
 msgstr "分面类型"
 
@@ -147,15 +147,19 @@ msgstr "分面"
 msgid "Columns"
 msgstr ""
 
-#: view/faceted-browse/site-admin/category/show-all-table.phtml:5
-msgid "Available"
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:2
+msgid "Add all"
 msgstr ""
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:6
+msgid "Available"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:7
 msgid "Count"
 msgstr ""
 
-#: view/faceted-browse/site-admin/category/show-all-table.phtml:19
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:20
 #: view/faceted-browse/site/page/browse.phtml:9
 msgid "There are no results."
 msgstr ""
@@ -247,6 +251,14 @@ msgstr ""
 
 #: config/module.config.php:98
 msgid "Error fetching category markup."
+msgstr ""
+
+#: config/module.config.php:99
+msgid "Cannot show all. The result set is likely too large."
+msgstr ""
+
+#: config/module.config.php:100
+msgid "Loading results…"
 msgstr ""
 
 #: src/Site/NavigationLink/FacetedBrowse.php:12
@@ -408,7 +420,7 @@ msgid "Unknown facet data"
 msgstr "未知分面数据"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:51
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:50
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
 msgid "A site must have an ID"
 msgstr "网站必须有一个ID"
 
@@ -424,11 +436,11 @@ msgstr "类别必须有一个名字"
 msgid "A category must have a query"
 msgstr "类别必须有一个查询"
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:91
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:90
 msgid "A page must have a site"
 msgstr "页面必须有一个网站"
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:94
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:93
 msgid "A page must have a title"
 msgstr "页面必须有一个标题"
 

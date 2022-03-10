@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-27 11:13-0400\n"
+"POT-Creation-Date: 2022-03-10 12:29-0500\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Rivo Zängov <eraser@eraser.ee>, 2021\n"
 "Language-Team: Estonian (https://www.transifex.com/omeka/teams/14184/et/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: src/Controller/SiteAdmin/PageController.php:87
 msgid "Add it to site navigation?"
-msgstr ""
+msgstr "Lisada saidi menüüsse?"
 
 #: src/FacetType/Value.php:94
 msgid ""
@@ -59,43 +59,43 @@ msgstr "Vali lehekülg"
 
 #: view/faceted-browse/site-admin/category/column-form.phtml:6
 msgid "Configure column"
-msgstr ""
+msgstr "Seadista veergu"
 
 #: view/faceted-browse/site-admin/category/column-form.phtml:9
 msgid "Column type"
-msgstr ""
+msgstr "Veeru liik"
 
 #: view/faceted-browse/site-admin/category/column-row.phtml:12
 msgid "Edit column"
-msgstr ""
+msgstr "Muuda veergu"
 
 #: view/faceted-browse/site-admin/category/column-row.phtml:16
 msgid "Remove column"
-msgstr ""
+msgstr "Eemalda veerg"
 
 #: view/faceted-browse/site-admin/category/column-row.phtml:20
 msgid "Restore column"
-msgstr ""
+msgstr "Taasta veerg"
 
-#: view/faceted-browse/site-admin/category/facet-form.phtml:6
+#: view/faceted-browse/site-admin/category/facet-form.phtml:7
 msgid "Configure facet"
-msgstr ""
+msgstr "Seadista vaadet"
 
-#: view/faceted-browse/site-admin/category/facet-form.phtml:9
+#: view/faceted-browse/site-admin/category/facet-form.phtml:10
 msgid "Facet type"
-msgstr ""
+msgstr "Vaate liik"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:12
 msgid "Edit facet"
-msgstr ""
+msgstr "Muuda vaadet"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:16
 msgid "Remove facet"
-msgstr ""
+msgstr "emalda vaade"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:20
 msgid "Restore facet"
-msgstr ""
+msgstr "Taasta vaade"
 
 #: view/faceted-browse/site-admin/category/form.phtml:16
 msgid "Edit Category"
@@ -120,7 +120,7 @@ msgstr "Salvesta ja &hellip;"
 
 #: view/faceted-browse/site-admin/category/form.phtml:32
 msgid "Return to page"
-msgstr ""
+msgstr "Tagasi leheküljele"
 
 #: view/faceted-browse/site-admin/category/form.phtml:33
 msgid "Stay on this category"
@@ -129,33 +129,37 @@ msgstr "Jää sellesse kategooriasse"
 #: view/faceted-browse/site-admin/category/form.phtml:41
 #: view/faceted-browse/site-admin/page/form.phtml:39
 msgid "Page edit"
-msgstr ""
+msgstr "Lehekülje muutmine"
 
 #: view/faceted-browse/site-admin/category/form.phtml:43
 msgid "Category edit"
-msgstr ""
+msgstr "Kategooria muutmine"
 
 #: view/faceted-browse/site-admin/category/form.phtml:43
 msgid "Category add"
-msgstr ""
+msgstr "Kategooria lisamine"
 
 #: view/faceted-browse/site-admin/category/form.phtml:52
 msgid "Facets"
-msgstr ""
+msgstr "Vaated"
 
 #: view/faceted-browse/site-admin/category/form.phtml:68
 msgid "Columns"
+msgstr "Veerud"
+
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:2
+msgid "Add all"
 msgstr ""
 
-#: view/faceted-browse/site-admin/category/show-all-table.phtml:5
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:6
 msgid "Available"
 msgstr "Saadaval"
 
-#: view/faceted-browse/site-admin/category/show-all-table.phtml:6
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:7
 msgid "Count"
 msgstr "Arv"
 
-#: view/faceted-browse/site-admin/category/show-all-table.phtml:19
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:20
 #: view/faceted-browse/site/page/browse.phtml:9
 msgid "There are no results."
 msgstr "Tulemusi pole."
@@ -179,7 +183,7 @@ msgstr "Ühtegi lehekülge ei leitud."
 
 #: view/faceted-browse/site-admin/page/category-row.phtml:10
 msgid "Edit category"
-msgstr ""
+msgstr "Muuda kategooriat"
 
 #: view/faceted-browse/site-admin/page/form.phtml:14
 msgid "Edit Page"
@@ -199,7 +203,7 @@ msgstr "Jää sellele leheküljele"
 
 #: view/faceted-browse/site-admin/page/form.phtml:39
 msgid "Page add"
-msgstr ""
+msgstr "Lehekülje lisamine"
 
 #: view/faceted-browse/site-admin/page/form.phtml:49
 msgid "Categories"
@@ -207,15 +211,15 @@ msgstr "Kategooriad"
 
 #: view/faceted-browse/site-admin/page/form.phtml:50
 msgid "Add category"
-msgstr ""
+msgstr "Lisa kategooria"
 
 #: view/faceted-browse/site/page/browse.phtml:3
 msgid "Copy permalink"
-msgstr ""
+msgstr "Kopeeri püsilink"
 
 #: view/faceted-browse/site/page/browse.phtml:3
 msgid "Copied!"
-msgstr ""
+msgstr "Kopeeritud!"
 
 #: view/faceted-browse/site/page/categories.phtml:17
 msgid "There are no categories to browse."
@@ -227,35 +231,43 @@ msgstr "Tagasi"
 
 #: config/module.config.php:93
 msgid "A facet must have a name."
-msgstr ""
+msgstr "Vaatel peab olema nimi."
 
 #: config/module.config.php:94
 msgid "A column must have a name."
-msgstr ""
+msgstr "Veerul peab olema nimi."
 
 #: config/module.config.php:95
 msgid "A column must have a property."
-msgstr ""
+msgstr "Veerul peab olema omadus."
 
 #: config/module.config.php:96
 msgid "Error fetching browse markup."
-msgstr ""
+msgstr "Tõrge sirvimise märgistuse tõmbamisel."
 
 #: config/module.config.php:97
 msgid "Error fetching facet markup."
-msgstr ""
+msgstr "Tõrge vaate märgistuse tõmbamisel."
 
 #: config/module.config.php:98
 msgid "Error fetching category markup."
 msgstr "Tõrge kategooria märgenduse tõmbamisel."
 
+#: config/module.config.php:99
+msgid "Cannot show all. The result set is likely too large."
+msgstr ""
+
+#: config/module.config.php:100
+msgid "Loading results…"
+msgstr ""
+
 #: src/Site/NavigationLink/FacetedBrowse.php:12
 msgid "Faceted browse"
-msgstr ""
+msgstr "Eri vaadetega sirvimine"
 
 #: src/ColumnType/ItemSet.php:44
 msgid "Max item sets"
-msgstr ""
+msgstr "Maks. ühikute kogusid"
 
 #: src/ColumnType/ItemSet.php:45
 msgid ""
@@ -265,23 +277,23 @@ msgstr ""
 
 #: src/ColumnType/ResourceClass.php:20 src/FacetType/ResourceClass.php:21
 msgid "Resource class"
-msgstr ""
+msgstr "Ressursi klass"
 
 #: src/ColumnType/Title.php:20
 msgid "Title (link to resource)"
-msgstr ""
+msgstr "Pealkiri (link ressursile)"
 
 #: src/ColumnType/Value.php:22 src/FacetType/Value.php:21
 msgid "Value"
-msgstr ""
+msgstr "Väärtus"
 
 #: src/ColumnType/Value.php:52
 msgid "Select a property…"
-msgstr ""
+msgstr "Vali omadus..."
 
 #: src/ColumnType/Value.php:59
 msgid "Max values"
-msgstr ""
+msgstr "Maks. väärtuseid"
 
 #: src/ColumnType/Value.php:60
 msgid ""
@@ -295,16 +307,16 @@ msgstr "[tundmatu]"
 
 #: src/ColumnType/Unknown.php:45
 msgid "Unknown column type"
-msgstr ""
+msgstr "Tundmatu veeru liik"
 
 #: src/ColumnType/Unknown.php:55
 msgid "Unknown column data"
-msgstr ""
+msgstr "Tundmatu veeru andmed"
 
 #: src/FacetType/ItemSet.php:45 src/FacetType/ResourceTemplate.php:45
 #: src/FacetType/ResourceClass.php:45 src/FacetType/Value.php:77
 msgid "Select type"
-msgstr ""
+msgstr "Vali liik"
 
 #: src/FacetType/ItemSet.php:46
 msgid ""
@@ -317,17 +329,17 @@ msgstr ""
 #: src/FacetType/ItemSet.php:48 src/FacetType/ResourceTemplate.php:48
 #: src/FacetType/ResourceClass.php:48 src/FacetType/Value.php:80
 msgid "Single (list)"
-msgstr ""
+msgstr "Üks (nimekiri)"
 
 #: src/FacetType/ItemSet.php:49 src/FacetType/ResourceTemplate.php:49
 #: src/FacetType/ResourceClass.php:49 src/FacetType/Value.php:81
 msgid "Multiple (list)"
-msgstr ""
+msgstr "Mitu (nimekiri)"
 
 #: src/FacetType/ItemSet.php:50 src/FacetType/ResourceTemplate.php:50
 #: src/FacetType/ResourceClass.php:50 src/FacetType/Value.php:82
 msgid "Single (dropdown menu)"
-msgstr ""
+msgstr "Üks (rippmenüü valik)"
 
 #: src/FacetType/ItemSet.php:67
 msgid "Select item sets…"
@@ -366,7 +378,7 @@ msgstr "On täpselt"
 
 #: src/FacetType/Value.php:60
 msgid "Is not exactly"
-msgstr ""
+msgstr "Pole täpselt"
 
 #: src/FacetType/Value.php:61
 msgid "Contains"
@@ -374,7 +386,7 @@ msgstr "Sisaldab"
 
 #: src/FacetType/Value.php:62
 msgid "Does not contain"
-msgstr ""
+msgstr "Ei sisalda"
 
 #: src/FacetType/Value.php:63
 msgid "Is resource with ID"
@@ -382,15 +394,15 @@ msgstr "On ressurss ID-ga"
 
 #: src/FacetType/Value.php:64
 msgid "Is not resource with ID"
-msgstr ""
+msgstr "Pole ressurss ID-ga"
 
 #: src/FacetType/Value.php:65
 msgid "Has any value"
-msgstr ""
+msgstr "On mõni väärtus"
 
 #: src/FacetType/Value.php:66
 msgid "Has no values"
-msgstr ""
+msgstr "Pole ühtegi väärtust"
 
 #: src/FacetType/Value.php:78
 msgid ""
@@ -401,14 +413,14 @@ msgstr ""
 
 #: src/FacetType/Unknown.php:44
 msgid "Unknown facet type"
-msgstr ""
+msgstr "Tundmatu vaate liik"
 
 #: src/FacetType/Unknown.php:54
 msgid "Unknown facet data"
-msgstr ""
+msgstr "Tundmatud vaate andmed"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:51
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:50
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
 msgid "A site must have an ID"
 msgstr "Saidil peab olema ID"
 
@@ -424,21 +436,21 @@ msgstr "Kategoorial peab olema nimi"
 msgid "A category must have a query"
 msgstr "Kategoorial peab olema päring"
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:91
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:90
 msgid "A page must have a site"
 msgstr "Leheküljel peab olema sait"
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:94
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:93
 msgid "A page must have a title"
 msgstr "Leheküljel peab olema pealkiri"
 
 #: src/Form/ColumnForm.php:22
 msgid "Column name"
-msgstr ""
+msgstr "Veeru nimi"
 
 #: src/Form/ColumnForm.php:33
 msgid "Set column"
-msgstr ""
+msgstr "Määra veerg"
 
 #: src/Form/PageForm.php:19
 msgid "Enter the title of this page."
@@ -446,7 +458,7 @@ msgstr "Sisesta selle lehekülje pealkiri."
 
 #: src/Form/PageForm.php:43
 msgid "Select the type of resources to browse."
-msgstr ""
+msgstr "Vali, mis liiki ressursse sirvida."
 
 #: src/Form/CategoryForm.php:23
 msgid ""
@@ -462,41 +474,41 @@ msgstr ""
 
 #: src/Form/CategoryForm.php:52
 msgid "Add a facet…"
-msgstr ""
+msgstr "Lisa vaade..."
 
 #: src/Form/CategoryForm.php:65
 msgid "Add a column…"
-msgstr ""
+msgstr "Lisa veerg..."
 
 #: src/Form/FacetForm.php:22
 msgid "Facet name"
-msgstr ""
+msgstr "Vaate nimi"
 
 #: src/Form/FacetForm.php:33
 msgid "Set facet"
-msgstr ""
+msgstr "Määra vaade"
 
 #: src/Controller/SiteAdmin/PageController.php:44
 msgid "Page successfully added. Add categories below."
-msgstr ""
+msgstr "Lehekülg on lisatud. Lisa allapoole kategooriad."
 
 #: src/Controller/SiteAdmin/PageController.php:83
 #, php-format
 msgid "Page successfully edited. %s"
-msgstr ""
+msgstr "Lehekülge on muudetud. %s"
 
 #: src/Controller/SiteAdmin/PageController.php:124
 msgid "Page successfully deleted."
-msgstr ""
+msgstr "Lehekülge on muudetud."
 
 #: src/Controller/SiteAdmin/CategoryController.php:37
 msgid "Category successfully added."
-msgstr ""
+msgstr "Kategooria on lisatud."
 
 #: src/Controller/SiteAdmin/CategoryController.php:83
 msgid "Category successfully edited."
-msgstr ""
+msgstr "Kategooriat on muudetud."
 
 #: src/Controller/SiteAdmin/CategoryController.php:119
 msgid "Category successfully deleted."
-msgstr ""
+msgstr "Kategooria on kustutatud."

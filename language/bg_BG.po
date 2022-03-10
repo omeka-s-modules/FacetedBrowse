@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-27 11:13-0400\n"
+"POT-Creation-Date: 2022-03-10 12:29-0500\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Emil Stoyanov <emostoyanov@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (Bulgaria) (https://www.transifex.com/omeka/teams/14184/bg_BG/)\n"
@@ -85,11 +85,11 @@ msgstr ""
 msgid "Restore column"
 msgstr ""
 
-#: view/faceted-browse/site-admin/category/facet-form.phtml:6
+#: view/faceted-browse/site-admin/category/facet-form.phtml:7
 msgid "Configure facet"
 msgstr "Конфигуриране на фасета"
 
-#: view/faceted-browse/site-admin/category/facet-form.phtml:9
+#: view/faceted-browse/site-admin/category/facet-form.phtml:10
 msgid "Facet type"
 msgstr "Тип на фасета"
 
@@ -155,15 +155,19 @@ msgstr "Фасети"
 msgid "Columns"
 msgstr ""
 
-#: view/faceted-browse/site-admin/category/show-all-table.phtml:5
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:2
+msgid "Add all"
+msgstr ""
+
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:6
 msgid "Available"
 msgstr "Достъпни"
 
-#: view/faceted-browse/site-admin/category/show-all-table.phtml:6
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:7
 msgid "Count"
 msgstr "Брой"
 
-#: view/faceted-browse/site-admin/category/show-all-table.phtml:19
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:20
 #: view/faceted-browse/site/page/browse.phtml:9
 msgid "There are no results."
 msgstr "Няма резултати."
@@ -256,6 +260,14 @@ msgstr "Грешка при извличането на маркъпа на фа
 #: config/module.config.php:98
 msgid "Error fetching category markup."
 msgstr "Грешка при извличането на маркъпа на категорията."
+
+#: config/module.config.php:99
+msgid "Cannot show all. The result set is likely too large."
+msgstr ""
+
+#: config/module.config.php:100
+msgid "Loading results…"
+msgstr ""
 
 #: src/Site/NavigationLink/FacetedBrowse.php:12
 msgid "Faceted browse"
@@ -416,7 +428,7 @@ msgid "Unknown facet data"
 msgstr "Неизвестни данни на фасета"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:51
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:50
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
 msgid "A site must have an ID"
 msgstr "Сайтът трябва да има ID"
 
@@ -432,11 +444,11 @@ msgstr "Категорията трябва да има име"
 msgid "A category must have a query"
 msgstr "Категорията трябва да има заявка"
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:91
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:90
 msgid "A page must have a site"
 msgstr "Страницата трябва да има сайт"
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:94
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:93
 msgid "A page must have a title"
 msgstr "Страницата трябва да има заглавие"
 
