@@ -141,9 +141,7 @@ class FacetedBrowse extends AbstractPlugin
             case 'in':
             case 'nin':
             default:
-                $qb->select('0 id, v.value label', 'COUNT(v.value) has_count')
-                    ->andWhere('v.type = :type')
-                    ->setParameter('type', 'literal');
+                $qb->select('0 id, v.value label', 'COUNT(v.value) has_count');
         }
         if ($propertyId) {
             $qb->andWhere('v.property = :propertyId')
