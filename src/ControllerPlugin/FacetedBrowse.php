@@ -126,9 +126,7 @@ class FacetedBrowse extends AbstractPlugin
             case 'res':
             case 'nres':
                 $qb->select("0 id, CONCAT(vr.id, ' ', vr.title) label", 'COUNT(v) has_count')
-                    ->join('v.valueResource', 'vr')
-                    ->andWhere('v.type = :type')
-                    ->setParameter('type', 'resource');
+                    ->join('v.valueResource', 'vr');
                 break;
             case 'ex':
             case 'nex':
