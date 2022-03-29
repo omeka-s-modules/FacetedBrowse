@@ -323,7 +323,7 @@ $(document).on('click', '#add-all', function(e) {
             $.each(rows, (index, row) => {
                 labels.push(row.label);
             });
-            $('#value-values').text(labels.join("\n"));
+            $('#value-values').val(labels.join("\n"));
             sidebarScrollTo($('#value-values').closest('.field'));
             break;
         case 'resource_class':
