@@ -12,7 +12,6 @@ FacetedBrowse.registerFacetAddEditHandler('value', function() {
         $('#value-property-id').closest('.field').hide();
     }
     if ('text_input' === $('#value-select-type').val()) {
-        console.log($('#value-query-type').find('option').filter('[value="res"],[value="nres"],[value="ex"],[value="nex"]'));
         $('#value-query-type').find('option')
             .filter('[value="res"],[value="nres"],[value="ex"],[value="nex"]')
             .prop('disabled', true)
@@ -51,18 +50,20 @@ $(document).on('change', '#value-query-type', function(e) {
         propertySelect.closest('.field').show();
     }
 });
+// Handle behavior during selecting a select type.
 $(document).on('change', '#value-select-type', function (e) {
     const thisSelect = $(this);
     const queryTypeSelect = $('#value-query-type');
     if ('text_input' === thisSelect.val()) {
+        // Default to eq when selected query type is invalid for text_input.
         if (['res', 'nres', 'ex', 'nex'].includes(queryTypeSelect.val())) {
-            // Default to eq when selected query type is invalid for text_input.
             queryTypeSelect.val('eq');
         }
         // Disable query types that are invalid for text_input.
         queryTypeSelect.find('option')
             .filter('[value="res"],[value="nres"],[value="ex"],[value="nex"]')
             .prop('disabled', true);
+        // Hide areas unneeded for text_input.
         $('#value-values').closest('.field').hide();
         $('#show-all-container').hide();
     } else {
