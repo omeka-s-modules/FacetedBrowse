@@ -11,6 +11,15 @@ FacetedBrowse.registerFacetAddEditHandler('value', function() {
     if (['ex', 'nex'].includes($('#value-query-type').val())) {
         $('#value-property-id').closest('.field').hide();
     }
+    if ('text_input' === $('#value-select-type').val()) {
+        console.log($('#value-query-type').find('option').filter('[value="res"],[value="nres"],[value="ex"],[value="nex"]'));
+        $('#value-query-type').find('option')
+            .filter('[value="res"],[value="nres"],[value="ex"],[value="nex"]')
+            .prop('disabled', true)
+            .trigger('chosen:updated');
+        $('#value-values').closest('.field').hide();
+        $('#show-all-container').hide();
+    }
 });
 FacetedBrowse.registerFacetSetHandler('value', function() {
     return {
@@ -41,6 +50,27 @@ $(document).on('change', '#value-query-type', function(e) {
     } else {
         propertySelect.closest('.field').show();
     }
+});
+$(document).on('change', '#value-select-type', function (e) {
+    const thisSelect = $(this);
+    const queryTypeSelect = $('#value-query-type');
+    if ('text_input' === thisSelect.val()) {
+        if (['res', 'nres', 'ex', 'nex'].includes(queryTypeSelect.val())) {
+            // Default to eq when selected query type is invalid for text_input.
+            queryTypeSelect.val('eq');
+        }
+        // Disable query types that are invalid for text_input.
+        queryTypeSelect.find('option')
+            .filter('[value="res"],[value="nres"],[value="ex"],[value="nex"]')
+            .prop('disabled', true);
+        $('#value-values').closest('.field').hide();
+        $('#show-all-container').hide();
+    } else {
+        queryTypeSelect.find('option').prop('disabled', false);
+        $('#value-values').closest('.field').show();
+        $('#show-all-container').show();
+    }
+    queryTypeSelect.trigger('chosen:updated');
 });
 
 });
