@@ -1,3 +1,13 @@
+/**
+ * Move selected list item to top of list.
+ */
+const moveSelectedToTop = function(thisValue) {
+    const selectList = thisValue.closest('.value-select-list');
+    // Must show() in case a selected value is hidden on page load.
+    const selectListItem = thisValue.closest('.value-select-list-item').show();
+    selectList.prepend(selectListItem);
+};
+
 FacetedBrowse.registerFacetApplyStateHandler('value', function(facet, facetState) {
     const thisFacet = $(facet);
     const facetData = thisFacet.data('facetData');
@@ -10,7 +20,11 @@ FacetedBrowse.registerFacetApplyStateHandler('value', function(facet, facetState
         } else {
             thisFacet.find(`input.value[data-value="${value}"]`)
                 .prop('checked', true)
-                .addClass('selected');
+                .addClass('selected')
+                .each(function() {
+                    // Move selected values to top of list.
+                    moveSelectedToTop($(this));
+                });
         }
     });
 });
@@ -86,21 +100,45 @@ container.on('change', 'select.value', function(e) {
 
 // Handle single_list interaction.
 container.on('click', 'input.value[type="radio"]', function(e) {
-    handleUserInteraction($(this));
+    const thisValue = $(this);
+    handleUserInteraction(thisValue);
+    moveSelectedToTop(thisValue);
 });
 
 // Handle multiple_list interaction.
 container.on('click', 'input.value[type="checkbox"]', function(e) {
-    handleUserInteraction($(this));
+    const thisValue = $(this);
+    handleUserInteraction(thisValue);
+    moveSelectedToTop(thisValue);
 });
 
 // Handle text_input interaction.
 container.on('keyup', 'input.value[type="text"]', function(e) {
-    const thisInput = $(this);
+    const thisValue = $(this);
     clearTimeout(timerId);
     timerId = setTimeout(function() {
-        handleUserInteraction(thisInput);
+        handleUserInteraction(thisValue);
     }, 350);
+});
+
+// Handle expand list button (show more)
+container.on('click', '.value-select-list-expand', function(e) {
+    e.preventDefault();
+    const thisButton = $(this);
+    const facet = thisButton.closest('.facet');
+    thisButton.hide();
+    facet.find('.value-select-list-collapse').show();
+    facet.find('.value-select-list-item:hidden').show();
+});
+
+// Handle collapse list button (show less)
+container.on('click', '.value-select-list-collapse', function(e) {
+    e.preventDefault();
+    const thisButton = $(this);
+    const facet = thisButton.closest('.facet');
+    thisButton.hide();
+    facet.find('.value-select-list-expand').show();
+    facet.find('.value-select-list-item').slice(10).hide();
 });
 
 });
