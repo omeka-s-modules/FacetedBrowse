@@ -2,7 +2,9 @@ FacetedBrowse.registerFacetApplyStateHandler('value', function(facet, facetState
     const thisFacet = $(facet);
     const facetData = thisFacet.data('facetData');
     facetState.forEach(function(value) {
-        if ('single_select' === facetData.select_type) {
+        if ('text_input' === facetData.select_type) {
+            thisFacet.find('input.value').val(value);
+        } else if ('single_select' === facetData.select_type) {
             thisFacet.find(`select.value option[data-value="${value}"]`)
                 .prop('selected', true);
         } else {
@@ -16,6 +18,7 @@ FacetedBrowse.registerFacetApplyStateHandler('value', function(facet, facetState
 $(document).ready(function() {
 
 const container = $('#container');
+let timerId;
 
 const getQuery = function(index, property, type, text) {
     if (['ex', 'nex'].includes(type)) {
@@ -41,7 +44,17 @@ const handleUserInteraction = function(thisValue) {
         const facetData = thisFacet.data('facetData');
         const queries = [];
         const state = [];
-        if ('single_select' === facetData.select_type) {
+        if ('text_input' === facetData.select_type) {
+            const input = thisFacet.find('.value');
+            const property = input.data('propertyId');
+            const type = facetData.query_type;
+            const text = input.val();
+            if (text) {
+                queries.push(getQuery(index, property, type, text));
+                state.push(text);
+                index++;
+            }
+        } else if ('single_select' === facetData.select_type) {
             const select = thisFacet.find('.value option:selected');
             const property = select.data('propertyId');
             const type = facetData.query_type;
@@ -66,12 +79,28 @@ const handleUserInteraction = function(thisValue) {
     FacetedBrowse.triggerStateChange();
 };
 
+// Handle single_select interaction.
 container.on('change', 'select.value', function(e) {
     handleUserInteraction($(this));
 });
 
-container.on('click', 'input.value', function(e) {
+// Handle single_list interaction.
+container.on('click', 'input.value[type="radio"]', function(e) {
     handleUserInteraction($(this));
+});
+
+// Handle multiple_list interaction.
+container.on('click', 'input.value[type="checkbox"]', function(e) {
+    handleUserInteraction($(this));
+});
+
+// Handle text_input interaction.
+container.on('keyup', 'input.value[type="text"]', function(e) {
+    const thisInput = $(this);
+    clearTimeout(timerId);
+    timerId = setTimeout(function() {
+        handleUserInteraction(thisInput);
+    }, 350);
 });
 
 });

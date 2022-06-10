@@ -75,11 +75,12 @@ class Value implements FacetTypeInterface
         $selectType->setName('select_type');
         $selectType->setOptions([
             'label' => 'Select type', // @translate
-            'info' => 'Select the select type. For the "single" select type, users may choose only one value at a time via a list or dropdown menu. For the "multiple" select type, users may choose any number of values at a time via a list.', // @translate
+            'info' => 'Select the select type. For the "single" select type, users may choose only one value at a time via a list or dropdown menu. For the "multiple" select type, users may choose any number of values at a time via a list. For the special "text input" select type, users may input their own text.', // @translate
             'value_options' => [
                 'single_list' => 'Single (list)', // @translate
                 'multiple_list' => 'Multiple (list)', // @translate
                 'single_select' => 'Single (dropdown menu)', // @translate
+                'text_input' => 'Text input', // @translate
             ],
         ]);
         $selectType->setAttributes([
@@ -176,10 +177,19 @@ class Value implements FacetTypeInterface
             $singleSelect->setAttribute('style', 'width: 90%;');
         }
 
+        $textInput = null;
+        if ('text_input' === $facet->data('select_type')) {
+            $textInput = new LaminasElement\Text(sprintf('value_%s', $facet->id()));
+            $textInput->setAttribute('class', 'value');
+            $textInput->setAttribute('data-property-id', $facet->data('property_id'));
+            $textInput->setAttribute('style', 'width: 90%;');
+        }
+
         return $view->partial('common/faceted-browse/facet-render/value', [
             'facet' => $facet,
             'values' => $values,
             'singleSelect' => $singleSelect,
+            'textInput' => $textInput,
         ]);
     }
 }
