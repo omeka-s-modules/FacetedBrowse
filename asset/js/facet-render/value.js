@@ -3,8 +3,7 @@
  */
 const moveSelectedToTop = function(thisValue) {
     const selectList = thisValue.closest('.value-select-list');
-    // Must show() in case a selected value is hidden on page load.
-    const selectListItem = thisValue.closest('.value-select-list-item').show();
+    const selectListItem = thisValue.closest('.value-select-list-item');
     selectList.prepend(selectListItem);
 };
 
@@ -27,6 +26,13 @@ FacetedBrowse.registerFacetApplyStateHandler('value', function(facet, facetState
                 });
         }
     });
+    // Hide single_list and multiple_list list items past the 10th. Note that we
+    // do this after moving selected values to the top (see above).
+    const selectListItems = thisFacet.find('.value-select-list-item');
+    if (10 < selectListItems.length) {
+        selectListItems.slice(10).hide();
+        thisFacet.find('.value-select-list-expand').show();
+    }
 });
 
 $(document).ready(function() {
