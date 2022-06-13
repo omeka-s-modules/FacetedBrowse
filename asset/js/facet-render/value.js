@@ -1,10 +1,41 @@
-/**
- * Move selected list item to top of list.
- */
-const moveSelectedToTop = function(thisValue) {
-    const selectList = thisValue.closest('.value-select-list');
-    const selectListItem = thisValue.closest('.value-select-list-item');
-    selectList.prepend(selectListItem);
+const updateSelectList = function(selectList) {
+    const facet = selectList.closest('.facet');
+    // First, sort the selected list items and prepend them to the list.
+    const listItemsSelected = selectList.find('.value.selected')
+        .closest('.value-select-list-item')
+        .show()
+        .sort(function(a, b) {
+            return $(a).data('index') < $(b).data('index') ? -1 : 0;
+        });
+    listItemsSelected.prependTo(selectList);
+    // Then, sort the unselected list items and append them to the list.
+    const listItemsUnselected = selectList.find('.value:not(.selected)')
+        .closest('.value-select-list-item')
+        .show()
+        .sort(function(a, b) {
+            return $(a).data('index') < $(b).data('index') ? -1 : 0;
+        });
+    listItemsUnselected.appendTo(selectList);
+    const listItems = selectList.find('.value-select-list-item');
+    if (10 >= listItems.length) {
+        // No need to show expand when list does not surpass configured limit.
+        return;
+    }
+    if (selectList.hasClass('expanded')) {
+        // No need to hide items when list is expanded.
+        facet.find('.value-select-list-expand').hide();
+        facet.find('.value-select-list-collapse').show();
+        return;
+    }
+    if (10 < listItemsSelected.length) {
+        // Show all selected items even if they surpass the configured limit.
+        listItemsUnselected.hide();
+    } else {
+        // Truncate to the configured limit.
+        listItems.slice(10).hide();
+    }
+    facet.find('.value-select-list-expand').show();
+    facet.find('.value-select-list-collapse').hide();
 };
 
 FacetedBrowse.registerFacetApplyStateHandler('value', function(facet, facetState) {
@@ -19,19 +50,11 @@ FacetedBrowse.registerFacetApplyStateHandler('value', function(facet, facetState
         } else {
             thisFacet.find(`input.value[data-value="${value}"]`)
                 .prop('checked', true)
-                .addClass('selected')
-                .each(function() {
-                    // Move selected values to top of list.
-                    moveSelectedToTop($(this));
-                });
+                .addClass('selected');
         }
     });
-    // Hide single_list and multiple_list list items past the 10th. Note that we
-    // do this after moving selected values to the top (see above).
-    const selectListItems = thisFacet.find('.value-select-list-item');
-    if (10 < selectListItems.length) {
-        selectListItems.slice(10).hide();
-        thisFacet.find('.value-select-list-expand').show();
+    if ('single_list' === facetData.select_type || 'multiple_list' === facetData.select_type) {
+        updateSelectList(thisFacet.find('.value-select-list'));
     }
 });
 
@@ -108,14 +131,14 @@ container.on('change', 'select.value', function(e) {
 container.on('click', 'input.value[type="radio"]', function(e) {
     const thisValue = $(this);
     handleUserInteraction(thisValue);
-    moveSelectedToTop(thisValue);
+    updateSelectList(thisValue.closest('.value-select-list'));
 });
 
 // Handle multiple_list interaction.
 container.on('click', 'input.value[type="checkbox"]', function(e) {
     const thisValue = $(this);
     handleUserInteraction(thisValue);
-    moveSelectedToTop(thisValue);
+    updateSelectList(thisValue.closest('.value-select-list'));
 });
 
 // Handle text_input interaction.
@@ -131,20 +154,18 @@ container.on('keyup', 'input.value[type="text"]', function(e) {
 container.on('click', '.value-select-list-expand', function(e) {
     e.preventDefault();
     const thisButton = $(this);
-    const facet = thisButton.closest('.facet');
-    thisButton.hide();
-    facet.find('.value-select-list-collapse').show();
-    facet.find('.value-select-list-item:hidden').show();
+    const selectList = thisButton.closest('.facet').find('.value-select-list');
+    selectList.addClass('expanded');
+    updateSelectList(selectList);
 });
 
 // Handle collapse list button (show less)
 container.on('click', '.value-select-list-collapse', function(e) {
     e.preventDefault();
     const thisButton = $(this);
-    const facet = thisButton.closest('.facet');
-    thisButton.hide();
-    facet.find('.value-select-list-expand').show();
-    facet.find('.value-select-list-item').slice(10).hide();
+    const selectList = thisButton.closest('.facet').find('.value-select-list');
+    selectList.removeClass('expanded');
+    updateSelectList(selectList);
 });
 
 });

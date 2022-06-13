@@ -4,7 +4,10 @@
 <?php echo $this->formElement($singleSelect); ?>
 <?php else: ?>
 <ul class="value-select-list">
-    <?php foreach ($values as $key => $value): ?>
+    <?php
+    $index = 0;
+    foreach ($values as $key => $value):
+    ?>
     <?php
     $dataPropertyId = $facet->data('property_id');
     $dataValue = $key;
@@ -12,7 +15,7 @@
         $dataPropertyId = $key;
     }
     ?>
-    <li class="value-select-list-item">
+    <li class="value-select-list-item" data-index="<?php echo $this->escapeHtml($index++); ?>">
         <label>
             <input
                 class="value"
