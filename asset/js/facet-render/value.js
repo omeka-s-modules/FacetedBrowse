@@ -35,6 +35,8 @@ const updateSelectList = function(selectList) {
         // Truncate to the configured limit.
         listItems.slice(truncateValues).hide();
     }
+    const hiddenCount = listItems.filter(':hidden').length;
+    facet.find('.value-select-list-hidden-count').text(`(${hiddenCount})`);
     facet.find('.value-select-list-expand').show();
     facet.find('.value-select-list-collapse').hide();
 };
