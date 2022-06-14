@@ -9,7 +9,6 @@ const updateSelectList = function(selectList) {
             // Subtracting seems to be cross-browser compatible.
             return $(a).data('index') - $(b).data('index');
         });
-    console.log(listItemsSelected.get());
     listItemsSelected.prependTo(selectList);
     // Then, sort the unselected list items and append them to the list.
     const listItemsUnselected = selectList.find('.value:not(.selected)')
