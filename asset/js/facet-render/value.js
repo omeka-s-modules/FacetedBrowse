@@ -1,5 +1,6 @@
 const updateSelectList = function(selectList) {
     const facet = selectList.closest('.facet');
+    const truncateValues = selectList.data('truncateValues');
     // First, sort the selected list items and prepend them to the list.
     const listItemsSelected = selectList.find('.value.selected')
         .closest('.value-select-list-item')
@@ -17,7 +18,7 @@ const updateSelectList = function(selectList) {
         });
     listItemsUnselected.appendTo(selectList);
     const listItems = selectList.find('.value-select-list-item');
-    if (10 >= listItems.length) {
+    if (!truncateValues || truncateValues >= listItems.length) {
         // No need to show expand when list does not surpass configured limit.
         return;
     }
@@ -27,12 +28,12 @@ const updateSelectList = function(selectList) {
         facet.find('.value-select-list-collapse').show();
         return;
     }
-    if (10 < listItemsSelected.length) {
+    if (truncateValues < listItemsSelected.length) {
         // Show all selected items even if they surpass the configured limit.
         listItemsUnselected.hide();
     } else {
         // Truncate to the configured limit.
-        listItems.slice(10).hide();
+        listItems.slice(truncateValues).hide();
     }
     facet.find('.value-select-list-expand').show();
     facet.find('.value-select-list-collapse').hide();
@@ -53,7 +54,7 @@ FacetedBrowse.registerFacetApplyStateHandler('value', function(facet, facetState
                 .addClass('selected');
         }
     });
-    if ('single_list' === facetData.select_type || 'multiple_list' === facetData.select_type) {
+    if (['single_list', 'multiple_list'].includes(facetData.select_type)) {
         updateSelectList(thisFacet.find('.value-select-list'));
     }
 });

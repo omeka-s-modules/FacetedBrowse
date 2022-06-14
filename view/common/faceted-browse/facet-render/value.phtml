@@ -3,7 +3,7 @@
 <?php elseif ($singleSelect): ?>
 <?php echo $this->formElement($singleSelect); ?>
 <?php else: ?>
-<ul class="value-select-list">
+<ul class="value-select-list" data-truncate-values="<?php echo $this->escapeHtml($facet->data('truncate_values')); ?>">
     <?php
     $index = 0;
     foreach ($values as $key => $value):
