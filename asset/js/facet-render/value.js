@@ -6,15 +6,18 @@ const updateSelectList = function(selectList) {
         .closest('.value-select-list-item')
         .show()
         .sort(function(a, b) {
-            return $(a).data('index') < $(b).data('index') ? -1 : 0;
+            // Subtracting seems to be cross-browser compatible.
+            return $(a).data('index') - $(b).data('index');
         });
+    console.log(listItemsSelected.get());
     listItemsSelected.prependTo(selectList);
     // Then, sort the unselected list items and append them to the list.
     const listItemsUnselected = selectList.find('.value:not(.selected)')
         .closest('.value-select-list-item')
         .show()
         .sort(function(a, b) {
-            return $(a).data('index') < $(b).data('index') ? -1 : 0;
+            // Subtracting seems to be cross-browser compatible.
+            return $(a).data('index') - $(b).data('index');
         });
     listItemsUnselected.appendTo(selectList);
     const listItems = selectList.find('.value-select-list-item');
