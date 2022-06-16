@@ -1,6 +1,7 @@
 FacetedBrowse.registerFacetApplyStateHandler('resource_class', function(facet, facetState) {
     const thisFacet = $(facet);
     const facetData = thisFacet.data('facetData');
+    facetState = facetState ?? [];
     facetState.forEach(function(classId) {
         if ('single_select' === facetData.select_type) {
             thisFacet.find(`select.resource-class option[value="${classId}"]`)

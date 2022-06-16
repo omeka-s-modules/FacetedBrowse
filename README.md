@@ -219,17 +219,20 @@ In `prepareFacet()`, you'll prepare the render of this facet type. All facet typ
 /**
  * Register a callback that handles facet apply state.
  *
- * "Facet apply state" happens when the user returns to a page that has
- * been interacted with. Use this handler to apply a previously saved state
- * to a facet. The handler will receive a facet container element as the
- * first argument and the facet's state as the second argument. All facet
- * types should register a handler in a script added in prepareFacet().
+ * "Facet apply state" happens when the user navigates to a page, whether it has
+ * been interacted with or not. Use this handler to apply a previously saved
+ * state to a facet, and to generally prepare the facet for use. The handler
+ * will receive a facet container element as the first argument and the facet's
+ * state as the second argument. Note that the facet's state may be undefined if
+ * the user has not interacted with the facet. All facet types should register a
+ * handler in a script added in prepareFacet().
  *
  * @param string facetType The facet type
  * @param function handler The callback that handles facet apply state
  */
 FacetedBrowse.registerFacetApplyStateHandler('my_facet', function(facet, facetState) {
     const thisFacet = $(facet);
+    facetState = facetState ?? [];
     facetState.forEach(function(classId) {
         thisFacet.find(`input.my-facet[data-class-id="${classId}"]`)
             .prop('checked', true)
@@ -261,7 +264,7 @@ container.on('click', '.resource-class', function(e) {
 });
 ```
 
-The idea here is that all facet types need a facet control that looks and behaves in a certain way for the end user. You'll build the control in `renderFacet()` and control its behavior via a script added in `prepareFacet()`. Use `FacetedBrowse.registerFacetApplyStateHandler()` to apply a previously saved state to a facet. This should make the facet "sticky" when a user navigates away from the page and returns via the back button. You must implemnt this handler or the user will lose the previous visual state of the facet.
+The idea here is that all facet types need a facet control that looks and behaves in a certain way for the end user. You'll build the control in `renderFacet()` and control its behavior via a script added in `prepareFacet()`. Use `FacetedBrowse.registerFacetApplyStateHandler()` to apply a previously saved state to a facet, and to generally prepare the facet for use. This should make the facet "sticky" when a user navigates away from the page and returns via the back button. You must implemnt this handler or the user will lose the previous visual state of the facet.
 
 In addition this this, and most importantly, your script should detect a user interaction, calculate the data needed to preserve the current state of the facet, calculate the API query needed to fetch the items, then set them using `FacetedBrowse.setFacetState(facetId, state, query)`. Afterwards, you must call `FacetedBrowse.triggerStateChange()` to trigger the state change. This will gather all queries from all facets, consolodate them, and update the items on the browse section of the page according to the new state.
 

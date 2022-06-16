@@ -1,5 +1,6 @@
 FacetedBrowse.registerFacetApplyStateHandler('full_text', function(facet, facetState) {
     const thisFacet = $(facet);
+    facetState = facetState ?? '';
     thisFacet.find(`input.full-text`).val(facetState);
 });
 

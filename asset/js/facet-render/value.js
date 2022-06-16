@@ -46,6 +46,7 @@ const updateSelectList = function(selectList) {
 FacetedBrowse.registerFacetApplyStateHandler('value', function(facet, facetState) {
     const thisFacet = $(facet);
     const facetData = thisFacet.data('facetData');
+    facetState = facetState ?? [];
     facetState.forEach(function(value) {
         if ('text_input' === facetData.select_type) {
             thisFacet.find('input.value').val(value);

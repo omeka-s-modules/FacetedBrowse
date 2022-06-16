@@ -191,9 +191,6 @@ const FacetedBrowse = {
         if (!(facetType in FacetedBrowse.facetApplyStateHandlers)) {
             return;
         }
-        if (!(facetId in FacetedBrowse.state.facetStates)) {
-            return;
-        }
         const facetApplyStateHandler = FacetedBrowse.facetApplyStateHandlers[facetType];
         const facetState = FacetedBrowse.state.facetStates[facetId];
         facetApplyStateHandler(facet, facetState);

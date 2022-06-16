@@ -1,6 +1,7 @@
 FacetedBrowse.registerFacetApplyStateHandler('item_set', function(facet, facetState) {
     const thisFacet = $(facet);
     const facetData = thisFacet.data('facetData');
+    facetState = facetState ?? [];
     facetState.forEach(function(itemSetId) {
         if ('single_select' === facetData.select_type) {
             thisFacet.find(`select.item-set option[value="${itemSetId}"]`)
