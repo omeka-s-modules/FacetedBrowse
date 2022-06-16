@@ -87,6 +87,19 @@ class Value implements FacetTypeInterface
             'id' => 'value-select-type',
             'value' => $data['select_type'] ?? 'single_list',
         ]);
+        // Truncate values
+        $truncateValues =  $this->formElements->get(LaminasElement\Number::class);
+        $truncateValues->setName('truncate_values');
+        $truncateValues->setOptions([
+            'label' => 'Truncate values', // @translate
+            'info' => 'Enter the number of values to show on the select list when the page first loads. If the number of values exceeds this number, the remainder will be hidden until the user clicks to show more. Enter nothing to show the entire list at all times.', // @translate
+        ]);
+        $truncateValues->setAttributes([
+            'id' => 'value-truncate-values',
+            'value' => $data['truncate_values'] ?? '',
+            'min' => 1,
+            'step' => 1,
+        ]);
         // Values
         $values = $this->formElements->get(LaminasElement\Textarea::class);
         $values->setName('values');
@@ -112,6 +125,7 @@ class Value implements FacetTypeInterface
             'elementPropertyId' => $propertyId,
             'elementQueryType' => $queryType,
             'elementSelectType' => $selectType,
+            'elementTruncateValues' => $truncateValues,
             'elementValues' => $values,
         ]);
     }

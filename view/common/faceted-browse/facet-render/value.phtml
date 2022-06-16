@@ -3,8 +3,11 @@
 <?php elseif ($singleSelect): ?>
 <?php echo $this->formElement($singleSelect); ?>
 <?php else: ?>
-<ul>
-    <?php foreach ($values as $key => $value): ?>
+<ul class="value-select-list" data-truncate-values="<?php echo $this->escapeHtml($facet->data('truncate_values')); ?>">
+    <?php
+    $index = 0;
+    foreach ($values as $key => $value):
+    ?>
     <?php
     $dataPropertyId = $facet->data('property_id');
     $dataValue = $key;
@@ -12,7 +15,7 @@
         $dataPropertyId = $key;
     }
     ?>
-    <li>
+    <li class="value-select-list-item" data-index="<?php echo $this->escapeHtml($index++); ?>">
         <label>
             <input
                 class="value"
@@ -23,6 +26,10 @@
                 <?php echo $value; ?>
         </label>
     </li>
-    <?php endforeach; ?>
+    <?php
+    endforeach;
+    ?>
 </ul>
+<a href="#" class="value-select-list-expand" style="display: none;"><?php echo $this->translate('See more'); ?> <span class="value-select-list-hidden-count"></span></a>
+<a href="#" class="value-select-list-collapse" style="display: none;"><?php echo $this->translate('See less'); ?></a>
 <?php endif; ?>
