@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-24 12:46-0400\n"
+"POT-Creation-Date: 2022-06-16 15:58-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Emil Stoyanov <emostoyanov@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (Bulgaria) (https://www.transifex.com/omeka/teams/14184/bg_BG/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Add it to site navigation?"
 msgstr ""
 
-#: src/FacetType/Value.php:94
+#: src/FacetType/Value.php:108
 msgid ""
 "\n"
 "            <p>Enter the values, separated by new lines. The format of each value depends on the query type:</p>\n"
@@ -57,9 +57,17 @@ msgstr "Показване на достъпните класове"
 msgid "Show all available templates."
 msgstr "Показване на достъпните шаблони"
 
-#: view/common/faceted-browse/facet-data-form/value.phtml:6
+#: view/common/faceted-browse/facet-data-form/value.phtml:7
 msgid "Show all available values."
 msgstr "Показване на достъпните стойности"
+
+#: view/common/faceted-browse/facet-render/value.phtml:33
+msgid "See more"
+msgstr ""
+
+#: view/common/faceted-browse/facet-render/value.phtml:34
+msgid "See less"
+msgstr ""
 
 #: view/common/faceted-browse/navigation-link-form/faceted-browse.phtml:9
 msgid "Select a page"
@@ -416,7 +424,24 @@ msgstr ""
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one value at a time via a list or dropdown menu. For the \"multiple\" "
-"select type, users may choose any number of values at a time via a list."
+"select type, users may choose any number of values at a time via a list. For"
+" the special \"text input\" select type, users may input their own text."
+msgstr ""
+
+#: src/FacetType/Value.php:83
+msgid "Text input"
+msgstr ""
+
+#: src/FacetType/Value.php:94
+msgid "Truncate values"
+msgstr ""
+
+#: src/FacetType/Value.php:95
+msgid ""
+"Enter the number of values to show on the select list when the page first "
+"loads. If the number of values exceeds this number, the remainder will be "
+"hidden until the user clicks to show more. Enter nothing to show the entire "
+"list at all times."
 msgstr ""
 
 #: src/FacetType/Unknown.php:44

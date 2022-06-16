@@ -88,7 +88,7 @@ class Value implements FacetTypeInterface
             'value' => $data['select_type'] ?? 'single_list',
         ]);
         // Truncate values
-        $truncateValues =  $this->formElements->get(LaminasElement\Number::class);
+        $truncateValues = $this->formElements->get(LaminasElement\Number::class);
         $truncateValues->setName('truncate_values');
         $truncateValues->setOptions([
             'label' => 'Truncate values', // @translate
