@@ -27,6 +27,17 @@ class ColumnForm extends Form
             ],
         ]);
         $this->add([
+            'type' => LaminasElement\Checkbox::class,
+            'name' => 'column_exclude_sort_by',
+            'options' => [
+                'label' => 'Exclude sort by', // @translate
+            ],
+            'attributes' => [
+                'id' => 'column-exclude-sort-by-checkbox',
+                'required' => false,
+            ],
+        ]);
+        $this->add([
             'type' => LaminasElement\Button::class,
             'name' => 'column_set',
             'options' => [

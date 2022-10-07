@@ -31,12 +31,16 @@ use Laminas\Form\Element\Hidden;
     $typeInput = (new Hidden(sprintf('o-module-faceted_browse:column[%s][o-module-faceted_browse:type]', $index)))
         ->setValue($column['o-module-faceted_browse:type'])
         ->setAttribute('class', 'column-type');
+    $excludeSortByCheckbox = (new Hidden(sprintf('o-module-faceted_browse:column[%s][o-module-faceted_browse:exclude_sort_by]', $index)))
+        ->setValue($column['o-module-faceted_browse:exclude_sort_by'])
+        ->setAttribute('class', 'column-exclude-sort-by');
     $dataInput = (new Hidden(sprintf('o-module-faceted_browse:column[%s][o:data]', $index)))
         ->setValue(json_encode($column['o:data']))
         ->setAttribute('class', 'column-data');
     echo $this->formHidden($idInput);
     echo $this->formHidden($typeInput);
     echo $this->formHidden($nameInput);
+    echo $this->formHidden($excludeSortByCheckbox);
     echo $this->formHidden($dataInput);
     ?>
 </li>

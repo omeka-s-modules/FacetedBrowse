@@ -52,6 +52,14 @@ class FacetedBrowseColumn extends AbstractEntity
 
     /**
      * @Column(
+     *     type="boolean",
+     *     nullable=false
+     * )
+     */
+    protected $excludeSortBy;
+
+    /**
+     * @Column(
      *     type="json",
      *     nullable=false
      * )
@@ -99,6 +107,16 @@ class FacetedBrowseColumn extends AbstractEntity
     public function getType() : string
     {
         return $this->type;
+    }
+
+    public function setExcludeSortBy(bool $excludeSortBy) : void
+    {
+        $this->excludeSortBy = $excludeSortBy;
+    }
+
+    public function getExcludeSortBy() : bool
+    {
+        return $this->excludeSortBy;
     }
 
     public function setData(array $data) : void

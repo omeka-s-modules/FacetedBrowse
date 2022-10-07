@@ -180,6 +180,7 @@ class CategoryController extends AbstractActionController
 
         $columnType = $this->params()->fromPost('column_type');
         $columnName = $this->params()->fromPost('column_name');
+        $columnExcludeSortBy = $this->params()->fromPost('column_exclude_sort_by');
         $columnData = json_decode($this->params()->fromPost('column_data'), true);
         if (!is_array($columnData)) {
             $columnData = [];
@@ -189,6 +190,7 @@ class CategoryController extends AbstractActionController
         $form->setData([
             'column_type' => $columnType,
             'column_name' => $columnName,
+            'column_exclude_sort_by' => $columnExcludeSortBy,
         ]);
 
         $view = new ViewModel;

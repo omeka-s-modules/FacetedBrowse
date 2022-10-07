@@ -213,10 +213,12 @@ columns.on('click', '.column-edit', function(e) {
     const thisButton = $(this);
     const type = columnSelected.find('.column-type').val();
     const name = columnSelected.find('.column-name').val();
+    const excludeSortBy = columnSelected.find('.column-exclude-sort-by').val();
     const data = columnSelected.find('.column-data').val();
     $.post(columns.data('columnFormUrl'), {
         column_type: type,
         column_name: name,
+        column_exclude_sort_by: excludeSortBy,
         column_data: data
     }, function(html) {
         columnFormContainer.html(html);
@@ -248,6 +250,7 @@ columnFormContainer.on('click', '#column-set-button', function(e) {
     const thisButton = $(this);
     const type = $('#column-type-input').val();
     const name = $.trim($('#column-name-input').val());
+    const excludeSortBy = $('#column-exclude-sort-by-checkbox').is(':checked') ? '1' : '0';
     if (!name) {
         alert(Omeka.jsTranslate('A column must have a name'));
         return;
@@ -263,6 +266,7 @@ columnFormContainer.on('click', '#column-set-button', function(e) {
         // Handle an edit.
         columnSelected.find('.column-name-display').text(name);
         columnSelected.find('.column-name').val(name);
+        columnSelected.find('.column-exclude-sort-by').val(excludeSortBy);
         columnSelected.find('.column-data').val(JSON.stringify(data));
         columnSelected = undefined;
         resetColumnTypeSelect();
@@ -271,6 +275,7 @@ columnFormContainer.on('click', '#column-set-button', function(e) {
         $.post(columns.data('columnRowUrl'), {
             column_type: $('#column-type-input').val(),
             column_name: $('#column-name-input').val(),
+            column_exclude_sort_by: $('#column-exclude-sort-by-checkbox').val(),
             index: $('.column').length
         }, function(html) {
             const column = $($.parseHTML(html));

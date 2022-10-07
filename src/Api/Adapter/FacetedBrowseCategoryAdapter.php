@@ -125,6 +125,7 @@ class FacetedBrowseCategoryAdapter extends AbstractEntityAdapter
                     }
                     $columnEntity->setType($column['o-module-faceted_browse:type']);
                     $columnEntity->setName($column['o:name']);
+                    $columnEntity->setExcludeSortBy($column['o-module-faceted_browse:exclude_sort_by']);
                     $columnEntity->setData(json_decode($column['o:data'], true));
                     $columnEntity->setPosition($position++);
                     $toRetain[] = $columnEntity;
