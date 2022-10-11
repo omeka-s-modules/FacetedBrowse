@@ -275,7 +275,7 @@ columnFormContainer.on('click', '#column-set-button', function(e) {
         $.post(columns.data('columnRowUrl'), {
             column_type: $('#column-type-input').val(),
             column_name: $('#column-name-input').val(),
-            column_exclude_sort_by: $('#column-exclude-sort-by-checkbox').val(),
+            column_exclude_sort_by: $('#column-exclude-sort-by-checkbox').is(':checked') ? '1' : '0',
             index: $('.column').length
         }, function(html) {
             const column = $($.parseHTML(html));

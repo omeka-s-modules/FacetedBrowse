@@ -210,6 +210,7 @@ class CategoryController extends AbstractActionController
             'o:id' => null,
             'o:name' => $this->params()->fromPost('column_name'),
             'o-module-faceted_browse:type' => $this->params()->fromPost('column_type'),
+            'o-module-faceted_browse:exclude_sort_by' => $this->params()->fromPost('column_exclude_sort_by'),
             'o:data' => [],
         ];
         $index = $this->params()->fromPost('index');
