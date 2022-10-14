@@ -22,6 +22,7 @@ class FacetedBrowseColumnRepresentation extends AbstractRepresentation
             'o-module-faceted_browse:category' => $this->category()->getReference(),
             'o:name' => $this->name(),
             'o-module-faceted_browse:type' => $this->type(),
+            'o-module-faceted_browse:exclude_sort_by' => $this->excludeSortBy(),
             'o:data' => $this->data(),
             'o:position' => $this->position(),
         ];
@@ -45,6 +46,11 @@ class FacetedBrowseColumnRepresentation extends AbstractRepresentation
     public function type()
     {
         return $this->resource->getType();
+    }
+
+    public function excludeSortBy()
+    {
+        return $this->resource->getExcludeSortBy();
     }
 
     public function data($key = null, $default = null)

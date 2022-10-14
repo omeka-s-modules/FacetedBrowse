@@ -180,6 +180,7 @@ class CategoryController extends AbstractActionController
 
         $columnType = $this->params()->fromPost('column_type');
         $columnName = $this->params()->fromPost('column_name');
+        $columnExcludeSortBy = $this->params()->fromPost('column_exclude_sort_by');
         $columnData = json_decode($this->params()->fromPost('column_data'), true);
         if (!is_array($columnData)) {
             $columnData = [];
@@ -189,6 +190,7 @@ class CategoryController extends AbstractActionController
         $form->setData([
             'column_type' => $columnType,
             'column_name' => $columnName,
+            'column_exclude_sort_by' => $columnExcludeSortBy,
         ]);
 
         $view = new ViewModel;
@@ -208,6 +210,7 @@ class CategoryController extends AbstractActionController
             'o:id' => null,
             'o:name' => $this->params()->fromPost('column_name'),
             'o-module-faceted_browse:type' => $this->params()->fromPost('column_type'),
+            'o-module-faceted_browse:exclude_sort_by' => $this->params()->fromPost('column_exclude_sort_by'),
             'o:data' => [],
         ];
         $index = $this->params()->fromPost('index');

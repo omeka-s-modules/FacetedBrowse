@@ -12,6 +12,7 @@ $columnType = $this->facetedBrowse()->getColumnType($columnType);
 <?php echo $this->form()->openTag($form); ?>
 <?php echo $this->formHidden($form->get('column_type')); ?>
 <?php echo $this->formRow($form->get('column_name')); ?>
+<?php echo $this->formRow($form->get('column_exclude_sort_by')); ?>
 <?php echo $columnType->renderDataForm($this, $columnData); ?>
 </div>
 <?php if ($this->facetedBrowse()->columnTypeIsKnown($columnType)): ?>

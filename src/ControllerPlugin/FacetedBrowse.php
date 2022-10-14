@@ -77,6 +77,10 @@ class FacetedBrowse extends AbstractPlugin
         $sortings = [];
         if ($category) {
             foreach ($category->columns() as $column) {
+                if ($column->excludeSortBy()) {
+                    // Don't include sorting if it was excluded.
+                    continue;
+                }
                 $sortBy = $column->sortBy();
                 if ($sortBy) {
                     $sortings[] = [

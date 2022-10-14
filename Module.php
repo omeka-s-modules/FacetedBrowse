@@ -1,6 +1,7 @@
 <?php
 namespace FacetedBrowse;
 
+use Composer\Semver\Comparator;
 use Omeka\Module\AbstractModule;
 use Laminas\Mvc\MvcEvent;
 use Laminas\EventManager\SharedEventManagerInterface;
@@ -29,7 +30,7 @@ class Module extends AbstractModule
     {
         $sql = <<<'SQL'
 CREATE TABLE faceted_browse_facet (id INT UNSIGNED AUTO_INCREMENT NOT NULL, category_id INT UNSIGNED NOT NULL, name VARCHAR(255) NOT NULL, type VARCHAR(255) NOT NULL, data LONGTEXT NOT NULL COMMENT '(DC2Type:json)', position INT NOT NULL, INDEX IDX_13E44E7312469DE2 (category_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;
-CREATE TABLE faceted_browse_column (id INT UNSIGNED AUTO_INCREMENT NOT NULL, category_id INT UNSIGNED NOT NULL, name VARCHAR(255) NOT NULL, type VARCHAR(255) NOT NULL, data LONGTEXT NOT NULL COMMENT '(DC2Type:json)', position INT NOT NULL, INDEX IDX_81AF52F612469DE2 (category_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;
+CREATE TABLE faceted_browse_column (id INT UNSIGNED AUTO_INCREMENT NOT NULL, category_id INT UNSIGNED NOT NULL, name VARCHAR(255) NOT NULL, type VARCHAR(255) NOT NULL, exclude_sort_by TINYINT(1) NOT NULL, data LONGTEXT NOT NULL COMMENT '(DC2Type:json)', position INT NOT NULL, INDEX IDX_81AF52F612469DE2 (category_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;
 CREATE TABLE faceted_browse_page (id INT UNSIGNED AUTO_INCREMENT NOT NULL, owner_id INT DEFAULT NULL, site_id INT NOT NULL, created DATETIME NOT NULL, modified DATETIME DEFAULT NULL, title VARCHAR(255) NOT NULL, resource_type VARCHAR(255) NOT NULL, INDEX IDX_96A2980D7E3C61F9 (owner_id), INDEX IDX_96A2980DF6BD1646 (site_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;
 CREATE TABLE faceted_browse_category (id INT UNSIGNED AUTO_INCREMENT NOT NULL, owner_id INT DEFAULT NULL, site_id INT NOT NULL, page_id INT UNSIGNED NOT NULL, created DATETIME NOT NULL, modified DATETIME DEFAULT NULL, name VARCHAR(255) NOT NULL, query LONGTEXT NOT NULL, position INT NOT NULL, INDEX IDX_3AFD1257E3C61F9 (owner_id), INDEX IDX_3AFD125F6BD1646 (site_id), INDEX IDX_3AFD125C4663E4 (page_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;
 ALTER TABLE faceted_browse_facet ADD CONSTRAINT FK_13E44E7312469DE2 FOREIGN KEY (category_id) REFERENCES faceted_browse_category (id) ON DELETE CASCADE;
@@ -55,6 +56,14 @@ SQL;
         $conn->exec('DROP TABLE IF EXISTS faceted_browse_facet;');
         $conn->exec('DROP TABLE IF EXISTS faceted_browse_column;');
         $conn->exec('SET FOREIGN_KEY_CHECKS=1;');
+    }
+
+    public function upgrade($oldVersion, $newVersion, ServiceLocatorInterface $services)
+    {
+        $conn = $services->get('Omeka\Connection');
+        if (Comparator::lessThan($oldVersion, '1.3.0')) {
+            $conn->exec('ALTER TABLE faceted_browse_column ADD exclude_sort_by TINYINT(1) NOT NULL AFTER type');
+        }
     }
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)

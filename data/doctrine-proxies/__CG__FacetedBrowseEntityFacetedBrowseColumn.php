@@ -66,10 +66,10 @@ class FacetedBrowseColumn extends \FacetedBrowse\Entity\FacetedBrowseColumn impl
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'category', 'name', 'type', 'data', 'position'];
+            return ['__isInitialized__', 'id', 'category', 'name', 'type', 'excludeSortBy', 'data', 'position'];
         }
 
-        return ['__isInitialized__', 'id', 'category', 'name', 'type', 'data', 'position'];
+        return ['__isInitialized__', 'id', 'category', 'name', 'type', 'excludeSortBy', 'data', 'position'];
     }
 
     /**
@@ -255,6 +255,28 @@ class FacetedBrowseColumn extends \FacetedBrowse\Entity\FacetedBrowseColumn impl
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getType', []);
 
         return parent::getType();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setExcludeSortBy(bool $excludeSortBy): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExcludeSortBy', [$excludeSortBy]);
+
+        parent::setExcludeSortBy($excludeSortBy);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getExcludeSortBy(): bool
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExcludeSortBy', []);
+
+        return parent::getExcludeSortBy();
     }
 
     /**
