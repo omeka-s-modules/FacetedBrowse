@@ -107,6 +107,7 @@ return [
                 'controller' => 'index',
                 'action' => 'index',
                 'useRouteMatch' => true,
+                'resource' => 'FacetedBrowse\Controller\SiteAdmin\Index',
                 'pages' => [
                     [
                         'route' => 'admin/site/slug/faceted-browse-page',
