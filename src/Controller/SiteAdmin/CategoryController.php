@@ -133,7 +133,7 @@ class CategoryController extends AbstractActionController
 
         $facetType = $this->params()->fromPost('facet_type');
         $facetName = $this->params()->fromPost('facet_name');
-        $facetData = json_decode($this->params()->fromPost('facet_data'), true);
+        $facetData = json_decode((string) $this->params()->fromPost('facet_data'), true);
         if (!is_array($facetData)) {
             $facetData = [];
         }
@@ -181,7 +181,7 @@ class CategoryController extends AbstractActionController
         $columnType = $this->params()->fromPost('column_type');
         $columnName = $this->params()->fromPost('column_name');
         $columnExcludeSortBy = $this->params()->fromPost('column_exclude_sort_by');
-        $columnData = json_decode($this->params()->fromPost('column_data'), true);
+        $columnData = json_decode((string) $this->params()->fromPost('column_data'), true);
         if (!is_array($columnData)) {
             $columnData = [];
         }
