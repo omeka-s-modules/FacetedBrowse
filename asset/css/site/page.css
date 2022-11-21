@@ -12,6 +12,10 @@
     margin: 1em 0;
 }
 
+.faceted-browse-page #section-content table {
+    width:100%;
+}
+
 #categories,
 .facet ul {
     list-style: none;
