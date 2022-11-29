@@ -2,17 +2,17 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Adriana Hernández, 2021
 # Alfonso Montejo <almontejor@gmail.com>, 2022
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-16 15:58-0400\n"
+"POT-Creation-Date: 2022-11-29 12:19-0500\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Alfonso Montejo <almontejor@gmail.com>, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/omeka/teams/14184/es/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: src/Controller/SiteAdmin/PageController.php:87
 msgid "Add it to site navigation?"
@@ -477,15 +477,15 @@ msgstr "Datos de faceta desconocidos"
 msgid "A site must have an ID"
 msgstr "Un sitio debe tener una ID"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:145
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:146
 msgid "A category must have a site"
 msgstr "Una categoría debe tener un sitio"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:148
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:149
 msgid "A category must have a name"
 msgstr "Una categoría debe tener un nombre"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:151
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:152
 msgid "A category must have a query"
 msgstr "Una categoría debe tener una consulta"
 
@@ -502,6 +502,10 @@ msgid "Column name"
 msgstr "Nombre de la columna"
 
 #: src/Form/ColumnForm.php:33
+msgid "Exclude sort by"
+msgstr ""
+
+#: src/Form/ColumnForm.php:44
 msgid "Set column"
 msgstr "Establecer columna"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-16 15:58-0400\n"
+"POT-Creation-Date: 2022-11-29 12:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -451,15 +451,15 @@ msgstr ""
 msgid "A site must have an ID"
 msgstr ""
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:145
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:146
 msgid "A category must have a site"
 msgstr ""
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:148
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:149
 msgid "A category must have a name"
 msgstr ""
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:151
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:152
 msgid "A category must have a query"
 msgstr ""
 
@@ -476,6 +476,10 @@ msgid "Column name"
 msgstr ""
 
 #: src/Form/ColumnForm.php:33
+msgid "Exclude sort by"
+msgstr ""
+
+#: src/Form/ColumnForm.php:44
 msgid "Set column"
 msgstr ""
 

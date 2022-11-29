@@ -2,24 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Giorgio Comai <g@giorgiocomai.eu>, 2021
-#
+# Giorgio Comai <g@giorgiocomai.eu>, 2022
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-16 15:58-0400\n"
+"POT-Creation-Date: 2022-11-29 12:19-0500\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
-"Last-Translator: Giorgio Comai <g@giorgiocomai.eu>, 2021\n"
+"Last-Translator: Giorgio Comai <g@giorgiocomai.eu>, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/omeka/teams/14184/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: src/Controller/SiteAdmin/PageController.php:87
 msgid "Add it to site navigation?"
@@ -63,11 +63,11 @@ msgstr "Mostra tutti i valori disponibili."
 
 #: view/common/faceted-browse/facet-render/value.phtml:33
 msgid "See more"
-msgstr ""
+msgstr "Mostra di più"
 
 #: view/common/faceted-browse/facet-render/value.phtml:34
 msgid "See less"
-msgstr ""
+msgstr "Mostra di meno"
 
 #: view/common/faceted-browse/navigation-link-form/faceted-browse.phtml:9
 msgid "Select a page"
@@ -165,7 +165,7 @@ msgstr "Colonne"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:2
 msgid "Add all"
-msgstr ""
+msgstr "Aggiungi tutti"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:6
 msgid "Available"
@@ -272,10 +272,12 @@ msgstr "Errore nel recuperare il markup per la categoria"
 #: config/module.config.php:99
 msgid "Cannot show all. The result set is likely too large."
 msgstr ""
+"Impossibile mostrare tutti. Probabilmente il gruppo di risultati è troppo "
+"ampio."
 
 #: config/module.config.php:100
 msgid "Loading results…"
-msgstr ""
+msgstr "Caricamento dei risultati in corso..."
 
 #: src/Site/NavigationLink/FacetedBrowse.php:12
 msgid "Faceted browse"
@@ -443,14 +445,19 @@ msgid ""
 "select type, users may choose any number of values at a time via a list. For"
 " the special \"text input\" select type, users may input their own text."
 msgstr ""
+"Seleziona il tipo di selettore. Per il selettore \"singolo\", gli utenti "
+"possono scegliere un solo valore per volta da una lista o da un menu a "
+"tendina. Per il selettore \"multiplo\", gli utenti possono scegliere un "
+"qualsiasi numero di valori da una lista. Per il selettore speciale "
+"\"testo\", gli utenti possono inserire liberamente testo."
 
 #: src/FacetType/Value.php:83
 msgid "Text input"
-msgstr ""
+msgstr "Inserimento di testo"
 
 #: src/FacetType/Value.php:94
 msgid "Truncate values"
-msgstr ""
+msgstr "Tronca i valori"
 
 #: src/FacetType/Value.php:95
 msgid ""
@@ -459,6 +466,11 @@ msgid ""
 "hidden until the user clicks to show more. Enter nothing to show the entire "
 "list at all times."
 msgstr ""
+"Inserisci il numero di valori da mostrare nella lista del selettore quando "
+"la pagina si carica per la prima volta. Se il numero di valori supera questo"
+" numero, gli altri valori rimarranno nascosti finché l'utente non cliccherà "
+"su \"mostra di più\". Non inserire niente per mostrare l'intera lista in "
+"ogni occasione."
 
 #: src/FacetType/Unknown.php:44
 msgid "Unknown facet type"
@@ -473,15 +485,15 @@ msgstr "Dati di faccetta sconosciuti"
 msgid "A site must have an ID"
 msgstr "Un sito deve avere un ID"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:145
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:146
 msgid "A category must have a site"
 msgstr "Una categoria deve avere un sito"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:148
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:149
 msgid "A category must have a name"
 msgstr "Una categoria deve avere un nome"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:151
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:152
 msgid "A category must have a query"
 msgstr "Una categoria deve avere una query"
 
@@ -498,6 +510,10 @@ msgid "Column name"
 msgstr "Nome della colonna"
 
 #: src/Form/ColumnForm.php:33
+msgid "Exclude sort by"
+msgstr ""
+
+#: src/Form/ColumnForm.php:44
 msgid "Set column"
 msgstr "Imposta colonna"
 
