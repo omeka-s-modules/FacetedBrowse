@@ -49,7 +49,7 @@ class PageController extends AbstractActionController
         $columns = $category ? $category->columns() : null;
         $sortings = $this->facetedBrowse()->getSortings($category);
 
-        $this->setBrowseDefaults($sortings[0]['value'], 'asc');
+        $this->setBrowseDefaults($sortings[0]['value'], 'desc');
         $query = array_merge(
             $this->params()->fromQuery(),
             ['site_id' => $this->currentSite()->id()]
