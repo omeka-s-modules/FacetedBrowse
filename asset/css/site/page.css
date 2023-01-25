@@ -146,6 +146,7 @@ input[type="text"].permalink {
 
 #section-content.loading:before {
     font-family: "Font Awesome 5 Free";
+    font-weight: 900;
     content: "\f1ce";
     position: absolute;
     top: .75em;
