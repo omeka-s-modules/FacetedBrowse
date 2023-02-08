@@ -128,7 +128,6 @@ class FacetedBrowseCategory extends AbstractEntity
 
     public function __construct()
     {
-        $this->pageCategories = new ArrayCollection;
         $this->facets = new ArrayCollection;
         $this->columns = new ArrayCollection;
     }

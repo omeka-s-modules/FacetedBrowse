@@ -15,7 +15,7 @@ class FacetedBrowseFacetRepresentation extends AbstractRepresentation
         $this->resource = $facet;
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize() : array
     {
         return [
             'o:id' => $this->id(),
