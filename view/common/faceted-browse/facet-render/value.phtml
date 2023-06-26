@@ -23,7 +23,7 @@
                 name="<?php echo sprintf('value_%s', $facet->id()); ?>"
                 data-property-id="<?php echo $this->escapeHtml($dataPropertyId); ?>"
                 data-value="<?php echo $this->escapeHtml($dataValue); ?>">
-                <?php echo $value; ?>
+                <?php echo $this->escapeHtml($value); ?>
         </label>
     </li>
     <?php

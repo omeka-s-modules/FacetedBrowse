@@ -10,7 +10,7 @@
     <tbody>
         <?php foreach ($rows as $row): ?>
         <tr>
-            <td><?php echo $row['label']; ?></td>
+            <td><?php echo $this->escapeHtml($row['label']); ?></td>
             <td><?php echo $row['has_count']; ?></td>
         </tr>
         <?php endforeach; ?>
