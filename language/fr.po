@@ -11,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-12 13:35-0500\n"
+"POT-Creation-Date: 2023-06-28 10:25-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Pols12 <poltron54@gmail.com>, 2021\n"
-"Language-Team: French (https://www.transifex.com/omeka/teams/14184/fr/)\n"
+"Language-Team: French (https://app.transifex.com/omeka/teams/14184/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -67,22 +67,6 @@ msgstr "Choisir une page"
 
 #: view/faceted-browse/site-admin/category/column-form.phtml:6
 msgid "Configure column"
-msgstr ""
-
-#: view/faceted-browse/site-admin/category/column-form.phtml:9
-msgid "Column type"
-msgstr ""
-
-#: view/faceted-browse/site-admin/category/column-row.phtml:12
-msgid "Edit column"
-msgstr ""
-
-#: view/faceted-browse/site-admin/category/column-row.phtml:16
-msgid "Remove column"
-msgstr ""
-
-#: view/faceted-browse/site-admin/category/column-row.phtml:20
-msgid "Restore column"
 msgstr ""
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:7
@@ -283,42 +267,16 @@ msgid ""
 "all item sets."
 msgstr ""
 
-#: src/ColumnType/ResourceClass.php:20 src/FacetType/ResourceClass.php:21
-msgid "Resource class"
-msgstr ""
-
 #: src/ColumnType/Title.php:20
 msgid "Title (link to resource)"
-msgstr ""
-
-#: src/ColumnType/Value.php:22 src/FacetType/Value.php:21
-msgid "Value"
 msgstr ""
 
 #: src/ColumnType/Value.php:52
 msgid "Select a property…"
 msgstr ""
 
-#: src/ColumnType/Value.php:59
-msgid "Max values"
-msgstr ""
-
-#: src/ColumnType/Value.php:60
-msgid ""
-"Enter the maximum number of values to display. Set to blank to display all "
-"values."
-msgstr ""
-
-#: src/ColumnType/Unknown.php:23 src/FacetType/Unknown.php:22
-msgid "[Unknown]"
-msgstr "[Inconnu]"
-
 #: src/ColumnType/Unknown.php:45
 msgid "Unknown column type"
-msgstr ""
-
-#: src/ColumnType/Unknown.php:55
-msgid "Unknown column data"
 msgstr ""
 
 #: src/FacetType/ItemSet.php:45 src/FacetType/ResourceTemplate.php:45
@@ -477,10 +435,6 @@ msgstr ""
 msgid "Exclude sort by"
 msgstr ""
 
-#: src/Form/ColumnForm.php:44
-msgid "Set column"
-msgstr ""
-
 #: src/Form/PageForm.php:19
 msgid "Enter the title of this page."
 msgstr "Entrez le titre de la page."
@@ -503,10 +457,6 @@ msgstr ""
 
 #: src/Form/CategoryForm.php:52
 msgid "Add a facet…"
-msgstr ""
-
-#: src/Form/CategoryForm.php:65
-msgid "Add a column…"
 msgstr ""
 
 #: src/Form/FacetForm.php:22
