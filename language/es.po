@@ -12,10 +12,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-12 13:35-0500\n"
+"POT-Creation-Date: 2023-06-28 10:25-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Alfonso Montejo <almontejor@gmail.com>, 2022\n"
-"Language-Team: Spanish (https://www.transifex.com/omeka/teams/14184/es/)\n"
+"Language-Team: Spanish (https://app.transifex.com/omeka/teams/14184/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -64,11 +64,11 @@ msgstr "Mostrar todos los valores disponibles."
 
 #: view/common/faceted-browse/facet-render/value.phtml:33
 msgid "See more"
-msgstr ""
+msgstr "Ver más"
 
 #: view/common/faceted-browse/facet-render/value.phtml:34
 msgid "See less"
-msgstr ""
+msgstr "Ver menos"
 
 #: view/common/faceted-browse/navigation-link-form/faceted-browse.phtml:9
 msgid "Select a page"
@@ -77,22 +77,6 @@ msgstr "Seleccionar una página"
 #: view/faceted-browse/site-admin/category/column-form.phtml:6
 msgid "Configure column"
 msgstr "Configurar columna"
-
-#: view/faceted-browse/site-admin/category/column-form.phtml:9
-msgid "Column type"
-msgstr "Tipo de columna"
-
-#: view/faceted-browse/site-admin/category/column-row.phtml:12
-msgid "Edit column"
-msgstr "Editar columna"
-
-#: view/faceted-browse/site-admin/category/column-row.phtml:16
-msgid "Remove column"
-msgstr "Eliminar columna"
-
-#: view/faceted-browse/site-admin/category/column-row.phtml:20
-msgid "Restore column"
-msgstr "Restaurar columna"
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:7
 msgid "Configure facet"
@@ -296,45 +280,17 @@ msgstr ""
 "Introducir el número máximo de conjuntos de fichas a mostrar. Si se deja en "
 "blanco se mostrarán todos."
 
-#: src/ColumnType/ResourceClass.php:20 src/FacetType/ResourceClass.php:21
-msgid "Resource class"
-msgstr "Clase de recurso"
-
 #: src/ColumnType/Title.php:20
 msgid "Title (link to resource)"
 msgstr "Título (enlace al recurso)"
-
-#: src/ColumnType/Value.php:22 src/FacetType/Value.php:21
-msgid "Value"
-msgstr "Valor"
 
 #: src/ColumnType/Value.php:52
 msgid "Select a property…"
 msgstr "Seleccionar una propiedad..."
 
-#: src/ColumnType/Value.php:59
-msgid "Max values"
-msgstr "Valores máximos"
-
-#: src/ColumnType/Value.php:60
-msgid ""
-"Enter the maximum number of values to display. Set to blank to display all "
-"values."
-msgstr ""
-"Introducir el número máximo de valores a mostrar. Si se deja en blanco se "
-"mostrarán todos."
-
-#: src/ColumnType/Unknown.php:23 src/FacetType/Unknown.php:22
-msgid "[Unknown]"
-msgstr "[Desconocido]"
-
 #: src/ColumnType/Unknown.php:45
 msgid "Unknown column type"
 msgstr "Tipo de columna desconocido"
-
-#: src/ColumnType/Unknown.php:55
-msgid "Unknown column data"
-msgstr "Datos de columna desconocidos"
 
 #: src/FacetType/ItemSet.php:45 src/FacetType/ResourceTemplate.php:45
 #: src/FacetType/ResourceClass.php:45 src/FacetType/Value.php:77
@@ -447,14 +403,20 @@ msgid ""
 "select type, users may choose any number of values at a time via a list. For"
 " the special \"text input\" select type, users may input their own text."
 msgstr ""
+"Indicar el tipo de selección. Para el tipo de selección \"único\", los "
+"usuarios y usuarias pueden elegir sólo un valor a la vez a través de una "
+"lista o menú desplegable. Para el tipo de selección \"múltiple\", se pueden "
+"elegir varios valores a la vez a través de una lista. Para el tipo de "
+"selección especial \"entrada de texto\", las personas usuarias pueden "
+"introducir su propio texto."
 
 #: src/FacetType/Value.php:83
 msgid "Text input"
-msgstr ""
+msgstr "Entrada de texto"
 
 #: src/FacetType/Value.php:94
 msgid "Truncate values"
-msgstr ""
+msgstr "Truncar valores"
 
 #: src/FacetType/Value.php:95
 msgid ""
@@ -463,6 +425,10 @@ msgid ""
 "hidden until the user clicks to show more. Enter nothing to show the entire "
 "list at all times."
 msgstr ""
+"Introducir el número de valores que se mostrarán en la lista de selección "
+"cuando se cargue la página por primera vez. Si el número de valores supera "
+"este número, el resto se ocultará hasta que se haga clic en mostrar más. Si "
+"no se introduce ningún valor, se mostrará siempre la lista completa."
 
 #: src/FacetType/Unknown.php:44
 msgid "Unknown facet type"
@@ -503,11 +469,7 @@ msgstr "Nombre de la columna"
 
 #: src/Form/ColumnForm.php:33
 msgid "Exclude sort by"
-msgstr ""
-
-#: src/Form/ColumnForm.php:44
-msgid "Set column"
-msgstr "Establecer columna"
+msgstr "Excluir ordenar por"
 
 #: src/Form/PageForm.php:19
 msgid "Enter the title of this page."
@@ -538,10 +500,6 @@ msgstr ""
 #: src/Form/CategoryForm.php:52
 msgid "Add a facet…"
 msgstr "Añadir una faceta..."
-
-#: src/Form/CategoryForm.php:65
-msgid "Add a column…"
-msgstr "Añadir una columna..."
 
 #: src/Form/FacetForm.php:22
 msgid "Facet name"

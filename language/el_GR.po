@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Josip Ilic <josip.ilic@ericsson.com>, 2021
+# Yannis Kaskamanidis <kiolalis@gmail.com>, 2023
 # 
 #, fuzzy
 msgid ""
@@ -13,17 +13,17 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-28 10:25-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
-"Last-Translator: Josip Ilic <josip.ilic@ericsson.com>, 2021\n"
-"Language-Team: Croatian (https://app.transifex.com/omeka/teams/14184/hr/)\n"
+"Last-Translator: Yannis Kaskamanidis <kiolalis@gmail.com>, 2023\n"
+"Language-Team: Greek (Greece) (https://app.transifex.com/omeka/teams/14184/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hr\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Language: el_GR\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/Controller/SiteAdmin/PageController.php:87
 msgid "Add it to site navigation?"
-msgstr ""
+msgstr "Προσθήκη στην πλοήγηση του ιστότοπου;"
 
 #: src/FacetType/Value.php:108
 msgid ""
@@ -36,62 +36,70 @@ msgid ""
 "                <li>\"Has any value\": enter the property ID followed by any value (usually the property label), separated by a single space.</li>\n"
 "            </ul>"
 msgstr ""
+"\n"
+"            <p>Καταχωρίστε τις τιμές διαχωρισμένες με νέες γραμμές. Η μορφή κάθε τιμής εξαρτάται από τον τύπο του ερωτήματος:</p>\n"
+"            <ul>\n"
+"                <li>\"Είναι ακριβώς\": καταχωρίστε μια τιμή που αντιστοιχεί ακριβώς στην τιμή της ιδιότητας.</li>\n"
+"                <li>\"Περιέχει\": καταχωρίστε μια τιμή που αντιστοιχεί σε οποιοδήποτε μέρος της τιμής της ιδιότητας.</li>\n"
+"                <li>\"Είναι πόρος με αναγνωριστικό\": καταχωρίστε το αναγνωριστικό πόρου ακολουθούμενο από οποιαδήποτε τιμή (συνήθως τον τίτλο του πόρου), χωρισμένη με ένα μόνο διάστημα.</li>\n"
+"                <li>\"Έχει οποιαδήποτε τιμή\": καταχωρίστε το αναγνωριστικό ιδιότητας ακολουθούμενο από οποιαδήποτε τιμή (συνήθως την ετικέτα της ιδιότητας), που χωρίζεται από ένα κενό διάστημα.</li>\n"
+"            </ul>"
 
 #: view/common/faceted-browse/facet-data-form/item-set.phtml:4
 msgid "Show all available item sets."
-msgstr ""
+msgstr "Εμφάνιση όλων των διαθέσιμων σετ αντικειμένων."
 
 #: view/common/faceted-browse/facet-data-form/resource-class.phtml:4
 msgid "Show all available classes."
-msgstr ""
+msgstr "Εμφάνιση όλων των διαθέσιμων κατηγοριών."
 
 #: view/common/faceted-browse/facet-data-form/resource-template.phtml:4
 msgid "Show all available templates."
-msgstr ""
+msgstr "Εμφάνιση όλων των διαθέσιμων προτύπων."
 
 #: view/common/faceted-browse/facet-data-form/value.phtml:7
 msgid "Show all available values."
-msgstr ""
+msgstr "Εμφάνιση όλων των διαθέσιμων τιμών."
 
 #: view/common/faceted-browse/facet-render/value.phtml:33
 msgid "See more"
-msgstr ""
+msgstr "Δείτε περισσότερα"
 
 #: view/common/faceted-browse/facet-render/value.phtml:34
 msgid "See less"
-msgstr ""
+msgstr "Δείτε λιγότερα"
 
 #: view/common/faceted-browse/navigation-link-form/faceted-browse.phtml:9
 msgid "Select a page"
-msgstr ""
+msgstr "Επιλογή μιας σελίδας"
 
 #: view/faceted-browse/site-admin/category/column-form.phtml:6
 msgid "Configure column"
-msgstr ""
+msgstr "Διαμόρφωση στήλης"
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:7
 msgid "Configure facet"
-msgstr "Konfigurirajte fasetu "
+msgstr "Διαμόρφωση όψης"
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:10
 msgid "Facet type"
-msgstr "Vrsta fasete"
+msgstr "Είδος όψης"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:12
 msgid "Edit facet"
-msgstr "Uredite fasetu"
+msgstr "Επεξεργασία όψης"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:16
 msgid "Remove facet"
-msgstr "Uklonite fasetu"
+msgstr "Αφαίρεση όψης"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:20
 msgid "Restore facet"
-msgstr "Vratite fasetu"
+msgstr "Επαναφορά όψης"
 
 #: view/faceted-browse/site-admin/category/form.phtml:16
 msgid "Edit Category"
-msgstr ""
+msgstr "Επεξεργασία κατηγορίας"
 
 #: view/faceted-browse/site-admin/category/form.phtml:16
 #: view/faceted-browse/site-admin/category/form.phtml:18
@@ -99,190 +107,194 @@ msgstr ""
 #: view/faceted-browse/site-admin/page/form.phtml:14
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Faceted Browse"
-msgstr "Fasetirano Pretraživanje"
+msgstr "Πολύπλευρη περιήγηση"
 
 #: view/faceted-browse/site-admin/category/form.phtml:18
 msgid "Add Category"
-msgstr ""
+msgstr "Προσθήκη κατηγορίας"
 
 #: view/faceted-browse/site-admin/category/form.phtml:30
 #: view/faceted-browse/site-admin/page/form.phtml:28
 msgid "Save and&hellip;"
-msgstr ""
+msgstr "Αποθήκευση και&hellip;"
 
 #: view/faceted-browse/site-admin/category/form.phtml:32
 msgid "Return to page"
-msgstr ""
+msgstr "Επιστροφή στη σελίδα"
 
 #: view/faceted-browse/site-admin/category/form.phtml:33
 msgid "Stay on this category"
-msgstr ""
+msgstr "Παραμονή σε αυτή την κατηγορία"
 
 #: view/faceted-browse/site-admin/category/form.phtml:41
 #: view/faceted-browse/site-admin/page/form.phtml:39
 msgid "Page edit"
-msgstr ""
+msgstr "Επεξεργασία σελίδας"
 
 #: view/faceted-browse/site-admin/category/form.phtml:43
 msgid "Category edit"
-msgstr ""
+msgstr "Επεξεργασία κατηγορίας"
 
 #: view/faceted-browse/site-admin/category/form.phtml:43
 msgid "Category add"
-msgstr ""
+msgstr "Προσθήκη κατηγορίας"
 
 #: view/faceted-browse/site-admin/category/form.phtml:52
 msgid "Facets"
-msgstr "Fasete "
+msgstr "Όψεις"
 
 #: view/faceted-browse/site-admin/category/form.phtml:68
 msgid "Columns"
-msgstr ""
+msgstr "Στήλες"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:2
 msgid "Add all"
-msgstr ""
+msgstr "Προσθήκη όλων"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:6
 msgid "Available"
-msgstr ""
+msgstr "Διαθέσιμο"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:7
 msgid "Count"
-msgstr ""
+msgstr "Μέτρηση"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:20
 #: view/faceted-browse/site/page/browse.phtml:9
 msgid "There are no results."
-msgstr ""
+msgstr "Δεν υπάρχουν αποτελέσματα."
 
 #: view/faceted-browse/site-admin/page/browse.phtml:23
 msgid "Date created"
-msgstr ""
+msgstr "Ημερομηνία δημιουργίας"
 
 #: view/faceted-browse/site-admin/page/browse.phtml:80
 #, php-format
 msgid "No pages found. %s"
-msgstr ""
+msgstr "Δεν βρέθηκαν σελίδες. %s"
 
 #: view/faceted-browse/site-admin/page/browse.phtml:81
 msgid "Add a new page."
-msgstr ""
+msgstr "Προσθήκη νέας σελίδας."
 
 #: view/faceted-browse/site-admin/page/browse.phtml:84
 msgid "No pages found."
-msgstr ""
+msgstr "Δεν βρέθηκαν σελίδες."
 
 #: view/faceted-browse/site-admin/page/category-row.phtml:10
 msgid "Edit category"
-msgstr ""
+msgstr "Επεξεργασία κατηγορίας"
 
 #: view/faceted-browse/site-admin/page/form.phtml:14
 msgid "Edit Page"
-msgstr ""
+msgstr "Επεξεργασία σελίδας"
 
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Add Page"
-msgstr ""
+msgstr "Προσθήκη σελίδας"
 
 #: view/faceted-browse/site-admin/page/form.phtml:30
 msgid "Return to pages"
-msgstr ""
+msgstr "Επιστροφή στις σελίδες"
 
 #: view/faceted-browse/site-admin/page/form.phtml:31
 msgid "Stay on this page"
-msgstr ""
+msgstr "Παραμονή σε αυτή τη σελίδα"
 
 #: view/faceted-browse/site-admin/page/form.phtml:39
 msgid "Page add"
-msgstr ""
+msgstr "Προσθήκη σελίδας"
 
 #: view/faceted-browse/site-admin/page/form.phtml:49
 msgid "Categories"
-msgstr ""
+msgstr "Κατηγορίες"
 
 #: view/faceted-browse/site-admin/page/form.phtml:50
 msgid "Add category"
-msgstr ""
+msgstr "Προσθήκη κατηγορίας"
 
 #: view/faceted-browse/site/page/browse.phtml:3
 msgid "Copy permalink"
-msgstr ""
+msgstr "Αντιγραφή μόνιμου συνδέσμου"
 
 #: view/faceted-browse/site/page/browse.phtml:3
 msgid "Copied!"
-msgstr ""
+msgstr "Αντιγράφηκε!"
 
 #: view/faceted-browse/site/page/categories.phtml:17
 msgid "There are no categories to browse."
-msgstr ""
+msgstr "Δεν υπάρχουν κατηγορίες για περιήγηση."
 
 #: view/faceted-browse/site/page/facets.phtml:1
 msgid "Back"
-msgstr ""
+msgstr "Πίσω"
 
 #: config/module.config.php:93
 msgid "A facet must have a name."
-msgstr "Faseta mora imati ime."
+msgstr "Μια όψη πρέπει να έχει όνομα."
 
 #: config/module.config.php:94
 msgid "A column must have a name."
-msgstr ""
+msgstr "Μια στήλη πρέπει να έχει όνομα."
 
 #: config/module.config.php:95
 msgid "A column must have a property."
-msgstr ""
+msgstr "Μια στήλη πρέπει να έχει μια ιδιότητα."
 
 #: config/module.config.php:96
 msgid "Error fetching browse markup."
-msgstr ""
+msgstr "Σφάλμα κατά την ανάκτηση της σήμανσης περιήγησης."
 
 #: config/module.config.php:97
 msgid "Error fetching facet markup."
-msgstr "Greška prilikom dohvata markup-a fesete"
+msgstr "Σφάλμα κατά την ανάκτηση της σήμανσης όψεων."
 
 #: config/module.config.php:98
 msgid "Error fetching category markup."
-msgstr ""
+msgstr "Σφάλμα κατά την ανάκτηση της σήμανσης κατηγορίας."
 
 #: config/module.config.php:99
 msgid "Cannot show all. The result set is likely too large."
 msgstr ""
+"Δεν είναι δυνατή η εμφάνιση όλων. Το σύνολο των αποτελεσμάτων είναι "
+"πιθανότατα πολύ μεγάλο."
 
 #: config/module.config.php:100
 msgid "Loading results…"
-msgstr ""
+msgstr "Φόρτωση αποτελεσμάτων..."
 
 #: src/Site/NavigationLink/FacetedBrowse.php:12
 msgid "Faceted browse"
-msgstr "Fasetirano pretraživanje"
+msgstr "Πολύπλευρη περιήγηση"
 
 #: src/ColumnType/ItemSet.php:44
 msgid "Max item sets"
-msgstr ""
+msgstr "Μέγιστος αριθμός ομάδων αντικειμένων"
 
 #: src/ColumnType/ItemSet.php:45
 msgid ""
 "Enter the maximum number of item sets to display. Set to blank to display "
 "all item sets."
 msgstr ""
+"Καταχωρίστε τον μέγιστο αριθμό ομάδων αντικειμένων που θα εμφανίζονται. "
+"Αφήστε κενό για να εμφανίζονται όλες οι ομάδες αντικειμένων."
 
 #: src/ColumnType/Title.php:20
 msgid "Title (link to resource)"
-msgstr ""
+msgstr "Τίτλος (σύνδεσμος προς πόρο)"
 
 #: src/ColumnType/Value.php:52
 msgid "Select a property…"
-msgstr ""
+msgstr "Επιλογή μιας ιδιότητας..."
 
 #: src/ColumnType/Unknown.php:45
 msgid "Unknown column type"
-msgstr ""
+msgstr "Άγνωστο είδος στήλης"
 
 #: src/FacetType/ItemSet.php:45 src/FacetType/ResourceTemplate.php:45
 #: src/FacetType/ResourceClass.php:45 src/FacetType/Value.php:77
 msgid "Select type"
-msgstr ""
+msgstr "Επιλογή είδους"
 
 #: src/FacetType/ItemSet.php:46
 msgid ""
@@ -291,25 +303,30 @@ msgid ""
 "\"multiple\" select type, users may choose any number of item sets at a time"
 " via a list."
 msgstr ""
+"Επιλογή είδους. Για την επιλογή είδους \"μονή\", οι χρήστες μπορούν να "
+"επιλέξουν μόνο μια ομάδα αντικειμένων κάθε φορά μέσω μιας λίστας ή ενός "
+"αναπτυσσόμενου μενού. Για την επιλογή είδους \"πολλαπλή\", οι χρήστες "
+"μπορούν να επιλέξουν οποιονδήποτε αριθμό ομάδων αντικειμένων κάθε φορά μέσω "
+"μιας λίστας."
 
 #: src/FacetType/ItemSet.php:48 src/FacetType/ResourceTemplate.php:48
 #: src/FacetType/ResourceClass.php:48 src/FacetType/Value.php:80
 msgid "Single (list)"
-msgstr ""
+msgstr "Μονή (λίστα)"
 
 #: src/FacetType/ItemSet.php:49 src/FacetType/ResourceTemplate.php:49
 #: src/FacetType/ResourceClass.php:49 src/FacetType/Value.php:81
 msgid "Multiple (list)"
-msgstr ""
+msgstr "Πολλαπλή (λίστα)"
 
 #: src/FacetType/ItemSet.php:50 src/FacetType/ResourceTemplate.php:50
 #: src/FacetType/ResourceClass.php:50 src/FacetType/Value.php:82
 msgid "Single (dropdown menu)"
-msgstr ""
+msgstr "Μονή (αναπτυσσόμενο μενού)"
 
 #: src/FacetType/ItemSet.php:67
 msgid "Select item sets…"
-msgstr ""
+msgstr "Επιλογή ομάδων αντικειμένων… "
 
 #: src/FacetType/ResourceTemplate.php:46
 msgid ""
@@ -318,10 +335,14 @@ msgid ""
 "\"multiple\" select type, users may choose any number of templates at a time"
 " via a list."
 msgstr ""
+"Επιλογή είδους. Για το είδος επιλογής \"μονή\", οι χρήστες μπορούν να "
+"επιλέξουν μόνο ένα πρότυπο κάθε φορά μέσω μιας λίστας ή ενός αναπτυσσόμενου "
+"μενού. Για το είδος επιλογής \"πολλαπλή\", οι χρήστες μπορούν να επιλέξουν "
+"οποιονδήποτε αριθμό προτύπων κάθε φορά μέσω μιας λίστας."
 
 #: src/FacetType/ResourceTemplate.php:67
 msgid "Select templates…"
-msgstr ""
+msgstr "Επιλογή προτύπων… "
 
 #: src/FacetType/ResourceClass.php:46
 msgid ""
@@ -329,46 +350,50 @@ msgid ""
 "only one class at a time via a list or dropdown menu. For the \"multiple\" "
 "select type, users may choose any number of classes at a time via a list."
 msgstr ""
+"Επιλογή είδους. Για το είδος επιλογής \"μονή\", οι χρήστες μπορούν να "
+"επιλέξουν μόνο μια κατηγορία κάθε φορά μέσω μιας λίστας ή ενός "
+"αναπτυσσόμενου μενού. Για το είδος επιλογής \"πολλαπλή\", οι χρήστες μπορούν"
+" να επιλέξουν οποιονδήποτε αριθμό κατηγοριών κάθε φορά μέσω μιας λίστας."
 
 #: src/FacetType/ResourceClass.php:67
 msgid "Select classes…"
-msgstr ""
+msgstr "Επιλογή κατηγοριών… "
 
 #: src/FacetType/FullText.php:20
 msgid "Full-text"
-msgstr ""
+msgstr "Πλήρες κείμενο"
 
 #: src/FacetType/Value.php:59
 msgid "Is exactly"
-msgstr ""
+msgstr "Είναι ακριβώς"
 
 #: src/FacetType/Value.php:60
 msgid "Is not exactly"
-msgstr ""
+msgstr "Δεν είναι ακριβώς"
 
 #: src/FacetType/Value.php:61
 msgid "Contains"
-msgstr ""
+msgstr "Περιέχει"
 
 #: src/FacetType/Value.php:62
 msgid "Does not contain"
-msgstr ""
+msgstr "Δεν περιέχει"
 
 #: src/FacetType/Value.php:63
 msgid "Is resource with ID"
-msgstr ""
+msgstr "Είναι πόρος με αναγνωριστικό"
 
 #: src/FacetType/Value.php:64
 msgid "Is not resource with ID"
-msgstr ""
+msgstr "Δεν είναι πόρος με αναγνωριστικό"
 
 #: src/FacetType/Value.php:65
 msgid "Has any value"
-msgstr ""
+msgstr "Έχει οποιαδήποτε τιμή"
 
 #: src/FacetType/Value.php:66
 msgid "Has no values"
-msgstr ""
+msgstr "Δεν έχει τιμές"
 
 #: src/FacetType/Value.php:78
 msgid ""
@@ -377,14 +402,20 @@ msgid ""
 "select type, users may choose any number of values at a time via a list. For"
 " the special \"text input\" select type, users may input their own text."
 msgstr ""
+"Επιλογή είδους. Για το είδος επιλογής \"μονή\", οι χρήστες μπορούν να "
+"επιλέξουν μόνο μια τιμή κάθε φορά μέσω μιας λίστας ή ενός αναπτυσσόμενου "
+"μενού. Για το είδος επιλογής \"πολλαπλή\", οι χρήστες μπορούν να επιλέξουν "
+"οποιονδήποτε αριθμό τιμών κάθε φορά μέσω μιας λίστας. Για τον ειδικό τύπο "
+"επιλογής \"εισαγωγής κειμένου\", οι χρήστες μπορούν να καταχωρίσουν το δικό "
+"τους κείμενο."
 
 #: src/FacetType/Value.php:83
 msgid "Text input"
-msgstr ""
+msgstr "Εισαγωγή κειμένου"
 
 #: src/FacetType/Value.php:94
 msgid "Truncate values"
-msgstr ""
+msgstr "Περικοπή τιμών"
 
 #: src/FacetType/Value.php:95
 msgid ""
@@ -393,101 +424,112 @@ msgid ""
 "hidden until the user clicks to show more. Enter nothing to show the entire "
 "list at all times."
 msgstr ""
+"Καταχωρίστε τον αριθμό των τιμών που θα εμφανιστούν στη λίστα επιλογής κατά "
+"την πρώτη φόρτωση της σελίδας. Εάν ο αριθμός των τιμών υπερβαίνει αυτόν τον "
+"αριθμό, οι υπόλοιπες θα παραμείνουν κρυφές μέχρι να κάνει κλικ ο χρήστης για"
+" να εμφανιστούν περισσότερες. Εάν δεν κάνετε καμία καταχώριση, θα "
+"εμφανίζεται όλη η λίστα ανά πάσα στιγμή."
 
 #: src/FacetType/Unknown.php:44
 msgid "Unknown facet type"
-msgstr "Nepoznata vrsta fasete"
+msgstr "Άγνωστο είδος όψης"
 
 #: src/FacetType/Unknown.php:54
 msgid "Unknown facet data"
-msgstr "Nepoznati podaci fasete"
+msgstr "Άγνωστα δεδομένα όψης"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:51
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
 msgid "A site must have an ID"
-msgstr ""
+msgstr "Ένας ιστότοπος πρέπει να έχει αναγνωριστικό"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:146
 msgid "A category must have a site"
-msgstr ""
+msgstr "Μια κατηγορία πρέπει να έχει ιστότοπο"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:149
 msgid "A category must have a name"
-msgstr ""
+msgstr "Μια κατηγορία πρέπει να έχει όνομα"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:152
 msgid "A category must have a query"
-msgstr ""
+msgstr "Μια κατηγορία πρέπει να έχει ερώτημα"
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:90
 msgid "A page must have a site"
-msgstr ""
+msgstr "Μια σελίδα πρέπει να έχει ιστότοπο"
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:93
 msgid "A page must have a title"
-msgstr ""
+msgstr "Μια σελίδα πρέπει να έχει τίτλο"
 
 #: src/Form/ColumnForm.php:22
 msgid "Column name"
-msgstr ""
+msgstr "Όνομα στήλης"
 
 #: src/Form/ColumnForm.php:33
 msgid "Exclude sort by"
-msgstr ""
+msgstr "Εξαίρεση ταξινόμησης κατά"
 
 #: src/Form/PageForm.php:19
 msgid "Enter the title of this page."
-msgstr ""
+msgstr "Καταχώριση του τίτλου αυτής της σελίδας."
 
 #: src/Form/PageForm.php:43
 msgid "Select the type of resources to browse."
-msgstr ""
+msgstr "Επιλέξτε το είδος των πόρων για περιήγηση."
 
 #: src/Form/CategoryForm.php:23
 msgid ""
 "Enter the name of this category. A category is a logical grouping of "
 "resources that can be described using faceted classification."
 msgstr ""
+"Καταχωρίστε το όνομα αυτής της κατηγορίας. Μια κατηγορία είναι μια λογική "
+"ομαδοποίηση πόρων, η οποία μπορεί να περιγραφεί χρησιμοποιώντας πολύπλευρη "
+"ταξινόμηση."
 
 #: src/Form/CategoryForm.php:35
 msgid ""
 "Configure the logical grouping of resources that make up this category. No "
 "query means all site resources."
 msgstr ""
+"Διαμορφώστε τη λογική ομαδοποίηση των πόρων που απαρτίζουν αυτήν την "
+"κατηγορία. Εάν δεν υπάρχει ερώτημα, περιλαμβάνονται όλοι οι πόροι του "
+"ιστότοπου."
 
 #: src/Form/CategoryForm.php:52
 msgid "Add a facet…"
-msgstr ""
+msgstr "Προσθήκη όψης… "
 
 #: src/Form/FacetForm.php:22
 msgid "Facet name"
-msgstr "Ime fasete"
+msgstr "Όνομα όψης"
 
 #: src/Form/FacetForm.php:33
 msgid "Set facet"
-msgstr "Postavite fasetu"
+msgstr "Ορισμός όψης"
 
 #: src/Controller/SiteAdmin/PageController.php:44
 msgid "Page successfully added. Add categories below."
-msgstr ""
+msgstr "Η σελίδα προστέθηκε με επιτυχία. Προσθέστε κατηγορίες παρακάτω."
 
 #: src/Controller/SiteAdmin/PageController.php:83
 #, php-format
 msgid "Page successfully edited. %s"
-msgstr ""
+msgstr "Η επεξεργασία της σελίδας ήταν επιτυχής. %s"
 
 #: src/Controller/SiteAdmin/PageController.php:124
 msgid "Page successfully deleted."
-msgstr ""
+msgstr "Η σελίδα διαγράφηκε με επιτυχία."
 
 #: src/Controller/SiteAdmin/CategoryController.php:37
 msgid "Category successfully added."
-msgstr ""
+msgstr "Η κατηγορία προστέθηκε με επιτυχία."
 
 #: src/Controller/SiteAdmin/CategoryController.php:83
 msgid "Category successfully edited."
-msgstr ""
+msgstr "Η επεξεργασία της κατηγορίας ήταν επιτυχής."
 
 #: src/Controller/SiteAdmin/CategoryController.php:119
 msgid "Category successfully deleted."
-msgstr ""
+msgstr "Η κατηγορία διαγράφηκε με επιτυχία."

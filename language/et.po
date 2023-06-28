@@ -11,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-12 13:35-0500\n"
+"POT-Creation-Date: 2023-06-28 10:25-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Rivo Zängov <eraser@eraser.ee>, 2021\n"
-"Language-Team: Estonian (https://www.transifex.com/omeka/teams/14184/et/)\n"
+"Language-Team: Estonian (https://app.transifex.com/omeka/teams/14184/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -68,22 +68,6 @@ msgstr "Vali lehekülg"
 #: view/faceted-browse/site-admin/category/column-form.phtml:6
 msgid "Configure column"
 msgstr "Seadista veergu"
-
-#: view/faceted-browse/site-admin/category/column-form.phtml:9
-msgid "Column type"
-msgstr "Veeru liik"
-
-#: view/faceted-browse/site-admin/category/column-row.phtml:12
-msgid "Edit column"
-msgstr "Muuda veergu"
-
-#: view/faceted-browse/site-admin/category/column-row.phtml:16
-msgid "Remove column"
-msgstr "Eemalda veerg"
-
-#: view/faceted-browse/site-admin/category/column-row.phtml:20
-msgid "Restore column"
-msgstr "Taasta veerg"
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:7
 msgid "Configure facet"
@@ -283,43 +267,17 @@ msgid ""
 "all item sets."
 msgstr ""
 
-#: src/ColumnType/ResourceClass.php:20 src/FacetType/ResourceClass.php:21
-msgid "Resource class"
-msgstr "Ressursi klass"
-
 #: src/ColumnType/Title.php:20
 msgid "Title (link to resource)"
 msgstr "Pealkiri (link ressursile)"
-
-#: src/ColumnType/Value.php:22 src/FacetType/Value.php:21
-msgid "Value"
-msgstr "Väärtus"
 
 #: src/ColumnType/Value.php:52
 msgid "Select a property…"
 msgstr "Vali omadus..."
 
-#: src/ColumnType/Value.php:59
-msgid "Max values"
-msgstr "Maks. väärtuseid"
-
-#: src/ColumnType/Value.php:60
-msgid ""
-"Enter the maximum number of values to display. Set to blank to display all "
-"values."
-msgstr ""
-
-#: src/ColumnType/Unknown.php:23 src/FacetType/Unknown.php:22
-msgid "[Unknown]"
-msgstr "[tundmatu]"
-
 #: src/ColumnType/Unknown.php:45
 msgid "Unknown column type"
 msgstr "Tundmatu veeru liik"
-
-#: src/ColumnType/Unknown.php:55
-msgid "Unknown column data"
-msgstr "Tundmatu veeru andmed"
 
 #: src/FacetType/ItemSet.php:45 src/FacetType/ResourceTemplate.php:45
 #: src/FacetType/ResourceClass.php:45 src/FacetType/Value.php:77
@@ -477,10 +435,6 @@ msgstr "Veeru nimi"
 msgid "Exclude sort by"
 msgstr ""
 
-#: src/Form/ColumnForm.php:44
-msgid "Set column"
-msgstr "Määra veerg"
-
 #: src/Form/PageForm.php:19
 msgid "Enter the title of this page."
 msgstr "Sisesta selle lehekülje pealkiri."
@@ -504,10 +458,6 @@ msgstr ""
 #: src/Form/CategoryForm.php:52
 msgid "Add a facet…"
 msgstr "Lisa vaade..."
-
-#: src/Form/CategoryForm.php:65
-msgid "Add a column…"
-msgstr "Lisa veerg..."
 
 #: src/Form/FacetForm.php:22
 msgid "Facet name"
