@@ -3,7 +3,7 @@
 <?php elseif ($singleSelect): ?>
 <?php echo $this->formElement($singleSelect); ?>
 <?php else: ?>
-<ul class="value-select-list" data-truncate-values="<?php echo $this->escapeHtml($facet->data('truncate_values')); ?>">
+<ul class="select-list" data-truncate-list-items="<?php echo $this->escapeHtml($facet->data('truncate_values')); ?>">
     <?php
     $index = 0;
     foreach ($values as $key => $value):
@@ -15,7 +15,7 @@
         $dataPropertyId = $key;
     }
     ?>
-    <li class="value-select-list-item" data-index="<?php echo $this->escapeHtml($index++); ?>">
+    <li class="select-list-item" data-index="<?php echo $this->escapeHtml($index++); ?>">
         <label>
             <input
                 class="value"
@@ -30,6 +30,6 @@
     endforeach;
     ?>
 </ul>
-<a href="#" class="value-select-list-expand" style="display: none;"><?php echo $this->translate('See more'); ?> <span class="value-select-list-hidden-count"></span></a>
-<a href="#" class="value-select-list-collapse" style="display: none;"><?php echo $this->translate('See less'); ?></a>
+<a href="#" class="select-list-expand" style="display: none;"><?php echo $this->translate('See more'); ?> <span class="select-list-hidden-count"></span></a>
+<a href="#" class="select-list-collapse" style="display: none;"><?php echo $this->translate('See less'); ?></a>
 <?php endif; ?>

@@ -265,4 +265,49 @@ const FacetedBrowse = {
     getState: stateName => {
         return history.state.hasOwnProperty(stateName) ? history.state[stateName] : undefined;
     },
+
+    updateSelectList: selectList => {
+        const facet = selectList.closest('.facet');
+        const truncateListItems = selectList.data('truncateListItems');
+        // First, sort the selected list items and prepend them to the list.
+        const listItemsSelected = selectList.find('input.selected')
+            .closest('.select-list-item')
+            .show()
+            .sort(function(a, b) {
+                // Subtracting seems to be cross-browser compatible.
+                return $(a).data('index') - $(b).data('index');
+            });
+        listItemsSelected.prependTo(selectList);
+        // Then, sort the unselected list items and append them to the list.
+        const listItemsUnselected = selectList.find('input:not(.selected)')
+            .closest('.select-list-item')
+            .show()
+            .sort(function(a, b) {
+                // Subtracting seems to be cross-browser compatible.
+                return $(a).data('index') - $(b).data('index');
+            });
+        listItemsUnselected.appendTo(selectList);
+        const listItems = selectList.find('.select-list-item');
+        if (!truncateListItems || truncateListItems >= listItems.length) {
+            // No need to show expand when list does not surpass configured limit.
+            return;
+        }
+        if (selectList.hasClass('expanded')) {
+            // No need to hide items when list is expanded.
+            facet.find('.select-list-expand').hide();
+            facet.find('.select-list-collapse').show();
+            return;
+        }
+        if (truncateListItems < listItemsSelected.length) {
+            // Show all selected items even if they surpass the configured limit.
+            listItemsUnselected.hide();
+        } else {
+            // Truncate to the configured limit.
+            listItems.slice(truncateListItems).hide();
+        }
+        const hiddenCount = listItems.filter(':hidden').length;
+        facet.find('.select-list-hidden-count').text(`(${hiddenCount})`);
+        facet.find('.select-list-expand').show();
+        facet.find('.select-list-collapse').hide();
+    },
 };
