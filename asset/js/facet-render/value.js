@@ -111,22 +111,4 @@ container.on('keyup', 'input.value[type="text"]', function(e) {
     }, 350);
 });
 
-// Handle expand list button (show more)
-container.on('click', '.select-list-expand', function(e) {
-    e.preventDefault();
-    const thisButton = $(this);
-    const selectList = thisButton.closest('.facet').find('.select-list');
-    selectList.addClass('expanded');
-    FacetedBrowse.updateSelectList(selectList);
-});
-
-// Handle collapse list button (show less)
-container.on('click', '.select-list-collapse', function(e) {
-    e.preventDefault();
-    const thisButton = $(this);
-    const selectList = thisButton.closest('.facet').find('.select-list');
-    selectList.removeClass('expanded');
-    FacetedBrowse.updateSelectList(selectList);
-});
-
 });
