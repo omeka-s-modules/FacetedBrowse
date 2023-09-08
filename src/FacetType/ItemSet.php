@@ -54,6 +54,19 @@ class ItemSet implements FacetTypeInterface
             'id' => 'item-set-select-type',
             'value' => $data['select_type'] ?? 'single_list',
         ]);
+        // Truncate item sets
+        $truncateItemSets = $this->formElements->get(LaminasElement\Number::class);
+        $truncateItemSets->setName('truncate_item_sets');
+        $truncateItemSets->setOptions([
+            'label' => 'Truncate item sets', // @translate
+            'info' => 'Enter the number of item sets to show on the select list when the page first loads. If the number of item sets exceeds this number, the remainder will be hidden until the user clicks to show more. Enter nothing to show the entire list at all times.', // @translate
+        ]);
+        $truncateItemSets->setAttributes([
+            'id' => 'item-set-truncate-item-sets',
+            'value' => $data['truncate_item_sets'] ?? '',
+            'min' => 1,
+            'step' => 1,
+        ]);
         // Item set IDs
         $itemSetIds = $this->formElements->get(OmekaElement\ItemSetSelect::class);
         $itemSetIds->setName('item_set_ids');
@@ -69,6 +82,7 @@ class ItemSet implements FacetTypeInterface
         ]);
         return $view->partial('common/faceted-browse/facet-data-form/item-set', [
             'elementSelectType' => $selectType,
+            'elementTruncateItemSets' => $truncateItemSets,
             'elementItemSetIds' => $itemSetIds,
         ]);
     }

@@ -1,9 +1,10 @@
 <?php if ($singleSelect): ?>
 <?php echo $this->formElement($singleSelect); ?>
 <?php else: ?>
-<ul>
+<ul class="select-list" data-truncate-list-items="<?php echo $this->escapeHtml($facet->data('truncate_item_sets')); ?>">
+    <?php $index = 0; ?>
     <?php foreach ($itemSets as $itemSet): ?>
-    <li>
+    <li class="select-list-item" data-index="<?php echo $this->escapeHtml($index++); ?>">
         <label>
             <input
                 class="item-set"
@@ -15,4 +16,6 @@
     </li>
     <?php endforeach; ?>
 </ul>
+<a href="#" class="select-list-expand" style="display: none;"><?php echo $this->translate('See more'); ?> <span class="select-list-hidden-count"></span></a>
+<a href="#" class="select-list-collapse" style="display: none;"><?php echo $this->translate('See less'); ?></a>
 <?php endif; ?>
