@@ -32,7 +32,7 @@ $(document).on('change', '#resource-class-select-type', function (e) {
     const thisSelect = $(this);
     const truncateResourceClassesInput = $('#resource-class-truncate-resource-classes');
     switch (thisSelect.val()) {
-            case 'single_select':
+        case 'single_select':
             truncateResourceClassesInput.closest('.field').hide();
             break;
         case 'single_list':
