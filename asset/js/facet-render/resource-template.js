@@ -12,6 +12,9 @@ FacetedBrowse.registerFacetApplyStateHandler('resource_template', function(facet
                 .addClass('selected');
         }
     });
+    if (['single_list', 'multiple_list'].includes(facetData.select_type)) {
+        FacetedBrowse.updateSelectList(thisFacet.find('.select-list'));
+    }
 });
 
 $(document).ready(function() {
@@ -52,7 +55,9 @@ container.on('change', 'select.resource-template', function(e) {
 });
 
 container.on('click', 'input.resource-template', function(e) {
+    const thisValue = $(this);
     handleUserInteraction($(this));
+    FacetedBrowse.updateSelectList(thisValue.closest('.select-list'));
 });
 
 

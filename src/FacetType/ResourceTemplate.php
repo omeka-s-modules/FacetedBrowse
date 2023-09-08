@@ -54,6 +54,19 @@ class ResourceTemplate implements FacetTypeInterface
             'id' => 'resource-template-select-type',
             'value' => $data['select_type'] ?? 'single_list',
         ]);
+        // Truncate resource templates.
+        $truncateResourceTemplates = $this->formElements->get(LaminasElement\Number::class);
+        $truncateResourceTemplates->setName('truncate_resource_templates');
+        $truncateResourceTemplates->setOptions([
+            'label' => 'Truncate templates', // @translate
+            'info' => 'Enter the number of templates to show on the select list when the page first loads. If the number of templates exceeds this number, the remainder will be hidden until the user clicks to show more. Enter nothing to show the entire list at all times.', // @translate
+        ]);
+        $truncateResourceTemplates->setAttributes([
+            'id' => 'resource-template-truncate-resource-templates',
+            'value' => $data['truncate_resource_templates'] ?? '',
+            'min' => 1,
+            'step' => 1,
+        ]);
         // Template IDs
         $templateIds = $this->formElements->get(OmekaElement\ResourceTemplateSelect::class);
         $templateIds->setName('template_ids');
@@ -69,6 +82,7 @@ class ResourceTemplate implements FacetTypeInterface
         ]);
         return $view->partial('common/faceted-browse/facet-data-form/resource-template', [
             'elementSelectType' => $selectType,
+            'elementTruncateResourceTemplates' => $truncateResourceTemplates,
             'elementTemplateIds' => $templateIds,
         ]);
     }
