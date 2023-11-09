@@ -184,13 +184,17 @@ input[type="text"].permalink {
 
 
 @media print, screen and (min-width: 40em) {
-    .filter-toggle {
+    #section-sidebar-modal-toggle,
+    #section-sidebar-modal-close {
         display: none !important;
     }
 }
 
 #section-sidebar button.close-button {
     background-color: transparent;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
 }
 
 .close-glyph:before {
