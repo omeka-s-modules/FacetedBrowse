@@ -1,3 +1,9 @@
+<button id="section-sidebar-modal-close" class="close-button" aria-label="<?php echo $this->escapeHtml($this->translate('Close')); ?>" aria-labelledby="section-sidebar-modal-close section-sidebar" type="button">
+  <span aria-hidden="true" class="close-glyph"></span>
+</button>
+<div class="sr-only" id="facet-modal-description">
+    This is a dialog window which overlays the main content of the page. The modal begins with a fieldset called <?php echo $category->name(); ?>. Pressing the Close Modal button at the top right of the modal will close the modal and bring you back to where you were on the page.
+</div>
 <?php echo $this->hyperlink($this->translate('Back'), [], ['id' => 'categories-return', 'class' => 'button']); ?>
 <fieldset class="facets-container">
     <legend><?php echo $category->name(); ?></legend>

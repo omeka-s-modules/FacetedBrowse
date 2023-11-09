@@ -1,4 +1,4 @@
-<table>
+<table class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
     <thead>
         <tr>
             <?php foreach ($columns as $column): ?>
@@ -16,3 +16,7 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+
+<script>
+    jQuery(document).trigger('enhance.tablesaw');
+</script>

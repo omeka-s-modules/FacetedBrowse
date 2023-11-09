@@ -181,3 +181,60 @@ input[type="text"].permalink {
     float: right;
     margin-left: 1em;
 }
+
+
+@media print, screen and (min-width: 40em) {
+    .filter-toggle {
+        display: none !important;
+    }
+}
+
+#section-sidebar button.close-button {
+    background-color: transparent;
+}
+
+.close-glyph:before {
+    content: "\f00d";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+@media print, screen and (max-width: 39.9988em) {
+    .faceted-browse-page #container {
+        flex-wrap: wrap;
+    }
+
+    .faceted-browse-page #section-sidebar,
+    .faceted-browse-page #section-content {
+        width: 100%;
+    }
+
+    .faceted-browse-page #section-sidebar {
+        display: none;
+    }
+
+
+    .faceted-browse-page #section-sidebar.open {
+        display: block;
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        padding: 1rem;
+        background-color: #fff;
+        z-index: 999;
+        max-width: calc(100% - 2rem);
+    }
+
+    .faceted-browse-page #section-sidebar.open + #section-content:before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,.75);
+        z-index: 998;
+    }
+}
