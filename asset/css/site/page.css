@@ -182,6 +182,10 @@ input[type="text"].permalink {
     margin-left: 1em;
 }
 
+.modal-panel.open {
+    overflow: scroll;
+}
+
 
 @media print, screen and (min-width: 40em) {
     #section-sidebar-modal-toggle,
