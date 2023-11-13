@@ -106,6 +106,10 @@ container.on('click', '.category', function(e) {
     FacetedBrowse.resetState(thisCategory.data('categoryId'), thisCategory.data('categoryQuery'));
     $.get(urlFacets, {category_id: thisCategory.data('categoryId')}).done(function(html) {
         sectionSidebar.html(html);
+        sectionSidebar.find('.select-list').each(function() {
+            // Must update the select lists so they are truncated.
+            FacetedBrowse.updateSelectList($(this));
+        });
         const queries = [];
         queries.push(thisCategory.data('categoryQuery'));
         queries.push(`faceted_browse_category_id=${thisCategory.data('categoryId')}`);
