@@ -54,6 +54,19 @@ class ResourceClass implements FacetTypeInterface
             'id' => 'resource-class-select-type',
             'value' => $data['select_type'] ?? 'single_list',
         ]);
+        // Truncate resource classes.
+        $truncateResourceClasses = $this->formElements->get(LaminasElement\Number::class);
+        $truncateResourceClasses->setName('truncate_resource_classes');
+        $truncateResourceClasses->setOptions([
+            'label' => 'Truncate classes', // @translate
+            'info' => 'Enter the number of classes to show on the select list when the page first loads. If the number of classes exceeds this number, the remainder will be hidden until the user clicks to show more. Enter nothing to show the entire list at all times.', // @translate
+        ]);
+        $truncateResourceClasses->setAttributes([
+            'id' => 'resource-class-truncate-resource-classes',
+            'value' => $data['truncate_resource_classes'] ?? '',
+            'min' => 1,
+            'step' => 1,
+        ]);
         // Class IDs
         $classIds = $this->formElements->get(OmekaElement\ResourceClassSelect::class);
         $classIds->setName('class_ids');
@@ -69,6 +82,7 @@ class ResourceClass implements FacetTypeInterface
         ]);
         return $view->partial('common/faceted-browse/facet-data-form/resource-class', [
             'elementSelectType' => $selectType,
+            'elementTruncateResourceClasses' => $truncateResourceClasses,
             'elementClassIds' => $classIds,
         ]);
     }

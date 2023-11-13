@@ -16,7 +16,7 @@ if (1 === count($categories)) {
     $categoryQuery = $category->query();
 }
 ?>
-<div id="container" 
+<div id="container"
     data-url-categories="<?php echo $this->escapeHtml($this->url(null, ['action' => 'categories'], true)); ?>"
     data-url-facets="<?php echo $this->escapeHtml($this->url(null, ['action' => 'facets'], true)); ?>"
     data-url-browse="<?php echo $this->escapeHtml($this->url(null, ['action' => 'browse'], true)); ?>"
@@ -25,3 +25,25 @@ if (1 === count($categories)) {
     <div id="section-sidebar"></div>
     <div id="section-content"></div>
 </div>
+
+<script>
+const container = $('#container');
+
+// Handle expand list button (show more)
+container.on('click', '.select-list-expand', function(e) {
+    e.preventDefault();
+    const thisButton = $(this);
+    const selectList = thisButton.closest('.facet').find('.select-list');
+    selectList.addClass('expanded');
+    FacetedBrowse.updateSelectList(selectList);
+});
+
+// Handle collapse list button (show less)
+container.on('click', '.select-list-collapse', function(e) {
+    e.preventDefault();
+    const thisButton = $(this);
+    const selectList = thisButton.closest('.facet').find('.select-list');
+    selectList.removeClass('expanded');
+    FacetedBrowse.updateSelectList(selectList);
+});
+</script>

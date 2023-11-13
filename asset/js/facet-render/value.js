@@ -1,48 +1,3 @@
-const updateSelectList = function(selectList) {
-    const facet = selectList.closest('.facet');
-    const truncateValues = selectList.data('truncateValues');
-    // First, sort the selected list items and prepend them to the list.
-    const listItemsSelected = selectList.find('.value.selected')
-        .closest('.value-select-list-item')
-        .show()
-        .sort(function(a, b) {
-            // Subtracting seems to be cross-browser compatible.
-            return $(a).data('index') - $(b).data('index');
-        });
-    listItemsSelected.prependTo(selectList);
-    // Then, sort the unselected list items and append them to the list.
-    const listItemsUnselected = selectList.find('.value:not(.selected)')
-        .closest('.value-select-list-item')
-        .show()
-        .sort(function(a, b) {
-            // Subtracting seems to be cross-browser compatible.
-            return $(a).data('index') - $(b).data('index');
-        });
-    listItemsUnselected.appendTo(selectList);
-    const listItems = selectList.find('.value-select-list-item');
-    if (!truncateValues || truncateValues >= listItems.length) {
-        // No need to show expand when list does not surpass configured limit.
-        return;
-    }
-    if (selectList.hasClass('expanded')) {
-        // No need to hide items when list is expanded.
-        facet.find('.value-select-list-expand').hide();
-        facet.find('.value-select-list-collapse').show();
-        return;
-    }
-    if (truncateValues < listItemsSelected.length) {
-        // Show all selected items even if they surpass the configured limit.
-        listItemsUnselected.hide();
-    } else {
-        // Truncate to the configured limit.
-        listItems.slice(truncateValues).hide();
-    }
-    const hiddenCount = listItems.filter(':hidden').length;
-    facet.find('.value-select-list-hidden-count').text(`(${hiddenCount})`);
-    facet.find('.value-select-list-expand').show();
-    facet.find('.value-select-list-collapse').hide();
-};
-
 FacetedBrowse.registerFacetApplyStateHandler('value', function(facet, facetState) {
     const thisFacet = $(facet);
     const facetData = thisFacet.data('facetData');
@@ -60,7 +15,7 @@ FacetedBrowse.registerFacetApplyStateHandler('value', function(facet, facetState
         }
     });
     if (['single_list', 'multiple_list'].includes(facetData.select_type)) {
-        updateSelectList(thisFacet.find('.value-select-list'));
+        FacetedBrowse.updateSelectList(thisFacet.find('.select-list'));
     }
 });
 
@@ -137,14 +92,14 @@ container.on('change', 'select.value', function(e) {
 container.on('click', 'input.value[type="radio"]', function(e) {
     const thisValue = $(this);
     handleUserInteraction(thisValue);
-    updateSelectList(thisValue.closest('.value-select-list'));
+    FacetedBrowse.updateSelectList(thisValue.closest('.select-list'));
 });
 
 // Handle multiple_list interaction.
 container.on('click', 'input.value[type="checkbox"]', function(e) {
     const thisValue = $(this);
     handleUserInteraction(thisValue);
-    updateSelectList(thisValue.closest('.value-select-list'));
+    FacetedBrowse.updateSelectList(thisValue.closest('.select-list'));
 });
 
 // Handle text_input interaction.
@@ -154,24 +109,6 @@ container.on('keyup', 'input.value[type="text"]', function(e) {
     timerId = setTimeout(function() {
         handleUserInteraction(thisValue);
     }, 350);
-});
-
-// Handle expand list button (show more)
-container.on('click', '.value-select-list-expand', function(e) {
-    e.preventDefault();
-    const thisButton = $(this);
-    const selectList = thisButton.closest('.facet').find('.value-select-list');
-    selectList.addClass('expanded');
-    updateSelectList(selectList);
-});
-
-// Handle collapse list button (show less)
-container.on('click', '.value-select-list-collapse', function(e) {
-    e.preventDefault();
-    const thisButton = $(this);
-    const selectList = thisButton.closest('.facet').find('.value-select-list');
-    selectList.removeClass('expanded');
-    updateSelectList(selectList);
 });
 
 });
