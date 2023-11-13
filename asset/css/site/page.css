@@ -225,24 +225,12 @@ input[type="text"].permalink {
     .faceted-browse-page #section-sidebar.open {
         display: block;
         position: fixed;
-        top: 1rem;
-        left: 1rem;
-        right: 1rem;
-        bottom: 1rem;
-        padding: 1rem;
-        background-color: #fff;
-        z-index: 999;
-        max-width: calc(100% - 2rem);
-    }
-
-    .faceted-browse-page #section-sidebar.open + #section-content:before {
-        content: "";
-        position: fixed;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(0,0,0,.75);
-        z-index: 998;
+        padding: 1rem;
+        background-color: #fff;
+        z-index: 999;
     }
 }
