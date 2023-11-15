@@ -4,7 +4,7 @@ namespace FacetedBrowse\ColumnType;
 use FacetedBrowse\Api\Representation\FacetedBrowseColumnRepresentation;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
-use Omeka\Api\Representation\ItemRepresentation;
+use Omeka\Api\Representation\AbstractResourceEntityRepresentation;
 
 class ResourceClass implements ColumnTypeInterface
 {
@@ -45,9 +45,9 @@ class ResourceClass implements ColumnTypeInterface
         return 'resource_class_label';
     }
 
-    public function renderContent(FacetedBrowseColumnRepresentation $column, ItemRepresentation $item) : string
+    public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource) : string
     {
-        $class = $item->resourceClass();
+        $class = $resource->resourceClass();
         return $class ? $class->label() : '';
     }
 }

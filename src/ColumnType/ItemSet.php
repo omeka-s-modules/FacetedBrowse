@@ -5,7 +5,7 @@ use FacetedBrowse\Api\Representation\FacetedBrowseColumnRepresentation;
 use Laminas\Form\Element as LaminasElement;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
-use Omeka\Api\Representation\ItemRepresentation;
+use Omeka\Api\Representation\AbstractResourceEntityRepresentation;
 
 class ItemSet implements ColumnTypeInterface
 {
@@ -62,12 +62,12 @@ class ItemSet implements ColumnTypeInterface
         return null;
     }
 
-    public function renderContent(FacetedBrowseColumnRepresentation $column, ItemRepresentation $item) : string
+    public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource) : string
     {
         $maxItemSets = $column->data('max_item_sets');
 
         // Get the item sets.
-        $itemSets = $item->itemSets();
+        $itemSets = $resource->itemSets();
         if ($maxItemSets) {
             $itemSets = array_slice($itemSets, 0, $maxItemSets);
         }

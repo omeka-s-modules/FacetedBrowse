@@ -3,7 +3,7 @@ namespace FacetedBrowse\ColumnType;
 
 use FacetedBrowse\Api\Representation\FacetedBrowseColumnRepresentation;
 use Laminas\View\Renderer\PhpRenderer;
-use Omeka\Api\Representation\ItemRepresentation;
+use Omeka\Api\Representation\AbstractResourceEntityRepresentation;
 
 interface ColumnTypeInterface
 {
@@ -56,8 +56,8 @@ interface ColumnTypeInterface
      * Render the content of a column of this type.
      *
      * @param FacetedBrowseColumnRepresentation $column
-     * @param ItemRepresentation $item
+     * @param AbstractResourceEntityRepresentation $resource
      * @return string
      */
-    public function renderContent(FacetedBrowseColumnRepresentation $column, ItemRepresentation $item) : string;
+    public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource) : string;
 }

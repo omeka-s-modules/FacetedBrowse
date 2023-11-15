@@ -5,7 +5,7 @@ use FacetedBrowse\Api\Representation\FacetedBrowseColumnRepresentation;
 use Laminas\Form\Element as LaminasElement;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
-use Omeka\Api\Representation\ItemRepresentation;
+use Omeka\Api\Representation\AbstractResourceEntityRepresentation;
 use Omeka\Form\Element as OmekaElement;
 
 class Value implements ColumnTypeInterface
@@ -77,13 +77,13 @@ class Value implements ColumnTypeInterface
         return $column->data('property_term');
     }
 
-    public function renderContent(FacetedBrowseColumnRepresentation $column, ItemRepresentation $item) : string
+    public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource) : string
     {
         $propertyTerm = $column->data('property_term');
         $maxValues = $column->data('max_values');
 
         // Get the values.
-        $values = $item->value($propertyTerm, ['all' => true]);
+        $values = $resource->value($propertyTerm, ['all' => true]);
         if ($maxValues) {
             $values = array_slice($values, 0, $maxValues);
         }

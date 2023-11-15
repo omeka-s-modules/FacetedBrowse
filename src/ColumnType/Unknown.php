@@ -5,7 +5,7 @@ use FacetedBrowse\Api\Representation\FacetedBrowseColumnRepresentation;
 use Laminas\Form\Element as LaminasElement;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
-use Omeka\Api\Representation\ItemRepresentation;
+use Omeka\Api\Representation\AbstractResourceEntityRepresentation;
 
 class Unknown implements ColumnTypeInterface
 {
@@ -72,7 +72,7 @@ class Unknown implements ColumnTypeInterface
         return null;
     }
 
-    public function renderContent(FacetedBrowseColumnRepresentation $column, ItemRepresentation $item) : string
+    public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource) : string
     {
         return '';
     }
