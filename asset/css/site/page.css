@@ -233,4 +233,23 @@ input[type="text"].permalink {
         background-color: #fff;
         z-index: 999;
     }
+
+    .faceted-browse-page .tablesaw td {
+        border-color: transparent;
+    }
+
+    .faceted-browse-page .tablesaw tr {
+        overflow: hidden;
+        padding: .5rem 0;
+    }
+
+    .faceted-browse-page .tablesaw .resource-link {
+        display: flex;
+        align-items: center;
+    }
+    
+    .faceted-browse-page .tablesaw-cell-content .resource-link img {
+        margin: 0 .5rem 0 0;
+        max-height: 3rem;
+    }
 }
