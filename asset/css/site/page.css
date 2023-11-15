@@ -16,6 +16,20 @@
     width:100%;
 }
 
+.faceted-browse-page #section-content .resource-name {
+    max-width: 30rem;
+}
+
+.faceted-browse-page #section-content .resource-link {
+    display: inline-flex;
+    align-items: center;
+}
+
+.faceted-browse-page #section-content table .resource-link img {
+    max-height: 3rem;
+    margin: 0 .5rem 0 0;
+}
+
 #categories,
 .facet ul {
     list-style: none;
