@@ -73,11 +73,11 @@ class ItemSet implements ColumnTypeInterface
         }
 
         // Prepare the content.
-        $content = [];
+        $content = '<ul>';
         foreach ($itemSets as $itemSet) {
-            $content[] = $itemSet->displayTitle();
+            $content .= sprintf('<li>%s</li>', $itemSet->linkPretty());
         }
-
-        return implode('<br>', $content);
+        $content .= '</ul>';
+        return $content;
     }
 }
