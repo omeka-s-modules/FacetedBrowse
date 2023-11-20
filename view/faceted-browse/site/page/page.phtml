@@ -2,6 +2,8 @@
 $this->headLink()->appendStylesheet($this->assetUrl('css/site/page.css', 'FacetedBrowse'));
 $this->headScript()->appendFile($this->assetUrl('js/faceted-browse.js', 'FacetedBrowse'));
 $this->headScript()->appendFile($this->assetUrl('js/site/page.js', 'FacetedBrowse'));
+$this->headLink()->appendStylesheet($this->assetUrl('vendor/tablesaw/tablesaw.css', 'FacetedBrowse'));
+$this->headScript()->appendFile($this->assetUrl('vendor/tablesaw/tablesaw.jquery.js', 'FacetedBrowse'));
 $this->facetedBrowse()->prepareFacets();
 
 $this->htmlElement('body')->appendAttribute('class', 'faceted-browse-page resource browse');

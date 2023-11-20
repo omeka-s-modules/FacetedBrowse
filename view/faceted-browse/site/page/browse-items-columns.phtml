@@ -1,4 +1,4 @@
-<table>
+<table class="tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
     <thead>
         <tr>
             <?php foreach ($columns as $column): ?>
@@ -16,3 +16,9 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+
+<script>
+    jQuery(document).ready(function () {
+        Tablesaw.init();
+    });
+</script>
