@@ -195,3 +195,75 @@ input[type="text"].permalink {
     float: right;
     margin-left: 1em;
 }
+
+.modal-panel.open {
+    overflow: scroll;
+}
+
+
+@media print, screen and (min-width: 40em) {
+    #section-sidebar-modal-toggle,
+    #section-sidebar-modal-close {
+        display: none !important;
+    }
+}
+
+#section-sidebar button.close-button {
+    background-color: transparent;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.close-glyph:before {
+    content: "\f00d";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+@media print, screen and (max-width: 39.9988em) {
+    .faceted-browse-page #container {
+        flex-wrap: wrap;
+    }
+
+    .faceted-browse-page #section-sidebar,
+    .faceted-browse-page #section-content {
+        width: 100%;
+    }
+
+    .faceted-browse-page #section-sidebar {
+        display: none;
+    }
+
+
+    .faceted-browse-page #section-sidebar.open {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 1rem;
+        background-color: #fff;
+        z-index: 999;
+    }
+
+    .faceted-browse-page .tablesaw td {
+        border-color: transparent;
+    }
+
+    .faceted-browse-page .tablesaw tr {
+        overflow: hidden;
+        padding: .5rem 0;
+    }
+
+    .faceted-browse-page .tablesaw .resource-link {
+        display: flex;
+        align-items: center;
+    }
+    
+    .faceted-browse-page .tablesaw-cell-content .resource-link img {
+        margin: 0 .5rem 0 0;
+        max-height: 3rem;
+    }
+}

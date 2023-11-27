@@ -8,10 +8,59 @@ const urlCategories = container.data('urlCategories');
 const urlFacets = container.data('urlFacets');
 const urlBrowse = container.data('urlBrowse');
 
+const modalToggleButton = $("#section-sidebar-modal-toggle");
+const modalCloseButton = $('#section-sidebar-modal-close');
+
 // Callbacks that handle  request errors.
 const failBrowse = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching browse markup.')} ${data.status} (${data.statusText})`);
 const failFacet = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching facet markup.')} ${data.status} (${data.statusText})`);
 const failCategory = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching category markup.')} ${data.status} (${data.statusText})`);
+
+// Set breakpoint for using facet modal window.
+const mediaQuery = window.matchMedia('(min-width: 896px)');
+
+// Reset modal attributes for desktop widths.
+const handleTabletChange = function(e) {
+    modalToggleButton.attr('aria-expanded', 'false');
+    sectionContent.attr('aria-hidden', 'true').removeClass('open');
+    if (e.matches) {
+        sectionSidebar.attr('aria-hidden', 'false');
+        modalToggleButton.attr('aria-expanded', 'false');
+    }
+};
+
+// Implements modal behavior for facet sidebar on mobile widths.
+const enableModal = function() {
+    var lastFocus;
+
+    container.on('click', '#section-sidebar-modal-toggle', function() {
+        sectionSidebar.toggleClass('open');
+        if (modalToggleButton.attr('aria-expanded') == 'true') {
+            modalToggleButton.attr('aria-expanded', 'false');
+            sectionSidebar.attr('aria-hidden', 'true');
+        } else {
+            modalToggleButton.attr('aria-expanded', 'true');
+            sectionSidebar.attr('aria-hidden', 'false');
+        }
+        sectionSidebar.trigger('toggle');
+    });
+
+    sectionSidebar.on('click', '.close-button', function() {
+        lastFocus.trigger('click').trigger('focus');
+    });
+
+    container.on('toggle', '#section-sidebar', function() {
+        if (sectionSidebar.attr('aria-hidden') == 'false') {
+            sectionSidebar.attr('aria-hidden', 'true');
+            modalCloseButton.trigger('focus');
+            lastFocus = modalToggleButton;
+        } else {
+            sectionSidebar.attr('aria-hidden', 'false');
+            lastFocus.trigger('focus');
+            lastFocus = modalCloseButton;
+        }
+    });
+};
 
 // Show that a copy to clipboard was successful.
 const showClipboardCopySuccessful = () => {
@@ -199,5 +248,9 @@ container.on('click', '.permalink', function(e) {
         showClipboardCopySuccessful();
     }
 });
+
+enableModal('#section-content', '#section-sidebar', '#section-sidebar-modal-toggle');
+mediaQuery.addListener(handleTabletChange);
+handleTabletChange(mediaQuery);
 
 });
