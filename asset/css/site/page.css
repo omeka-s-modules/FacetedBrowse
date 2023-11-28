@@ -221,9 +221,16 @@ input[type="text"].permalink {
     font-weight: 900;
 }
 
+.faceted-results ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 @media print, screen and (max-width: 39.9988em) {
     .faceted-browse-page #container {
         flex-wrap: wrap;
+        max-width: 100%;
     }
 
     .faceted-browse-page #section-sidebar,
