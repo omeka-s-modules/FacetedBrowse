@@ -18,6 +18,7 @@
 
 .faceted-browse-page #section-content img + .resource-name {
     max-width: calc(100% - 4rem);
+    min-width: 6rem;
 }
 
 .faceted-browse-page #section-content .resource-link {
