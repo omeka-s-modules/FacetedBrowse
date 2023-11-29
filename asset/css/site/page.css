@@ -16,13 +16,15 @@
     width:100%;
 }
 
-.faceted-browse-page #section-content .resource-name {
-    max-width: 30rem;
+.faceted-browse-page #section-content img + .resource-name {
+    max-width: calc(100% - 4rem);
 }
 
 .faceted-browse-page #section-content .resource-link {
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    max-width: 20rem;
 }
 
 .faceted-browse-page #section-content table .resource-link img {
@@ -114,6 +116,10 @@ input[type="text"].permalink {
 
 #container {
     display: flex;
+}
+
+.browse-controls {
+    justify-content: space-between;
 }
 
 .faceted-browse-page .browse-controls > * {
