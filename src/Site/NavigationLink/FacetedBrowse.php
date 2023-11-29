@@ -1,6 +1,7 @@
 <?php
 namespace FacetedBrowse\Site\NavigationLink;
 
+use Omeka\Api\Exception\NotFoundException;
 use Omeka\Api\Representation\SiteRepresentation;
 use Omeka\Site\Navigation\Link\LinkInterface;
 use Omeka\Stdlib\ErrorStore;
@@ -32,7 +33,18 @@ class FacetedBrowse implements LinkInterface
 
     public function getLabel(array $data, SiteRepresentation $site)
     {
-        return $data['label'];
+        if (isset($data['label']) && '' !== trim($data['label'])) {
+            return $data['label'];
+        }
+        $services = $site->getServiceLocator();
+        $api = $services->get('Omeka\ApiManager');
+        $translator = $services->get('MvcTranslator');
+        try {
+            $page = $api->read('faceted_browse_pages', $data['page_id']);
+        } catch (NotFoundException $e) {
+            return $translator->translate('[Missing Page]'); // @translate
+        }
+        return $page->getContent()->title();
     }
 
     public function toZend(array $data, SiteRepresentation $site)
