@@ -16,12 +16,12 @@
     width:100%;
 }
 
-.faceted-browse-page #section-content img + .resource-name {
+.faceted-browse-page #section-content table img + .resource-name {
     max-width: calc(100% - 4rem);
     min-width: 6rem;
 }
 
-.faceted-browse-page #section-content .resource-link {
+.faceted-browse-page #section-content table .resource-link {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
