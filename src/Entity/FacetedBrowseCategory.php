@@ -83,6 +83,24 @@ class FacetedBrowseCategory extends AbstractEntity
     protected $query;
 
     /**
+     * @Column(
+     *     type="string",
+     *     length=255,
+     *     nullable=true
+     * )
+     */
+    protected $sortBy;
+
+    /**
+     * @Column(
+     *     type="string",
+     *     length=255,
+     *     nullable=true
+     * )
+     */
+    protected $sortOrder;
+
+    /**
      * @ManyToOne(
      *     targetEntity="FacetedBrowse\Entity\FacetedBrowsePage",
      *     inversedBy="categories"
@@ -195,6 +213,26 @@ class FacetedBrowseCategory extends AbstractEntity
     public function getQuery() : string
     {
         return $this->query;
+    }
+
+    public function setSortBy(?string $sortBy) : void
+    {
+        $this->sortBy = $sortBy;
+    }
+
+    public function getSortBy() : ?string
+    {
+        return $this->sortBy;
+    }
+
+    public function setSortOrder(?string $sortOrder) : void
+    {
+        $this->sortOrder = $sortOrder;
+    }
+
+    public function getSortOrder() : ?string
+    {
+        return $this->sortOrder;
     }
 
     public function setPage(FacetedBrowsePage $page) : void
