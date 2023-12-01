@@ -60,8 +60,6 @@ class PageController extends AbstractActionController
         if ($category) {
             $sortOrder = in_array($category->sortOrder(), ['desc', 'asc']) ? $category->sortOrder() : 'desc';
         }
-        $query = $this->getRequest()->getQuery();
-        $query->set('sort_by_default', null);
         $this->setBrowseDefaults($sortBy, $sortOrder);
 
         $query = array_merge(
