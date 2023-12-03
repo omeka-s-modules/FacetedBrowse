@@ -111,7 +111,7 @@ class FacetedBrowse extends AbstractPlugin
      * @param ?FacetedBrowseCategoryRepresentation $category
      * @return array
      */
-    public function getSortByValueOptions(?FacetedBrowseCategoryRepresentation $category)
+    public function getSortByValueOptions(?FacetedBrowseCategoryRepresentation $category = null)
     {
         $sortByValueOptions = [];
         foreach ($this->getSortings($category) as $sorting) {

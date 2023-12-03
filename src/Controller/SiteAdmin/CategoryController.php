@@ -19,6 +19,7 @@ class CategoryController extends AbstractActionController
             'site' => $this->currentSite(),
             'facet_types' => $this->facetedBrowse()->getFacetTypes(),
             'column_types' => $this->facetedBrowse()->getColumnTypes(),
+            'sort_by_value_options' => $this->facetedBrowse()->getSortByValueOptions(null),
             'page' => $page,
         ]);
 

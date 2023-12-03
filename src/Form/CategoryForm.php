@@ -62,8 +62,8 @@ class CategoryForm extends Form
             'options' => [
                 'label' => 'Default sort order',
                 'value_options' => [
-                    'asc' => 'Ascending',
                     'desc' => 'Descending',
+                    'asc' => 'Ascending',
                 ],
             ],
             'attributes' => [
