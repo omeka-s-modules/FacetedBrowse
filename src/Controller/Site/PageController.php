@@ -47,9 +47,21 @@ class PageController extends AbstractActionController
         $category = $categoryId ? $this->api()->read('faceted_browse_categories', $categoryId)->getContent() : null;
 
         $columns = $category ? $category->columns() : null;
-        $sortings = $this->facetedBrowse()->getSortings($category);
 
-        $this->setBrowseDefaults($sortings[0]['value'], 'desc');
+        // Set default sort.
+        $sortByValueOptions = $this->facetedBrowse()->getSortByValueOptions($category);
+        $sortBy = array_key_first($sortByValueOptions);
+        if ($category) {
+            $sortBy = array_key_exists($category->sortBy(), $sortByValueOptions)
+                ? $category->sortBy()
+                : array_key_first($sortByValueOptions);
+        }
+        $sortOrder = 'desc';
+        if ($category) {
+            $sortOrder = in_array($category->sortOrder(), ['desc', 'asc']) ? $category->sortOrder() : 'desc';
+        }
+        $this->setBrowseDefaults($sortBy, $sortOrder);
+
         $query = array_merge(
             $this->params()->fromQuery(),
             ['site_id' => $this->currentSite()->id()]
@@ -63,7 +75,7 @@ class PageController extends AbstractActionController
         $view->setVariable('items', $items);
         $view->setVariable('query', $query);
         $view->setVariable('columns', $columns);
-        $view->setVariable('sortings', $sortings);
+        $view->setVariable('sortings', $this->facetedBrowse()->getSortings($category));
         return $view;
     }
 }

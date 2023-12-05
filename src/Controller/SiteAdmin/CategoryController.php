@@ -19,6 +19,7 @@ class CategoryController extends AbstractActionController
             'site' => $this->currentSite(),
             'facet_types' => $this->facetedBrowse()->getFacetTypes(),
             'column_types' => $this->facetedBrowse()->getColumnTypes(),
+            'sort_by_value_options' => $this->facetedBrowse()->getSortByValueOptions(null),
             'page' => $page,
         ]);
 
@@ -62,10 +63,16 @@ class CategoryController extends AbstractActionController
             return $this->redirect()->toRoute('admin/site/slug/faceted-browse', ['action' => 'index'], true);
         }
 
+        $sortByValueOptions = [];
+        foreach ($this->facetedBrowse()->getSortings($category) as $sorting) {
+            $sortByValueOptions[$sorting['value']] = $sorting['label'];
+        }
+
         $form = $this->getForm(Form\CategoryForm::class, [
             'site' => $this->currentSite(),
             'facet_types' => $this->facetedBrowse()->getFacetTypes(),
             'column_types' => $this->facetedBrowse()->getColumnTypes(),
+            'sort_by_value_options' => $this->facetedBrowse()->getSortByValueOptions($category),
             'category' => $category,
             'page' => $category->page(),
         ]);

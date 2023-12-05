@@ -12,6 +12,7 @@ class CategoryForm extends Form
         $site = $this->getOption('site');
         $facetTypes = $this->getOption('facet_types');
         $columnTypes = $this->getOption('column_types');
+        $sortByValueOptions = $this->getOption('sort_by_value_options');
         $category = $this->getOption('category');
         $page = $this->getOption('page');
 
@@ -42,6 +43,42 @@ class CategoryForm extends Form
             ],
             'attributes' => [
                 'id' => 'category-query',
+            ],
+        ]);
+        $this->add([
+            'type' => LaminasElement\Select::class,
+            'name' => 'o-module-faceted_browse:sort_by',
+            'options' => [
+                'label' => 'Default sort by',
+                'value_options' => $sortByValueOptions,
+            ],
+            'attributes' => [
+                'id' => 'category-sort-by',
+            ],
+        ]);
+        $this->add([
+            'type' => LaminasElement\Select::class,
+            'name' => 'o-module-faceted_browse:sort_order',
+            'options' => [
+                'label' => 'Default sort order',
+                'value_options' => [
+                    'desc' => 'Descending',
+                    'asc' => 'Ascending',
+                ],
+            ],
+            'attributes' => [
+                'id' => 'category-sort-order',
+            ],
+        ]);
+        $this->add([
+            'type' => LaminasElement\Select::class,
+            'name' => 'o-module-faceted_browse:sort_by',
+            'options' => [
+                'label' => 'Default sort by',
+                'value_options' => $sortByValueOptions,
+            ],
+            'attributes' => [
+                'id' => 'category-sort-by',
             ],
         ]);
         $this->add([

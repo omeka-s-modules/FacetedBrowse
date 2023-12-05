@@ -106,6 +106,21 @@ class FacetedBrowse extends AbstractPlugin
     }
 
     /**
+     * Get the value options for a sort by select element.
+     *
+     * @param ?FacetedBrowseCategoryRepresentation $category
+     * @return array
+     */
+    public function getSortByValueOptions(?FacetedBrowseCategoryRepresentation $category = null)
+    {
+        $sortByValueOptions = [];
+        foreach ($this->getSortings($category) as $sorting) {
+            $sortByValueOptions[$sorting['value']] = $sorting['label'];
+        }
+        return $sortByValueOptions;
+    }
+
+    /**
      * Get all available values and their counts of a property.
      *
      * @param string $resourceType
