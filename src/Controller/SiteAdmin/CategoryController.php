@@ -48,6 +48,7 @@ class CategoryController extends AbstractActionController
         }
 
         $view = new ViewModel;
+        $view->setVariable('page', $page);
         $view->setVariable('category', null);
         $view->setVariable('form', $form);
         return $view;
@@ -103,6 +104,7 @@ class CategoryController extends AbstractActionController
         }
 
         $view = new ViewModel;
+        $view->setVariable('page', $category->page());
         $view->setVariable('category', $category);
         $view->setVariable('form', $form);
         return $view;

@@ -13,9 +13,9 @@ if ($category) {
 $form->prepare();
 ?>
 <?php if ($category): ?>
-<?php echo $this->pageTitle($this->translate('Edit Category'), 1, $this->translate('Faceted Browse'), $category->name()); ?>
+<?php echo $this->pageTitle($this->translate('Edit Category'), 1, $this->translate('Faceted Browse'), $page->title()); ?>
 <?php else: ?>
-<?php echo $this->pageTitle($this->translate('Add Category'), 1, $this->translate('Faceted Browse')); ?>
+<?php echo $this->pageTitle($this->translate('Add Category'), 1, $this->translate('Faceted Browse'), $page->title()); ?>
 <?php endif; ?>
 
 <?php echo $this->form()->openTag($form); ?>
@@ -42,6 +42,10 @@ $form->prepare();
     <div class="separator"></div>
     <?php echo $category ? $this->translate('Category edit') : $this->translate('Category add'); ?>
 </div>
+
+<?php if ($category): ?>
+<h3><?php echo $this->escapeHtml($category->name()); ?></h3>
+<?php endif; ?>
 
 <fieldset>
     <?php echo $this->formRow($form->get('o:name')); ?>
