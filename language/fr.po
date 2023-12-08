@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 10:25-0400\n"
+"POT-Creation-Date: 2023-12-08 14:28-0500\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Pols12 <poltron54@gmail.com>, 2021\n"
 "Language-Team: French (https://app.transifex.com/omeka/teams/14184/fr/)\n"
@@ -37,15 +37,15 @@ msgid ""
 "            </ul>"
 msgstr ""
 
-#: view/common/faceted-browse/facet-data-form/item-set.phtml:4
+#: view/common/faceted-browse/facet-data-form/item-set.phtml:5
 msgid "Show all available item sets."
 msgstr ""
 
-#: view/common/faceted-browse/facet-data-form/resource-class.phtml:4
+#: view/common/faceted-browse/facet-data-form/resource-class.phtml:5
 msgid "Show all available classes."
 msgstr "Voir toutes les classes disponibles."
 
-#: view/common/faceted-browse/facet-data-form/resource-template.phtml:4
+#: view/common/faceted-browse/facet-data-form/resource-template.phtml:5
 msgid "Show all available templates."
 msgstr ""
 
@@ -53,10 +53,16 @@ msgstr ""
 msgid "Show all available values."
 msgstr ""
 
+#: view/common/faceted-browse/facet-render/item-set.phtml:19
+#: view/common/faceted-browse/facet-render/resource-class.phtml:19
+#: view/common/faceted-browse/facet-render/resource-template.phtml:19
 #: view/common/faceted-browse/facet-render/value.phtml:33
 msgid "See more"
 msgstr ""
 
+#: view/common/faceted-browse/facet-render/item-set.phtml:20
+#: view/common/faceted-browse/facet-render/resource-class.phtml:20
+#: view/common/faceted-browse/facet-render/resource-template.phtml:20
 #: view/common/faceted-browse/facet-render/value.phtml:34
 msgid "See less"
 msgstr ""
@@ -131,11 +137,11 @@ msgstr ""
 msgid "Category add"
 msgstr ""
 
-#: view/faceted-browse/site-admin/category/form.phtml:52
+#: view/faceted-browse/site-admin/category/form.phtml:58
 msgid "Facets"
 msgstr "Facettes"
 
-#: view/faceted-browse/site-admin/category/form.phtml:68
+#: view/faceted-browse/site-admin/category/form.phtml:74
 msgid "Columns"
 msgstr ""
 
@@ -213,13 +219,18 @@ msgstr ""
 msgid "Copied!"
 msgstr ""
 
-#: view/faceted-browse/site/page/categories.phtml:17
+#: view/faceted-browse/site/page/categories.phtml:23
 msgid "There are no categories to browse."
 msgstr ""
 
-#: view/faceted-browse/site/page/facets.phtml:1
+#: view/faceted-browse/site/page/facets.phtml:7
 msgid "Back"
 msgstr "Retour"
+
+#: view/faceted-browse/site/page/page.phtml:27
+#: view/faceted-browse/site/page/page.phtml:28
+msgid "Filters"
+msgstr ""
 
 #: config/module.config.php:93
 msgid "A facet must have a name."
@@ -253,7 +264,7 @@ msgstr ""
 msgid "Loading results…"
 msgstr ""
 
-#: src/Site/NavigationLink/FacetedBrowse.php:12
+#: src/Site/NavigationLink/FacetedBrowse.php:13
 msgid "Faceted browse"
 msgstr "Navigation par facettes"
 
@@ -307,7 +318,19 @@ msgstr ""
 msgid "Single (dropdown menu)"
 msgstr ""
 
-#: src/FacetType/ItemSet.php:67
+#: src/FacetType/ItemSet.php:61
+msgid "Truncate item sets"
+msgstr ""
+
+#: src/FacetType/ItemSet.php:62
+msgid ""
+"Enter the number of item sets to show on the select list when the page first"
+" loads. If the number of item sets exceeds this number, the remainder will "
+"be hidden until the user clicks to show more. Enter nothing to show the "
+"entire list at all times."
+msgstr ""
+
+#: src/FacetType/ItemSet.php:80
 msgid "Select item sets…"
 msgstr ""
 
@@ -319,7 +342,19 @@ msgid ""
 " via a list."
 msgstr ""
 
-#: src/FacetType/ResourceTemplate.php:67
+#: src/FacetType/ResourceTemplate.php:61
+msgid "Truncate templates"
+msgstr ""
+
+#: src/FacetType/ResourceTemplate.php:62
+msgid ""
+"Enter the number of templates to show on the select list when the page first"
+" loads. If the number of templates exceeds this number, the remainder will "
+"be hidden until the user clicks to show more. Enter nothing to show the "
+"entire list at all times."
+msgstr ""
+
+#: src/FacetType/ResourceTemplate.php:80
 msgid "Select templates…"
 msgstr ""
 
@@ -330,7 +365,19 @@ msgid ""
 "select type, users may choose any number of classes at a time via a list."
 msgstr ""
 
-#: src/FacetType/ResourceClass.php:67
+#: src/FacetType/ResourceClass.php:61
+msgid "Truncate classes"
+msgstr ""
+
+#: src/FacetType/ResourceClass.php:62
+msgid ""
+"Enter the number of classes to show on the select list when the page first "
+"loads. If the number of classes exceeds this number, the remainder will be "
+"hidden until the user clicks to show more. Enter nothing to show the entire "
+"list at all times."
+msgstr ""
+
+#: src/FacetType/ResourceClass.php:80
 msgid "Select classes…"
 msgstr "Choisir une classe…"
 
@@ -407,15 +454,15 @@ msgstr "Données de la facette inconnues"
 msgid "A site must have an ID"
 msgstr "Un site doit avoir un ID."
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:146
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:152
 msgid "A category must have a site"
 msgstr "Une catégorie doit avoir un site."
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:149
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:155
 msgid "A category must have a name"
 msgstr "Une catégorie doit avoir un nom."
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:152
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:158
 msgid "A category must have a query"
 msgstr "Une catégorie doit avoir une requête."
 
@@ -443,19 +490,19 @@ msgstr "Entrez le titre de la page."
 msgid "Select the type of resources to browse."
 msgstr ""
 
-#: src/Form/CategoryForm.php:23
+#: src/Form/CategoryForm.php:24
 msgid ""
 "Enter the name of this category. A category is a logical grouping of "
 "resources that can be described using faceted classification."
 msgstr ""
 
-#: src/Form/CategoryForm.php:35
+#: src/Form/CategoryForm.php:36
 msgid ""
 "Configure the logical grouping of resources that make up this category. No "
 "query means all site resources."
 msgstr ""
 
-#: src/Form/CategoryForm.php:52
+#: src/Form/CategoryForm.php:89
 msgid "Add a facet…"
 msgstr ""
 
@@ -480,14 +527,14 @@ msgstr ""
 msgid "Page successfully deleted."
 msgstr ""
 
-#: src/Controller/SiteAdmin/CategoryController.php:37
+#: src/Controller/SiteAdmin/CategoryController.php:38
 msgid "Category successfully added."
 msgstr ""
 
-#: src/Controller/SiteAdmin/CategoryController.php:83
+#: src/Controller/SiteAdmin/CategoryController.php:91
 msgid "Category successfully edited."
 msgstr ""
 
-#: src/Controller/SiteAdmin/CategoryController.php:119
+#: src/Controller/SiteAdmin/CategoryController.php:128
 msgid "Category successfully deleted."
 msgstr ""
