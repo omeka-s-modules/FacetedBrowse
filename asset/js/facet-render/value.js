@@ -34,7 +34,9 @@ const getQuery = function(index, property, type, text) {
 const handleUserInteraction = function(thisValue) {
     const facet = thisValue.closest('.facet');
     const facets = container.find('.facet[data-facet-type="value"]');
-    let index = 0;
+    // We set a high initial index to avoid collisions with category queries
+    // that include "Search by value" queries.
+    let index = 100;
     switch (facet.data('facetData').select_type) {
         case 'single_list':
             facet.find('.value').not(thisValue).removeClass('selected');
