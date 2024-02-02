@@ -19,9 +19,9 @@ if (1 === count($categories)) {
 }
 ?>
 <div id="container"
-    data-url-categories="<?php echo $this->escapeHtml($this->url(null, ['action' => 'categories'], true)); ?>"
-    data-url-facets="<?php echo $this->escapeHtml($this->url(null, ['action' => 'facets'], true)); ?>"
-    data-url-browse="<?php echo $this->escapeHtml($this->url(null, ['action' => 'browse'], true)); ?>"
+    data-url-categories="<?php echo $this->escapeHtml($this->url('site/faceted-browse', ['page-id' => $page->id(), 'action' => 'categories'], true)); ?>"
+    data-url-facets="<?php echo $this->escapeHtml($this->url('site/faceted-browse', ['page-id' => $page->id(), 'action' => 'facets'], true)); ?>"
+    data-url-browse="<?php echo $this->escapeHtml($this->url('site/faceted-browse', ['page-id' => $page->id(), 'action' => 'browse'], true)); ?>"
     data-category-id="<?php echo $this->escapeHtml($categoryId); ?>"
     data-category-query="<?php echo $this->escapeHtml($categoryQuery); ?>">
     <button id="section-sidebar-modal-toggle" type="button"><?php echo $this->translate('Filters'); ?></button>
