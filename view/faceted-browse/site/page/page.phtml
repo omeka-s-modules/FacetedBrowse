@@ -18,15 +18,25 @@ if (1 === count($categories)) {
     $categoryQuery = $category->query();
 }
 ?>
-<div id="container"
+<div class="fb-container"
     data-url-categories="<?php echo $this->escapeHtml($this->url(null, ['action' => 'categories'], true)); ?>"
     data-url-facets="<?php echo $this->escapeHtml($this->url(null, ['action' => 'facets'], true)); ?>"
     data-url-browse="<?php echo $this->escapeHtml($this->url(null, ['action' => 'browse'], true)); ?>"
     data-category-id="<?php echo $this->escapeHtml($categoryId); ?>"
     data-category-query="<?php echo $this->escapeHtml($categoryQuery); ?>">
-    <button id="section-sidebar-modal-toggle" type="button"><?php echo $this->translate('Filters'); ?></button>
-    <div id="section-sidebar" class="mobile modal-panel" aria-describedby="facet-modal-description" aria-label="<?php echo $this->translate('Filters'); ?>"></div>
-    <div id="section-content"></div>
+    <button class="section-sidebar-modal-toggle" type="button"><?php echo $this->translate('Filters'); ?></button>
+    <div class="section-sidebar mobile modal-panel" aria-describedby="facet-modal-description" aria-label="<?php echo $this->translate('Filters'); ?>"></div>
+    <div class="section-content"></div>
+</div>
+<div class="fb-container"
+    data-url-categories="<?php echo $this->escapeHtml($this->url(null, ['action' => 'categories'], true)); ?>"
+    data-url-facets="<?php echo $this->escapeHtml($this->url(null, ['action' => 'facets'], true)); ?>"
+    data-url-browse="<?php echo $this->escapeHtml($this->url(null, ['action' => 'browse'], true)); ?>"
+    data-category-id="<?php echo $this->escapeHtml($categoryId); ?>"
+    data-category-query="<?php echo $this->escapeHtml($categoryQuery); ?>">
+    <button class="section-sidebar-modal-toggle" type="button"><?php echo $this->translate('Filters'); ?></button>
+    <div class="section-sidebar mobile modal-panel" aria-describedby="facet-modal-description" aria-label="<?php echo $this->translate('Filters'); ?>"></div>
+    <div class="section-content"></div>
 </div>
 
 <script>

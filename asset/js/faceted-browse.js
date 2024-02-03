@@ -1,12 +1,15 @@
-const FacetedBrowse = {
+class FacetedBrowse {
 
-    facetAddEditHandlers: {},
-    facetSetHandlers: {},
-    columnAddEditHandlers: {},
-    columnSetHandlers: {},
-    facetApplyStateHandlers: {},
-    stateChangeHandler: () => {},
-    state: {},
+    static facetApplyStateHandlers = {};
+
+    constructor() {
+        this.facetAddEditHandlers =  {};
+        this.facetSetHandlers = {};
+        this.columnAddEditHandlers = {};
+        this.columnSetHandlers = {};
+        this.stateChangeHandler = () => {};
+        this.state = {};
+    }
 
     /**
      * Register a callback that handles facet add/edit.
@@ -19,9 +22,9 @@ const FacetedBrowse = {
      * @param string facetType The facet type
      * @param function handler The callback that handles facet add/edit
      */
-    registerFacetAddEditHandler: (facetType, handler) => {
+    registerFacetAddEditHandler(facetType, handler) {
         FacetedBrowse.facetAddEditHandlers[facetType] = handler;
-    },
+    }
     /**
      * Register a callback that handles facet set.
      *
@@ -34,9 +37,9 @@ const FacetedBrowse = {
      * @param string facetType The facet type
      * @param function handler The callback that handles facet set
      */
-    registerFacetSetHandler: (facetType, handler) => {
+    registerFacetSetHandler(facetType, handler) {
         FacetedBrowse.facetSetHandlers[facetType] = handler;
-    },
+    }
     /**
      * Register a callback that handles column add/edit.
      *
@@ -48,9 +51,9 @@ const FacetedBrowse = {
      * @param string columnType The Column type
      * @param function handler The callback that handles column add/edit
      */
-    registerColumnAddEditHandler: (columnType, handler) => {
+    registerColumnAddEditHandler(columnType, handler) {
         FacetedBrowse.columnAddEditHandlers[columnType] = handler;
-    },
+    }
     /**
      * Register a callback that handles column set.
      *
@@ -63,9 +66,9 @@ const FacetedBrowse = {
      * @param string columnType The column type
      * @param function handler The callback that handles column set
      */
-    registerColumnSetHandler: (columnType, handler) => {
+    registerColumnSetHandler(columnType, handler) {
         FacetedBrowse.columnSetHandlers[columnType] = handler;
-    },
+    }
     /**
      * Register a callback that handles facet apply state.
      *
@@ -78,9 +81,9 @@ const FacetedBrowse = {
      * @param string facetType The facet type
      * @param function handler The callback that handles facet apply state
      */
-    registerFacetApplyStateHandler: (facetType, handler) => {
+    static registerFacetApplyStateHandler(facetType, handler) {
         FacetedBrowse.facetApplyStateHandlers[facetType] = handler;
-    },
+    }
     /**
      * Set the facet state.
      *
@@ -92,94 +95,94 @@ const FacetedBrowse = {
      * @param int facetId The facet ID
      * @param string facetQuery The facet query
      */
-    setFacetState: (facetId, facetState, facetQuery) => {
-        FacetedBrowse.state.facetQueries[facetId] = facetQuery;
-        FacetedBrowse.state.facetStates[facetId] = facetState;
+    setFacetState(facetId, facetState, facetQuery) {
+        this.state.facetQueries[facetId] = facetQuery;
+        this.state.facetStates[facetId] = facetState;
         // Must reset the pagination state after every user interaction because
         // the total results have likely changed.
-        FacetedBrowse.state.page = null;
-        FacetedBrowse.replaceHistoryState();
-    },
+        this.state.page = null;
+        this.replaceHistoryState();
+    }
     /**
      * Set the sorting state.
      *
      * @param string sortBy
      * @param string sortOrder
      */
-    setSortingState: (sortBy, sortOrder) => {
-        FacetedBrowse.state.sortBy = sortBy;
-        FacetedBrowse.state.sortOrder = sortOrder;
-        FacetedBrowse.replaceHistoryState();
-    },
+    setSortingState(sortBy, sortOrder) {
+        this.state.sortBy = sortBy;
+        this.state.sortOrder = sortOrder;
+        this.replaceHistoryState();
+    }
     /**
      * Set the pagination state.
      *
      * @param int page
      */
-    setPaginationState: page => {
-        FacetedBrowse.state.page = page;
-        FacetedBrowse.replaceHistoryState();
-    },
+    setPaginationState(page) {
+        this.state.page = page;
+        this.replaceHistoryState();
+    }
     /**
      * Trigger a state change.
      *
      * Via a script added in FacetTypeInterface::prepareFacet(), all facet types
      * should call this function once all relevant states have been set.
      */
-    triggerStateChange: () => {
+    triggerStateChange() {
         const queries = [];
-        for (const facetId in FacetedBrowse.state.facetQueries) {
-            queries.push(FacetedBrowse.state.facetQueries[facetId]);
+        for (const facetId in this.state.facetQueries) {
+            queries.push(this.state.facetQueries[facetId]);
         }
-        FacetedBrowse.stateChangeHandler(
+        this.stateChangeHandler(
             queries.join('&'),
-            FacetedBrowse.state.sortBy,
-            FacetedBrowse.state.sortOrder,
-            FacetedBrowse.state.page,
+            this.state.sortBy,
+            this.state.sortOrder,
+            this.state.page,
         );
-    },
+    }
     /**
      * Call a facet add/edit handler.
      *
      * @param string facetType The facet type
      */
-    handleFacetAddEdit: facetType => {
-        if (facetType in FacetedBrowse.facetAddEditHandlers) {
-            FacetedBrowse.facetAddEditHandlers[facetType]();
+    handleFacetAddEdit(facetType) {
+        if (facetType in this.facetAddEditHandlers) {
+            this.facetAddEditHandlers[facetType]();
         }
-    },
+    }
     /**
      * Call a facet set handler.
      *
      * @param string facetType The facet type
      * @return object The facet data
      */
-    handleFacetSet: facetType => {
-        if (facetType in FacetedBrowse.facetSetHandlers) {
-            return FacetedBrowse.facetSetHandlers[facetType]();
+    handleFacetSet(facetType) {
+        if (facetType in this.facetSetHandlers) {
+            return this.facetSetHandlers[facetType]();
         }
-    },
+    }
     /**
      * Call a column add/edit handler.
      *
      * @param string columnType The column type
      */
-    handleColumnAddEdit: columnType => {
-        if (columnType in FacetedBrowse.columnAddEditHandlers) {
-            FacetedBrowse.columnAddEditHandlers[columnType]();
+    handleColumnAddEdit (columnType) {
+        if (columnType in this.columnAddEditHandlers) {
+            this.columnAddEditHandlers[columnType]();
         }
-    },
+    }
     /**
      * Call a column set handler.
      *
      * @param string columnType The column type
      * @return object The column data
      */
-    handleColumnSet: columnType => {
-        if (columnType in FacetedBrowse.columnSetHandlers) {
-            return FacetedBrowse.columnSetHandlers[columnType]();
+    handleColumnSet(columnType) {
+        if (columnType in this.columnSetHandlers) {
+            return this.columnSetHandlers[columnType]();
         }
-    },
+    }
     /**
      * Call a facet apply state handler.
      *
@@ -187,26 +190,26 @@ const FacetedBrowse = {
      * @param int facetId The unique facet ID
      * @param object facet The facet element
      */
-    handleFacetApplyState: (facetType, facetId, facet) => {
+    handleFacetApplyState(facetType, facetId, facet) {
         if (!(facetType in FacetedBrowse.facetApplyStateHandlers)) {
             return;
         }
         const facetApplyStateHandler = FacetedBrowse.facetApplyStateHandlers[facetType];
-        const facetState = FacetedBrowse.state.facetStates[facetId];
+        const facetState = this.state.facetStates[facetId];
         facetApplyStateHandler(facet, facetState);
-    },
+    }
     /**
      * Set the callback that handles a state change.
      *
      * @param function handler The callback that handles state change
      */
-    setStateChangeHandler: handler => {
-        FacetedBrowse.stateChangeHandler = handler;
-    },
+    setStateChangeHandler(handler) {
+        this.stateChangeHandler = handler;
+    }
     /**
      * Initialize the state.
      */
-    initState: () => {
+    initState() {
         try {
             // The client may pass the state via the URI fragment. If so, set it
             // as the history state. This will remove the fragment from the URL
@@ -229,44 +232,44 @@ const FacetedBrowse = {
             && history.state.hasOwnProperty('facetStates')
             && history.state.hasOwnProperty('facetQueries')
         ) {
-            FacetedBrowse.state = history.state;
+            this.state = history.state;
         } else {
             // The state is not set or is malformed. Reset it.
-            FacetedBrowse.resetState();
+            this.resetState();
         }
-    },
+    }
     /**
      * Reset the state.
      *
      * @param ?int categoryId The current category ID
      * @param ?int categoryQuery The current category query
      */
-    resetState: (categoryId = null, categoryQuery = null) => {
-        FacetedBrowse.state.categoryId = categoryId;
-        FacetedBrowse.state.categoryQuery = categoryQuery;
-        FacetedBrowse.state.sortBy = null;
-        FacetedBrowse.state.sortOrder = null;
-        FacetedBrowse.state.page = null;
-        FacetedBrowse.state.facetStates = {};
-        FacetedBrowse.state.facetQueries = {};
-        FacetedBrowse.replaceHistoryState();
-    },
+    resetState(categoryId = null, categoryQuery = null) {
+        this.state.categoryId = categoryId;
+        this.state.categoryQuery = categoryQuery;
+        this.state.sortBy = null;
+        this.state.sortOrder = null;
+        this.state.page = null;
+        this.state.facetStates = {};
+        this.state.facetQueries = {};
+        this.replaceHistoryState();
+    }
     /**
      * Replace the current history entry of this page.
      */
-    replaceHistoryState: () => {
-        history.replaceState(FacetedBrowse.state, null);
-    },
+    replaceHistoryState() {
+        history.replaceState(this.state, null);
+    }
     /**
      * Get a specific state by name.
      *
      * @param string stateName
      */
-    getState: stateName => {
+    getState(stateName) {
         return history.state.hasOwnProperty(stateName) ? history.state[stateName] : undefined;
-    },
+    }
 
-    updateSelectList: selectList => {
+    static updateSelectList(selectList) {
         const facet = selectList.closest('.facet');
         const truncateListItems = selectList.data('truncateListItems');
         // First, sort the selected list items and prepend them to the list.
@@ -309,5 +312,5 @@ const FacetedBrowse = {
         facet.find('.select-list-hidden-count').text(`(${hiddenCount})`);
         facet.find('.select-list-expand').show();
         facet.find('.select-list-collapse').hide();
-    },
+    }
 };

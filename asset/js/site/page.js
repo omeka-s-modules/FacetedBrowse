@@ -1,15 +1,20 @@
 $(document).ready(function() {
 
-const container = $('#container');
-const sectionSidebar = $('#section-sidebar');
-const sectionContent = $('#section-content');
+$('.fb-container').each(function() {
+
+const FB = new FacetedBrowse;
+
+const container = $(this);
+container.data('FacetedBrowse', FB);
+const sectionSidebar = container.find('.section-sidebar');
+const sectionContent = container.find('.section-content');
 
 const urlCategories = container.data('urlCategories');
 const urlFacets = container.data('urlFacets');
 const urlBrowse = container.data('urlBrowse');
 
-const modalToggleButton = $("#section-sidebar-modal-toggle");
-const modalCloseButton = $('#section-sidebar-modal-close');
+const modalToggleButton = container.find(".section-sidebar-modal-toggle");
+const modalCloseButton = container.find('.section-sidebar-modal-close');
 
 // Callbacks that handle  request errors.
 const failBrowse = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching browse markup.')} ${data.status} (${data.statusText})`);
@@ -33,7 +38,7 @@ const handleTabletChange = function(e) {
 const enableModal = function() {
     var lastFocus;
 
-    container.on('click', '#section-sidebar-modal-toggle', function() {
+    container.on('click', '.section-sidebar-modal-toggle', function() {
         sectionSidebar.toggleClass('open');
         if (modalToggleButton.attr('aria-expanded') == 'true') {
             modalToggleButton.attr('aria-expanded', 'false');
@@ -49,7 +54,7 @@ const enableModal = function() {
         lastFocus.trigger('click').trigger('focus');
     });
 
-    container.on('toggle', '#section-sidebar', function() {
+    container.on('toggle', '.section-sidebar', function() {
         if (sectionSidebar.attr('aria-hidden') == 'false') {
             sectionSidebar.attr('aria-hidden', 'true');
             modalCloseButton.trigger('focus');
@@ -81,16 +86,16 @@ const showClipboardCopySuccessful = () => {
 const applyPreviousState = function() {
     $('.facet').each(function() {
         const thisFacet = $(this);
-        FacetedBrowse.handleFacetApplyState(thisFacet.data('facetType'), thisFacet.data('facetId'), this);
+        FB.handleFacetApplyState(thisFacet.data('facetType'), thisFacet.data('facetId'), this);
     });
-    FacetedBrowse.triggerStateChange();
+    FB.triggerStateChange();
 };
 
 /**
  * Set the permalink fragment.
  */
 const setPermalinkFragment = function() {
-    const fragment = encodeURIComponent(JSON.stringify(FacetedBrowse.state))
+    const fragment = encodeURIComponent(JSON.stringify(FB.state))
     $('.permalink').data('fragment', fragment);
 };
 
@@ -108,11 +113,11 @@ const renderCategories = function() {
 };
 
 // First, initialize the state.
-FacetedBrowse.initState();
+FB.initState();
 
 // Then, set the state change handler.
-FacetedBrowse.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, page) {
-    const facets = $('#facets');
+FB.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, page) {
+    const facets = container.find('.facets');
     const queries = [];
     // Add category and facets queries.
     queries.push(facets.data('categoryQuery'));
@@ -130,9 +135,9 @@ FacetedBrowse.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, pag
 });
 
 // Then, set up the page for first load.
-if (FacetedBrowse.getState('categoryId')) {
+if (FB.getState('categoryId')) {
     // This page has a previously saved category state.
-    $.get(urlFacets, {category_id: FacetedBrowse.getState('categoryId')}).done(function(html) {
+    $.get(urlFacets, {category_id: FB.getState('categoryId')}).done(function(html) {
         sectionSidebar.html(html);
         applyPreviousState();
     }).fail(failFacet);
@@ -141,7 +146,7 @@ if (FacetedBrowse.getState('categoryId')) {
     $.get(urlFacets, {category_id: container.data('categoryId')}).done(function(html) {
         sectionSidebar.html(html);
         applyPreviousState();
-        $('#categories-return').hide();
+        container.find('.categories-return').hide();
     }).fail(failFacet);
 } else {
     // There is more than one category. Show category list.
@@ -152,12 +157,12 @@ if (FacetedBrowse.getState('categoryId')) {
 container.on('click', '.category', function(e) {
     e.preventDefault();
     const thisCategory = $(this);
-    FacetedBrowse.resetState(thisCategory.data('categoryId'), thisCategory.data('categoryQuery'));
+    FB.resetState(thisCategory.data('categoryId'), thisCategory.data('categoryQuery'));
     $.get(urlFacets, {category_id: thisCategory.data('categoryId')}).done(function(html) {
         sectionSidebar.html(html);
         sectionSidebar.find('.select-list').each(function() {
             // Must update the select lists so they are truncated.
-            FacetedBrowse.updateSelectList($(this));
+            FB.updateSelectList($(this));
         });
         const queries = [];
         queries.push(thisCategory.data('categoryQuery'));
@@ -170,9 +175,9 @@ container.on('click', '.category', function(e) {
 });
 
 // Handle a categories return click.
-container.on('click', '#categories-return', function(e) {
+container.on('click', '.categories-return', function(e) {
     e.preventDefault();
-    FacetedBrowse.resetState();
+    FB.resetState();
     renderCategories();
 });
 
@@ -182,7 +187,7 @@ container.on('click', '.next', function(e) {
     const thisButton = $(this);
     const form = thisButton.prevAll('form');
     if (!thisButton.hasClass('inactive')) {
-        FacetedBrowse.setPaginationState(parseInt(form.find('input[name="page"]').val()) + 1);
+        FB.setPaginationState(parseInt(form.find('input[name="page"]').val()) + 1);
         $.get(thisButton.prop('href'), function(html) {
             sectionContent.html(html);
         });
@@ -195,7 +200,7 @@ container.on('click', '.previous', function(e) {
     const thisButton = $(this);
     const form = thisButton.prevAll('form');
     if (!thisButton.hasClass('inactive')) {
-        FacetedBrowse.setPaginationState(parseInt(form.find('input[name="page"]').val()) - 1);
+        FB.setPaginationState(parseInt(form.find('input[name="page"]').val()) - 1);
         $.get(thisButton.prop('href'), function(html) {
             sectionContent.html(html);
         });
@@ -206,7 +211,7 @@ container.on('click', '.previous', function(e) {
 container.on('submit', '.pagination form', function(e) {
     e.preventDefault();
     const thisForm = $(this);
-    FacetedBrowse.setPaginationState(thisForm.find('input[name="page"]').val());
+    FB.setPaginationState(thisForm.find('input[name="page"]').val());
     $.get(`${urlBrowse}?${$(this).serialize()}`, {}, function(html) {
         sectionContent.html(html);
         setPermalinkFragment();
@@ -217,7 +222,7 @@ container.on('submit', '.pagination form', function(e) {
 container.on('submit', 'form.sorting', function(e) {
     e.preventDefault();
     const thisForm = $(this);
-    FacetedBrowse.setSortingState(
+    FB.setSortingState(
         thisForm.find('select[name="sort_by"]').val(),
         thisForm.find('select[name="sort_order"]').val()
     );
@@ -249,8 +254,10 @@ container.on('click', '.permalink', function(e) {
     }
 });
 
-enableModal('#section-content', '#section-sidebar', '#section-sidebar-modal-toggle');
+enableModal();
 mediaQuery.addListener(handleTabletChange);
 handleTabletChange(mediaQuery);
+
+});
 
 });

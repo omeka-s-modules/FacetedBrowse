@@ -1,14 +1,14 @@
-<button id="section-sidebar-modal-close" class="close-button" aria-label="<?php echo $this->escapeHtml($this->translate('Close')); ?>" aria-labelledby="section-sidebar-modal-close section-sidebar" type="button">
+<button class="section-sidebar-modal-close close-button" aria-label="<?php echo $this->escapeHtml($this->translate('Close')); ?>" aria-labelledby="section-sidebar-modal-close section-sidebar" type="button">
   <span aria-hidden="true" class="close-glyph"></span>
 </button>
-<div class="sr-only" id="facet-modal-description">
+<div class="facet-modal-description sr-only">
     This is a dialog window which overlays the main content of the page. The modal begins with a fieldset called 'Browse'. Pressing the Close Modal button at the top right of the modal will close the modal and bring you back to where you were on the page.
 </div>
 <?php $categories = $page->categories(); ?>
 <fieldset class="categories-container">
     <legend><?php echo $this->translate('Browse'); ?></legend>
     <?php if ($categories): ?>
-    <ul id="categories">
+    <ul class="categories">
         <?php foreach ($categories as $category): ?>
         <li>
             <?php echo $this->hyperlink($category->name(), null, [
