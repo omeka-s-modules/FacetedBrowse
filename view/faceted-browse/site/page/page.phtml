@@ -22,6 +22,7 @@ if (1 === count($categories)) {
     data-url-categories="<?php echo $this->escapeHtml($this->url(null, ['action' => 'categories'], true)); ?>"
     data-url-facets="<?php echo $this->escapeHtml($this->url(null, ['action' => 'facets'], true)); ?>"
     data-url-browse="<?php echo $this->escapeHtml($this->url(null, ['action' => 'browse'], true)); ?>"
+    data-page-id="<?php echo $this->escapeHtml($page->id()); ?>"
     data-category-id="<?php echo $this->escapeHtml($categoryId); ?>"
     data-category-query="<?php echo $this->escapeHtml($categoryQuery); ?>">
     <button id="section-sidebar-modal-toggle" type="button"><?php echo $this->translate('Filters'); ?></button>

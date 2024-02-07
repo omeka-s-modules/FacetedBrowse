@@ -22,6 +22,7 @@ FacetedBrowse.registerFacetApplyStateHandler('value', function(facet, facetState
 $(document).ready(function() {
 
 const container = $('#container');
+const FB = container.data('FacetedBrowse');
 let timerId;
 
 const getQuery = function(index, property, type, text) {
@@ -80,9 +81,9 @@ const handleUserInteraction = function(thisValue) {
                 index++;
             });
         }
-        FacetedBrowse.setFacetState(thisFacet.data('facetId'), state, queries.join('&'));
+        FB.setFacetState(thisFacet.data('facetId'), state, queries.join('&'));
     });
-    FacetedBrowse.triggerStateChange();
+    FB.triggerStateChange();
 };
 
 // Handle single_select interaction.
