@@ -20,6 +20,7 @@ FacetedBrowse.registerFacetApplyStateHandler('resource_class', function(facet, f
 $(document).ready(function() {
 
 const container = $('#container');
+const FB = container.data('FacetedBrowse');
 
 const handleUserInteraction = function(thisClass) {
     const facet = thisClass.closest('.facet');
@@ -45,8 +46,8 @@ const handleUserInteraction = function(thisClass) {
             state.push(id);
         });
     }
-    FacetedBrowse.setFacetState(facet.data('facetId'), state, queries.join('&'));
-    FacetedBrowse.triggerStateChange();
+    FB.setFacetState(facet.data('facetId'), state, queries.join('&'));
+    FB.triggerStateChange();
 };
 
 container.on('change', 'select.resource-class', function(e) {

@@ -94,6 +94,48 @@ class FacetedBrowse {
         FacetedBrowse.stateChangeHandler = handler;
     }
     /**
+     * Call a facet add/edit handler.
+     *
+     * @param string facetType The facet type
+     */
+    static handleFacetAddEdit(facetType) {
+        if (facetType in FacetedBrowse.facetAddEditHandlers) {
+            FacetedBrowse.facetAddEditHandlers[facetType]();
+        }
+    }
+    /**
+     * Call a facet set handler.
+     *
+     * @param string facetType The facet type
+     * @return object The facet data
+     */
+    static handleFacetSet(facetType) {
+        if (facetType in FacetedBrowse.facetSetHandlers) {
+            return FacetedBrowse.facetSetHandlers[facetType]();
+        }
+    }
+    /**
+     * Call a column add/edit handler.
+     *
+     * @param string columnType The column type
+     */
+    static handleColumnAddEdit(columnType) {
+        if (columnType in FacetedBrowse.columnAddEditHandlers) {
+            FacetedBrowse.columnAddEditHandlers[columnType]();
+        }
+    }
+    /**
+     * Call a column set handler.
+     *
+     * @param string columnType The column type
+     * @return object The column data
+     */
+    static handleColumnSet(columnType) {
+        if (columnType in FacetedBrowse.columnSetHandlers) {
+            return FacetedBrowse.columnSetHandlers[columnType]();
+        }
+    }
+    /**
      * Set the facet state.
      *
      * Via a script added in FacetTypeInterface::prepareFacet(), all facet types
@@ -149,48 +191,6 @@ class FacetedBrowse {
             this.state.sortOrder,
             this.state.page,
         );
-    }
-    /**
-     * Call a facet add/edit handler.
-     *
-     * @param string facetType The facet type
-     */
-    handleFacetAddEdit(facetType) {
-        if (facetType in FacetedBrowse.facetAddEditHandlers) {
-            FacetedBrowse.facetAddEditHandlers[facetType]();
-        }
-    }
-    /**
-     * Call a facet set handler.
-     *
-     * @param string facetType The facet type
-     * @return object The facet data
-     */
-    handleFacetSet(facetType) {
-        if (facetType in FacetedBrowse.facetSetHandlers) {
-            return FacetedBrowse.facetSetHandlers[facetType]();
-        }
-    }
-    /**
-     * Call a column add/edit handler.
-     *
-     * @param string columnType The column type
-     */
-    handleColumnAddEdit(columnType) {
-        if (columnType in FacetedBrowse.columnAddEditHandlers) {
-            FacetedBrowse.columnAddEditHandlers[columnType]();
-        }
-    }
-    /**
-     * Call a column set handler.
-     *
-     * @param string columnType The column type
-     * @return object The column data
-     */
-    handleColumnSet(columnType) {
-        if (columnType in FacetedBrowse.columnSetHandlers) {
-            return FacetedBrowse.columnSetHandlers[columnType]();
-        }
     }
     /**
      * Call a facet apply state handler.

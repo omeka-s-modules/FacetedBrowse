@@ -20,6 +20,7 @@ FacetedBrowse.registerFacetApplyStateHandler('item_set', function(facet, facetSt
 $(document).ready(function() {
 
 const container = $('#container');
+const FB = container.data('FacetedBrowse');
 
 const handleUserInteraction = function(thisItemSet) {
     const facet = thisItemSet.closest('.facet');
@@ -45,8 +46,8 @@ const handleUserInteraction = function(thisItemSet) {
             state.push(id);
         });
     }
-    FacetedBrowse.setFacetState(facet.data('facetId'), state, queries.join('&'));
-    FacetedBrowse.triggerStateChange();
+    FB.setFacetState(facet.data('facetId'), state, queries.join('&'));
+    FB.triggerStateChange();
 };
 
 container.on('change', 'select.item-set', function(e) {

@@ -7,6 +7,7 @@ FacetedBrowse.registerFacetApplyStateHandler('full_text', function(facet, facetS
 $(document).ready(function() {
 
 const container = $('#container');
+const FB = container.data('FacetedBrowse');
 let timerId;
 
 container.on('keyup', '.full-text', function(e) {
@@ -17,8 +18,8 @@ container.on('keyup', '.full-text', function(e) {
         : '';
     clearTimeout(timerId);
     timerId = setTimeout(function() {
-        FacetedBrowse.setFacetState(facet.data('facetId'), thisFullText.val(), query);
-        FacetedBrowse.triggerStateChange();
+        FB.setFacetState(facet.data('facetId'), thisFullText.val(), query);
+        FB.triggerStateChange();
     }, 350);
 });
 
