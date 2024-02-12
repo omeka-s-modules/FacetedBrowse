@@ -223,11 +223,8 @@ class FacetedBrowse {
         }
 
         // Check for valid history state.
-        if ('object' === typeof history.state
-            && null !== history.state
-            && history.state.hasOwnProperty('facetedBrowse')
-            && history.state.facetedBrowse.hasOwnProperty(this.pageId)
-            && history.state.facetedBrowse[this.pageId].hasOwnProperty('categoryId')
+        if (
+            history?.state?.facetedBrowse?.[this.pageId]?.hasOwnProperty('categoryId')
             && history.state.facetedBrowse[this.pageId].hasOwnProperty('categoryQuery')
             && history.state.facetedBrowse[this.pageId].hasOwnProperty('sortBy')
             && history.state.facetedBrowse[this.pageId].hasOwnProperty('sortOrder')
