@@ -67,10 +67,10 @@ class FacetedBrowseCategory extends \FacetedBrowse\Entity\FacetedBrowseCategory 
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'sortBy', 'sortOrder', 'page', 'position', 'facets', 'columns'];
+            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'sortBy', 'sortOrder', 'userText', 'page', 'position', 'facets', 'columns'];
         }
 
-        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'sortBy', 'sortOrder', 'page', 'position', 'facets', 'columns'];
+        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'sortBy', 'sortOrder', 'userText', 'page', 'position', 'facets', 'columns'];
     }
 
     /**
@@ -366,6 +366,28 @@ class FacetedBrowseCategory extends \FacetedBrowse\Entity\FacetedBrowseCategory 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSortOrder', []);
 
         return parent::getSortOrder();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUserText(?string $userText): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserText', [$userText]);
+
+        parent::setUserText($userText);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUserText(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserText', []);
+
+        return parent::getUserText();
     }
 
     /**

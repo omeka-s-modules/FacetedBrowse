@@ -71,6 +71,18 @@ class CategoryForm extends Form
             ],
         ]);
         $this->add([
+            'type' => OmekaElement\CkeditorInline::class,
+            'name' => 'o-module-faceted_browse:user_text',
+            'options' => [
+                'label' => 'User text', // @translate
+                'info' => 'Enter text to be displayed to the user on the category sidebar. Here you can add short instructions, a link to instructions, etc.', // @translate
+            ],
+            'attributes' => [
+                'id' => 'category-user-text',
+                'required' => false,
+            ],
+        ]);
+        $this->add([
             'type' => LaminasElement\Select::class,
             'name' => 'o-module-faceted_browse:sort_by',
             'options' => [
