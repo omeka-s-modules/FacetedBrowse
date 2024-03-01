@@ -7,7 +7,12 @@
 <?php echo $this->hyperlink($this->translate('Back'), [], ['id' => 'categories-return', 'class' => 'button']); ?>
 <fieldset class="facets-container">
     <legend><?php echo $category->name(); ?></legend>
-    <div id="category-user-text"><?php echo $category->userText(); ?></div>
+    <?php $userText = $category->userText(); ?>
+    <?php if ($userText): ?>
+    <a id="user-text-expand" href="#"><?php echo $this->translate('View info'); ?></a>
+    <a id="user-text-collapse" href="#"><?php echo $this->translate('Collapse info'); ?></a>
+    <div id="user-text"><?php echo $category->userText(); ?></div>
+    <?php endif; ?>
     <div id="facets"
         data-category-id="<?php echo $this->escapeHtml($category->id()); ?>"
         data-category-query="<?php echo $this->escapeHtml($category->query()); ?>">
@@ -24,3 +29,23 @@
         <?php endforeach; ?>
     </div>
 </fieldset>
+<script>
+// Handle user info collapse/expand.
+const userText = $('#user-text');
+const userTextExpand = $('#user-text-expand');
+const userTextCollapse = $('#user-text-collapse');
+userText.hide();
+userTextCollapse.hide();
+userTextExpand.on('click', function(e) {
+    e.preventDefault();
+    userTextExpand.hide();
+    userTextCollapse.show();
+    userText.show();
+});
+userTextCollapse.on('click', function(e) {
+    e.preventDefault();
+    userTextExpand.show();
+    userTextCollapse.hide();
+    userText.hide();
+});
+</script>
