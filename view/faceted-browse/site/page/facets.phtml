@@ -9,8 +9,8 @@
     <legend><?php echo $category->name(); ?></legend>
     <?php $userText = $category->userText(); ?>
     <?php if ($userText): ?>
-    <a id="user-text-expand" href="#"><?php echo $this->translate('View info'); ?></a>
-    <a id="user-text-collapse" href="#"><?php echo $this->translate('Collapse info'); ?></a>
+    <a id="user-text-expand" class="button" href="#"><?php echo $this->translate('View info'); ?></a>
+    <a id="user-text-collapse" class="button" href="#"><?php echo $this->translate('Collapse info'); ?></a>
     <div id="user-text"><?php echo $category->userText(); ?></div>
     <?php endif; ?>
     <div id="facets"
