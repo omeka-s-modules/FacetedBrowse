@@ -107,7 +107,8 @@ class FacetedBrowseCategoryAdapter extends AbstractEntityAdapter
                     }
                     $facetEntity->setType($facet['o-module-faceted_browse:type']);
                     $facetEntity->setName($facet['o:name']);
-                    $facetEntity->setData(json_decode($facet['o:data'], true));
+                    $data = is_string($facet['o:data']) ? json_decode($facet['o:data'], true) : $facet['o:data'];
+                    $facetEntity->setData($data);
                     $facetEntity->setPosition($position++);
                     $toRetain[] = $facetEntity;
                 }
@@ -138,7 +139,8 @@ class FacetedBrowseCategoryAdapter extends AbstractEntityAdapter
                     $columnEntity->setType($column['o-module-faceted_browse:type']);
                     $columnEntity->setName($column['o:name']);
                     $columnEntity->setExcludeSortBy($column['o-module-faceted_browse:exclude_sort_by']);
-                    $columnEntity->setData(json_decode($column['o:data'], true));
+                    $data = is_string($column['o:data']) ? json_decode($column['o:data'], true) : $column['o:data'];
+                    $columnEntity->setData($data);
                     $columnEntity->setPosition($position++);
                     $toRetain[] = $columnEntity;
                 }
