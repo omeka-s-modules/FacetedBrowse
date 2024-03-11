@@ -40,6 +40,12 @@ class FacetedBrowseCategoryAdapter extends AbstractEntityAdapter
                 $this->createNamedParameter($qb, $query['site_id'])
             ));
         }
+        if (isset($query['page_id']) && is_numeric($query['page_id'])) {
+            $qb->andWhere($qb->expr()->eq(
+                'omeka_root.page',
+                $this->createNamedParameter($qb, $query['page_id'])
+            ));
+        }
     }
 
     public function validateRequest(Request $request, ErrorStore $errorStore)
