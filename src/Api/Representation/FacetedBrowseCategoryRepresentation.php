@@ -24,6 +24,8 @@ class FacetedBrowseCategoryRepresentation extends AbstractEntityRepresentation
             'o:query' => $this->query(),
             'o-module-faceted_browse:sort_by' => $this->sortBy(),
             'o-module-faceted_browse:sort_order' => $this->sortOrder(),
+            'o-module-faceted_browse:facet' => $this->facets(),
+            'o-module-faceted_browse:column' => $this->columns(),
         ];
     }
 
