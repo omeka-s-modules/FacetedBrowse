@@ -84,6 +84,11 @@ return [
             'FacetedBrowse\Form\CategoryForm' => Service\Form\CategoryFormFactory::class,
         ],
     ],
+    'block_layouts' => [
+        'invokables' => [
+            'facetedBrowsePreview' => Site\BlockLayout\FacetedBrowsePreview::class,
+        ],
+    ],
     'navigation_links' => [
         'invokables' => [
             'facetedBrowse' => Site\NavigationLink\FacetedBrowse::class,
