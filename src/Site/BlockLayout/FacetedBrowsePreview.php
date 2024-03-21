@@ -11,8 +11,12 @@ use Omeka\Stdlib\ErrorStore;
 
 class FacetedBrowsePreview extends AbstractBlockLayout
 {
-    public function __construct()
-    {}
+    protected $defaultBlockData = [
+        'category_id' => null,
+        'limit' => 12,
+        'heading' => null,
+        'link_out_text' => 'Browse all',
+    ];
 
     public function getLabel()
     {
@@ -80,6 +84,25 @@ class FacetedBrowsePreview extends AbstractBlockLayout
         return $view->formCollection($form);
     }
 
+    public function onHydrate(SitePageBlock $block, ErrorStore $errorStore)
+    {
+        // Sanitize user data.
+        $blockData = $block->getData();
+        $blockData['category_id'] = is_numeric($blockData['category_id'])
+            ? $blockData['category_id']
+            : $this->defaultBlockData['category_id'];
+        $blockData['limit'] = is_numeric($blockData['limit'])
+            ? $blockData['limit']
+            : $this->defaultBlockData['limit'];
+        $blockData['heading'] = is_string($blockData['heading'])
+            ? trim($blockData['heading'])
+            : $this->defaultBlockData['heading'];
+        $blockData['link_out_text'] = is_string($blockData['link_out_text'])
+            ? trim($blockData['link_out_text'])
+            : $this->defaultBlockData['link_out_text'];
+        $block->setData($blockData);
+    }
+
     public function render(PhpRenderer $view, SitePageBlockRepresentation $block, $templateViewScript = 'common/faceted-browse/block-layout/faceted-browse-preview')
     {
         $site = $block->page()->site();
@@ -100,7 +123,7 @@ class FacetedBrowsePreview extends AbstractBlockLayout
         $query['site_id'] = $site->id();
         $query['sort_by'] = $category->sortBy();
         $query['sort_order'] = $category->sortOrder();
-        $query['limit'] = 10;
+        $query['limit'] = $blockData['limit'];
         $resourceType = $page->resourceType();
         $items = $view->api()->search($resourceType, $query)->getContent();
 
@@ -137,14 +160,8 @@ class FacetedBrowsePreview extends AbstractBlockLayout
 
     public function getBlockData(?SitePageBlockRepresentation $block)
     {
-        $defaultBlockData = [
-            'category_id' => null,
-            'limit' => 12,
-            'heading' => null,
-            'link_out_text' => 'Browse all',
-        ];
         $blockData = $block ? $block->data() : [];
-        $blockData = array_merge($defaultBlockData, $blockData);
+        $blockData = array_merge($this->defaultBlockData, $blockData);
         return $blockData;
     }
 }
