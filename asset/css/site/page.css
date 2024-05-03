@@ -16,11 +16,13 @@
     width:100%;
 }
 
+.block-facetedBrowsePreview table img + .resource-name, 
 .faceted-browse-page #section-content table img + .resource-name {
     max-width: calc(100% - 4rem);
     min-width: 6rem;
 }
 
+.block-facetedBrowsePreview table .resource-link,
 .faceted-browse-page #section-content table .resource-link {
     display: flex;
     align-items: center;
@@ -28,6 +30,7 @@
     max-width: 20rem;
 }
 
+.block-facetedBrowsePreview table .resource-link img,
 .faceted-browse-page #section-content table .resource-link img {
     max-height: 3rem;
     margin: 0 .5rem 0 0;
