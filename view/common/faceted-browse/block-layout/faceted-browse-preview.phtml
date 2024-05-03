@@ -1,0 +1,34 @@
+<?php 
+$this->headLink()->appendStylesheet($this->assetUrl('css/site/page.css', 'FacetedBrowse'));
+$this->headLink()->appendStylesheet($this->assetUrl('vendor/tablesaw/tablesaw.css', 'FacetedBrowse'));
+$this->headScript()->appendFile($this->assetUrl('vendor/tablesaw/tablesaw.jquery.js', 'FacetedBrowse'));
+?>
+
+<?php echo $heading; ?>
+
+<table class="faceted-results tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+    <thead>
+        <tr>
+            <?php foreach ($columns as $column): ?>
+            <th><?php echo $column->name(); ?></th>
+            <?php endforeach; ?>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($items as $item): ?>
+        <tr>
+            <?php foreach ($columns as $column): ?>
+            <td><?php echo $column->content($item); ?></td>
+            <?php endforeach; ?>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<?php echo $linkOut; ?>
+
+<script>
+    jQuery(document).ready(function () {
+        Tablesaw.init();
+    });
+</script>
