@@ -234,6 +234,15 @@ input[type="text"].permalink {
     padding: 0;
 }
 
+#user-text-expand-collapse {
+    margin-bottom: .5rem;
+}
+
+#user-text {
+    padding: 0 0 0 1rem;
+    margin: 0;
+}
+
 @media print, screen and (max-width: 39.9988em) {
     .faceted-browse-page #container {
         flex-wrap: wrap;
