@@ -32,7 +32,7 @@ class Module extends AbstractModule
 CREATE TABLE faceted_browse_facet (id INT UNSIGNED AUTO_INCREMENT NOT NULL, category_id INT UNSIGNED NOT NULL, name VARCHAR(255) NOT NULL, type VARCHAR(255) NOT NULL, data LONGTEXT NOT NULL COMMENT '(DC2Type:json)', position INT NOT NULL, INDEX IDX_13E44E7312469DE2 (category_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;
 CREATE TABLE faceted_browse_column (id INT UNSIGNED AUTO_INCREMENT NOT NULL, category_id INT UNSIGNED NOT NULL, name VARCHAR(255) NOT NULL, type VARCHAR(255) NOT NULL, exclude_sort_by TINYINT(1) NOT NULL, data LONGTEXT NOT NULL COMMENT '(DC2Type:json)', position INT NOT NULL, INDEX IDX_81AF52F612469DE2 (category_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;
 CREATE TABLE faceted_browse_page (id INT UNSIGNED AUTO_INCREMENT NOT NULL, owner_id INT DEFAULT NULL, site_id INT NOT NULL, created DATETIME NOT NULL, modified DATETIME DEFAULT NULL, title VARCHAR(255) NOT NULL, resource_type VARCHAR(255) NOT NULL, INDEX IDX_96A2980D7E3C61F9 (owner_id), INDEX IDX_96A2980DF6BD1646 (site_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;
-CREATE TABLE faceted_browse_category (id INT UNSIGNED AUTO_INCREMENT NOT NULL, owner_id INT DEFAULT NULL, site_id INT NOT NULL, page_id INT UNSIGNED NOT NULL, created DATETIME NOT NULL, modified DATETIME DEFAULT NULL, name VARCHAR(255) NOT NULL, query LONGTEXT NOT NULL, sort_by VARCHAR(255) DEFAULT NULL, sort_order VARCHAR(255) DEFAULT NULL, position INT NOT NULL, INDEX IDX_3AFD1257E3C61F9 (owner_id), INDEX IDX_3AFD125F6BD1646 (site_id), INDEX IDX_3AFD125C4663E4 (page_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;
+CREATE TABLE faceted_browse_category (id INT UNSIGNED AUTO_INCREMENT NOT NULL, owner_id INT DEFAULT NULL, site_id INT NOT NULL, page_id INT UNSIGNED NOT NULL, created DATETIME NOT NULL, modified DATETIME DEFAULT NULL, name VARCHAR(255) NOT NULL, query LONGTEXT NOT NULL, sort_by VARCHAR(255) DEFAULT NULL, sort_order VARCHAR(255) DEFAULT NULL, helper_text LONGTEXT DEFAULT NULL, helper_text_button_label VARCHAR(255) DEFAULT NULL, position INT NOT NULL, INDEX IDX_3AFD1257E3C61F9 (owner_id), INDEX IDX_3AFD125F6BD1646 (site_id), INDEX IDX_3AFD125C4663E4 (page_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;
 ALTER TABLE faceted_browse_facet ADD CONSTRAINT FK_13E44E7312469DE2 FOREIGN KEY (category_id) REFERENCES faceted_browse_category (id) ON DELETE CASCADE;
 ALTER TABLE faceted_browse_column ADD CONSTRAINT FK_81AF52F612469DE2 FOREIGN KEY (category_id) REFERENCES faceted_browse_category (id) ON DELETE CASCADE;
 ALTER TABLE faceted_browse_page ADD CONSTRAINT FK_96A2980D7E3C61F9 FOREIGN KEY (owner_id) REFERENCES user (id) ON DELETE SET NULL;
@@ -67,6 +67,13 @@ SQL;
         if (Comparator::lessThan($oldVersion, '1.4.0')) {
             $conn->exec('ALTER TABLE faceted_browse_category ADD sort_by VARCHAR(255) DEFAULT NULL AFTER query');
             $conn->exec('ALTER TABLE faceted_browse_category ADD sort_order VARCHAR(255) DEFAULT NULL AFTER sort_by');
+        }
+        if (Comparator::lessThan($oldVersion, '1.5.0')) {
+            $conn->exec('ALTER TABLE faceted_browse_category ADD user_text LONGTEXT DEFAULT NULL');
+        }
+        if (Comparator::lessThan($oldVersion, '1.5.1')) {
+            $conn->exec('ALTER TABLE faceted_browse_category CHANGE user_text helper_text LONGTEXT DEFAULT NULL');
+            $conn->exec('ALTER TABLE faceted_browse_category ADD helper_text_button_label VARCHAR(255) DEFAULT NULL AFTER helper_text');
         }
     }
 

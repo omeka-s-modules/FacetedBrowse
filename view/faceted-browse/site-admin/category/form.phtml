@@ -4,6 +4,7 @@ $this->headScript()->appendFile($this->assetUrl('vendor/sortablejs/Sortable.min.
 $this->headScript()->appendFile($this->assetUrl('js/faceted-browse.js', 'FacetedBrowse'));
 $this->headScript()->appendFile($this->assetUrl('js/site-admin/category-form.js', 'FacetedBrowse'));
 $this->facetedBrowse()->prepareDataForms();
+$this->ckEditor();
 
 if ($category) {
     $this->htmlElement('body')->appendAttribute('class', 'faceted-browse category edit browse');
@@ -52,6 +53,8 @@ $form->prepare();
     <?php echo $this->formRow($form->get('o:query')); ?>
     <?php echo $this->formRow($form->get('o-module-faceted_browse:sort_by')); ?>
     <?php echo $this->formRow($form->get('o-module-faceted_browse:sort_order')); ?>
+    <?php echo $this->formRow($form->get('o-module-faceted_browse:helper_text')); ?>
+    <?php echo $this->formRow($form->get('o-module-faceted_browse:helper_text_button_label')); ?>
 </fieldset>
 
 <fieldset>

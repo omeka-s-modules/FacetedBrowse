@@ -101,6 +101,23 @@ class FacetedBrowseCategory extends AbstractEntity
     protected $sortOrder;
 
     /**
+     * @Column(
+     *     type="text",
+     *     nullable=true
+     * )
+     */
+    protected $helperText;
+
+    /**
+     * @Column(
+     *     type="string",
+     *     length=255,
+     *     nullable=true
+     * )
+     */
+    protected $helperTextButtonLabel;
+
+    /**
      * @ManyToOne(
      *     targetEntity="FacetedBrowse\Entity\FacetedBrowsePage",
      *     inversedBy="categories"
@@ -233,6 +250,26 @@ class FacetedBrowseCategory extends AbstractEntity
     public function getSortOrder() : ?string
     {
         return $this->sortOrder;
+    }
+
+    public function setHelperText(?string $helperText) : void
+    {
+        $this->helperText = $helperText;
+    }
+
+    public function getHelperText() : ?string
+    {
+        return $this->helperText;
+    }
+
+    public function setHelperTextButtonLabel(?string $helperTextButtonLabel) : void
+    {
+        $this->helperTextButtonLabel = $helperTextButtonLabel;
+    }
+
+    public function getHelperTextButtonLabel() : ?string
+    {
+        return $this->helperTextButtonLabel;
     }
 
     public function setPage(FacetedBrowsePage $page) : void
