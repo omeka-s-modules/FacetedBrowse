@@ -72,7 +72,7 @@ SQL;
             $conn->exec('ALTER TABLE faceted_browse_category ADD user_text LONGTEXT DEFAULT NULL');
         }
         if (Comparator::lessThan($oldVersion, '1.5.1')) {
-            $conn->exec('ALTER TABLE faceted_browse_category RENAME COLUMN user_text TO helper_text');
+            $conn->exec('ALTER TABLE faceted_browse_category CHANGE user_text helper_text LONGTEXT DEFAULT NULL');
             $conn->exec('ALTER TABLE faceted_browse_category ADD helper_text_button_label VARCHAR(255) DEFAULT NULL AFTER helper_text');
         }
     }
