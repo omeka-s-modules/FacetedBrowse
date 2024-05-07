@@ -72,13 +72,25 @@ class CategoryForm extends Form
         ]);
         $this->add([
             'type' => OmekaElement\CkeditorInline::class,
-            'name' => 'o-module-faceted_browse:user_text',
+            'name' => 'o-module-faceted_browse:helper_text',
             'options' => [
-                'label' => 'User text', // @translate
-                'info' => 'Enter text to be displayed to the user on the category sidebar. Here you can add short instructions, a link to instructions, etc.', // @translate
+                'label' => 'Helper text', // @translate
+                'info' => 'Enter text to be displayed to the user on the category sidebar. Here you can add short instructions, a link to instructions, etc. Enter nothing to have no helper text.', // @translate
             ],
             'attributes' => [
-                'id' => 'category-user-text',
+                'id' => 'category-helper-text',
+                'required' => false,
+            ],
+        ]);
+        $this->add([
+            'type' => LaminasElement\Text::class,
+            'name' => 'o-module-faceted_browse:helper_text_button_label',
+            'options' => [
+                'label' => 'Helper text button label', // @translate
+                'info' => 'Enter the label of the button the user will click to toggle the helper text. Enter nothing for the default label: "Instructions".', // @translate
+            ],
+            'attributes' => [
+                'id' => 'category-helper-text-button-label',
                 'required' => false,
             ],
         ]);

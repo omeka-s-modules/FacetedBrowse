@@ -67,10 +67,10 @@ class FacetedBrowseCategory extends \FacetedBrowse\Entity\FacetedBrowseCategory 
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'sortBy', 'sortOrder', 'userText', 'page', 'position', 'facets', 'columns'];
+            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'sortBy', 'sortOrder', 'helperText', 'helperTextButtonLabel', 'page', 'position', 'facets', 'columns'];
         }
 
-        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'sortBy', 'sortOrder', 'userText', 'page', 'position', 'facets', 'columns'];
+        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'sortBy', 'sortOrder', 'helperText', 'helperTextButtonLabel', 'page', 'position', 'facets', 'columns'];
     }
 
     /**
@@ -371,23 +371,45 @@ class FacetedBrowseCategory extends \FacetedBrowse\Entity\FacetedBrowseCategory 
     /**
      * {@inheritDoc}
      */
-    public function setUserText(?string $userText): void
+    public function setHelperText(?string $helperText): void
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserText', [$userText]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHelperText', [$helperText]);
 
-        parent::setUserText($userText);
+        parent::setHelperText($helperText);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getUserText(): ?string
+    public function getHelperText(): ?string
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserText', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHelperText', []);
 
-        return parent::getUserText();
+        return parent::getHelperText();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setHelperTextButtonLabel(?string $helperTextButtonLabel): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHelperTextButtonLabel', [$helperTextButtonLabel]);
+
+        parent::setHelperTextButtonLabel($helperTextButtonLabel);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getHelperTextButtonLabel(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHelperTextButtonLabel', []);
+
+        return parent::getHelperTextButtonLabel();
     }
 
     /**

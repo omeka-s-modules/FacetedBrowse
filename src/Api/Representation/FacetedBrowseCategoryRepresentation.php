@@ -24,7 +24,8 @@ class FacetedBrowseCategoryRepresentation extends AbstractEntityRepresentation
             'o:query' => $this->query(),
             'o-module-faceted_browse:sort_by' => $this->sortBy(),
             'o-module-faceted_browse:sort_order' => $this->sortOrder(),
-            'o-module-faceted_browse:user_text' => $this->userText(),
+            'o-module-faceted_browse:helper_text' => $this->helperText(),
+            'o-module-faceted_browse:helper_text_button_label' => $this->helperTextButtonLabel(),
         ];
     }
 
@@ -84,9 +85,14 @@ class FacetedBrowseCategoryRepresentation extends AbstractEntityRepresentation
         return $this->resource->getSortOrder();
     }
 
-    public function userText()
+    public function helperText()
     {
-        return $this->resource->getUserText();
+        return $this->resource->getHelperText();
+    }
+
+    public function helperTextButtonLabel()
+    {
+        return $this->resource->getHelperTextButtonLabel();
     }
 
     public function page()

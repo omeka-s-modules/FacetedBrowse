@@ -7,10 +7,16 @@
 <?php echo $this->hyperlink($this->translate('Back'), [], ['id' => 'categories-return', 'class' => 'button']); ?>
 <fieldset class="facets-container">
     <legend><?php echo $category->name(); ?></legend>
-    <?php $userText = $category->userText(); ?>
-    <?php if ($userText): ?>
-    <a id="user-text-expand-collapse" class="button collapse" href="#"" aria-expanded="false"><?php echo $this->translate('Instructions'); ?> </a>
-    <div id="user-text" class="collapsible" aria-labelledby="user-text-expand-collapse"><?php echo $category->userText(); ?></div>
+    <?php
+    $helperText = $category->helperText();
+    $helperTextButtonLabel = $category->helperTextButtonLabel();
+    if ('' === trim($helperTextButtonLabel)) {
+        $helperTextButtonLabel = $this->translate('Instructions');
+    }
+    ?>
+    <?php if ($helperText): ?>
+    <a id="helper-text-expand-collapse" class="button collapse" href="#"" aria-expanded="false"><?php echo $this->escapeHtml($helperTextButtonLabel); ?> </a>
+    <div id="helper-text" class="collapsible" aria-labelledby="helper-text-expand-collapse"><?php echo $category->helperText(); ?></div>
     <?php endif; ?>
     <div id="facets"
         data-category-id="<?php echo $this->escapeHtml($category->id()); ?>"

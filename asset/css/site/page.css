@@ -228,28 +228,28 @@ input[type="text"].permalink {
     padding: 0;
 }
 
-#user-text-expand-collapse {
+#helper-text-expand-collapse {
     margin-bottom: .5rem;
     display: inline-block;
 }
 
-#user-text-expand-collapse:after {
+#helper-text-expand-collapse:after {
     display: inline-block;
     width: 1rem;
     text-align: center;
 }
 
-#user-text {
+#helper-text {
     padding: 0 0 0 1rem;
     margin: 0 0 1rem;
     background-color: transparent;
 }
 
-#user-text > *:first-child {
+#helper-text > *:first-child {
     margin-top: 0;
 }
 
-#user-text > *:last-child {
+#helper-text > *:last-child {
     margin-bottom: 0;
 }
 
@@ -294,7 +294,7 @@ input[type="text"].permalink {
         display: flex;
         align-items: center;
     }
-    
+
     .faceted-browse-page .tablesaw-cell-content .resource-link img {
         margin: 0 .5rem 0 0;
         max-height: 3rem;

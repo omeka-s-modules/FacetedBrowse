@@ -106,7 +106,16 @@ class FacetedBrowseCategory extends AbstractEntity
      *     nullable=true
      * )
      */
-    protected $userText;
+    protected $helperText;
+
+    /**
+     * @Column(
+     *     type="string",
+     *     length=255,
+     *     nullable=true
+     * )
+     */
+    protected $helperTextButtonLabel;
 
     /**
      * @ManyToOne(
@@ -243,14 +252,24 @@ class FacetedBrowseCategory extends AbstractEntity
         return $this->sortOrder;
     }
 
-    public function setUserText(?string $userText) : void
+    public function setHelperText(?string $helperText) : void
     {
-        $this->userText = $userText;
+        $this->helperText = $helperText;
     }
 
-    public function getUserText() : ?string
+    public function getHelperText() : ?string
     {
-        return $this->userText;
+        return $this->helperText;
+    }
+
+    public function setHelperTextButtonLabel(?string $helperTextButtonLabel) : void
+    {
+        $this->helperTextButtonLabel = $helperTextButtonLabel;
+    }
+
+    public function getHelperTextButtonLabel() : ?string
+    {
+        return $this->helperTextButtonLabel;
     }
 
     public function setPage(FacetedBrowsePage $page) : void
