@@ -21,7 +21,7 @@ class Module extends AbstractModule
         $acl = $this->getServiceLocator()->get('Omeka\Acl');
         $acl->allow(null, 'FacetedBrowse\Controller\Site\Page');
         $acl->allow(null, 'FacetedBrowse\Api\Adapter\FacetedBrowsePageAdapter', ['read']);
-        $acl->allow(null, 'FacetedBrowse\Api\Adapter\FacetedBrowseCategoryAdapter', ['read']);
+        $acl->allow(null, 'FacetedBrowse\Api\Adapter\FacetedBrowseCategoryAdapter', ['search', 'read']);
         $acl->allow(null, 'FacetedBrowse\Entity\FacetedBrowsePage', ['read']);
         $acl->allow(null, 'FacetedBrowse\Entity\FacetedBrowseCategory', ['read']);
     }
