@@ -97,8 +97,10 @@ class ItemSet implements FacetTypeInterface
         $itemSets = [];
         $itemSetIds = $facet->data('item_set_ids', []);
         foreach ($itemSetIds as $itemSetId) {
-            $itemSet = $view->api()->read('item_sets', $itemSetId)->getContent();
-            $itemSets[] = $itemSet;
+            $itemSet = $view->api()->searchOne('item_sets', ['id' => $itemSetId])->getContent();
+            if ($itemSet) {
+                $itemSets[] = $itemSet;
+            }
         }
 
         $singleSelect = null;
