@@ -3,8 +3,9 @@ namespace FacetedBrowse;
 
 use Composer\Semver\Comparator;
 use Omeka\Module\AbstractModule;
-use Laminas\Mvc\MvcEvent;
+use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
+use Laminas\Mvc\MvcEvent;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 
 class Module extends AbstractModule
@@ -79,5 +80,53 @@ SQL;
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)
     {
+        // Copy mapping-related data for the CopyResources module.
+        $sharedEventManager->attach(
+            '*',
+            'copy_resources.copy_site',
+            function (Event $event) {
+                $services = $this->getServiceLocator();
+                $api = $services->get('Omeka\ApiManager');
+
+                $site = $event->getParam('resource');
+                $siteCopy = $event->getParam('resource_copy');
+                $copyResources = $event->getParam('copy_resources');
+
+                $copyResources->revertSiteNavigationLinkTypes($siteCopy->id(), 'facetedBrowse');
+
+                // Copy pages.
+                $pages = $api->search('faceted_browse_pages', ['site_id' => $site->id()])->getContent();
+                $pageMap = [];
+                foreach ($pages as $page) {
+                    $callback = function (&$jsonLd) use ($siteCopy){
+                        unset($jsonLd['o:owner']);
+                        $jsonLd['o:site']['o:id'] = $siteCopy->id();
+                    };
+                    $pageCopy = $copyResources->createResourceCopy('faceted_browse_pages', $page, $callback);
+                    $pageMap[$page->id()] = $pageCopy->id();
+
+                    // Copy categories.
+                    $categories = $api->search('faceted_browse_categories', ['page_id' => $page->id()])->getContent();
+                    foreach ($categories as $category) {
+                        $callback = function (&$jsonLd) use ($siteCopy, $pageCopy){
+                            unset($jsonLd['o:owner']);
+                            $jsonLd['o:site']['o:id'] = $siteCopy->id();
+                            $jsonLd['o-module-faceted_browse:page']['o:id'] = $pageCopy->id();
+                        };
+                        $copyResources->createResourceCopy('faceted_browse_categories', $category, $callback);
+                    }
+                }
+
+                // Modify site navigation.
+                $callback = function (&$link) use ($pageMap) {
+                    if (isset($link['data']['page_id']) && is_numeric($link['data']['page_id'])) {
+                        $id = $link['data']['page_id'];
+                        $link['data']['page_id'] = array_key_exists($id, $pageMap) ? $pageMap[$id] : $id;
+                    }
+                };
+                $copyResources->modifySiteNavigation($siteCopy->id(), 'facetedBrowse', $callback);
+
+            }
+        );
     }
 }
