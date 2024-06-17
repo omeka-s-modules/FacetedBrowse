@@ -80,10 +80,10 @@ SQL;
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)
     {
-        // Copy mapping-related data for the CopyResources module.
+        // Copy FacetedBrowse-related data for the CopyResources module.
         $sharedEventManager->attach(
             '*',
-            'copy_resources.copy_site',
+            'copy_resources.sites.post',
             function (Event $event) {
                 $services = $this->getServiceLocator();
                 $api = $services->get('Omeka\ApiManager');
