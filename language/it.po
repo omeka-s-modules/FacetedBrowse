@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-11 13:50-0500\n"
+"POT-Creation-Date: 2024-06-20 14:29-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Giorgio Comai <g@giorgiocomai.eu>, 2023\n"
 "Language-Team: Italian (https://app.transifex.com/omeka/teams/14184/it/)\n"
@@ -103,55 +103,51 @@ msgstr "Elimina faccetta"
 msgid "Restore facet"
 msgstr "Ripristina faccetta"
 
-#: view/faceted-browse/site-admin/category/form.phtml:16
+#: view/faceted-browse/site-admin/category/form.phtml:17
 msgid "Edit Category"
 msgstr "Modifica categoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:16
-#: view/faceted-browse/site-admin/category/form.phtml:18
+#: view/faceted-browse/site-admin/category/form.phtml:17
+#: view/faceted-browse/site-admin/category/form.phtml:19
 #: view/faceted-browse/site-admin/page/browse.phtml:7
 #: view/faceted-browse/site-admin/page/form.phtml:14
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Faceted Browse"
 msgstr "Navigazione a faccette"
 
-#: view/faceted-browse/site-admin/category/form.phtml:18
+#: view/faceted-browse/site-admin/category/form.phtml:19
 msgid "Add Category"
 msgstr "Aggiungi categoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:30
+#: view/faceted-browse/site-admin/category/form.phtml:31
 #: view/faceted-browse/site-admin/page/form.phtml:28
 msgid "Save and&hellip;"
 msgstr "Salva e..."
 
-#: view/faceted-browse/site-admin/category/form.phtml:32
+#: view/faceted-browse/site-admin/category/form.phtml:33
 msgid "Return to page"
 msgstr "Ritorna alla pagina"
 
-#: view/faceted-browse/site-admin/category/form.phtml:33
+#: view/faceted-browse/site-admin/category/form.phtml:34
 msgid "Stay on this category"
 msgstr "Rimani su questa categoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:41
+#: view/faceted-browse/site-admin/category/form.phtml:42
 #: view/faceted-browse/site-admin/page/form.phtml:39
 msgid "Page edit"
 msgstr "Modifica della pagina"
 
-#: view/faceted-browse/site-admin/category/form.phtml:43
+#: view/faceted-browse/site-admin/category/form.phtml:44
 msgid "Category edit"
 msgstr "Modifica della categoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:43
+#: view/faceted-browse/site-admin/category/form.phtml:44
 msgid "Category add"
 msgstr "Aggiunta della categoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:58
+#: view/faceted-browse/site-admin/category/form.phtml:61
 msgid "Facets"
 msgstr "Faccette"
-
-#: view/faceted-browse/site-admin/category/form.phtml:74
-msgid "Columns"
-msgstr "Colonne"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:2
 msgid "Add all"
@@ -235,44 +231,60 @@ msgstr "Non ci sono categorie da sfogliare."
 msgid "Back"
 msgstr "Indietro"
 
+#: view/faceted-browse/site/page/facets.phtml:14
+msgid "Instructions"
+msgstr ""
+
 #: view/faceted-browse/site/page/page.phtml:27
 #: view/faceted-browse/site/page/page.phtml:28
 msgid "Filters"
 msgstr ""
 
-#: config/module.config.php:93
+#: config/module.config.php:98
 msgid "A facet must have a name."
 msgstr "Una faccetta deve avere un nome."
 
-#: config/module.config.php:94
+#: config/module.config.php:99
 msgid "A column must have a name."
 msgstr "Ogni colonna deve avere un nome."
 
-#: config/module.config.php:95
+#: config/module.config.php:100
 msgid "A column must have a property."
 msgstr "Ogni colonna deve avere una proprietà."
 
-#: config/module.config.php:96
+#: config/module.config.php:101
 msgid "Error fetching browse markup."
 msgstr "Errore nel recuperare il markup per sfoglia"
 
-#: config/module.config.php:97
+#: config/module.config.php:102
 msgid "Error fetching facet markup."
 msgstr "Errore nel recuperare il markup per la faccetta"
 
-#: config/module.config.php:98
+#: config/module.config.php:103
 msgid "Error fetching category markup."
 msgstr "Errore nel recuperare il markup per la categoria"
 
-#: config/module.config.php:99
+#: config/module.config.php:104
 msgid "Cannot show all. The result set is likely too large."
 msgstr ""
 "Impossibile mostrare tutti. Probabilmente il gruppo di risultati è troppo "
 "ampio."
 
-#: config/module.config.php:100
+#: config/module.config.php:105
 msgid "Loading results…"
 msgstr "Caricamento dei risultati in corso..."
+
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:23
+msgid "Faceted browse preview"
+msgstr ""
+
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:49
+msgid "Page category"
+msgstr ""
+
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:50
+msgid "Select one…"
+msgstr ""
 
 #: src/Site/NavigationLink/FacetedBrowse.php:13
 msgid "Faceted browse"
@@ -483,20 +495,20 @@ msgstr "Tipo di faccetta sconosciuto"
 msgid "Unknown facet data"
 msgstr "Dati di faccetta sconosciuti"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:51
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:57
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
 msgid "A site must have an ID"
 msgstr "Un sito deve avere un ID"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:152
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:166
 msgid "A category must have a site"
 msgstr "Una categoria deve avere un sito"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:155
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:169
 msgid "A category must have a name"
 msgstr "Una categoria deve avere un nome"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:158
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:172
 msgid "A category must have a query"
 msgstr "Una categoria deve avere una query"
 
@@ -541,7 +553,28 @@ msgstr ""
 "Configura il raggruppamento logico di risorse che compongono questa "
 "categoria. Nessuna query significa tutte le risorse del sito."
 
+#: src/Form/CategoryForm.php:77
+msgid "Helper text"
+msgstr ""
+
+#: src/Form/CategoryForm.php:78
+msgid ""
+"Enter text to be displayed to the user on the category sidebar. Here you can"
+" add short instructions, a link to instructions, etc. Enter nothing to have "
+"no helper text."
+msgstr ""
+
 #: src/Form/CategoryForm.php:89
+msgid "Helper text button label"
+msgstr ""
+
+#: src/Form/CategoryForm.php:90
+msgid ""
+"Enter the label of the button the user will click to toggle the helper text."
+" Enter nothing for the default label: \"Instructions\"."
+msgstr ""
+
+#: src/Form/CategoryForm.php:113
 msgid "Add a facet…"
 msgstr "Aggiungi una faccetta..."
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-11 13:50-0500\n"
+"POT-Creation-Date: 2024-06-20 14:29-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Yannis Kaskamanidis <kiolalis@gmail.com>, 2023\n"
 "Language-Team: Greek (Greece) (https://app.transifex.com/omeka/teams/14184/el_GR/)\n"
@@ -103,55 +103,51 @@ msgstr "Αφαίρεση όψης"
 msgid "Restore facet"
 msgstr "Επαναφορά όψης"
 
-#: view/faceted-browse/site-admin/category/form.phtml:16
+#: view/faceted-browse/site-admin/category/form.phtml:17
 msgid "Edit Category"
 msgstr "Επεξεργασία κατηγορίας"
 
-#: view/faceted-browse/site-admin/category/form.phtml:16
-#: view/faceted-browse/site-admin/category/form.phtml:18
+#: view/faceted-browse/site-admin/category/form.phtml:17
+#: view/faceted-browse/site-admin/category/form.phtml:19
 #: view/faceted-browse/site-admin/page/browse.phtml:7
 #: view/faceted-browse/site-admin/page/form.phtml:14
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Faceted Browse"
 msgstr "Πολύπλευρη περιήγηση"
 
-#: view/faceted-browse/site-admin/category/form.phtml:18
+#: view/faceted-browse/site-admin/category/form.phtml:19
 msgid "Add Category"
 msgstr "Προσθήκη κατηγορίας"
 
-#: view/faceted-browse/site-admin/category/form.phtml:30
+#: view/faceted-browse/site-admin/category/form.phtml:31
 #: view/faceted-browse/site-admin/page/form.phtml:28
 msgid "Save and&hellip;"
 msgstr "Αποθήκευση και&hellip;"
 
-#: view/faceted-browse/site-admin/category/form.phtml:32
+#: view/faceted-browse/site-admin/category/form.phtml:33
 msgid "Return to page"
 msgstr "Επιστροφή στη σελίδα"
 
-#: view/faceted-browse/site-admin/category/form.phtml:33
+#: view/faceted-browse/site-admin/category/form.phtml:34
 msgid "Stay on this category"
 msgstr "Παραμονή σε αυτή την κατηγορία"
 
-#: view/faceted-browse/site-admin/category/form.phtml:41
+#: view/faceted-browse/site-admin/category/form.phtml:42
 #: view/faceted-browse/site-admin/page/form.phtml:39
 msgid "Page edit"
 msgstr "Επεξεργασία σελίδας"
 
-#: view/faceted-browse/site-admin/category/form.phtml:43
+#: view/faceted-browse/site-admin/category/form.phtml:44
 msgid "Category edit"
 msgstr "Επεξεργασία κατηγορίας"
 
-#: view/faceted-browse/site-admin/category/form.phtml:43
+#: view/faceted-browse/site-admin/category/form.phtml:44
 msgid "Category add"
 msgstr "Προσθήκη κατηγορίας"
 
-#: view/faceted-browse/site-admin/category/form.phtml:58
+#: view/faceted-browse/site-admin/category/form.phtml:61
 msgid "Facets"
 msgstr "Όψεις"
-
-#: view/faceted-browse/site-admin/category/form.phtml:74
-msgid "Columns"
-msgstr "Στήλες"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:2
 msgid "Add all"
@@ -235,44 +231,60 @@ msgstr "Δεν υπάρχουν κατηγορίες για περιήγηση."
 msgid "Back"
 msgstr "Πίσω"
 
+#: view/faceted-browse/site/page/facets.phtml:14
+msgid "Instructions"
+msgstr ""
+
 #: view/faceted-browse/site/page/page.phtml:27
 #: view/faceted-browse/site/page/page.phtml:28
 msgid "Filters"
 msgstr ""
 
-#: config/module.config.php:93
+#: config/module.config.php:98
 msgid "A facet must have a name."
 msgstr "Μια όψη πρέπει να έχει όνομα."
 
-#: config/module.config.php:94
+#: config/module.config.php:99
 msgid "A column must have a name."
 msgstr "Μια στήλη πρέπει να έχει όνομα."
 
-#: config/module.config.php:95
+#: config/module.config.php:100
 msgid "A column must have a property."
 msgstr "Μια στήλη πρέπει να έχει μια ιδιότητα."
 
-#: config/module.config.php:96
+#: config/module.config.php:101
 msgid "Error fetching browse markup."
 msgstr "Σφάλμα κατά την ανάκτηση της σήμανσης περιήγησης."
 
-#: config/module.config.php:97
+#: config/module.config.php:102
 msgid "Error fetching facet markup."
 msgstr "Σφάλμα κατά την ανάκτηση της σήμανσης όψεων."
 
-#: config/module.config.php:98
+#: config/module.config.php:103
 msgid "Error fetching category markup."
 msgstr "Σφάλμα κατά την ανάκτηση της σήμανσης κατηγορίας."
 
-#: config/module.config.php:99
+#: config/module.config.php:104
 msgid "Cannot show all. The result set is likely too large."
 msgstr ""
 "Δεν είναι δυνατή η εμφάνιση όλων. Το σύνολο των αποτελεσμάτων είναι "
 "πιθανότατα πολύ μεγάλο."
 
-#: config/module.config.php:100
+#: config/module.config.php:105
 msgid "Loading results…"
 msgstr "Φόρτωση αποτελεσμάτων..."
+
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:23
+msgid "Faceted browse preview"
+msgstr ""
+
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:49
+msgid "Page category"
+msgstr ""
+
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:50
+msgid "Select one…"
+msgstr ""
 
 #: src/Site/NavigationLink/FacetedBrowse.php:13
 msgid "Faceted browse"
@@ -485,20 +497,20 @@ msgstr "Άγνωστο είδος όψης"
 msgid "Unknown facet data"
 msgstr "Άγνωστα δεδομένα όψης"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:51
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:57
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
 msgid "A site must have an ID"
 msgstr "Ένας ιστότοπος πρέπει να έχει αναγνωριστικό"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:152
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:166
 msgid "A category must have a site"
 msgstr "Μια κατηγορία πρέπει να έχει ιστότοπο"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:155
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:169
 msgid "A category must have a name"
 msgstr "Μια κατηγορία πρέπει να έχει όνομα"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:158
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:172
 msgid "A category must have a query"
 msgstr "Μια κατηγορία πρέπει να έχει ερώτημα"
 
@@ -544,7 +556,28 @@ msgstr ""
 "κατηγορία. Εάν δεν υπάρχει ερώτημα, περιλαμβάνονται όλοι οι πόροι του "
 "ιστότοπου."
 
+#: src/Form/CategoryForm.php:77
+msgid "Helper text"
+msgstr ""
+
+#: src/Form/CategoryForm.php:78
+msgid ""
+"Enter text to be displayed to the user on the category sidebar. Here you can"
+" add short instructions, a link to instructions, etc. Enter nothing to have "
+"no helper text."
+msgstr ""
+
 #: src/Form/CategoryForm.php:89
+msgid "Helper text button label"
+msgstr ""
+
+#: src/Form/CategoryForm.php:90
+msgid ""
+"Enter the label of the button the user will click to toggle the helper text."
+" Enter nothing for the default label: \"Instructions\"."
+msgstr ""
+
+#: src/Form/CategoryForm.php:113
 msgid "Add a facet…"
 msgstr "Προσθήκη όψης… "
 

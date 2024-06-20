@@ -98,7 +98,7 @@ SQL;
                 $pages = $api->search('faceted_browse_pages', ['site_id' => $site->id()])->getContent();
                 $pageMap = [];
                 foreach ($pages as $page) {
-                    $callback = function (&$jsonLd) use ($siteCopy){
+                    $callback = function (&$jsonLd) use ($siteCopy) {
                         unset($jsonLd['o:owner']);
                         $jsonLd['o:site']['o:id'] = $siteCopy->id();
                     };
@@ -108,7 +108,7 @@ SQL;
                     // Copy categories.
                     $categories = $api->search('faceted_browse_categories', ['page_id' => $page->id()])->getContent();
                     foreach ($categories as $category) {
-                        $callback = function (&$jsonLd) use ($siteCopy, $pageCopy){
+                        $callback = function (&$jsonLd) use ($siteCopy, $pageCopy) {
                             unset($jsonLd['o:owner']);
                             $jsonLd['o:site']['o:id'] = $siteCopy->id();
                             $jsonLd['o-module-faceted_browse:page']['o:id'] = $pageCopy->id();
@@ -125,7 +125,6 @@ SQL;
                     }
                 };
                 $copyResources->modifySiteNavigation($siteCopy->id(), 'facetedBrowse', $callback);
-
             }
         );
     }
