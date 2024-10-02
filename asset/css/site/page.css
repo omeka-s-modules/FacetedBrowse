@@ -177,29 +177,6 @@ input[type="text"].permalink {
 /* Results */
 /* ======= */
 
-.faceted-browse-page .resource-list {
-    display: block;
-}
-
-.faceted-browse-page .resource-list .resource {
-    width: auto;
-    clear: both;
-    overflow: hidden;
-    margin: 0 0 1em;
-    padding: 0 0 1em;
-    font-size: inherit;
-    line-height: inherit;
-}
-
-.faceted-browse-page .resource-list .resource-link {
-    display: inline;
-}
-
-.faceted-browse-page .resource-list .resource-link img {
-    float: right;
-    margin-left: 1em;
-}
-
 .modal-panel.open {
     overflow: scroll;
 }
