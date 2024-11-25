@@ -62,8 +62,17 @@ class PageController extends AbstractActionController
         }
         $this->setBrowseDefaults($sortBy, $sortOrder);
 
+        // First get the IDs of all resources in this category.
+        parse_str($category->query(), $categoryQuery);
+        $categoryResourceIds = $this->api()
+            ->search($page->resourceType(), $categoryQuery, ['returnScalar' => 'id'])
+            ->getContent();
+
+        // Then get the resources using the facets query, but only those within
+        // this category.
         $query = array_merge(
             $this->params()->fromQuery(),
+            ['id' => $categoryResourceIds],
             ['site_id' => $this->currentSite()->id()]
         );
         $response = $this->api()->search($page->resourceType(), $query);

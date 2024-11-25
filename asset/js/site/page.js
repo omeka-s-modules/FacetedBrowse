@@ -114,10 +114,9 @@ FacetedBrowse.initState();
 FacetedBrowse.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, page) {
     const facets = $('#facets');
     const queries = [];
-    // Add category and facets queries.
-    queries.push(facets.data('categoryQuery'));
+
+    // Add facets, sorting, and pagination queries.
     queries.push(facetsQuery);
-    // Add sorting and pagination queries.
     if (null !== sortBy) queries.push(`sort_by=${sortBy}`);
     if (null !== sortOrder) queries.push(`sort_order=${sortOrder}`);
     if (null !== page) queries.push(`page=${page}`);
