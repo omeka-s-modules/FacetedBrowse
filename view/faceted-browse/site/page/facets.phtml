@@ -19,8 +19,7 @@
     <div id="helper-text" class="collapsible" aria-labelledby="helper-text-expand-collapse"><?php echo $category->helperText(); ?></div>
     <?php endif; ?>
     <div id="facets"
-        data-category-id="<?php echo $this->escapeHtml($category->id()); ?>"
-        data-category-query="<?php echo $this->escapeHtml($category->query()); ?>">
+        data-category-id="<?php echo $this->escapeHtml($category->id()); ?>">
         <?php foreach ($category->facets() as $facet): ?>
         <?php if ($this->facetedBrowse()->facetIsKnown($facet)): ?>
         <fieldset class="facet"

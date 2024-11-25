@@ -222,7 +222,6 @@ const FacetedBrowse = {
         if ('object' === typeof history.state
             && null !== history.state
             && history.state.hasOwnProperty('categoryId')
-            && history.state.hasOwnProperty('categoryQuery')
             && history.state.hasOwnProperty('sortBy')
             && history.state.hasOwnProperty('sortOrder')
             && history.state.hasOwnProperty('page')
@@ -239,11 +238,9 @@ const FacetedBrowse = {
      * Reset the state.
      *
      * @param ?int categoryId The current category ID
-     * @param ?int categoryQuery The current category query
      */
-    resetState: (categoryId = null, categoryQuery = null) => {
+    resetState: (categoryId = null) => {
         FacetedBrowse.state.categoryId = categoryId;
-        FacetedBrowse.state.categoryQuery = categoryQuery;
         FacetedBrowse.state.sortBy = null;
         FacetedBrowse.state.sortOrder = null;
         FacetedBrowse.state.page = null;

@@ -151,7 +151,7 @@ if (FacetedBrowse.getState('categoryId')) {
 container.on('click', '.category', function(e) {
     e.preventDefault();
     const thisCategory = $(this);
-    FacetedBrowse.resetState(thisCategory.data('categoryId'), thisCategory.data('categoryQuery'));
+    FacetedBrowse.resetState(thisCategory.data('categoryId'));
     $.get(urlFacets, {category_id: thisCategory.data('categoryId')}).done(function(html) {
         sectionSidebar.html(html);
         sectionSidebar.find('.select-list').each(function() {
@@ -159,7 +159,6 @@ container.on('click', '.category', function(e) {
             FacetedBrowse.updateSelectList($(this));
         });
         const queries = [];
-        queries.push(thisCategory.data('categoryQuery'));
         queries.push(`faceted_browse_category_id=${thisCategory.data('categoryId')}`);
         $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
             sectionContent.html(html);
