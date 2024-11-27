@@ -118,6 +118,15 @@ class FacetedBrowseCategory extends AbstractEntity
     protected $helperTextButtonLabel;
 
     /**
+     * @Column(
+     *     type="string",
+     *     length=255,
+     *     nullable=true
+     * )
+     */
+    protected $valueFacetMode;
+
+    /**
      * @ManyToOne(
      *     targetEntity="FacetedBrowse\Entity\FacetedBrowsePage",
      *     inversedBy="categories"
@@ -270,6 +279,16 @@ class FacetedBrowseCategory extends AbstractEntity
     public function getHelperTextButtonLabel() : ?string
     {
         return $this->helperTextButtonLabel;
+    }
+
+    public function setValueFacetMode(?string $valueFacetMode) : void
+    {
+        $this->valueFacetMode = $valueFacetMode;
+    }
+
+    public function getValueFacetMode() : ?string
+    {
+        return $this->valueFacetMode;
     }
 
     public function setPage(FacetedBrowsePage $page) : void

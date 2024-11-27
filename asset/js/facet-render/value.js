@@ -24,16 +24,17 @@ $(document).ready(function() {
 const container = $('#container');
 let timerId;
 
-const getQuery = function(index, property, type, text) {
+const getQuery = function(index, property, type, text, joiner) {
     if (['ex', 'nex'].includes(type)) {
-        return `property[${index}][joiner]=and&property[${index}][property]=${property}&property[${index}][type]=${type}`;
+        return `property[${index}][joiner]=${joiner}&property[${index}][property]=${property}&property[${index}][type]=${type}`;
     }
-    return `property[${index}][joiner]=and&property[${index}][property]=${property}&property[${index}][type]=${type}&property[${index}][text]=${encodeURIComponent(text)}`;
+    return `property[${index}][joiner]=${joiner}&property[${index}][property]=${property}&property[${index}][type]=${type}&property[${index}][text]=${encodeURIComponent(text)}`;
 };
 
 const handleUserInteraction = function(thisValue) {
     const facet = thisValue.closest('.facet');
-    const facets = container.find('.facet[data-facet-type="value"]');
+    const valueFacets = container.find('.facet[data-facet-type="value"]');
+    const joiner = 'or' === $('#facets').data('categoryOptions').value_facet_mode ? 'or' : 'and';
     let index = 0;
     switch (facet.data('facetData').select_type) {
         case 'single_list':
@@ -43,7 +44,7 @@ const handleUserInteraction = function(thisValue) {
             thisValue.toggleClass('selected');
             break;
     }
-    facets.each(function() {
+    valueFacets.each(function() {
         const thisFacet= $(this);
         const facetData = thisFacet.data('facetData');
         const queries = [];
@@ -54,7 +55,7 @@ const handleUserInteraction = function(thisValue) {
             const type = facetData.query_type;
             const text = input.val();
             if (text) {
-                queries.push(getQuery(index, property, type, text));
+                queries.push(getQuery(index, property, type, text, joiner));
                 state.push(text);
                 index++;
             }
@@ -64,7 +65,7 @@ const handleUserInteraction = function(thisValue) {
             const type = facetData.query_type;
             const text = select.data('value');
             if (text) {
-                queries.push(getQuery(index, property, type, text));
+                queries.push(getQuery(index, property, type, text, joiner));
                 state.push(text);
                 index++;
             }
@@ -73,7 +74,7 @@ const handleUserInteraction = function(thisValue) {
                 const property = $(this).data('propertyId');
                 const type = facetData.query_type;
                 const text = $(this).data('value');
-                queries.push(getQuery(index, property, type, text));
+                queries.push(getQuery(index, property, type, text, joiner));
                 state.push(text);
                 index++;
             });

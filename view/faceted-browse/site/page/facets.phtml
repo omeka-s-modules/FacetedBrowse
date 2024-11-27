@@ -8,6 +8,9 @@
 <fieldset class="facets-container">
     <legend><?php echo $category->name(); ?></legend>
     <?php
+    $categoryOptions = [
+        'value_facet_mode' => $category->valueFacetMode(),
+    ];
     $helperText = $category->helperText();
     $helperTextButtonLabel = $category->helperTextButtonLabel();
     if ('' === trim($helperTextButtonLabel)) {
@@ -19,7 +22,8 @@
     <div id="helper-text" class="collapsible" aria-labelledby="helper-text-expand-collapse"><?php echo $category->helperText(); ?></div>
     <?php endif; ?>
     <div id="facets"
-        data-category-id="<?php echo $this->escapeHtml($category->id()); ?>">
+        data-category-id="<?php echo $this->escapeHtml($category->id()); ?>"
+        data-category-options="<?php echo $this->escapeHtml(json_encode($categoryOptions)); ?>">
         <?php foreach ($category->facets() as $facet): ?>
         <?php if ($this->facetedBrowse()->facetIsKnown($facet)): ?>
         <fieldset class="facet"

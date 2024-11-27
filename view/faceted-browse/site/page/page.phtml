@@ -11,11 +11,9 @@ $this->pageTitle($page->title(), 2);
 
 $categories = $page->categories();
 $categoryId = null;
-$categoryQuery = null;
 if (1 === count($categories)) {
     $category = current($categories);
     $categoryId = $category->id();
-    $categoryQuery = $category->query();
 }
 ?>
 <div id="container"

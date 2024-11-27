@@ -95,6 +95,9 @@ class FacetedBrowseCategoryAdapter extends AbstractEntityAdapter
         if ($this->shouldHydrate($request, 'o-module-faceted_browse:helper_text_button_label')) {
             $entity->setHelperTextButtonLabel($request->getValue('o-module-faceted_browse:helper_text_button_label'));
         }
+        if ($this->shouldHydrate($request, 'o-module-faceted_browse:value_facet_mode')) {
+            $entity->setValueFacetMode($request->getValue('o-module-faceted_browse:value_facet_mode'));
+        }
         if ($this->shouldHydrate($request, 'o-module-faceted_browse:facet')) {
             $facets = $request->getValue('o-module-faceted_browse:facet');
             if (is_array($facets)) {

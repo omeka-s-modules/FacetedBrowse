@@ -58,6 +58,17 @@ class CategoryForm extends Form
         ]);
         $this->add([
             'type' => LaminasElement\Select::class,
+            'name' => 'o-module-faceted_browse:sort_by',
+            'options' => [
+                'label' => 'Default sort by', // @translate
+                'value_options' => $sortByValueOptions,
+            ],
+            'attributes' => [
+                'id' => 'category-sort-by',
+            ],
+        ]);
+        $this->add([
+            'type' => LaminasElement\Select::class,
             'name' => 'o-module-faceted_browse:sort_order',
             'options' => [
                 'label' => 'Default sort order',
@@ -96,13 +107,17 @@ class CategoryForm extends Form
         ]);
         $this->add([
             'type' => LaminasElement\Select::class,
-            'name' => 'o-module-faceted_browse:sort_by',
+            'name' => 'o-module-faceted_browse:value_facet_mode',
             'options' => [
-                'label' => 'Default sort by',
-                'value_options' => $sortByValueOptions,
+                'label' => 'Value facet mode', // @translate
+                'info' => 'For Value facets, choose whether the user will match all selected values or match any selected values. Note that this will apply to every Value facet in this category.', // @translate
+                'value_options' => [
+                    'and' => 'Match all', // @translate
+                    'or' => 'Match any', // @translate
+                ],
             ],
             'attributes' => [
-                'id' => 'category-sort-by',
+                'id' => 'category-value-facet-mode',
             ],
         ]);
         $this->add([
