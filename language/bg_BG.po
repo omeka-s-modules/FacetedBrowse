@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-20 14:29-0400\n"
+"POT-Creation-Date: 2025-02-18 13:46-0500\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Emil Stoyanov <emostoyanov@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (Bulgaria) (https://app.transifex.com/omeka/teams/14184/bg_BG/)\n"
@@ -145,7 +145,7 @@ msgstr ""
 msgid "Category add"
 msgstr ""
 
-#: view/faceted-browse/site-admin/category/form.phtml:61
+#: view/faceted-browse/site-admin/category/form.phtml:62
 msgid "Facets"
 msgstr "Фасети"
 
@@ -223,7 +223,7 @@ msgstr ""
 msgid "Copied!"
 msgstr ""
 
-#: view/faceted-browse/site/page/categories.phtml:23
+#: view/faceted-browse/site/page/categories.phtml:22
 msgid "There are no categories to browse."
 msgstr "Няма категории за преглед."
 
@@ -231,62 +231,14 @@ msgstr "Няма категории за преглед."
 msgid "Back"
 msgstr "Обратно"
 
-#: view/faceted-browse/site/page/facets.phtml:14
+#: view/faceted-browse/site/page/facets.phtml:17
 msgid "Instructions"
 msgstr ""
 
-#: view/faceted-browse/site/page/page.phtml:27
-#: view/faceted-browse/site/page/page.phtml:28
+#: view/faceted-browse/site/page/page.phtml:24
+#: view/faceted-browse/site/page/page.phtml:25
 msgid "Filters"
 msgstr ""
-
-#: config/module.config.php:98
-msgid "A facet must have a name."
-msgstr "Фасетата трябва да има име."
-
-#: config/module.config.php:99
-msgid "A column must have a name."
-msgstr ""
-
-#: config/module.config.php:100
-msgid "A column must have a property."
-msgstr ""
-
-#: config/module.config.php:101
-msgid "Error fetching browse markup."
-msgstr "Грешка при извличането на маркъпа на прегледа."
-
-#: config/module.config.php:102
-msgid "Error fetching facet markup."
-msgstr "Грешка при извличането на маркъпа на фасетата."
-
-#: config/module.config.php:103
-msgid "Error fetching category markup."
-msgstr "Грешка при извличането на маркъпа на категорията."
-
-#: config/module.config.php:104
-msgid "Cannot show all. The result set is likely too large."
-msgstr ""
-
-#: config/module.config.php:105
-msgid "Loading results…"
-msgstr ""
-
-#: src/Site/BlockLayout/FacetedBrowsePreview.php:23
-msgid "Faceted browse preview"
-msgstr ""
-
-#: src/Site/BlockLayout/FacetedBrowsePreview.php:49
-msgid "Page category"
-msgstr ""
-
-#: src/Site/BlockLayout/FacetedBrowsePreview.php:50
-msgid "Select one…"
-msgstr ""
-
-#: src/Site/NavigationLink/FacetedBrowse.php:13
-msgid "Faceted browse"
-msgstr "Фасетен преглед"
 
 #: src/ColumnType/ItemSet.php:44
 msgid "Max item sets"
@@ -298,6 +250,10 @@ msgid ""
 "all item sets."
 msgstr ""
 
+#: src/ColumnType/Unknown.php:45
+msgid "Unknown column type"
+msgstr ""
+
 #: src/ColumnType/Title.php:20
 msgid "Title (link to resource)"
 msgstr ""
@@ -306,9 +262,30 @@ msgstr ""
 msgid "Select a property…"
 msgstr ""
 
-#: src/ColumnType/Unknown.php:45
-msgid "Unknown column type"
-msgstr ""
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:57
+msgid "A site must have an ID"
+msgstr "Сайтът трябва да има ID"
+
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:90
+msgid "A page must have a site"
+msgstr "Страницата трябва да има сайт"
+
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:93
+msgid "A page must have a title"
+msgstr "Страницата трябва да има заглавие"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:169
+msgid "A category must have a site"
+msgstr "Категорията трябва да има сайт"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:172
+msgid "A category must have a name"
+msgstr "Категорията трябва да има име"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:175
+msgid "A category must have a query"
+msgstr "Категорията трябва да има заявка"
 
 #: src/FacetType/ItemSet.php:45 src/FacetType/ResourceTemplate.php:45
 #: src/FacetType/ResourceClass.php:45 src/FacetType/Value.php:77
@@ -354,6 +331,14 @@ msgstr ""
 msgid "Select item sets…"
 msgstr "Избор на набори елементи..."
 
+#: src/FacetType/Unknown.php:44
+msgid "Unknown facet type"
+msgstr "Неизвестен тип фасета"
+
+#: src/FacetType/Unknown.php:54
+msgid "Unknown facet data"
+msgstr "Неизвестни данни на фасета"
+
 #: src/FacetType/ResourceTemplate.php:46
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
@@ -378,6 +363,10 @@ msgstr ""
 msgid "Select templates…"
 msgstr "Избор на шаблони..."
 
+#: src/FacetType/FullText.php:20
+msgid "Full-text"
+msgstr "Пълнотекстово"
+
 #: src/FacetType/ResourceClass.php:46
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
@@ -400,10 +389,6 @@ msgstr ""
 #: src/FacetType/ResourceClass.php:80
 msgid "Select classes…"
 msgstr "Избор на класове..."
-
-#: src/FacetType/FullText.php:20
-msgid "Full-text"
-msgstr "Пълнотекстово"
 
 #: src/FacetType/Value.php:59
 msgid "Is exactly"
@@ -461,99 +446,21 @@ msgid ""
 "list at all times."
 msgstr ""
 
-#: src/FacetType/Unknown.php:44
-msgid "Unknown facet type"
-msgstr "Неизвестен тип фасета"
-
-#: src/FacetType/Unknown.php:54
-msgid "Unknown facet data"
-msgstr "Неизвестни данни на фасета"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:57
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
-msgid "A site must have an ID"
-msgstr "Сайтът трябва да има ID"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:166
-msgid "A category must have a site"
-msgstr "Категорията трябва да има сайт"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:169
-msgid "A category must have a name"
-msgstr "Категорията трябва да има име"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:172
-msgid "A category must have a query"
-msgstr "Категорията трябва да има заявка"
-
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:90
-msgid "A page must have a site"
-msgstr "Страницата трябва да има сайт"
-
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:93
-msgid "A page must have a title"
-msgstr "Страницата трябва да има заглавие"
-
-#: src/Form/ColumnForm.php:22
-msgid "Column name"
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:23
+msgid "Faceted browse preview"
 msgstr ""
 
-#: src/Form/ColumnForm.php:33
-msgid "Exclude sort by"
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:49
+msgid "Page category"
 msgstr ""
 
-#: src/Form/PageForm.php:19
-msgid "Enter the title of this page."
-msgstr "Въвеждане на заглавие на тази страница."
-
-#: src/Form/PageForm.php:43
-msgid "Select the type of resources to browse."
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:50
+msgid "Select one…"
 msgstr ""
 
-#: src/Form/CategoryForm.php:24
-msgid ""
-"Enter the name of this category. A category is a logical grouping of "
-"resources that can be described using faceted classification."
-msgstr ""
-
-#: src/Form/CategoryForm.php:36
-msgid ""
-"Configure the logical grouping of resources that make up this category. No "
-"query means all site resources."
-msgstr ""
-
-#: src/Form/CategoryForm.php:77
-msgid "Helper text"
-msgstr ""
-
-#: src/Form/CategoryForm.php:78
-msgid ""
-"Enter text to be displayed to the user on the category sidebar. Here you can"
-" add short instructions, a link to instructions, etc. Enter nothing to have "
-"no helper text."
-msgstr ""
-
-#: src/Form/CategoryForm.php:89
-msgid "Helper text button label"
-msgstr ""
-
-#: src/Form/CategoryForm.php:90
-msgid ""
-"Enter the label of the button the user will click to toggle the helper text."
-" Enter nothing for the default label: \"Instructions\"."
-msgstr ""
-
-#: src/Form/CategoryForm.php:113
-msgid "Add a facet…"
-msgstr ""
-
-#: src/Form/FacetForm.php:22
-msgid "Facet name"
-msgstr "Име на фасета"
-
-#: src/Form/FacetForm.php:33
-msgid "Set facet"
-msgstr ""
+#: src/Site/NavigationLink/FacetedBrowse.php:13
+msgid "Faceted browse"
+msgstr "Фасетен преглед"
 
 #: src/Controller/SiteAdmin/PageController.php:44
 msgid "Page successfully added. Add categories below."
@@ -578,4 +485,120 @@ msgstr ""
 
 #: src/Controller/SiteAdmin/CategoryController.php:128
 msgid "Category successfully deleted."
+msgstr ""
+
+#: src/Form/FacetForm.php:22
+msgid "Facet name"
+msgstr "Име на фасета"
+
+#: src/Form/FacetForm.php:33
+msgid "Set facet"
+msgstr ""
+
+#: src/Form/PageForm.php:19
+msgid "Enter the title of this page."
+msgstr "Въвеждане на заглавие на тази страница."
+
+#: src/Form/PageForm.php:43
+msgid "Select the type of resources to browse."
+msgstr ""
+
+#: src/Form/ColumnForm.php:22
+msgid "Column name"
+msgstr ""
+
+#: src/Form/ColumnForm.php:33
+msgid "Exclude sort by"
+msgstr ""
+
+#: src/Form/CategoryForm.php:24
+msgid ""
+"Enter the name of this category. A category is a logical grouping of "
+"resources that can be described using faceted classification."
+msgstr ""
+
+#: src/Form/CategoryForm.php:36
+msgid ""
+"Configure the logical grouping of resources that make up this category. No "
+"query means all site resources."
+msgstr ""
+
+#: src/Form/CategoryForm.php:63
+msgid "Default sort by"
+msgstr ""
+
+#: src/Form/CategoryForm.php:88
+msgid "Helper text"
+msgstr ""
+
+#: src/Form/CategoryForm.php:89
+msgid ""
+"Enter text to be displayed to the user on the category sidebar. Here you can"
+" add short instructions, a link to instructions, etc. Enter nothing to have "
+"no helper text."
+msgstr ""
+
+#: src/Form/CategoryForm.php:100
+msgid "Helper text button label"
+msgstr ""
+
+#: src/Form/CategoryForm.php:101
+msgid ""
+"Enter the label of the button the user will click to toggle the helper text."
+" Enter nothing for the default label: \"Instructions\"."
+msgstr ""
+
+#: src/Form/CategoryForm.php:112
+msgid "Value facet mode"
+msgstr ""
+
+#: src/Form/CategoryForm.php:113
+msgid ""
+"For Value facets, choose whether the user will match all selected values or "
+"match any selected values. Note that this will apply to every Value facet in"
+" this category."
+msgstr ""
+
+#: src/Form/CategoryForm.php:115
+msgid "Match all"
+msgstr ""
+
+#: src/Form/CategoryForm.php:116
+msgid "Match any"
+msgstr ""
+
+#: src/Form/CategoryForm.php:128
+msgid "Add a facet…"
+msgstr ""
+
+#: config/module.config.php:98
+msgid "A facet must have a name."
+msgstr "Фасетата трябва да има име."
+
+#: config/module.config.php:99
+msgid "A column must have a name."
+msgstr ""
+
+#: config/module.config.php:100
+msgid "A column must have a property."
+msgstr ""
+
+#: config/module.config.php:101
+msgid "Error fetching browse markup."
+msgstr "Грешка при извличането на маркъпа на прегледа."
+
+#: config/module.config.php:102
+msgid "Error fetching facet markup."
+msgstr "Грешка при извличането на маркъпа на фасетата."
+
+#: config/module.config.php:103
+msgid "Error fetching category markup."
+msgstr "Грешка при извличането на маркъпа на категорията."
+
+#: config/module.config.php:104
+msgid "Cannot show all. The result set is likely too large."
+msgstr ""
+
+#: config/module.config.php:105
+msgid "Loading results…"
 msgstr ""

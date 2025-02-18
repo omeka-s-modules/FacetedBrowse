@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2023
+# Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-20 14:29-0400\n"
+"POT-Creation-Date: 2025-02-18 13:46-0500\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
-"Last-Translator: Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2023\n"
+"Last-Translator: Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2024\n"
 "Language-Team: Catalan (Spain) (https://app.transifex.com/omeka/teams/14184/ca_ES/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,7 +39,7 @@ msgstr ""
 
 #: view/common/faceted-browse/facet-data-form/item-set.phtml:5
 msgid "Show all available item sets."
-msgstr ""
+msgstr "Mostra tots els conjunts de recursos disponibles."
 
 #: view/common/faceted-browse/facet-data-form/resource-class.phtml:5
 msgid "Show all available classes."
@@ -137,7 +137,7 @@ msgstr "Editor de la categoria"
 msgid "Category add"
 msgstr "Afegeix categoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:61
+#: view/faceted-browse/site-admin/category/form.phtml:62
 msgid "Facets"
 msgstr "Facetes"
 
@@ -151,7 +151,7 @@ msgstr "Disponible"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:7
 msgid "Count"
-msgstr ""
+msgstr "Recompte"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:20
 #: view/faceted-browse/site/page/browse.phtml:9
@@ -215,7 +215,7 @@ msgstr "Copia l'enllaç permanent"
 msgid "Copied!"
 msgstr "Copiat!"
 
-#: view/faceted-browse/site/page/categories.phtml:23
+#: view/faceted-browse/site/page/categories.phtml:22
 msgid "There are no categories to browse."
 msgstr "No hi ha categories"
 
@@ -223,62 +223,14 @@ msgstr "No hi ha categories"
 msgid "Back"
 msgstr "Enrere"
 
-#: view/faceted-browse/site/page/facets.phtml:14
+#: view/faceted-browse/site/page/facets.phtml:17
 msgid "Instructions"
-msgstr ""
+msgstr "Instrucions"
 
-#: view/faceted-browse/site/page/page.phtml:27
-#: view/faceted-browse/site/page/page.phtml:28
+#: view/faceted-browse/site/page/page.phtml:24
+#: view/faceted-browse/site/page/page.phtml:25
 msgid "Filters"
-msgstr ""
-
-#: config/module.config.php:98
-msgid "A facet must have a name."
-msgstr "La faceta ha de tenir un nom."
-
-#: config/module.config.php:99
-msgid "A column must have a name."
-msgstr "La columna ha de tenir un nom."
-
-#: config/module.config.php:100
-msgid "A column must have a property."
-msgstr "La columna ha de tenir una propietat."
-
-#: config/module.config.php:101
-msgid "Error fetching browse markup."
-msgstr "S'ha produït un error en obtenir el marcatge de la navegació."
-
-#: config/module.config.php:102
-msgid "Error fetching facet markup."
-msgstr "S'ha produït un error en obtenir el marcatge de la faceta."
-
-#: config/module.config.php:103
-msgid "Error fetching category markup."
-msgstr "S'ha produït un error en obtenir el marcatge de la categoria."
-
-#: config/module.config.php:104
-msgid "Cannot show all. The result set is likely too large."
-msgstr "No es pot mostrar tot. Hi ha massa resultats."
-
-#: config/module.config.php:105
-msgid "Loading results…"
-msgstr "Carrega els resultats..."
-
-#: src/Site/BlockLayout/FacetedBrowsePreview.php:23
-msgid "Faceted browse preview"
-msgstr ""
-
-#: src/Site/BlockLayout/FacetedBrowsePreview.php:49
-msgid "Page category"
-msgstr ""
-
-#: src/Site/BlockLayout/FacetedBrowsePreview.php:50
-msgid "Select one…"
-msgstr ""
-
-#: src/Site/NavigationLink/FacetedBrowse.php:13
-msgid "Faceted browse"
-msgstr "Navegació facetada"
+msgstr "Filtres"
 
 #: src/ColumnType/ItemSet.php:44
 msgid "Max item sets"
@@ -290,6 +242,10 @@ msgid ""
 "all item sets."
 msgstr ""
 
+#: src/ColumnType/Unknown.php:45
+msgid "Unknown column type"
+msgstr "Tipus de columna desconegut"
+
 #: src/ColumnType/Title.php:20
 msgid "Title (link to resource)"
 msgstr "Títol (enllaç al recurs)"
@@ -298,9 +254,30 @@ msgstr "Títol (enllaç al recurs)"
 msgid "Select a property…"
 msgstr "Selecciona una propietat..."
 
-#: src/ColumnType/Unknown.php:45
-msgid "Unknown column type"
-msgstr "Tipus de columna desconegut"
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:57
+msgid "A site must have an ID"
+msgstr "El lloc ha de tenir un ID"
+
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:90
+msgid "A page must have a site"
+msgstr "La pàgina ha de pertànyer a un lloc"
+
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:93
+msgid "A page must have a title"
+msgstr "Cal un títol per a la pàgina"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:169
+msgid "A category must have a site"
+msgstr "La categoria ha de pertànyer a un lloc"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:172
+msgid "A category must have a name"
+msgstr "La categoria ha de tenir un nom"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:175
+msgid "A category must have a query"
+msgstr "La categoria ha de tenir una consulta"
 
 #: src/FacetType/ItemSet.php:45 src/FacetType/ResourceTemplate.php:45
 #: src/FacetType/ResourceClass.php:45 src/FacetType/Value.php:77
@@ -346,6 +323,14 @@ msgstr ""
 msgid "Select item sets…"
 msgstr ""
 
+#: src/FacetType/Unknown.php:44
+msgid "Unknown facet type"
+msgstr "Tipus de faceta desconegut"
+
+#: src/FacetType/Unknown.php:54
+msgid "Unknown facet data"
+msgstr "Dada de la faceta desconeguda"
+
 #: src/FacetType/ResourceTemplate.php:46
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
@@ -365,10 +350,19 @@ msgid ""
 "be hidden until the user clicks to show more. Enter nothing to show the "
 "entire list at all times."
 msgstr ""
+"Introduïu el nombre de plantilles que es mostraran a la llista de selecció "
+"quan la pàgina es carregui per primera vegada. Si el nombre de plantilles "
+"excedeix aquest nombre, la resta s'ocultarà fins que l'usuari faci clic per "
+"mostrar-ne més. No introduïu cap valor per a mostrar la llista completa en "
+"tot moment."
 
 #: src/FacetType/ResourceTemplate.php:80
 msgid "Select templates…"
 msgstr "Selecciona plantilles..."
+
+#: src/FacetType/FullText.php:20
+msgid "Full-text"
+msgstr "Text complet"
 
 #: src/FacetType/ResourceClass.php:46
 msgid ""
@@ -388,14 +382,15 @@ msgid ""
 "hidden until the user clicks to show more. Enter nothing to show the entire "
 "list at all times."
 msgstr ""
+"Introduïu el nombre de classes que es mostraran a la llista de selecció quan"
+" es carregui per primera vegada la pàgina. Si el nombre de classes excedeix "
+"aquest nombre, la resta s'ocultarà fins que l'usuari faci clic per mostrar-"
+"ne més. No introduïu cap valor per a mostrar la llista completa en tot "
+"moment."
 
 #: src/FacetType/ResourceClass.php:80
 msgid "Select classes…"
 msgstr "Selecciona classes..."
-
-#: src/FacetType/FullText.php:20
-msgid "Full-text"
-msgstr "Text complet"
 
 #: src/FacetType/Value.php:59
 msgid "Is exactly"
@@ -457,103 +452,21 @@ msgstr ""
 "resta s'amagarà fins que l'usuari faci clic per mostrar-ne més. No introduïu"
 " res per mostrar la llista completa en tot moment."
 
-#: src/FacetType/Unknown.php:44
-msgid "Unknown facet type"
-msgstr "Tipus de faceta desconegut"
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:23
+msgid "Faceted browse preview"
+msgstr "Previsualització de la navegació facetada"
 
-#: src/FacetType/Unknown.php:54
-msgid "Unknown facet data"
-msgstr "Dada de la faceta desconeguda"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:57
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
-msgid "A site must have an ID"
-msgstr "El lloc ha de tenir un ID"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:166
-msgid "A category must have a site"
-msgstr "La categoria ha de pertànyer a un lloc"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:169
-msgid "A category must have a name"
-msgstr "La categoria ha de tenir un nom"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:172
-msgid "A category must have a query"
-msgstr "La categoria ha de tenir una consulta"
-
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:90
-msgid "A page must have a site"
-msgstr "La pàgina ha de pertànyer a un lloc"
-
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:93
-msgid "A page must have a title"
-msgstr "Cal un títol per a la pàgina"
-
-#: src/Form/ColumnForm.php:22
-msgid "Column name"
-msgstr "Nom de la columna"
-
-#: src/Form/ColumnForm.php:33
-msgid "Exclude sort by"
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:49
+msgid "Page category"
 msgstr ""
 
-#: src/Form/PageForm.php:19
-msgid "Enter the title of this page."
-msgstr "Introdueix el títol d'aquesta pàgina."
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:50
+msgid "Select one…"
+msgstr "Seleccioneu-ne un..."
 
-#: src/Form/PageForm.php:43
-msgid "Select the type of resources to browse."
-msgstr "Selecciona el tipus de recursos per a la navegació."
-
-#: src/Form/CategoryForm.php:24
-msgid ""
-"Enter the name of this category. A category is a logical grouping of "
-"resources that can be described using faceted classification."
-msgstr ""
-"Introdueix el nom de la categoria. Una categoria és una agrupació lògica de "
-"recursos que es poden descriure mitjançant la classificació facetada."
-
-#: src/Form/CategoryForm.php:36
-msgid ""
-"Configure the logical grouping of resources that make up this category. No "
-"query means all site resources."
-msgstr ""
-"Configura l'agrupació lògica dels recursos que formaran aquesta categoria. "
-"Si no s'estableix cap consulta, es mostraran tots els recursos del lloc."
-
-#: src/Form/CategoryForm.php:77
-msgid "Helper text"
-msgstr ""
-
-#: src/Form/CategoryForm.php:78
-msgid ""
-"Enter text to be displayed to the user on the category sidebar. Here you can"
-" add short instructions, a link to instructions, etc. Enter nothing to have "
-"no helper text."
-msgstr ""
-
-#: src/Form/CategoryForm.php:89
-msgid "Helper text button label"
-msgstr ""
-
-#: src/Form/CategoryForm.php:90
-msgid ""
-"Enter the label of the button the user will click to toggle the helper text."
-" Enter nothing for the default label: \"Instructions\"."
-msgstr ""
-
-#: src/Form/CategoryForm.php:113
-msgid "Add a facet…"
-msgstr "Afegeix una faceta..."
-
-#: src/Form/FacetForm.php:22
-msgid "Facet name"
-msgstr "Nom de la faceta"
-
-#: src/Form/FacetForm.php:33
-msgid "Set facet"
-msgstr "Estableix la faceta"
+#: src/Site/NavigationLink/FacetedBrowse.php:13
+msgid "Faceted browse"
+msgstr "Navegació facetada"
 
 #: src/Controller/SiteAdmin/PageController.php:44
 msgid "Page successfully added. Add categories below."
@@ -579,3 +492,123 @@ msgstr "La categoria s'ha editat correctament."
 #: src/Controller/SiteAdmin/CategoryController.php:128
 msgid "Category successfully deleted."
 msgstr "La categoria s'ha suprimit correctament."
+
+#: src/Form/FacetForm.php:22
+msgid "Facet name"
+msgstr "Nom de la faceta"
+
+#: src/Form/FacetForm.php:33
+msgid "Set facet"
+msgstr "Estableix la faceta"
+
+#: src/Form/PageForm.php:19
+msgid "Enter the title of this page."
+msgstr "Introdueix el títol d'aquesta pàgina."
+
+#: src/Form/PageForm.php:43
+msgid "Select the type of resources to browse."
+msgstr "Selecciona el tipus de recursos per a la navegació."
+
+#: src/Form/ColumnForm.php:22
+msgid "Column name"
+msgstr "Nom de la columna"
+
+#: src/Form/ColumnForm.php:33
+msgid "Exclude sort by"
+msgstr ""
+
+#: src/Form/CategoryForm.php:24
+msgid ""
+"Enter the name of this category. A category is a logical grouping of "
+"resources that can be described using faceted classification."
+msgstr ""
+"Introdueix el nom de la categoria. Una categoria és una agrupació lògica de "
+"recursos que es poden descriure mitjançant la classificació facetada."
+
+#: src/Form/CategoryForm.php:36
+msgid ""
+"Configure the logical grouping of resources that make up this category. No "
+"query means all site resources."
+msgstr ""
+"Configura l'agrupació lògica dels recursos que formaran aquesta categoria. "
+"Si no s'estableix cap consulta, es mostraran tots els recursos del lloc."
+
+#: src/Form/CategoryForm.php:63
+msgid "Default sort by"
+msgstr ""
+
+#: src/Form/CategoryForm.php:88
+msgid "Helper text"
+msgstr "Text d'ajuda"
+
+#: src/Form/CategoryForm.php:89
+msgid ""
+"Enter text to be displayed to the user on the category sidebar. Here you can"
+" add short instructions, a link to instructions, etc. Enter nothing to have "
+"no helper text."
+msgstr ""
+
+#: src/Form/CategoryForm.php:100
+msgid "Helper text button label"
+msgstr ""
+
+#: src/Form/CategoryForm.php:101
+msgid ""
+"Enter the label of the button the user will click to toggle the helper text."
+" Enter nothing for the default label: \"Instructions\"."
+msgstr ""
+
+#: src/Form/CategoryForm.php:112
+msgid "Value facet mode"
+msgstr ""
+
+#: src/Form/CategoryForm.php:113
+msgid ""
+"For Value facets, choose whether the user will match all selected values or "
+"match any selected values. Note that this will apply to every Value facet in"
+" this category."
+msgstr ""
+
+#: src/Form/CategoryForm.php:115
+msgid "Match all"
+msgstr ""
+
+#: src/Form/CategoryForm.php:116
+msgid "Match any"
+msgstr ""
+
+#: src/Form/CategoryForm.php:128
+msgid "Add a facet…"
+msgstr "Afegeix una faceta..."
+
+#: config/module.config.php:98
+msgid "A facet must have a name."
+msgstr "La faceta ha de tenir un nom."
+
+#: config/module.config.php:99
+msgid "A column must have a name."
+msgstr "La columna ha de tenir un nom."
+
+#: config/module.config.php:100
+msgid "A column must have a property."
+msgstr "La columna ha de tenir una propietat."
+
+#: config/module.config.php:101
+msgid "Error fetching browse markup."
+msgstr "S'ha produït un error en obtenir el marcatge de la navegació."
+
+#: config/module.config.php:102
+msgid "Error fetching facet markup."
+msgstr "S'ha produït un error en obtenir el marcatge de la faceta."
+
+#: config/module.config.php:103
+msgid "Error fetching category markup."
+msgstr "S'ha produït un error en obtenir el marcatge de la categoria."
+
+#: config/module.config.php:104
+msgid "Cannot show all. The result set is likely too large."
+msgstr "No es pot mostrar tot. Hi ha massa resultats."
+
+#: config/module.config.php:105
+msgid "Loading results…"
+msgstr "Carrega els resultats..."

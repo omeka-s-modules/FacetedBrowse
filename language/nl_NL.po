@@ -2,104 +2,110 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# E R, 2024
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-18 13:46-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2021-04-26 01:55+0000\n"
+"Last-Translator: E R, 2024\n"
+"Language-Team: Dutch (Netherlands) (https://app.transifex.com/omeka/teams/14184/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/Controller/SiteAdmin/PageController.php:87
 msgid "Add it to site navigation?"
-msgstr ""
+msgstr "Toevoegen aan websitenavigatie?"
 
 #: src/FacetType/Value.php:108
 msgid ""
 "\n"
-"            <p>Enter the values, separated by new lines. The format of each "
-"value depends on the query type:</p>\n"
+"            <p>Enter the values, separated by new lines. The format of each value depends on the query type:</p>\n"
 "            <ul>\n"
-"                <li>\"Is exactly\": enter a value that is an exact match to "
-"the property value.</li>\n"
-"                <li>\"Contains\": enter a value that matches any part of the "
-"property value.</li>\n"
-"                <li>\"Is resource with ID\": enter the resource ID followed "
-"by any value (usually the resource title), separated by a single space.</"
-"li>\n"
-"                <li>\"Has any value\": enter the property ID followed by any "
-"value (usually the property label), separated by a single space.</li>\n"
+"                <li>\"Is exactly\": enter a value that is an exact match to the property value.</li>\n"
+"                <li>\"Contains\": enter a value that matches any part of the property value.</li>\n"
+"                <li>\"Is resource with ID\": enter the resource ID followed by any value (usually the resource title), separated by a single space.</li>\n"
+"                <li>\"Has any value\": enter the property ID followed by any value (usually the property label), separated by a single space.</li>\n"
 "            </ul>"
 msgstr ""
+"\n"
+"            <p>Voer de waarden in, voor elke waarde een nieuwe regel. De invoer voor elke waarde hangt af van het type zoekopdracht:</p>\n"
+"            <ul>\n"
+"                <li>\"Is exact\": voer een waarde in die exact overeenkomt met de waarde van de eigenschap.</li>\n"
+"                <li>\"Bevat\": voer een waarde in die deels overeenkomt met de waarde van de eigenschap.</li>\n"
+"                <li>\"Is een object met ID\": voer het object-ID in, gevolgd door een waarde (standaard de objecttitel), gevolgd door een spatie.</li>\n"
+"                <li>\"Heeft de waarde\": voer het ID van de eigenschap in, gevolgd door een waarde (standaard het label van de eigenschap), gevolgd door een spatie.</li>\n"
+"            </ul>"
 
 #: view/common/faceted-browse/facet-data-form/item-set.phtml:5
 msgid "Show all available item sets."
-msgstr ""
+msgstr "Toon alle beschikbare collecties."
 
 #: view/common/faceted-browse/facet-data-form/resource-class.phtml:5
 msgid "Show all available classes."
-msgstr ""
+msgstr "Toon alle beschikbare klassen."
 
 #: view/common/faceted-browse/facet-data-form/resource-template.phtml:5
 msgid "Show all available templates."
-msgstr ""
+msgstr "Toon alle beschikbare sjablonen."
 
 #: view/common/faceted-browse/facet-data-form/value.phtml:7
 msgid "Show all available values."
-msgstr ""
+msgstr "Toon alle beschikbare waardes."
 
 #: view/common/faceted-browse/facet-render/item-set.phtml:19
 #: view/common/faceted-browse/facet-render/resource-class.phtml:19
 #: view/common/faceted-browse/facet-render/resource-template.phtml:19
 #: view/common/faceted-browse/facet-render/value.phtml:33
 msgid "See more"
-msgstr ""
+msgstr "Meer weergeven"
 
 #: view/common/faceted-browse/facet-render/item-set.phtml:20
 #: view/common/faceted-browse/facet-render/resource-class.phtml:20
 #: view/common/faceted-browse/facet-render/resource-template.phtml:20
 #: view/common/faceted-browse/facet-render/value.phtml:34
 msgid "See less"
-msgstr ""
+msgstr "Minder weergeven"
 
 #: view/common/faceted-browse/navigation-link-form/faceted-browse.phtml:9
 msgid "Select a page"
-msgstr ""
+msgstr "Kies een pagina"
 
 #: view/faceted-browse/site-admin/category/column-form.phtml:6
 msgid "Configure column"
-msgstr ""
+msgstr "Kolom configureren"
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:7
 msgid "Configure facet"
-msgstr ""
+msgstr "Kenmerk configureren"
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:10
 msgid "Facet type"
-msgstr ""
+msgstr "Type kenmerk"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:12
 msgid "Edit facet"
-msgstr ""
+msgstr "Kenmerk bewerken"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:16
 msgid "Remove facet"
-msgstr ""
+msgstr "Kenmerk verwijderen"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:20
 msgid "Restore facet"
-msgstr ""
+msgstr "Kenmerk herstellen"
 
 #: view/faceted-browse/site-admin/category/form.phtml:17
 msgid "Edit Category"
-msgstr ""
+msgstr "Categorie bewerken"
 
 #: view/faceted-browse/site-admin/category/form.phtml:17
 #: view/faceted-browse/site-admin/category/form.phtml:19
@@ -107,259 +113,277 @@ msgstr ""
 #: view/faceted-browse/site-admin/page/form.phtml:14
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Faceted Browse"
-msgstr ""
+msgstr "Bladeren op kenmerk"
 
 #: view/faceted-browse/site-admin/category/form.phtml:19
 msgid "Add Category"
-msgstr ""
+msgstr "Categorie toevoegen"
 
 #: view/faceted-browse/site-admin/category/form.phtml:31
 #: view/faceted-browse/site-admin/page/form.phtml:28
 msgid "Save and&hellip;"
-msgstr ""
+msgstr "Opslaan en ..."
 
 #: view/faceted-browse/site-admin/category/form.phtml:33
 msgid "Return to page"
-msgstr ""
+msgstr "Terugkeren naar pagina"
 
 #: view/faceted-browse/site-admin/category/form.phtml:34
 msgid "Stay on this category"
-msgstr ""
+msgstr "Op deze categorie blijven"
 
 #: view/faceted-browse/site-admin/category/form.phtml:42
 #: view/faceted-browse/site-admin/page/form.phtml:39
 msgid "Page edit"
-msgstr ""
+msgstr "Pagina bewerken"
 
 #: view/faceted-browse/site-admin/category/form.phtml:44
 msgid "Category edit"
-msgstr ""
+msgstr "Categorie bewerken"
 
 #: view/faceted-browse/site-admin/category/form.phtml:44
 msgid "Category add"
-msgstr ""
+msgstr "Categorie toevoegen"
 
 #: view/faceted-browse/site-admin/category/form.phtml:62
 msgid "Facets"
-msgstr ""
+msgstr "Kenmerken"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:2
 msgid "Add all"
-msgstr ""
+msgstr "Alles toevoegen"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:6
 msgid "Available"
-msgstr ""
+msgstr "Beschikbaar"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:7
 msgid "Count"
-msgstr ""
+msgstr "Aantal"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:20
 #: view/faceted-browse/site/page/browse.phtml:9
 msgid "There are no results."
-msgstr ""
+msgstr "Er zijn geen resultaten."
 
 #: view/faceted-browse/site-admin/page/browse.phtml:23
 msgid "Date created"
-msgstr ""
+msgstr "Aanmaakdatum"
 
 #: view/faceted-browse/site-admin/page/browse.phtml:80
 #, php-format
 msgid "No pages found. %s"
-msgstr ""
+msgstr "Geen pagina's gevonden. %s"
 
 #: view/faceted-browse/site-admin/page/browse.phtml:81
 msgid "Add a new page."
-msgstr ""
+msgstr "Een nieuwe pagina toevoegen."
 
 #: view/faceted-browse/site-admin/page/browse.phtml:84
 msgid "No pages found."
-msgstr ""
+msgstr "Geen pagina's gevonden."
 
 #: view/faceted-browse/site-admin/page/category-row.phtml:10
 msgid "Edit category"
-msgstr ""
+msgstr "Categorie bewerken"
 
 #: view/faceted-browse/site-admin/page/form.phtml:14
 msgid "Edit Page"
-msgstr ""
+msgstr "Pagina bewerken"
 
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Add Page"
-msgstr ""
+msgstr "Pagina toevoegen"
 
 #: view/faceted-browse/site-admin/page/form.phtml:30
 msgid "Return to pages"
-msgstr ""
+msgstr "Terugkeren naar pagina's"
 
 #: view/faceted-browse/site-admin/page/form.phtml:31
 msgid "Stay on this page"
-msgstr ""
+msgstr "Op deze pagina blijven"
 
 #: view/faceted-browse/site-admin/page/form.phtml:39
 msgid "Page add"
-msgstr ""
+msgstr "Pagina toevoegen"
 
 #: view/faceted-browse/site-admin/page/form.phtml:49
 msgid "Categories"
-msgstr ""
+msgstr "Categorieën"
 
 #: view/faceted-browse/site-admin/page/form.phtml:50
 msgid "Add category"
-msgstr ""
+msgstr "Categorie toevoegen"
 
 #: view/faceted-browse/site/page/browse.phtml:3
 msgid "Copy permalink"
-msgstr ""
+msgstr "Permanente link kopiëren"
 
 #: view/faceted-browse/site/page/browse.phtml:3
 msgid "Copied!"
-msgstr ""
+msgstr "Gekopieerd!"
 
 #: view/faceted-browse/site/page/categories.phtml:22
 msgid "There are no categories to browse."
-msgstr ""
+msgstr "Er zijn geen categorieën om in te bladeren."
 
 #: view/faceted-browse/site/page/facets.phtml:7
 msgid "Back"
-msgstr ""
+msgstr "Terug"
 
 #: view/faceted-browse/site/page/facets.phtml:17
 msgid "Instructions"
-msgstr ""
+msgstr "Instructies"
 
 #: view/faceted-browse/site/page/page.phtml:24
 #: view/faceted-browse/site/page/page.phtml:25
 msgid "Filters"
-msgstr ""
+msgstr "Filters"
 
 #: src/ColumnType/ItemSet.php:44
 msgid "Max item sets"
-msgstr ""
+msgstr "Maximaal aantal collecties"
 
 #: src/ColumnType/ItemSet.php:45
 msgid ""
 "Enter the maximum number of item sets to display. Set to blank to display "
 "all item sets."
 msgstr ""
+"Voer in hoeveel collecties maximaal weergegeven mogen worden. Laat leeg om "
+"alle collecties weer te geven."
 
 #: src/ColumnType/Unknown.php:45
 msgid "Unknown column type"
-msgstr ""
+msgstr "Onbekend kolomtype"
 
 #: src/ColumnType/Title.php:20
 msgid "Title (link to resource)"
-msgstr ""
+msgstr "Titel (link naar object)"
 
 #: src/ColumnType/Value.php:52
 msgid "Select a property…"
-msgstr ""
+msgstr "Selecteer een eigenschap..."
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:57
 msgid "A site must have an ID"
-msgstr ""
+msgstr "Een website moet een ID hebben"
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:90
 msgid "A page must have a site"
-msgstr ""
+msgstr "Een pagina moet een website hebben"
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:93
 msgid "A page must have a title"
-msgstr ""
+msgstr "Een pagina moet een titel hebben"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:169
 msgid "A category must have a site"
-msgstr ""
+msgstr "Een categorie moet een website hebben"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:172
 msgid "A category must have a name"
-msgstr ""
+msgstr "Een categorie moet een naam hebben"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:175
 msgid "A category must have a query"
-msgstr ""
+msgstr "Een categorie moet een zoekopdracht hebben"
 
 #: src/FacetType/ItemSet.php:45 src/FacetType/ResourceTemplate.php:45
 #: src/FacetType/ResourceClass.php:45 src/FacetType/Value.php:77
 msgid "Select type"
-msgstr ""
+msgstr "Selecteer een type"
 
 #: src/FacetType/ItemSet.php:46
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one item set at a time via a list or dropdown menu. For the "
-"\"multiple\" select type, users may choose any number of item sets at a time "
-"via a list."
+"\"multiple\" select type, users may choose any number of item sets at a time"
+" via a list."
 msgstr ""
+"Kies het selectietype. Bij het selectietype 'enkel' kunnen gebruikers maar "
+"één collectie selecteren uit een lijst of keuzemenu. Bij het selectietype "
+"'meerdere' kunnen gebruikers een willekeurig aantal collecties selecteren "
+"uit een lijst."
 
 #: src/FacetType/ItemSet.php:48 src/FacetType/ResourceTemplate.php:48
 #: src/FacetType/ResourceClass.php:48 src/FacetType/Value.php:80
 msgid "Single (list)"
-msgstr ""
+msgstr "Enkel (lijst)"
 
 #: src/FacetType/ItemSet.php:49 src/FacetType/ResourceTemplate.php:49
 #: src/FacetType/ResourceClass.php:49 src/FacetType/Value.php:81
 msgid "Multiple (list)"
-msgstr ""
+msgstr "Meerdere (lijjst)"
 
 #: src/FacetType/ItemSet.php:50 src/FacetType/ResourceTemplate.php:50
 #: src/FacetType/ResourceClass.php:50 src/FacetType/Value.php:82
 msgid "Single (dropdown menu)"
-msgstr ""
+msgstr "Enkel (keuzemenu)"
 
 #: src/FacetType/ItemSet.php:61
 msgid "Truncate item sets"
-msgstr ""
+msgstr "Collecties beperken"
 
 #: src/FacetType/ItemSet.php:62
 msgid ""
-"Enter the number of item sets to show on the select list when the page first "
-"loads. If the number of item sets exceeds this number, the remainder will be "
-"hidden until the user clicks to show more. Enter nothing to show the entire "
-"list at all times."
+"Enter the number of item sets to show on the select list when the page first"
+" loads. If the number of item sets exceeds this number, the remainder will "
+"be hidden until the user clicks to show more. Enter nothing to show the "
+"entire list at all times."
 msgstr ""
+"Voer in hoeveel collecties er bij het laden van de pagina moeten worden "
+"getoond op de selectielijst. Als het aantal collecties hoger is dan dit "
+"aantal, blijven de overige collecties verborgen totdat de gebruiker klikt op"
+" 'meer weergeven'. Voer niets in om altijd de volledige lijst weer te geven."
 
 #: src/FacetType/ItemSet.php:80
 msgid "Select item sets…"
-msgstr ""
+msgstr "Collecties selecteren..."
 
 #: src/FacetType/Unknown.php:44
 msgid "Unknown facet type"
-msgstr ""
+msgstr "Onbekend type kenmerk"
 
 #: src/FacetType/Unknown.php:54
 msgid "Unknown facet data"
-msgstr ""
+msgstr "Onbekende data kenmerk"
 
 #: src/FacetType/ResourceTemplate.php:46
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one template at a time via a list or dropdown menu. For the "
-"\"multiple\" select type, users may choose any number of templates at a time "
-"via a list."
+"\"multiple\" select type, users may choose any number of templates at a time"
+" via a list."
 msgstr ""
+"Kies het selectietype. Bij het selectietype 'enkel' kunnen gebruikers maar "
+"één sjabloon selecteren uit een lijst of keuzemenu. Bij het selectietype "
+"'meerdere' kunnen gebruikers een willekeurig aantal sjablonen selecteren uit"
+" een lijst."
 
 #: src/FacetType/ResourceTemplate.php:61
 msgid "Truncate templates"
-msgstr ""
+msgstr "Sjablonen beperken"
 
 #: src/FacetType/ResourceTemplate.php:62
 msgid ""
-"Enter the number of templates to show on the select list when the page first "
-"loads. If the number of templates exceeds this number, the remainder will be "
-"hidden until the user clicks to show more. Enter nothing to show the entire "
-"list at all times."
+"Enter the number of templates to show on the select list when the page first"
+" loads. If the number of templates exceeds this number, the remainder will "
+"be hidden until the user clicks to show more. Enter nothing to show the "
+"entire list at all times."
 msgstr ""
+"Voer in hoeveel sjablonen er bij het laden van de pagina moeten worden "
+"getoond op de selectielijst. Als het aantal sjablonen hoger is dan dit "
+"aantal, blijven de overige sjablonen verborgen totdat de gebruiker klikt op "
+"'meer weergeven'. Voer niets in om altijd de volledige lijst weer te geven."
 
 #: src/FacetType/ResourceTemplate.php:80
 msgid "Select templates…"
-msgstr ""
+msgstr "Selecteer sjablonen..."
 
 #: src/FacetType/FullText.php:20
 msgid "Full-text"
-msgstr ""
+msgstr "Volledige tekst"
 
 #: src/FacetType/ResourceClass.php:46
 msgid ""
@@ -367,10 +391,14 @@ msgid ""
 "only one class at a time via a list or dropdown menu. For the \"multiple\" "
 "select type, users may choose any number of classes at a time via a list."
 msgstr ""
+"Kies het selectietype. Bij het selectietype 'enkel' kunnen gebruikers maar "
+"één klasse selecteren uit een lijst of keuzemenu. Bij het selectietype "
+"'meerdere' kunnen gebruikers een willekeurig aantal klassen selecteren uit "
+"een lijst."
 
 #: src/FacetType/ResourceClass.php:61
 msgid "Truncate classes"
-msgstr ""
+msgstr "Klassen beperken"
 
 #: src/FacetType/ResourceClass.php:62
 msgid ""
@@ -379,58 +407,67 @@ msgid ""
 "hidden until the user clicks to show more. Enter nothing to show the entire "
 "list at all times."
 msgstr ""
+"Voer in hoeveel klassen er bij het laden van de pagina moeten worden getoond"
+" op de selectielijst. Als het aantal klassen hoger is dan dit aantal, "
+"blijven de overige klassen verborgen totdat de gebruiker klikt op 'meer "
+"weergeven'. Voer niets in om altijd de volledige lijst weer te geven."
 
 #: src/FacetType/ResourceClass.php:80
 msgid "Select classes…"
-msgstr ""
+msgstr "Klassen selecteren"
 
 #: src/FacetType/Value.php:59
 msgid "Is exactly"
-msgstr ""
+msgstr "Is exact"
 
 #: src/FacetType/Value.php:60
 msgid "Is not exactly"
-msgstr ""
+msgstr "Is niet exact"
 
 #: src/FacetType/Value.php:61
 msgid "Contains"
-msgstr ""
+msgstr "Bevat"
 
 #: src/FacetType/Value.php:62
 msgid "Does not contain"
-msgstr ""
+msgstr "Bevat niet"
 
 #: src/FacetType/Value.php:63
 msgid "Is resource with ID"
-msgstr ""
+msgstr "Is object met ID"
 
 #: src/FacetType/Value.php:64
 msgid "Is not resource with ID"
-msgstr ""
+msgstr "Is niet object met ID"
 
 #: src/FacetType/Value.php:65
 msgid "Has any value"
-msgstr ""
+msgstr "Heeft een willekeurige waarde"
 
 #: src/FacetType/Value.php:66
 msgid "Has no values"
-msgstr ""
+msgstr "Heeft geen waardes"
 
 #: src/FacetType/Value.php:78
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one value at a time via a list or dropdown menu. For the \"multiple\" "
-"select type, users may choose any number of values at a time via a list. For "
-"the special \"text input\" select type, users may input their own text."
+"select type, users may choose any number of values at a time via a list. For"
+" the special \"text input\" select type, users may input their own text."
 msgstr ""
+"Kies het selectietype. Bij het selectietype 'enkel' kunnen gebruikers maar "
+"één waarde selecteren uit een lijst of keuzemenu. Bij het selectietype "
+"'meerdere' kunnen gebruikers een willekeurig aantal waarden selecteren uit "
+"een lijst. Bij het speciale selectietype 'tekstinvoer' kunnen gebruikers hun"
+" eigen tekst invoeren."
 
 #: src/FacetType/Value.php:83
 msgid "Text input"
-msgstr ""
+msgstr "Tekstinvoer"
 
 #: src/FacetType/Value.php:94
 msgid "Truncate values"
-msgstr ""
+msgstr "Waardes beperken"
 
 #: src/FacetType/Value.php:95
 msgid ""
@@ -439,10 +476,14 @@ msgid ""
 "hidden until the user clicks to show more. Enter nothing to show the entire "
 "list at all times."
 msgstr ""
+"Voer in hoeveel waarden er bij het laden van de pagina moeten worden getoond"
+" op de selectielijst. Als het aantal waarden hoger is dan dit aantal, "
+"blijven de overige waarden verborgen totdat de gebruiker klikt op 'meer "
+"weergeven'. Voer niets in om altijd de volledige lijst weer te geven."
 
 #: src/Site/BlockLayout/FacetedBrowsePreview.php:23
 msgid "Faceted browse preview"
-msgstr ""
+msgstr "Voorbeeld bladeren op kenmerk"
 
 #: src/Site/BlockLayout/FacetedBrowsePreview.php:49
 msgid "Page category"
@@ -450,56 +491,56 @@ msgstr ""
 
 #: src/Site/BlockLayout/FacetedBrowsePreview.php:50
 msgid "Select one…"
-msgstr ""
+msgstr "Selecteren..."
 
 #: src/Site/NavigationLink/FacetedBrowse.php:13
 msgid "Faceted browse"
-msgstr ""
+msgstr "Bladeren op kenmerk"
 
 #: src/Controller/SiteAdmin/PageController.php:44
 msgid "Page successfully added. Add categories below."
-msgstr ""
+msgstr "Pagina is toegevoegd. Voeg hieronder categorieën toe."
 
 #: src/Controller/SiteAdmin/PageController.php:83
 #, php-format
 msgid "Page successfully edited. %s"
-msgstr ""
+msgstr "Pagina is bewerkt. %s"
 
 #: src/Controller/SiteAdmin/PageController.php:124
 msgid "Page successfully deleted."
-msgstr ""
+msgstr "Pagina is verwijderd."
 
 #: src/Controller/SiteAdmin/CategoryController.php:38
 msgid "Category successfully added."
-msgstr ""
+msgstr "Categorie is toegevoegd."
 
 #: src/Controller/SiteAdmin/CategoryController.php:91
 msgid "Category successfully edited."
-msgstr ""
+msgstr "Categorie is bewerkt."
 
 #: src/Controller/SiteAdmin/CategoryController.php:128
 msgid "Category successfully deleted."
-msgstr ""
+msgstr "Categorie is verwijderd."
 
 #: src/Form/FacetForm.php:22
 msgid "Facet name"
-msgstr ""
+msgstr "Naam kenmerk"
 
 #: src/Form/FacetForm.php:33
 msgid "Set facet"
-msgstr ""
+msgstr "Kenmerk instellen"
 
 #: src/Form/PageForm.php:19
 msgid "Enter the title of this page."
-msgstr ""
+msgstr "Voer de titel van deze pagina in."
 
 #: src/Form/PageForm.php:43
 msgid "Select the type of resources to browse."
-msgstr ""
+msgstr "Selecteer het type objecten om te bladeren."
 
 #: src/Form/ColumnForm.php:22
 msgid "Column name"
-msgstr ""
+msgstr "Kolomnaam"
 
 #: src/Form/ColumnForm.php:33
 msgid "Exclude sort by"
@@ -510,6 +551,8 @@ msgid ""
 "Enter the name of this category. A category is a logical grouping of "
 "resources that can be described using faceted classification."
 msgstr ""
+"Voer de naam van deze categorie in. Een categorie is een logische groepering"
+" van objecten die kan worden beschreven met een classificatie in kenmerken."
 
 #: src/Form/CategoryForm.php:36
 msgid ""
@@ -523,12 +566,12 @@ msgstr ""
 
 #: src/Form/CategoryForm.php:88
 msgid "Helper text"
-msgstr ""
+msgstr "Helptekst"
 
 #: src/Form/CategoryForm.php:89
 msgid ""
-"Enter text to be displayed to the user on the category sidebar. Here you can "
-"add short instructions, a link to instructions, etc. Enter nothing to have "
+"Enter text to be displayed to the user on the category sidebar. Here you can"
+" add short instructions, a link to instructions, etc. Enter nothing to have "
 "no helper text."
 msgstr ""
 
@@ -538,8 +581,8 @@ msgstr ""
 
 #: src/Form/CategoryForm.php:101
 msgid ""
-"Enter the label of the button the user will click to toggle the helper text. "
-"Enter nothing for the default label: \"Instructions\"."
+"Enter the label of the button the user will click to toggle the helper text."
+" Enter nothing for the default label: \"Instructions\"."
 msgstr ""
 
 #: src/Form/CategoryForm.php:112
@@ -549,8 +592,8 @@ msgstr ""
 #: src/Form/CategoryForm.php:113
 msgid ""
 "For Value facets, choose whether the user will match all selected values or "
-"match any selected values. Note that this will apply to every Value facet in "
-"this category."
+"match any selected values. Note that this will apply to every Value facet in"
+" this category."
 msgstr ""
 
 #: src/Form/CategoryForm.php:115
@@ -563,36 +606,36 @@ msgstr ""
 
 #: src/Form/CategoryForm.php:128
 msgid "Add a facet…"
-msgstr ""
+msgstr "Een kernmerk toevoegen..."
 
 #: config/module.config.php:98
 msgid "A facet must have a name."
-msgstr ""
+msgstr "Een kenmerk moet een naam hebben."
 
 #: config/module.config.php:99
 msgid "A column must have a name."
-msgstr ""
+msgstr "Een kolom moet een naam hebben."
 
 #: config/module.config.php:100
 msgid "A column must have a property."
-msgstr ""
+msgstr "Een kolom moet een eigenschap hebben."
 
 #: config/module.config.php:101
 msgid "Error fetching browse markup."
-msgstr ""
+msgstr "Fout bij het ophalen van bladeropmaak."
 
 #: config/module.config.php:102
 msgid "Error fetching facet markup."
-msgstr ""
+msgstr "Fout bij het ophalen van kenmerkopmaak."
 
 #: config/module.config.php:103
 msgid "Error fetching category markup."
-msgstr ""
+msgstr "Fout bij het ophalen van categorieopmaak."
 
 #: config/module.config.php:104
 msgid "Cannot show all. The result set is likely too large."
-msgstr ""
+msgstr "Kan niet alles weergeven. Er zijn waarschijnlijk teveel resultaten."
 
 #: config/module.config.php:105
 msgid "Loading results…"
-msgstr ""
+msgstr "Resultaten laden..."

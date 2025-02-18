@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Iametza Interaktiboa, 2022
+# Iametza Interaktiboa, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-20 14:29-0400\n"
+"POT-Creation-Date: 2025-02-18 13:46-0500\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
-"Last-Translator: Iametza Interaktiboa, 2022\n"
+"Last-Translator: Iametza Interaktiboa, 2024\n"
 "Language-Team: Basque (https://app.transifex.com/omeka/teams/14184/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -137,7 +137,7 @@ msgstr "Editatu kategoria"
 msgid "Category add"
 msgstr "Gehitu kategoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:61
+#: view/faceted-browse/site-admin/category/form.phtml:62
 msgid "Facets"
 msgstr "Fazetak"
 
@@ -215,7 +215,7 @@ msgstr "Kopiatu esteka iraunkorra"
 msgid "Copied!"
 msgstr "Kopiatuta!"
 
-#: view/faceted-browse/site/page/categories.phtml:23
+#: view/faceted-browse/site/page/categories.phtml:22
 msgid "There are no categories to browse."
 msgstr "Ez dago arakatzeko kategoriarik."
 
@@ -223,63 +223,14 @@ msgstr "Ez dago arakatzeko kategoriarik."
 msgid "Back"
 msgstr "Atzera"
 
-#: view/faceted-browse/site/page/facets.phtml:14
+#: view/faceted-browse/site/page/facets.phtml:17
 msgid "Instructions"
 msgstr ""
 
-#: view/faceted-browse/site/page/page.phtml:27
-#: view/faceted-browse/site/page/page.phtml:28
+#: view/faceted-browse/site/page/page.phtml:24
+#: view/faceted-browse/site/page/page.phtml:25
 msgid "Filters"
-msgstr ""
-
-#: config/module.config.php:98
-msgid "A facet must have a name."
-msgstr "Fazetak izena eduki behar du."
-
-#: config/module.config.php:99
-msgid "A column must have a name."
-msgstr "Zutabeak izena eduki behar du."
-
-#: config/module.config.php:100
-msgid "A column must have a property."
-msgstr "Zutabeak propietatea eduki behar du."
-
-#: config/module.config.php:101
-msgid "Error fetching browse markup."
-msgstr "Arazoa arakatzeko ingurunea eskuratzean."
-
-#: config/module.config.php:102
-msgid "Error fetching facet markup."
-msgstr "Arazoa fazeten ingurunea eskuratzean."
-
-#: config/module.config.php:103
-msgid "Error fetching category markup."
-msgstr "Arazoa kategorien ingurunea eskuratzean,"
-
-#: config/module.config.php:104
-msgid "Cannot show all. The result set is likely too large."
-msgstr ""
-"Ezin dira denak erakutsi. Ziurrenik emaitza multzoa handiegia izango da."
-
-#: config/module.config.php:105
-msgid "Loading results…"
-msgstr "Emaitzak kargatzen..."
-
-#: src/Site/BlockLayout/FacetedBrowsePreview.php:23
-msgid "Faceted browse preview"
-msgstr ""
-
-#: src/Site/BlockLayout/FacetedBrowsePreview.php:49
-msgid "Page category"
-msgstr ""
-
-#: src/Site/BlockLayout/FacetedBrowsePreview.php:50
-msgid "Select one…"
-msgstr ""
-
-#: src/Site/NavigationLink/FacetedBrowse.php:13
-msgid "Faceted browse"
-msgstr "Bilaketa fazetatuta"
+msgstr "Iragazkiak"
 
 #: src/ColumnType/ItemSet.php:44
 msgid "Max item sets"
@@ -293,6 +244,10 @@ msgstr ""
 "Sartu gehienenez erakutsi daitezkeen elementu multzoen kopurua. Hutsik utzi "
 "elementu multzo guztiak erakusteko."
 
+#: src/ColumnType/Unknown.php:45
+msgid "Unknown column type"
+msgstr "Zutabe mota ezezaguna"
+
 #: src/ColumnType/Title.php:20
 msgid "Title (link to resource)"
 msgstr "Titulua (lotura baliabidera)"
@@ -301,9 +256,30 @@ msgstr "Titulua (lotura baliabidera)"
 msgid "Select a property…"
 msgstr "Hautatu propietatea..."
 
-#: src/ColumnType/Unknown.php:45
-msgid "Unknown column type"
-msgstr "Zutabe mota ezezaguna"
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:57
+msgid "A site must have an ID"
+msgstr "Atarian ID bat izan behar du"
+
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:90
+msgid "A page must have a site"
+msgstr "Orriak atari bat izan behar du"
+
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:93
+msgid "A page must have a title"
+msgstr "Orriak izen bat izan behar du"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:169
+msgid "A category must have a site"
+msgstr "Kategoriak atari bat izan behar du"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:172
+msgid "A category must have a name"
+msgstr "Kategoriak izen bat izan behar du"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:175
+msgid "A category must have a query"
+msgstr "Kategoriak kontsulta bat izan behar du"
 
 #: src/FacetType/ItemSet.php:45 src/FacetType/ResourceTemplate.php:45
 #: src/FacetType/ResourceClass.php:45 src/FacetType/Value.php:77
@@ -340,7 +316,7 @@ msgstr "Bakarra (goitibeherako menua)"
 
 #: src/FacetType/ItemSet.php:61
 msgid "Truncate item sets"
-msgstr ""
+msgstr "Moztu elementu multzoak"
 
 #: src/FacetType/ItemSet.php:62
 msgid ""
@@ -353,6 +329,14 @@ msgstr ""
 #: src/FacetType/ItemSet.php:80
 msgid "Select item sets…"
 msgstr "Hautatu elementu multzoak..."
+
+#: src/FacetType/Unknown.php:44
+msgid "Unknown facet type"
+msgstr "Fazeta modu ezezaguna"
+
+#: src/FacetType/Unknown.php:54
+msgid "Unknown facet data"
+msgstr "Fazeta datu ezezaguna"
 
 #: src/FacetType/ResourceTemplate.php:46
 msgid ""
@@ -369,7 +353,7 @@ msgstr ""
 
 #: src/FacetType/ResourceTemplate.php:61
 msgid "Truncate templates"
-msgstr ""
+msgstr "Moztu txantiloiak"
 
 #: src/FacetType/ResourceTemplate.php:62
 msgid ""
@@ -382,6 +366,10 @@ msgstr ""
 #: src/FacetType/ResourceTemplate.php:80
 msgid "Select templates…"
 msgstr "Hautatu txantiloiak..."
+
+#: src/FacetType/FullText.php:20
+msgid "Full-text"
+msgstr "Testu osoa"
 
 #: src/FacetType/ResourceClass.php:46
 msgid ""
@@ -396,7 +384,7 @@ msgstr ""
 
 #: src/FacetType/ResourceClass.php:61
 msgid "Truncate classes"
-msgstr ""
+msgstr "Moztu klaseak"
 
 #: src/FacetType/ResourceClass.php:62
 msgid ""
@@ -409,10 +397,6 @@ msgstr ""
 #: src/FacetType/ResourceClass.php:80
 msgid "Select classes…"
 msgstr "Hautatu klaseak..."
-
-#: src/FacetType/FullText.php:20
-msgid "Full-text"
-msgstr "Testu osoa"
 
 #: src/FacetType/Value.php:59
 msgid "Is exactly"
@@ -478,103 +462,21 @@ msgstr ""
 "gainditzen badu, hondarra izkutatuta egongo da erabiltzailea ikusi gehiago "
 "klikatu arte. Ez sartu ezer zerrenda osoa erakusteko kasu guztietan."
 
-#: src/FacetType/Unknown.php:44
-msgid "Unknown facet type"
-msgstr "Fazeta modu ezezaguna"
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:23
+msgid "Faceted browse preview"
+msgstr "Bilaketa fazetatu aurrebista"
 
-#: src/FacetType/Unknown.php:54
-msgid "Unknown facet data"
-msgstr "Fazeta datu ezezaguna"
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:49
+msgid "Page category"
+msgstr "Orrialde kategoria"
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:57
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
-msgid "A site must have an ID"
-msgstr "Atarian ID bat izan behar du"
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:50
+msgid "Select one…"
+msgstr "Hautatu bat..."
 
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:166
-msgid "A category must have a site"
-msgstr "Kategoriak atari bat izan behar du"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:169
-msgid "A category must have a name"
-msgstr "Kategoriak izen bat izan behar du"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:172
-msgid "A category must have a query"
-msgstr "Kategoriak kontsulta bat izan behar du"
-
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:90
-msgid "A page must have a site"
-msgstr "Orriak atari bat izan behar du"
-
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:93
-msgid "A page must have a title"
-msgstr "Orriak izen bat izan behar du"
-
-#: src/Form/ColumnForm.php:22
-msgid "Column name"
-msgstr "Zutabe izena"
-
-#: src/Form/ColumnForm.php:33
-msgid "Exclude sort by"
-msgstr "Baztertu ordenatu honen arabera"
-
-#: src/Form/PageForm.php:19
-msgid "Enter the title of this page."
-msgstr "Sartu orri honen izenburua"
-
-#: src/Form/PageForm.php:43
-msgid "Select the type of resources to browse."
-msgstr "Hautatu arakatzeko baliabide mota."
-
-#: src/Form/CategoryForm.php:24
-msgid ""
-"Enter the name of this category. A category is a logical grouping of "
-"resources that can be described using faceted classification."
-msgstr ""
-"Sartu kategoria honen izena. Kategoria fazet sailkapen bidez deskribatu "
-"daitekeen baliabideen talde logiko bat da"
-
-#: src/Form/CategoryForm.php:36
-msgid ""
-"Configure the logical grouping of resources that make up this category. No "
-"query means all site resources."
-msgstr ""
-"Konfiguratu kategoria honek egiten duen baliabideen taldekatze logikoa. "
-"Kontsultarik ezak atari guztietako baliabideak esan nahi du."
-
-#: src/Form/CategoryForm.php:77
-msgid "Helper text"
-msgstr ""
-
-#: src/Form/CategoryForm.php:78
-msgid ""
-"Enter text to be displayed to the user on the category sidebar. Here you can"
-" add short instructions, a link to instructions, etc. Enter nothing to have "
-"no helper text."
-msgstr ""
-
-#: src/Form/CategoryForm.php:89
-msgid "Helper text button label"
-msgstr ""
-
-#: src/Form/CategoryForm.php:90
-msgid ""
-"Enter the label of the button the user will click to toggle the helper text."
-" Enter nothing for the default label: \"Instructions\"."
-msgstr ""
-
-#: src/Form/CategoryForm.php:113
-msgid "Add a facet…"
-msgstr "Gehitu fazeta..."
-
-#: src/Form/FacetForm.php:22
-msgid "Facet name"
-msgstr "Fazet izena"
-
-#: src/Form/FacetForm.php:33
-msgid "Set facet"
-msgstr "Ezarri fazeta"
+#: src/Site/NavigationLink/FacetedBrowse.php:13
+msgid "Faceted browse"
+msgstr "Bilaketa fazetatuta"
 
 #: src/Controller/SiteAdmin/PageController.php:44
 msgid "Page successfully added. Add categories below."
@@ -600,3 +502,124 @@ msgstr "Kategoria ongi aldatu da."
 #: src/Controller/SiteAdmin/CategoryController.php:128
 msgid "Category successfully deleted."
 msgstr "Kategoria ongi ezabatu da."
+
+#: src/Form/FacetForm.php:22
+msgid "Facet name"
+msgstr "Fazet izena"
+
+#: src/Form/FacetForm.php:33
+msgid "Set facet"
+msgstr "Ezarri fazeta"
+
+#: src/Form/PageForm.php:19
+msgid "Enter the title of this page."
+msgstr "Sartu orri honen izenburua"
+
+#: src/Form/PageForm.php:43
+msgid "Select the type of resources to browse."
+msgstr "Hautatu arakatzeko baliabide mota."
+
+#: src/Form/ColumnForm.php:22
+msgid "Column name"
+msgstr "Zutabe izena"
+
+#: src/Form/ColumnForm.php:33
+msgid "Exclude sort by"
+msgstr "Baztertu ordenatu honen arabera"
+
+#: src/Form/CategoryForm.php:24
+msgid ""
+"Enter the name of this category. A category is a logical grouping of "
+"resources that can be described using faceted classification."
+msgstr ""
+"Sartu kategoria honen izena. Kategoria fazet sailkapen bidez deskribatu "
+"daitekeen baliabideen talde logiko bat da"
+
+#: src/Form/CategoryForm.php:36
+msgid ""
+"Configure the logical grouping of resources that make up this category. No "
+"query means all site resources."
+msgstr ""
+"Konfiguratu kategoria honek egiten duen baliabideen taldekatze logikoa. "
+"Kontsultarik ezak atari guztietako baliabideak esan nahi du."
+
+#: src/Form/CategoryForm.php:63
+msgid "Default sort by"
+msgstr ""
+
+#: src/Form/CategoryForm.php:88
+msgid "Helper text"
+msgstr "Testu laguntzailea"
+
+#: src/Form/CategoryForm.php:89
+msgid ""
+"Enter text to be displayed to the user on the category sidebar. Here you can"
+" add short instructions, a link to instructions, etc. Enter nothing to have "
+"no helper text."
+msgstr ""
+
+#: src/Form/CategoryForm.php:100
+msgid "Helper text button label"
+msgstr ""
+
+#: src/Form/CategoryForm.php:101
+msgid ""
+"Enter the label of the button the user will click to toggle the helper text."
+" Enter nothing for the default label: \"Instructions\"."
+msgstr ""
+
+#: src/Form/CategoryForm.php:112
+msgid "Value facet mode"
+msgstr ""
+
+#: src/Form/CategoryForm.php:113
+msgid ""
+"For Value facets, choose whether the user will match all selected values or "
+"match any selected values. Note that this will apply to every Value facet in"
+" this category."
+msgstr ""
+
+#: src/Form/CategoryForm.php:115
+msgid "Match all"
+msgstr ""
+
+#: src/Form/CategoryForm.php:116
+msgid "Match any"
+msgstr ""
+
+#: src/Form/CategoryForm.php:128
+msgid "Add a facet…"
+msgstr "Gehitu fazeta..."
+
+#: config/module.config.php:98
+msgid "A facet must have a name."
+msgstr "Fazetak izena eduki behar du."
+
+#: config/module.config.php:99
+msgid "A column must have a name."
+msgstr "Zutabeak izena eduki behar du."
+
+#: config/module.config.php:100
+msgid "A column must have a property."
+msgstr "Zutabeak propietatea eduki behar du."
+
+#: config/module.config.php:101
+msgid "Error fetching browse markup."
+msgstr "Arazoa arakatzeko ingurunea eskuratzean."
+
+#: config/module.config.php:102
+msgid "Error fetching facet markup."
+msgstr "Arazoa fazeten ingurunea eskuratzean."
+
+#: config/module.config.php:103
+msgid "Error fetching category markup."
+msgstr "Arazoa kategorien ingurunea eskuratzean,"
+
+#: config/module.config.php:104
+msgid "Cannot show all. The result set is likely too large."
+msgstr ""
+"Ezin dira denak erakutsi. Ziurrenik emaitza multzoa handiegia izango da."
+
+#: config/module.config.php:105
+msgid "Loading results…"
+msgstr "Emaitzak kargatzen..."

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-20 14:29-0400\n"
+"POT-Creation-Date: 2025-02-18 13:46-0500\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Alfonso Montejo <almontejor@gmail.com>, 2022\n"
 "Language-Team: Spanish (https://app.transifex.com/omeka/teams/14184/es/)\n"
@@ -146,7 +146,7 @@ msgstr "Editar categoría"
 msgid "Category add"
 msgstr "Añadir categoría"
 
-#: view/faceted-browse/site-admin/category/form.phtml:61
+#: view/faceted-browse/site-admin/category/form.phtml:62
 msgid "Facets"
 msgstr "Facetas"
 
@@ -224,7 +224,7 @@ msgstr "Copiar enlace permanente"
 msgid "Copied!"
 msgstr "Copiado con éxito"
 
-#: view/faceted-browse/site/page/categories.phtml:23
+#: view/faceted-browse/site/page/categories.phtml:22
 msgid "There are no categories to browse."
 msgstr "No hay categorías entre las que navegar."
 
@@ -232,64 +232,14 @@ msgstr "No hay categorías entre las que navegar."
 msgid "Back"
 msgstr "Volver"
 
-#: view/faceted-browse/site/page/facets.phtml:14
+#: view/faceted-browse/site/page/facets.phtml:17
 msgid "Instructions"
 msgstr ""
 
-#: view/faceted-browse/site/page/page.phtml:27
-#: view/faceted-browse/site/page/page.phtml:28
+#: view/faceted-browse/site/page/page.phtml:24
+#: view/faceted-browse/site/page/page.phtml:25
 msgid "Filters"
 msgstr ""
-
-#: config/module.config.php:98
-msgid "A facet must have a name."
-msgstr "Una faceta debe tener un nombre."
-
-#: config/module.config.php:99
-msgid "A column must have a name."
-msgstr "Una columna debe tener un nombre."
-
-#: config/module.config.php:100
-msgid "A column must have a property."
-msgstr "Una columna debe tener una propiedad."
-
-#: config/module.config.php:101
-msgid "Error fetching browse markup."
-msgstr "Error al obtener el marcado de navegación. "
-
-#: config/module.config.php:102
-msgid "Error fetching facet markup."
-msgstr "Error al obtener el marcado de faceta. "
-
-#: config/module.config.php:103
-msgid "Error fetching category markup."
-msgstr "Error al obtener el marcado de categoría. "
-
-#: config/module.config.php:104
-msgid "Cannot show all. The result set is likely too large."
-msgstr ""
-"No se ha podido mostrar todo. Probablemente el número de resultados sea "
-"demasiado grande."
-
-#: config/module.config.php:105
-msgid "Loading results…"
-msgstr "Cargando resultados..."
-
-#: src/Site/BlockLayout/FacetedBrowsePreview.php:23
-msgid "Faceted browse preview"
-msgstr ""
-
-#: src/Site/BlockLayout/FacetedBrowsePreview.php:49
-msgid "Page category"
-msgstr ""
-
-#: src/Site/BlockLayout/FacetedBrowsePreview.php:50
-msgid "Select one…"
-msgstr ""
-
-#: src/Site/NavigationLink/FacetedBrowse.php:13
-msgid "Faceted browse"
-msgstr "Navegación facetada"
 
 #: src/ColumnType/ItemSet.php:44
 msgid "Max item sets"
@@ -303,6 +253,10 @@ msgstr ""
 "Introducir el número máximo de conjuntos de fichas a mostrar. Si se deja en "
 "blanco se mostrarán todos."
 
+#: src/ColumnType/Unknown.php:45
+msgid "Unknown column type"
+msgstr "Tipo de columna desconocido"
+
 #: src/ColumnType/Title.php:20
 msgid "Title (link to resource)"
 msgstr "Título (enlace al recurso)"
@@ -311,9 +265,30 @@ msgstr "Título (enlace al recurso)"
 msgid "Select a property…"
 msgstr "Seleccionar una propiedad..."
 
-#: src/ColumnType/Unknown.php:45
-msgid "Unknown column type"
-msgstr "Tipo de columna desconocido"
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:57
+msgid "A site must have an ID"
+msgstr "Un sitio debe tener una ID"
+
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:90
+msgid "A page must have a site"
+msgstr "Una página debe tener un sitio"
+
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:93
+msgid "A page must have a title"
+msgstr "Una página debe tener un título"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:169
+msgid "A category must have a site"
+msgstr "Una categoría debe tener un sitio"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:172
+msgid "A category must have a name"
+msgstr "Una categoría debe tener un nombre"
+
+#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:175
+msgid "A category must have a query"
+msgstr "Una categoría debe tener una consulta"
 
 #: src/FacetType/ItemSet.php:45 src/FacetType/ResourceTemplate.php:45
 #: src/FacetType/ResourceClass.php:45 src/FacetType/Value.php:77
@@ -364,6 +339,14 @@ msgstr ""
 msgid "Select item sets…"
 msgstr "Seleccionar conjuntos de fichas..."
 
+#: src/FacetType/Unknown.php:44
+msgid "Unknown facet type"
+msgstr "Tipo de faceta desconocido"
+
+#: src/FacetType/Unknown.php:54
+msgid "Unknown facet data"
+msgstr "Datos de faceta desconocidos"
+
 #: src/FacetType/ResourceTemplate.php:46
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
@@ -392,6 +375,10 @@ msgstr ""
 msgid "Select templates…"
 msgstr "Seleccionar plantillas..."
 
+#: src/FacetType/FullText.php:20
+msgid "Full-text"
+msgstr "Texto completo"
+
 #: src/FacetType/ResourceClass.php:46
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
@@ -418,10 +405,6 @@ msgstr ""
 #: src/FacetType/ResourceClass.php:80
 msgid "Select classes…"
 msgstr "Seleccionar clases…"
-
-#: src/FacetType/FullText.php:20
-msgid "Full-text"
-msgstr "Texto completo"
 
 #: src/FacetType/Value.php:59
 msgid "Is exactly"
@@ -489,105 +472,21 @@ msgstr ""
 "este número, el resto se ocultará hasta que se haga clic en mostrar más. Si "
 "no se introduce ningún valor, se mostrará siempre la lista completa."
 
-#: src/FacetType/Unknown.php:44
-msgid "Unknown facet type"
-msgstr "Tipo de faceta desconocido"
-
-#: src/FacetType/Unknown.php:54
-msgid "Unknown facet data"
-msgstr "Datos de faceta desconocidos"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:57
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
-msgid "A site must have an ID"
-msgstr "Un sitio debe tener una ID"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:166
-msgid "A category must have a site"
-msgstr "Una categoría debe tener un sitio"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:169
-msgid "A category must have a name"
-msgstr "Una categoría debe tener un nombre"
-
-#: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:172
-msgid "A category must have a query"
-msgstr "Una categoría debe tener una consulta"
-
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:90
-msgid "A page must have a site"
-msgstr "Una página debe tener un sitio"
-
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:93
-msgid "A page must have a title"
-msgstr "Una página debe tener un título"
-
-#: src/Form/ColumnForm.php:22
-msgid "Column name"
-msgstr "Nombre de la columna"
-
-#: src/Form/ColumnForm.php:33
-msgid "Exclude sort by"
-msgstr "Excluir ordenar por"
-
-#: src/Form/PageForm.php:19
-msgid "Enter the title of this page."
-msgstr "Introducir el título de esta página."
-
-#: src/Form/PageForm.php:43
-msgid "Select the type of resources to browse."
-msgstr "Seleccionar el tipo de recursos por los que navegar."
-
-#: src/Form/CategoryForm.php:24
-msgid ""
-"Enter the name of this category. A category is a logical grouping of "
-"resources that can be described using faceted classification."
-msgstr ""
-"Introducir el nombre de esta categoría. Una categoría es una agrupación "
-"lógica de recursos que puede ser descrita mediante una clasificación "
-"facetada."
-
-#: src/Form/CategoryForm.php:36
-msgid ""
-"Configure the logical grouping of resources that make up this category. No "
-"query means all site resources."
-msgstr ""
-"Configurar la agrupación lógica de recursos que constituyen esta categoría. "
-"Si no se especifica ninguna consulta se devolverán todos los recursos del "
-"sitio."
-
-#: src/Form/CategoryForm.php:77
-msgid "Helper text"
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:23
+msgid "Faceted browse preview"
 msgstr ""
 
-#: src/Form/CategoryForm.php:78
-msgid ""
-"Enter text to be displayed to the user on the category sidebar. Here you can"
-" add short instructions, a link to instructions, etc. Enter nothing to have "
-"no helper text."
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:49
+msgid "Page category"
 msgstr ""
 
-#: src/Form/CategoryForm.php:89
-msgid "Helper text button label"
+#: src/Site/BlockLayout/FacetedBrowsePreview.php:50
+msgid "Select one…"
 msgstr ""
 
-#: src/Form/CategoryForm.php:90
-msgid ""
-"Enter the label of the button the user will click to toggle the helper text."
-" Enter nothing for the default label: \"Instructions\"."
-msgstr ""
-
-#: src/Form/CategoryForm.php:113
-msgid "Add a facet…"
-msgstr "Añadir una faceta..."
-
-#: src/Form/FacetForm.php:22
-msgid "Facet name"
-msgstr "Nombre de la faceta"
-
-#: src/Form/FacetForm.php:33
-msgid "Set facet"
-msgstr "Establecer faceta"
+#: src/Site/NavigationLink/FacetedBrowse.php:13
+msgid "Faceted browse"
+msgstr "Navegación facetada"
 
 #: src/Controller/SiteAdmin/PageController.php:44
 msgid "Page successfully added. Add categories below."
@@ -614,3 +513,127 @@ msgstr "Categoría editada con éxito."
 #: src/Controller/SiteAdmin/CategoryController.php:128
 msgid "Category successfully deleted."
 msgstr "Categoría borrada con éxito."
+
+#: src/Form/FacetForm.php:22
+msgid "Facet name"
+msgstr "Nombre de la faceta"
+
+#: src/Form/FacetForm.php:33
+msgid "Set facet"
+msgstr "Establecer faceta"
+
+#: src/Form/PageForm.php:19
+msgid "Enter the title of this page."
+msgstr "Introducir el título de esta página."
+
+#: src/Form/PageForm.php:43
+msgid "Select the type of resources to browse."
+msgstr "Seleccionar el tipo de recursos por los que navegar."
+
+#: src/Form/ColumnForm.php:22
+msgid "Column name"
+msgstr "Nombre de la columna"
+
+#: src/Form/ColumnForm.php:33
+msgid "Exclude sort by"
+msgstr "Excluir ordenar por"
+
+#: src/Form/CategoryForm.php:24
+msgid ""
+"Enter the name of this category. A category is a logical grouping of "
+"resources that can be described using faceted classification."
+msgstr ""
+"Introducir el nombre de esta categoría. Una categoría es una agrupación "
+"lógica de recursos que puede ser descrita mediante una clasificación "
+"facetada."
+
+#: src/Form/CategoryForm.php:36
+msgid ""
+"Configure the logical grouping of resources that make up this category. No "
+"query means all site resources."
+msgstr ""
+"Configurar la agrupación lógica de recursos que constituyen esta categoría. "
+"Si no se especifica ninguna consulta se devolverán todos los recursos del "
+"sitio."
+
+#: src/Form/CategoryForm.php:63
+msgid "Default sort by"
+msgstr ""
+
+#: src/Form/CategoryForm.php:88
+msgid "Helper text"
+msgstr ""
+
+#: src/Form/CategoryForm.php:89
+msgid ""
+"Enter text to be displayed to the user on the category sidebar. Here you can"
+" add short instructions, a link to instructions, etc. Enter nothing to have "
+"no helper text."
+msgstr ""
+
+#: src/Form/CategoryForm.php:100
+msgid "Helper text button label"
+msgstr ""
+
+#: src/Form/CategoryForm.php:101
+msgid ""
+"Enter the label of the button the user will click to toggle the helper text."
+" Enter nothing for the default label: \"Instructions\"."
+msgstr ""
+
+#: src/Form/CategoryForm.php:112
+msgid "Value facet mode"
+msgstr ""
+
+#: src/Form/CategoryForm.php:113
+msgid ""
+"For Value facets, choose whether the user will match all selected values or "
+"match any selected values. Note that this will apply to every Value facet in"
+" this category."
+msgstr ""
+
+#: src/Form/CategoryForm.php:115
+msgid "Match all"
+msgstr ""
+
+#: src/Form/CategoryForm.php:116
+msgid "Match any"
+msgstr ""
+
+#: src/Form/CategoryForm.php:128
+msgid "Add a facet…"
+msgstr "Añadir una faceta..."
+
+#: config/module.config.php:98
+msgid "A facet must have a name."
+msgstr "Una faceta debe tener un nombre."
+
+#: config/module.config.php:99
+msgid "A column must have a name."
+msgstr "Una columna debe tener un nombre."
+
+#: config/module.config.php:100
+msgid "A column must have a property."
+msgstr "Una columna debe tener una propiedad."
+
+#: config/module.config.php:101
+msgid "Error fetching browse markup."
+msgstr "Error al obtener el marcado de navegación. "
+
+#: config/module.config.php:102
+msgid "Error fetching facet markup."
+msgstr "Error al obtener el marcado de faceta. "
+
+#: config/module.config.php:103
+msgid "Error fetching category markup."
+msgstr "Error al obtener el marcado de categoría. "
+
+#: config/module.config.php:104
+msgid "Cannot show all. The result set is likely too large."
+msgstr ""
+"No se ha podido mostrar todo. Probablemente el número de resultados sea "
+"demasiado grande."
+
+#: config/module.config.php:105
+msgid "Loading results…"
+msgstr "Cargando resultados..."
