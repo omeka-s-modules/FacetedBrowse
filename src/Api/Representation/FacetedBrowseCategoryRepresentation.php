@@ -28,6 +28,7 @@ class FacetedBrowseCategoryRepresentation extends AbstractEntityRepresentation
             'o-module-faceted_browse:column' => $this->columns(),
             'o-module-faceted_browse:helper_text' => $this->helperText(),
             'o-module-faceted_browse:helper_text_button_label' => $this->helperTextButtonLabel(),
+            'o-module-faceted_browse:value_facet_mode' => $this->valueFacetMode(),
         ];
     }
 
@@ -95,6 +96,11 @@ class FacetedBrowseCategoryRepresentation extends AbstractEntityRepresentation
     public function helperTextButtonLabel()
     {
         return $this->resource->getHelperTextButtonLabel();
+    }
+
+    public function valueFacetMode()
+    {
+        return $this->resource->getValueFacetMode();
     }
 
     public function page()

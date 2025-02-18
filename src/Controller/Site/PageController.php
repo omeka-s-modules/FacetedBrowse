@@ -62,8 +62,27 @@ class PageController extends AbstractActionController
         }
         $this->setBrowseDefaults($sortBy, $sortOrder);
 
+        $categoryResourceIds = null;
+        if ($category) {
+            parse_str($category->query(), $categoryQuery);
+            if ($categoryQuery) {
+                // If a category query is set, get the IDs of all resources in this
+                // category, and include them in the facets query below. This ensures
+                // that the result of the facets query only includes resources that
+                // are part of the category query. We do this only when the category
+                // query is set to avoid the overhead of an additional query when
+                // it's not needed. In that case, the "category" is all the resources
+                // assigned to the site.
+                $categoryResourceIds = $this->api()
+                    ->search($page->resourceType(), $categoryQuery, ['returnScalar' => 'id'])
+                    ->getContent();
+            }
+        }
+
+        // Get the resources from the facets query (only those within this category).
         $query = array_merge(
             $this->params()->fromQuery(),
+            ['id' => $categoryResourceIds],
             ['site_id' => $this->currentSite()->id()]
         );
         $response = $this->api()->search($page->resourceType(), $query);

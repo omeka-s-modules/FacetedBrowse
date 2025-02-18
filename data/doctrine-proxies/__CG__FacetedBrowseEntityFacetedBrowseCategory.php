@@ -67,10 +67,10 @@ class FacetedBrowseCategory extends \FacetedBrowse\Entity\FacetedBrowseCategory 
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'sortBy', 'sortOrder', 'helperText', 'helperTextButtonLabel', 'page', 'position', 'facets', 'columns'];
+            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'sortBy', 'sortOrder', 'helperText', 'helperTextButtonLabel', 'valueFacetMode', 'page', 'position', 'facets', 'columns'];
         }
 
-        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'sortBy', 'sortOrder', 'helperText', 'helperTextButtonLabel', 'page', 'position', 'facets', 'columns'];
+        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'name', 'query', 'sortBy', 'sortOrder', 'helperText', 'helperTextButtonLabel', 'valueFacetMode', 'page', 'position', 'facets', 'columns'];
     }
 
     /**
@@ -410,6 +410,28 @@ class FacetedBrowseCategory extends \FacetedBrowse\Entity\FacetedBrowseCategory 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHelperTextButtonLabel', []);
 
         return parent::getHelperTextButtonLabel();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setValueFacetMode(?string $valueFacetMode): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setValueFacetMode', [$valueFacetMode]);
+
+        parent::setValueFacetMode($valueFacetMode);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getValueFacetMode(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getValueFacetMode', []);
+
+        return parent::getValueFacetMode();
     }
 
     /**
