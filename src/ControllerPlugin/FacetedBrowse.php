@@ -76,6 +76,7 @@ class FacetedBrowse extends AbstractPlugin
         $controller = $this->getController();
         $sortings = [];
         if ($category) {
+            // Get sortings for a category.
             foreach ($category->columns() as $column) {
                 if ($column->excludeSortBy()) {
                     // Don't include sorting if it was excluded.
@@ -91,16 +92,14 @@ class FacetedBrowse extends AbstractPlugin
             }
         }
         if (!$sortings) {
-            $sortings = [
-                [
-                    'label' => $controller->translate('Created'),
-                    'value' => 'created',
-                ],
-                [
-                    'label' => $controller->translate('Title'),
-                    'value' => 'title',
-                ],
-            ];
+            // If there are no sortings, use the default sort config.
+            $sortConfig = $this->services->get('Omeka\Browse')->getSortConfig('public', 'items');
+            foreach ($sortConfig as $sortKey => $sortValue) {
+                $sortings[] = [
+                    'label' => $sortValue,
+                    'value' => $sortKey,
+                ];
+            }
         }
         return $sortings;
     }
