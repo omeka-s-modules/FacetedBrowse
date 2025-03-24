@@ -74,7 +74,7 @@ class FacetedBrowse extends AbstractPlugin
     public function getSortings(?FacetedBrowseCategoryRepresentation $category)
     {
         $controller = $this->getController();
-        $sortings = [];
+        $sortConfig = $this->services->get('Omeka\Browse')->getSortConfig('public', 'items');
         if ($category) {
             // Get sortings for a category.
             foreach ($category->columns() as $column) {
@@ -84,22 +84,16 @@ class FacetedBrowse extends AbstractPlugin
                 }
                 $sortBy = $column->sortBy();
                 if ($sortBy) {
-                    $sortings[] = [
-                        'label' => $controller->translate($column->name()),
-                        'value' => $column->sortBy(),
-                    ];
+                    $sortConfig[$column->sortBy()] = $controller->translate($column->name());
                 }
             }
         }
-        if (!$sortings) {
-            // If there are no sortings, use the default sort config.
-            $sortConfig = $this->services->get('Omeka\Browse')->getSortConfig('public', 'items');
-            foreach ($sortConfig as $sortKey => $sortValue) {
-                $sortings[] = [
-                    'label' => $sortValue,
-                    'value' => $sortKey,
-                ];
-            }
+        $sortings = [];
+        foreach ($sortConfig as $sortKey => $sortValue) {
+            $sortings[] = [
+                'label' => $sortValue,
+                'value' => $sortKey,
+            ];
         }
         return $sortings;
     }
