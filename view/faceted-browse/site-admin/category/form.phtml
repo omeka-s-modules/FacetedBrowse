@@ -1,4 +1,6 @@
 <?php
+$this->trigger('view.faceted_browse.category_form');
+
 $this->headLink()->appendStylesheet($this->assetUrl('css/site-admin/faceted-browse.css', 'FacetedBrowse'));
 $this->headScript()->appendFile($this->assetUrl('vendor/sortablejs/Sortable.min.js', 'Omeka'));
 $this->headScript()->appendFile($this->assetUrl('js/faceted-browse.js', 'FacetedBrowse'));

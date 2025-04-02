@@ -49,16 +49,19 @@ class PageController extends AbstractActionController
         $columns = $category ? $category->columns() : null;
 
         // Set default sort.
-        $sortByValueOptions = $this->facetedBrowse()->getSortByValueOptions($category);
-        $sortBy = array_key_first($sortByValueOptions);
+        $browseDefaults = $this->siteSettings()->get('browse_defaults_public_items');
+        $sortBy = $browseDefaults['sort_by'];
         if ($category) {
+            $sortByValueOptions = $this->facetedBrowse()->getSortByValueOptions($category);
             $sortBy = array_key_exists($category->sortBy(), $sortByValueOptions)
                 ? $category->sortBy()
-                : array_key_first($sortByValueOptions);
+                : $sortBy;
         }
-        $sortOrder = 'desc';
+        $sortOrder = $browseDefaults['sort_order'];
         if ($category) {
-            $sortOrder = in_array($category->sortOrder(), ['desc', 'asc']) ? $category->sortOrder() : 'desc';
+            $sortOrder = in_array($category->sortOrder(), ['desc', 'asc'])
+                ? $category->sortOrder()
+                : $sortOrder;
         }
         $this->setBrowseDefaults($sortBy, $sortOrder);
 
