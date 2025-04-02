@@ -17,26 +17,26 @@ class Unknown implements FacetTypeInterface
         $this->formElements = $formElements;
     }
 
-    public function getLabel() : string
+    public function getLabel(): string
     {
         return '[Unknown]'; // @translate
     }
 
-    public function getResourceTypes() : array
+    public function getResourceTypes(): array
     {
         return [];
     }
 
-    public function getMaxFacets() : ?int
+    public function getMaxFacets(): ?int
     {
         return null;
     }
 
-    public function prepareDataForm(PhpRenderer $view) : void
+    public function prepareDataForm(PhpRenderer $view): void
     {
     }
 
-    public function renderDataForm(PhpRenderer $view, array $data) : string
+    public function renderDataForm(PhpRenderer $view, array $data): string
     {
         $typeElement = $this->formElements->get(LaminasElement\Text::class);
         $typeElement->setName('facet_type_unknown');
@@ -66,11 +66,11 @@ class Unknown implements FacetTypeInterface
         );
     }
 
-    public function prepareFacet(PhpRenderer $view) : void
+    public function prepareFacet(PhpRenderer $view): void
     {
     }
 
-    public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet) : string
+    public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet): string
     {
         return '';
     }

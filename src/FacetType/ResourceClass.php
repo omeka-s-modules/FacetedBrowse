@@ -16,27 +16,27 @@ class ResourceClass implements FacetTypeInterface
         $this->formElements = $formElements;
     }
 
-    public function getLabel() : string
+    public function getLabel(): string
     {
         return 'Resource class'; // @translate
     }
 
-    public function getResourceTypes() : array
+    public function getResourceTypes(): array
     {
         return ['items', 'item_sets', 'media'];
     }
 
-    public function getMaxFacets() : ?int
+    public function getMaxFacets(): ?int
     {
         return null;
     }
 
-    public function prepareDataForm(PhpRenderer $view) : void
+    public function prepareDataForm(PhpRenderer $view): void
     {
         $view->headScript()->appendFile($view->assetUrl('js/facet-data-form/resource-class.js', 'FacetedBrowse'));
     }
 
-    public function renderDataForm(PhpRenderer $view, array $data) : string
+    public function renderDataForm(PhpRenderer $view, array $data): string
     {
         // Select type
         $selectType = $this->formElements->get(LaminasElement\Select::class);
@@ -87,12 +87,12 @@ class ResourceClass implements FacetTypeInterface
         ]);
     }
 
-    public function prepareFacet(PhpRenderer $view) : void
+    public function prepareFacet(PhpRenderer $view): void
     {
         $view->headScript()->appendFile($view->assetUrl('js/facet-render/resource-class.js', 'FacetedBrowse'));
     }
 
-    public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet) : string
+    public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet): string
     {
         $classes = [];
         $classIds = $facet->data('class_ids', []);

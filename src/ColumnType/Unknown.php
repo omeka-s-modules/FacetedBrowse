@@ -18,26 +18,26 @@ class Unknown implements ColumnTypeInterface
         $this->formElements = $formElements;
     }
 
-    public function getLabel() : string
+    public function getLabel(): string
     {
         return '[Unknown]'; // @translate
     }
 
-    public function getResourceTypes() : array
+    public function getResourceTypes(): array
     {
         return [];
     }
 
-    public function getMaxColumns() : ?int
+    public function getMaxColumns(): ?int
     {
         return null;
     }
 
-    public function prepareDataForm(PhpRenderer $view) : void
+    public function prepareDataForm(PhpRenderer $view): void
     {
     }
 
-    public function renderDataForm(PhpRenderer $view, array $data) : string
+    public function renderDataForm(PhpRenderer $view, array $data): string
     {
         $typeElement = $this->formElements->get(LaminasElement\Text::class);
         $typeElement->setName('column_type_unknown');
@@ -67,12 +67,12 @@ class Unknown implements ColumnTypeInterface
         );
     }
 
-    public function getSortBy(FacetedBrowseColumnRepresentation $column) : ?string
+    public function getSortBy(FacetedBrowseColumnRepresentation $column): ?string
     {
         return null;
     }
 
-    public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource) : string
+    public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource): string
     {
         return '';
     }

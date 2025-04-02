@@ -110,67 +110,67 @@ class FacetedBrowsePage extends AbstractEntity
         return $this->id;
     }
 
-    public function setOwner(?User $owner = null) : void
+    public function setOwner(?User $owner = null): void
     {
         $this->owner = $owner;
     }
 
-    public function getOwner() : ?User
+    public function getOwner(): ?User
     {
         return $this->owner;
     }
 
-    public function setSite(Site $site) : void
+    public function setSite(Site $site): void
     {
         $this->site = $site;
     }
 
-    public function getSite() : Site
+    public function getSite(): Site
     {
         return $this->site;
     }
 
-    public function setCreated(DateTime $created) : void
+    public function setCreated(DateTime $created): void
     {
         $this->created = $created;
     }
 
-    public function getCreated() : DateTime
+    public function getCreated(): DateTime
     {
         return $this->created;
     }
 
-    public function setModified(DateTime $modified) : void
+    public function setModified(DateTime $modified): void
     {
         $this->modified = $modified;
     }
 
-    public function getModified() : ?DateTime
+    public function getModified(): ?DateTime
     {
         return $this->modified;
     }
 
-    public function setTitle(string $title) : void
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
 
-    public function getTitle() : string
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    public function setResourceType(string $resourceType) : void
+    public function setResourceType(string $resourceType): void
     {
         $this->resourceType = $resourceType;
     }
 
-    public function getResourceType() : string
+    public function getResourceType(): string
     {
         return $this->resourceType;
     }
 
-    public function getCategories() : Collection
+    public function getCategories(): Collection
     {
         return $this->categories;
     }
@@ -178,7 +178,7 @@ class FacetedBrowsePage extends AbstractEntity
     /**
      * @PrePersist
      */
-    public function prePersist(LifecycleEventArgs $eventArgs) : void
+    public function prePersist(LifecycleEventArgs $eventArgs): void
     {
         $this->setCreated(new DateTime('now'));
     }

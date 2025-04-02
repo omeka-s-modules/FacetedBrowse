@@ -16,27 +16,27 @@ class Value implements FacetTypeInterface
         $this->formElements = $formElements;
     }
 
-    public function getLabel() : string
+    public function getLabel(): string
     {
         return 'Value'; // @translate
     }
 
-    public function getResourceTypes() : array
+    public function getResourceTypes(): array
     {
         return ['items', 'item_sets', 'media'];
     }
 
-    public function getMaxFacets() : ?int
+    public function getMaxFacets(): ?int
     {
         return null;
     }
 
-    public function prepareDataForm(PhpRenderer $view) : void
+    public function prepareDataForm(PhpRenderer $view): void
     {
         $view->headScript()->appendFile($view->assetUrl('js/facet-data-form/value.js', 'FacetedBrowse'));
     }
 
-    public function renderDataForm(PhpRenderer $view, array $data) : string
+    public function renderDataForm(PhpRenderer $view, array $data): string
     {
         // Property ID
         $propertyId = $this->formElements->get(OmekaElement\PropertySelect::class);
@@ -130,12 +130,12 @@ class Value implements FacetTypeInterface
         ]);
     }
 
-    public function prepareFacet(PhpRenderer $view) : void
+    public function prepareFacet(PhpRenderer $view): void
     {
         $view->headScript()->appendFile($view->assetUrl('js/facet-render/value.js', 'FacetedBrowse'));
     }
 
-    public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet) : string
+    public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet): string
     {
         $values = $facet->data('values');
         $values = explode("\n", $values);

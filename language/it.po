@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Giorgio Comai <g@giorgiocomai.eu>, 2024
+# Giorgio Comai <g@giorgiocomai.eu>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-18 13:46-0500\n"
+"POT-Creation-Date: 2025-04-02 14:39-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
-"Last-Translator: Giorgio Comai <g@giorgiocomai.eu>, 2024\n"
+"Last-Translator: Giorgio Comai <g@giorgiocomai.eu>, 2025\n"
 "Language-Team: Italian (https://app.transifex.com/omeka/teams/14184/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -103,49 +103,49 @@ msgstr "Elimina faccetta"
 msgid "Restore facet"
 msgstr "Ripristina faccetta"
 
-#: view/faceted-browse/site-admin/category/form.phtml:17
+#: view/faceted-browse/site-admin/category/form.phtml:19
 msgid "Edit Category"
 msgstr "Modifica categoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:17
 #: view/faceted-browse/site-admin/category/form.phtml:19
+#: view/faceted-browse/site-admin/category/form.phtml:21
 #: view/faceted-browse/site-admin/page/browse.phtml:7
 #: view/faceted-browse/site-admin/page/form.phtml:14
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Faceted Browse"
 msgstr "Navigazione a faccette"
 
-#: view/faceted-browse/site-admin/category/form.phtml:19
+#: view/faceted-browse/site-admin/category/form.phtml:21
 msgid "Add Category"
 msgstr "Aggiungi categoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:31
+#: view/faceted-browse/site-admin/category/form.phtml:33
 #: view/faceted-browse/site-admin/page/form.phtml:28
 msgid "Save and&hellip;"
 msgstr "Salva e..."
 
-#: view/faceted-browse/site-admin/category/form.phtml:33
+#: view/faceted-browse/site-admin/category/form.phtml:35
 msgid "Return to page"
 msgstr "Ritorna alla pagina"
 
-#: view/faceted-browse/site-admin/category/form.phtml:34
+#: view/faceted-browse/site-admin/category/form.phtml:36
 msgid "Stay on this category"
 msgstr "Rimani su questa categoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:42
+#: view/faceted-browse/site-admin/category/form.phtml:44
 #: view/faceted-browse/site-admin/page/form.phtml:39
 msgid "Page edit"
 msgstr "Modifica della pagina"
 
-#: view/faceted-browse/site-admin/category/form.phtml:44
+#: view/faceted-browse/site-admin/category/form.phtml:46
 msgid "Category edit"
 msgstr "Modifica della categoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:44
+#: view/faceted-browse/site-admin/category/form.phtml:46
 msgid "Category add"
 msgstr "Aggiunta della categoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:62
+#: view/faceted-browse/site-admin/category/form.phtml:64
 msgid "Facets"
 msgstr "Faccette"
 
@@ -569,7 +569,7 @@ msgstr ""
 
 #: src/Form/CategoryForm.php:63
 msgid "Default sort by"
-msgstr ""
+msgstr "Come impostazione predefinita, ordina per "
 
 #: src/Form/CategoryForm.php:88
 msgid "Helper text"
@@ -601,7 +601,7 @@ msgstr ""
 
 #: src/Form/CategoryForm.php:112
 msgid "Value facet mode"
-msgstr ""
+msgstr "Modalità faccetta basata su valore"
 
 #: src/Form/CategoryForm.php:113
 msgid ""
@@ -609,14 +609,18 @@ msgid ""
 "match any selected values. Note that this will apply to every Value facet in"
 " this category."
 msgstr ""
+"Per faccette basate su valore, scegli se i filtri includeranno contenuti "
+"relativi a tutti i valori selezionati dall'utente o uno qualsiasi tra i "
+"valori selezionati dall'utente. Questa scelta si applicherà a tutte le "
+"faccette basate su valore in questa categoria. "
 
 #: src/Form/CategoryForm.php:115
 msgid "Match all"
-msgstr ""
+msgstr "Tutti devono corrispondere"
 
 #: src/Form/CategoryForm.php:116
 msgid "Match any"
-msgstr ""
+msgstr "Uno qualsiasi deve corrispondere"
 
 #: src/Form/CategoryForm.php:128
 msgid "Add a facet…"

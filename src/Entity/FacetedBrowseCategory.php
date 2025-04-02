@@ -181,142 +181,142 @@ class FacetedBrowseCategory extends AbstractEntity
         return $this->id;
     }
 
-    public function setOwner(?User $owner = null) : void
+    public function setOwner(?User $owner = null): void
     {
         $this->owner = $owner;
     }
 
-    public function getOwner() : ?User
+    public function getOwner(): ?User
     {
         return $this->owner;
     }
 
-    public function setSite(Site $site) : void
+    public function setSite(Site $site): void
     {
         $this->site = $site;
     }
 
-    public function getSite() : Site
+    public function getSite(): Site
     {
         return $this->site;
     }
 
-    public function setCreated(DateTime $created) : void
+    public function setCreated(DateTime $created): void
     {
         $this->created = $created;
     }
 
-    public function getCreated() : DateTime
+    public function getCreated(): DateTime
     {
         return $this->created;
     }
 
-    public function setModified(DateTime $modified) : void
+    public function setModified(DateTime $modified): void
     {
         $this->modified = $modified;
     }
 
-    public function getModified() : ?DateTime
+    public function getModified(): ?DateTime
     {
         return $this->modified;
     }
 
-    public function setName(string $name) : void
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function setQuery(string $query) : void
+    public function setQuery(string $query): void
     {
         $this->query = $query;
     }
 
-    public function getQuery() : string
+    public function getQuery(): string
     {
         return $this->query;
     }
 
-    public function setSortBy(?string $sortBy) : void
+    public function setSortBy(?string $sortBy): void
     {
         $this->sortBy = $sortBy;
     }
 
-    public function getSortBy() : ?string
+    public function getSortBy(): ?string
     {
         return $this->sortBy;
     }
 
-    public function setSortOrder(?string $sortOrder) : void
+    public function setSortOrder(?string $sortOrder): void
     {
         $this->sortOrder = $sortOrder;
     }
 
-    public function getSortOrder() : ?string
+    public function getSortOrder(): ?string
     {
         return $this->sortOrder;
     }
 
-    public function setHelperText(?string $helperText) : void
+    public function setHelperText(?string $helperText): void
     {
         $this->helperText = $helperText;
     }
 
-    public function getHelperText() : ?string
+    public function getHelperText(): ?string
     {
         return $this->helperText;
     }
 
-    public function setHelperTextButtonLabel(?string $helperTextButtonLabel) : void
+    public function setHelperTextButtonLabel(?string $helperTextButtonLabel): void
     {
         $this->helperTextButtonLabel = $helperTextButtonLabel;
     }
 
-    public function getHelperTextButtonLabel() : ?string
+    public function getHelperTextButtonLabel(): ?string
     {
         return $this->helperTextButtonLabel;
     }
 
-    public function setValueFacetMode(?string $valueFacetMode) : void
+    public function setValueFacetMode(?string $valueFacetMode): void
     {
         $this->valueFacetMode = $valueFacetMode;
     }
 
-    public function getValueFacetMode() : ?string
+    public function getValueFacetMode(): ?string
     {
         return $this->valueFacetMode;
     }
 
-    public function setPage(FacetedBrowsePage $page) : void
+    public function setPage(FacetedBrowsePage $page): void
     {
         $this->page = $page;
     }
 
-    public function getPage() : FacetedBrowsePage
+    public function getPage(): FacetedBrowsePage
     {
         return $this->page;
     }
 
-    public function setPosition(int $position) : void
+    public function setPosition(int $position): void
     {
         $this->position = $position;
     }
 
-    public function getPosition() : int
+    public function getPosition(): int
     {
         return $this->position;
     }
 
-    public function getFacets() : Collection
+    public function getFacets(): Collection
     {
         return $this->facets;
     }
 
-    public function getColumns() : Collection
+    public function getColumns(): Collection
     {
         return $this->columns;
     }
@@ -324,7 +324,7 @@ class FacetedBrowseCategory extends AbstractEntity
     /**
      * @PrePersist
      */
-    public function prePersist(LifecycleEventArgs $eventArgs) : void
+    public function prePersist(LifecycleEventArgs $eventArgs): void
     {
         $this->setCreated(new DateTime('now'));
     }

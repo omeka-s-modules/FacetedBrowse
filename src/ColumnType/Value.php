@@ -17,27 +17,27 @@ class Value implements ColumnTypeInterface
         $this->formElements = $formElements;
     }
 
-    public function getLabel() : string
+    public function getLabel(): string
     {
         return 'Value'; // @translate
     }
 
-    public function getResourceTypes() : array
+    public function getResourceTypes(): array
     {
         return ['items', 'item_sets', 'media'];
     }
 
-    public function getMaxColumns() : ?int
+    public function getMaxColumns(): ?int
     {
         return null;
     }
 
-    public function prepareDataForm(PhpRenderer $view) : void
+    public function prepareDataForm(PhpRenderer $view): void
     {
         $view->headScript()->appendFile($view->assetUrl('js/column-data-form/value.js', 'FacetedBrowse'));
     }
 
-    public function renderDataForm(PhpRenderer $view, array $data) : string
+    public function renderDataForm(PhpRenderer $view, array $data): string
     {
         $propertySelect = $this->formElements->get(OmekaElement\PropertySelect::class);
         $propertySelect->setName('property_term');
@@ -72,12 +72,12 @@ class Value implements ColumnTypeInterface
         ]);
     }
 
-    public function getSortBy(FacetedBrowseColumnRepresentation $column) : ?string
+    public function getSortBy(FacetedBrowseColumnRepresentation $column): ?string
     {
         return $column->data('property_term');
     }
 
-    public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource) : string
+    public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource): string
     {
         $propertyTerm = $column->data('property_term');
         $maxValues = $column->data('max_values');

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-18 13:46-0500\n"
+"POT-Creation-Date: 2025-04-02 14:39-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Hong Zhang <zhangh@unlv.nevada.edu>, 2021\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/omeka/teams/14184/zh_CN/)\n"
@@ -95,49 +95,49 @@ msgstr "取消分面"
 msgid "Restore facet"
 msgstr "恢复分面"
 
-#: view/faceted-browse/site-admin/category/form.phtml:17
+#: view/faceted-browse/site-admin/category/form.phtml:19
 msgid "Edit Category"
 msgstr "编辑类别"
 
-#: view/faceted-browse/site-admin/category/form.phtml:17
 #: view/faceted-browse/site-admin/category/form.phtml:19
+#: view/faceted-browse/site-admin/category/form.phtml:21
 #: view/faceted-browse/site-admin/page/browse.phtml:7
 #: view/faceted-browse/site-admin/page/form.phtml:14
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Faceted Browse"
 msgstr "分面浏览"
 
-#: view/faceted-browse/site-admin/category/form.phtml:19
+#: view/faceted-browse/site-admin/category/form.phtml:21
 msgid "Add Category"
 msgstr "添加类别"
 
-#: view/faceted-browse/site-admin/category/form.phtml:31
+#: view/faceted-browse/site-admin/category/form.phtml:33
 #: view/faceted-browse/site-admin/page/form.phtml:28
 msgid "Save and&hellip;"
 msgstr "保存并且&hellip;"
 
-#: view/faceted-browse/site-admin/category/form.phtml:33
+#: view/faceted-browse/site-admin/category/form.phtml:35
 msgid "Return to page"
 msgstr ""
 
-#: view/faceted-browse/site-admin/category/form.phtml:34
+#: view/faceted-browse/site-admin/category/form.phtml:36
 msgid "Stay on this category"
 msgstr "停留在此类别上"
 
-#: view/faceted-browse/site-admin/category/form.phtml:42
+#: view/faceted-browse/site-admin/category/form.phtml:44
 #: view/faceted-browse/site-admin/page/form.phtml:39
 msgid "Page edit"
 msgstr ""
 
-#: view/faceted-browse/site-admin/category/form.phtml:44
+#: view/faceted-browse/site-admin/category/form.phtml:46
 msgid "Category edit"
 msgstr ""
 
-#: view/faceted-browse/site-admin/category/form.phtml:44
+#: view/faceted-browse/site-admin/category/form.phtml:46
 msgid "Category add"
 msgstr ""
 
-#: view/faceted-browse/site-admin/category/form.phtml:62
+#: view/faceted-browse/site-admin/category/form.phtml:64
 msgid "Facets"
 msgstr "分面"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-18 13:46-0500\n"
+"POT-Creation-Date: 2025-04-02 14:39-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Iametza Interaktiboa, 2024\n"
 "Language-Team: Basque (https://app.transifex.com/omeka/teams/14184/eu/)\n"
@@ -95,49 +95,49 @@ msgstr "Kendu fazeta"
 msgid "Restore facet"
 msgstr "Berrezarri fazeta"
 
-#: view/faceted-browse/site-admin/category/form.phtml:17
+#: view/faceted-browse/site-admin/category/form.phtml:19
 msgid "Edit Category"
 msgstr "Editatu Kategoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:17
 #: view/faceted-browse/site-admin/category/form.phtml:19
+#: view/faceted-browse/site-admin/category/form.phtml:21
 #: view/faceted-browse/site-admin/page/browse.phtml:7
 #: view/faceted-browse/site-admin/page/form.phtml:14
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Faceted Browse"
 msgstr "Fazetadun Arakatzea"
 
-#: view/faceted-browse/site-admin/category/form.phtml:19
+#: view/faceted-browse/site-admin/category/form.phtml:21
 msgid "Add Category"
 msgstr "Gehitu Kategoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:31
+#: view/faceted-browse/site-admin/category/form.phtml:33
 #: view/faceted-browse/site-admin/page/form.phtml:28
 msgid "Save and&hellip;"
 msgstr "Gorde eta&hellip;"
 
-#: view/faceted-browse/site-admin/category/form.phtml:33
+#: view/faceted-browse/site-admin/category/form.phtml:35
 msgid "Return to page"
 msgstr "Itzuli orrialdera"
 
-#: view/faceted-browse/site-admin/category/form.phtml:34
+#: view/faceted-browse/site-admin/category/form.phtml:36
 msgid "Stay on this category"
 msgstr "Egon kategoria honetan"
 
-#: view/faceted-browse/site-admin/category/form.phtml:42
+#: view/faceted-browse/site-admin/category/form.phtml:44
 #: view/faceted-browse/site-admin/page/form.phtml:39
 msgid "Page edit"
 msgstr "Editatu orrialdea"
 
-#: view/faceted-browse/site-admin/category/form.phtml:44
+#: view/faceted-browse/site-admin/category/form.phtml:46
 msgid "Category edit"
 msgstr "Editatu kategoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:44
+#: view/faceted-browse/site-admin/category/form.phtml:46
 msgid "Category add"
 msgstr "Gehitu kategoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:62
+#: view/faceted-browse/site-admin/category/form.phtml:64
 msgid "Facets"
 msgstr "Fazetak"
 

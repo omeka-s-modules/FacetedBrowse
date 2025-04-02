@@ -16,27 +16,27 @@ class ItemSet implements ColumnTypeInterface
         $this->formElements = $formElements;
     }
 
-    public function getLabel() : string
+    public function getLabel(): string
     {
         return 'Item set'; // @translate
     }
 
-    public function getResourceTypes() : array
+    public function getResourceTypes(): array
     {
         return ['items'];
     }
 
-    public function getMaxColumns() : ?int
+    public function getMaxColumns(): ?int
     {
         return 1;
     }
 
-    public function prepareDataForm(PhpRenderer $view) : void
+    public function prepareDataForm(PhpRenderer $view): void
     {
         $view->headScript()->appendFile($view->assetUrl('js/column-data-form/item-set.js', 'FacetedBrowse'));
     }
 
-    public function renderDataForm(PhpRenderer $view, array $data) : string
+    public function renderDataForm(PhpRenderer $view, array $data): string
     {
         $maxItemSetsInput = $this->formElements->get(LaminasElement\Number::class);
         $maxItemSetsInput->setName('max_item_sets');
@@ -56,13 +56,13 @@ class ItemSet implements ColumnTypeInterface
         ]);
     }
 
-    public function getSortBy(FacetedBrowseColumnRepresentation $column) : ?string
+    public function getSortBy(FacetedBrowseColumnRepresentation $column): ?string
     {
         // Omeka does not provide a way to sort by item set title.
         return null;
     }
 
-    public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource) : string
+    public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource): string
     {
         $maxItemSets = $column->data('max_item_sets');
 

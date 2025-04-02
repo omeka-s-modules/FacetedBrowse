@@ -15,7 +15,7 @@ class FacetedBrowseColumnRepresentation extends AbstractRepresentation
         $this->resource = $column;
     }
 
-    public function jsonSerialize() : array
+    public function jsonSerialize(): array
     {
         return [
             'o:id' => $this->id(),

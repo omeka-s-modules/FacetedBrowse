@@ -11,28 +11,28 @@ interface FacetTypeInterface
      *
      * @return string
      */
-    public function getLabel() : string;
+    public function getLabel(): string;
 
     /**
      * Get the resource types that can use this facet type.
      *
      * @return array
      */
-    public function getResourceTypes() : array;
+    public function getResourceTypes(): array;
 
     /**
      * Get the maximum amount of this facet type for one category.
      *
      * @return ?int
      */
-    public function getMaxFacets() : ?int;
+    public function getMaxFacets(): ?int;
 
     /**
      * Prepare the data form of this facet type.
      *
      * @param PhpRenderer $view
      */
-    public function prepareDataForm(PhpRenderer $view) : void;
+    public function prepareDataForm(PhpRenderer $view): void;
 
     /**
      * Render the data form of this facet type.
@@ -41,14 +41,14 @@ interface FacetTypeInterface
      * @param array $data
      * @return string
      */
-    public function renderDataForm(PhpRenderer $view, array $data) : string;
+    public function renderDataForm(PhpRenderer $view, array $data): string;
 
     /**
      * Prepare the render of this facet type.
      *
      * @param PhpRenderer $view
      */
-    public function prepareFacet(PhpRenderer $view) : void;
+    public function prepareFacet(PhpRenderer $view): void;
 
     /**
      * Render the markup for this facet type.
@@ -57,5 +57,5 @@ interface FacetTypeInterface
      * @param FacetedBrowseFacetRepresentation $facet
      * @return string
      */
-    public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet) : string;
+    public function renderFacet(PhpRenderer $view, FacetedBrowseFacetRepresentation $facet): string;
 }

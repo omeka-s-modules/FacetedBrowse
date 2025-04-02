@@ -15,37 +15,37 @@ class Title implements ColumnTypeInterface
         $this->formElements = $formElements;
     }
 
-    public function getLabel() : string
+    public function getLabel(): string
     {
         return 'Title (link to resource)'; // @translate
     }
 
-    public function getResourceTypes() : array
+    public function getResourceTypes(): array
     {
         return ['items', 'item_sets', 'media'];
     }
 
-    public function getMaxColumns() : ?int
+    public function getMaxColumns(): ?int
     {
         return 1;
     }
 
-    public function prepareDataForm(PhpRenderer $view) : void
+    public function prepareDataForm(PhpRenderer $view): void
     {
         $view->headScript()->appendFile($view->assetUrl('js/column-data-form/title.js', 'FacetedBrowse'));
     }
 
-    public function renderDataForm(PhpRenderer $view, array $data) : string
+    public function renderDataForm(PhpRenderer $view, array $data): string
     {
         return '';
     }
 
-    public function getSortBy(FacetedBrowseColumnRepresentation $column) : ?string
+    public function getSortBy(FacetedBrowseColumnRepresentation $column): ?string
     {
         return 'title';
     }
 
-    public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource) : string
+    public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource): string
     {
         return $resource->linkPretty('square');
     }

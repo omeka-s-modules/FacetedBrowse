@@ -79,62 +79,62 @@ class FacetedBrowseColumn extends AbstractEntity
         return $this->id;
     }
 
-    public function setCategory(FacetedBrowseCategory $category) : void
+    public function setCategory(FacetedBrowseCategory $category): void
     {
         $this->category = $category;
     }
 
-    public function getCategory() : FacetedBrowseCategory
+    public function getCategory(): FacetedBrowseCategory
     {
         return $this->category;
     }
 
-    public function setName(string $name) : void
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function setType(string $type) : void
+    public function setType(string $type): void
     {
         $this->type = $type;
     }
 
-    public function getType() : string
+    public function getType(): string
     {
         return $this->type;
     }
 
-    public function setExcludeSortBy(bool $excludeSortBy) : void
+    public function setExcludeSortBy(bool $excludeSortBy): void
     {
         $this->excludeSortBy = $excludeSortBy;
     }
 
-    public function getExcludeSortBy() : bool
+    public function getExcludeSortBy(): bool
     {
         return $this->excludeSortBy;
     }
 
-    public function setData(array $data) : void
+    public function setData(array $data): void
     {
         $this->data = $data;
     }
 
-    public function getData() : array
+    public function getData(): array
     {
         return $this->data;
     }
 
-    public function setPosition(int $position) : void
+    public function setPosition(int $position): void
     {
         $this->position = $position;
     }
 
-    public function getPosition() : int
+    public function getPosition(): int
     {
         return $this->position;
     }
