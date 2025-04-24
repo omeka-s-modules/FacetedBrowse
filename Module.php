@@ -84,31 +84,41 @@ SQL;
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)
     {
-        // Conditionally add the view-overrides path to the template path stack.
-        // We do this to override the "common/search-form" template when a "sitewide
-        // search full-text facet" is set in site settings.
+        /*
+         * Conditionally add the view-overrides path to the template path stack.
+         *
+         * We do this to override the "common/search-form" template when a
+         * sitewide search facet ID is set in site settings.
+         */
         $sharedEventManager->attach(
             '*',
             'route',
             function (Event $event) {
 
-                // Add the path only when on a public site.
                 $routeMatch = $event->getRouteMatch();
                 if (!$routeMatch->getParam('__SITE__')) {
+                    return; // This is not a public site.
+                }
+
+                // Get the facet ID from site settings.
+                $siteSettings = $this->getServiceLocator()->get('Omeka\Settings\Site');
+                $facetId = $siteSettings->get('faceted_browse_sitewide_search_full_text_facet');
+                if (!$facetId) {
+                    return; // There is no facet ID.
+                }
+
+                // Get the facet entity.
+                $entityManager = $this->getServiceLocator()->get('Omeka\EntityManager');
+                $facet = $entityManager->find('FacetedBrowse\Entity\FacetedBrowseFacet', $facetId);
+                if (!$facet) {
+                    // The facet has been deleted. Delete the setting.
+                    $siteSettings->delete('faceted_browse_sitewide_search_full_text_facet');
                     return;
                 }
 
-                $services = $this->getServiceLocator();
-                $siteSettings = $services->get('Omeka\Settings\Site');
-                $entityManager = $services->get('Omeka\EntityManager');
-
-                // Add the path only when the full-text facet is set.
-                $facetId = $siteSettings->get('faceted_browse_sitewide_search_full_text_facet');
-                $facet = $entityManager->find('FacetedBrowse\Entity\FacetedBrowseFacet', $facetId);
-                if ($facet) {
-                    $path = sprintf('%s/modules/FacetedBrowse/view-overrides', OMEKA_PATH);
-                    $this->getServiceLocator()->get('ViewTemplatePathStack')->addPath($path);
-                }
+                // Add the path only when the full-text facet exists.
+                $path = sprintf('%s/modules/FacetedBrowse/view-overrides', OMEKA_PATH);
+                $this->getServiceLocator()->get('ViewTemplatePathStack')->addPath($path);
             },
             // Execute at lower priority so this runs later than MvcListeners::preparePublicSite().
             -10
@@ -127,7 +137,7 @@ SQL;
                 $siteSettings = $services->get('Omeka\Settings\Site');
 
                 // Get all full-text facets in this site.
-                $dql = 'SELECT f
+                $dql = 'SELECT f.id AS facet_id, f.name AS facet_name, c.name AS category_name, p.title AS page_title
                     FROM FacetedBrowse\Entity\FacetedBrowseFacet f
                     JOIN f.category c
                     JOIN c.page p
@@ -138,14 +148,12 @@ SQL;
                 $query->setParameter('site', $currentSite->id());
 
                 $valueOptions = [];
-                foreach ($query->getResult() as $facet) {
-                    $category = $facet->getCategory();
-                    $page = $category->getPage();
-                    $valueOptions[$facet->getId()] = sprintf(
+                foreach ($query->getResult() as $result) {
+                    $valueOptions[$result['facet_id']] = sprintf(
                         '"%s" > "%s" > "%s"',
-                        $page->getTitle(),
-                        $category->getName(),
-                        $facet->getName(),
+                        $result['page_title'],
+                        $result['category_name'],
+                        $result['facet_name'],
                     );
                 }
 
