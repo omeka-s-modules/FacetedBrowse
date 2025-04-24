@@ -5,6 +5,7 @@ use Composer\Semver\Comparator;
 use Omeka\Module\AbstractModule;
 use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
+use Laminas\Form\Element;
 use Laminas\Mvc\MvcEvent;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 
@@ -83,6 +84,99 @@ SQL;
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)
     {
+        // Conditionally add the view-overrides path to the template path stack.
+        // We do this to override the "common/search-form" template when a "sitewide
+        // search full-text facet" is set in site settings.
+        $sharedEventManager->attach(
+            '*',
+            'route',
+            function (Event $event) {
+
+                // Add the path only when on a public site.
+                $routeMatch = $event->getRouteMatch();
+                if (!$routeMatch->getParam('__SITE__')) {
+                    return;
+                }
+
+                $services = $this->getServiceLocator();
+                $siteSettings = $services->get('Omeka\Settings\Site');
+                $entityManager = $services->get('Omeka\EntityManager');
+
+                // Add the path only when the full-text facet is set.
+                $facetId = $siteSettings->get('faceted_browse_sitewide_search_full_text_facet');
+                $facet = $entityManager->find('FacetedBrowse\Entity\FacetedBrowseFacet', $facetId);
+                if ($facet) {
+                    $path = sprintf('%s/modules/FacetedBrowse/view-overrides', OMEKA_PATH);
+                    $this->getServiceLocator()->get('ViewTemplatePathStack')->addPath($path);
+                }
+            },
+            // Execute at lower priority so this runs later than MvcListeners::preparePublicSite().
+            -10
+        );
+
+        // Add elements to the site settings form.
+        $sharedEventManager->attach(
+            'Omeka\Form\SiteSettingsForm',
+            'form.add_elements',
+            function (Event $event) {
+                $form = $event->getTarget();
+                $services = $this->getServiceLocator();
+
+                $entityManager = $services->get('Omeka\EntityManager');
+                $currentSite = $services->get('ControllerPluginManager')->get('currentSite')();
+                $siteSettings = $services->get('Omeka\Settings\Site');
+
+                // Get all full-text facets in this site.
+                $dql = 'SELECT f
+                    FROM FacetedBrowse\Entity\FacetedBrowseFacet f
+                    JOIN f.category c
+                    JOIN c.page p
+                    WHERE f.type = :type
+                    AND p.site = :site';
+                $query = $entityManager->createQuery($dql);
+                $query->setParameter('type', 'full_text');
+                $query->setParameter('site', $currentSite->id());
+
+                $valueOptions = [];
+                foreach ($query->getResult() as $facet) {
+                    $category = $facet->getCategory();
+                    $page = $category->getPage();
+                    $valueOptions[$facet->getId()] = sprintf(
+                        '"%s" > "%s" > "%s"',
+                        $page->getTitle(),
+                        $category->getName(),
+                        $facet->getName(),
+                    );
+                }
+
+                $groups = $form->getOption('element_groups');
+                $groups['faceted_browse'] = 'Faceted browse'; // @translate
+                $form->setOption('element_groups', $groups);
+
+                $select = new Element\Select('faceted_browse_sitewide_search_full_text_facet');
+                $select->setLabel('Full-text facet for sitewide search') // @translate
+                    ->setOption('info', 'Select a "Full-text" facet to use for the sitewide, full-text search.') // @translate
+                    ->setOption('element_group', 'faceted_browse')
+                    ->setEmptyOption('Select a full-text facet') // @translate
+                    ->setValueOptions($valueOptions)
+                    ->setValue($siteSettings->get('faceted_browse_sitewide_search_full_text_facet'));
+                $form->add($select);
+            }
+        );
+
+        // Add input filters to the site settings form.
+        $sharedEventManager->attach(
+            'Omeka\Form\SiteSettingsForm',
+            'form.add_input_filters',
+            function (Event $event) {
+                $inputFilter = $event->getParam('inputFilter');
+                $inputFilter->add([
+                    'name' => 'faceted_browse_sitewide_search_full_text_facet',
+                    'allow_empty' => true,
+                ]);
+            }
+        );
+
         // Copy FacetedBrowse-related data for the CopyResources module.
         $sharedEventManager->attach(
             '*',

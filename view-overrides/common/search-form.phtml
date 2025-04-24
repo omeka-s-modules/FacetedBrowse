@@ -1,0 +1,63 @@
+<?php
+[
+    $facetedBrowsePageId,
+    $facetedBrowseCategoryId,
+    $facetedBrowseFacetId
+] = $this->facetedBrowse()->getSitewideSearchIds();
+
+$searchValue = $this->params()->fromQuery('fulltext_search', '');
+$searchAction = $this->url('site/faceted-browse', [
+    'controller' => 'page',
+    'action' => 'page',
+    'page-id' => $facetedBrowsePageId,
+], true);
+?>
+
+<form action="<?php echo $this->escapeHtml($searchAction); ?>"
+    id="search-form"
+    aria-label="<?php echo $this->translate('Search'); ?>"
+    role="search">
+    <input type="text"
+        id="fulltext-search"
+        name="fulltext_search"
+        value="<?php echo $this->escapeHtml($searchValue); ?>"
+        placeholder="<?php echo $this->translate('Enter a search term'); ?>"
+        aria-label="<?php echo $this->translate('Query'); ?>"
+        aria-labelledby="search-form fulltext-search"
+        data-faceted-browse-category-id="<?php echo $this->escapeHtml($facetedBrowseCategoryId); ?>"
+        data-faceted-browse-facet-id="<?php echo $this->escapeHtml($facetedBrowseFacetId); ?>">
+    <button type="submit"
+        id="search-submit"
+        title="<?php echo $this->translate('Submit'); ?>"
+        aria-label="<?php echo $this->translate('Submit'); ?>"
+        aria-labelledby="search-form search-submit">
+        <span class="o-icon-search" aria-hidden="true"></span>
+    </button>
+</form>
+
+<script>
+// Capture the search submit and redirect to a faceted browse category.
+$('#search-form').on('submit', function(e) {
+    e.preventDefault();
+    const thisForm = $(this);
+    const input = $('#fulltext-search');
+    const categoryId = input.data('faceted-browse-category-id');
+    const facetId = input.data('faceted-browse-facet-id');
+    const searchValue = input.val();
+    const fragment = {
+        'categoryId': categoryId,
+        'sortBy': null,
+        'sortOrder': null,
+        'page': null,
+        'facetStates': {
+            [facetId]: searchValue,
+        },
+        'facetQueries': {
+            [facetId]: 'fulltext_search=' + searchValue,
+        },
+    };
+    window.location.href = thisForm.attr('action')
+        + '?fulltext_search=' + encodeURIComponent(searchValue)
+        + '#' + encodeURIComponent(JSON.stringify(fragment));
+});
+</script>
