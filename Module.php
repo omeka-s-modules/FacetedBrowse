@@ -168,14 +168,14 @@ SQL;
         $siteSettings = $services->get('Omeka\Settings\Site');
 
         // Get all full-text facets in this site.
-        $dql = 'SELECT f.id AS facet_id, f.name AS facet_name, c.name AS category_name, p.title AS page_title
+        $dql = "SELECT f.id AS facet_id, f.name AS facet_name, c.name AS category_name, p.title AS page_title
             FROM FacetedBrowse\Entity\FacetedBrowseFacet f
             JOIN f.category c
             JOIN c.page p
-            WHERE f.type = :type
-            AND p.site = :site';
+            WHERE f.type = 'full_text'
+            AND p.site = :site
+            AND p.resourceType = 'items'";
         $query = $entityManager->createQuery($dql);
-        $query->setParameter('type', 'full_text');
         $query->setParameter('site', $currentSite->id());
 
         $valueOptions = [];
