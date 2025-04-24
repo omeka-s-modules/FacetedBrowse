@@ -122,7 +122,7 @@ class FacetedBrowse extends AbstractHelper
         $siteSettings = $this->services->get('Omeka\Settings\Site');
         $entityManager = $this->services->get('Omeka\EntityManager');
 
-        $facetId = $siteSettings->get('faceted_browse_sitewide_search_full_text_facet');
+        $facetId = $siteSettings->get('faceted_browse_sitewide_search_facet');
         $facet = $entityManager->find('FacetedBrowse\Entity\FacetedBrowseFacet', $facetId);
         $category = $facet->getCategory();
         $page = $category->getPage();

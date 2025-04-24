@@ -106,7 +106,7 @@ SQL;
             function (Event $event) {
                 $inputFilter = $event->getParam('inputFilter');
                 $inputFilter->add([
-                    'name' => 'faceted_browse_sitewide_search_full_text_facet',
+                    'name' => 'faceted_browse_sitewide_search_facet',
                     'allow_empty' => true,
                 ]);
             }
@@ -136,7 +136,7 @@ SQL;
 
         // Get the facet ID from site settings.
         $siteSettings = $this->getServiceLocator()->get('Omeka\Settings\Site');
-        $facetId = $siteSettings->get('faceted_browse_sitewide_search_full_text_facet');
+        $facetId = $siteSettings->get('faceted_browse_sitewide_search_facet');
         if (!$facetId) {
             return; // There is no facet ID.
         }
@@ -146,7 +146,7 @@ SQL;
         $facet = $entityManager->find('FacetedBrowse\Entity\FacetedBrowseFacet', $facetId);
         if (!$facet) {
             // The facet has been deleted. Delete the setting.
-            $siteSettings->delete('faceted_browse_sitewide_search_full_text_facet');
+            $siteSettings->delete('faceted_browse_sitewide_search_facet');
             return;
         }
 
@@ -181,10 +181,9 @@ SQL;
         $valueOptions = [];
         foreach ($query->getResult() as $result) {
             $valueOptions[$result['facet_id']] = sprintf(
-                '"%s" > "%s" > "%s"',
+                '"%s" > "%s"',
                 $result['page_title'],
                 $result['category_name'],
-                $result['facet_name'],
             );
         }
 
@@ -192,13 +191,13 @@ SQL;
         $groups['faceted_browse'] = 'Faceted browse'; // @translate
         $form->setOption('element_groups', $groups);
 
-        $select = new Element\Select('faceted_browse_sitewide_search_full_text_facet');
-        $select->setLabel('Full-text facet for sitewide search') // @translate
-            ->setOption('info', 'Select a "Full-text" facet to use for the sitewide, full-text search.') // @translate
+        $select = new Element\Select('faceted_browse_sitewide_search_facet');
+        $select->setLabel('Sitewide search category') // @translate
+            ->setOption('info', 'Select a category to use for the sitewide, full-text search. Note that the category must contain a full-text facet.') // @translate
             ->setOption('element_group', 'faceted_browse')
-            ->setEmptyOption('Select a full-text facet') // @translate
+            ->setEmptyOption('Select a category') // @translate
             ->setValueOptions($valueOptions)
-            ->setValue($siteSettings->get('faceted_browse_sitewide_search_full_text_facet'));
+            ->setValue($siteSettings->get('faceted_browse_sitewide_search_facet'));
         $form->add($select);
     }
 
