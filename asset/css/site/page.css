@@ -27,7 +27,6 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    max-width: 20rem;
 }
 
 .block-facetedBrowsePreview table .resource-link img,
@@ -263,6 +262,7 @@ input[type="text"].permalink {
 
     .faceted-browse-page .tablesaw td {
         border-color: transparent;
+        max-width: 50%;
     }
 
     .faceted-browse-page .tablesaw tr {
