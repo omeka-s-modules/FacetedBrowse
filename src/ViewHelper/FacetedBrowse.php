@@ -111,4 +111,22 @@ class FacetedBrowse extends AbstractHelper
         $facetType = $this->getFacetType($facet->type());
         return $facetType->renderFacet($this->getView(), $facet);
     }
+
+    /**
+     * Get the IDs needed by the overridden "common/search-form" template.
+     *
+     * @return array
+     */
+    public function getSitewideSearchIds()
+    {
+        $siteSettings = $this->services->get('Omeka\Settings\Site');
+        $entityManager = $this->services->get('Omeka\EntityManager');
+
+        $facetId = $siteSettings->get('faceted_browse_sitewide_search_facet');
+        $facet = $entityManager->find('FacetedBrowse\Entity\FacetedBrowseFacet', $facetId);
+        $category = $facet->getCategory();
+        $page = $category->getPage();
+
+        return [$page->getId(), $category->getId(), $facet->getId()];
+    }
 }

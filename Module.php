@@ -5,6 +5,7 @@ use Composer\Semver\Comparator;
 use Omeka\Module\AbstractModule;
 use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
+use Laminas\Form\Element;
 use Laminas\Mvc\MvcEvent;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 
@@ -83,52 +84,167 @@ SQL;
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)
     {
+        // Conditionally add the view-overrides path to the template path stack.
+        $sharedEventManager->attach(
+            '*',
+            'route',
+            [$this, 'addViewOverridesPath'],
+            -10 // Execute at lower priority so this runs later than MvcListeners::preparePublicSite().
+        );
+
+        // Add elements to the site settings form.
+        $sharedEventManager->attach(
+            'Omeka\Form\SiteSettingsForm',
+            'form.add_elements',
+            [$this, 'addElementsToSiteSettingsForm']
+        );
+
+        // Add input filters to the site settings form.
+        $sharedEventManager->attach(
+            'Omeka\Form\SiteSettingsForm',
+            'form.add_input_filters',
+            function (Event $event) {
+                $inputFilter = $event->getParam('inputFilter');
+                $inputFilter->add([
+                    'name' => 'faceted_browse_sitewide_search_facet',
+                    'allow_empty' => true,
+                ]);
+            }
+        );
+
         // Copy FacetedBrowse-related data for the CopyResources module.
         $sharedEventManager->attach(
             '*',
             'copy_resources.sites.post',
-            function (Event $event) {
-                $services = $this->getServiceLocator();
-                $api = $services->get('Omeka\ApiManager');
-
-                $site = $event->getParam('resource');
-                $siteCopy = $event->getParam('resource_copy');
-                $copyResources = $event->getParam('copy_resources');
-
-                $copyResources->revertSiteNavigationLinkTypes($siteCopy->id(), 'facetedBrowse');
-
-                // Copy pages.
-                $pages = $api->search('faceted_browse_pages', ['site_id' => $site->id()])->getContent();
-                $pageMap = [];
-                foreach ($pages as $page) {
-                    $callback = function (&$jsonLd) use ($siteCopy) {
-                        unset($jsonLd['o:owner']);
-                        $jsonLd['o:site']['o:id'] = $siteCopy->id();
-                    };
-                    $pageCopy = $copyResources->createResourceCopy('faceted_browse_pages', $page, $callback);
-                    $pageMap[$page->id()] = $pageCopy->id();
-
-                    // Copy categories.
-                    $categories = $api->search('faceted_browse_categories', ['page_id' => $page->id()])->getContent();
-                    foreach ($categories as $category) {
-                        $callback = function (&$jsonLd) use ($siteCopy, $pageCopy) {
-                            unset($jsonLd['o:owner']);
-                            $jsonLd['o:site']['o:id'] = $siteCopy->id();
-                            $jsonLd['o-module-faceted_browse:page']['o:id'] = $pageCopy->id();
-                        };
-                        $copyResources->createResourceCopy('faceted_browse_categories', $category, $callback);
-                    }
-                }
-
-                // Modify site navigation.
-                $callback = function (&$link) use ($pageMap) {
-                    if (isset($link['data']['page_id']) && is_numeric($link['data']['page_id'])) {
-                        $id = $link['data']['page_id'];
-                        $link['data']['page_id'] = array_key_exists($id, $pageMap) ? $pageMap[$id] : $id;
-                    }
-                };
-                $copyResources->modifySiteNavigation($siteCopy->id(), 'facetedBrowse', $callback);
-            }
+            [$this, 'copyDataForCopyResources']
         );
+    }
+
+    /**
+     * Conditionally add the view-overrides path to the template path stack.
+     *
+     * We do this to override the "common/search-form" template when a sitewide
+     * search facet ID is set in site settings.
+     */
+    public function addViewOverridesPath(Event $event)
+    {
+
+        $routeMatch = $event->getRouteMatch();
+        if (!$routeMatch->getParam('__SITE__')) {
+            return; // This is not a public site.
+        }
+
+        // Get the facet ID from site settings.
+        $siteSettings = $this->getServiceLocator()->get('Omeka\Settings\Site');
+        $facetId = $siteSettings->get('faceted_browse_sitewide_search_facet');
+        if (!$facetId) {
+            return; // There is no facet ID.
+        }
+
+        // Get the facet entity.
+        $entityManager = $this->getServiceLocator()->get('Omeka\EntityManager');
+        $facet = $entityManager->find('FacetedBrowse\Entity\FacetedBrowseFacet', $facetId);
+        if (!$facet) {
+            // The facet has been deleted. Delete the setting.
+            $siteSettings->delete('faceted_browse_sitewide_search_facet');
+            return;
+        }
+
+        // Add the path only when the full-text facet exists.
+        $path = sprintf('%s/modules/FacetedBrowse/view-overrides', OMEKA_PATH);
+        $this->getServiceLocator()->get('ViewTemplatePathStack')->addPath($path);
+    }
+
+    /**
+     * Add elements to the site settings form.
+     */
+    public function addElementsToSiteSettingsForm(Event $event)
+    {
+        $form = $event->getTarget();
+        $services = $this->getServiceLocator();
+
+        $entityManager = $services->get('Omeka\EntityManager');
+        $currentSite = $services->get('ControllerPluginManager')->get('currentSite')();
+        $siteSettings = $services->get('Omeka\Settings\Site');
+
+        // Get all full-text facets in this site.
+        $dql = "SELECT f.id AS facet_id, f.name AS facet_name, c.name AS category_name, p.title AS page_title
+            FROM FacetedBrowse\Entity\FacetedBrowseFacet f
+            JOIN f.category c
+            JOIN c.page p
+            WHERE f.type = 'full_text'
+            AND p.site = :site
+            AND p.resourceType = 'items'";
+        $query = $entityManager->createQuery($dql);
+        $query->setParameter('site', $currentSite->id());
+
+        $valueOptions = [];
+        foreach ($query->getResult() as $result) {
+            $valueOptions[$result['facet_id']] = sprintf(
+                '"%s" > "%s"',
+                $result['page_title'],
+                $result['category_name'],
+            );
+        }
+
+        $groups = $form->getOption('element_groups');
+        $groups['faceted_browse'] = 'Faceted browse'; // @translate
+        $form->setOption('element_groups', $groups);
+
+        $select = new Element\Select('faceted_browse_sitewide_search_facet');
+        $select->setLabel('Sitewide search category') // @translate
+            ->setOption('info', 'Select a category to use for the sitewide, full-text search. Note that the category must contain a full-text facet.') // @translate
+            ->setOption('element_group', 'faceted_browse')
+            ->setEmptyOption('Select a category') // @translate
+            ->setValueOptions($valueOptions)
+            ->setValue($siteSettings->get('faceted_browse_sitewide_search_facet'));
+        $form->add($select);
+    }
+
+    /**
+     * Copy FacetedBrowse-related data for the CopyResources module.
+     */
+    public function copyDataForCopyResources(Event $event)
+    {
+        $services = $this->getServiceLocator();
+        $api = $services->get('Omeka\ApiManager');
+
+        $site = $event->getParam('resource');
+        $siteCopy = $event->getParam('resource_copy');
+        $copyResources = $event->getParam('copy_resources');
+
+        $copyResources->revertSiteNavigationLinkTypes($siteCopy->id(), 'facetedBrowse');
+
+        // Copy pages.
+        $pages = $api->search('faceted_browse_pages', ['site_id' => $site->id()])->getContent();
+        $pageMap = [];
+        foreach ($pages as $page) {
+            $callback = function (&$jsonLd) use ($siteCopy) {
+                unset($jsonLd['o:owner']);
+                $jsonLd['o:site']['o:id'] = $siteCopy->id();
+            };
+            $pageCopy = $copyResources->createResourceCopy('faceted_browse_pages', $page, $callback);
+            $pageMap[$page->id()] = $pageCopy->id();
+
+            // Copy categories.
+            $categories = $api->search('faceted_browse_categories', ['page_id' => $page->id()])->getContent();
+            foreach ($categories as $category) {
+                $callback = function (&$jsonLd) use ($siteCopy, $pageCopy) {
+                    unset($jsonLd['o:owner']);
+                    $jsonLd['o:site']['o:id'] = $siteCopy->id();
+                    $jsonLd['o-module-faceted_browse:page']['o:id'] = $pageCopy->id();
+                };
+                $copyResources->createResourceCopy('faceted_browse_categories', $category, $callback);
+            }
+        }
+
+        // Modify site navigation.
+        $callback = function (&$link) use ($pageMap) {
+            if (isset($link['data']['page_id']) && is_numeric($link['data']['page_id'])) {
+                $id = $link['data']['page_id'];
+                $link['data']['page_id'] = array_key_exists($id, $pageMap) ? $pageMap[$id] : $id;
+            }
+        };
+        $copyResources->modifySiteNavigation($siteCopy->id(), 'facetedBrowse', $callback);
     }
 }
