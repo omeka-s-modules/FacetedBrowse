@@ -5,16 +5,16 @@
 # 
 # Translators:
 # Adriana Hernández, 2021
-# Alfonso Montejo <almontejor@gmail.com>, 2022
+# 2b019265641dfb6bf87696b9851ef6cd_2798cfc <e6832017c56bb8e26082a549400c6ce9_896430>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-02 14:39-0400\n"
+"POT-Creation-Date: 2025-07-07 11:10-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
-"Last-Translator: Alfonso Montejo <almontejor@gmail.com>, 2022\n"
+"Last-Translator: 2b019265641dfb6bf87696b9851ef6cd_2798cfc <e6832017c56bb8e26082a549400c6ce9_896430>, 2022\n"
 "Language-Team: Spanish (https://app.transifex.com/omeka/teams/14184/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,6 +45,10 @@ msgstr ""
 "                <li>\"Es un recurso con ID\": introducir la ID del recurso y, separado por un solo espacio, cualquier valor (por lo general el título del recurso).</li>\n"
 "                <li>\"Tiene cualquier valor\": introducir la ID de la propiedad y, separado por un solo espacio, cualquier valor (por lo general la etiqueta de la propiedad).</li>\n"
 "            </ul>"
+
+#: view-overrides/common/search-form.phtml:24
+msgid "Enter a search term"
+msgstr ""
 
 #: view/common/faceted-browse/facet-data-form/item-set.phtml:5
 msgid "Show all available item sets."
@@ -484,7 +488,7 @@ msgstr ""
 msgid "Select one…"
 msgstr ""
 
-#: src/Site/NavigationLink/FacetedBrowse.php:13
+#: src/Site/NavigationLink/FacetedBrowse.php:13 Module.php:191
 msgid "Faceted browse"
 msgstr "Navegación facetada"
 
@@ -637,3 +641,17 @@ msgstr ""
 #: config/module.config.php:105
 msgid "Loading results…"
 msgstr "Cargando resultados..."
+
+#: Module.php:195
+msgid "Sitewide search category"
+msgstr ""
+
+#: Module.php:196
+msgid ""
+"Select a category to use for the sitewide, full-text search. Note that the "
+"category must contain a full-text facet."
+msgstr ""
+
+#: Module.php:198
+msgid "Select a category"
+msgstr ""

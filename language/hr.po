@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-02 14:39-0400\n"
+"POT-Creation-Date: 2025-07-07 11:10-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Josip Ilic <josip.ilic@ericsson.com>, 2021\n"
 "Language-Team: Croatian (https://app.transifex.com/omeka/teams/14184/hr/)\n"
@@ -35,6 +35,10 @@ msgid ""
 "                <li>\"Is resource with ID\": enter the resource ID followed by any value (usually the resource title), separated by a single space.</li>\n"
 "                <li>\"Has any value\": enter the property ID followed by any value (usually the property label), separated by a single space.</li>\n"
 "            </ul>"
+msgstr ""
+
+#: view-overrides/common/search-form.phtml:24
+msgid "Enter a search term"
 msgstr ""
 
 #: view/common/faceted-browse/facet-data-form/item-set.phtml:5
@@ -450,7 +454,7 @@ msgstr ""
 msgid "Select one…"
 msgstr ""
 
-#: src/Site/NavigationLink/FacetedBrowse.php:13
+#: src/Site/NavigationLink/FacetedBrowse.php:13 Module.php:191
 msgid "Faceted browse"
 msgstr "Fasetirano pretraživanje"
 
@@ -593,4 +597,18 @@ msgstr ""
 
 #: config/module.config.php:105
 msgid "Loading results…"
+msgstr ""
+
+#: Module.php:195
+msgid "Sitewide search category"
+msgstr ""
+
+#: Module.php:196
+msgid ""
+"Select a category to use for the sitewide, full-text search. Note that the "
+"category must contain a full-text facet."
+msgstr ""
+
+#: Module.php:198
+msgid "Select a category"
 msgstr ""
