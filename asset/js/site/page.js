@@ -22,10 +22,11 @@ const mediaQuery = window.matchMedia('(min-width: 896px)');
 // Reset modal attributes for desktop widths.
 const handleTabletChange = function(e) {
     modalToggleButton.attr('aria-expanded', 'false');
-    sectionContent.attr('aria-hidden', 'true').removeClass('open');
+    sectionContent.attr('aria-hidden', 'true');
     if (e.matches) {
         sectionSidebar.attr('aria-hidden', 'false');
         modalToggleButton.attr('aria-expanded', 'false');
+        sectionContent.attr('aria-hidden', 'false');
     }
 };
 
@@ -38,9 +39,11 @@ const enableModal = function() {
         if (modalToggleButton.attr('aria-expanded') == 'true') {
             modalToggleButton.attr('aria-expanded', 'false');
             sectionSidebar.attr('aria-hidden', 'true');
+            sectionContent.attr('aria-hidden', 'false');
         } else {
             modalToggleButton.attr('aria-expanded', 'true');
             sectionSidebar.attr('aria-hidden', 'false');
+            sectionContent.attr('aria-hidden', 'true');
         }
         sectionSidebar.trigger('toggle');
     });
