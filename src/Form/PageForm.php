@@ -34,6 +34,8 @@ class PageForm extends Form
                     'value' => FacetedBrowsePage::RESOURCE_TYPES[$page->resourceType()],
                 ],
             ]);
+
+
         } else {
             $this->add([
                 'type' => LaminasElement\Select::class,
@@ -44,6 +46,17 @@ class PageForm extends Form
                     'value_options' => FacetedBrowsePage::RESOURCE_TYPES,
                 ],
             ]);
+
         }
+        $this -> add([
+            'type' => LaminasElement\Select::class,
+            'name' => 'o-module-faceted_browse:thumbnail_type',
+            'options' => [
+                'label' => 'Thumbnail type',
+                'info' => 'Select the thumbnail size for images on this page.',
+                'value_options' => FacetedBrowsePage::THUMBNAIL_TYPES,
+            ],
+
+        ]);
     }
 }

@@ -70,6 +70,11 @@ class FacetedBrowsePageAdapter extends AbstractEntityAdapter
         if ($this->shouldHydrate($request, 'o:title')) {
             $entity->setTitle($request->getValue('o:title'));
         }
+
+        if ($this->shouldHydrate($request, 'o-module-faceted_browse:thumbnail_type')) {
+            $entity->setThumbnailType($request->getValue('o-module-faceted_browse:thumbnail_type'));
+        }
+
         if ($this->shouldHydrate($request, 'o-module-faceted_browse:category')) {
             $categories = $request->getValue('o-module-faceted_browse:category');
             if (is_array($categories)) {
