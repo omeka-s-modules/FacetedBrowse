@@ -22,7 +22,7 @@ class FacetedBrowsePageRepresentation extends AbstractEntityRepresentation
             'o:title' => $this->title(),
             'o-module-faceted_browse:resource_type' => $this->resourceType(),
             'o-module-faceted_browse:thumbnail_type' => $this->thumbnailType(),
-            ];
+        ];
     }
 
     public function adminUrl($action = null, $canonical = false)
@@ -79,6 +79,7 @@ class FacetedBrowsePageRepresentation extends AbstractEntityRepresentation
         }
         return $categories;
     }
+
     public function thumbnailType()
     {
         return $this->resource->getThumbnailType();

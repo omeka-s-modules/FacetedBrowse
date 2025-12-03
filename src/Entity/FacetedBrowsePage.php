@@ -20,10 +20,10 @@ class FacetedBrowsePage extends AbstractEntity
         'item_sets' => 'Item sets', // @translate
         'media' => 'Media', // @translate
     ];
+
     const THUMBNAIL_TYPES = [
-        'square' =>  'Square',
-        'medium' =>  'Medium',
-        'large' =>  'Large',
+        'square' =>  'Square', // @translate
+        'medium' =>  'Medium', // @translate
     ];
 
     /**
@@ -196,6 +196,7 @@ class FacetedBrowsePage extends AbstractEntity
     {
         return $this->thumbnailType;
     }
+
     /**
      * @PrePersist
      */

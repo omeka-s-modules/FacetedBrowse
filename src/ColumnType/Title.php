@@ -1,5 +1,4 @@
 <?php
-
 namespace FacetedBrowse\ColumnType;
 
 use FacetedBrowse\Api\Representation\FacetedBrowseColumnRepresentation;
@@ -48,12 +47,7 @@ class Title implements ColumnTypeInterface
 
     public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource): string
     {
-        // Get the thumbnail type from the page
-        $thumbnailType = $column->category()->page()->thumbnailType();
-
-        // Use the thumbnail type, or default to 'medium' if not set
-        $thumbnailType = $thumbnailType ?: 'square';
-
+        $thumbnailType = $column->category()->page()->thumbnailType() ?: 'square';
         return $resource->linkPretty($thumbnailType);
     }
 }
