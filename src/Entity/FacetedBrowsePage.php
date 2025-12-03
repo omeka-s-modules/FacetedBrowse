@@ -21,6 +21,11 @@ class FacetedBrowsePage extends AbstractEntity
         'media' => 'Media', // @translate
     ];
 
+    const THUMBNAIL_TYPES = [
+        'square' =>  'Square', // @translate
+        'medium' =>  'Medium', // @translate
+    ];
+
     /**
      * @Id
      * @Column(
@@ -89,6 +94,14 @@ class FacetedBrowsePage extends AbstractEntity
      */
     protected $resourceType;
 
+    /**
+     * @Column(
+     *     type="string",
+     *     length=255,
+     *     nullable=true
+     * )
+     */
+    protected $thumbnailType;
     /**
      * @OneToMany(
      *     targetEntity="FacetedBrowse\Entity\FacetedBrowseCategory",
@@ -173,6 +186,15 @@ class FacetedBrowsePage extends AbstractEntity
     public function getCategories(): Collection
     {
         return $this->categories;
+    }
+    public function setThumbnailType(?string $thumbnailType): void
+    {
+        $this->thumbnailType = $thumbnailType;
+    }
+
+    public function getThumbnailType(): ?string
+    {
+        return $this->thumbnailType;
     }
 
     /**

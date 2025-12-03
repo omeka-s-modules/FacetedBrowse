@@ -13,9 +13,12 @@ $thumbnail = $this->plugin('thumbnail');
     ?>
     <li class="item resource">
         <?php
-            $linkContent = sprintf('%s<span class="resource-name">%s</span>',
-            $thumbnail($item, 'medium'),
-            $escape($heading));
+            $thumbnailType = $page->thumbnailType() ?: 'medium';
+            $linkContent = sprintf(
+                '%s<span class="resource-name">%s</span>',
+                $thumbnail($item, $thumbnailType),
+                $escape($heading)
+            );
             echo $item->linkRaw($linkContent, null, ['class' => 'resource-link']);
         ?>
         <?php if ($body): ?>

@@ -47,6 +47,7 @@ class Title implements ColumnTypeInterface
 
     public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource): string
     {
-        return $resource->linkPretty('square');
+        $thumbnailType = $column->category()->page()->thumbnailType() ?: 'square';
+        return $resource->linkPretty($thumbnailType);
     }
 }

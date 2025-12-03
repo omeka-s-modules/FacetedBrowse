@@ -94,6 +94,7 @@ class PageController extends AbstractActionController
 
         $view = new ViewModel;
         $view->setTerminal(true);
+        $view->setVariable('page', $page);
         $view->setVariable('items', $items);
         $view->setVariable('query', $query);
         $view->setVariable('columns', $columns);

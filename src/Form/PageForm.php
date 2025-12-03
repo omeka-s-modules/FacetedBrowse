@@ -45,5 +45,21 @@ class PageForm extends Form
                 ],
             ]);
         }
+        $this -> add([
+            'type' => LaminasElement\Select::class,
+            'name' => 'o-module-faceted_browse:thumbnail_type',
+            'options' => [
+                'label' => 'Thumbnail type', // @translate
+                'info' => 'Select the type of thumbnail images to render on the page.', // @translate
+                'empty_option' => 'Default', // @translate
+                'value_options' => FacetedBrowsePage::THUMBNAIL_TYPES,
+            ],
+        ]);
+
+        $inputFilter = $this->getInputFilter();
+        $inputFilter->add([
+            'name' => 'o-module-faceted_browse:thumbnail_type',
+            'allow_empty' => true,
+        ]);
     }
 }

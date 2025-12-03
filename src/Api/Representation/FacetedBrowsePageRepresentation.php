@@ -21,6 +21,7 @@ class FacetedBrowsePageRepresentation extends AbstractEntityRepresentation
             'o:modified' => $modified ? $this->getDateTime($modified) : null,
             'o:title' => $this->title(),
             'o-module-faceted_browse:resource_type' => $this->resourceType(),
+            'o-module-faceted_browse:thumbnail_type' => $this->thumbnailType(),
         ];
     }
 
@@ -77,5 +78,10 @@ class FacetedBrowsePageRepresentation extends AbstractEntityRepresentation
             $categories[] = $adapter->getRepresentation($categoryEntity);
         }
         return $categories;
+    }
+
+    public function thumbnailType()
+    {
+        return $this->resource->getThumbnailType();
     }
 }
