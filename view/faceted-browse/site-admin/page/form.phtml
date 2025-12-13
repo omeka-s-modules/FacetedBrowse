@@ -42,7 +42,7 @@ $form->prepare();
 <fieldset>
     <?php echo $this->formRow($form->get('o:title')); ?>
     <?php echo $this->formRow($form->get($page ? 'resource_type' : 'o-module-faceted_browse:resource_type')); ?>
-    <?php echo $this->formRow($form->get($page ? 'o-module-faceted_browse:thumbnail_type' : 'o-module-faceted_browse:thumbnail_type')); ?>
+    <?php echo $this->formRow($form->get('o-module-faceted_browse:thumbnail_type')); ?>
 </fieldset>
 
 <?php if ($page): ?>
