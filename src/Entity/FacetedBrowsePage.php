@@ -22,8 +22,8 @@ class FacetedBrowsePage extends AbstractEntity
     ];
 
     const THUMBNAIL_TYPES = [
-        'square' =>  'Square', // @translate
-        'medium' =>  'Medium', // @translate
+        'square' => 'Square', // @translate
+        'medium' => 'Medium', // @translate
     ];
 
     /**

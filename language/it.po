@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-07 11:10-0400\n"
+"POT-Creation-Date: 2025-12-13 18:07-0500\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Giorgio Comai <g@giorgiocomai.eu>, 2025\n"
 "Language-Team: Italian (https://app.transifex.com/omeka/teams/14184/it/)\n"
@@ -44,10 +44,6 @@ msgstr ""
 "                <li>\"è risorsa con ID\": inserisci un ID di risorsa seguito da un qualsiasi valore (tipicamente, il titolo della risorsa), separati da un singolo spazio.</li>\n"
 "                <li>\"ha un qualsiasi valore\": inserisci l'ID della proprietà seguito da un qualsiasi valore (tipicamente, l'etichetta), separati da un singolo spazio.</li>\n"
 "            </ul>"
-
-#: view-overrides/common/search-form.phtml:24
-msgid "Enter a search term"
-msgstr ""
 
 #: view/common/faceted-browse/facet-data-form/item-set.phtml:5
 msgid "Show all available item sets."
@@ -211,11 +207,11 @@ msgstr "Rimani su questa pagina"
 msgid "Page add"
 msgstr "Aggiunta della pagina"
 
-#: view/faceted-browse/site-admin/page/form.phtml:49
+#: view/faceted-browse/site-admin/page/form.phtml:50
 msgid "Categories"
 msgstr "Categorie"
 
-#: view/faceted-browse/site-admin/page/form.phtml:50
+#: view/faceted-browse/site-admin/page/form.phtml:51
 msgid "Add category"
 msgstr "Aggiungi categoria"
 
@@ -273,11 +269,11 @@ msgstr "Seleziona una proprietà..."
 msgid "A site must have an ID"
 msgstr "Un sito deve avere un ID"
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:90
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:95
 msgid "A page must have a site"
 msgstr "Una pagina deve avere un sito"
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:93
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:98
 msgid "A page must have a title"
 msgstr "Una pagina deve avere un titolo"
 
@@ -501,7 +497,7 @@ msgstr "Categoria della pagina"
 msgid "Select one…"
 msgstr "Seleziona un'opzione..."
 
-#: src/Site/NavigationLink/FacetedBrowse.php:13 Module.php:191
+#: src/Site/NavigationLink/FacetedBrowse.php:13 Module.php:194
 msgid "Faceted browse"
 msgstr "Navigazione a faccette"
 
@@ -545,6 +541,14 @@ msgstr "Inserisci il titolo di questa pagina"
 #: src/Form/PageForm.php:43
 msgid "Select the type of resources to browse."
 msgstr "Seleziona il tipo di risorsa da sfogliare"
+
+#: src/Form/PageForm.php:52
+msgid "Thumbnail type"
+msgstr ""
+
+#: src/Form/PageForm.php:53
+msgid "Select the type of thumbnail images to render on the page."
+msgstr ""
 
 #: src/Form/ColumnForm.php:22
 msgid "Column name"
@@ -630,6 +634,10 @@ msgstr "Uno qualsiasi deve corrispondere"
 msgid "Add a facet…"
 msgstr "Aggiungi una faccetta..."
 
+#: src/Entity/FacetedBrowsePage.php:25
+msgid "Square"
+msgstr ""
+
 #: config/module.config.php:98
 msgid "A facet must have a name."
 msgstr "Una faccetta deve avere un nome."
@@ -664,16 +672,19 @@ msgstr ""
 msgid "Loading results…"
 msgstr "Caricamento dei risultati in corso..."
 
-#: Module.php:195
+#: Module.php:198
 msgid "Sitewide search category"
-msgstr ""
+msgstr "Categoria di ricerca su tutto il sito"
 
-#: Module.php:196
+#: Module.php:199
 msgid ""
 "Select a category to use for the sitewide, full-text search. Note that the "
 "category must contain a full-text facet."
 msgstr ""
+"Seleziona una categoria di ricerca da applicare per la modalità ricerca "
+"testo intero su tutto il sito. Considera che la categoria deve includere una"
+" faccetta a testo intero"
 
-#: Module.php:198
+#: Module.php:201
 msgid "Select a category"
-msgstr ""
+msgstr "Seleziona una categoria"

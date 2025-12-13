@@ -45,7 +45,7 @@ class PageForm extends Form
                 ],
             ]);
         }
-        $this -> add([
+        $this->add([
             'type' => LaminasElement\Select::class,
             'name' => 'o-module-faceted_browse:thumbnail_type',
             'options' => [

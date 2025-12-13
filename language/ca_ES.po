@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2024
+# Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-07 11:10-0400\n"
+"POT-Creation-Date: 2025-12-13 18:07-0500\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
-"Last-Translator: Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2024\n"
+"Last-Translator: Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2025\n"
 "Language-Team: Catalan (Spain) (https://app.transifex.com/omeka/teams/14184/ca_ES/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,10 +36,14 @@ msgid ""
 "                <li>\"Has any value\": enter the property ID followed by any value (usually the property label), separated by a single space.</li>\n"
 "            </ul>"
 msgstr ""
-
-#: view-overrides/common/search-form.phtml:24
-msgid "Enter a search term"
-msgstr ""
+"\n"
+"            <p>Introduïu els valors, separats per salts de línia. El format de cada valor depèn del tipus de consulta:</p>\n"
+"            <ul>\n"
+"                <li>\"És exactament\": introduïu un valor que coincideixi exactament amb el valor de la propietat.</li>\n"
+"                <li>\"Conté\": introduïu un valor que coincideixi amb qualsevol part del valor de la propietat.</li>\n"
+"                <li>\"És un recurs amb ID\": introduïu l'ID del recurs seguit de qualsevol valor (normalment el títol del recurs), separat per un sol espai.</li>\n"
+"                <li>\"Té algun valor\": introduïu l'ID de la propietat seguit de qualsevol valor (normalment l'etiqueta de la propietat), separat per un sol espai.</li>\n"
+"            </ul>"
 
 #: view/common/faceted-browse/facet-data-form/item-set.phtml:5
 msgid "Show all available item sets."
@@ -118,7 +122,7 @@ msgstr "Afegeix una categoria"
 #: view/faceted-browse/site-admin/category/form.phtml:33
 #: view/faceted-browse/site-admin/page/form.phtml:28
 msgid "Save and&hellip;"
-msgstr ""
+msgstr "Desa i&hellip;"
 
 #: view/faceted-browse/site-admin/category/form.phtml:35
 msgid "Return to page"
@@ -203,11 +207,11 @@ msgstr "Roman en aquesta pàgina"
 msgid "Page add"
 msgstr "Afegeix pàgina"
 
-#: view/faceted-browse/site-admin/page/form.phtml:49
+#: view/faceted-browse/site-admin/page/form.phtml:50
 msgid "Categories"
 msgstr "Categories"
 
-#: view/faceted-browse/site-admin/page/form.phtml:50
+#: view/faceted-browse/site-admin/page/form.phtml:51
 msgid "Add category"
 msgstr "Afegeix una categoria"
 
@@ -238,13 +242,15 @@ msgstr "Filtres"
 
 #: src/ColumnType/ItemSet.php:44
 msgid "Max item sets"
-msgstr ""
+msgstr "Nombre màxim de conjunts de recursos"
 
 #: src/ColumnType/ItemSet.php:45
 msgid ""
 "Enter the maximum number of item sets to display. Set to blank to display "
 "all item sets."
 msgstr ""
+"Introduïu el nombre màxim de conjunts de recursos a mostrar. Deixeu-ho en "
+"blanc per mostrar-los tots."
 
 #: src/ColumnType/Unknown.php:45
 msgid "Unknown column type"
@@ -263,11 +269,11 @@ msgstr "Selecciona una propietat..."
 msgid "A site must have an ID"
 msgstr "El lloc ha de tenir un ID"
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:90
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:95
 msgid "A page must have a site"
 msgstr "La pàgina ha de pertànyer a un lloc"
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:93
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:98
 msgid "A page must have a title"
 msgstr "Cal un títol per a la pàgina"
 
@@ -295,6 +301,11 @@ msgid ""
 "\"multiple\" select type, users may choose any number of item sets at a time"
 " via a list."
 msgstr ""
+"Seleccioneu el tipus de selecció. Amb el tipus de selecció «única», els "
+"usuaris només poden triar un conjunt de recursos alhora mitjançant una "
+"llista o un menú desplegable. Amb el tipus de selecció «múltiple», els "
+"usuaris poden triar qualsevol nombre de conjunts de recursos alhora "
+"mitjançant una llista."
 
 #: src/FacetType/ItemSet.php:48 src/FacetType/ResourceTemplate.php:48
 #: src/FacetType/ResourceClass.php:48 src/FacetType/Value.php:80
@@ -313,7 +324,7 @@ msgstr "Simple (menú desplegable)"
 
 #: src/FacetType/ItemSet.php:61
 msgid "Truncate item sets"
-msgstr ""
+msgstr "Trunca els conjunts de recursos"
 
 #: src/FacetType/ItemSet.php:62
 msgid ""
@@ -322,10 +333,14 @@ msgid ""
 "be hidden until the user clicks to show more. Enter nothing to show the "
 "entire list at all times."
 msgstr ""
+"Introduïu el nombre de conjunts de recursos que es mostraran a la llista de "
+"selecció quan es carregui la pàgina. Si el nombre de conjunts de recursos "
+"supera aquest valor, la resta quedarà oculta fins que l'usuari faci clic per"
+" mostrar-ne més. Deixeu-ho en blanc per mostrar tota la llista sempre."
 
 #: src/FacetType/ItemSet.php:80
 msgid "Select item sets…"
-msgstr ""
+msgstr "Seleccioneu conjunts de recursos..."
 
 #: src/FacetType/Unknown.php:44
 msgid "Unknown facet type"
@@ -342,10 +357,14 @@ msgid ""
 "\"multiple\" select type, users may choose any number of templates at a time"
 " via a list."
 msgstr ""
+"Seleccioneu el tipus de selecció. Amb el tipus de selecció \"única\", els "
+"usuaris només poden triar una plantilla alhora mitjançant una llista o un "
+"menú desplegable. Amb el tipus de selecció \"múltiple\", els usuaris poden "
+"triar qualsevol nombre de plantilles alhora mitjançant una llista."
 
 #: src/FacetType/ResourceTemplate.php:61
 msgid "Truncate templates"
-msgstr ""
+msgstr "Trunca les plantilles"
 
 #: src/FacetType/ResourceTemplate.php:62
 msgid ""
@@ -374,10 +393,14 @@ msgid ""
 "only one class at a time via a list or dropdown menu. For the \"multiple\" "
 "select type, users may choose any number of classes at a time via a list."
 msgstr ""
+"Seleccioneu el tipus de selecció. Amb el tipus de selecció «única», els "
+"usuaris només poden triar una classe alhora mitjançant una llista o un menú "
+"desplegable. Amb el tipus de selecció «múltiple», els usuaris poden triar "
+"qualsevol nombre de classes alhora mitjançant una llista."
 
 #: src/FacetType/ResourceClass.php:61
 msgid "Truncate classes"
-msgstr ""
+msgstr "Trunca les classes"
 
 #: src/FacetType/ResourceClass.php:62
 msgid ""
@@ -435,6 +458,12 @@ msgid ""
 "select type, users may choose any number of values at a time via a list. For"
 " the special \"text input\" select type, users may input their own text."
 msgstr ""
+"Seleccioneu el tipus de selecció. Amb el tipus de selecció «única», els "
+"usuaris només poden triar un valor alhora mitjançant una llista o un menú "
+"desplegable. Amb el tipus de selecció «múltiple», els usuaris poden triar "
+"qualsevol nombre de valors alhora mitjançant una llista. Amb el tipus "
+"especial de selecció «entrada de text», els usuaris poden introduir el seu "
+"propi text."
 
 #: src/FacetType/Value.php:83
 msgid "Text input"
@@ -462,15 +491,15 @@ msgstr "Previsualització de la navegació facetada"
 
 #: src/Site/BlockLayout/FacetedBrowsePreview.php:49
 msgid "Page category"
-msgstr ""
+msgstr "Categoria"
 
 #: src/Site/BlockLayout/FacetedBrowsePreview.php:50
 msgid "Select one…"
 msgstr "Seleccioneu-ne un..."
 
-#: src/Site/NavigationLink/FacetedBrowse.php:13 Module.php:191
+#: src/Site/NavigationLink/FacetedBrowse.php:13 Module.php:194
 msgid "Faceted browse"
-msgstr "Navegació facetada"
+msgstr "Faceted browse"
 
 #: src/Controller/SiteAdmin/PageController.php:44
 msgid "Page successfully added. Add categories below."
@@ -513,13 +542,21 @@ msgstr "Introdueix el títol d'aquesta pàgina."
 msgid "Select the type of resources to browse."
 msgstr "Selecciona el tipus de recursos per a la navegació."
 
+#: src/Form/PageForm.php:52
+msgid "Thumbnail type"
+msgstr ""
+
+#: src/Form/PageForm.php:53
+msgid "Select the type of thumbnail images to render on the page."
+msgstr ""
+
 #: src/Form/ColumnForm.php:22
 msgid "Column name"
 msgstr "Nom de la columna"
 
 #: src/Form/ColumnForm.php:33
 msgid "Exclude sort by"
-msgstr ""
+msgstr "Exclou l'opció 'ordenar per'"
 
 #: src/Form/CategoryForm.php:24
 msgid ""
@@ -539,11 +576,11 @@ msgstr ""
 
 #: src/Form/CategoryForm.php:63
 msgid "Default sort by"
-msgstr ""
+msgstr "Ordenació per defecte"
 
 #: src/Form/CategoryForm.php:88
 msgid "Helper text"
-msgstr "Text d'ajuda"
+msgstr "Instruccions"
 
 #: src/Form/CategoryForm.php:89
 msgid ""
@@ -551,20 +588,26 @@ msgid ""
 " add short instructions, a link to instructions, etc. Enter nothing to have "
 "no helper text."
 msgstr ""
+"Introduïu el text que es mostrarà a l'usuari a la barra lateral de la "
+"categoria. Aquí podeu afegir instruccions breus, un enllaç a les "
+"instruccions, etc. Si no introduïu res, no es mostrarà cap text d'ajuda."
 
 #: src/Form/CategoryForm.php:100
 msgid "Helper text button label"
-msgstr ""
+msgstr "Etiqueta del botó d'instruccions"
 
 #: src/Form/CategoryForm.php:101
 msgid ""
 "Enter the label of the button the user will click to toggle the helper text."
 " Enter nothing for the default label: \"Instructions\"."
 msgstr ""
+"Introduïu l'etiqueta del botó que l'usuari farà servir per mostrar o amagar "
+"el text d'ajuda. Si no introduïu res, s'utilitzarà l’etiqueta "
+"predeterminada: «Instruccions»."
 
 #: src/Form/CategoryForm.php:112
 msgid "Value facet mode"
-msgstr ""
+msgstr "Mode de valors facetats"
 
 #: src/Form/CategoryForm.php:113
 msgid ""
@@ -572,18 +615,25 @@ msgid ""
 "match any selected values. Note that this will apply to every Value facet in"
 " this category."
 msgstr ""
+"Per a les facetes de valors, trieu si l'usuari ha de coincidir amb tots els "
+"valors seleccionats o amb qualsevol d'ells. Tingueu en compte que aquesta "
+"opció s'aplicarà a totes les facetes de valors d'aquesta categoria."
 
 #: src/Form/CategoryForm.php:115
 msgid "Match all"
-msgstr ""
+msgstr "Coincidència amb tot"
 
 #: src/Form/CategoryForm.php:116
 msgid "Match any"
-msgstr ""
+msgstr "Coincidència amb qualsevol"
 
 #: src/Form/CategoryForm.php:128
 msgid "Add a facet…"
 msgstr "Afegeix una faceta..."
+
+#: src/Entity/FacetedBrowsePage.php:25
+msgid "Square"
+msgstr ""
 
 #: config/module.config.php:98
 msgid "A facet must have a name."
@@ -617,16 +667,19 @@ msgstr "No es pot mostrar tot. Hi ha massa resultats."
 msgid "Loading results…"
 msgstr "Carrega els resultats..."
 
-#: Module.php:195
+#: Module.php:198
 msgid "Sitewide search category"
-msgstr ""
+msgstr "Categoria de cerca global"
 
-#: Module.php:196
+#: Module.php:199
 msgid ""
 "Select a category to use for the sitewide, full-text search. Note that the "
 "category must contain a full-text facet."
 msgstr ""
+"Seleccioneu una categoria per utilitzar en la cerca global de text complet "
+"del lloc. Tingueu en compte que la categoria ha de contenir una faceta de "
+"text complet."
 
-#: Module.php:198
+#: Module.php:201
 msgid "Select a category"
-msgstr ""
+msgstr "Seleccioneu una categoria"

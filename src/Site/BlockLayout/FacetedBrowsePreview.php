@@ -23,7 +23,7 @@ class FacetedBrowsePreview extends AbstractBlockLayout
         return 'Faceted browse preview'; // @translate
     }
 
-    public function form(PhpRenderer $view, SiteRepresentation $site, SitePageRepresentation $page = null, SitePageBlockRepresentation $block = null
+    public function form(PhpRenderer $view, SiteRepresentation $site, ?SitePageRepresentation $page = null, ?SitePageBlockRepresentation $block = null
     ) {
         // Get all pages of this site.
         $pages = $view->api()->search('faceted_browse_pages', ['site_id' => $site->id()])->getContent();
