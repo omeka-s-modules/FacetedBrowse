@@ -67,10 +67,10 @@ class FacetedBrowsePage extends \FacetedBrowse\Entity\FacetedBrowsePage implemen
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'title', 'resourceType', 'categories'];
+            return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'title', 'resourceType', 'thumbnailType', 'categories'];
         }
 
-        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'title', 'resourceType', 'categories'];
+        return ['__isInitialized__', 'id', 'owner', 'site', 'created', 'modified', 'title', 'resourceType', 'thumbnailType', 'categories'];
     }
 
     /**
@@ -133,7 +133,7 @@ class FacetedBrowsePage extends \FacetedBrowse\Entity\FacetedBrowsePage implemen
      * {@inheritDoc}
      * @internal generated method: use only when explicitly handling proxy specific loading logic
      */
-    public function __setInitializer(\Closure $initializer = null): void
+    public function __setInitializer(?\Closure $initializer = null): void
     {
         $this->__initializer__ = $initializer;
     }
@@ -151,7 +151,7 @@ class FacetedBrowsePage extends \FacetedBrowse\Entity\FacetedBrowsePage implemen
      * {@inheritDoc}
      * @internal generated method: use only when explicitly handling proxy specific loading logic
      */
-    public function __setCloner(\Closure $cloner = null): void
+    public function __setCloner(?\Closure $cloner = null): void
     {
         $this->__cloner__ = $cloner;
     }
@@ -195,7 +195,7 @@ class FacetedBrowsePage extends \FacetedBrowse\Entity\FacetedBrowsePage implemen
     /**
      * {@inheritDoc}
      */
-    public function setOwner(\Omeka\Entity\User $owner = NULL): void
+    public function setOwner(?\Omeka\Entity\User $owner = NULL): void
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOwner', [$owner]);
@@ -333,6 +333,28 @@ class FacetedBrowsePage extends \FacetedBrowse\Entity\FacetedBrowsePage implemen
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategories', []);
 
         return parent::getCategories();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setThumbnailType(?string $thumbnailType): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setThumbnailType', [$thumbnailType]);
+
+        parent::setThumbnailType($thumbnailType);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getThumbnailType(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getThumbnailType', []);
+
+        return parent::getThumbnailType();
     }
 
     /**
