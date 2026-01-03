@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-13 18:07-0500\n"
+"POT-Creation-Date: 2026-01-03 10:49-0500\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2025\n"
 "Language-Team: Catalan (Spain) (https://app.transifex.com/omeka/teams/14184/ca_ES/)\n"
@@ -544,11 +544,12 @@ msgstr "Selecciona el tipus de recursos per a la navegació."
 
 #: src/Form/PageForm.php:52
 msgid "Thumbnail type"
-msgstr ""
+msgstr "Tipus de miniatura"
 
 #: src/Form/PageForm.php:53
 msgid "Select the type of thumbnail images to render on the page."
 msgstr ""
+"Selecciona el tipus d'imatges en miniatura que es mostraran a la pàgina."
 
 #: src/Form/ColumnForm.php:22
 msgid "Column name"
@@ -633,7 +634,7 @@ msgstr "Afegeix una faceta..."
 
 #: src/Entity/FacetedBrowsePage.php:25
 msgid "Square"
-msgstr ""
+msgstr "Quadrat"
 
 #: config/module.config.php:98
 msgid "A facet must have a name."
