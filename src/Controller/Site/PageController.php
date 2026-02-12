@@ -50,14 +50,14 @@ class PageController extends AbstractActionController
 
         // Set default sort.
         $browseDefaults = $this->siteSettings()->get('browse_defaults_public_items');
-        $sortBy = $browseDefaults['sort_by'];
+        $sortBy = $browseDefaults['sort_by'] ?? 'created';
         if ($category) {
             $sortByValueOptions = $this->facetedBrowse()->getSortByValueOptions($category);
             $sortBy = array_key_exists($category->sortBy(), $sortByValueOptions)
                 ? $category->sortBy()
                 : $sortBy;
         }
-        $sortOrder = $browseDefaults['sort_order'];
+        $sortOrder = $browseDefaults['sort_order'] ?? 'desc';
         if ($category) {
             $sortOrder = in_array($category->sortOrder(), ['desc', 'asc'])
                 ? $category->sortOrder()
