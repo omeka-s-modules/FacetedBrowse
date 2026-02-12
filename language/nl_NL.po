@@ -5,15 +5,16 @@
 # 
 # Translators:
 # E R, 2024
+# Ik Jij, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-03 10:49-0500\n"
+"POT-Creation-Date: 2026-02-12 14:38-0500\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
-"Last-Translator: E R, 2024\n"
+"Last-Translator: Ik Jij, 2026\n"
 "Language-Team: Dutch (Netherlands) (https://app.transifex.com/omeka/teams/14184/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -570,7 +571,7 @@ msgstr ""
 
 #: src/Form/CategoryForm.php:63
 msgid "Default sort by"
-msgstr ""
+msgstr "Standaard sorteren op"
 
 #: src/Form/CategoryForm.php:88
 msgid "Helper text"
