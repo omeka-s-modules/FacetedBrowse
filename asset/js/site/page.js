@@ -178,9 +178,9 @@ container.on('click', '#categories-return', function(e) {
 container.on('click', '.next', function(e) {
     e.preventDefault();
     const thisButton = $(this);
-    const form = thisButton.prevAll('form');
     if (!thisButton.hasClass('inactive')) {
-        FacetedBrowse.setPaginationState(parseInt(form.find('input[name="page"]').val()) + 1);
+        const page = parseInt(thisButton.closest('.pagination').find('input[name="page"]').val()) + 1;
+        FacetedBrowse.setPaginationState(page);
         $.get(thisButton.prop('href'), function(html) {
             sectionContent.html(html);
         });
@@ -191,9 +191,9 @@ container.on('click', '.next', function(e) {
 container.on('click', '.previous', function(e) {
     e.preventDefault();
     const thisButton = $(this);
-    const form = thisButton.prevAll('form');
     if (!thisButton.hasClass('inactive')) {
-        FacetedBrowse.setPaginationState(parseInt(form.find('input[name="page"]').val()) - 1);
+        const page = parseInt(thisButton.closest('.pagination').find('input[name="page"]').val()) - 1;
+        FacetedBrowse.setPaginationState(page);
         $.get(thisButton.prop('href'), function(html) {
             sectionContent.html(html);
         });
