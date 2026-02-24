@@ -53,7 +53,7 @@ container.on('change', 'select.item-set', function(e) {
     handleUserInteraction($(this));
 });
 
-container.on('click', 'input.item-set', function(e) {
+container.on('change', 'input.item-set', function(e) {
     const thisValue = $(this);
     handleUserInteraction($(this));
     FacetedBrowse.updateSelectList(thisValue.closest('.select-list'));
