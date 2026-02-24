@@ -92,6 +92,12 @@ container.on('change', 'select.value', function(e) {
 // Handle single_list interaction.
 container.on('change', 'input.value[type="radio"]', function(e) {
     const thisValue = $(this);
+    const facet = thisValue.closest('.facet');
+    const facetId = facet.data('facetId');
+    const dataValue = thisValue.data('value');
+
+    // Save focus state for restoration after page reload
+    FacetedBrowse.setFocusState(facetId, `input.value[type="radio"][data-value="${dataValue}"]`);
     handleUserInteraction(thisValue);
     FacetedBrowse.updateSelectList(thisValue.closest('.select-list'));
 });

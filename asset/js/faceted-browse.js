@@ -101,6 +101,34 @@ const FacetedBrowse = {
         FacetedBrowse.replaceHistoryState();
     },
     /**
+     * Set the focus state to restore focus after content reload.
+     *
+     * @param int facetId The facet ID
+     * @param string selector CSS selector to identify the element to focus
+     */
+    setFocusState: (facetId, selector) => {
+        FacetedBrowse.state.lastFocusedFacetId = facetId;
+        FacetedBrowse.state.lastFocusedSelector = selector;
+        FacetedBrowse.replaceHistoryState();
+    },
+    /**
+     * Restore focus to the last interacted element if applicable.
+     */
+    restoreFocus: () => {
+        if (FacetedBrowse.state.lastFocusedFacetId && FacetedBrowse.state.lastFocusedSelector) {
+            const facet = $(`.facet[data-facet-id="${FacetedBrowse.state.lastFocusedFacetId}"]`);
+            if (facet.length) {
+                const element = facet.find(FacetedBrowse.state.lastFocusedSelector);
+                if (element.length) {
+                    // Use setTimeout to ensure the DOM is fully updated
+                    setTimeout(() => {
+                        element.focus();
+                    }, 100);
+                }
+            }
+        }
+    },
+    /**
      * Set the sorting state.
      *
      * @param string sortBy
@@ -246,6 +274,8 @@ const FacetedBrowse = {
         FacetedBrowse.state.page = null;
         FacetedBrowse.state.facetStates = {};
         FacetedBrowse.state.facetQueries = {};
+        FacetedBrowse.state.lastFocusedFacetId = null;
+        FacetedBrowse.state.lastFocusedSelector = null;
         FacetedBrowse.replaceHistoryState();
     },
     /**
