@@ -64,7 +64,7 @@ container.on('change', 'input.resource-class', function(e) {
         FacetedBrowse.setFocusState(facetId, `input.resource-class[type="radio"][data-value="${dataValue}"]`);
     }
     handleUserInteraction($(this));
-    FacetedBrowse.updateSelectList(thisValue.closest('.select-list'));
+    FacetedBrowse.updateSelectList(thisValue.closest('.select-list'), false);
 });
 
 });
