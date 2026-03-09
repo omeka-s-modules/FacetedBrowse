@@ -88,6 +88,10 @@ class Value implements ColumnTypeInterface
             $values = array_slice($values, 0, $maxValues);
         }
 
+        if (!$values) {
+            return '';
+        }
+
         // Prepare the content.
         $content = '<ul>';
         foreach ($values as $value) {
