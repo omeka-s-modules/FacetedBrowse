@@ -89,11 +89,12 @@ class Value implements ColumnTypeInterface
         }
 
         // Prepare the content.
-        $content = [];
+        $content = '<ul>';
         foreach ($values as $value) {
-            $content[] = $value->asHtml();
+            $content .= sprintf('<li>%s</li>', $value->asHtml());
         }
+        $content .= '</ul>';
 
-        return implode('<br>', $content);
+        return $content;
     }
 }
