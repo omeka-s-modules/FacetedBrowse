@@ -248,7 +248,7 @@ input[type="text"].permalink {
     }
 
 
-    .faceted-browse-page #section-sidebar.open {
+    .faceted-browse-page dialog #section-sidebar {
         display: block;
         position: fixed;
         top: 0;

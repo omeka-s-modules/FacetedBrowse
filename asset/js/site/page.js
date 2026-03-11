@@ -21,49 +21,31 @@ const mediaQuery = window.matchMedia('(min-width: 896px)');
 
 // Reset modal attributes for desktop widths.
 const handleTabletChange = function(e) {
-    modalToggleButton.attr('aria-expanded', 'false');
-    sectionContent.attr('aria-hidden', 'true');
     if (e.matches) {
-        sectionSidebar.attr('aria-hidden', 'false');
-        modalToggleButton.attr('aria-expanded', 'false');
-        sectionContent.attr('aria-hidden', 'false');
+        closeModal();
+        sectionSidebar.unwrap();
+    } else {
+        const dialogWrapper = $('<dialog id="section-sidebar-dialog" aria-label="Mobile dialog" aria-labelledby="section-sidebar-dialog section-sidebar"></dialog>');
+        sectionSidebar.wrap(dialogWrapper);
     }
 };
 
 // Implements modal behavior for facet sidebar on mobile widths.
 const enableModal = function() {
-    var lastFocus;
-
     container.on('click', '#section-sidebar-modal-toggle', function() {
-        sectionSidebar.toggleClass('open');
-        if (modalToggleButton.attr('aria-expanded') == 'true') {
-            modalToggleButton.attr('aria-expanded', 'false');
-            sectionSidebar.attr('aria-hidden', 'true');
-            sectionContent.attr('aria-hidden', 'false');
-        } else {
-            modalToggleButton.attr('aria-expanded', 'true');
-            sectionSidebar.attr('aria-hidden', 'false');
-            sectionContent.attr('aria-hidden', 'true');
-        }
-        sectionSidebar.trigger('toggle');
+        modalToggleButton.attr('aria-expanded', 'false');
+        document.getElementById('section-sidebar-dialog').showModal();
     });
 
-    sectionSidebar.on('click', '.close-button', function() {
-        lastFocus.trigger('click').trigger('focus');
-    });
-
-    container.on('toggle', '#section-sidebar', function() {
-        if (sectionSidebar.attr('aria-hidden') == 'false') {
-            sectionSidebar.attr('aria-hidden', 'true');
-            modalCloseButton.trigger('focus');
-            lastFocus = modalToggleButton;
-        } else {
-            sectionSidebar.attr('aria-hidden', 'false');
-            lastFocus.trigger('focus');
-            lastFocus = modalCloseButton;
-        }
+    container.on('click', '#section-sidebar .close-button', function() {
+        closeModal();
     });
 };
+
+const closeModal = function() {
+    document.getElementById('section-sidebar-dialog').close();
+    modalToggleButton.attr('aria-expanded', 'false');
+}
 
 // Show that a copy to clipboard was successful.
 const showClipboardCopySuccessful = () => {
@@ -250,7 +232,7 @@ container.on('click', '.permalink', function(e) {
     }
 });
 
-enableModal('#section-content', '#section-sidebar', '#section-sidebar-modal-toggle');
+enableModal();
 mediaQuery.addListener(handleTabletChange);
 handleTabletChange(mediaQuery);
 
