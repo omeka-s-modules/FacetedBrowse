@@ -33,9 +33,13 @@ $(document).ready(function () {
     // Implements modal behavior for facet sidebar on mobile widths.
     const enableModal = function () {
         container.on('click', '#section-sidebar-modal-toggle', function () {
-            modalToggleButton.attr('aria-expanded', 'false');
-            document.getElementById('section-sidebar-dialog').showModal();
+            const activeDialog = document.getElementById('section-sidebar-dialog');
+            modalToggleButton.attr('aria-expanded', 'true');
+            activeDialog.showModal();
             sectionSidebar.find('button').first().focus();
+            activeDialog.addEventListener('close', function() {
+                modalToggleButton.attr('aria-expanded', 'false').focus()
+            });
         });
 
         container.on('click', '#section-sidebar .close-button', function () {
