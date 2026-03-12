@@ -239,6 +239,11 @@ input[type="text"].permalink {
 }
 
 @media print, screen and (max-width: 39.9988em) {
+    #section-sidebar,
+    #section-content {
+        padding: 0;
+    }
+
     #section-sidebar-modal-toggle,
     #section-sidebar-modal-close {
         display: block;
