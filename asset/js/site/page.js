@@ -17,16 +17,16 @@ $(document).ready(function () {
     const failCategory = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching category markup.')} ${data.status} (${data.statusText})`);
 
     // Set breakpoint for using facet modal window.
-    const mediaQuery = window.matchMedia('(min-width: 896px)');
+    const mediaQuery = window.matchMedia('(max-width: 39.9988em)');
 
     // Reset modal attributes for desktop widths.
     const handleTabletChange = function (e) {
         if (e.matches) {
-            closeModal();
-            sectionSidebar.unwrap();
-        } else {
             const dialogWrapper = $('<dialog id="section-sidebar-dialog" aria-label="Mobile dialog" aria-labelledby="section-sidebar-dialog section-sidebar"></dialog>');
             sectionSidebar.wrap(dialogWrapper);
+        } else if (document.getElementById('section-sidebar-dialog')) {
+            closeModal();
+            sectionSidebar.unwrap();
         }
     };
 
@@ -44,7 +44,10 @@ $(document).ready(function () {
     };
 
     const closeModal = function () {
-        document.getElementById('section-sidebar-dialog').close();
+        const activeModal = document.getElementById('section-sidebar-dialog');
+        if (activeModal) {
+            activeModal.close();
+        }
         modalToggleButton.attr('aria-expanded', 'false');
     }
 

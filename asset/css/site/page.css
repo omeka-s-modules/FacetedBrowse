@@ -180,14 +180,6 @@ input[type="text"].permalink {
     overflow: scroll;
 }
 
-
-@media print, screen and (min-width: 40em) {
-    #section-sidebar-modal-toggle,
-    #section-sidebar-modal-close {
-        display: none !important;
-    }
-}
-
 #section-sidebar button.close-button {
     background-color: transparent;
     position: absolute;
@@ -232,7 +224,17 @@ input[type="text"].permalink {
     margin-bottom: 0;
 }
 
+#section-sidebar-modal-toggle,
+#section-sidebar-modal-close {
+    display: none;
+}
+
 @media print, screen and (max-width: 39.9988em) {
+    #section-sidebar-modal-toggle,
+    #section-sidebar-modal-close {
+        display: block;
+    }
+
     .faceted-browse-page #container {
         flex-wrap: wrap;
         max-width: 100%;
@@ -247,7 +249,6 @@ input[type="text"].permalink {
         display: none;
     }
 
-
     .faceted-browse-page dialog #section-sidebar {
         display: block;
         position: fixed;
@@ -257,7 +258,7 @@ input[type="text"].permalink {
         bottom: 0;
         padding: 1rem;
         background-color: #fff;
-        z-index: 999;
+        overflow: auto;
     }
 
     .faceted-browse-page .tablesaw td {
