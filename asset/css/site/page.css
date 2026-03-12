@@ -35,6 +35,11 @@
     margin: 0 .5rem 0 0;
 }
 
+#facets,
+#categories {
+    width: 100%;
+}
+
 #categories,
 .facet ul {
     list-style: none;
