@@ -17,50 +17,43 @@ const failFacet = data => sectionContent.html(`${Omeka.jsTranslate('Error fetchi
 const failCategory = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching category markup.')} ${data.status} (${data.statusText})`);
 
 // Set breakpoint for using facet modal window.
-const mediaQuery = window.matchMedia('(min-width: 896px)');
+const mediaQuery = window.matchMedia('(max-width: 39.9988em)');
 
 // Reset modal attributes for desktop widths.
 const handleTabletChange = function(e) {
-    modalToggleButton.attr('aria-expanded', 'false');
-    sectionContent.attr('aria-hidden', 'true').removeClass('open');
     if (e.matches) {
-        sectionSidebar.attr('aria-hidden', 'false');
-        modalToggleButton.attr('aria-expanded', 'false');
+        const dialogWrapper = $('<dialog id="section-sidebar-dialog" aria-label="Mobile dialog" aria-labelledby="section-sidebar-dialog section-sidebar"></dialog>');
+        sectionSidebar.wrap(dialogWrapper);
+    } else if (document.getElementById('section-sidebar-dialog')) {
+        closeModal();
+        sectionSidebar.unwrap();
     }
 };
 
 // Implements modal behavior for facet sidebar on mobile widths.
 const enableModal = function() {
-    var lastFocus;
-
     container.on('click', '#section-sidebar-modal-toggle', function() {
-        sectionSidebar.toggleClass('open');
-        if (modalToggleButton.attr('aria-expanded') == 'true') {
-            modalToggleButton.attr('aria-expanded', 'false');
-            sectionSidebar.attr('aria-hidden', 'true');
-        } else {
-            modalToggleButton.attr('aria-expanded', 'true');
-            sectionSidebar.attr('aria-hidden', 'false');
-        }
-        sectionSidebar.trigger('toggle');
+        const activeDialog = document.getElementById('section-sidebar-dialog');
+        modalToggleButton.attr('aria-expanded', 'true');
+        activeDialog.showModal();
+        sectionSidebar.find('button').first().focus();
+        activeDialog.addEventListener('close', function() {
+            modalToggleButton.attr('aria-expanded', 'false').focus()
+        });
     });
 
-    sectionSidebar.on('click', '.close-button', function() {
-        lastFocus.trigger('click').trigger('focus');
-    });
-
-    container.on('toggle', '#section-sidebar', function() {
-        if (sectionSidebar.attr('aria-hidden') == 'false') {
-            sectionSidebar.attr('aria-hidden', 'true');
-            modalCloseButton.trigger('focus');
-            lastFocus = modalToggleButton;
-        } else {
-            sectionSidebar.attr('aria-hidden', 'false');
-            lastFocus.trigger('focus');
-            lastFocus = modalCloseButton;
-        }
+    container.on('click', '#section-sidebar .close-button', function() {
+        closeModal();
     });
 };
+
+const closeModal = function() {
+    const activeModal = document.getElementById('section-sidebar-dialog');
+    if (activeModal) {
+        activeModal.close();
+    }
+    modalToggleButton.attr('aria-expanded', 'false');
+}
 
 // Show that a copy to clipboard was successful.
 const showClipboardCopySuccessful = () => {
@@ -100,6 +93,7 @@ const setPermalinkFragment = function() {
 const renderCategories = function() {
     $.get(urlCategories).done(function(html) {
         sectionSidebar.html(html);
+        $('.categories-container').find('a,input,button,select').first().focus();
         $.get(urlBrowse).done(function(html) {
             sectionContent.html(html);
             setPermalinkFragment();
@@ -158,6 +152,7 @@ container.on('click', '.category', function(e) {
             // Must update the select lists so they are truncated.
             FacetedBrowse.updateSelectList($(this));
         });
+        $('.facets-container').find('a,input,button,select').first().focus();
         const queries = [];
         queries.push(`faceted_browse_category_id=${thisCategory.data('categoryId')}`);
         $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
@@ -169,7 +164,6 @@ container.on('click', '.category', function(e) {
 
 // Handle a categories return click.
 container.on('click', '#categories-return', function(e) {
-    e.preventDefault();
     FacetedBrowse.resetState();
     renderCategories();
 });
@@ -247,7 +241,7 @@ container.on('click', '.permalink', function(e) {
     }
 });
 
-enableModal('#section-content', '#section-sidebar', '#section-sidebar-modal-toggle');
+enableModal();
 mediaQuery.addListener(handleTabletChange);
 handleTabletChange(mediaQuery);
 

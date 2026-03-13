@@ -21,7 +21,7 @@ if (1 === count($categories)) {
     data-url-facets="<?php echo $this->escapeHtml($this->url(null, ['action' => 'facets'], true)); ?>"
     data-url-browse="<?php echo $this->escapeHtml($this->url(null, ['action' => 'browse'], true)); ?>"
     data-category-id="<?php echo $this->escapeHtml($categoryId); ?>">
-    <button id="section-sidebar-modal-toggle" type="button"><?php echo $this->translate('Filters'); ?></button>
+    <button id="section-sidebar-modal-toggle" type="button" class="button"><?php echo $this->translate('Filters'); ?></button>
     <div id="section-sidebar" class="mobile modal-panel" aria-describedby="facet-modal-description" aria-label="<?php echo $this->translate('Filters'); ?>"></div>
     <div id="section-content"></div>
 </div>
