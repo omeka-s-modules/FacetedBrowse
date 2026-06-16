@@ -23,7 +23,7 @@ if (1 === count($categories)) {
     data-category-id="<?php echo $this->escapeHtml($categoryId); ?>">
     <button id="section-sidebar-modal-toggle" type="button" class="button"><?php echo $this->translate('Filters'); ?></button>
     <div id="section-sidebar" class="mobile modal-panel" aria-describedby="facet-modal-description" aria-label="<?php echo $this->translate('Filters'); ?>"></div>
-    <div id="section-content"></div>
+    <div id="section-content" tabindex="-1"></div>
     <div id="browse-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
 </div>
 

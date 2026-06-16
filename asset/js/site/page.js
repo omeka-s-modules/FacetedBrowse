@@ -4,6 +4,7 @@ const container = $('#container');
 const sectionSidebar = $('#section-sidebar');
 const sectionContent = $('#section-content');
 const browseStatus = $('#browse-status');
+let focusOnLoad = false;
 
 const urlCategories = container.data('urlCategories');
 const urlFacets = container.data('urlFacets');
@@ -15,6 +16,7 @@ const modalCloseButton = $('#section-sidebar-modal-close');
 // Callbacks that handle  request errors.
 const makeFail = function(msg) {
     return function(data) {
+        focusOnLoad = false;
         sectionContent.html(`${Omeka.jsTranslate(msg)} ${data.status} (${data.statusText})`).attr('aria-busy', 'false');
     };
 };
@@ -132,18 +134,24 @@ FacetedBrowse.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, pag
         sectionContent.html(html).removeClass('loading').attr('aria-busy', 'false');
         setBrowseStatus();
         setPermalinkFragment();
+        if (focusOnLoad) {
+            sectionContent.focus();
+            focusOnLoad = false;
+        }
     }).fail(failBrowse);
 });
 
 // Then, set up the page for first load.
 if (FacetedBrowse.getState('categoryId')) {
     // This page has a previously saved category state.
+    focusOnLoad = true;
     $.get(urlFacets, {category_id: FacetedBrowse.getState('categoryId')}).done(function(html) {
         sectionSidebar.html(html);
         applyPreviousState();
     }).fail(failFacet);
 } else if (container.data('categoryId')) {
     // There is one category. Skip categories list and show facets list.
+    focusOnLoad = true;
     $.get(urlFacets, {category_id: container.data('categoryId')}).done(function(html) {
         sectionSidebar.html(html);
         applyPreviousState();
