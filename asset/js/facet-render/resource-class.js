@@ -12,6 +12,14 @@ FacetedBrowse.registerFacetApplyStateHandler('resource_class', function(facet, f
                 .addClass('selected');
         }
     });
+    if ('single_list' === facetData.select_type) {
+        const anyInput = thisFacet.find('input.resource-class[data-class-id=""]');
+        const hasActiveFilter = thisFacet.find('input.resource-class.selected').length > 0;
+        anyInput.addClass('selected');
+        if (!hasActiveFilter) {
+            anyInput.prop('checked', true);
+        }
+    }
     if (['single_list', 'multiple_list'].includes(facetData.select_type)) {
         FacetedBrowse.updateSelectList(thisFacet.find('.select-list'));
     }
@@ -28,11 +36,14 @@ const handleUserInteraction = function(thisClass) {
     const state = [];
     switch (facetData.select_type) {
         case 'single_list':
-            facet.find('.resource-class').not(thisClass).removeClass('selected');
-            thisClass.prop('checked', !thisClass.hasClass('selected'));
+            facet.find('.resource-class').not(thisClass).not('[data-class-id=""]').removeClass('selected');
+            // falls through
         case 'multiple_list':
             thisClass.toggleClass('selected');
             break;
+    }
+    if ('single_list' === facetData.select_type) {
+        facet.find('input.resource-class[data-class-id=""]').addClass('selected');
     }
     if ('single_select' === facetData.select_type) {
         const id = thisClass.val();
@@ -41,8 +52,10 @@ const handleUserInteraction = function(thisClass) {
     } else {
         facet.find('.resource-class.selected').each(function() {
             const id = $(this).data('classId');
-            queries.push(`resource_class_id[]=${id}`);
-            state.push(id);
+            if (id) {
+                queries.push(`resource_class_id[]=${id}`);
+                state.push(id);
+            }
         });
     }
     FacetedBrowse.setFacetState(facet.data('facetId'), state, queries.join('&'));
@@ -53,10 +66,20 @@ container.on('change', 'select.resource-class', function(e) {
     handleUserInteraction($(this));
 });
 
-container.on('click', 'input.resource-class', function(e) {
+container.on('change', 'input.resource-class[type="radio"]', function(e) {
     const thisValue = $(this);
-    handleUserInteraction($(this));
+    handleUserInteraction(thisValue);
     FacetedBrowse.updateSelectList(thisValue.closest('.select-list'));
+});
+
+container.on('click', 'input.resource-class[type="checkbox"]', function(e) {
+    const thisValue = $(this);
+    const selectList = thisValue.closest('.select-list');
+    handleUserInteraction(thisValue);
+    FacetedBrowse.updateSelectList(selectList);
+    if (!thisValue.is(':visible')) {
+        selectList.find('input:visible').first().focus();
+    }
 });
 
 });

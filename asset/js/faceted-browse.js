@@ -266,25 +266,9 @@ const FacetedBrowse = {
     updateSelectList: selectList => {
         const facet = selectList.closest('.facet');
         const truncateListItems = selectList.data('truncateListItems');
-        // First, sort the selected list items and prepend them to the list.
-        const listItemsSelected = selectList.find('input.selected')
-            .closest('.select-list-item')
-            .show()
-            .sort(function(a, b) {
-                // Subtracting seems to be cross-browser compatible.
-                return $(a).data('index') - $(b).data('index');
-            });
-        listItemsSelected.prependTo(selectList);
-        // Then, sort the unselected list items and append them to the list.
-        const listItemsUnselected = selectList.find('input:not(.selected)')
-            .closest('.select-list-item')
-            .show()
-            .sort(function(a, b) {
-                // Subtracting seems to be cross-browser compatible.
-                return $(a).data('index') - $(b).data('index');
-            });
-        listItemsUnselected.appendTo(selectList);
-        const listItems = selectList.find('.select-list-item');
+        const listItems = selectList.find('.select-list-item').show();
+        const listItemsSelected = listItems.filter(function() { return $(this).find('input.selected').length > 0; });
+        const listItemsUnselected = listItems.not(listItemsSelected);
         if (!truncateListItems || truncateListItems >= listItems.length) {
             // No need to show expand when list does not surpass configured limit.
             return;
@@ -299,12 +283,17 @@ const FacetedBrowse = {
             // Show all selected items even if they surpass the configured limit.
             listItemsUnselected.hide();
         } else {
-            // Truncate to the configured limit.
-            listItems.slice(truncateListItems).hide();
+            // Fill available slots with unselected items; always keep selected items visible.
+            const availableSlots = truncateListItems - listItemsSelected.length;
+            listItemsUnselected.each(function(i) {
+                if (i >= availableSlots) {
+                    $(this).hide();
+                }
+            });
         }
         const hiddenCount = listItems.filter(':hidden').length;
         facet.find('.select-list-hidden-count').text(`(${hiddenCount})`);
-        facet.find('.select-list-expand').show();
+        facet.find('.select-list-expand').toggle(hiddenCount > 0);
         facet.find('.select-list-collapse').hide();
     },
 };

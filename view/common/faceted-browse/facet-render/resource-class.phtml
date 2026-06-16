@@ -1,10 +1,27 @@
 <?php if ($singleSelect): ?>
 <?php echo $this->formElement($singleSelect); ?>
 <?php else: ?>
-<ul class="select-list" data-truncate-list-items="<?php echo $this->escapeHtml($facet->data('truncate_resource_classes')); ?>">
-    <?php $index = 0; ?>
+<?php
+$truncate = $facet->data('truncate_resource_classes');
+if ('single_list' === $facet->data('select_type') && $truncate) {
+    $truncate++;
+}
+?>
+<ul class="select-list" id="select-list-<?php echo $facet->id(); ?>" data-truncate-list-items="<?php echo $this->escapeHtml($truncate); ?>">
+    <?php if ('single_list' === $facet->data('select_type')): ?>
+    <li class="select-list-item">
+        <label>
+            <input
+                class="resource-class"
+                type="radio"
+                name="<?php echo sprintf('resource_class_%s', $facet->id()); ?>"
+                data-class-id="">
+                <?php echo $this->translate('All'); ?>
+        </label>
+    </li>
+    <?php endif; ?>
     <?php foreach ($classes as $class): ?>
-    <li class="select-list-item" data-index="<?php echo $this->escapeHtml($index++); ?>">
+    <li class="select-list-item">
         <label>
             <input
                 class="resource-class"
@@ -16,6 +33,6 @@
     </li>
     <?php endforeach; ?>
 </ul>
-<a href="#" class="select-list-expand" style="display: none;"><?php echo $this->translate('See more'); ?> <span class="select-list-hidden-count"></span></a>
-<a href="#" class="select-list-collapse" style="display: none;"><?php echo $this->translate('See less'); ?></a>
+<button type="button" class="select-list-expand" aria-expanded="false" aria-controls="select-list-<?php echo $facet->id(); ?>" style="display: none;"><?php echo $this->translate('See more'); ?> <span class="select-list-hidden-count"></span></button>
+<button type="button" class="select-list-collapse" aria-expanded="true" aria-controls="select-list-<?php echo $facet->id(); ?>" style="display: none;"><?php echo $this->translate('See less'); ?></button>
 <?php endif; ?>
