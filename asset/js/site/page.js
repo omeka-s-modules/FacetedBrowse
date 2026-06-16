@@ -3,6 +3,7 @@ $(document).ready(function() {
 const container = $('#container');
 const sectionSidebar = $('#section-sidebar');
 const sectionContent = $('#section-content');
+const browseStatus = $('#browse-status');
 
 const urlCategories = container.data('urlCategories');
 const urlFacets = container.data('urlFacets');
@@ -12,9 +13,19 @@ const modalToggleButton = $("#section-sidebar-modal-toggle");
 const modalCloseButton = $('#section-sidebar-modal-close');
 
 // Callbacks that handle  request errors.
-const failBrowse = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching browse markup.')} ${data.status} (${data.statusText})`);
-const failFacet = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching facet markup.')} ${data.status} (${data.statusText})`);
-const failCategory = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching category markup.')} ${data.status} (${data.statusText})`);
+const makeFail = function(msg) {
+    return function(data) {
+        sectionContent.html(`${Omeka.jsTranslate(msg)} ${data.status} (${data.statusText})`).attr('aria-busy', 'false');
+    };
+};
+const failBrowse = makeFail('Error fetching browse markup.');
+const failFacet = makeFail('Error fetching facet markup.');
+const failCategory = makeFail('Error fetching category markup.');
+
+const setBrowseStatus = function() {
+    const rowCount = sectionContent.find('.row-count').text();
+    browseStatus.text(rowCount || Omeka.jsTranslate('No results'));
+};
 
 // Set breakpoint for using facet modal window.
 const mediaQuery = window.matchMedia('(max-width: 39.9988em)');
@@ -96,6 +107,7 @@ const renderCategories = function() {
         $('.categories-container').find('a,input,button,select').first().focus();
         $.get(urlBrowse).done(function(html) {
             sectionContent.html(html);
+            setBrowseStatus();
             setPermalinkFragment();
         }).fail(failBrowse);
     }).fail(failCategory);
@@ -115,9 +127,10 @@ FacetedBrowse.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, pag
     if (null !== sortOrder) queries.push(`sort_order=${sortOrder}`);
     if (null !== page) queries.push(`page=${page}`);
     queries.push(`faceted_browse_category_id=${facets.data('categoryId')}`);
-    sectionContent.text(Omeka.jsTranslate('Loading results…')).addClass('loading');
+    sectionContent.text(Omeka.jsTranslate('Loading results…')).addClass('loading').attr('aria-busy', 'true');
     $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
-        sectionContent.html(html).removeClass('loading');
+        sectionContent.html(html).removeClass('loading').attr('aria-busy', 'false');
+        setBrowseStatus();
         setPermalinkFragment();
     }).fail(failBrowse);
 });
@@ -157,6 +170,7 @@ container.on('click', '.category', function(e) {
         queries.push(`faceted_browse_category_id=${thisCategory.data('categoryId')}`);
         $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
             sectionContent.html(html);
+            setBrowseStatus();
             setPermalinkFragment();
         }).fail(failBrowse);
     }).fail(failFacet);
@@ -177,6 +191,7 @@ container.on('click', '.next', function(e) {
         FacetedBrowse.setPaginationState(page);
         $.get(thisButton.prop('href'), function(html) {
             sectionContent.html(html);
+            setBrowseStatus();
         });
     }
 });
@@ -190,6 +205,7 @@ container.on('click', '.previous', function(e) {
         FacetedBrowse.setPaginationState(page);
         $.get(thisButton.prop('href'), function(html) {
             sectionContent.html(html);
+            setBrowseStatus();
         });
     }
 });
@@ -201,6 +217,7 @@ container.on('submit', '.pagination form', function(e) {
     FacetedBrowse.setPaginationState(thisForm.find('input[name="page"]').val());
     $.get(`${urlBrowse}?${$(this).serialize()}`, {}, function(html) {
         sectionContent.html(html);
+        setBrowseStatus();
         setPermalinkFragment();
     });
 });
@@ -215,6 +232,7 @@ container.on('submit', 'form.sorting', function(e) {
     );
     $.get(`${urlBrowse}?${$(this).serialize()}`, {}, function(html) {
         sectionContent.html(html);
+        setBrowseStatus();
         setPermalinkFragment();
     });
 });
