@@ -25,7 +25,7 @@ const failFacet = makeFail('Error fetching facet markup.');
 const failCategory = makeFail('Error fetching category markup.');
 
 const setBrowseStatus = function() {
-    const rowCount = sectionContent.find('.row-count').text();
+    const rowCount = sectionContent.find('.row-count').first().text();
     browseStatus.text(rowCount || Omeka.jsTranslate('No results'));
 };
 
@@ -51,7 +51,13 @@ const enableModal = function() {
         activeDialog.showModal();
         sectionSidebar.find('button').first().focus();
         activeDialog.addEventListener('close', function() {
-            modalToggleButton.attr('aria-expanded', 'false').focus()
+            modalToggleButton.attr('aria-expanded', 'false');
+            // Results may still be loading if the user closes the modal quickly.
+            if (sectionContent.attr('aria-busy') === 'true') {
+                focusOnLoad = true;
+            } else {
+                sectionContent.focus();
+            }
         });
     });
 
@@ -131,8 +137,9 @@ FacetedBrowse.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, pag
     queries.push(`faceted_browse_category_id=${facets.data('categoryId')}`);
     sectionContent.text(Omeka.jsTranslate('Loading results…')).addClass('loading').attr('aria-busy', 'true');
     $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
-        sectionContent.html(html).removeClass('loading').attr('aria-busy', 'false');
+        sectionContent.html(html).removeClass('loading');
         setBrowseStatus();
+        sectionContent.attr('aria-busy', 'false');
         setPermalinkFragment();
         if (focusOnLoad) {
             sectionContent.focus();
