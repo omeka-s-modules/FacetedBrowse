@@ -62,11 +62,12 @@
     border-bottom-color: transparent;
 }
 
-.facet label {
+.facet .select-list-item {
     display: flex;
+    align-items: center;
 }
 
-.facet label input {
+.facet .select-list-item input {
     margin: 0 .25rem 0 0;
 }
 

@@ -7,29 +7,27 @@ if ('single_list' === $facet->data('select_type') && $truncate) {
     $truncate++;
 }
 ?>
-<ul class="select-list" id="select-list-<?php echo $facet->id(); ?>" data-truncate-list-items="<?php echo $this->escapeHtml($truncate); ?>">
+<ul class="select-list" id="select-list-<?php echo $facet->id(); ?>" data-truncate-list-items="<?php echo $this->escapeHtml($truncate); ?>"<?php if ('single_list' === $facet->data('select_type')): ?> role="radiogroup"<?php endif; ?>>
     <?php if ('single_list' === $facet->data('select_type')): ?>
     <li class="select-list-item">
-        <label>
-            <input
-                class="item-set"
-                type="radio"
-                name="<?php echo sprintf('item_set_%s', $facet->id()); ?>"
-                data-item-set-id="">
-                <?php echo $this->translate('All'); ?>
-        </label>
+        <input
+            id="<?php echo sprintf('input-%s-all', $facet->id()); ?>"
+            class="item-set"
+            type="radio"
+            name="<?php echo sprintf('item_set_%s', $facet->id()); ?>"
+            data-item-set-id="">
+        <label for="<?php echo sprintf('input-%s-all', $facet->id()); ?>"><?php echo $this->translate('All'); ?></label>
     </li>
     <?php endif; ?>
-    <?php foreach ($itemSets as $itemSet): ?>
+    <?php $index = 0; foreach ($itemSets as $itemSet): $index++; ?>
     <li class="select-list-item">
-        <label>
-            <input
-                class="item-set"
-                type="<?php echo ('multiple_list' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
-                name="<?php echo sprintf('item_set_%s', $facet->id()); ?>"
-                data-item-set-id="<?php echo $this->escapeHtml($itemSet->id()); ?>">
-                <?php echo $itemSet->title(); ?>
-        </label>
+        <input
+            id="<?php echo sprintf('input-%s-%s', $facet->id(), $index); ?>"
+            class="item-set"
+            type="<?php echo ('multiple_list' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
+            name="<?php echo sprintf('item_set_%s', $facet->id()); ?>"
+            data-item-set-id="<?php echo $this->escapeHtml($itemSet->id()); ?>">
+        <label for="<?php echo sprintf('input-%s-%s', $facet->id(), $index); ?>"><?php echo $itemSet->title(); ?></label>
     </li>
     <?php endforeach; ?>
 </ul>

@@ -7,29 +7,27 @@ if ('single_list' === $facet->data('select_type') && $truncate) {
     $truncate++;
 }
 ?>
-<ul class="select-list" id="select-list-<?php echo $facet->id(); ?>" data-truncate-list-items="<?php echo $this->escapeHtml($truncate); ?>">
+<ul class="select-list" id="select-list-<?php echo $facet->id(); ?>" data-truncate-list-items="<?php echo $this->escapeHtml($truncate); ?>"<?php if ('single_list' === $facet->data('select_type')): ?> role="radiogroup"<?php endif; ?>>
     <?php if ('single_list' === $facet->data('select_type')): ?>
     <li class="select-list-item">
-        <label>
-            <input
-                class="resource-template"
-                type="radio"
-                name="<?php echo sprintf('resource_template_%s', $facet->id()); ?>"
-                data-template-id="">
-                <?php echo $this->translate('All'); ?>
-        </label>
+        <input
+            id="<?php echo sprintf('input-%s-all', $facet->id()); ?>"
+            class="resource-template"
+            type="radio"
+            name="<?php echo sprintf('resource_template_%s', $facet->id()); ?>"
+            data-template-id="">
+        <label for="<?php echo sprintf('input-%s-all', $facet->id()); ?>"><?php echo $this->translate('All'); ?></label>
     </li>
     <?php endif; ?>
-    <?php foreach ($templates as $template): ?>
+    <?php $index = 0; foreach ($templates as $template): $index++; ?>
     <li class="select-list-item">
-        <label>
-            <input
-                class="resource-template"
-                type="<?php echo ('multiple_list' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
-                name="<?php echo sprintf('resource_template_%s', $facet->id()); ?>"
-                data-template-id="<?php echo $this->escapeHtml($template->id()); ?>">
-                <?php echo $template->label(); ?>
-        </label>
+        <input
+            id="<?php echo sprintf('input-%s-%s', $facet->id(), $index); ?>"
+            class="resource-template"
+            type="<?php echo ('multiple_list' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
+            name="<?php echo sprintf('resource_template_%s', $facet->id()); ?>"
+            data-template-id="<?php echo $this->escapeHtml($template->id()); ?>">
+        <label for="<?php echo sprintf('input-%s-%s', $facet->id(), $index); ?>"><?php echo $template->label(); ?></label>
     </li>
     <?php endforeach; ?>
 </ul>

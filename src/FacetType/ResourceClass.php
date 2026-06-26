@@ -118,6 +118,7 @@ class ResourceClass implements FacetTypeInterface
             $singleSelect->setEmptyOption('Select one…');
             $singleSelect->setAttribute('class', 'resource-class');
             $singleSelect->setAttribute('style', 'width: 90%;');
+            $singleSelect->setAttribute('aria-labelledby', sprintf('facet-legend-%s', $facet->id()));
         }
 
         return $view->partial('common/faceted-browse/facet-render/resource-class', [
