@@ -181,13 +181,13 @@ container.on('click', '.category', function(e) {
             // Must update the select lists so they are truncated.
             FacetedBrowse.updateSelectList($(this));
         });
-        $('.facets-container').find('a,input,button,select').first().focus();
         const queries = [];
         queries.push(`faceted_browse_category_id=${thisCategory.data('categoryId')}`);
         $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
             sectionContent.html(html);
             setBrowseStatus();
             setPermalinkFragment();
+            sectionContent.focus();
         }).fail(failBrowse);
     }).fail(failFacet);
 });
