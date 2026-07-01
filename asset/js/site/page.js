@@ -5,6 +5,7 @@ const sectionSidebar = $('#section-sidebar');
 const sectionContent = $('#section-content');
 const browseStatus = $('#browse-status');
 let focusOnLoad = false;
+let browseStatusClearTimeout;
 
 const urlCategories = container.data('urlCategories');
 const urlFacets = container.data('urlFacets');
@@ -25,8 +26,15 @@ const failFacet = makeFail('Error fetching facet markup.');
 const failCategory = makeFail('Error fetching category markup.');
 
 const setBrowseStatus = function() {
+    clearTimeout(browseStatusClearTimeout);
     const rowCount = sectionContent.find('.row-count').first().text();
     browseStatus.text(rowCount || Omeka.jsTranslate('No results'));
+    // Delayed clear resets the region so an identical count on the next update still triggers
+    // an announcement. Clearing synchronously would cause some screen readers to announce the
+    // empty string as a second event before the count.
+    browseStatusClearTimeout = setTimeout(function() {
+        browseStatus.text('');
+    }, 1000);
 };
 
 // Set breakpoint for using facet modal window.
@@ -135,7 +143,6 @@ FacetedBrowse.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, pag
     if (null !== sortOrder) queries.push(`sort_order=${sortOrder}`);
     if (null !== page) queries.push(`page=${page}`);
     queries.push(`faceted_browse_category_id=${facets.data('categoryId')}`);
-    browseStatus.text(''); // Cancel any pending announcement before the new count loads.
     sectionContent.text(Omeka.jsTranslate('Loading results…')).addClass('loading');
     $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
         sectionContent.html(html).removeClass('loading');
