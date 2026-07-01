@@ -135,6 +135,7 @@ FacetedBrowse.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, pag
     if (null !== sortOrder) queries.push(`sort_order=${sortOrder}`);
     if (null !== page) queries.push(`page=${page}`);
     queries.push(`faceted_browse_category_id=${facets.data('categoryId')}`);
+    browseStatus.text(''); // Cancel any pending announcement before the new count loads.
     sectionContent.text(Omeka.jsTranslate('Loading results…')).addClass('loading');
     $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
         sectionContent.html(html).removeClass('loading');
