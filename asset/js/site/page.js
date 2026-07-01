@@ -17,7 +17,7 @@ const modalCloseButton = $('#section-sidebar-modal-close');
 const makeFail = function(msg) {
     return function(data) {
         focusOnLoad = false;
-        sectionContent.html(`${Omeka.jsTranslate(msg)} ${data.status} (${data.statusText})`).attr('aria-busy', 'false');
+        sectionContent.html(`${Omeka.jsTranslate(msg)} ${data.status} (${data.statusText})`).removeClass('loading');
     };
 };
 const failBrowse = makeFail('Error fetching browse markup.');
@@ -53,7 +53,7 @@ const enableModal = function() {
         activeDialog.addEventListener('close', function() {
             modalToggleButton.attr('aria-expanded', 'false');
             // Results may still be loading if the user closes the modal quickly.
-            if (sectionContent.attr('aria-busy') === 'true') {
+            if (sectionContent.hasClass('loading')) {
                 focusOnLoad = true;
             } else {
                 sectionContent.focus();
@@ -135,12 +135,10 @@ FacetedBrowse.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, pag
     if (null !== sortOrder) queries.push(`sort_order=${sortOrder}`);
     if (null !== page) queries.push(`page=${page}`);
     queries.push(`faceted_browse_category_id=${facets.data('categoryId')}`);
-    browseStatus.text(''); // Clear to prevent stale count from being announced during loading.
-    sectionContent.text(Omeka.jsTranslate('Loading results…')).addClass('loading').attr('aria-busy', 'true');
+    sectionContent.text(Omeka.jsTranslate('Loading results…')).addClass('loading');
     $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
         sectionContent.html(html).removeClass('loading');
         setBrowseStatus();
-        sectionContent.attr('aria-busy', 'false');
         setPermalinkFragment();
         if (focusOnLoad) {
             sectionContent.focus();
