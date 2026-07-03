@@ -115,6 +115,9 @@ input[type="text"].permalink {
 #section-content {
     width: 70%;
     padding-left: .5rem;
+}
+
+#section-content:focus {
     outline: none;
 }
 
