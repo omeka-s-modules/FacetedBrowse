@@ -3,6 +3,9 @@ $(document).ready(function() {
 const container = $('#container');
 const sectionSidebar = $('#section-sidebar');
 const sectionContent = $('#section-content');
+const browseStatus = $('#browse-status');
+let focusOnLoad = false;
+let browseStatusClearTimeout;
 
 const urlCategories = container.data('urlCategories');
 const urlFacets = container.data('urlFacets');
@@ -12,9 +15,27 @@ const modalToggleButton = $("#section-sidebar-modal-toggle");
 const modalCloseButton = $('#section-sidebar-modal-close');
 
 // Callbacks that handle  request errors.
-const failBrowse = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching browse markup.')} ${data.status} (${data.statusText})`);
-const failFacet = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching facet markup.')} ${data.status} (${data.statusText})`);
-const failCategory = data => sectionContent.html(`${Omeka.jsTranslate('Error fetching category markup.')} ${data.status} (${data.statusText})`);
+const makeFail = function(msg) {
+    return function(data) {
+        focusOnLoad = false;
+        sectionContent.html(`${Omeka.jsTranslate(msg)} ${data.status} (${data.statusText})`).removeClass('loading');
+    };
+};
+const failBrowse = makeFail('Error fetching browse markup.');
+const failFacet = makeFail('Error fetching facet markup.');
+const failCategory = makeFail('Error fetching category markup.');
+
+const setBrowseStatus = function() {
+    clearTimeout(browseStatusClearTimeout);
+    const rowCount = sectionContent.find('.row-count').first().text();
+    browseStatus.text(rowCount || Omeka.jsTranslate('No results'));
+    // Delayed clear resets the region so an identical count on the next update still triggers
+    // an announcement. Clearing synchronously would cause some screen readers to announce the
+    // empty string as a second event before the count.
+    browseStatusClearTimeout = setTimeout(function() {
+        browseStatus.text('');
+    }, 1000);
+};
 
 // Set breakpoint for using facet modal window.
 const mediaQuery = window.matchMedia('(max-width: 39.9988em)');
@@ -38,7 +59,13 @@ const enableModal = function() {
         activeDialog.showModal();
         sectionSidebar.find('button').first().focus();
         activeDialog.addEventListener('close', function() {
-            modalToggleButton.attr('aria-expanded', 'false').focus()
+            modalToggleButton.attr('aria-expanded', 'false');
+            // Results may still be loading if the user closes the modal quickly.
+            if (sectionContent.hasClass('loading')) {
+                focusOnLoad = true;
+            } else {
+                sectionContent.focus();
+            }
         });
     });
 
@@ -96,6 +123,7 @@ const renderCategories = function() {
         $('.categories-container').find('a,input,button,select').first().focus();
         $.get(urlBrowse).done(function(html) {
             sectionContent.html(html);
+            setBrowseStatus();
             setPermalinkFragment();
         }).fail(failBrowse);
     }).fail(failCategory);
@@ -118,19 +146,26 @@ FacetedBrowse.setStateChangeHandler(function(facetsQuery, sortBy, sortOrder, pag
     sectionContent.text(Omeka.jsTranslate('Loading results…')).addClass('loading');
     $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
         sectionContent.html(html).removeClass('loading');
+        setBrowseStatus();
         setPermalinkFragment();
+        if (focusOnLoad) {
+            sectionContent.focus();
+            focusOnLoad = false;
+        }
     }).fail(failBrowse);
 });
 
 // Then, set up the page for first load.
 if (FacetedBrowse.getState('categoryId')) {
     // This page has a previously saved category state.
+    focusOnLoad = true;
     $.get(urlFacets, {category_id: FacetedBrowse.getState('categoryId')}).done(function(html) {
         sectionSidebar.html(html);
         applyPreviousState();
     }).fail(failFacet);
 } else if (container.data('categoryId')) {
     // There is one category. Skip categories list and show facets list.
+    focusOnLoad = true;
     $.get(urlFacets, {category_id: container.data('categoryId')}).done(function(html) {
         sectionSidebar.html(html);
         applyPreviousState();
@@ -152,12 +187,13 @@ container.on('click', '.category', function(e) {
             // Must update the select lists so they are truncated.
             FacetedBrowse.updateSelectList($(this));
         });
-        $('.facets-container').find('a,input,button,select').first().focus();
         const queries = [];
         queries.push(`faceted_browse_category_id=${thisCategory.data('categoryId')}`);
         $.get(`${urlBrowse}?${queries.join('&')}`).done(function(html) {
             sectionContent.html(html);
+            setBrowseStatus();
             setPermalinkFragment();
+            sectionContent.focus();
         }).fail(failBrowse);
     }).fail(failFacet);
 });
@@ -177,6 +213,7 @@ container.on('click', '.next', function(e) {
         FacetedBrowse.setPaginationState(page);
         $.get(thisButton.prop('href'), function(html) {
             sectionContent.html(html);
+            setBrowseStatus();
         });
     }
 });
@@ -190,6 +227,7 @@ container.on('click', '.previous', function(e) {
         FacetedBrowse.setPaginationState(page);
         $.get(thisButton.prop('href'), function(html) {
             sectionContent.html(html);
+            setBrowseStatus();
         });
     }
 });
@@ -201,6 +239,7 @@ container.on('submit', '.pagination form', function(e) {
     FacetedBrowse.setPaginationState(thisForm.find('input[name="page"]').val());
     $.get(`${urlBrowse}?${$(this).serialize()}`, {}, function(html) {
         sectionContent.html(html);
+        setBrowseStatus();
         setPermalinkFragment();
     });
 });
@@ -215,6 +254,7 @@ container.on('submit', 'form.sorting', function(e) {
     );
     $.get(`${urlBrowse}?${$(this).serialize()}`, {}, function(html) {
         sectionContent.html(html);
+        setBrowseStatus();
         setPermalinkFragment();
     });
 });

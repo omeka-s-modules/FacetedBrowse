@@ -189,6 +189,7 @@ class Value implements FacetTypeInterface
             $singleSelect->setEmptyOption('Select one…');
             $singleSelect->setAttribute('class', 'value');
             $singleSelect->setAttribute('style', 'width: 90%;');
+            $singleSelect->setAttribute('aria-labelledby', sprintf('facet-legend-%s', $facet->id()));
         }
 
         $textInput = null;
@@ -197,6 +198,7 @@ class Value implements FacetTypeInterface
             $textInput->setAttribute('class', 'value');
             $textInput->setAttribute('data-property-id', $facet->data('property_id'));
             $textInput->setAttribute('style', 'width: 90%;');
+            $textInput->setAttribute('aria-labelledby', sprintf('facet-legend-%s', $facet->id()));
         }
 
         return $view->partial('common/faceted-browse/facet-render/value', [

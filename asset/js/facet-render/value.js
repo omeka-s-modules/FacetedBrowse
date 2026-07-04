@@ -14,6 +14,14 @@ FacetedBrowse.registerFacetApplyStateHandler('value', function(facet, facetState
                 .addClass('selected');
         }
     });
+    if ('single_list' === facetData.select_type) {
+        const anyInput = thisFacet.find('input.value[data-value=""]');
+        const hasActiveFilter = thisFacet.find('input.value.selected').length > 0;
+        anyInput.addClass('selected');
+        if (!hasActiveFilter) {
+            anyInput.prop('checked', true);
+        }
+    }
     if (['single_list', 'multiple_list'].includes(facetData.select_type)) {
         FacetedBrowse.updateSelectList(thisFacet.find('.select-list'));
     }
@@ -33,16 +41,20 @@ const getQuery = function(index, property, type, text, joiner) {
 
 const handleUserInteraction = function(thisValue) {
     const facet = thisValue.closest('.facet');
+    const facetData = facet.data('facetData');
     const valueFacets = container.find('.facet[data-facet-type="value"]');
     const joiner = 'or' === $('#facets').data('categoryOptions').value_facet_mode ? 'or' : 'and';
     let index = 0;
-    switch (facet.data('facetData').select_type) {
+    switch (facetData.select_type) {
         case 'single_list':
-            facet.find('.value').not(thisValue).removeClass('selected');
-            thisValue.prop('checked', !thisValue.hasClass('selected'));
+            facet.find('.value').not(thisValue).not('[data-value=""]').removeClass('selected');
+            // falls through
         case 'multiple_list':
             thisValue.toggleClass('selected');
             break;
+    }
+    if ('single_list' === facetData.select_type) {
+        facet.find('input.value[data-value=""]').addClass('selected');
     }
     valueFacets.each(function() {
         const thisFacet= $(this);
@@ -74,9 +86,11 @@ const handleUserInteraction = function(thisValue) {
                 const property = $(this).data('propertyId');
                 const type = facetData.query_type;
                 const text = $(this).data('value');
-                queries.push(getQuery(index, property, type, text, joiner));
-                state.push(text);
-                index++;
+                if ('' !== text) {
+                    queries.push(getQuery(index, property, type, text, joiner));
+                    state.push(text);
+                    index++;
+                }
             });
         }
         FacetedBrowse.setFacetState(thisFacet.data('facetId'), state, queries.join('&'));
@@ -90,7 +104,7 @@ container.on('change', 'select.value', function(e) {
 });
 
 // Handle single_list interaction.
-container.on('click', 'input.value[type="radio"]', function(e) {
+container.on('change', 'input.value[type="radio"]', function(e) {
     const thisValue = $(this);
     handleUserInteraction(thisValue);
     FacetedBrowse.updateSelectList(thisValue.closest('.select-list'));
@@ -99,8 +113,12 @@ container.on('click', 'input.value[type="radio"]', function(e) {
 // Handle multiple_list interaction.
 container.on('click', 'input.value[type="checkbox"]', function(e) {
     const thisValue = $(this);
+    const selectList = thisValue.closest('.select-list');
     handleUserInteraction(thisValue);
-    FacetedBrowse.updateSelectList(thisValue.closest('.select-list'));
+    FacetedBrowse.updateSelectList(selectList);
+    if (!thisValue.is(':visible')) {
+        selectList.find('input:visible').first().focus();
+    }
 });
 
 // Handle text_input interaction.

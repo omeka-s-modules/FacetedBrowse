@@ -1,21 +1,36 @@
 <?php if ($singleSelect): ?>
 <?php echo $this->formElement($singleSelect); ?>
 <?php else: ?>
-<ul class="select-list" data-truncate-list-items="<?php echo $this->escapeHtml($facet->data('truncate_item_sets')); ?>">
-    <?php $index = 0; ?>
-    <?php foreach ($itemSets as $itemSet): ?>
-    <li class="select-list-item" data-index="<?php echo $this->escapeHtml($index++); ?>">
-        <label>
-            <input
-                class="item-set"
-                type="<?php echo ('multiple_list' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
-                name="<?php echo sprintf('item_set_%s', $facet->id()); ?>"
-                data-item-set-id="<?php echo $this->escapeHtml($itemSet->id()); ?>">
-                <?php echo $itemSet->title(); ?>
-        </label>
+<?php
+$truncate = $facet->data('truncate_item_sets');
+if ('single_list' === $facet->data('select_type') && $truncate) {
+    $truncate++;
+}
+?>
+<ul class="select-list" id="select-list-<?php echo $facet->id(); ?>" data-truncate-list-items="<?php echo $this->escapeHtml($truncate); ?>"<?php if ('single_list' === $facet->data('select_type')): ?> role="radiogroup"<?php endif; ?>>
+    <?php if ('single_list' === $facet->data('select_type')): ?>
+    <li class="select-list-item">
+        <input
+            id="<?php echo sprintf('input-%s-all', $facet->id()); ?>"
+            class="item-set"
+            type="radio"
+            name="<?php echo sprintf('item_set_%s', $facet->id()); ?>"
+            data-item-set-id="">
+        <label for="<?php echo sprintf('input-%s-all', $facet->id()); ?>"><?php echo $this->translate('All'); ?></label>
+    </li>
+    <?php endif; ?>
+    <?php $index = 0; foreach ($itemSets as $itemSet): $index++; ?>
+    <li class="select-list-item">
+        <input
+            id="<?php echo sprintf('input-%s-%s', $facet->id(), $index); ?>"
+            class="item-set"
+            type="<?php echo ('multiple_list' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
+            name="<?php echo sprintf('item_set_%s', $facet->id()); ?>"
+            data-item-set-id="<?php echo $this->escapeHtml($itemSet->id()); ?>">
+        <label for="<?php echo sprintf('input-%s-%s', $facet->id(), $index); ?>"><?php echo $itemSet->title(); ?></label>
     </li>
     <?php endforeach; ?>
 </ul>
-<a href="#" class="select-list-expand" style="display: none;"><?php echo $this->translate('See more'); ?> <span class="select-list-hidden-count"></span></a>
-<a href="#" class="select-list-collapse" style="display: none;"><?php echo $this->translate('See less'); ?></a>
+<button type="button" class="select-list-expand" aria-expanded="false" aria-controls="select-list-<?php echo $facet->id(); ?>" style="display: none;"><?php echo $this->translate('See more'); ?> <span class="select-list-hidden-count"></span></button>
+<button type="button" class="select-list-collapse" aria-expanded="true" aria-controls="select-list-<?php echo $facet->id(); ?>" style="display: none;"><?php echo $this->translate('See less'); ?></button>
 <?php endif; ?>

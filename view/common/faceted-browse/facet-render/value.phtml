@@ -3,11 +3,26 @@
 <?php elseif ($singleSelect): ?>
 <?php echo $this->formElement($singleSelect); ?>
 <?php else: ?>
-<ul class="select-list" data-truncate-list-items="<?php echo $this->escapeHtml($facet->data('truncate_values')); ?>">
-    <?php
-    $index = 0;
-    foreach ($values as $key => $value):
-    ?>
+<?php
+$truncate = $facet->data('truncate_values');
+if ('single_list' === $facet->data('select_type') && $truncate) {
+    $truncate++;
+}
+?>
+<ul class="select-list" id="select-list-<?php echo $facet->id(); ?>" data-truncate-list-items="<?php echo $this->escapeHtml($truncate); ?>"<?php if ('single_list' === $facet->data('select_type')): ?> role="radiogroup"<?php endif; ?>>
+    <?php if ('single_list' === $facet->data('select_type')): ?>
+    <li class="select-list-item">
+        <input
+            id="<?php echo sprintf('input-%s-all', $facet->id()); ?>"
+            class="value"
+            type="radio"
+            name="<?php echo sprintf('value_%s', $facet->id()); ?>"
+            data-property-id=""
+            data-value="">
+        <label for="<?php echo sprintf('input-%s-all', $facet->id()); ?>"><?php echo $this->translate('All'); ?></label>
+    </li>
+    <?php endif; ?>
+    <?php $index = 0; foreach ($values as $key => $value): $index++; ?>
     <?php
     $dataPropertyId = $facet->data('property_id');
     $dataValue = $key;
@@ -15,21 +30,20 @@
         $dataPropertyId = $key;
     }
     ?>
-    <li class="select-list-item" data-index="<?php echo $this->escapeHtml($index++); ?>">
-        <label>
-            <input
-                class="value"
-                type="<?php echo ('multiple_list' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
-                name="<?php echo sprintf('value_%s', $facet->id()); ?>"
-                data-property-id="<?php echo $this->escapeHtml($dataPropertyId); ?>"
-                data-value="<?php echo $this->escapeHtml($dataValue); ?>">
-                <?php echo $this->escapeHtml($value); ?>
-        </label>
+    <li class="select-list-item">
+        <input
+            id="<?php echo sprintf('input-%s-%s', $facet->id(), $index); ?>"
+            class="value"
+            type="<?php echo ('multiple_list' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
+            name="<?php echo sprintf('value_%s', $facet->id()); ?>"
+            data-property-id="<?php echo $this->escapeHtml($dataPropertyId); ?>"
+            data-value="<?php echo $this->escapeHtml($dataValue); ?>">
+        <label for="<?php echo sprintf('input-%s-%s', $facet->id(), $index); ?>"><?php echo $this->escapeHtml($value); ?></label>
     </li>
     <?php
     endforeach;
     ?>
 </ul>
-<a href="#" class="select-list-expand" style="display: none;"><?php echo $this->translate('See more'); ?> <span class="select-list-hidden-count"></span></a>
-<a href="#" class="select-list-collapse" style="display: none;"><?php echo $this->translate('See less'); ?></a>
+<button type="button" class="select-list-expand" aria-expanded="false" aria-controls="select-list-<?php echo $facet->id(); ?>" style="display: none;"><?php echo $this->translate('See more'); ?> <span class="select-list-hidden-count"></span></button>
+<button type="button" class="select-list-collapse" aria-expanded="true" aria-controls="select-list-<?php echo $facet->id(); ?>" style="display: none;"><?php echo $this->translate('See less'); ?></button>
 <?php endif; ?>

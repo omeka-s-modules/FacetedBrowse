@@ -50,6 +50,7 @@ class FullText implements FacetTypeInterface
         $fullText = new LaminasElement\Text('full_text');
         $fullText->setAttribute('class', 'full-text');
         $fullText->setAttribute('style', 'width: 90%;');
+        $fullText->setAttribute('aria-labelledby', sprintf('facet-legend-%s', $facet->id()));
         return $view->formText($fullText);
     }
 }

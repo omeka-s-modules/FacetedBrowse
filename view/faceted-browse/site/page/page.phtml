@@ -23,7 +23,8 @@ if (1 === count($categories)) {
     data-category-id="<?php echo $this->escapeHtml($categoryId); ?>">
     <button id="section-sidebar-modal-toggle" type="button" class="button"><?php echo $this->translate('Filters'); ?></button>
     <div id="section-sidebar" class="mobile modal-panel" aria-describedby="facet-modal-description" aria-label="<?php echo $this->translate('Filters'); ?>"></div>
-    <div id="section-content"></div>
+    <div id="section-content" tabindex="-1"></div>
+    <div id="browse-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
 </div>
 
 <script>
@@ -31,19 +32,22 @@ const container = $('#container');
 
 // Handle expand list button (show more)
 container.on('click', '.select-list-expand', function(e) {
-    e.preventDefault();
     const thisButton = $(this);
     const selectList = thisButton.closest('.facet').find('.select-list');
     selectList.addClass('expanded');
     FacetedBrowse.updateSelectList(selectList);
+    const inputs = selectList.find('input:visible');
+    const target = inputs.filter(':checked').first();
+    (target.length ? target : inputs.first()).focus();
 });
 
 // Handle collapse list button (show less)
 container.on('click', '.select-list-collapse', function(e) {
-    e.preventDefault();
     const thisButton = $(this);
-    const selectList = thisButton.closest('.facet').find('.select-list');
+    const facet = thisButton.closest('.facet');
+    const selectList = facet.find('.select-list');
     selectList.removeClass('expanded');
     FacetedBrowse.updateSelectList(selectList);
+    facet.find('.select-list-expand').focus();
 });
 </script>
