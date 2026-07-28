@@ -15,7 +15,7 @@
     ?>
     <?php if ($helperText): ?>
     <a id="helper-text-expand-collapse" class="button collapse" href="#"" aria-expanded="false"><?php echo $this->escapeHtml($helperTextButtonLabel); ?> </a>
-    <div id="helper-text" class="collapsible" aria-labelledby="helper-text-expand-collapse"><?php echo $category->helperText(); ?></div>
+    <div id="helper-text" class="collapsible"><?php echo $category->helperText(); ?></div>
     <?php endif; ?>
     <div id="facets"
         data-category-id="<?php echo $this->escapeHtml($category->id()); ?>"
