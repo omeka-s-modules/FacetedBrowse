@@ -48,6 +48,29 @@ class FacetedBrowseCategoryRepresentation extends AbstractEntityRepresentation
         );
     }
 
+    /**
+     * The category lives in the URL fragment, so server-side this is
+     * indistinguishable from its page's URL.
+     */
+    public function siteUrl($siteSlug = null, $canonical = false)
+    {
+        // Mirrors resetState() in asset/js/faceted-browse.js. initState()
+        // discards the whole state if any key is missing.
+        $fragment = json_encode([
+            'categoryId' => $this->id(),
+            'sortBy' => null,
+            'sortOrder' => null,
+            'page' => null,
+            'facetStates' => [],
+            'facetQueries' => [],
+        ]);
+        return sprintf(
+            '%s#%s',
+            $this->page()->siteUrl($siteSlug, $canonical),
+            rawurlencode($fragment)
+        );
+    }
+
     public function owner()
     {
         return $this->getAdapter('users')->getRepresentation($this->resource->getOwner());
@@ -129,16 +152,5 @@ class FacetedBrowseCategoryRepresentation extends AbstractEntityRepresentation
             $columns[] = new FacetedBrowseColumnRepresentation($column, $this->getServiceLocator());
         }
         return $columns;
-    }
-
-    public function pages()
-    {
-        $pages = [];
-        $adapter = $this->getAdapter('faceted_browse_pages');
-        foreach ($this->resource->getPageCategories() as $entity) {
-            $pageEntity = $entity->getPage();
-            $pages[] = $adapter->getRepresentation($pageEntity);
-        }
-        return $pages;
     }
 }

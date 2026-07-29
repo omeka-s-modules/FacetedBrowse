@@ -3,16 +3,21 @@ use Laminas\Form\Element\Hidden;
 ?>
 <li class="category value row">
     <span class="sortable-handle"></span>
-    <span class="category-name-display"><?php echo $category['o:name']; ?></span>
+    <span class="category-name-display"><?php echo $this->escapeHtml($category->name()); ?></span>
     <ul class="actions">
-        <li><?php echo $this->hyperlink('', $this->url('admin/site/slug/faceted-browse-category-id', ['action' => 'edit', 'category-id' => $category['o:id']], true), [
+        <li><?php echo $this->hyperlink('', $category->siteUrl(), [
+            'target' => '_blank',
+            'class' => 'o-icon-external',
+            'title' => $this->translate('View public page'),
+        ]); ?></li>
+        <li><?php echo $this->hyperlink('', $category->adminUrl('edit'), [
             'class' => 'o-icon-edit category-edit',
             'title' => $this->translate('Edit category'),
         ]); ?></li>
     </ul>
     <?php
     $categoryInput = (new Hidden(sprintf('o-module-faceted_browse:category[%s][o:id]', $index)))
-        ->setValue($category['o:id'])
+        ->setValue($category->id())
         ->setAttribute('class', 'category-id');
     echo $this->formHidden($categoryInput);
     ?>

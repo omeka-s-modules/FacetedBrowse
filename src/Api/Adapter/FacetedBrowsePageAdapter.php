@@ -13,6 +13,8 @@ class FacetedBrowsePageAdapter extends AbstractEntityAdapter
 {
     protected $sortFields = [
         'title' => 'title',
+        'created' => 'created',
+        'modified' => 'modified',
     ];
 
     public function getResourceName()

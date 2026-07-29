@@ -40,6 +40,23 @@ class FacetedBrowsePageRepresentation extends AbstractEntityRepresentation
         );
     }
 
+    public function siteUrl($siteSlug = null, $canonical = false)
+    {
+        if (null === $siteSlug) {
+            $siteSlug = $this->site()->slug();
+        }
+        $url = $this->getViewHelper('Url');
+        return $url(
+            'site/faceted-browse',
+            [
+                'site-slug' => $siteSlug,
+                'page-id' => $this->id(),
+                'action' => 'page',
+            ],
+            ['force_canonical' => $canonical]
+        );
+    }
+
     public function owner()
     {
         return $this->getAdapter('users')->getRepresentation($this->resource->getOwner());

@@ -25,6 +25,7 @@ $form->prepare();
 
 <div id="page-actions">
     <?php if ($category): ?>
+    <?php echo $this->hyperlink($this->translate('View'), $category->siteUrl(), ['class' => 'button', 'target' => '_blank']); ?>
     <a href="#" id="delete-button" class="delete button"><?php echo $this->translate('Delete'); ?></a>
     <?php endif; ?>
     <?php echo $this->hyperlink($this->translate('Cancel'), $this->url('admin/site/slug/faceted-browse-page-id', ['action' => 'edit'], true), ['class' => 'button']); ?>

@@ -46,10 +46,15 @@ $this->htmlElement('body')->appendAttribute('class', 'faceted-browse page browse
     <?php $owner = $page->owner(); ?>
         <tr>
             <td>
-                <?php echo $page->title(); ?>
+                <?php echo $this->escapeHtml($page->title()); ?>
                 <ul class="actions">
+                    <li><?php echo $this->hyperlink('', $page->siteUrl(), [
+                        'target' => '_blank',
+                        'class' => 'o-icon-external',
+                        'title' => $this->translate('View public page'),
+                    ]); ?></li>
                     <?php if ($page->userIsAllowed('update')): ?>
-                    <li><?php echo $page->link('', 'edit', ['class' => 'fa fa-pencil-alt', 'title' => $this->translate('Edit')]) ?></li>
+                    <li><?php echo $page->link('', 'edit', ['class' => 'o-icon-edit', 'title' => $this->translate('Edit')]) ?></li>
                     <?php endif; ?>
                 </ul>
             </td>
@@ -63,14 +68,6 @@ $this->htmlElement('body')->appendAttribute('class', 'faceted-browse page browse
 
 <div class="browse-controls">
     <?php echo $this->pagination(); ?>
-</div>
-
-<div id="show-details" class="sidebar">
-    <?php echo $this->hyperlink('', '#', [
-        'class' => 'sidebar-close o-icon-close',
-        'title' => $this->translate('Close'),
-    ]); ?>
-    <div class="sidebar-content"></div>
 </div>
 
 <?php else: ?>
