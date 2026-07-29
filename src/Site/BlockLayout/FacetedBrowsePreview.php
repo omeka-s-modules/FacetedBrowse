@@ -141,6 +141,7 @@ class FacetedBrowsePreview extends AbstractBlockLayout
 
         // Render the block.
         return $view->partial($templateViewScript, [
+            'page' => $page,
             'columns' => $columns,
             'items' => $items,
             'heading' => $heading,
