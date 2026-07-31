@@ -8,6 +8,12 @@ use Omeka\Form\ConfirmForm;
 
 class CategoryController extends AbstractActionController
 {
+    /**
+     * Maximum rows in a "show all available values" table. Applied in the facet
+     * type's query, so ordering happens before truncation.
+     */
+    const SHOW_ALL_LIMIT = 1000;
+
     public function addAction()
     {
         $page = $this->facetedBrowse()->getRepresentation($this->params('page-id'));
@@ -231,46 +237,130 @@ class CategoryController extends AbstractActionController
         return $view;
     }
 
-    public function valueValuesAction()
+    /**
+     * Render the "show all available values" table for any facet type.
+     *
+     * A facet type participates by defining:
+     *
+     *     public function getShowAllValues(array $options): array
+     *
+     * $options keys:
+     *   'resource_type'         string  items|item_sets|media, from the page; for a
+     *                                   facet type querying the API, not DQL
+     *   'resource_entity_class' string  the matching Omeka entity class
+     *   'resource_ids'          array   IDs matching the category query, never
+     *                                   empty; bind it, do not interpolate
+     *   'data'                  array   this facet's configured data
+     *   'sort_by'               string  'label' or 'has_count'
+     *   'sort_order'            string  'asc' or 'desc'
+     *   'limit'                 int     apply in the query, not to the result
+     *
+     * Each row must contain 'label' (string) and 'has_count' (int), plus 'id' if
+     * this facet type's "Add all" populates a multi-select. It may also define
+     * getShowAllDefaultSort(): ?array returning [column, 'asc'|'desc'].
+     *
+     * Detected with is_callable, not an interface: naming a FacetedBrowse symbol
+     * would fatal on older installs of this module. Not method_exists, which is
+     * true for a protected method and would then fatal on call.
+     */
+    public function showAllValuesAction()
     {
         $page = $this->facetedBrowse()->getRepresentation($this->params('page-id'));
-        $values = $this->facetedBrowse()->getValueValues(
-            $page->resourceType(),
-            $this->params()->fromQuery('property_id'),
-            $this->params()->fromQuery('query_type'),
-            $this->getCategoryQuery()
-        );
-        return $this->getViewModel($values);
+        if (!$page) {
+            return $this->getShowAllErrorViewModel(
+                $this->translate('Cannot show all. The page could not be found.') // @translate
+            );
+        }
+
+        $facetTypeName = $this->params()->fromQuery('facet_type');
+        $facetTypes = $this->facetedBrowse()->getFacetTypes();
+        if (!$facetTypeName || !$facetTypes->has($facetTypeName)) {
+            return $this->getShowAllErrorViewModel(
+                $this->translate('Cannot show all. Unknown facet type.') // @translate
+            );
+        }
+        $facetType = $facetTypes->get($facetTypeName);
+
+        // The facet type comes from the request, so check before calling.
+        if (!is_callable([$facetType, 'getShowAllValues'])) {
+            return $this->getShowAllErrorViewModel(
+                $this->translate('Cannot show all. The module providing this facet type needs to be updated.') // @translate
+            );
+        }
+
+        $sort = $this->getShowAllSort($facetType);
+        $resourceType = $page->resourceType();
+        $resourceIds = $this->facetedBrowse()->getCategoryResourceIds($resourceType, $this->getCategoryQuery());
+
+        $rows = $facetType->getShowAllValues([
+            'resource_type' => $resourceType,
+            'resource_entity_class' => $this->facetedBrowse()->getResourceEntityClass($resourceType),
+            // Doctrine cannot calculate IN() against an empty array.
+            'resource_ids' => $resourceIds ?: [0],
+            'data' => $this->params()->fromQuery('facet_data', []),
+            'sort_by' => $sort['sort_by'],
+            'sort_order' => $sort['sort_order'],
+            'limit' => self::SHOW_ALL_LIMIT,
+        ]);
+
+        foreach ($rows as $row) {
+            if (!is_array($row) || !array_key_exists('label', $row) || !array_key_exists('has_count', $row)) {
+                return $this->getShowAllErrorViewModel(sprintf(
+                    $this->translate('Cannot show all. The "%s" facet type returned a row without a label or count.'), // @translate
+                    $facetTypeName
+                ));
+            }
+        }
+
+        $view = new ViewModel;
+        $view->setTerminal(true);
+        $view->setTemplate('faceted-browse/site-admin/category/show-all-table');
+        $view->setVariable('rows', $rows);
+        $view->setVariable('sortBy', $sort['sort_by']);
+        $view->setVariable('sortOrder', $sort['sort_order']);
+        return $view;
     }
 
-    public function resourceClassClassesAction()
+    /**
+     * Resolve the sort for a show-all request.
+     *
+     * The request wins when it names a valid column, then the facet type's own
+     * preference, then the commonest values first.
+     */
+    protected function getShowAllSort($facetType)
     {
-        $page = $this->facetedBrowse()->getRepresentation($this->params('page-id'));
-        $classes = $this->facetedBrowse()->getResourceClassClasses(
-            $page->resourceType(),
-            $this->getCategoryQuery()
-        );
-        return $this->getViewModel($classes);
+        $sortBy = $this->params()->fromQuery('sort_by');
+        $sortOrder = $this->params()->fromQuery('sort_order');
+        if (!in_array($sortBy, ['label', 'has_count'], true)) {
+            $sortBy = null;
+            $sortOrder = null;
+            if (is_callable([$facetType, 'getShowAllDefaultSort'])) {
+                $default = $facetType->getShowAllDefaultSort();
+                if (is_array($default) && in_array($default[0] ?? null, ['label', 'has_count'], true)) {
+                    $sortBy = $default[0];
+                    $sortOrder = $default[1] ?? null;
+                }
+            }
+        }
+        return [
+            'sort_by' => $sortBy ?? 'has_count',
+            'sort_order' => in_array($sortOrder, ['asc', 'desc'], true) ? $sortOrder : ('label' === $sortBy ? 'asc' : 'desc'),
+        ];
     }
 
-    public function resourceTemplateTemplatesAction()
+    /**
+     * Render a message in place of the show-all table.
+     *
+     * Never an empty table: a blank result is indistinguishable from data that
+     * legitimately has no rows.
+     */
+    protected function getShowAllErrorViewModel($message)
     {
-        $page = $this->facetedBrowse()->getRepresentation($this->params('page-id'));
-        $templates = $this->facetedBrowse()->getResourceTemplateTemplates(
-            $page->resourceType(),
-            $this->getCategoryQuery()
-        );
-        return $this->getViewModel($templates);
-    }
-
-    public function itemSetItemSetsAction()
-    {
-        $page = $this->facetedBrowse()->getRepresentation($this->params('page-id'));
-        $itemSets = $this->facetedBrowse()->getItemSetItemSets(
-            $page->resourceType(),
-            $this->getCategoryQuery()
-        );
-        return $this->getViewModel($itemSets);
+        $view = new ViewModel;
+        $view->setTerminal(true);
+        $view->setTemplate('faceted-browse/site-admin/category/show-all-error');
+        $view->setVariable('message', $message);
+        return $view;
     }
 
     protected function getCategoryQuery()
@@ -281,12 +371,4 @@ class CategoryController extends AbstractActionController
         return $categoryQuery;
     }
 
-    protected function getViewModel($rows)
-    {
-        $view = new ViewModel;
-        $view->setTerminal(true);
-        $view->setTemplate('faceted-browse/site-admin/category/show-all-table');
-        $view->setVariable('rows', $rows);
-        return $view;
-    }
 }

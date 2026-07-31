@@ -1,6 +1,7 @@
 <?php
 namespace FacetedBrowse\FacetType;
 
+use Doctrine\ORM\EntityManager;
 use FacetedBrowse\Api\Representation\FacetedBrowseFacetRepresentation;
 use Laminas\Form\Element as LaminasElement;
 use Laminas\ServiceManager\ServiceLocatorInterface;
@@ -9,11 +10,16 @@ use Omeka\Form\Element as OmekaElement;
 
 class Value implements FacetTypeInterface
 {
+    use ShowAllTrait;
+
     protected $formElements;
 
-    public function __construct(ServiceLocatorInterface $formElements)
+    protected $entityManager;
+
+    public function __construct(ServiceLocatorInterface $formElements, EntityManager $entityManager)
     {
         $this->formElements = $formElements;
+        $this->entityManager = $entityManager;
     }
 
     public function getLabel(): string
@@ -122,6 +128,7 @@ class Value implements FacetTypeInterface
         ]);
 
         return $view->partial('common/faceted-browse/facet-data-form/value', [
+            'facetType' => $this,
             'elementPropertyId' => $propertyId,
             'elementQueryType' => $queryType,
             'elementSelectType' => $selectType,
@@ -207,5 +214,61 @@ class Value implements FacetTypeInterface
             'singleSelect' => $singleSelect,
             'textInput' => $textInput,
         ]);
+    }
+
+    /**
+     * Return rows for the "show all available values" table.
+     *
+     * For the "res" and "ex" query types the label keeps an ID prefix, because
+     * renderFacet() parses it back out and uses the ID. Sorting therefore orders
+     * by the components, not the concatenation, whose leading ID would dominate.
+     *
+     * @see FacetedBrowse\Controller\SiteAdmin\CategoryController::showAllValuesAction()
+     */
+    public function getShowAllValues(array $options): array
+    {
+        $qb = $this->entityManager->createQueryBuilder();
+        $qb->from('Omeka\Entity\Value', 'v')
+            ->andWhere('v.resource IN (:resourceIds)')
+            ->setParameter('resourceIds', $options['resource_ids'])
+            ->setMaxResults($options['limit']);
+
+        // Grouped by the components, not the concatenation, so that ordering by a
+        // component is permitted under MySQL's ONLY_FULL_GROUP_BY.
+        switch ($options['data']['query_type'] ?? null) {
+            case 'res':
+            case 'nres':
+                $qb->select("CONCAT(vr.id, ' ', vr.title) label", 'COUNT(v) has_count')
+                    ->join('v.valueResource', 'vr')
+                    ->groupBy('vr.id')
+                    ->addGroupBy('vr.title');
+                $orderBy = ['vr.title'];
+                break;
+            case 'ex':
+            case 'nex':
+                $qb->select("CONCAT(p.id, ' ', vo.label, ': ', p.label) label", 'COUNT(v) has_count')
+                    ->join('v.property', 'p')
+                    ->join('p.vocabulary', 'vo')
+                    ->groupBy('p.id')
+                    ->addGroupBy('vo.label')
+                    ->addGroupBy('p.label');
+                $orderBy = ['vo.label', 'p.label'];
+                break;
+            default:
+                $qb->select('v.value label', 'COUNT(v.value) has_count')
+                    ->groupBy('v.value');
+                $orderBy = ['v.value'];
+        }
+
+        $this->applyShowAllSort($qb, $options, $orderBy);
+
+        // Applied only when set: a value facet with no property means all
+        // properties, unlike the numeric facet types, which require one.
+        $propertyId = $options['data']['property_id'] ?? null;
+        if ($propertyId) {
+            $qb->andWhere('v.property = :propertyId')
+                ->setParameter('propertyId', $propertyId);
+        }
+        return $qb->getQuery()->getResult();
     }
 }
