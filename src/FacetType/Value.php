@@ -238,7 +238,11 @@ class Value implements FacetTypeInterface
         switch ($options['data']['query_type'] ?? null) {
             case 'res':
             case 'nres':
-                $qb->select("CONCAT(vr.id, ' ', vr.title) label", 'COUNT(v) has_count')
+                // A resource may have no title, and one null argument makes the
+                // whole CONCAT null rather than being skipped. "Add all" drops a
+                // null label silently, so an untitled resource would vanish from
+                // a row the table had shown with a count.
+                $qb->select("CONCAT(vr.id, ' ', COALESCE(vr.title, '')) label", 'COUNT(v) has_count')
                     ->join('v.valueResource', 'vr')
                     ->groupBy('vr.id')
                     ->addGroupBy('vr.title');
@@ -255,7 +259,11 @@ class Value implements FacetTypeInterface
                 $orderBy = ['vo.label', 'p.label'];
                 break;
             default:
+                // Resource and URI values leave v.value null, and would otherwise
+                // group into one blank row counting zero. These query types match
+                // on the literal value, so those rows are not values they can use.
                 $qb->select('v.value label', 'COUNT(v.value) has_count')
+                    ->andWhere('v.value IS NOT NULL')
                     ->groupBy('v.value');
                 $orderBy = ['v.value'];
         }
