@@ -68,16 +68,26 @@ class ItemSet implements ColumnTypeInterface
 
         // Get the item sets.
         $itemSets = $resource->itemSets();
+
+        if (!$itemSets) {
+            return '';
+        }
+
         if ($maxItemSets) {
             $itemSets = array_slice($itemSets, 0, $maxItemSets);
         }
 
         // Prepare the content.
-        $content = '<ul>';
-        foreach ($itemSets as $itemSet) {
-            $content .= sprintf('<li>%s</li>', $itemSet->linkPretty());
+        if (count($itemSets) > 1) {
+            $content = '<ul>';
+            foreach ($itemSets as $itemSet) {
+                $content .= sprintf('<li>%s</li>', $itemSet->linkPretty());
+            }
+            $content .= '</ul>';
+        } else {
+            $content = $itemSets[0]->linkPretty();
         }
-        $content .= '</ul>';
+
         return $content;
     }
 }

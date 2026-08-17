@@ -93,11 +93,15 @@ class Value implements ColumnTypeInterface
         }
 
         // Prepare the content.
-        $content = '<ul>';
-        foreach ($values as $value) {
-            $content .= sprintf('<li>%s</li>', $value->asHtml());
+        if (count($values) > 1) {
+            $content = '<ul>';
+            foreach ($values as $value) {
+                $content .= sprintf('<li>%s</li>', $value->asHtml());
+            }
+            $content .= '</ul>';
+        } else {
+            $content = $values[0];
         }
-        $content .= '</ul>';
 
         return $content;
     }
