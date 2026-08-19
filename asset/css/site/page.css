@@ -208,7 +208,8 @@ input[type="text"].permalink {
 }
 
 .faceted-results ul {
-    list-style: none;
+    list-style: "— ";
+    list-style-position: inside;
     margin: 0;
     padding: 0;
 }
