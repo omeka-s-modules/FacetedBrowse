@@ -19,6 +19,7 @@ class PageForm extends Form
                 'info' => 'Enter the title of this page.', // @translate
             ],
             'attributes' => [
+                'id' => 'page-title',
                 'required' => true,
             ],
         ]);
@@ -30,6 +31,7 @@ class PageForm extends Form
                     'label' => 'Resource type', // @translate
                 ],
                 'attributes' => [
+                    'id' => 'page-resource-type',
                     'disabled' => true,
                     'value' => FacetedBrowsePage::RESOURCE_TYPES[$page->resourceType()],
                 ],
@@ -43,6 +45,9 @@ class PageForm extends Form
                     'info' => 'Select the type of resources to browse.', // @translate
                     'value_options' => FacetedBrowsePage::RESOURCE_TYPES,
                 ],
+                'attributes' => [
+                    'id' => 'page-resource-type',
+                ],
             ]);
         }
         $this->add([
@@ -53,6 +58,9 @@ class PageForm extends Form
                 'info' => 'Select the type of thumbnail images to render on the page.', // @translate
                 'empty_option' => 'Default', // @translate
                 'value_options' => FacetedBrowsePage::THUMBNAIL_TYPES,
+            ],
+            'attributes' => [
+                'id' => 'page-thumbnail-type',
             ],
         ]);
 
