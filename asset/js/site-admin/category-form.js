@@ -386,7 +386,10 @@ $(document).on('click', '#add-all', function(e) {
     const field = $(target);
     switch (showAll.data('addAllMode')) {
         case 'textarea':
-            field.val($.map(rows, row => row.label).join("\n"));
+            // Trimmed because a value with a trailing line break would
+            // otherwise add a blank line to this newline delimited field,
+            // which the facet renders as an option with no label.
+            field.val($.map(rows, row => row.label.trim()).join("\n"));
             break;
         case 'multi-select':
             $.each(rows, function(index, row) {

@@ -147,6 +147,9 @@ class Value implements FacetTypeInterface
         $values = $facet->data('values');
         $values = explode("\n", $values);
         $values = array_map('trim', $values);
+        // Drop blank lines, which would otherwise render as an option with no
+        // label. Not array_filter() with no callback, which would also drop "0".
+        $values = array_filter($values, fn ($value) => '' !== $value);
         $values = array_unique($values);
         switch ($facet->data('query_type')) {
             case 'res':
