@@ -4,10 +4,11 @@
 <?php echo $this->formRow($elementTruncateValues); ?>
 <?php echo $this->formRow($elementValues); ?>
 <?php echo $this->partial('show-all', [
-    'label' => $this->translate('Show all available values.'),
-    'url' => $this->url(null, ['action' => 'value-values'], true),
+    'label' => $this->translate('Show available values'),
+    'facetType' => $facetType,
     'queryParams' => [
-        'property_id' => '#value-property-id',
-        'query_type' => '#value-query-type',
+        'facet_data[property_id]' => '#value-property-id',
+        'facet_data[query_type]' => '#value-query-type',
     ],
+    'addAll' => ['target' => '#value-values', 'mode' => 'textarea'],
 ]); ?>

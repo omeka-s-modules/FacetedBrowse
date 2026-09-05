@@ -2,6 +2,7 @@
 <?php echo $this->formRow($elementTruncateResourceClasses); ?>
 <?php echo $this->formRow($elementClassIds); ?>
 <?php echo $this->partial('show-all', [
-    'label' => $this->translate('Show all available classes.'),
-    'url' => $this->url(null, ['action' => 'resource-class-classes'], true),
+    'label' => $this->translate('Show available classes'),
+    'facetType' => $facetType,
+    'addAll' => ['target' => '#resource-class-class-ids', 'mode' => 'multi-select'],
 ]); ?>

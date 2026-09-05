@@ -1,6 +1,7 @@
 <?php
 namespace FacetedBrowse\FacetType;
 
+use Doctrine\ORM\EntityManager;
 use FacetedBrowse\Api\Representation\FacetedBrowseFacetRepresentation;
 use Laminas\Form\Element as LaminasElement;
 use Laminas\ServiceManager\ServiceLocatorInterface;
@@ -9,11 +10,16 @@ use Omeka\Form\Element as OmekaElement;
 
 class ItemSet implements FacetTypeInterface
 {
+    use ShowAllTrait;
+
     protected $formElements;
 
-    public function __construct(ServiceLocatorInterface $formElements)
+    protected $entityManager;
+
+    public function __construct(ServiceLocatorInterface $formElements, EntityManager $entityManager)
     {
         $this->formElements = $formElements;
+        $this->entityManager = $entityManager;
     }
 
     public function getLabel(): string
@@ -81,6 +87,7 @@ class ItemSet implements FacetTypeInterface
             'multiple' => true,
         ]);
         return $view->partial('common/faceted-browse/facet-data-form/item-set', [
+            'facetType' => $this,
             'elementSelectType' => $selectType,
             'elementTruncateItemSets' => $truncateItemSets,
             'elementItemSetIds' => $itemSetIds,
@@ -128,5 +135,24 @@ class ItemSet implements FacetTypeInterface
             'itemSets' => $itemSets,
             'singleSelect' => $singleSelect,
         ]);
+    }
+
+    /**
+     * Return rows for the "show all available values" table.
+     *
+     * @see FacetedBrowse\Controller\SiteAdmin\CategoryController::showAllValuesAction()
+     */
+    public function getShowAllValues(array $options): array
+    {
+        $qb = $this->entityManager->createQueryBuilder();
+        $qb->select('iset.id id', 'iset.title label', 'COUNT(r.id) has_count')
+            ->from($options['resource_entity_class'], 'r')
+            ->innerJoin('r.itemSets', 'iset')
+            ->andWhere('r.id IN (:resourceIds)')
+            ->setParameter('resourceIds', $options['resource_ids'])
+            ->groupBy('iset.id')
+            ->setMaxResults($options['limit']);
+        $this->applyShowAllSort($qb, $options, ['label']);
+        return $qb->getQuery()->getResult();
     }
 }

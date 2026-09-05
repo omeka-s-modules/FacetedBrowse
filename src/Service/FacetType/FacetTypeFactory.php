@@ -13,6 +13,6 @@ class FacetTypeFactory implements FactoryInterface
             return ucfirst($requestedNamePart);
         }, explode('_', $requestedName));
         $class = sprintf('FacetedBrowse\FacetType\%s', implode('', $classParts));
-        return new $class($services->get('FormElementManager'));
+        return new $class($services->get('FormElementManager'), $services->get('Omeka\EntityManager'));
     }
 }

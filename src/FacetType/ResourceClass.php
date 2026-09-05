@@ -1,6 +1,7 @@
 <?php
 namespace FacetedBrowse\FacetType;
 
+use Doctrine\ORM\EntityManager;
 use FacetedBrowse\Api\Representation\FacetedBrowseFacetRepresentation;
 use Laminas\Form\Element as LaminasElement;
 use Laminas\ServiceManager\ServiceLocatorInterface;
@@ -9,11 +10,16 @@ use Omeka\Form\Element as OmekaElement;
 
 class ResourceClass implements FacetTypeInterface
 {
+    use ShowAllTrait;
+
     protected $formElements;
 
-    public function __construct(ServiceLocatorInterface $formElements)
+    protected $entityManager;
+
+    public function __construct(ServiceLocatorInterface $formElements, EntityManager $entityManager)
     {
         $this->formElements = $formElements;
+        $this->entityManager = $entityManager;
     }
 
     public function getLabel(): string
@@ -81,6 +87,7 @@ class ResourceClass implements FacetTypeInterface
             'multiple' => true,
         ]);
         return $view->partial('common/faceted-browse/facet-data-form/resource-class', [
+            'facetType' => $this,
             'elementSelectType' => $selectType,
             'elementTruncateResourceClasses' => $truncateResourceClasses,
             'elementClassIds' => $classIds,
@@ -126,5 +133,25 @@ class ResourceClass implements FacetTypeInterface
             'classes' => $classes,
             'singleSelect' => $singleSelect,
         ]);
+    }
+
+    /**
+     * Return rows for the "show all available values" table.
+     *
+     * @see FacetedBrowse\Controller\SiteAdmin\CategoryController::showAllValuesAction()
+     */
+    public function getShowAllValues(array $options): array
+    {
+        $qb = $this->entityManager->createQueryBuilder();
+        $qb->select('rc.id id', "CONCAT(v.label, ': ', rc.label) label", 'COUNT(r.id) has_count')
+            ->from($options['resource_entity_class'], 'r')
+            ->innerJoin('r.resourceClass', 'rc')
+            ->innerJoin('rc.vocabulary', 'v')
+            ->andWhere('r.id IN (:resourceIds)')
+            ->setParameter('resourceIds', $options['resource_ids'])
+            ->groupBy('rc.id')
+            ->setMaxResults($options['limit']);
+        $this->applyShowAllSort($qb, $options, ['label']);
+        return $qb->getQuery()->getResult();
     }
 }

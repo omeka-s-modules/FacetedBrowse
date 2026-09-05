@@ -1,6 +1,7 @@
 <?php
 namespace FacetedBrowse\FacetType;
 
+use Doctrine\ORM\EntityManager;
 use FacetedBrowse\Api\Representation\FacetedBrowseFacetRepresentation;
 use Laminas\Form\Element as LaminasElement;
 use Laminas\ServiceManager\ServiceLocatorInterface;
@@ -9,11 +10,16 @@ use Omeka\Form\Element as OmekaElement;
 
 class Value implements FacetTypeInterface
 {
+    use ShowAllTrait;
+
     protected $formElements;
 
-    public function __construct(ServiceLocatorInterface $formElements)
+    protected $entityManager;
+
+    public function __construct(ServiceLocatorInterface $formElements, EntityManager $entityManager)
     {
         $this->formElements = $formElements;
+        $this->entityManager = $entityManager;
     }
 
     public function getLabel(): string
@@ -122,6 +128,7 @@ class Value implements FacetTypeInterface
         ]);
 
         return $view->partial('common/faceted-browse/facet-data-form/value', [
+            'facetType' => $this,
             'elementPropertyId' => $propertyId,
             'elementQueryType' => $queryType,
             'elementSelectType' => $selectType,
@@ -140,6 +147,9 @@ class Value implements FacetTypeInterface
         $values = $facet->data('values');
         $values = explode("\n", $values);
         $values = array_map('trim', $values);
+        // Drop blank lines, which would otherwise render as an option with no
+        // label. Not array_filter() with no callback, which would also drop "0".
+        $values = array_filter($values, fn ($value) => '' !== $value);
         $values = array_unique($values);
         switch ($facet->data('query_type')) {
             case 'res':
@@ -207,5 +217,73 @@ class Value implements FacetTypeInterface
             'singleSelect' => $singleSelect,
             'textInput' => $textInput,
         ]);
+    }
+
+    /**
+     * Return rows for the "show all available values" table.
+     *
+     * For the "res" and "ex" query types the label keeps an ID prefix, because
+     * renderFacet() parses it back out and uses the ID. Sorting therefore orders
+     * by the components, not the concatenation, whose leading ID would dominate.
+     *
+     * @see FacetedBrowse\Controller\SiteAdmin\CategoryController::showAllValuesAction()
+     */
+    public function getShowAllValues(array $options): array
+    {
+        $qb = $this->entityManager->createQueryBuilder();
+        $qb->from('Omeka\Entity\Value', 'v')
+            ->andWhere('v.resource IN (:resourceIds)')
+            ->setParameter('resourceIds', $options['resource_ids'])
+            ->setMaxResults($options['limit']);
+
+        // Grouped by the components, not the concatenation, so that ordering by a
+        // component is permitted under MySQL's ONLY_FULL_GROUP_BY.
+        switch ($options['data']['query_type'] ?? null) {
+            case 'res':
+            case 'nres':
+                // A resource may have no title, and one null argument makes the
+                // whole CONCAT null rather than being skipped. "Add all" drops a
+                // null label silently, so an untitled resource would vanish from
+                // a row the table had shown with a count.
+                $qb->select("CONCAT(vr.id, ' ', COALESCE(vr.title, '')) label", 'COUNT(v) has_count')
+                    ->join('v.valueResource', 'vr')
+                    ->groupBy('vr.id')
+                    ->addGroupBy('vr.title');
+                $orderBy = ['vr.title'];
+                break;
+            case 'ex':
+            case 'nex':
+                $qb->select("CONCAT(p.id, ' ', vo.label, ': ', p.label) label", 'COUNT(v) has_count')
+                    ->join('v.property', 'p')
+                    ->join('p.vocabulary', 'vo')
+                    ->groupBy('p.id')
+                    ->addGroupBy('vo.label')
+                    ->addGroupBy('p.label');
+                $orderBy = ['vo.label', 'p.label'];
+                break;
+            default:
+                // Resource and URI values leave v.value null, and would otherwise
+                // group into one blank row counting zero. These query types match
+                // on the literal value, so those rows are not values they can use.
+                $qb->select('v.value label', 'COUNT(v.value) has_count')
+                    ->andWhere('v.value IS NOT NULL')
+                    ->groupBy('v.value');
+                $orderBy = ['v.value'];
+        }
+
+        $this->applyShowAllSort($qb, $options, $orderBy);
+
+        // Applied only when set: a value facet with no property means all
+        // properties, unlike the numeric facet types, which require one.
+        $propertyId = $options['data']['property_id'] ?? null;
+        if ($propertyId) {
+            $qb->andWhere('v.property = :propertyId')
+                ->setParameter('propertyId', $propertyId);
+        }
+        // A label of only whitespace has nothing to show and nothing to add, so
+        // drop it rather than list a row "Add all" would skip. Not done centrally:
+        // a facet type that selects an ID stays usable with a blank label.
+        $rows = $qb->getQuery()->getResult();
+        return array_values(array_filter($rows, fn ($row) => '' !== trim((string) $row['label'])));
     }
 }

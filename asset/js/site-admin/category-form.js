@@ -75,6 +75,10 @@ const closeOtherSidebars = function(button, sidebar) {
  * Scroll to an element in the sidebar.
  */
 const sidebarScrollTo = function(scrollTo) {
+    if (!scrollTo.length) {
+        // Nothing to scroll to is a no-op, not a TypeError from offset().
+        return;
+    }
     const container = $('.confirm-main');
     container.animate({
         scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
@@ -286,64 +290,131 @@ columnFormContainer.on('click', '#column-set-button', function(e) {
     }
 });
 
+/**
+ * Build the query for a show all request, shared by the checkbox and the sort
+ * headers. Sort arguments are omitted on first load, letting the facet type's own
+ * default apply.
+ */
+const showAllQuery = function(sortBy, sortOrder) {
+    const query = {};
+    const queryParams = $('#show-all').data('queryParams');
+    if (queryParams) {
+        // Set additional query parameters if set.
+        $.each(queryParams, function(key, value) {
+            query[key] = $(value).val();
+        });
+    }
+    // The endpoint needs these to ask the right facet type for its values.
+    query.category_query = $('#category-query').val();
+    query.facet_type = $('#facet-type-input').val();
+    if (sortBy) {
+        query.sort_by = sortBy;
+    }
+    if (sortOrder) {
+        query.sort_order = sortOrder;
+    }
+    return query;
+};
+
+/**
+ * Fetch and render the show all table.
+ */
+let showAllRequest = null;
+const showAllFetch = function(sortBy, sortOrder) {
+    const tableContainer = $('#show-all-table-container');
+    if (showAllRequest) {
+        // A sort click can arrive before the previous response; do not race.
+        showAllRequest.abort();
+    }
+    showAllRequest = $.get($('#show-all').data('url'), showAllQuery(sortBy, sortOrder), function(html) {
+        if (!$('#show-all').prop('checked')) {
+            // The admin changed a facet setting while this was loading. The data
+            // form responded by unchecking the box and clearing the table, but it
+            // cannot cancel the request, so ignore whatever comes back.
+            return;
+        }
+        tableContainer.html(html);
+        // Only an explicit refusal removes the button; see show-all.phtml.
+        if ('none' === $('#show-all').data('addAllMode')) {
+            tableContainer.find('#add-all').remove();
+        }
+        if (!sortBy) {
+            // Only the checkbox calls this without a sort. Checking it makes the
+            // table appear, so scroll down to show it. A sort click replaces a
+            // table already on screen, where scrolling would just jog the sidebar.
+            sidebarScrollTo($('#show-all-container'));
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if ('abort' === textStatus) {
+            return;
+        }
+        tableContainer.html('<p class="error">' + Omeka.jsTranslate('Cannot show all. The result set is likely too large.') + '<p>');
+    }).always(function() {
+        showAllRequest = null;
+    });
+};
+
 // Handle show all checkbox.
 $(document).on('click', '#show-all', function(e) {
-    const thisCheckbox = $(this);
-    const tableContainer = $('#show-all-table-container');
     if (this.checked) {
-        const query = {};
-        const queryParams = thisCheckbox.data('queryParams');
-        if (queryParams) {
-            // Set additional query parameters if set.
-            $.each(queryParams, function(key, value) {
-                query[key] = $(value).val();
-            });
-        }
-        // Always include the category query.
-        query.category_query = $('#category-query').val();
-        $.get(thisCheckbox.data('url'), query, function(html) {
-            tableContainer.html(html);
-            sidebarScrollTo($('#show-all-container'));
-        }).fail(function() {
-            tableContainer.html('<p class="error">' + Omeka.jsTranslate('Cannot show all. The result set is likely too large.') + '<p>');
-        });
+        showAllFetch();
     } else {
-        tableContainer.empty();
+        // Abort too, or a response in flight refills what was just cleared.
+        if (showAllRequest) {
+            showAllRequest.abort();
+        }
+        $('#show-all-table-container').empty();
     }
 });
 
-// Handle add all button.
+// Handle a sort header click. The direction comes from aria-sort, so the markup
+// is the single source of truth.
+$(document).on('click', '.show-all-sort', function(e) {
+    const thisButton = $(this);
+    const sortBy = thisButton.data('sortBy');
+    const ariaSort = thisButton.closest('th').attr('aria-sort');
+    // Only an active column has a direction to reverse; a first click sends none,
+    // leaving the default to getShowAllSort().
+    const sortOrder = 'ascending' === ariaSort ? 'desc'
+        : ('descending' === ariaSort ? 'asc' : null);
+    showAllFetch(sortBy, sortOrder);
+});
+
+/**
+ * Handle the add all button.
+ *
+ * The target field and mode are declared by the facet type's data form, so a facet
+ * type needs no JavaScript of its own. Bails when nothing is declared, leaving an
+ * older module's handler to own the click.
+ */
 $(document).on('click', '#add-all', function(e) {
-    const rows = $('#show-all-table').data('rows');
-    const populateMultiSelect = function(multiSelect, rows) {
-        $.each(rows, function(index, row) {
-            multiSelect.find(`option[value="${row.id}"]`).prop('selected', true);
-        });
-        multiSelect.trigger('chosen:updated');
-    };
-    // Add all according to facet type.
-    switch ($('#facet-type-input').val()) {
-        case 'value':
-            const labels = [];
-            $.each(rows, (index, row) => {
-                labels.push(row.label);
-            });
-            $('#value-values').val(labels.join("\n"));
-            sidebarScrollTo($('#value-values').closest('.field'));
-            break;
-        case 'resource_class':
-            populateMultiSelect($('#resource-class-class-ids'), rows);
-            sidebarScrollTo($('#resource-class-class-ids').closest('.field'));
-            break;
-        case 'resource_template':
-            populateMultiSelect($('#resource-template-template-ids'), rows);
-            sidebarScrollTo($('#resource-template-template-ids').closest('.field'));
-            break;
-        case 'item_set':
-            populateMultiSelect($('#item-set-item-set-ids'), rows);
-            sidebarScrollTo($('#item-set-item-set-ids').closest('.field'));
-            break;
+    const showAll = $('#show-all');
+    const target = showAll.data('addAllTarget');
+    if (!target) {
+        return;
     }
+    const rows = $('#show-all-table').data('rows');
+    const field = $(target);
+    switch (showAll.data('addAllMode')) {
+        case 'textarea':
+            field.val($.map(rows, function(row) {
+                // A label may be null or not a string, so normalize before
+                // trimming a trailing line break. $.map drops null, so a blank
+                // label adds no line. Not a falsy test, which would also drop "0".
+                const label = String(row.label ?? '').trim();
+                return '' === label ? null : label;
+            }).join("\n"));
+            break;
+        case 'multi-select':
+            $.each(rows, function(index, row) {
+                field.find(`option[value="${row.id}"]`).prop('selected', true);
+            });
+            field.trigger('chosen:updated');
+            break;
+        default:
+            return;
+    }
+    sidebarScrollTo(field.closest('.field'));
 });
 
 });

@@ -1,9 +1,56 @@
+<?php
+/**
+ * The "show all available values" control.
+ *
+ * Parameters, all optional:
+ *   $label       string  the fallback below is a safety net, not the preferred
+ *                        wording — a data form should name what it lists
+ *   $facetType   object  the facet type, passed by its own data form
+ *   $url         string  a table URL, for a facet type without getShowAllValues()
+ *   $queryParams array   selector => query parameter, read at request time
+ *   $addAll      mixed   an array declares where "Add all" writes; false that it
+ *                        cannot; absent means legacy
+ *
+ * A facet type defining getShowAllValues() uses this module's endpoint, otherwise
+ * $url is the fallback. The method is the signal, not the absence of $url: a module
+ * may pass both, keeping $url for older installs, and if $url won it would never
+ * reach the new path.
+ */
+$label = $label ?? $this->translate('Show available values'); // @translate
+
+// The mode carries the state, the target is payload. Absence must stay distinct
+// from "none": an un-upgraded module declares nothing, so treating that as "no
+// button" would remove it from facets that add correctly.
+$addAllMode = null;
+$addAllTarget = null;
+if (false === ($addAll ?? null)) {
+    $addAllMode = 'none';
+} elseif (isset($addAll['target'], $addAll['mode'])) {
+    $addAllMode = $addAll['mode'];
+    $addAllTarget = $addAll['target'];
+}
+
+$showAllUrl = null;
+if (isset($facetType) && is_callable([$facetType, 'getShowAllValues'])) {
+    $showAllUrl = $this->url('admin/site/slug/faceted-browse-category', ['action' => 'show-all-values'], true);
+} elseif (isset($url)) {
+    $showAllUrl = $url;
+}
+?>
+<?php if ($showAllUrl): ?>
 <div id="show-all-container">
     <label>
         <input type="checkbox" id="show-all"
-            data-url="<?php echo $this->escapeHtml($url) ?>"
-            data-query-params="<?php echo $this->escapeHtml(json_encode($queryParams ?? [])); ?>">
+            data-url="<?php echo $this->escapeHtml($showAllUrl) ?>"
+            data-query-params="<?php echo $this->escapeHtml(json_encode($queryParams ?? [])); ?>"
+            <?php if ($addAllMode): ?>data-add-all-mode="<?php echo $this->escapeHtmlAttr($addAllMode); ?>"<?php endif; ?>
+            <?php if ($addAllTarget): ?>data-add-all-target="<?php echo $this->escapeHtmlAttr($addAllTarget); ?>"<?php endif; ?>>
         <?php echo $label; ?>
     </label>
     <div id="show-all-table-container"></div>
 </div>
+<?php else: ?>
+<?php echo $this->partial('faceted-browse/site-admin/category/show-all-error', [
+    'message' => $this->translate('Cannot show all. The module providing this facet type needs to be updated.'), // @translate
+]); ?>
+<?php endif; ?>

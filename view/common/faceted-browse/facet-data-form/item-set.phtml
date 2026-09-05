@@ -2,6 +2,7 @@
 <?php echo $this->formRow($elementTruncateItemSets); ?>
 <?php echo $this->formRow($elementItemSetIds); ?>
 <?php echo $this->partial('show-all', [
-    'label' => $this->translate('Show all available item sets.'),
-    'url' => $this->url(null, ['action' => 'item-set-item-sets'], true),
+    'label' => $this->translate('Show available item sets'),
+    'facetType' => $facetType,
+    'addAll' => ['target' => '#item-set-item-set-ids', 'mode' => 'multi-select'],
 ]); ?>

@@ -1,17 +1,47 @@
+<?php
+/**
+ * The "show all available values" table.
+ *
+ * Every row requires 'label' and 'has_count'. An 'id' is required only by facet
+ * types whose "Add all" populates a multi-select, which matches on it.
+ *
+ * $sortBy and $sortOrder are set only when this module's endpoint produced these
+ * rows. Without them the headers are plain text: another module's endpoint ignores
+ * the sort parameters a click would send.
+ */
+$sortBy = $sortBy ?? null;
+$sortOrder = $sortOrder ?? null;
+$sortable = null !== $sortBy;
+$ariaSort = function ($column) use ($sortBy, $sortOrder) {
+    if ($column !== $sortBy) {
+        return 'none';
+    }
+    return 'asc' === $sortOrder ? 'ascending' : 'descending';
+};
+?>
 <?php if ($rows): ?>
 <button id="add-all" type="button"><?php echo $this->translate('Add all'); ?></button>
 <table id="show-all-table" data-rows="<?php echo $this->escapeHtml(json_encode($rows)); ?>">
     <thead>
         <tr>
+            <?php if ($sortable): ?>
+            <th aria-sort="<?php echo $ariaSort('label'); ?>">
+                <button type="button" class="show-all-sort" data-sort-by="label"><?php echo $this->translate('Available'); ?></button>
+            </th>
+            <th aria-sort="<?php echo $ariaSort('has_count'); ?>">
+                <button type="button" class="show-all-sort" data-sort-by="has_count"><?php echo $this->translate('Count'); ?></button>
+            </th>
+            <?php else: ?>
             <th><?php echo $this->translate('Available'); ?></th>
             <th><?php echo $this->translate('Count'); ?></th>
+            <?php endif; ?>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($rows as $row): ?>
         <tr>
             <td><?php echo $this->escapeHtml($row['label']); ?></td>
-            <td><?php echo $row['has_count']; ?></td>
+            <td><?php echo $this->escapeHtml($row['has_count']); ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>
