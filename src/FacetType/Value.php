@@ -280,6 +280,10 @@ class Value implements FacetTypeInterface
             $qb->andWhere('v.property = :propertyId')
                 ->setParameter('propertyId', $propertyId);
         }
-        return $qb->getQuery()->getResult();
+        // A label of only whitespace has nothing to show and nothing to add, so
+        // drop it rather than list a row "Add all" would skip. Not done centrally:
+        // a facet type that selects an ID stays usable with a blank label.
+        $rows = $qb->getQuery()->getResult();
+        return array_values(array_filter($rows, fn ($row) => '' !== trim((string) $row['label'])));
     }
 }

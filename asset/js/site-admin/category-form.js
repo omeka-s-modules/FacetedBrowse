@@ -327,12 +327,23 @@ const showAllFetch = function(sortBy, sortOrder) {
         showAllRequest.abort();
     }
     showAllRequest = $.get($('#show-all').data('url'), showAllQuery(sortBy, sortOrder), function(html) {
+        if (!$('#show-all').prop('checked')) {
+            // The admin changed a facet setting while this was loading. The data
+            // form responded by unchecking the box and clearing the table, but it
+            // cannot cancel the request, so ignore whatever comes back.
+            return;
+        }
         tableContainer.html(html);
         // Only an explicit refusal removes the button; see show-all.phtml.
         if ('none' === $('#show-all').data('addAllMode')) {
             tableContainer.find('#add-all').remove();
         }
-        sidebarScrollTo($('#show-all-container'));
+        if (!sortBy) {
+            // Only the checkbox calls this without a sort. Checking it makes the
+            // table appear, so scroll down to show it. A sort click replaces a
+            // table already on screen, where scrolling would just jog the sidebar.
+            sidebarScrollTo($('#show-all-container'));
+        }
     }).fail(function(jqXHR, textStatus) {
         if ('abort' === textStatus) {
             return;
@@ -386,10 +397,13 @@ $(document).on('click', '#add-all', function(e) {
     const field = $(target);
     switch (showAll.data('addAllMode')) {
         case 'textarea':
-            // Trimmed because a value with a trailing line break would
-            // otherwise add a blank line to this newline delimited field,
-            // which the facet renders as an option with no label.
-            field.val($.map(rows, row => row.label.trim()).join("\n"));
+            field.val($.map(rows, function(row) {
+                // A label may be null or not a string, so normalize before
+                // trimming a trailing line break. $.map drops null, so a blank
+                // label adds no line. Not a falsy test, which would also drop "0".
+                const label = String(row.label ?? '').trim();
+                return '' === label ? null : label;
+            }).join("\n"));
             break;
         case 'multi-select':
             $.each(rows, function(index, row) {
