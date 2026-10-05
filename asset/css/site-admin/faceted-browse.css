@@ -59,6 +59,14 @@
     margin-right: .25rem;
 }
 
+/* Chosen sets a fixed pixel width when the sidebar opens, so the selects don't
+grow when the window widens. This applies to all facet and column types,
+including those added by other modules. */
+#facet-sidebar .chosen-container,
+#column-sidebar .chosen-container {
+    width: 100% !important;
+}
+
 #show-all-table-container th,
 #show-all-table-container td {
     padding: 0; 
