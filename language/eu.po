@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-12 14:38-0500\n"
+"POT-Creation-Date: 2026-10-06 10:37-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
 "Last-Translator: Iametza Interaktiboa, 2024\n"
 "Language-Team: Basque (https://app.transifex.com/omeka/teams/14184/eu/)\n"
@@ -21,11 +21,32 @@ msgstr ""
 "Language: eu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: src/Controller/SiteAdmin/CategoryController.php:271
+msgid "Cannot show all. The page could not be found."
+msgstr ""
+
+#: src/Controller/SiteAdmin/CategoryController.php:279
+msgid "Cannot show all. Unknown facet type."
+msgstr ""
+
+#: src/Controller/SiteAdmin/CategoryController.php:287
+#: view/faceted-browse/site-admin/category/show-all.phtml:54
+msgid ""
+"Cannot show all. The module providing this facet type needs to be updated."
+msgstr ""
+
+#: src/Controller/SiteAdmin/CategoryController.php:309
+#, php-format
+msgid ""
+"Cannot show all. The \"%s\" facet type returned a row without a label or "
+"count."
+msgstr ""
+
 #: src/Controller/SiteAdmin/PageController.php:87
 msgid "Add it to site navigation?"
 msgstr "Gehitu hau atariaren nabigaziora?"
 
-#: src/FacetType/Value.php:108
+#: src/FacetType/Value.php:114
 msgid ""
 "\n"
 "            <p>Enter the values, separated by new lines. The format of each value depends on the query type:</p>\n"
@@ -37,33 +58,38 @@ msgid ""
 "            </ul>"
 msgstr ""
 
+#: view-overrides/common/search-form.phtml:24
+msgid "Enter a search term"
+msgstr ""
+
 #: view/common/faceted-browse/facet-data-form/item-set.phtml:5
-msgid "Show all available item sets."
-msgstr "Erakutsi eskuragarri dauden elementu multzo guztiak."
+msgid "Show available item sets"
+msgstr ""
 
 #: view/common/faceted-browse/facet-data-form/resource-class.phtml:5
-msgid "Show all available classes."
-msgstr "Erakutsi eskuragarri dauden klase guztiak."
+msgid "Show available classes"
+msgstr ""
 
 #: view/common/faceted-browse/facet-data-form/resource-template.phtml:5
-msgid "Show all available templates."
-msgstr "Erakutsi eskuragarri dauden txantiloi guztiak."
+msgid "Show available templates"
+msgstr ""
 
 #: view/common/faceted-browse/facet-data-form/value.phtml:7
-msgid "Show all available values."
-msgstr "Erakutsi eskuragarri dauden balio guztiak."
+#: view/faceted-browse/site-admin/category/show-all.phtml:19
+msgid "Show available values"
+msgstr ""
 
-#: view/common/faceted-browse/facet-render/item-set.phtml:19
-#: view/common/faceted-browse/facet-render/resource-class.phtml:19
-#: view/common/faceted-browse/facet-render/resource-template.phtml:19
-#: view/common/faceted-browse/facet-render/value.phtml:33
+#: view/common/faceted-browse/facet-render/item-set.phtml:34
+#: view/common/faceted-browse/facet-render/resource-class.phtml:34
+#: view/common/faceted-browse/facet-render/resource-template.phtml:34
+#: view/common/faceted-browse/facet-render/value.phtml:47
 msgid "See more"
 msgstr "Ikusi gehiago"
 
-#: view/common/faceted-browse/facet-render/item-set.phtml:20
-#: view/common/faceted-browse/facet-render/resource-class.phtml:20
-#: view/common/faceted-browse/facet-render/resource-template.phtml:20
-#: view/common/faceted-browse/facet-render/value.phtml:34
+#: view/common/faceted-browse/facet-render/item-set.phtml:35
+#: view/common/faceted-browse/facet-render/resource-class.phtml:35
+#: view/common/faceted-browse/facet-render/resource-template.phtml:35
+#: view/common/faceted-browse/facet-render/value.phtml:48
 msgid "See less"
 msgstr "Ikusi gutxiago"
 
@@ -111,49 +137,51 @@ msgstr "Fazetadun Arakatzea"
 msgid "Add Category"
 msgstr "Gehitu Kategoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:33
-#: view/faceted-browse/site-admin/page/form.phtml:28
+#: view/faceted-browse/site-admin/category/form.phtml:34
+#: view/faceted-browse/site-admin/page/form.phtml:29
 msgid "Save and&hellip;"
 msgstr "Gorde eta&hellip;"
 
-#: view/faceted-browse/site-admin/category/form.phtml:35
+#: view/faceted-browse/site-admin/category/form.phtml:36
 msgid "Return to page"
 msgstr "Itzuli orrialdera"
 
-#: view/faceted-browse/site-admin/category/form.phtml:36
+#: view/faceted-browse/site-admin/category/form.phtml:37
 msgid "Stay on this category"
 msgstr "Egon kategoria honetan"
 
-#: view/faceted-browse/site-admin/category/form.phtml:44
-#: view/faceted-browse/site-admin/page/form.phtml:39
+#: view/faceted-browse/site-admin/category/form.phtml:45
+#: view/faceted-browse/site-admin/page/form.phtml:40
 msgid "Page edit"
 msgstr "Editatu orrialdea"
 
-#: view/faceted-browse/site-admin/category/form.phtml:46
+#: view/faceted-browse/site-admin/category/form.phtml:47
 msgid "Category edit"
 msgstr "Editatu kategoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:46
+#: view/faceted-browse/site-admin/category/form.phtml:47
 msgid "Category add"
 msgstr "Gehitu kategoria"
 
-#: view/faceted-browse/site-admin/category/form.phtml:64
+#: view/faceted-browse/site-admin/category/form.phtml:65
 msgid "Facets"
 msgstr "Fazetak"
 
-#: view/faceted-browse/site-admin/category/show-all-table.phtml:2
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:23
 msgid "Add all"
 msgstr "Gehitu denak"
 
-#: view/faceted-browse/site-admin/category/show-all-table.phtml:6
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:29
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:35
 msgid "Available"
 msgstr "Eskuragarri"
 
-#: view/faceted-browse/site-admin/category/show-all-table.phtml:7
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:32
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:36
 msgid "Count"
 msgstr "Zenbatu"
 
-#: view/faceted-browse/site-admin/category/show-all-table.phtml:20
+#: view/faceted-browse/site-admin/category/show-all-table.phtml:50
 #: view/faceted-browse/site/page/browse.phtml:9
 msgid "There are no results."
 msgstr "Ez dago emaitzarik."
@@ -162,20 +190,20 @@ msgstr "Ez dago emaitzarik."
 msgid "Date created"
 msgstr "Data sortuta"
 
-#: view/faceted-browse/site-admin/page/browse.phtml:80
+#: view/faceted-browse/site-admin/page/browse.phtml:77
 #, php-format
 msgid "No pages found. %s"
 msgstr "Ez da aurkitu orririk. %s"
 
-#: view/faceted-browse/site-admin/page/browse.phtml:81
+#: view/faceted-browse/site-admin/page/browse.phtml:78
 msgid "Add a new page."
 msgstr "Gehitu orrialde berria"
 
-#: view/faceted-browse/site-admin/page/browse.phtml:84
+#: view/faceted-browse/site-admin/page/browse.phtml:81
 msgid "No pages found."
 msgstr "Ez da aurkitu orririk."
 
-#: view/faceted-browse/site-admin/page/category-row.phtml:10
+#: view/faceted-browse/site-admin/page/category-row.phtml:15
 msgid "Edit category"
 msgstr "Editatu kategoria"
 
@@ -187,23 +215,23 @@ msgstr "Editatu Orrialdea"
 msgid "Add Page"
 msgstr "Gehitu Orrialdea"
 
-#: view/faceted-browse/site-admin/page/form.phtml:30
+#: view/faceted-browse/site-admin/page/form.phtml:31
 msgid "Return to pages"
 msgstr "Itzuli orrialdeetara"
 
-#: view/faceted-browse/site-admin/page/form.phtml:31
+#: view/faceted-browse/site-admin/page/form.phtml:32
 msgid "Stay on this page"
 msgstr "Egon orrialde honetan"
 
-#: view/faceted-browse/site-admin/page/form.phtml:39
+#: view/faceted-browse/site-admin/page/form.phtml:40
 msgid "Page add"
 msgstr "Gehitu orrialdea"
 
-#: view/faceted-browse/site-admin/page/form.phtml:50
+#: view/faceted-browse/site-admin/page/form.phtml:51
 msgid "Categories"
 msgstr "Kategoriak"
 
-#: view/faceted-browse/site-admin/page/form.phtml:51
+#: view/faceted-browse/site-admin/page/form.phtml:52
 msgid "Add category"
 msgstr "Gehitu kategoria"
 
@@ -215,15 +243,15 @@ msgstr "Kopiatu esteka iraunkorra"
 msgid "Copied!"
 msgstr "Kopiatuta!"
 
-#: view/faceted-browse/site/page/categories.phtml:22
+#: view/faceted-browse/site/page/categories.phtml:19
 msgid "There are no categories to browse."
 msgstr "Ez dago arakatzeko kategoriarik."
 
-#: view/faceted-browse/site/page/facets.phtml:7
+#: view/faceted-browse/site/page/facets.phtml:4
 msgid "Back"
 msgstr "Atzera"
 
-#: view/faceted-browse/site/page/facets.phtml:17
+#: view/faceted-browse/site/page/facets.phtml:14
 msgid "Instructions"
 msgstr ""
 
@@ -256,16 +284,16 @@ msgstr "Titulua (lotura baliabidera)"
 msgid "Select a property…"
 msgstr "Hautatu propietatea..."
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:49
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:51
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:57
 msgid "A site must have an ID"
 msgstr "Atarian ID bat izan behar du"
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:95
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:97
 msgid "A page must have a site"
 msgstr "Orriak atari bat izan behar du"
 
-#: src/Api/Adapter/FacetedBrowsePageAdapter.php:98
+#: src/Api/Adapter/FacetedBrowsePageAdapter.php:100
 msgid "A page must have a title"
 msgstr "Orriak izen bat izan behar du"
 
@@ -281,12 +309,12 @@ msgstr "Kategoriak izen bat izan behar du"
 msgid "A category must have a query"
 msgstr "Kategoriak kontsulta bat izan behar du"
 
-#: src/FacetType/ItemSet.php:45 src/FacetType/ResourceTemplate.php:45
-#: src/FacetType/ResourceClass.php:45 src/FacetType/Value.php:77
+#: src/FacetType/ItemSet.php:51 src/FacetType/ResourceTemplate.php:51
+#: src/FacetType/ResourceClass.php:51 src/FacetType/Value.php:83
 msgid "Select type"
 msgstr "Hautatu mota"
 
-#: src/FacetType/ItemSet.php:46
+#: src/FacetType/ItemSet.php:52
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one item set at a time via a list or dropdown menu. For the "
@@ -299,26 +327,26 @@ msgstr ""
 "erabiltzaileak une oro nahi duen elementu multzo kopurua hautatu ahalko du "
 "zerrendatik."
 
-#: src/FacetType/ItemSet.php:48 src/FacetType/ResourceTemplate.php:48
-#: src/FacetType/ResourceClass.php:48 src/FacetType/Value.php:80
+#: src/FacetType/ItemSet.php:54 src/FacetType/ResourceTemplate.php:54
+#: src/FacetType/ResourceClass.php:54 src/FacetType/Value.php:86
 msgid "Single (list)"
 msgstr "Bakarra (zerrenda)"
 
-#: src/FacetType/ItemSet.php:49 src/FacetType/ResourceTemplate.php:49
-#: src/FacetType/ResourceClass.php:49 src/FacetType/Value.php:81
+#: src/FacetType/ItemSet.php:55 src/FacetType/ResourceTemplate.php:55
+#: src/FacetType/ResourceClass.php:55 src/FacetType/Value.php:87
 msgid "Multiple (list)"
 msgstr "Anitza (zerrenda)"
 
-#: src/FacetType/ItemSet.php:50 src/FacetType/ResourceTemplate.php:50
-#: src/FacetType/ResourceClass.php:50 src/FacetType/Value.php:82
+#: src/FacetType/ItemSet.php:56 src/FacetType/ResourceTemplate.php:56
+#: src/FacetType/ResourceClass.php:56 src/FacetType/Value.php:88
 msgid "Single (dropdown menu)"
 msgstr "Bakarra (goitibeherako menua)"
 
-#: src/FacetType/ItemSet.php:61
+#: src/FacetType/ItemSet.php:67
 msgid "Truncate item sets"
 msgstr "Moztu elementu multzoak"
 
-#: src/FacetType/ItemSet.php:62
+#: src/FacetType/ItemSet.php:68
 msgid ""
 "Enter the number of item sets to show on the select list when the page first"
 " loads. If the number of item sets exceeds this number, the remainder will "
@@ -326,7 +354,7 @@ msgid ""
 "entire list at all times."
 msgstr ""
 
-#: src/FacetType/ItemSet.php:80
+#: src/FacetType/ItemSet.php:86
 msgid "Select item sets…"
 msgstr "Hautatu elementu multzoak..."
 
@@ -338,7 +366,7 @@ msgstr "Fazeta modu ezezaguna"
 msgid "Unknown facet data"
 msgstr "Fazeta datu ezezaguna"
 
-#: src/FacetType/ResourceTemplate.php:46
+#: src/FacetType/ResourceTemplate.php:52
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one template at a time via a list or dropdown menu. For the "
@@ -351,11 +379,11 @@ msgstr ""
 "erabiltzaileak une oro nahi duen txantiloi kopurua hautatu ahalko du "
 "zerrendatik."
 
-#: src/FacetType/ResourceTemplate.php:61
+#: src/FacetType/ResourceTemplate.php:67
 msgid "Truncate templates"
 msgstr "Moztu txantiloiak"
 
-#: src/FacetType/ResourceTemplate.php:62
+#: src/FacetType/ResourceTemplate.php:68
 msgid ""
 "Enter the number of templates to show on the select list when the page first"
 " loads. If the number of templates exceeds this number, the remainder will "
@@ -363,15 +391,15 @@ msgid ""
 "entire list at all times."
 msgstr ""
 
-#: src/FacetType/ResourceTemplate.php:80
+#: src/FacetType/ResourceTemplate.php:86
 msgid "Select templates…"
 msgstr "Hautatu txantiloiak..."
 
-#: src/FacetType/FullText.php:20
+#: src/FacetType/FullText.php:24
 msgid "Full-text"
 msgstr "Testu osoa"
 
-#: src/FacetType/ResourceClass.php:46
+#: src/FacetType/ResourceClass.php:52
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one class at a time via a list or dropdown menu. For the \"multiple\" "
@@ -382,11 +410,11 @@ msgstr ""
 "menutik. Hautatzeko \"anizkoitza\" moduarentzat, erabiltzaileak une oro nahi"
 " duen klase kopurua hautatu ahalko du zerrendatik."
 
-#: src/FacetType/ResourceClass.php:61
+#: src/FacetType/ResourceClass.php:67
 msgid "Truncate classes"
 msgstr "Moztu klaseak"
 
-#: src/FacetType/ResourceClass.php:62
+#: src/FacetType/ResourceClass.php:68
 msgid ""
 "Enter the number of classes to show on the select list when the page first "
 "loads. If the number of classes exceeds this number, the remainder will be "
@@ -394,43 +422,43 @@ msgid ""
 "list at all times."
 msgstr ""
 
-#: src/FacetType/ResourceClass.php:80
+#: src/FacetType/ResourceClass.php:86
 msgid "Select classes…"
 msgstr "Hautatu klaseak..."
 
-#: src/FacetType/Value.php:59
+#: src/FacetType/Value.php:65
 msgid "Is exactly"
 msgstr "Berdina da"
 
-#: src/FacetType/Value.php:60
+#: src/FacetType/Value.php:66
 msgid "Is not exactly"
 msgstr "Ez da berdina"
 
-#: src/FacetType/Value.php:61
+#: src/FacetType/Value.php:67
 msgid "Contains"
 msgstr "Dauka"
 
-#: src/FacetType/Value.php:62
+#: src/FacetType/Value.php:68
 msgid "Does not contain"
 msgstr "Ez dauka"
 
-#: src/FacetType/Value.php:63
+#: src/FacetType/Value.php:69
 msgid "Is resource with ID"
 msgstr "ID hau duen baliabidea da"
 
-#: src/FacetType/Value.php:64
+#: src/FacetType/Value.php:70
 msgid "Is not resource with ID"
 msgstr "Ez da ID hau duen baliabidea"
 
-#: src/FacetType/Value.php:65
+#: src/FacetType/Value.php:71
 msgid "Has any value"
 msgstr "Edozein balio dauka"
 
-#: src/FacetType/Value.php:66
+#: src/FacetType/Value.php:72
 msgid "Has no values"
 msgstr "Ez dauzka balio hauek"
 
-#: src/FacetType/Value.php:78
+#: src/FacetType/Value.php:84
 msgid ""
 "Select the select type. For the \"single\" select type, users may choose "
 "only one value at a time via a list or dropdown menu. For the \"multiple\" "
@@ -442,15 +470,15 @@ msgstr ""
 "menutik. Hautatzeko \"anizkoitza\" moduarentzat, erabiltzaileak une oro nahi"
 " duen balio kopurua hautatu ahalko du zerrendatik."
 
-#: src/FacetType/Value.php:83
+#: src/FacetType/Value.php:89
 msgid "Text input"
 msgstr "Testu sarrera"
 
-#: src/FacetType/Value.php:94
+#: src/FacetType/Value.php:100
 msgid "Truncate values"
 msgstr "Moztu balioak"
 
-#: src/FacetType/Value.php:95
+#: src/FacetType/Value.php:101
 msgid ""
 "Enter the number of values to show on the select list when the page first "
 "loads. If the number of values exceeds this number, the remainder will be "
@@ -491,15 +519,15 @@ msgstr "Orria ongi editatu da. %s"
 msgid "Page successfully deleted."
 msgstr "Orria ongi ezabatu da."
 
-#: src/Controller/SiteAdmin/CategoryController.php:38
+#: src/Controller/SiteAdmin/CategoryController.php:44
 msgid "Category successfully added."
 msgstr "Kategoria ongi gehitu da."
 
-#: src/Controller/SiteAdmin/CategoryController.php:91
+#: src/Controller/SiteAdmin/CategoryController.php:97
 msgid "Category successfully edited."
 msgstr "Kategoria ongi aldatu da."
 
-#: src/Controller/SiteAdmin/CategoryController.php:128
+#: src/Controller/SiteAdmin/CategoryController.php:134
 msgid "Category successfully deleted."
 msgstr "Kategoria ongi ezabatu da."
 
@@ -515,15 +543,15 @@ msgstr "Ezarri fazeta"
 msgid "Enter the title of this page."
 msgstr "Sartu orri honen izenburua"
 
-#: src/Form/PageForm.php:43
+#: src/Form/PageForm.php:45
 msgid "Select the type of resources to browse."
 msgstr "Hautatu arakatzeko baliabide mota."
 
-#: src/Form/PageForm.php:52
+#: src/Form/PageForm.php:57
 msgid "Thumbnail type"
 msgstr ""
 
-#: src/Form/PageForm.php:53
+#: src/Form/PageForm.php:58
 msgid "Select the type of thumbnail images to render on the page."
 msgstr ""
 

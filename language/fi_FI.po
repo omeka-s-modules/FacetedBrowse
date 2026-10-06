@@ -4,7 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Deidson Rafael Trindade <drafael@usp.br>, 2024
+# Kai Metsävainio <kai.metsavainio@gmail.com>, 2021
+# Matti Lassila <matti.lassila@gmail.com>, 2026
 # 
 #, fuzzy
 msgid ""
@@ -13,13 +14,13 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-06 10:37-0400\n"
 "PO-Revision-Date: 2021-04-26 01:55+0000\n"
-"Last-Translator: Deidson Rafael Trindade <drafael@usp.br>, 2024\n"
-"Language-Team: Portuguese (Brazil) (https://app.transifex.com/omeka/teams/14184/pt_BR/)\n"
+"Last-Translator: Matti Lassila <matti.lassila@gmail.com>, 2026\n"
+"Language-Team: Finnish (Finland) (https://app.transifex.com/omeka/teams/14184/fi_FI/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Language: fi_FI\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/Controller/SiteAdmin/CategoryController.php:271
 msgid "Cannot show all. The page could not be found."
@@ -44,7 +45,7 @@ msgstr ""
 
 #: src/Controller/SiteAdmin/PageController.php:87
 msgid "Add it to site navigation?"
-msgstr ""
+msgstr "Lisätäänkö se sivuston navigaatioon?"
 
 #: src/FacetType/Value.php:114
 msgid ""
@@ -57,6 +58,14 @@ msgid ""
 "                <li>\"Has any value\": enter the property ID followed by any value (usually the property label), separated by a single space.</li>\n"
 "            </ul>"
 msgstr ""
+"\n"
+"            <p>Anna arvot riveittäin. Kunkin arvon muoto riippuu kyselytyypistä:</p>\n"
+"            <ul>\n"
+"                <li>\"Vastaa täsmälleen\": anna arvo, joka vastaa täsmälleen ominaisuuden arvoa.</li>\n"
+"                <li>\"Sisältää\": anna arvo, joka vastaa mitä tahansa ominaisuuden arvon osaa.</li>\n"
+"                <li>\"On resurssi, jonka ID on\": anna resurssin ID ja sen jälkeen mikä tahansa arvo (yleensä resurssin otsikko), erotettuna yhdellä välilyönnillä.</li>\n"
+"                <li>\"Sisältää minkä tahansa arvon\": anna ominaisuuden ID ja sen jälkeen mikä tahansa arvo (yleensä ominaisuuden nimiö), erotettuna yhdellä välilyönnillä.</li>\n"
+"            </ul>"
 
 #: view-overrides/common/search-form.phtml:24
 msgid "Enter a search term"
@@ -84,46 +93,46 @@ msgstr ""
 #: view/common/faceted-browse/facet-render/resource-template.phtml:34
 #: view/common/faceted-browse/facet-render/value.phtml:47
 msgid "See more"
-msgstr "Exibir mais"
+msgstr "Näytä lisää"
 
 #: view/common/faceted-browse/facet-render/item-set.phtml:35
 #: view/common/faceted-browse/facet-render/resource-class.phtml:35
 #: view/common/faceted-browse/facet-render/resource-template.phtml:35
 #: view/common/faceted-browse/facet-render/value.phtml:48
 msgid "See less"
-msgstr "Exibir menos"
+msgstr "Näytä vähemmän"
 
 #: view/common/faceted-browse/navigation-link-form/faceted-browse.phtml:9
 msgid "Select a page"
-msgstr "Selecione uma página"
+msgstr "Valitse sivu"
 
 #: view/faceted-browse/site-admin/category/column-form.phtml:6
 msgid "Configure column"
-msgstr "Configurar coluna"
+msgstr "Määritä sarake"
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:7
 msgid "Configure facet"
-msgstr "Configurar facet"
+msgstr "Määritä fasetti"
 
 #: view/faceted-browse/site-admin/category/facet-form.phtml:10
 msgid "Facet type"
-msgstr "Tipo facet"
+msgstr "Fasetin tyyppi"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:12
 msgid "Edit facet"
-msgstr "Editar facet"
+msgstr "Muokkaa fasettia"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:16
 msgid "Remove facet"
-msgstr "Remover facet"
+msgstr "Poista fasetti"
 
 #: view/faceted-browse/site-admin/category/facet-row.phtml:20
 msgid "Restore facet"
-msgstr "Restaurar facet"
+msgstr "Palauta fasetti"
 
 #: view/faceted-browse/site-admin/category/form.phtml:19
 msgid "Edit Category"
-msgstr "Editar categoria"
+msgstr "Muokkaa kategoriaa"
 
 #: view/faceted-browse/site-admin/category/form.phtml:19
 #: view/faceted-browse/site-admin/category/form.phtml:21
@@ -131,11 +140,11 @@ msgstr "Editar categoria"
 #: view/faceted-browse/site-admin/page/form.phtml:14
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Faceted Browse"
-msgstr "Navegação Faceted"
+msgstr "Fasetoitu selaus"
 
 #: view/faceted-browse/site-admin/category/form.phtml:21
 msgid "Add Category"
-msgstr "Adicionar Categoria"
+msgstr "Lisää kategoria"
 
 #: view/faceted-browse/site-admin/category/form.phtml:34
 #: view/faceted-browse/site-admin/page/form.phtml:29
@@ -144,173 +153,175 @@ msgstr ""
 
 #: view/faceted-browse/site-admin/category/form.phtml:36
 msgid "Return to page"
-msgstr "Voltar para a página"
+msgstr "Palaa sivulle"
 
 #: view/faceted-browse/site-admin/category/form.phtml:37
 msgid "Stay on this category"
-msgstr "Fique nesta categoria"
+msgstr "Pysy tässä kategoriassa"
 
 #: view/faceted-browse/site-admin/category/form.phtml:45
 #: view/faceted-browse/site-admin/page/form.phtml:40
 msgid "Page edit"
-msgstr "Editar página"
+msgstr "Sivun muokkaus"
 
 #: view/faceted-browse/site-admin/category/form.phtml:47
 msgid "Category edit"
-msgstr "Editar categoria"
+msgstr "Kategorian muokkaus"
 
 #: view/faceted-browse/site-admin/category/form.phtml:47
 msgid "Category add"
-msgstr "Adicionar categoria"
+msgstr "Kategorian lisäys"
 
 #: view/faceted-browse/site-admin/category/form.phtml:65
 msgid "Facets"
-msgstr "Facets"
+msgstr "Fasetit"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:23
 msgid "Add all"
-msgstr "Adicionar todos"
+msgstr "Lisää kaikki"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:29
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:35
 msgid "Available"
-msgstr "Disponível"
+msgstr "Käytettävissä"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:32
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:36
 msgid "Count"
-msgstr "Contar"
+msgstr "Määrä"
 
 #: view/faceted-browse/site-admin/category/show-all-table.phtml:50
 #: view/faceted-browse/site/page/browse.phtml:9
 msgid "There are no results."
-msgstr "Não há resultados."
+msgstr "Ei tuloksia."
 
 #: view/faceted-browse/site-admin/page/browse.phtml:23
 msgid "Date created"
-msgstr "Data de criação"
+msgstr "Luontipäivä"
 
 #: view/faceted-browse/site-admin/page/browse.phtml:77
 #, php-format
 msgid "No pages found. %s"
-msgstr "Nenhuma página encontrada. %s"
+msgstr "Sivuja ei löytynyt. %s"
 
 #: view/faceted-browse/site-admin/page/browse.phtml:78
 msgid "Add a new page."
-msgstr "Adicionar uma nova página."
+msgstr "Lisää uusi sivu."
 
 #: view/faceted-browse/site-admin/page/browse.phtml:81
 msgid "No pages found."
-msgstr "Nenhuma página encontrada."
+msgstr "Sivuja ei löytynyt."
 
 #: view/faceted-browse/site-admin/page/category-row.phtml:15
 msgid "Edit category"
-msgstr "Editar categoria"
+msgstr "Muokkaa kategoriaa"
 
 #: view/faceted-browse/site-admin/page/form.phtml:14
 msgid "Edit Page"
-msgstr "Editar Página"
+msgstr "Muokkaa sivua"
 
 #: view/faceted-browse/site-admin/page/form.phtml:16
 msgid "Add Page"
-msgstr "Adicionar Página"
+msgstr "Lisää sivu"
 
 #: view/faceted-browse/site-admin/page/form.phtml:31
 msgid "Return to pages"
-msgstr "Voltar às páginas"
+msgstr "Palaa sivuille"
 
 #: view/faceted-browse/site-admin/page/form.phtml:32
 msgid "Stay on this page"
-msgstr "Fique nesta página"
+msgstr "Pysy tällä sivulla"
 
 #: view/faceted-browse/site-admin/page/form.phtml:40
 msgid "Page add"
-msgstr ""
+msgstr "Sivun lisäys"
 
 #: view/faceted-browse/site-admin/page/form.phtml:51
 msgid "Categories"
-msgstr ""
+msgstr "Kategoriat"
 
 #: view/faceted-browse/site-admin/page/form.phtml:52
 msgid "Add category"
-msgstr ""
+msgstr "Lisää kategoria"
 
 #: view/faceted-browse/site/page/browse.phtml:3
 msgid "Copy permalink"
-msgstr ""
+msgstr "Kopioi pysyvä linkki"
 
 #: view/faceted-browse/site/page/browse.phtml:3
 msgid "Copied!"
-msgstr ""
+msgstr "Kopioitu!"
 
 #: view/faceted-browse/site/page/categories.phtml:19
 msgid "There are no categories to browse."
-msgstr ""
+msgstr "Selattavia kategorioita ei ole."
 
 #: view/faceted-browse/site/page/facets.phtml:4
 msgid "Back"
-msgstr ""
+msgstr "Takaisin"
 
 #: view/faceted-browse/site/page/facets.phtml:14
 msgid "Instructions"
-msgstr ""
+msgstr "Ohjeet"
 
 #: view/faceted-browse/site/page/page.phtml:24
 #: view/faceted-browse/site/page/page.phtml:25
 msgid "Filters"
-msgstr ""
+msgstr "Suodattimet"
 
 #: src/ColumnType/ItemSet.php:44
 msgid "Max item sets"
-msgstr ""
+msgstr "Kokoelmia maksimissaan"
 
 #: src/ColumnType/ItemSet.php:45
 msgid ""
 "Enter the maximum number of item sets to display. Set to blank to display "
 "all item sets."
 msgstr ""
+"Anna näytettävien kokoelmien enimmäismäärä. Jätä tyhjäksi, jos haluat "
+"näyttää kaikki kokoelmat."
 
 #: src/ColumnType/Unknown.php:45
 msgid "Unknown column type"
-msgstr ""
+msgstr "Tuntematon saraketyyppi"
 
 #: src/ColumnType/Title.php:20
 msgid "Title (link to resource)"
-msgstr ""
+msgstr "Otsikko (linkki resurssiin)"
 
 #: src/ColumnType/Value.php:52
 msgid "Select a property…"
-msgstr ""
+msgstr "Valitse ominaisuus…"
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:51
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:57
 msgid "A site must have an ID"
-msgstr ""
+msgstr "Sivustolla on oltava ID"
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:97
 msgid "A page must have a site"
-msgstr ""
+msgstr "Sivulla on oltava sivusto"
 
 #: src/Api/Adapter/FacetedBrowsePageAdapter.php:100
 msgid "A page must have a title"
-msgstr ""
+msgstr "Sivulla on oltava otsikko"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:169
 msgid "A category must have a site"
-msgstr ""
+msgstr "Kategorialla on oltava sivusto"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:172
 msgid "A category must have a name"
-msgstr ""
+msgstr "Kategorialla on oltava nimi"
 
 #: src/Api/Adapter/FacetedBrowseCategoryAdapter.php:175
 msgid "A category must have a query"
-msgstr ""
+msgstr "Kategorialla on oltava kysely"
 
 #: src/FacetType/ItemSet.php:51 src/FacetType/ResourceTemplate.php:51
 #: src/FacetType/ResourceClass.php:51 src/FacetType/Value.php:83
 msgid "Select type"
-msgstr ""
+msgstr "Valintatyyppi"
 
 #: src/FacetType/ItemSet.php:52
 msgid ""
@@ -319,25 +330,29 @@ msgid ""
 "\"multiple\" select type, users may choose any number of item sets at a time"
 " via a list."
 msgstr ""
+"Valitse valintatyyppi. Valintatyypillä \"yksi\" käyttäjät voivat valita vain"
+" yhden kokoelman kerrallaan luettelosta tai alasvetovalikosta. "
+"Valintatyypillä \"useita\" käyttäjät voivat valita luettelosta haluamansa "
+"määrän kokoelmia kerrallaan."
 
 #: src/FacetType/ItemSet.php:54 src/FacetType/ResourceTemplate.php:54
 #: src/FacetType/ResourceClass.php:54 src/FacetType/Value.php:86
 msgid "Single (list)"
-msgstr ""
+msgstr "Yksi (luettelo)"
 
 #: src/FacetType/ItemSet.php:55 src/FacetType/ResourceTemplate.php:55
 #: src/FacetType/ResourceClass.php:55 src/FacetType/Value.php:87
 msgid "Multiple (list)"
-msgstr ""
+msgstr "Useita (luettelo)"
 
 #: src/FacetType/ItemSet.php:56 src/FacetType/ResourceTemplate.php:56
 #: src/FacetType/ResourceClass.php:56 src/FacetType/Value.php:88
 msgid "Single (dropdown menu)"
-msgstr ""
+msgstr "Yksi (alasvetovalikko)"
 
 #: src/FacetType/ItemSet.php:67
 msgid "Truncate item sets"
-msgstr ""
+msgstr "Rajoita kokoelmien määrää"
 
 #: src/FacetType/ItemSet.php:68
 msgid ""
@@ -346,18 +361,22 @@ msgid ""
 "be hidden until the user clicks to show more. Enter nothing to show the "
 "entire list at all times."
 msgstr ""
+"Anna kokoelmien määrä, joka näytetään valintaluettelossa, kun sivu latautuu "
+"ensimmäisen kerran. Jos kokoelmien määrä ylittää tämän luvun, loput "
+"piilotetaan, kunnes käyttäjä napsauttaa näytä lisää -toimintoa. Jätä "
+"tyhjäksi, jos haluat näyttää koko luettelon aina."
 
 #: src/FacetType/ItemSet.php:86
 msgid "Select item sets…"
-msgstr ""
+msgstr "Valitse kokoelmat..."
 
 #: src/FacetType/Unknown.php:44
 msgid "Unknown facet type"
-msgstr ""
+msgstr "Tuntematon fasettityyppi"
 
 #: src/FacetType/Unknown.php:54
 msgid "Unknown facet data"
-msgstr ""
+msgstr "Tuntemattomat fasetin tiedot"
 
 #: src/FacetType/ResourceTemplate.php:52
 msgid ""
@@ -366,10 +385,14 @@ msgid ""
 "\"multiple\" select type, users may choose any number of templates at a time"
 " via a list."
 msgstr ""
+"Valitse valintatyyppi. Valintatyypillä \"yksi\" käyttäjät voivat valita vain"
+" yhden tallennuspohjan kerrallaan luettelosta tai alasvetovalikosta. "
+"Valintatyypillä \"useita\" käyttäjät voivat valita luettelosta haluamansa "
+"määrän tallennuspohjia kerrallaan."
 
 #: src/FacetType/ResourceTemplate.php:67
 msgid "Truncate templates"
-msgstr ""
+msgstr "Rajoita tallennuspohjien määrää"
 
 #: src/FacetType/ResourceTemplate.php:68
 msgid ""
@@ -378,14 +401,18 @@ msgid ""
 "be hidden until the user clicks to show more. Enter nothing to show the "
 "entire list at all times."
 msgstr ""
+"Anna tallennuspohjien määrä, joka näytetään valintaluettelossa, kun sivu "
+"latautuu ensimmäisen kerran. Jos tallennuspohjien määrä ylittää tämän luvun,"
+" loput piilotetaan, kunnes käyttäjä napsauttaa näytä lisää -toimintoa. Jätä "
+"tyhjäksi, jos haluat näyttää koko luettelon aina."
 
 #: src/FacetType/ResourceTemplate.php:86
 msgid "Select templates…"
-msgstr ""
+msgstr "Valitse tallennuspohjat…"
 
 #: src/FacetType/FullText.php:24
 msgid "Full-text"
-msgstr ""
+msgstr "Kokoteksti"
 
 #: src/FacetType/ResourceClass.php:52
 msgid ""
@@ -393,10 +420,14 @@ msgid ""
 "only one class at a time via a list or dropdown menu. For the \"multiple\" "
 "select type, users may choose any number of classes at a time via a list."
 msgstr ""
+"Valitse valintatyyppi. Valintatyypillä \"yksi\" käyttäjät voivat valita vain"
+" yhden luokan kerrallaan luettelosta tai alasvetovalikosta. Valintatyypillä "
+"\"useita\" käyttäjät voivat valita luettelosta haluamansa määrän luokkia "
+"kerrallaan."
 
 #: src/FacetType/ResourceClass.php:67
 msgid "Truncate classes"
-msgstr ""
+msgstr "Rajoita luokkien määrää"
 
 #: src/FacetType/ResourceClass.php:68
 msgid ""
@@ -405,42 +436,46 @@ msgid ""
 "hidden until the user clicks to show more. Enter nothing to show the entire "
 "list at all times."
 msgstr ""
+"Anna luokkien määrä, joka näytetään valintaluettelossa, kun sivu latautuu "
+"ensimmäisen kerran. Jos luokkien määrä ylittää tämän luvun, loput "
+"piilotetaan, kunnes käyttäjä napsauttaa näytä lisää -toimintoa. Jätä "
+"tyhjäksi, jos haluat näyttää koko luettelon aina."
 
 #: src/FacetType/ResourceClass.php:86
 msgid "Select classes…"
-msgstr ""
+msgstr "Valitse luokat…"
 
 #: src/FacetType/Value.php:65
 msgid "Is exactly"
-msgstr ""
+msgstr "Vastaa täsmälleen"
 
 #: src/FacetType/Value.php:66
 msgid "Is not exactly"
-msgstr ""
+msgstr "Ei vastaa täsmälleen"
 
 #: src/FacetType/Value.php:67
 msgid "Contains"
-msgstr ""
+msgstr "Sisältää"
 
 #: src/FacetType/Value.php:68
 msgid "Does not contain"
-msgstr ""
+msgstr "Ei sisällä"
 
 #: src/FacetType/Value.php:69
 msgid "Is resource with ID"
-msgstr ""
+msgstr "On resurssi, jonka ID on"
 
 #: src/FacetType/Value.php:70
 msgid "Is not resource with ID"
-msgstr ""
+msgstr "Ei ole resurssi, jonka ID on"
 
 #: src/FacetType/Value.php:71
 msgid "Has any value"
-msgstr ""
+msgstr "Sisältää minkä tahansa arvon"
 
 #: src/FacetType/Value.php:72
 msgid "Has no values"
-msgstr ""
+msgstr "Ei sisällä arvoja"
 
 #: src/FacetType/Value.php:84
 msgid ""
@@ -449,14 +484,19 @@ msgid ""
 "select type, users may choose any number of values at a time via a list. For"
 " the special \"text input\" select type, users may input their own text."
 msgstr ""
+"Valitse valintatyyppi. Valintatyypillä \"yksi\" käyttäjät voivat valita vain"
+" yhden arvon kerrallaan luettelosta tai alasvetovalikosta. Valintatyypillä "
+"\"useita\" käyttäjät voivat valita luettelosta haluamansa määrän arvoja "
+"kerrallaan. Erityisellä \"tekstisyöte\"-valintatyypillä käyttäjät voivat "
+"syöttää oman tekstinsä."
 
 #: src/FacetType/Value.php:89
 msgid "Text input"
-msgstr ""
+msgstr "Tekstisyöte"
 
 #: src/FacetType/Value.php:100
 msgid "Truncate values"
-msgstr ""
+msgstr "Rajoita arvojen määrää"
 
 #: src/FacetType/Value.php:101
 msgid ""
@@ -465,99 +505,107 @@ msgid ""
 "hidden until the user clicks to show more. Enter nothing to show the entire "
 "list at all times."
 msgstr ""
+"Anna arvojen määrä, joka näytetään valintaluettelossa, kun sivu latautuu "
+"ensimmäisen kerran. Jos arvojen määrä ylittää tämän luvun, loput "
+"piilotetaan, kunnes käyttäjä napsauttaa näytä lisää -toimintoa. Jätä "
+"tyhjäksi, jos haluat näyttää koko luettelon aina."
 
 #: src/Site/BlockLayout/FacetedBrowsePreview.php:23
 msgid "Faceted browse preview"
-msgstr ""
+msgstr "Fasetoidun selauksen esikatselu"
 
 #: src/Site/BlockLayout/FacetedBrowsePreview.php:49
 msgid "Page category"
-msgstr ""
+msgstr "Sivun kategoria"
 
 #: src/Site/BlockLayout/FacetedBrowsePreview.php:50
 msgid "Select one…"
-msgstr ""
+msgstr "Valitse yksi…"
 
 #: src/Site/NavigationLink/FacetedBrowse.php:13 Module.php:194
 msgid "Faceted browse"
-msgstr ""
+msgstr "Fasetoitu selaus"
 
 #: src/Controller/SiteAdmin/PageController.php:44
 msgid "Page successfully added. Add categories below."
-msgstr ""
+msgstr "Sivu lisättiin onnistuneesti. Lisää kategoriat alla."
 
 #: src/Controller/SiteAdmin/PageController.php:83
 #, php-format
 msgid "Page successfully edited. %s"
-msgstr ""
+msgstr "Sivun muokkaus onnistui. %s"
 
 #: src/Controller/SiteAdmin/PageController.php:124
 msgid "Page successfully deleted."
-msgstr ""
+msgstr "Sivu poistettiin onnistuneesti."
 
 #: src/Controller/SiteAdmin/CategoryController.php:44
 msgid "Category successfully added."
-msgstr ""
+msgstr "Kategoria lisättiin onnistuneesti."
 
 #: src/Controller/SiteAdmin/CategoryController.php:97
 msgid "Category successfully edited."
-msgstr ""
+msgstr "Kategorian muokkaus onnistui."
 
 #: src/Controller/SiteAdmin/CategoryController.php:134
 msgid "Category successfully deleted."
-msgstr ""
+msgstr "Kategoria poistettiin onnistuneesti."
 
 #: src/Form/FacetForm.php:22
 msgid "Facet name"
-msgstr ""
+msgstr "Fasetin nimi"
 
 #: src/Form/FacetForm.php:33
 msgid "Set facet"
-msgstr ""
+msgstr "Aseta fasetti"
 
 #: src/Form/PageForm.php:19
 msgid "Enter the title of this page."
-msgstr ""
+msgstr "Anna tämän sivun otsikko."
 
 #: src/Form/PageForm.php:45
 msgid "Select the type of resources to browse."
-msgstr ""
+msgstr "Valitse selattavien resurssien tyyppi."
 
 #: src/Form/PageForm.php:57
 msgid "Thumbnail type"
-msgstr ""
+msgstr "Pikkukuvan tyyppi"
 
 #: src/Form/PageForm.php:58
 msgid "Select the type of thumbnail images to render on the page."
-msgstr ""
+msgstr "Valitse sivulla näytettävien pikkukuvien tyyppi."
 
 #: src/Form/ColumnForm.php:22
 msgid "Column name"
-msgstr ""
+msgstr "Sarakkeen nimi"
 
 #: src/Form/ColumnForm.php:33
 msgid "Exclude sort by"
-msgstr ""
+msgstr "Sulje pois lajitteluvalinnoista"
 
 #: src/Form/CategoryForm.php:24
 msgid ""
 "Enter the name of this category. A category is a logical grouping of "
 "resources that can be described using faceted classification."
 msgstr ""
+"Anna tämän kategorian nimi. Kategoria on resurssien looginen ryhmittely, "
+"jota voidaan kuvata fasetoidulla luokittelulla."
 
 #: src/Form/CategoryForm.php:36
 msgid ""
 "Configure the logical grouping of resources that make up this category. No "
 "query means all site resources."
 msgstr ""
+"Määritä tämän kategorian muodostavien resurssien looginen ryhmittely. Jos "
+"kyselyä ei ole, käytetään kaikkia sivuston resursseja."
 
 #: src/Form/CategoryForm.php:63
 msgid "Default sort by"
-msgstr ""
+msgstr "Oletuslajitteluperuste"
 
 #: src/Form/CategoryForm.php:88
 msgid "Helper text"
-msgstr ""
+msgstr "Ohjeteksti"
 
 #: src/Form/CategoryForm.php:89
 msgid ""
@@ -565,20 +613,26 @@ msgid ""
 " add short instructions, a link to instructions, etc. Enter nothing to have "
 "no helper text."
 msgstr ""
+"Anna teksti, joka näytetään käyttäjälle kategorian sivupalkissa. Tässä voit "
+"lisätä lyhyitä ohjeita, linkin ohjeisiin jne. Jätä tyhjäksi, jos et halua "
+"ohjetekstiä."
 
 #: src/Form/CategoryForm.php:100
 msgid "Helper text button label"
-msgstr ""
+msgstr "Ohjetekstipainikkeen nimiö"
 
 #: src/Form/CategoryForm.php:101
 msgid ""
 "Enter the label of the button the user will click to toggle the helper text."
 " Enter nothing for the default label: \"Instructions\"."
 msgstr ""
+"Anna sen painikkeen nimiö, jota käyttäjä napsauttaa näyttääkseen tai "
+"piilottaakseen ohjetekstin. Jätä tyhjäksi, jos haluat käyttää oletusnimiötä:"
+" \"Ohjeet\"."
 
 #: src/Form/CategoryForm.php:112
 msgid "Value facet mode"
-msgstr ""
+msgstr "Arvofasetin tila"
 
 #: src/Form/CategoryForm.php:113
 msgid ""
@@ -586,65 +640,70 @@ msgid ""
 "match any selected values. Note that this will apply to every Value facet in"
 " this category."
 msgstr ""
+"Valitse Arvo-faseteille, vastaako käyttäjä kaikkia valittuja arvoja vai mitä"
+" tahansa valituista arvoista. Huomaa, että tämä koskee kaikkia tämän "
+"kategorian Arvo-fasetteja."
 
 #: src/Form/CategoryForm.php:115
 msgid "Match all"
-msgstr ""
+msgstr "Vastaa kaikkia"
 
 #: src/Form/CategoryForm.php:116
 msgid "Match any"
-msgstr ""
+msgstr "Vastaa mitä tahansa"
 
 #: src/Form/CategoryForm.php:128
 msgid "Add a facet…"
-msgstr ""
+msgstr "Lisää fasetti…"
 
 #: src/Entity/FacetedBrowsePage.php:25
 msgid "Square"
-msgstr ""
+msgstr "Neliö"
 
 #: config/module.config.php:98
 msgid "A facet must have a name."
-msgstr ""
+msgstr "Fasetilla on oltava nimi."
 
 #: config/module.config.php:99
 msgid "A column must have a name."
-msgstr ""
+msgstr "Sarakkeella on oltava nimi."
 
 #: config/module.config.php:100
 msgid "A column must have a property."
-msgstr ""
+msgstr "Sarakkeella on oltava ominaisuus."
 
 #: config/module.config.php:101
 msgid "Error fetching browse markup."
-msgstr ""
+msgstr "Selausmerkintäkoodin hakeminen epäonnistui."
 
 #: config/module.config.php:102
 msgid "Error fetching facet markup."
-msgstr ""
+msgstr "Fasetin merkintäkoodin hakeminen epäonnistui."
 
 #: config/module.config.php:103
 msgid "Error fetching category markup."
-msgstr ""
+msgstr "Kategorian merkintäkoodin hakeminen epäonnistui."
 
 #: config/module.config.php:104
 msgid "Cannot show all. The result set is likely too large."
-msgstr ""
+msgstr "Kaikkia ei voi näyttää. Tulosjoukko on todennäköisesti liian suuri."
 
 #: config/module.config.php:105
 msgid "Loading results…"
-msgstr ""
+msgstr "Ladataan tuloksia…"
 
 #: Module.php:198
 msgid "Sitewide search category"
-msgstr ""
+msgstr "Sivustonlaajuisen haun kategoria"
 
 #: Module.php:199
 msgid ""
 "Select a category to use for the sitewide, full-text search. Note that the "
 "category must contain a full-text facet."
 msgstr ""
+"Valitse kategoria, jota käytetään sivustonlaajuisessa kokotekstihaussa. "
+"Huomaa, että kategorian on sisällettävä kokotekstifasetti."
 
 #: Module.php:201
 msgid "Select a category"
-msgstr ""
+msgstr "Valitse kategoria"
