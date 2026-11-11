@@ -48,6 +48,6 @@ class ResourceTemplate implements ColumnTypeInterface
     public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource): string
     {
         $template = $resource->resourceTemplate();
-        return $template ? $template->label() : '';
+        return $template ? htmlspecialchars($template->label()) : '';
     }
 }

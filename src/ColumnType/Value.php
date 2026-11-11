@@ -100,7 +100,7 @@ class Value implements ColumnTypeInterface
             }
             $content .= '</ul>';
         } else {
-            $content = $values[0];
+            $content = $values[0]->asHtml();
         }
 
         return $content;

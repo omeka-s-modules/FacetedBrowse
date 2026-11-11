@@ -48,6 +48,6 @@ class ResourceClass implements ColumnTypeInterface
     public function renderContent(FacetedBrowseColumnRepresentation $column, AbstractResourceEntityRepresentation $resource): string
     {
         $class = $resource->resourceClass();
-        return $class ? $class->label() : '';
+        return $class ? htmlspecialchars($class->label()) : '';
     }
 }

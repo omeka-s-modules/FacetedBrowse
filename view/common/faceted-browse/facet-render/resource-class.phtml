@@ -27,7 +27,7 @@ if ('single_list' === $facet->data('select_type') && $truncate) {
             type="<?php echo ('multiple_list' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
             name="<?php echo sprintf('resource_class_%s', $facet->id()); ?>"
             data-class-id="<?php echo $this->escapeHtml($class->id()); ?>">
-        <label for="<?php echo sprintf('input-%s-%s', $facet->id(), $index); ?>"><?php echo $class->label(); ?></label>
+        <label for="<?php echo sprintf('input-%s-%s', $facet->id(), $index); ?>"><?php echo $this->escapeHtml($class->label()); ?></label>
     </li>
     <?php endforeach; ?>
 </ul>

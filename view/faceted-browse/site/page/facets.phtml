@@ -2,8 +2,8 @@
   <span aria-hidden="true" class="close-glyph"></span>
 </button>
 <button id="categories-return" class="button" type="button"><?php echo $this->translate('Back'); ?></button>
-<fieldset class="facets-container" aria-label="<?php echo $category->name(); ?>">
-    <legend><?php echo $category->name(); ?></legend>
+<fieldset class="facets-container" aria-label="<?php echo $this->escapeHtml($category->name()); ?>">
+    <legend><?php echo $this->escapeHtml($category->name()); ?></legend>
     <?php
     $categoryOptions = [
         'value_facet_mode' => $category->valueFacetMode(),
@@ -27,7 +27,7 @@
             data-facet-id="<?php echo $this->escapeHtml($facet->id()); ?>"
             data-facet-type="<?php echo $this->escapeHtml($facet->type()); ?>"
             data-facet-data="<?php echo $this->escapeHtml(json_encode($facet->data())); ?>">
-            <legend id="<?php echo sprintf('facet-legend-%s', $facet->id()); ?>"><?php echo $facet->name(); ?></legend>
+            <legend id="<?php echo sprintf('facet-legend-%s', $facet->id()); ?>"><?php echo $this->escapeHtml($facet->name()); ?></legend>
             <?php echo $this->facetedBrowse()->renderFacet($facet); ?>
         </fieldset>
         <?php endif; ?>

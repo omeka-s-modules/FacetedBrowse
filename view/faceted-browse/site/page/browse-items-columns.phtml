@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <?php foreach ($columns as $column): ?>
-            <th><?php echo $column->name(); ?></th>
+            <th><?php echo $this->escapeHtml($column->name()); ?></th>
             <?php endforeach; ?>
         </tr>
     </thead>
